@@ -1,0 +1,326 @@
+.searchBarHomeWrapper {
+  margin-left: 117px;
+  text-transform: uppercase;
+  font-family: "PNBold";
+  font-size: 14px;
+}
+
+.searchBarHomeLabel {
+  font-size: 18px;
+  color: #797c7f;
+}
+
+.searchBarHome {
+  width: 100%;
+}
+
+.wrapper-dropdown {
+  display: inline-block;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 16px;
+
+  width: 299px;
+  height: 60px;
+  line-height: 60px;
+
+  background: transparent;
+  border: 1px solid #d8dcdd;
+}
+
+.carrot {
+  float: right;
+  line-height: 60px;
+  font-size: 10px;
+  padding-right: 10px;
+}
+
+.wrapper-dropdown .dropdown {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: inherit;
+  list-style-type: none;
+  margin-top: -2px;
+}
+
+.dropdown.active {
+  opacity: 1;
+  pointer-events: auto;
+  background: white;
+  width: 298px;
+  margin-left: -11px;
+  border: 1px solid #d8dcdd;
+}
+
+.wrapper-dropdown-1.active {
+  background: #F1F1F1;
+}
+
+.searchButton {
+  color: white;
+  font-size: 10px;
+  text-align: center;
+
+  display: inline-block;
+
+  border-radius: 0;
+  background: #3eb2cc;
+  height: 60px;
+  width: 192px;
+  line-height: 60px;
+
+  letter-spacing: 0.10em;
+
+  cursor: pointer;
+}
+
+.fa-chevron-right {
+  padding-left: 5px;
+}
+
+// content
+
+
+.homeContentWrapper {
+  height: 946px;
+  margin-top: 80px;
+}
+
+.homeContent {
+  float:left;
+  width: 100%;
+  padding: 70px;
+  font-family: "PNBold";
+  font-size: 36px;
+  color: #282b30;
+}
+
+.homeContentBox1 {
+  width: 523px;
+  height: inherit;
+  float: left;
+}
+
+.homeContentBox2 {
+  width: 863px;
+  height: inherit;
+  float: left;
+}
+
+
+.homeContentPic {
+  height: 349px;
+  padding: 0;
+}
+
+.homeContentResearch {
+  height: 465px;
+  background-color: #e5e8e9;
+}
+
+.homeContentNews {
+  height: 597px;
+  background-color: #f2f3f4;
+}
+
+.homeContentFollowed {
+  width: 537px;
+  height: 481px;
+  background-color: #cbd0d2;
+}
+
+.homeContentInvite {
+  width: 326px;
+  height: 481px;
+  background-color: #f2f3f4;
+  text-align: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 100px;
+}
+
+.homeContentLabel {
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #737373;
+}
+
+.homeContentHeadline {
+  border-left: 8px solid #34373d;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  max-width: 500px;
+}
+
+.newsDate {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #737373;
+}
+
+.newsContent {
+  font-size: 16px;
+  font-color: #445058;
+  font-family: "LoraReg";
+}
+
+.viewMoreContent {
+  font-size: 14px;
+  color: #3eb2cc;
+  text-transform: uppercase;
+  margin-top:10px;
+  display: inline-block;
+}
+
+.researchResults {
+  overflow: auto;
+}
+
+.researchCol {
+  float: left;
+  width: 25%;
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.researchNum {
+  font-size: 70px;
+  color: #3eb2cc;
+  font-family: "PNLight";
+}
+.researchText {
+  font-size: 16px;
+  font-color: #445058;
+  font-family: "LoraItalic";
+
+}
+
+.followedSearch {
+  margin-bottom: 20px;
+  width: 100%;
+  overflow: auto;
+}
+
+.followedSearchTitle {
+  font-size: 20px;
+  color: #282b30;
+  margin-bottom: 5px;
+}
+
+.followedSearchDesc {
+  font-size: 14px;
+  color: #445058;
+  font-family: "PNReg";
+}
+
+.followedSearchRemove {
+  color: #282b30;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.searchesViewMore {
+  float: right;
+}
+
+.homeInviteTitle {
+  font-size: 18px;
+  color: #282b30;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.homeInviteText {
+  color: #445058;
+  font-size: 16px;
+  margin-bottom: 50px;
+  font-family: "LoraReg";
+}
+
+.inviteButton {
+  border: 6px solid #3eb2cc;
+  text-transform: uppercase;
+  color: #3eb2cc;
+  height: 60px;
+  font-size: 20px;
+  line-height: 50px;
+  margin: 0 auto;
+
+}
+
+
+
+
+
+// connections
+
+.homeConnectionsHeader {
+  height: 58px;
+  line-height: 58px;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding-left: 20px;
+  color: #737373;
+  font-family: "PNBold";
+}
+
+.homeConnections {
+  overflow: hidden;
+  font-family: "PNBold";
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.homeConnectionBox {
+  float: left;
+}
+
+.homeConnectionProfile, .homeConnectionPic {
+  height: 231px;
+  width: 231px;
+  float: left;
+}
+
+
+.homeConnectionProfile {
+  background-color: #282b30;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 50px;
+}
+
+.homeConnectionPic img {
+  height: 231px;;
+}
+
+.hcpTitle {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hcpDesc {
+  font-family: "PNReg";
+  margin-bottom: 20px;
+}
+
+.hcpMsg, .hcpConnect {
+  color: #3eb2cc;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+

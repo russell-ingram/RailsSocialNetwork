@@ -1,0 +1,120 @@
+.messagesWrapper {
+  padding-left: 117px;
+  padding-right: 117px;
+
+}
+
+.messagesHeader {
+  padding-right: 117px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  margin-top: -30px;
+}
+
+.messagesHeader > :first-child{
+  float: left;
+}
+
+.composeButton {
+  float: right;
+  font-size: 14px;
+  height: 50px;
+  width: 200px;
+  line-height: 52px;
+}
+
+.messagesBar {
+  background-color: #282b30;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 30px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+}
+
+.inboxToggle, .searchMessagesButton, .sortLabel, .sortToggle {
+  display: inline-block;
+
+  text-transform: uppercase;
+}
+
+.inboxToggle, .sortLabel {
+  font-family: "PNLight";
+}
+
+.messageCaret {
+  padding-left: 10px;
+}
+
+.searchMsgsBarFloatRight {
+  float:right;
+}
+
+.searchMessagesButton {
+  margin-right: 16px;
+  font-size: 18px;
+}
+
+.message {
+  height: 200px;
+  background-color: #f2f3f4;
+  margin-bottom: 2px;
+  padding: 30px;
+  font-size: 14px;
+}
+
+.messageProfilePicBox {
+  height: 140px;
+  width: 140px;
+  background-color: black;
+  float:left;
+}
+
+.messageContentBox {
+  float:left;
+  width: 80%;
+  margin-left: 30px;
+  margin-top: -8px;
+}
+.messageTimeStamp {
+  float:right;
+  margin-top: -5px;
+}
+
+.messageName {
+  color: #3eb2cc;
+  float:left;
+  margin-right: 10px;
+}
+
+.messageEmployer, .messageContent {
+  color: #737373;
+}
+
+.messageUserInfo {
+  margin-bottom: 10px;
+}
+
+.messageTitle {
+  font-size: 18px;
+  color: #797c7f;
+  margin-bottom: 5px;
+}
+
+.messageTitle i {
+  color: #3eb2cc;
+  margin-right: 5px;
+}
+
+.messageContent {
+  font-family: "LoraLight";
+  font-size: 16px;
+}
+
+.messagesPagination {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+

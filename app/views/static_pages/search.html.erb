@@ -1,0 +1,21 @@
+<%= render "layouts/header" %>
+<div class="pageWrap">
+  <div class="pageHeader">Search</div>
+
+  <div class="searchWrapper">
+
+    <% @users.each do |user| %>
+      <li>
+          <%= user.email %>
+      </li>
+    <% end %>
+
+
+  </div>
+
+  <div class="footerMargin"></div>
+</div>
+
+
+
+<%= render "layouts/footer" %>

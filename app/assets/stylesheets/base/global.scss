@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+
+@font-face {
+  font-family: "LoraBold";
+  src: font-url('lora/Lora-Bold.ttf');
+}
+
+@font-face {
+  font-family: "LoraBoldItalic";
+  src: font-url('lora/Lora-BoldItalic.ttf');
+}
+
+@font-face {
+  font-family: "LoraItalic";
+  src: font-url('lora/Lora-Italic.ttf');
+}
+
+@font-face {
+  font-family: "LoraReg";
+  src: font-url('lora/Lora-Regular.ttf');
+}
+
+
+@font-face {
+  font-family: "PNLight";
+  src: font-url('proximaNova/ProximaNova-Light.otf');
+}
+
+@font-face {
+  font-family: "PNBold";
+  src: font-url('proximaNova/ProximaNova-Sbold.otf');
+}
+
+@font-face {
+  font-family: "PNReg";
+  src: font-url('proximaNova/ProximaNova-Reg.otf');
+}
+
+@font-face {
+  font-family: "PNThin";
+  src: font-url('proximaNova/ProximaNova-Thin.otf');
+}
+
+
+
+
+// sticky footer
+
+body {
+  margin: 0;
+  background-color: #cbd0d2;
+}
+
+.pageWrap {
+  min-height: 100%;
+  width: 1386px;
+  margin: 0 auto;
+  margin-bottom: -300px;
+  padding-top: 80px;
+  font-family: "PNBold";
+
+  background-color: white;
+}
+
+.pageWrap:after {
+  content: "";
+  display: block;
+  height: 300px;
+}
+
+.pageHeader {
+  padding-left: 117px;
+  font-size: 24px;
+  color: #3eb2cc;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+
+.footer {
+  background-color: #34373d;
+  height: 300px;
+  color: #f2f3f4;
+
+}
+
+.footerMargin {
+  height: 50px;
+  background-color: #cbd0d2;
+}

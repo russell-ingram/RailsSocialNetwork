@@ -1,0 +1,176 @@
+
+
+.connectionRequestsWrapper {
+  margin-top: 40px;
+  padding-left: 117px;
+  padding-right: 117px;
+  margin-bottom: 40px;
+}
+
+.connectionRequest {
+  height: 250px;
+  margin-bottom: 20px;
+  background-color: #f2f3f4;
+  color: #737373;
+}
+
+.connectionRequestPic {
+  width: 250px;
+}
+
+.connectionRequestPic img {
+  height: 100%;
+  width: 100%;
+  float:left;
+}
+
+.connectionRequestInfo {
+  float:left;
+  width: 750px;
+  padding: 35px 35px 0 35px;
+}
+
+.connectionReqDate {
+  float:right;
+}
+
+.connectionReqName {
+  color: #3eb2cc;
+  font-size: 20px;
+}
+
+.connectionReqCompany {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.connectionReqIndustry, .connectionReqMsg, .connectionReqSimilarity {
+  font-family: "PNLight";
+  font-size: 14px;
+}
+
+.connectionReqIndustry {
+
+}
+
+.connectionReqSimilarity {
+  color: #3eb2cc;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.connectionReqMsg {
+  font-family: "LoraReg";
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+
+.connectionRequestAction {
+  height:250px;
+  width:125px;
+  float:right;
+}
+
+.connectionRequestAction div {
+  height: 125px;
+  width:125px;
+  color: #FFFFFF;
+  line-height: 125px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.connectionButtonAccept {
+  background-color: #3eb2cc;
+}
+
+.connectionButtonReject {
+  background-color: #282b30;
+}
+
+.myConnsWrapper {
+
+  color: #737373;
+}
+
+.myConnsHeaderBar {
+  height: 60px;
+  line-height: 60px;
+  padding: 0 117px;
+  background-color: #e5e8e9;
+}
+
+.myConnsRightFloat {
+  float:right;
+  color: #282b30;
+}
+
+.myConnsSearchButton, .myConnsLabel {
+  display: inline-block;
+  text-transform: uppercase;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.myConnFiller {
+  height: 20px;
+  background-color: #f2f3f4;
+
+}
+
+.myConnection {
+  background-color: #f2f3f4;
+  padding: 5px 117px 10px 117px;
+}
+
+.myConnWrapper {
+  height: 160px;
+  border-bottom: 1px solid #cbd0d2;
+}
+
+.myConnProfilePic {
+  height:140px;
+  width:140px;
+  float:left;
+}
+
+.myConnProfilePic img {
+  height: 140px;
+  width: 140px;
+
+}
+
+.myConnInfo {
+  padding: 20px;
+  font-size: 20px;
+  float:left;
+}
+
+.myConnName {
+  color: #3eb2cc;
+}
+
+.myConnIndustry {
+  font-size: 14px;
+  font-family: "PNLight";
+}
+
+.myConnCompany {
+  margin-bottom: 10px;
+}
+
+.myConnMessage {
+  float:right;
+  line-height: 140px;
+  color: #3eb2cc;
+  text-transform: uppercase;
+}
+
+.connectionsPagination {
+  height: 40px;
+  background-color: #f2f3f4;
+}
+
+
+

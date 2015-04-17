@@ -11,7 +11,7 @@ default: &default
 
 development:
   adapter: sqlserver
-  host: 192.168.56.2
+  host: 10.77.77.113
   port: 1433
   database: etrDev
   username: russ

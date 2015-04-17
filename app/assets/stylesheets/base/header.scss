@@ -1,0 +1,45 @@
+.header {
+  background-color: #282b30;
+  height: 90px;
+  color: #FFFFFF;
+  line-height: 90px;
+  font-family: "PNBold";
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.headerWrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.logo {
+  float: left;
+  margin-left: 60px;
+}
+
+.navBar {
+  float: right;
+}
+
+.navBar a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 70px;
+  letter-spacing: 0.20em;
+}
+
+.menuIcon {
+  height: 35px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: -10px;
+  margin-top: -5px;
+}
+
+.menuLogo {
+  height: 35px;
+  width: auto;
+  vertical-align: middle;
+}

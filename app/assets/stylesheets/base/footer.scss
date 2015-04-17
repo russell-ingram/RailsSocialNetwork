@@ -1,0 +1,34 @@
+
+
+.footWrapper {
+  width: 80%;
+  margin: 0 auto;
+  color: #939598;
+  font-size: 14px;
+  font-family: "PNBold";
+  padding-top: 50px;
+}
+
+.logoFoot {
+  float: left;
+  margin-top: -8px;
+}
+
+.copyrightFoot {
+  text-align: center;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.footNav {
+  float: right;
+  margin-top: -15px;
+}
+
+.footNav a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+  text-align: right;
+}

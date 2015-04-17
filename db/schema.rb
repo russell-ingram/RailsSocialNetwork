@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331180654) do
+ActiveRecord::Schema.define(version: 20150401152005) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 4000, default: "",   null: false
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20150331180654) do
     t.boolean  "notifications",                       default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider",               limit: 4000
+    t.string   "uid",                    limit: 4000
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
