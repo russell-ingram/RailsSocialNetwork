@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   get '/settings' => 'static_pages#setting'
 
-  get '/messages' => 'static_pages#messages'
+  # get '/messages' => 'static_pages#messages'
+  get '/messages' => 'conversations#index'
 
   get '/connections' => 'static_pages#connections'
 
@@ -28,6 +29,12 @@ Rails.application.routes.draw do
   patch '/admin/edit_user/:id' => 'user_admin#update', as: 'user_admin_user'
 
   get '/admin/new_user' => 'user_admin#new', as: 'admin_new_user'
-  post '/admin/new_user' => 'devise/registrations#update', as: 'user_admin_users'
+  post '/admin/new_user' => 'user_admin#create', as: 'user_admin_users'
+
+
+  resources :conversations, only: [:index, :show, :destroy]
+  resources :messages, only: [:new, :create]
+
+
 
 end

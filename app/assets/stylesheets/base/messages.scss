@@ -23,6 +23,11 @@
   line-height: 52px;
 }
 
+.composeButton a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
 .messagesBar {
   background-color: #282b30;
   height: 50px;
@@ -110,6 +115,10 @@
 .messageContent {
   font-family: "LoraLight";
   font-size: 16px;
+  min-height: 50px;
+  max-height: 40px;
+  overflow: hidden;
+  margin-bottom: -5px;
 }
 
 .messagesPagination {

@@ -1,0 +1,29 @@
+
+<div class="message">
+  <div class="messageProfilePicBox"></div>
+
+        <% message = conversation.last_message %>
+
+
+  <div class="messageTimeStamp"><%= message.created_at.strftime("%l:%M %p %B %-d, %Y") %></div>
+  <div class="messageContentBox">
+
+
+
+
+    <div class="messageUserInfo">
+
+
+      <div class="messageName"><%= message.sender.first_name %> <%= message.sender.last_name %></div>
+      <div class="messageEmployer"><%= message.sender.employer %></div>
+    </div>
+    <div class="messageTitle"><i class="fa fa-circle"></i><%= conversation.subject %></div>
+    <div class="messageContent"><%= message.body %></div>
+
+
+
+    <div class="viewMoreContent viewFullMessage"><%= link_to "FULL MESSAGE", conversation_path(conversation) %><i class="fa fa-chevron-right"></i></div>
+  </div>
+
+
+</div>

@@ -1,0 +1,45 @@
+<%= render "layouts/header" %>
+<div class="pageWrap">
+  <div class="messagesHeader">
+    <div class="pageHeader">Messages</div>
+    <div class="composeButton searchButton"><%= link_to 'COMPOSE', new_message_path %></div>
+  </div>
+
+  <div class="messagesWrapper">
+
+    <div class="messagesBar">
+
+      <div class="inboxToggle">
+        Inbox<i class="fa fa-caret-down messageCaret"></i>
+    <!--     <div class="wrapper-dropdown" tabindex="1">
+          <span class="ddLabel">industry</span>
+          <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li class="ddOption">option1</li>
+            <li class="ddOption">option2</li>
+            <li class="ddOption">option3</li>
+          </ul>
+        </div> -->
+
+      </div>
+      <div class="searchMsgsBarFloatRight">
+        <div class="searchMessagesButton"><i class="fa fa-search"></i></div>
+        <div class="sortLabel">SORT BY:</div>
+        <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
+      </div>
+    </div>
+
+      <%= render partial: 'conversations/conversation', collection: @conversations %>
+  </div><!-- end messages wrapper -->
+
+
+
+    <div class="messagesPagination"><%= will_paginate %></div>
+
+
+  <div class="footerMargin"></div>
+</div>
+
+
+
+<%= render "layouts/footer" %>
