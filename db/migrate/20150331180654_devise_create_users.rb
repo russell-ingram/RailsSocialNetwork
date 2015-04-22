@@ -37,6 +37,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :industry
       t.string :location
 
+      # admin properties
+      t.boolean :admin, :default => false
+
       # account settings
       t.boolean :privacy_profile, default: true
       t.boolean :notifications, default: true

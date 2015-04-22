@@ -1,0 +1,33 @@
+<%= render "layouts/header" %>
+<div class="pageWrap">
+  <div class="pageHeader">Admin</div>
+
+  <div class="searchWrapper">
+
+  <div class="adminUserNew"><%= link_to "ADD NEW USER", admin_new_user_path %></div>
+
+    <% @users.each do |user| %>
+      <div class="adminUserBox">
+        <div class="adminUserName">
+      <% if user.first_name? %>
+        <%= user.first_name %>
+      <% else %>
+        No user name set.
+      <% end %>
+        </div>
+        <div class="adminUserEmail"><%= user.email %></div>
+        <div class="adminUserEdit"><%= link_to "EDIT", admin_edit_user_path(user) %></div>
+      </div>
+
+      </li>
+    <% end %>
+
+
+  </div>
+
+  <div class="footerMargin"></div>
+</div>
+
+
+
+<%= render "layouts/footer" %>
