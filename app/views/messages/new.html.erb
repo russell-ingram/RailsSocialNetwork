@@ -1,4 +1,7 @@
 
+<%= render "layouts/header" %>
+<div class="pageWrap">
+
 
 <%= form_tag messages_path, method: :post do %>
   <div class="form-group">
@@ -8,7 +11,7 @@
 
   <div class="form-group">
     <%= label_tag 'message[body]', 'Message' %>
-    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control messageArea', required: true %>
   </div>
 
   <div class="form-group">
@@ -18,3 +21,10 @@
 
   <%= submit_tag 'Send', class: 'btn btn-primary' %>
 <% end %>
+
+  <div class="footerMargin"></div>
+</div>
+
+
+
+<%= render "layouts/footer" %>

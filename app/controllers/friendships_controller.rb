@@ -2,6 +2,10 @@ class FriendshipsController < ApplicationController
 
   before_filter :authenticate_user!
 
+  def index
+    @friendships = current_user.friendships
+  end
+
   def new
     if params[:friend_id]
       @friend = User.find(params[:friend_id])
@@ -11,6 +15,16 @@ class FriendshipsController < ApplicationController
     end
 
   end
+
+  def accept
+    @friendship = current_user.friendships.find(params[:id])
+    if @friendship.accept!
+
+    else
+    end
+    redirect_to '/connections'
+  end
+
 
 
   def create

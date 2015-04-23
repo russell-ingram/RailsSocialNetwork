@@ -2,6 +2,31 @@
   <div class="pageWrap">
     <div class="pageHeader">Requested Connections</div>
 
+      <% @friendships.each do |friendship| %>
+        <% if friendship.pending? %>
+
+      <div class="connectionRequest">
+        <div class="connectionRequestPic"><%= image_tag "user-photo04.jpg" %></div>
+        <div class="connectionRequestInfo">
+          <div class="connectionReqDate">June 15, 2015</div>
+          <div class="connectionReqName"></div>
+          <div class="connectionReqCompany">Lorem, Inc.</div>
+          <div class="connectionReqIndustry">CIO, Energy / Clean Energy, Mid to Large Enterprise</div>
+          <div class="connectionReqSimilarity">this user is in the same industry</div>
+          <div class="connectionReqMsg">Hi James, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tempor libero. Quisque vulputate porttitor ligula, eget sollicitudin...</div>
+          <div class="viewMoreContent fullReqMessage">full message<i class="fa fa-chevron-right"></i></div>
+        </div>
+        <div class="connectionRequestAction">
+          <div class="connectionButtonAccept">Accept</div>
+          <div class="connectionButtonReject">Reject</div>
+        </div>
+      </div>
+
+
+
+        <% end %>
+      <% end %>
+
     <div class="connectionRequestsWrapper">
 
     </div>
@@ -16,7 +41,8 @@
         </div>
       </div>
 
-      <% current_user.friends.each do |friend| %>
+      <% @friendships.each do |friendship| %>
+        <% friend = friendship.friend %>
 
       <div class="myConnection">
         <div class="myConnWrapper">

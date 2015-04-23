@@ -5,7 +5,13 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   has_many :friendships
-  has_many :friends, :through => :friendships
+  has_many :friends, -> { where( friendship: { state: 'accepted' } ) }, :through => :friendships
+
+  has_many :pending_user_friendships, -> { where( state: 'pending' ) },
+                                      class_name: 'Friendship',
+                                      foreign_key: :user_id
+
+  has_many :pending_friends, through: :pending_user_friendships, source: :friend
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

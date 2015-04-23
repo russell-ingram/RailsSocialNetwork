@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423144316) do
+ActiveRecord::Schema.define(version: 20150423203138) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "state"
   end
 
+  add_index "friendships", ["state"], name: "index_friendships_on_state"
   add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id"
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|

@@ -5,10 +5,9 @@ Rails.application.routes.draw do
 
   get '/settings' => 'static_pages#setting'
 
-  # get '/messages' => 'static_pages#messages'
   get '/messages' => 'conversations#index'
 
-  get '/connections' => 'static_pages#connections'
+  get '/connections' => 'friendships#index'
 
   get '/search' => 'static_pages#search'
 
