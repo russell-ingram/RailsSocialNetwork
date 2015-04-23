@@ -8,7 +8,7 @@
       <div class="userList">
           <div class="userListName"><%= user.email %></div>
           <div class="userListAddBtn">
-            <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+            <%= link_to "Add Friend", new_friendship_path(:friend_id => user) %>
           </div>
 
         </div>

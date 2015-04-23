@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <%= current_user.friends.each do |friend| %>
+      <% current_user.friends[0...-1].each do |friend| %>
 
       <div class="myConnection">
         <div class="myConnWrapper">
@@ -29,6 +29,7 @@
           <div class="myConnMessage">message<i class="fa fa-chevron-right"></i></div>
         </div>
       </div>
+
 
 
 
