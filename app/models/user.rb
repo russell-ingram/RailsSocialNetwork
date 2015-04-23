@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
 
   acts_as_messageable
 
+  has_many :friendships
+  has_many :friends, :through => :friendships
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:linkedin]

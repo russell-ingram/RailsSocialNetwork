@@ -5,9 +5,13 @@
   <div class="searchWrapper">
 
     <% @users.each do |user| %>
-      <li>
-          <%= user.email %>
-      </li>
+      <div class="userList">
+          <div class="userListName"><%= user.email %></div>
+          <div class="userListAddBtn">
+            <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+          </div>
+
+        </div>
     <% end %>
 
 

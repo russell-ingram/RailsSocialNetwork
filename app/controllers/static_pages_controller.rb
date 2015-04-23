@@ -12,9 +12,10 @@ class StaticPagesController < ApplicationController
   def messages
   end
   def connections
+
   end
 
   def search
-    @users = User.all;
+    @users = User.all
   end
 end

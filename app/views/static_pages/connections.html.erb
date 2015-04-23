@@ -3,39 +3,7 @@
     <div class="pageHeader">Requested Connections</div>
 
     <div class="connectionRequestsWrapper">
-      <div class="connectionRequest">
-        <div class="connectionRequestPic"><%= image_tag "user-photo02.jpg" %></div>
-        <div class="connectionRequestInfo">
-          <div class="connectionReqDate">June 19, 2015</div>
-          <div class="connectionReqName">Phil Ipsum</div>
-          <div class="connectionReqCompany">Lorem, Inc.</div>
-          <div class="connectionReqIndustry">CIO, Energy / Clean Energy, Mid to Large Enterprise</div>
-          <div class="connectionReqSimilarity">this user is in the same industry</div>
-          <div class="connectionReqMsg">Hi James, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tempor libero. Quisque vulputate porttitor ligula, eget sollicitudin...</div>
-          <div class="viewMoreContent fullReqMessage">full message<i class="fa fa-chevron-right"></i></div>
-        </div>
-        <div class="connectionRequestAction">
-          <div class="connectionButtonAccept">Accept</div>
-          <div class="connectionButtonReject">Reject</div>
-        </div>
-      </div>
 
-      <div class="connectionRequest">
-        <div class="connectionRequestPic"><%= image_tag "user-photo03.jpg" %></div>
-        <div class="connectionRequestInfo">
-          <div class="connectionReqDate">June 15, 2015</div>
-          <div class="connectionReqName">Lauren Present-Vitae</div>
-          <div class="connectionReqCompany">Lorem, Inc.</div>
-          <div class="connectionReqIndustry">CIO, Energy / Clean Energy, Mid to Large Enterprise</div>
-          <div class="connectionReqSimilarity">this user is in the same industry</div>
-          <div class="connectionReqMsg">Hi James, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tempor libero. Quisque vulputate porttitor ligula, eget sollicitudin...</div>
-          <div class="viewMoreContent fullReqMessage">full message<i class="fa fa-chevron-right"></i></div>
-        </div>
-        <div class="connectionRequestAction">
-          <div class="connectionButtonAccept">Accept</div>
-          <div class="connectionButtonReject">Reject</div>
-        </div>
-      </div>
     </div>
 
     <div class="myConnsWrapper">
@@ -48,30 +16,28 @@
         </div>
       </div>
 
-      <div class="myConnFiller"></div>
+      <%= current_user.friends.each do |friend| %>
 
       <div class="myConnection">
         <div class="myConnWrapper">
           <div class="myConnProfilePic"><%= image_tag "user-photo04.jpg" %></div>
           <div class="myConnInfo">
-            <div class="myConnName">Jordon Vivamus</div>
-            <div class="myConnCompany">Lorem, Inc.</div>
-            <div class="myConnIndustry">CIO, Energy / Clean Energy, Mid to Large Enterprise</div>
+            <div class="myConnName"><%= friend.first_name %> <%= friend.last_name %></div>
+            <div class="myConnCompany"><%= friend.employer %></div>
+            <div class="myConnIndustry"><%= friend.industry %></div>
           </div>
           <div class="myConnMessage">message<i class="fa fa-chevron-right"></i></div>
         </div>
       </div>
-      <div class="myConnection">
-        <div class="myConnWrapper">
-          <div class="myConnProfilePic"><%= image_tag "user-photo09.jpg" %></div>
-          <div class="myConnInfo">
-            <div class="myConnName">Andrew Nullam</div>
-            <div class="myConnCompany">Curibatur, Inc.</div>
-            <div class="myConnIndustry">CIO, Energy / Clean Energy, Mid to Large Enterprise</div>
-          </div>
-          <div class="myConnMessage">message<i class="fa fa-chevron-right"></i></div>
-        </div>
-      </div>
+
+
+
+      <% end %>
+
+
+      <div class="myConnFiller"></div>
+
+
 
       <div class="connectionsPagination"></div>
 
