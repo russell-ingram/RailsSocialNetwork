@@ -1,0 +1,66 @@
+<%= render "layouts/header" %>
+<div class="pageWrap">
+  <div class="pageHeader">Profile
+  </div>
+  <div class="adminLink"><a href="/admin">Edit as Admin<i class="fa fa-chevron-right"></i></a></div>
+
+  <div class="profileHeader">
+    <div class="profilePic">
+      <%= image_tag "user-photo02.jpg" %>
+    </div>
+    <div class="profileInfo">
+      <div class="profileName"><%= @user.full_name %></div>
+      <div class="profilePosition">Chief Information Office (CIO)</div>
+      <div class="profileEmployer"><%= @user.employer %></div>
+      <div class="profileIndustry">
+        <i class="fa fa-building-o"></i><%= @user.industry %>
+      </div>
+      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= @user.location %></div>
+
+        <% if @friends.include? @user %>
+          <div class="profileButton profileConnected">CONNECTED</div>
+        <% elsif @pending.include? @user %>
+          <div class="profileButton profilePending">PENDING</div>
+        <% elsif @requested.include? @user %>
+          This @user has asked to be your friend.
+        <% else %>
+          <div class="profileButton profileConnect">
+          <%= link_to "CONNECT", new_friendship_path(:friend_id => @user) %>
+          </div>
+        <% end %>
+
+
+
+
+
+      <div class="profileButton profileMessage"><a href="/messages/new">SEND MESSAGE</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="profileTab">
+    <div class="profileTabLabel active">INFORMATION</div>
+    <div class="profileTabLabel">CONNECTIONS</div>
+  </div>
+
+  <div class="profileTabWrapper">
+    <div class="profileTabBox">
+      <div class="profileTabBoxLabel">
+        SUMMARY
+      </div>
+    </div>
+    <div class="profileTabBox">
+      <div class="profileTabBoxLabel">
+        EXPERIENCE
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<%= render "layouts/footer" %>

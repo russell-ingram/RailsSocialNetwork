@@ -20,7 +20,7 @@
 
       <div class="myConnection">
         <div class="myConnWrapper">
-          <div class="myConnProfilePic"><%= image_tag "user-photo04.jpg" %></div>
+          <div class="myConnProfilePic"><a href="/profile/<%= user.id %>"><%= image_tag "user-photo04.jpg" %></a></div>
           <div class="myConnInfo">
             <div class="myConnName"><%= friend.first_name %> <%= friend.last_name %></div>
             <div class="myConnCompany"><%= friend.employer %></div>

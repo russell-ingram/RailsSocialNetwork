@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/search' => 'static_pages#search'
 
+  get '/profile/:id' => 'static_pages#show_profile', as: 'user_profile'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }, :skip => [:sessions]
 
   root 'home#index'
@@ -34,7 +36,13 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :show, :destroy]
   resources :messages, only: [:new, :create]
 
-  resources :friendships
+  resources :friendships do
+    member do
+      put :accept
+      delete :block
+    end
+  end
+
 
 
 

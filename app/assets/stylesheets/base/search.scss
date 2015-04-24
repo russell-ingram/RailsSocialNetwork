@@ -1,5 +1,6 @@
 .searchWrapper {
   min-height: 250px;
+  padding-top: 20px;
 }
 
 .adminUserBox {
@@ -22,14 +23,54 @@
 }
 
 .userList {
-  min-height: 200px;
+  min-height: 100px;
   padding: 0 117px;
+  margin-top: 5px;
+  padding-top: 20px;
+  background-color: #f2f3f4;
+
 }
 
 .userListName {
   float:left;
 }
 
+.userListName2 {
+  color: #3eb2cc;
+}
+
 .userListAddBtn {
   float:right;
 }
+
+.addFriendButton {
+  margin-top: 6px;
+  width: 150px;
+  height: 50px;
+  background-color: #3eb2cc;
+  color: #FFF;
+  text-align: center;
+  line-height: 50px;
+}
+
+.connectedBox {
+  margin-top: 6px;
+  width: 150px;
+  height: 50px;
+  background-color: #34373d;
+  color: #FFF;
+  text-align: center;
+  line-height: 50px;
+}
+
+.pendingBox {
+  margin-top: 6px;
+  width: 150px;
+  height: 50px;
+  background-color: #797c7f;
+  color: #FFF;
+  text-align: center;
+  line-height: 50px;
+}
+
+

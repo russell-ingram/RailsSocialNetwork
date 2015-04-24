@@ -1,0 +1,127 @@
+.adminLink {
+  float: right;
+  display: inline-block;
+  margin-top: -14px;
+  font-size: 24px;
+}
+
+.adminLink a {
+  margin-right: 117px;
+}
+
+.adminLink i {
+  margin-top: 5px;
+}
+
+.profileHeader {
+  margin: 0 117px;
+  margin-top: 30px;
+  background-color: #f2f3f4;
+  padding-left: 25px;
+  padding-top: 25px;
+  overflow: hidden;
+
+  padding-bottom: 40px;
+}
+
+.profilePic {
+  float: left;
+}
+.profilePic img {
+  height: 200px;
+  width: 200px;
+}
+
+.profileInfo {
+  float:left;
+  margin-left: 25px;
+}
+
+.profileName {
+  font-size: 34px;
+  color: #3eb2cc;
+}
+
+.profilePosition {
+  font-size: 22px;
+  margin-top: 5px;
+}
+
+.profileEmployer {
+  font-size: 22px;
+  color: #797c7f;
+  margin-bottom: 15px;
+}
+
+.profileIndustry, .profileLocation {
+  font-size: 14px;
+  color: #737373;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.profileIndustry i, .profileLocation i {
+  text-align: center;
+  width: 15px;
+  margin-right: 5px;
+  color: #737373;
+}
+
+.profileTab {
+  margin-top: 30px;
+  background-color: #e5e8e9;
+  height: 60px;
+  padding: 0 117px;
+  line-height: 60px;
+}
+
+.profileTabLabel {
+  display: inline-block;
+  color: #737373;
+  font-size: 20px;
+  margin-right: 60px;
+}
+.profileTabLabel.active {
+  color: #3eb2cc;
+}
+
+.profileTabWrapper {
+  padding: 30px 117px;
+  background-color: #f2f3f4;
+}
+
+.profileTabBox {
+  background-color: #e5e8e9;
+  min-height: 300px;
+  margin-bottom: 30px;
+}
+
+.profileTabBoxLabel {
+  height: 50px;
+  line-height: 50px;
+  color: #3eb2cc;
+  font-size: 20px;
+  background-color: #282b30;
+  padding-left: 50px;
+}
+
+.profileButton {
+  display: inline-block;
+  margin-right: 20px;
+  width: 250px;
+  height: 60px;
+  color: #FFF;
+  background-color: #3eb2cc;
+  line-height: 60px;
+  text-align: center;
+  font-family: "PNReg";
+  margin-top: 30px;
+}
+
+.profilePending {
+  background-color: #797c7f;
+}
+
+.profileConnected {
+  background-color: #34373d;
+}

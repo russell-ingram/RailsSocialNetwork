@@ -1,14 +1,45 @@
 <%= render "layouts/header" %>
 <div class="pageWrap">
-  <div class="pageHeader">Profile</div>
+  <div class="pageHeader">Profile
+  </div>
+  <div class="adminLink"><a href="/admin">Admin Dashboard<i class="fa fa-chevron-right"></i></a></div>
 
-  <div class="searchWrapper">
+  <div class="profileHeader">
+    <div class="profilePic">
+      <%= image_tag "user-photo02.jpg" %>
+    </div>
+    <div class="profileInfo">
+      <div class="profileName"><%= current_user.full_name %></div>
+      <div class="profilePosition">Chief Information Office (CIO)</div>
+      <div class="profileEmployer"><%= current_user.employer %></div>
+      <div class="profileIndustry">
+        <i class="fa fa-building-o"></i><%= current_user.industry %>
+      </div>
+      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= current_user.location %></div>
 
-  <%= link_to "Admin Views", admin_path %>
+    </div>
 
   </div>
 
-  <div class="footerMargin"></div>
+  <div class="profileTab">
+    <div class="profileTabLabel active">INFORMATION</div>
+    <div class="profileTabLabel">CONNECTIONS</div>
+  </div>
+
+  <div class="profileTabWrapper">
+    <div class="profileTabBox">
+      <div class="profileTabBoxLabel">
+        SUMMARY
+      </div>
+    </div>
+    <div class="profileTabBox">
+      <div class="profileTabBoxLabel">
+        EXPERIENCE
+      </div>
+    </div>
+  </div>
+
+
 </div>
 
 

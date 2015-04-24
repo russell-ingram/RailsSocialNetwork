@@ -1,9 +1,18 @@
 class FriendshipsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_friendship
+
 
   def index
-    @friendships = current_user.friendships
+    @blocked_friendships, @pending_friendships, @requested_friendships, @accepted_friendships = [], [], [], []
+    @friendships = current_user.friendships.includes(:friend)
+    @friendships.each do |f|
+      @blocked_friendships << f if f.state == 'blocked'
+      @pending_friendships << f if f.state == 'pending'
+      @requested_friendships << f if f.state == 'requested'
+      @accepted_friendships << f if f.state == 'accepted'
+    end
   end
 
   def new
@@ -17,39 +26,58 @@ class FriendshipsController < ApplicationController
   end
 
   def accept
-    @friendship = current_user.friendships.find(params[:id])
-    if @friendship.accept!
+    puts "TRYING TO ACCEPt"
 
+    @friendship = current_user.friendships.find(params[:id])
+    if @friendship.accept_mutual_friendship!
+      flash[:success] = "You are now friends with #{@friendship.friend.full_name}"
     else
+      flash[:error] = 'Something went horribly wrong!'
     end
     redirect_to '/connections'
+  end
+
+  def block
+    @friendship = current_user.friendships.find(params[:id])
+    if @friendship.block_mutual_friendship!
+      flash[:success] = "You have blocked #{@friendship.friend.full_name} successfully"
+    else
+      flash[:error] = 'Something went horribly wrong!'
+    end
+    redirect_to '/connections'
+  end
+
+  def edit
+    @friendship = current_user.friendships.find(params[:id])
+    @friend = @friendship.friend
   end
 
 
 
   def create
-    puts "create PARAMS:"
-    puts params
 
     if params[:friendship] && params[:friendship].has_key?(:friend_id)
       @friend = User.find(params[:friendship][:friend_id])
-      @friendship = current_user.friendships.new(friend: @friend)
-      @friendship.save
-      redirect_to '/connections'
+      @friendship = Friendship.request(current_user,@friend)
+      respond_to do |format|
+        if @friendship.new_record?
+          format.html do
+            flash[:error] = "Something went wrong."
+            redirect_to '/search'
+          end
+          format.json { render json: @friendship.to_json, status: :precondition_failed }
+        else
+          format.html do
+            flash[:success] = "Friend request sent."
+            redirect_to '/connections'
+          end
+          format.json { render json: @friendship.to_json }
+        end
+      end
     else
       flash[:error] = "Friend required"
       redirect_to '/search'
     end
-
-
-  #   @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-  #   if @friendship.save
-  #     flash[:notice] = "Added friend."
-  #     redirect_to '/connections'
-  #   else
-  #     flash[:notice] = "Unable to add friend."
-  #     redirect_to '/search'
-  #   end
 
   end
 

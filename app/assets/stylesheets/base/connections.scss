@@ -67,12 +67,14 @@
 
 
 .connectionRequestAction {
+  all: default;
   height:250px;
   width:125px;
   float:right;
 }
 
-.connectionRequestAction div {
+.connectionRequestAction span {
+  display:block;
   height: 125px;
   width:125px;
   color: #FFFFFF;
@@ -81,6 +83,9 @@
   text-transform: uppercase;
 }
 
+.connectionRequestAction span * {
+  all: inherit;
+}
 .connectionButtonAccept {
   background-color: #3eb2cc;
 }

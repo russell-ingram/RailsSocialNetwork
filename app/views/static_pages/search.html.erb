@@ -5,14 +5,43 @@
   <div class="searchWrapper">
 
     <% @users.each do |user| %>
+      <% if user != current_user %>
       <div class="userList">
-          <div class="userListName"><%= user.email %></div>
-          <div class="userListAddBtn">
-            <%= link_to "Add Friend", new_friendship_path(:friend_id => user) %>
+        <div class="userListName">
+        <div class="userListName2">
+        <%= link_to user.full_name, user_profile_path(user) %>
+        </div>
+        <div>
+        <%= user.email %>
+        </div>
+        </div>
+
+
+
+        <div class="userListAddBtn">
+
+        <% if @friends.include? user %>
+          <div class="connectedBox">CONNECTED</div>
+        <% elsif @pending.include? user %>
+          <div class="pendingBox">PENDING</div>
+        <% elsif @requested.include? user %>
+          This user has asked to be your friend.
+        <% else %>
+          <div class="addFriendButton">
+          <%= link_to "CONNECT", new_friendship_path(:friend_id => user) %>
           </div>
+        <% end %>
 
         </div>
+
+
+      </div>
+
+
+      <% end %>
     <% end %>
+
+
 
 
   </div>

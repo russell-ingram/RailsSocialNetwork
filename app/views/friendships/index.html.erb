@@ -3,22 +3,38 @@
     <div class="pageHeader">Requested Connections</div>
 
       <% @friendships.each do |friendship| %>
-        <% if friendship.pending? %>
+        <% if friendship.requested? %>
+        <% friend = friendship.friend %>
 
       <div class="connectionRequest">
-        <div class="connectionRequestPic"><%= image_tag "user-photo04.jpg" %></div>
+        <div class="connectionRequestPic"><a href="/profile/<%= friend.id %>"><%= image_tag "user-photo04.jpg" %></a></div>
         <div class="connectionRequestInfo">
           <div class="connectionReqDate">June 15, 2015</div>
-          <div class="connectionReqName"></div>
-          <div class="connectionReqCompany">Lorem, Inc.</div>
+          <div class="connectionReqName"><%= link_to friend.full_name, user_profile_path(friend) %></div>
+          <div class="connectionReqCompany"><%= friend.employer %></div>
           <div class="connectionReqIndustry">CIO, Energy / Clean Energy, Mid to Large Enterprise</div>
           <div class="connectionReqSimilarity">this user is in the same industry</div>
           <div class="connectionReqMsg">Hi James, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tempor libero. Quisque vulputate porttitor ligula, eget sollicitudin...</div>
           <div class="viewMoreContent fullReqMessage">full message<i class="fa fa-chevron-right"></i></div>
         </div>
         <div class="connectionRequestAction">
-          <div class="connectionButtonAccept">Accept</div>
-          <div class="connectionButtonReject">Reject</div>
+        <%= form_for friendship, url: accept_friendship_path(friendship), method: :put do |form| %>
+          <!-- <button type="submit" class="connectionButtonAccept">Accept</button> -->
+          <span class="connectionButtonAccept">
+            <span>
+                <input type="Submit" value="Accept">
+            </span>
+          </span>
+        <% end %>
+        <%= form_for friendship, url: block_friendship_path(friendship), method: :delete do |form| %>
+          <!-- <button class="connectionButtonReject">Reject</button> -->
+          <span class="connectionButtonReject">
+            <span>
+                <input type="Submit" value="Reject">
+            </span>
+          </span>
+        <% end %>
+
         </div>
       </div>
 
@@ -42,13 +58,14 @@
       </div>
 
       <% @friendships.each do |friendship| %>
+        <% if friendship.accepted? %>
         <% friend = friendship.friend %>
 
       <div class="myConnection">
         <div class="myConnWrapper">
-          <div class="myConnProfilePic"><%= image_tag "user-photo04.jpg" %></div>
+          <div class="myConnProfilePic"><a href="/profile/<%= friend.id %>"><%= image_tag "user-photo03.jpg" %></a></div>
           <div class="myConnInfo">
-            <div class="myConnName"><%= friend.first_name %> <%= friend.last_name %></div>
+            <div class="myConnName"><%= link_to friend.full_name, user_profile_path(friend) %></div>
             <div class="myConnCompany"><%= friend.employer %></div>
             <div class="myConnIndustry"><%= friend.industry %></div>
           </div>
@@ -57,7 +74,7 @@
       </div>
 
 
-
+        <% end %>
 
       <% end %>
 
