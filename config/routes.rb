@@ -33,7 +33,12 @@ Rails.application.routes.draw do
   post '/admin/new_user' => 'user_admin#create', as: 'user_admin_users'
 
 
-  resources :conversations, only: [:index, :show, :destroy]
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+    end
+  end
+
   resources :messages, only: [:new, :create]
 
   resources :friendships do

@@ -1,17 +1,110 @@
+<%= render "layouts/header" %>
+<div class="pageWrap">
 
-
-<div class="panel panel-default">
-  <div class="panel-heading"><%= @conversation.subject %></div>
-
-  <div class="panel-body">
-    <div class="messages">
-      <% @conversation.receipts_for(current_user).each do |receipt| %>
-        <% message = receipt.message %>
-
-         <%= message.sender.first_name %> <%= message.sender.last_name %>
-          says at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %>
-        <%= message.body %>
-      <% end %>
-    </div>
+  <div class="messagesHeader">
+    <div class="pageHeader">Messages</div>
   </div>
+
+  <div class="replyFormWrapper newMessagesFormWrapper">
+    <div class="replyFormHeader formHeader"><i class="fa fa-chevron-left"></i> INBOX</div>
+
+    <% message = @conversation.last_message %>
+
+    <div class="replyFormBody">
+      <div class="replyPicColumn">
+        <%= image_tag "user-photo01.jpg" %>
+      </div>
+      <div class="replyContentColumn">
+        <div class="replyToFrom">
+          <div class="replyFrom">
+            From: <div class="messageName replyName"><%= message.sender.full_name %></div><div class="senderInfo">Chief Information Officer (CIO) at <%= message.sender.employer %></div>
+          </div>
+          <div class="replyTo">
+            To: <div class="senderInfo">
+              me
+            </div>
+          </div>
+        </div>
+        <div class="replyTimeStamp">
+          <div class="timeStampTime senderInfo">
+            <%= message.created_at.strftime("%l:%M %P") %>
+          </div>
+          <div class="timeStampDate">
+            <%= message.created_at.strftime("%B %-d, %Y") %>
+          </div>
+        </div>
+        <div class="replySubject"><%= @conversation.subject %></div>
+        <div class="replyBody"><%= message.body %></div>
+
+        <div class="replyButton">
+          REPLY
+        </div>
+        <div class="otherOptions">
+          <div class="showAllMessages">
+            SHOW FULL THREAD <div class="numMessages"> <%= @conversation.count_messages %> MESSAGES</div>
+          </div>
+          <div class="deleteMessage">DELETE</div>
+        </div>
+
+
+
+
+      </div>
+
+
+
+      </div>
+
+  </div>
+
+
+
+    <div class="newMessagesFormWrapper">
+
+      <div class="newMsgForm formBox">
+
+      <div class="newMsgFormHeader formHeader">REPLY</div>
+
+
+
+    <%= form_tag reply_conversation_path(@conversation), method: :post do %>
+      <div class="replyMsgFormGroup">
+        TO:
+        <%= text_field_tag 'recipients', message.sender.full_name, class: 'messageName replyName', :readonly => true %>
+
+      </div>
+
+      <div class="newMsgFormGroup">
+        <%= text_area_tag 'body', nil, cols: 3, class: 'newMsgFormControl newMessageArea', required: true %>
+      </div>
+
+      <div class="newMsgBtnSend">
+        <span>
+          <span>
+              <input type="Submit" value="Send">
+          </span>
+        </span>
+       </div>
+
+    <% end %>
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+  <div class="footerMargin"></div>
 </div>
+
+<%= render "layouts/footer" %>

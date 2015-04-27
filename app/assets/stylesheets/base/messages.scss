@@ -126,20 +126,153 @@
   margin-bottom: 50px;
 }
 
-.form-group {
-  padding-left: 117px;
+.newMessagesFormWrapper {
+  padding: 0 117px;
+  margin-bottom: 50px;
 }
 
-.form-group label {
-  width: 200px;
-  margin-bottom: 30px;
+.newMessagesFormWrapper form {
+  margin: 0 200px;
+  padding-top: 30px;
+  overflow: hidden;
+  padding-bottom: 30px;
+  font-size: 14px;
+  font-family: "PNReg";
+}
+
+.newMsgFormControl {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 30px;
+  padding-left:10px;
+
+}
+
+.newMsgSubject, .newMessageArea {
+  background-color: #f2f3f4;
+  border: 2px solid #cbd0d2;
+}
+
+.newMessageArea {
+  width: 100%;
+  min-height: 300px;
+}
+
+.newMsgBtnSend {
+  float:right;
+}
+
+.newMsgBtnSend span {
+  display:block;
+  height: 30px;
+  width:125px;
+  color: #FFFFFF;
+  line-height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #3eb2cc;
+  cursor: pointer;
+}
+
+.newMsgBtnSend span * {
+  all: inherit;
+}
+
+.replyFormBody {
+  min-height: 200px;
+  padding: 25px;
+  color: #737373;
+  background-color: #e5e8e9;
+}
+
+.replyPicColumn {
+  width: 175px;
+  float: left;
+  height: 100%;
+  overflow: hidden;
+
+}
+
+.replyPicColumn img {
+  height: 150px;
+  width: 150px;
+
+}
+
+.replyContentColumn {
+  margin-left: 175px;
+}
+
+.replyToFrom {
+  font-size: 12px;
+  padding-top: 5px;
+  margin-bottom: 10px;
+}
+
+.senderInfo {
+  font-family: "PNLight";
+}
+
+.replyFrom *,.replyTo * {
   display: inline-block;
 }
 
-.messageArea {
-  width: 500px;
-  height: 300px;
+.replyName {
+  float:none;
+  margin-right: 3px;
 }
+
+.replyBody {
+  font-family: "LoraReg";
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.replyTimeStamp {
+  float:right;
+  font-size: 12px;
+  margin-top: -45px;
+}
+
+.replyTimeStamp div {
+  display: inline-block;
+}
+
+.otherOptions, .replyButton {
+  font-size: 14px;
+}
+
+.replyButton {
+  color: #3eb2cc;
+  margin-bottom: 5px;
+}
+
+.otherOptions * {
+  display:inline-block;
+  color: #282b30;
+}
+
+.showAllMessages {
+  margin-right: 10px;
+
+}
+
+.numMessages {
+  font-family: "PNLight";
+}
+
+.replyMsgFormGroup * {
+  background-color: #e5e8e9;
+  font-family: "PNBold";
+  font-size:14px;
+  margin-top: -1px;
+}
+
+.replyMsgFormGroup {
+  font-size: 14px;
+  font-family: "PNBold";
+}
+
 
 
 

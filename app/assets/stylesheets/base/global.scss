@@ -60,6 +60,16 @@ a {
   padding:0;
 }
 
+textarea, input, select {
+  resize: none;
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
 
 .pageWrap {
   min-height: 100%;
@@ -98,3 +108,19 @@ a {
   height: 50px;
   background-color: #cbd0d2;
 }
+
+.formHeader {
+  height: 50px;
+  line-height: 50px;
+  color: #3eb2cc;
+  font-size: 18px;
+  background-color: #282b30;
+  padding-left: 50px;
+}
+
+.formBox {
+  background-color: #e5e8e9;
+  min-height: 300px;
+  margin-bottom: 30px;
+}
+

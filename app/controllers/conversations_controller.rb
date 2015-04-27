@@ -14,6 +14,12 @@ class ConversationsController < ApplicationController
     puts @conversation
   end
 
+  def reply
+    current_user.reply_to_conversation(@conversation, params[:body])
+    redirect_to '/messages'
+  end
+
+
   private
 
   def get_mailbox
