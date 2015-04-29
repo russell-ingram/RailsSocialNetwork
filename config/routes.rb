@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   get '/profile/:id' => 'static_pages#show_profile', as: 'user_profile'
 
+  get '/recipients' => 'messages#recipients', as: 'recipients'
+
+
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }, :skip => [:sessions]
 
   root 'home#index'

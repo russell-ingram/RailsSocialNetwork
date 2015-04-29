@@ -6,13 +6,16 @@
   </div>
 
   <div class="replyFormWrapper newMessagesFormWrapper">
-    <div class="replyFormHeader formHeader"><i class="fa fa-chevron-left"></i> INBOX</div>
+    <div class="replyFormHeader formHeader"><a href="/messages"><i class="fa fa-chevron-left"></i> INBOX</a></div>
 
     <% message = @conversation.last_message %>
 
     <div class="replyFormBody">
       <div class="replyPicColumn">
-        <%= image_tag "user-photo01.jpg" %>
+        <div class="replyPic">
+          <%= image_tag message.sender.profile_pic_url %>
+        </div>
+
       </div>
       <div class="replyContentColumn">
         <div class="replyToFrom">
@@ -59,7 +62,7 @@
 
 
 
-    <div class="newMessagesFormWrapper">
+    <div class="newMessagesFormWrapper replyForm">
 
       <div class="newMsgForm formBox">
 

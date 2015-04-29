@@ -4,7 +4,7 @@
 
   <div class="searchWrapper">
 
-  <%= @editUser.email %>
+
 
 <%= form_for ([:user_admin, @editUser]) do |f| %>
   <% if @editUser.errors.any? %>
@@ -42,6 +42,11 @@
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>
+  </div>
+
+    <div class="field">
+    <%= f.label :profile_pic %><br>
+    <%= f.text_field :profile_pic_url, input_html: { autocomplete: 'off' } %>
   </div>
 
   <div class="field">

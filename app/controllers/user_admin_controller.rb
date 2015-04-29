@@ -43,11 +43,11 @@ class UserAdminController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location)
+    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url)
   end
 
   def new_user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :password, :password_confirmation, :profile_pic_url)
   end
 
 

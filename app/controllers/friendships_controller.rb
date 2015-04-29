@@ -26,8 +26,6 @@ class FriendshipsController < ApplicationController
   end
 
   def accept
-    puts "TRYING TO ACCEPt"
-
     @friendship = current_user.friendships.find(params[:id])
     if @friendship.accept_mutual_friendship!
       flash[:success] = "You are now friends with #{@friendship.friend.full_name}"

@@ -16,10 +16,11 @@
 
 .connectionRequestPic {
   width: 250px;
+  height: 250px;
+  overflow: hidden;
 }
 
 .connectionRequestPic img {
-  height: 100%;
   width: 100%;
   float:left;
 }
@@ -126,7 +127,7 @@
 
 .myConnection {
   background-color: #f2f3f4;
-  padding: 5px 117px 10px 117px;
+  padding: 10px 117px 5px 117px;
 }
 
 .myConnWrapper {
@@ -138,10 +139,10 @@
   height:140px;
   width:140px;
   float:left;
+  overflow: hidden;
 }
 
 .myConnProfilePic img {
-  height: 140px;
   width: 140px;
 
 }

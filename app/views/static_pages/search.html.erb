@@ -7,13 +7,20 @@
     <% @users.each do |user| %>
       <% if user != current_user %>
       <div class="userList">
+      <% if user.profile_pic_url? %>
+        <div class="userSearchProfilePic">
+          <%= image_tag user.profile_pic_url %>
+        </div>
+
+      <% end %>
+
         <div class="userListName">
-        <div class="userListName2">
-        <%= link_to user.full_name, user_profile_path(user) %>
-        </div>
-        <div>
-        <%= user.email %>
-        </div>
+          <div class="userListName2">
+          <%= link_to user.full_name, user_profile_path(user) %>
+          </div>
+          <div>
+          <%= user.email %>
+          </div>
         </div>
 
 
@@ -25,7 +32,7 @@
         <% elsif @pending.include? user %>
           <div class="pendingBox">PENDING</div>
         <% elsif @requested.include? user %>
-          This user has asked to be your friend.
+          <div class="pendingBox"><a href="/connections">ACCEPT?</a></div>
         <% else %>
           <div class="addFriendButton">
           <%= link_to "CONNECT", new_friendship_path(:friend_id => user) %>

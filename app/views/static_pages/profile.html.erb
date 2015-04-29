@@ -6,7 +6,7 @@
 
   <div class="profileHeader">
     <div class="profilePic">
-      <%= image_tag "user-photo02.jpg" %>
+      <%= image_tag current_user.profile_pic_url %>
     </div>
     <div class="profileInfo">
       <div class="profileName"><%= current_user.full_name %></div>

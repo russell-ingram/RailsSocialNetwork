@@ -6,7 +6,9 @@
 
   <div class="profileHeader">
     <div class="profilePic">
-      <%= image_tag "user-photo02.jpg" %>
+      <% if @user.profile_pic_url? %>
+        <%= image_tag @user.profile_pic_url %>
+      <% end %>
     </div>
     <div class="profileInfo">
       <div class="profileName"><%= @user.full_name %></div>

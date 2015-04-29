@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :employer
       t.string :industry
       t.string :location
+      t.string :profile_pic_url
 
       # admin properties
       t.boolean :admin, :default => false

@@ -15,7 +15,9 @@
 
     <%= form_tag messages_path, method: :post do %>
       <div class="newMsgFormGroup">
-        <%= select_tag 'recipients', recipients_options, multiple: false, class: 'newMsgFormControl' %>
+
+      <%= text_field_tag 'recipients', nil, data: {autocomplete_source: recipients_path }, placeholder: 'Recipients', class: 'newMsgFormControl' %>
+      <%= text_field_tag 'recipients_id', nil, placeholder: 'Recipients', class: 'newMsgFormControlHidden' %>
 
       </div>
 

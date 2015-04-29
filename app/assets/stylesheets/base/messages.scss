@@ -116,7 +116,7 @@
   font-family: "LoraLight";
   font-size: 16px;
   min-height: 50px;
-  max-height: 40px;
+  max-height: 57px;
   overflow: hidden;
   margin-bottom: -5px;
 }
@@ -178,6 +178,12 @@
   all: inherit;
 }
 
+.replyFormHeader {
+  color: #FFF;
+  font-family: "PNLight";
+  font-size: 14px;
+}
+
 .replyFormBody {
   min-height: 200px;
   padding: 25px;
@@ -193,8 +199,13 @@
 
 }
 
-.replyPicColumn img {
+.replyPic {
   height: 150px;
+  width: 150px;
+  overflow: hidden;
+}
+
+.replyPic img {
   width: 150px;
 
 }
@@ -245,6 +256,7 @@
 .replyButton {
   color: #3eb2cc;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .otherOptions * {
@@ -273,6 +285,14 @@
   font-family: "PNBold";
 }
 
+.replyForm {
+  display: none;
+}
 
+.replyForm.active {
+  display: block;
+}
 
-
+.newMsgFormControlHidden {
+  display:none;
+}
