@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/search' => 'static_pages#search'
 
+
   get '/profile/:id' => 'static_pages#show_profile', as: 'user_profile'
 
   get '/recipients' => 'messages#recipients', as: 'recipients'
@@ -34,6 +35,8 @@ Rails.application.routes.draw do
 
   get '/admin/new_user' => 'user_admin#new', as: 'admin_new_user'
   post '/admin/new_user' => 'user_admin#create', as: 'user_admin_users'
+
+  get '/admin/content' => 'static_pages#content', as: 'admin_content'
 
 
   resources :conversations, only: [:index, :show, :destroy] do
