@@ -1,25 +1,45 @@
-<%= render "layouts/header" %>
+<%= render "layouts/adminHeader" %>
 <div class="pageWrap">
   <div class="pageHeader">Admin</div>
 
-  <div class="searchWrapper">
+  <div class="searchWrapper adminWrapper">
 
   <div class="adminUserNew"><%= link_to "ADD NEW USER", admin_new_user_path %></div>
 
-    <% @users.each do |user| %>
-      <div class="adminUserBox">
-        <div class="adminUserName">
-      <% if user.first_name? %>
-        <%= user.first_name %>
-      <% else %>
-        No user name set.
-      <% end %>
+
+      <div class="myConnsHeaderBar">
+        <div class="myConnsLabel">CREATED ACCOUNTS</div>
+        <div class="myConnsRightFloat">
+          <div class="myConnsSearchButton"><i class="fa fa-search"></i></div>
+          <div class="sortLabel">SORT BY:</div>
+          <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
         </div>
-        <div class="adminUserEmail"><%= user.email %></div>
-        <div class="adminUserEdit"><%= link_to "EDIT", admin_edit_user_path(user) %></div>
       </div>
 
-      </li>
+
+
+    <% @users.each do |user| %>
+
+      <div class="myConnection">
+        <div class="myConnWrapper">
+          <div class="myConnProfilePic"><a href="/profile/<%= user.id %>">
+          <% if user.profile_pic_url? %>
+            <%= image_tag user.profile_pic_url %>
+          <% end %>
+          </a></div>
+
+          <div class="myConnInfo">
+            <div class="myConnName"><%= link_to user.full_name, user_profile_path(user) %></div>
+            <div class="myConnCompany"><%= user.employer %></div>
+            <div class="myConnIndustry"><%= user.industry %></div>
+          </div>
+          <div class="myConnMessage"><div class="adminUserEdit"><%= link_to "EDIT", admin_edit_user_path(user) %></div></div>
+        </div>
+      </div>
+
+
+
+
     <% end %>
 
 

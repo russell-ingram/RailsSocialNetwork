@@ -47,17 +47,99 @@
       <div class="homeContentNews homeContent">
         <div class="homeContentLabel">news</div>
         <div class="homeContentHeadline">
-          <div class="newsDate">July 6, 2015</div>
-          Announced: ETR 2016 Technology Conference in New York City
+          <div class="newsDate"><%= @news.created_at.strftime("%B %e, %Y") %></div>
+          <% if @news %>
+            <%= @news.headline %>
+          <% else %>
+            Announced: ETR 2016 Technology Conference in New York City
+          <% end %>
         </div>
-        <div class="newsContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium et enim in faucibus. Morbi mauris enim, imperdiet ac nisi in, facilisis pretium quam. Duis ac massa ut mauris bibendum fringilla auctor at mi. Sed semper tincidunt risus, id rutrum tortor dictum a. Maecenas sit amet pretium mi.</div>
-        <div class="viewMoreContent">full story<i class="fa fa-chevron-right"></i></div>
+        <div class="newsContent">
+          <% if @news %>
+          <%= @news.body_copy %>
+          <% else %>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium et enim in faucibus. Morbi mauris enim, imperdiet ac nisi in, facilisis pretium quam. Duis ac massa ut mauris bibendum fringilla auctor at mi. Sed semper tincidunt risus, id rutrum tortor dictum a. Maecenas sit amet pretium mi.
+          <% end %>
+        </div>
+        <div class="viewMoreContent"><a href="<%= @news.link_url %>"><%= @news.link_copy %><i class="fa fa-chevron-right"></i></a></div>
       </div>
     </div>
     <div class="homeContentBox2">
       <div class="homeContentResearch homeContent">
-        <div class="homeContentLabel">Research Results</div>
-        <div class="homeContentHeadline">The Results are in! Spring 2015 ETR Survey Report</div>
+        <div class="homeContentLabel">
+          Research Results
+        </div>
+        <div class="homeContentHeadline">
+          <% if @layout %>
+            <%= @layout.headline %>
+          <% else %>
+            The Results are in! Spring 2015 ETR Survey Report
+          <% end %>
+        </div>
+
+
+        <% if @layout %>
+
+          <% if @layout.column_three_content %>
+
+        <div class="researchResults">
+          <div class="researchCol">
+            <div class="researchNum"><%= @layout.column_one_callout %></div>
+            <div class="researchText"><%= @layout.column_one_content%></div>
+          </div>
+          <div class="researchCol">
+            <div class="researchNum"><%= @layout.column_two_callout %></div>
+            <div class="researchText"><%= @layout.column_two_content %></div>
+          </div>
+          <div class="researchCol">
+            <div class="researchNum"><%= @layout.column_three_callout %></div>
+            <div class="researchText"><%= @layout.column_three_content %></div>
+          </div>
+        </div>
+
+
+
+
+          <% elsif @layout.column_two_content %>
+
+        <div class="researchResults">
+          <div class="researchCol">
+            <div class="researchNum"><%= @layout.column_one_callout %></div>
+            <div class="researchText"><%= @layout.column_one_content %></div>
+          </div>
+          <div class="researchCol">
+            <div class="researchNum"><%= @layout.column_two_callout %></div>
+            <div class="researchText"><%= @layout.column_two_content %></div>
+          </div>
+        </div>
+
+
+
+
+
+          <% else %>
+
+        <div class="researchResults">
+          <div class="researchCol">
+            <div class="researchNum"><%= @layout.column_one_callout %></div>
+            <div class="researchText"><%= @layout.column_one_content %></div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+          <% end %>
+
+
+        <% else %>
+
         <div class="researchResults">
           <div class="researchCol">
             <div class="researchNum">89%</div>
@@ -72,7 +154,17 @@
             <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div>
           </div>
         </div>
-        <div class="viewMoreContent">view full results<i class="fa fa-chevron-right"></i></div>
+
+        <% end %>
+
+
+
+
+
+
+
+
+        <div class="viewMoreContent"><a href="<%= @layout.link_url %>"><%= @layout.link_copy %><i class="fa fa-chevron-right"></i></a></div>
       </div>
 
       <div class="homeContentFollowed homeContent">

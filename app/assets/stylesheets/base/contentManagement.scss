@@ -1,0 +1,131 @@
+.cmsWrapper {
+  margin-left: 117px;
+  margin-right: 117px;
+}
+
+.contentHeader {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.homepageContentSection {
+  overflow: hidden;
+}
+
+.homepageHeader {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.homepageSubSection {
+  float: left;
+}
+
+.homepageHeroImage {
+  width: 100%;
+  height: 200px;
+  background-color: #767676;
+  margin-bottom: 10px;
+}
+
+.imageUpload div {
+  float:left;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.uploadPhotoButton {
+  background-color: #767676;
+  color: #FFF;
+  height: 30px;
+  line-height: 30px;
+  width: 170px;
+  text-align: center;
+  float:right;
+}
+
+
+.contentField {
+  border: 1px solid #767676;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.linkCopySubSection {
+  width: 45%;
+  display: inline-block;
+  margin-right: 35px;
+  float:left;
+}
+
+
+.homepageLayoutImage {
+  background-color: #767676;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 15px;
+  color: #FFF;
+  text-align: center;
+  line-height: 150px;
+  cursor: pointer;
+}
+
+
+.columnTag {
+  float: left;
+  display: inline-block;
+  padding-right: 20px;
+}
+
+.columnLayout {
+  overflow:hidden;
+}
+
+
+
+
+.activeLayout {
+  display: block;
+}
+
+.columnField {
+  height: 220px;
+}
+
+.hiddenLayoutOptionField {
+  display: none;
+}
+
+
+
+
+
+
+
+.column-3 {
+  width: 25%;
+}
+
+.column-4 {
+  width: 33.333%;
+}
+
+.column-6 {
+  width: 50%;
+}
+
+.column-8 {
+  width: 66.666%;
+}
+
+.column-9 {
+  width: 75%;
+}
+
+.column-12 {
+  width: 100%;
+}
+
+.column-right {
+  padding-left: 40px;
+}

@@ -1,8 +1,13 @@
-<%= render "layouts/header" %>
+<%= render "layouts/adminHeader" %>
 <div class="pageWrap">
-  <div class="pageHeader">Edit User</div>
+<div class="pageHeaderBar">
+  <div class="pageHeader floatHeader">Edit User</div>
 
-  <div class="searchWrapper">
+  <div class="deleteUserButton">DELETE USER</div>
+</div>
+
+
+  <div class="editProfileWrapper">
 
 
 
@@ -19,18 +24,43 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
+
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        USER DETAILS
+      </div>
+
+      <div class="editPhotoUpload">
+        <div class="photoUploadBox"></div>
+      </div>
+
+      <div class="editContentRight">
+
+        <div class="field editField">
+          <%= f.text_field :first_name, placeholder: 'First name' %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :last_name, placeholder: 'Last name' %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :email, placeholder: 'Email address' %>
+        </div>
+
+
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
   <div class="field">
     <%= f.label :employer %><br>
     <%= f.text_field :employer %>

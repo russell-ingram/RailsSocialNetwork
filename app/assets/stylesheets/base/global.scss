@@ -68,6 +68,7 @@ textarea, input, select {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  font-family: 14px "PNLight" #797C7F;
 }
 
 
@@ -115,12 +116,23 @@ textarea, input, select {
   color: #3eb2cc;
   font-size: 18px;
   background-color: #282b30;
-  padding-left: 50px;
+  padding-left: 30px;
 }
 
 .formBox {
   background-color: #e5e8e9;
-  min-height: 300px;
+  min-height: 280px;
   margin-bottom: 30px;
+}
+
+.floatHeader {
+  float:left;
+  display: inline-block;
+  margin-top: 0;
+}
+
+.pageHeaderBar {
+  overflow: hidden;
+  padding-right: 117px;
 }
 

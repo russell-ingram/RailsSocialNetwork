@@ -23,5 +23,66 @@
 }
 
 .edit_user {
-  margin-left: 117px;
+
 }
+
+.adminWrapper {
+  padding-top: 0;
+}
+
+.editProfileWrapper {
+  padding-left:117px;
+  padding-right: 117px;
+  padding-top: 40px;
+}
+
+.deleteUserButton {
+  float: right;
+  display: inline-block;
+  color: #797c7f;
+  font-family: "PNReg";
+  cursor: pointer;
+}
+
+.userEditBox {
+  background-color: #EFF1F1;
+}
+
+.editPhotoUpload {
+  float:left;
+  width: 220px;
+  min-height: inherit;
+  padding: 30px 15px 30px 30px;
+}
+
+.editContentRight {
+  float:left;
+  margin-top: 30px;
+  margin-left: 10px;
+  max-width: 800px;
+}
+
+.photoUploadBox {
+  background-color: #D8DCDD;
+  height: 175px;
+  width: 175px;
+}
+
+.editField {
+  float:left;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+
+
+}
+
+.editField input {
+  border-radius: 3px;
+  border: 1px solid #D8DCDD;
+  width: 338px;
+  height: 45px;
+  padding-left: 15px;
+}
+
+

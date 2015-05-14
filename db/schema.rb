@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423203138) do
+ActiveRecord::Schema.define(version: 20150513175123) do
+
+  create_table "contents", force: :cascade do |t|
+    t.string   "type_of_content",      default: "news"
+    t.string   "name"
+    t.string   "headline"
+    t.text     "body_copy"
+    t.string   "link_copy"
+    t.string   "link_url"
+    t.boolean  "active",               default: false
+    t.integer  "layout_option"
+    t.string   "layout_html_url"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "column_one_callout"
+    t.string   "column_two_callout"
+    t.string   "column_three_callout"
+    t.text     "column_one_content"
+    t.text     "column_two_content"
+    t.text     "column_three_content"
+  end
+
+  add_index "contents", ["type_of_content", "active"], name: "index_contents_on_type_of_content_and_active"
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"

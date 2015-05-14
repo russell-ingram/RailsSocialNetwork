@@ -2,7 +2,8 @@ class StaticPagesController < ApplicationController
   before_action :authenticate_user!
 
   def home
-    # before_filter :authenticate_user!
+    @news = Content.find_by("type_of_content = ? AND active = ?", "news", true)
+    @layout = Content.find_by("type_of_content = ? AND active =?", "layout", true)
   end
 
   def profile
@@ -48,6 +49,9 @@ class StaticPagesController < ApplicationController
   end
 
   def content
+    @news = Content.new
+
+    @layout = Content.new
   end
 
 end

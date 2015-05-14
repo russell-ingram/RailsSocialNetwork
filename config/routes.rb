@@ -54,6 +54,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :content
+
+  post '/admin/content/new' => 'contents#create', as: 'content_contents'
+  post '/admin/content/layout' => 'contents#layout_edit', as: 'edit_layout_contents'
+
 
 
 
