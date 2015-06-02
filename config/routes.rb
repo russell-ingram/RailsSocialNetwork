@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   post '/admin/new_user' => 'user_admin#create', as: 'user_admin_users'
 
   get '/admin/content' => 'static_pages#content', as: 'admin_content'
+  get '/admin/upload' => 'user_admin#upload', as: 'admin_upload'
+  post '/admin/upload' => 'user_admin#uploadFile', as: 'admin_upload_file'
 
 
   resources :conversations, only: [:index, :show, :destroy] do

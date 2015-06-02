@@ -41,6 +41,29 @@ class UserAdminController < ApplicationController
   end
 
 
+  def upload
+
+  end
+
+  def uploadFile
+    require 'roo'
+
+    xlsxFile = params[:file]
+
+    xlsx = Roo::Excelx.new(xlsxFile.path)
+
+    xlsx.each_with_pagename do |name, sheet|
+      p sheet.row(1)
+    end
+
+
+
+    redirect_to '/admin/upload'
+  end
+
+
+
+
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url)

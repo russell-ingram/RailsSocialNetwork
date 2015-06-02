@@ -51,7 +51,6 @@
 .editPhotoUpload {
   float:left;
   width: 220px;
-  min-height: inherit;
   padding: 30px 15px 30px 30px;
 }
 
@@ -60,6 +59,7 @@
   margin-top: 30px;
   margin-left: 10px;
   max-width: 800px;
+  padding-bottom: 10px;
 }
 
 .photoUploadBox {
@@ -73,16 +73,88 @@
   margin-right: 25px;
   margin-bottom: 25px;
   border-radius: 10px;
-
-
+  input {
+    width: 338px;
+  }
 }
 
-.editField input {
-  border-radius: 3px;
-  border: 1px solid #D8DCDD;
-  width: 338px;
-  height: 45px;
-  padding-left: 15px;
+.formBoxField {
+  padding: 30px;
 }
+
+.formBoxRow {
+  text-align: justify;
+  font-size: 0.1px;
+  margin-bottom: 25px;
+  div {
+    display: inline-block;
+  }
+}
+.formBoxRow:after {
+  content: '';
+  width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+  display: inline-block;
+}
+
+.pubOrPrivBox {
+  float: right;
+  width: 185px;
+  color: #767676;
+  text-transform: uppercase;
+  input {
+    display:none;
+  }
+  div {
+    margin-bottom: 10px;
+    input + label span {
+      display:inline-block;
+      width:19px;
+      height:19px;
+      margin:-1px 4px 0 0;
+      vertical-align:middle;
+      cursor:pointer;
+      -moz-border-radius:  50%;
+      border-radius:  50%;
+      background-color: #cbd0d2;
+    }
+    input:checked + label span {
+      background-color: #767676;
+    }
+  }
+}
+
+.pubLabel {
+  margin-bottom: 10px;
+  margin-top: -5px;
+  font-family: "PNLight";
+  text-transform: none;
+}
+
+
+
+.field-summary {
+  width: 880px;
+  height: 161px;
+  float: left;
+  margin-bottom: 30px;
+}
+
+
+
+
+.field-col-2 {
+  width: 527px;
+}
+.field-col-3 {
+  width: 343px;
+}
+
+
+.uploadXLSForm {
+  margin-top: 30px;
+  margin-left: 117px;
+  margin-bottom: 100px;
+}
+
 
 

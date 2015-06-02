@@ -1,0 +1,18 @@
+<%= render "layouts/header" %>
+<div class="pageWrap">
+  <div class="pageHeader">Upload XLSX File
+  </div>
+
+<%= form_tag admin_upload_file_path, multipart: true, class: 'uploadXLSForm' do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload XLSX File" %>
+<% end %>
+
+<div class="footerMargin"></div>
+
+
+</div>
+
+
+
+  <%= render "layouts/footer" %>

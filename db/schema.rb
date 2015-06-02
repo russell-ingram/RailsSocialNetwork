@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513175123) do
+ActiveRecord::Schema.define(version: 20150514224759) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20150513175123) do
   end
 
   add_index "contents", ["type_of_content", "active"], name: "index_contents_on_type_of_content_and_active"
+
+  create_table "employers", force: :cascade do |t|
+    t.string  "name"
+    t.integer "employer_id"
+  end
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -114,7 +119,6 @@ ActiveRecord::Schema.define(version: 20150513175123) do
     t.string   "last_name"
     t.string   "employer"
     t.string   "industry"
-    t.string   "location"
     t.string   "profile_pic_url"
     t.boolean  "admin",                  default: false
     t.boolean  "privacy_profile",        default: true
@@ -123,6 +127,13 @@ ActiveRecord::Schema.define(version: 20150513175123) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "position"
+    t.string   "footprint"
+    t.string   "linked_in_url"
+    t.string   "enterprise_size"
+    t.string   "region"
+    t.string   "country"
+    t.text     "emp_summary"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

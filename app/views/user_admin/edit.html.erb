@@ -43,7 +43,16 @@
           <%= f.text_field :last_name, placeholder: 'Last name' %>
         </div>
         <div class="field editField">
+          <%= f.text_field :position, placeholder: 'Job title' %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :footprint, placeholder: 'IT Footprint' %>
+        </div>
+        <div class="field editField">
           <%= f.text_field :email, placeholder: 'Email address' %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :linked_in_url, placeholder: 'Connected LinkedIn account' %>
         </div>
 
 
@@ -52,6 +61,71 @@
 
 
 
+    </div>
+
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        EMPLOYER DETAILS
+      </div>
+      <div class="formBoxField">
+        <div class="formBoxRow">
+          <div class="field field-col-2">
+            <%= f.text_field :employer, placeholder: 'Employer' %>
+          </div>
+          <div class="field field-col-2">
+            <%= f.text_field :industry, placeholder: 'Industry' %>
+          </div>
+
+        </div>
+        <div class="formBoxRow">
+          <div class="field field-col-3">
+            <%= f.text_field :enterprise_size, placeholder: 'Enterprise Size' %>
+          </div>
+          <div class="field field-col-3">
+            <%= f.text_field :region, placeholder: 'Region' %>
+          </div>
+          <div class="field field-col-3">
+            <%= f.text_field :country, placeholder: 'Country' %>
+          </div>
+        </div>
+        <div class="field-area field-summary">
+          <%= f.text_area :country, placeholder: 'Summary' %>
+        </div>
+        <div class="pubOrPrivBox">
+          <div class="pubLabel">Company type</div>
+          <div>
+            <input type="radio" id="radio1" name="public" value="false" checked>
+            <label for="radio01"><span></span>Privately Held</label>
+          </div>
+          <!-- <br> -->
+          <div>
+            <input type="radio" id="radio2" name="public" value="true">
+            <label for="radio02"><span></span>Publicly Held</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        PAST EXPERIENCE
+      </div>
+      <div class="formBoxField">
+        <div class="formBoxRow">
+          <div class="field field-col-2">
+            <input placeholder="Title" type="text" name="past_emp[title]" id="past_emp_title">
+          </div>
+          <div class="field field-col-2">
+            <input placeholder="Company" type="text" name="past_emp[company]" id="past_emp_company">
+          </div>
+          <div class="pastEmpDates">
+            <div class="pastEmpDateLabel"></div>
+
+          </div>
+
+        </div>
+      </div>
     </div>
 
 
@@ -68,10 +142,6 @@
   <div class="field">
     <%= f.label :industry %><br>
     <%= f.text_field :industry %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
   </div>
 
     <div class="field">

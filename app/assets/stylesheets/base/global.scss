@@ -121,8 +121,9 @@ textarea, input, select {
 
 .formBox {
   background-color: #e5e8e9;
-  min-height: 280px;
+  min-height: 300px;
   margin-bottom: 30px;
+  overflow: auto;
 }
 
 .floatHeader {
@@ -134,5 +135,22 @@ textarea, input, select {
 .pageHeaderBar {
   overflow: hidden;
   padding-right: 117px;
+}
+
+.field input {
+  border-radius: 3px;
+  border: 1px solid #D8DCDD;
+  padding-left: 15px;
+  width: 100%;
+  height: 45px;
+}
+
+.field-area textarea {
+  padding-left: 15px;
+  padding-top: 15px;
+  border-radius: 3px;
+  border: 1px solid #D8DCDD;
+  width: 100%;
+  height: 100%;
 }
 
