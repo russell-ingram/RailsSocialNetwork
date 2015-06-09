@@ -23,6 +23,14 @@ class UserAdminController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+
+    if @user.destroy
+      redirect_to '/admin'
+    end
+  end
+
   def new
     @editUser = User.new
   end

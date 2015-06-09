@@ -4,48 +4,128 @@ $( document ).ready(function() {
     $('.replyForm').addClass('active');
   });
 
-  $(".homepageLayoutImage").click(function() {
+  $(".callButton").click(function() {
     $('.columnLayout').removeClass('layoutOption3');
     $('.columnLayout').removeClass('layoutOption2');
     $('.columnLayout').removeClass('layoutOption1');
 
 
-    if ($(this).hasClass('layoutType3')) {
-      $('.columnTag').each(function() {
-        $(this).removeClass('column-12');
-        $(this).removeClass('column-6');
+    if ($(this).is('#callButton3')) {
+
+      $('.callCol').each(function() {
+        $(this).removeClass('col-layout-1');
+        $(this).removeClass('col-layout-2');
+        $(this).addClass('col-layout-3');
         $(this).show();
-        $(this).addClass('column-4');
-      });
-      $('.columnLayout').addClass('layoutOption3');
+      })
+      // $('.columnTag').each(function() {
+      //   $(this).removeClass('column-12');
+      //   $(this).removeClass('column-6');
+      //   $(this).show();
+      //   $(this).addClass('column-4');
+      // });
+      // $('.columnLayout').addClass('layoutOption3');
       $('.hiddenLayoutOptionField').val('3');
     }
-    else if ($(this).hasClass('layoutType2')) {
-      $('.columnTag').each(function() {
-        $(this).removeClass('column-12');
-        $(this).removeClass('column-4');
+    else if ($(this).is('#callButton2')) {
+
+      $('.callCol').each(function() {
+        $(this).removeClass('col-layout-1');
+        $(this).removeClass('col-layout-3');
+        $(this).addClass('col-layout-2');
         $(this).show();
-        $(this).addClass('column-6');
+      })
+
+      $('.col-opt-3').each(function(){
+        $(this).hide();
       });
-      $('.columnLayout').addClass('layoutOption2');
+      // $('.columnTag').each(function() {
+      //   $(this).removeClass('column-12');
+      //   $(this).removeClass('column-4');
+      //   $(this).show();
+      //   $(this).addClass('column-6');
+      // });
+      // $('.columnLayout').addClass('layoutOption2');
       $('.hiddenLayoutOptionField').val('2');
-      $('.columnOption3').hide();
+      // $('.columnOption3').hide();
     }
     else {
-      $('.columnTag').each(function() {
-        $(this).removeClass('column-6');
-        $(this).removeClass('column-4');
-        $(this).show();
-        $(this).addClass('column-12');
+      $('.callCol').each(function() {
+        $(this).removeClass('col-layout-3');
+        $(this).removeClass('col-layout-2');
+        $(this).addClass('col-layout-1');
       });
-      $('.columnLayout').addClass('layoutOption1');
+
+      $('.col-opt-2').each(function() {
+        $(this).hide();
+      });
+      $('.col-opt-3').each(function(){
+        $(this).hide();
+      });
+      // $('.columnTag').each(function() {
+      //   $(this).removeClass('column-6');
+      //   $(this).removeClass('column-4');
+      //   $(this).show();
+      //   $(this).addClass('column-12');
+      // });
+      // $('.columnLayout').addClass('layoutOption1');
       $('.hiddenLayoutOptionField').val('1');
-      $('.columnOption2').hide();
-      $('.columnOption3').hide();
+      // $('.columnOption2').hide();
+      // $('.columnOption3').hide();
     }
 
   })
 
+
+  $('#pubButton1').click(function() {
+    $("#radio1").prop("checked", true);
+    $("#radio1").val(true);
+
+    var unchecked = $('#radio2');
+    unchecked.prop("checked", false);
+    unchecked.val(false);
+  });
+
+  $('#pubButton2').click(function() {
+    $("#radio2").prop("checked", true);
+    $("#radio1").val(true);
+
+    var unchecked = $('#radio1');
+    unchecked.prop("checked", false);
+    unchecked.val(false);
+  });
+
+
+  $('#callButton1').click(function() {
+    $("#radio1").prop("checked", true);
+    $("#radio1").val(true);
+
+
+    $('#radio2').prop("checked", false);
+    $('#radio2').val(false);
+    $('#radio3').prop("checked", false);
+    $('#radio3').val(false);
+  });
+
+  $('#callButton2').click(function() {
+    $("#radio2").prop("checked", true);
+    $("#radio2").val(true);
+
+    $('#radio1').prop("checked", false);
+    $('#radio1').val(false);
+    $('#radio3').prop("checked", false);
+    $('#radio3').val(false);
+  });
+
+  $('#callButton3').click(function() {
+    $("#radio3").prop("checked", true);
+    $("#radio3").val(true);
+
+    $('#radio1').prop("checked", false);
+    $('#radio1').val(false);
+    $('#radio2').prop("checked", false);
+    $('#radio2').val(false);
+  });
 
 
 });

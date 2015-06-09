@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   get '/admin/upload' => 'user_admin#upload', as: 'admin_upload'
   post '/admin/upload' => 'user_admin#uploadFile', as: 'admin_upload_file'
 
+  get '/admin/delete/:id' => 'user_admin#destroy', as: 'admin_delete_user'
+
 
   resources :conversations, only: [:index, :show, :destroy] do
     member do
@@ -48,6 +50,8 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:new, :create]
+
+  get '/messages/new/:id' => 'messages#msg_user', as: 'message_user'
 
   resources :friendships do
     member do

@@ -8,6 +8,10 @@
   font-size: 16px;
 }
 
+.adminHeader {
+  background-color: #3eb2cc;
+}
+
 .headerWrapper {
   width: 90%;
   margin: 0 auto;
@@ -38,9 +42,15 @@
   margin-right: -10px;
   margin-top: -5px;
 }
+.adminMenuIcon {
+  height: 25px;
+}
 
 .menuLogo {
   height: 35px;
   width: auto;
   vertical-align: middle;
+}
+.adminMenuLogo {
+  height: 20px;
 }

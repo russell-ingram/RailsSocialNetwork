@@ -1,0 +1,66 @@
+
+<%= render "layouts/header" %>
+<div class="pageWrap">
+
+  <div class="messagesHeader">
+    <div class="pageHeader">Messages</div>
+  </div>
+    <div class="newMessagesFormWrapper">
+
+      <div class="newMsgForm formBox">
+
+      <div class="newMsgFormHeader formHeader">NEW MESSAGE</div>
+
+
+
+    <%= form_tag messages_path, method: :post do %>
+      <div class="newMsgFormGroup">
+
+      <div class="messageReplySingle">
+        <div class="messageReplyTo">TO:</div>
+        <div class="messageReplyRecip">
+          <%= @recip.full_name %>
+        </div>
+      </div>
+      <%= text_field_tag 'recipients_id', nil, placeholder: 'Recipients', class: 'newMsgFormControlHidden' %>
+
+      </div>
+
+      <div class="newMsgFormGroup">
+        <%= text_field_tag 'message[subject]', nil, placeholder: 'Subject', autocomplete: 'off',class: 'newMsgFormControl newMsgSubject', required: true %>
+      </div>
+
+      <div class="newMsgFormGroup">
+        <%= text_area_tag 'message[body]', nil, cols: 3, class: 'newMsgFormControl newMessageArea', required: true %>
+      </div>
+
+      <div class="newMsgBtnSend">
+        <span>
+          <span>
+              <input type="Submit" value="Send">
+          </span>
+        </span>
+       </div>
+
+    <% end %>
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+  <div class="footerMargin"></div>
+</div>
+
+<%= render "layouts/footer" %>

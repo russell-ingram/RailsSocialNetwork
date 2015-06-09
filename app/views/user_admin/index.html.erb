@@ -1,10 +1,19 @@
 <%= render "layouts/adminHeader" %>
 <div class="pageWrap">
-  <div class="pageHeader">Admin</div>
+  <div class="pageHeader floatHeader">Users</div>
+
+  <div class="userAdminSearch">
+    <div class="adminUserNew"><%= link_to "CREATE USER +", admin_new_user_path %></div>
+    <div class="searchUsers">
+      <input placeholder="Search users" class="searchInput">
+      <div class="searchButton2 searchButton"><i class="fa fa-search"></i></div>
+    </div>
+
+  </div>
 
   <div class="searchWrapper adminWrapper">
 
-  <div class="adminUserNew"><%= link_to "ADD NEW USER", admin_new_user_path %></div>
+
 
 
       <div class="myConnsHeaderBar">
@@ -33,7 +42,12 @@
             <div class="myConnCompany"><%= user.employer %></div>
             <div class="myConnIndustry"><%= user.industry %></div>
           </div>
-          <div class="myConnMessage"><div class="adminUserEdit"><%= link_to "EDIT", admin_edit_user_path(user) %></div></div>
+
+          <div class="myConnMessage userActionsSidebar">
+            <div class="userListAction"><%= link_to "review", admin_edit_user_path(user) %></div>
+            <div class="userListAction deleteAction"><%= link_to "delete", admin_delete_user_path(user), data: { confirm: "Are you sure you would like to delete this user?" } %></div>
+            <div class="userListAction"><%= link_to "send message", message_user_path(user) %></div>
+          </div>
         </div>
       </div>
 
@@ -46,7 +60,7 @@
   </div>
 
   <div class="footerMargin">
-    <div class="adminContentLink"><%= link_to "EDIT FRONTPAGE CONTENT", admin_content_path %></div>
+
 
   </div>
 </div>

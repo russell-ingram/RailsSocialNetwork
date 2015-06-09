@@ -3,7 +3,7 @@
 <div class="pageHeaderBar">
   <div class="pageHeader floatHeader">Edit User</div>
 
-  <div class="deleteUserButton">DELETE USER</div>
+  <div class="deleteUserButton"><%= link_to "DELETE", admin_delete_user_path(@editUser), data: { confirm: "Are you sure you would like to delete this user?" } %></div>
 </div>
 
 
@@ -93,13 +93,13 @@
         </div>
         <div class="pubOrPrivBox">
           <div class="pubLabel">Company type</div>
-          <div>
-            <input type="radio" id="radio1" name="public" value="false" checked>
+          <div id="pubButton1">
+            <input type="radio" id="radio1" name="public" value="true" checked>
             <label for="radio01"><span></span>Privately Held</label>
           </div>
           <!-- <br> -->
-          <div>
-            <input type="radio" id="radio2" name="public" value="true">
+          <div id="pubButton2">
+            <input type="radio" id="radio2" name="public" value="false">
             <label for="radio02"><span></span>Publicly Held</label>
           </div>
         </div>
@@ -107,7 +107,7 @@
 
     </div>
 
-    <div class="userEditBox formBox">
+    <div class="userEditBox formBox pastExperienceFormBox">
       <div class="profileTabBoxLabel formHeader">
         PAST EXPERIENCE
       </div>
@@ -119,9 +119,18 @@
           <div class="field field-col-2">
             <input placeholder="Company" type="text" name="past_emp[company]" id="past_emp_company">
           </div>
-          <div class="pastEmpDates">
-            <div class="pastEmpDateLabel"></div>
-
+          <div class="pastEmpDates pubLabel">
+            <div class="pastEmpDateLabel">Start date</div>
+            <div class="field pastEmpDateBox">
+              <input placeholder="MM/YYYY" type="text" name="past_emp[start_date]" id="past_emp_start_date">
+            </div>
+            <div class="pastEmpDateLabel">End date</div>
+            <div class="field pastEmpDateBox">
+              <input placeholder="MM/YYYY" type="text" name="past_emp[end_date]" id="past_emp_end_date">
+            </div>
+          </div>
+          <div class="pastEmpDescriptionBox field-area field-summary">
+            <textarea name="past_emp[description]" placeholder="Description"></textarea>
           </div>
 
         </div>
@@ -129,37 +138,21 @@
     </div>
 
 
+    <div class="addPastPosition">
+      <i class="fa fa-plus"></i>ADD ANOTHER POSITION
+    </div>
+
+    <div class="userEditButtons">
+      <div class="userAdminButton"><a href="">Send Invitation</a></div>
+      <div class="userAdminButton"><a href="">Save</a></div>
+      <div class="userAdminButton greyButton"><a href="/admin">Cancel</a></div>
+
+
+    </div>
 
 
 
 
-
-
-  <div class="field">
-    <%= f.label :employer %><br>
-    <%= f.text_field :employer %>
-  </div>
-  <div class="field">
-    <%= f.label :industry %><br>
-    <%= f.text_field :industry %>
-  </div>
-
-    <div class="field">
-    <%= f.label :profile_pic %><br>
-    <%= f.text_field :profile_pic_url, input_html: { autocomplete: 'off' } %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
 
 

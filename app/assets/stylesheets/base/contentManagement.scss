@@ -1,6 +1,7 @@
 .cmsWrapper {
   margin-left: 117px;
   margin-right: 117px;
+  margin-top: 40px;
 }
 
 .contentHeader {
@@ -8,25 +9,131 @@
   margin-bottom: 30px;
 }
 
-.homepageContentSection {
-  overflow: hidden;
+
+.cmsImageUpload {
+  padding: 25px;
+  min-height: 475px;
+  float:left;
+
 }
 
-.homepageHeader {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.homepageSubSection {
-  float: left;
-}
-
-.homepageHeroImage {
-  width: 100%;
+.cmsImageUploadButton {
+  background-color: #cbd0d2;
+  width: 300px;
   height: 200px;
-  background-color: #767676;
-  margin-bottom: 10px;
 }
+
+.cmsNewsSection {
+  float: right;
+  margin-top: 25px;
+  margin-right: 25px;
+  width: 67%;
+  div {
+    input, textarea {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.cmsEditHeader {
+  color: #767676;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-bottom: 3px;
+
+}
+
+.cmsTextArea {
+  width: 100%;
+  height: 270px;
+
+}
+
+.cmsBoxRow {
+  text-align: justify;
+  font-size: 0.1px;
+  margin-top: 10px;
+}
+
+.cmsBoxRow:after {
+  content: '';
+  width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+  display: inline-block;
+}
+
+.cmsBoxCol {
+  display: inline-block;
+  width: 48%;
+}
+
+.cmsSaveButton {
+  float:right;
+  width: 20%;
+  margin-top: 25px;
+  margin-bottom: 40px;
+  margin-right: 25px;
+  span {
+    display: block;
+    height: 45px;
+    color: #FFFFFF;
+    line-height: 45px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #3eb2cc;
+    cursor: pointer;
+  }
+  span * {
+    all: inherit;
+    width: 100%;
+  }
+}
+
+
+.cmsBoxRowUneven {
+  margin: 25px 25px 0 25px;
+}
+
+.calloutBox {
+  margin-right:50px;
+}
+
+.callButton {
+  display: inline-block;
+  width: 55px;
+}
+
+
+.callOutRow {
+  margin: 0 25px;
+  margin-top: 10px;
+}
+
+.bottomRow {
+  margin-bottom: 25px;
+}
+
+.col-layout-3 {
+  width: 31%;
+}
+
+.col-layout-2 {
+  width: 48%;
+}
+
+.col-layout-1 {
+  width: 100%;
+}
+
+.cmsBox {
+  margin: 25px;
+  div {
+    input {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
 
 .imageUpload div {
   float:left;

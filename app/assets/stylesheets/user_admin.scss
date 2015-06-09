@@ -3,6 +3,71 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+
+.myConnsLabel {
+  color: #767676;
+}
+
+.userAdminSearch {
+  float:right;
+  margin-right: 117px;
+  margin-top: -15px;
+}
+
+.adminUserNew {
+  display: inline-block;
+  // margin-top: -90px;
+
+  background-color: #FFFFFF;
+  color: #3eb2cc;
+  width: 200px;
+  // height: 60px;
+  line-height: 35px;
+  text-align: center;
+}
+
+.adminWrapper {
+  padding-top: 0;
+  margin-top: 80px;
+}
+
+.searchUsers {
+  display: inline-block;
+  input {
+    border: 1px solid #D8DCDD;
+    width: 250px;
+    height: 60px;
+    padding-left: 15px;
+  }
+}
+.searchButton2 {
+  cursor: pointer;
+  width: 80px;
+  font-size: 22px;
+  margin-left: -4px;
+  margin-top: 1px;
+}
+
+.userActionsSidebar {
+  margin-top: 5px;
+}
+
+.userListAction {
+  line-height: 45px;
+  text-align: right;
+}
+
+.deleteAction {
+  color: #767676;
+}
+
+
+
+
+
+
+
 .new_user .field {
   margin-bottom: 15px;
 }
@@ -22,13 +87,8 @@
   width: 150px;
 }
 
-.edit_user {
 
-}
 
-.adminWrapper {
-  padding-top: 0;
-}
 
 .editProfileWrapper {
   padding-left:117px;
@@ -130,7 +190,24 @@
   text-transform: none;
 }
 
-
+.pastEmpDates {
+  float:left;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  div {
+    display:block;
+  }
+}
+.pastEmpDateLabel {
+  width: 172px;
+  color: #767676;
+  font-size: 16px;
+  line-height:16px;
+  font-family: "PNLight";
+  text-transform: none;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
 
 .field-summary {
   width: 880px;
@@ -138,6 +215,55 @@
   float: left;
   margin-bottom: 30px;
 }
+
+
+
+.pastEmpDescriptionBox {
+  margin-top: 41px;
+  height: 123px;
+  margin-left: 40px;
+  margin-bottom: 0;
+}
+
+
+.addPastPosition {
+  margin-top:-25px;
+  background-color: #D6D7D8;
+  color: #767676;
+  height: 45px;
+  line-height: 45px;
+  padding-left: 30px;
+  cursor: pointer;
+  i {
+    margin-right: 10px;
+    margin-left: -15px;
+  }
+}
+
+
+.userEditButtons {
+  overflow:auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.userAdminButton {
+  float: right;
+  background-color: #3eb2cc;
+  color: #FFF;
+  width: 225px;
+  height: 60px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  line-height: 60px;
+  text-align: center;
+}
+
+.greyButton {
+  color: #767676;
+  background-color: #D6D7D8;
+}
+
 
 
 

@@ -2,145 +2,221 @@
 
 <div class="pageWrap">
 
+<div class="pageHeaderBar">
+  <div class="pageHeader floatHeader">Manage Page Content</div>
 
+</div>
 
   <div class="cmsWrapper">
 
-    <div class="contentHeader">Manage Page Content</div>
 
+  <%= form_for ([:content, @news]) do |f| %>
 
-    <%= form_for ([:content, @news]) do |f| %>
-
-      <div class="homepageContentSection">
-        <div class="homepageHeader">Homepage News Section</div>
-        <div class="homepageSubSection column-4">
-          <div class="homepageSubHeader">Set Hero Image</div>
-          <div class="homepageHeroImage"></div>
-
-          <div class="imageUpload">
-            <div class="currentNewsImage">currentfilename.jpg</div>
-            <div class="uploadPhotoButton">Upload New Photo</div>
-          </div>
-        </div>
-        <div class="homepageSubSection column-8 column-right">
-          <div class="homepageSubHeader">Set Headline Copy</div>
-          <%= f.text_field :headline, autocomplete: 'off', class: 'headlineCopy contentField' %>
-
-          <div class="homepageSubHeader">Set Body Copy</div>
-          <%= f.text_area :body_copy, autocomplete: 'off', class: 'bodyCopy contentField' %>
-
-          <div class="linkCopySubSection">
-            <div class="homepageSubHeader">Set Link Copy</div>
-            <%= f.text_area :link_copy, autocomplete: 'off', class: 'linkContentField contentField' %>
-          </div>
-          <div class="linkCopySubSection">
-            <div class="homepageSubHeader">Set Link URL</div>
-            <%= f.text_area :link_url, autocomplete: 'off', class: 'linkContentField contentField' %>
-          </div>
-
-
-        </div>
-
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        LANDING PAGE: NEWS SECTION
       </div>
 
-      <div class="newMsgBtnSend createUserButton">
-        <span>
+      <div class="cmsImageUpload">
+        <div class="cmsImageUploadButton"></div>
+      </div>
+
+      <div class="cmsNewsSection">
+
+        <div class="cmsEditHeader">Title</div>
+        <div class="field">
+          <%= f.text_field :headline, autocomplete: 'off' %>
+        </div>
+        <div class="cmsEditHeader">Article</div>
+        <div class="field-area cmsTextArea">
+          <%= f.text_area :body_copy, autocomplete: 'off' %>
+        </div>
+        <div class="cmsBoxRow">
+          <div class="cmsBoxCol">
+            <div class="cmsEditHeader">Set Link Copy</div>
+            <div class="field">
+              <%= f.text_field :link_copy, autocomplete: 'off' %>
+            </div>
+          </div>
+          <div class="cmsBoxCol">
+            <div class="cmsEditHeader">Set Link URL</div>
+            <div class="field">
+              <%= f.text_field :link_url, autocomplete: 'off' %>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+      </div>
+        <div class="cmsSaveButton">
           <span>
-              <input type="Submit" value="Save">
+            <span>
+                <input type="Submit" value="Save">
+            </span>
           </span>
-        </span>
-      </div>
+        </div>
 
 
+
+    </div>
 
     <% end %>
 
     <%= form_for ([:edit_layout, @layout]) do |f| %>
 
-      <div class="homepageContentSection">
-        <div class="homepageHeader">Homepage Announcements Section</div>
-        <div class="homepageSubSection column-3">
-          <div class="homepageSubHeader">Select Layout Template</div>
-          <div class="homepageLayoutImage layoutType3">Three Column</div>
-          <div class="homepageLayoutImage layoutType2">Two Column</div>
-          <div class="homepageLayoutImage layoutType1">One Column</div>
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        LANDING PAGE: ANNOUNCEMENTS SECTION
+      </div>
+
+      <div class="cmsBoxRowUneven">
+        <div class="cmsBoxCol">
+          <div class="cmsEditHeader">Title</div>
+          <div class="field">
+            <%= f.text_field :headline, autocomplete: 'off' %>
+          </div>
         </div>
-        <div class="homepageSubSection column-9 column-right">
-          <div class="homepageSubHeader">Set Headline Copy</div>
+        <div class="cmsBoxCol">
+          <div class="pubOrPrivBox calloutBox">
+            <div class="cmsEditHeader">Number of Callouts</div>
+            <div id="callButton1" class="callButton">
+              <input type="radio" id="radio1" name="public" value="false">
+              <label for="radio01"><span></span>1</label>
+            </div>
+            <!-- <br> -->
+            <div id="callButton2" class="callButton">
+              <input type="radio" id="radio2" name="public" value="false">
+              <label for="radio02"><span></span>2</label>
+            </div>
+            <div id="callButton3" class="callButton">
+              <input type="radio" id="radio3" name="public" value="true" checked>
+              <label for="radio03"><span></span>3</label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cmsBoxRow callOutRow">
+
+        <!-- <div class="columnLayout"> -->
+
+          <div class="cmsEditHeader fullHeader">Callout</div>
+
+          <div class="cmsBoxRow">
+            <div class="cmsBoxCol col-layout-3 col-opt-1 callCol">
+              <div class="field">
+                <%= f.text_field :column_one_callout, autocomplete: 'off', placeholder: 'Column 1' %>
+              </div>
+            </div>
+            <div class="cmsBoxCol col-layout-3 col-opt-2 callCol">
+              <div class="field">
+                <%= f.text_field :column_two_callout, autocomplete: 'off', placeholder: 'Column 2' %>
+              </div>
+            </div>
+            <div class="cmsBoxCol col-layout-3 col-opt-3 callCol">
+              <div class="field">
+                <%= f.text_field :column_three_callout, autocomplete: 'off', placeholder: 'Column 3' %>
+              </div>
+            </div>
+
+          </div>
+      </div>
+
+      <div class="cmsBoxRow callOutRow">
+
+        <div class="cmsEditHeader fullHeader">Text</div>
+
+        <div class="cmsBoxRow">
+          <div class="cmsBoxCol col-layout-3 col-opt-1 callCol">
+            <div class="field-area cmsTextArea">
+              <%= f.text_area :column_one_content, autocomplete: 'off', placeholder: 'Column 1', class: 'bodyCopy contentField columnField' %>
+            </div>
+          </div>
+          <div class="cmsBoxCol col-layout-3 col-opt-2 callCol">
+            <div class="field-area cmsTextArea">
+              <%= f.text_area :column_two_content, autocomplete: 'off', placeholder: 'Column 2', class: 'bodyCopy contentField columnField' %>
+            </div>
+          </div>
+          <div class="cmsBoxCol col-layout-3 col-opt-3 callCol">
+            <div class="field-area cmsTextArea">
+              <%= f.text_area :column_three_content, autocomplete: 'off', placeholder: 'Column 3', class: 'bodyCopy contentField columnField' %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="cmsBoxRow bottomRow">
+          <div class="cmsBoxCol">
+            <div class="cmsEditHeader">Set Link Copy</div>
+            <div class="field">
+              <%= f.text_field :link_copy, autocomplete: 'off' %>
+            </div>
+          </div>
+          <div class="cmsBoxCol">
+            <div class="cmsEditHeader">Set Link URL</div>
+            <div class="field">
+              <%= f.text_field :link_url, autocomplete: 'off' %>
+            </div>
+          </div>
+        </div>
           <%= f.text_field :layout_option, autocomplete: 'off', class: 'hiddenLayoutOptionField', :value => '3' %>
+        </div>
 
-          <%= f.text_field :headline, autocomplete: 'off', class: 'headlineCopy contentField' %>
-
-          <div class="columnLayout layoutOption3">
-
-            <div class="columnOption1 columnTag column-4">
-              <div class="homepageSubHeader">Column One Callout</div>
-              <%= f.text_field :column_one_callout, autocomplete: 'off', class: 'headlineCopy contentField' %>
-              <div class="homepageSubHeader">Column One</div>
-              <%= f.text_area :column_one_content, autocomplete: 'off', class: 'bodyCopy contentField columnField' %>
-            </div>
-
-            <div class="columnOption2 columnTag column-4">
-              <div class="homepageSubHeader">Column Two Callout</div>
-              <%= f.text_field :column_two_callout, autocomplete: 'off', class: 'headlineCopy contentField' %>
-              <div class="homepageSubHeader">Column Two</div>
-              <%= f.text_area :column_two_content, autocomplete: 'off', class: 'bodyCopy contentField columnField' %>
-            </div>
-
-            <div class="columnOption3 columnTag column-4">
-              <div class="homepageSubHeader">Column Three Callout</div>
-              <%= f.text_field :column_three_callout, autocomplete: 'off', class: 'headlineCopy contentField' %>
-              <div class="homepageSubHeader">Column Three</div>
-              <%= f.text_area :column_three_content, autocomplete: 'off', class: 'bodyCopy contentField columnField' %>
-            </div>
-
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <div class="linkCopySubSection">
-            <div class="homepageSubHeader">Set Link Copy</div>
-            <%= f.text_area :link_copy, autocomplete: 'off', class: 'linkContentField contentField' %>
-          </div>
-          <div class="linkCopySubSection">
-            <div class="homepageSubHeader">Set Link URL</div>
-            <%= f.text_area :link_url, autocomplete: 'off', class: 'linkContentField contentField' %>
-          </div>
-
-
+        <div class="cmsSaveButton">
+          <span>
+            <span>
+                <input type="Submit" value="Save">
+            </span>
+          </span>
         </div>
 
       </div>
-
-      <div class="newMsgBtnSend createUserButton">
-        <span>
-          <span>
-              <input type="Submit" value="Save">
-          </span>
-        </span>
-      </div>
-
-
 
     <% end %>
+
+
+
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        LANDING PAGE: WELCOME MESSAGE
+      </div>
+      <div class="cmsBox">
+        <div class="cmsEditHeader">HEADLINE</div>
+        <div class="field">
+          <input>
+        </div>
+        <div class="cmsEditHeader">message</div>
+        <div class="field-area cmsTextArea">
+          <textarea></textarea>
+        </div>
+
+      </div>
+
+
+
+        <div class="cmsSaveButton">
+          <span>
+            <span>
+                <input type="Submit" value="Save">
+            </span>
+          </span>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
 
 
 
