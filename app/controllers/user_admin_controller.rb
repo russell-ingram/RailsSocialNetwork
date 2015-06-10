@@ -5,16 +5,29 @@ class UserAdminController < ApplicationController
   end
 
   def edit
-    # puts "PARAMS:"
-    # puts params[:id]
+
     @editUser = User.find(params[:id])
   end
 
   def update
     @editUser = User.find(params[:id])
+
+    my_file = params[:user][:profile_pic_url]
+    uploader = ProfilepicUploader.new
+    uploader.store!(my_file)
+
+    puts "UPLOADER:"
+    puts uploader.filename
+
+    # profile_pic = File.basename(params[:user][:profile_pic_url])
+    # puts "identifier"
+    # puts profile_pic
+
     respond_to do |format|
       if @editUser.update(user_params)
-        puts user_params
+        if uploader.url
+          @editUser.update_columns(profile_pic_url: uploader.filename)
+        end
         format.html { redirect_to '/admin' }
       else
         format.html { render :edit }
@@ -71,10 +84,9 @@ class UserAdminController < ApplicationController
 
 
 
-
-
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url)
+    # puts params
+    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url, :position, :footprint, :linked_in_url, :enterprise_size, :region, :country, :emp_summary)
   end
 
   def new_user_params

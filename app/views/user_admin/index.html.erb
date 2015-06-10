@@ -33,7 +33,7 @@
         <div class="myConnWrapper">
           <div class="myConnProfilePic"><a href="/profile/<%= user.id %>">
           <% if user.profile_pic_url? %>
-            <%= image_tag user.profile_pic_url %>
+            <img src="<%= user.profile_pic_url %>">
           <% end %>
           </a></div>
 

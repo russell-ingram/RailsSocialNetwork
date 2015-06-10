@@ -19,4 +19,5 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer || path
   end
 
+
 end

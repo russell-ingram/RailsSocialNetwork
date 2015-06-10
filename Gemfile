@@ -14,6 +14,11 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# azure sdk for image upload
+gem 'azure','~> 0.6.4'
+gem 'carrierwave-azure'
+
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

@@ -1,7 +1,11 @@
 class ContentsController < ApplicationController
+
+  # news update
   def create
     puts "PARAMS: "
-    puts params[:content][:headline]
+    # puts params[:content][:image_url]
+
+
 
 
     @oldnews = Content.find_by("type_of_content = ? AND active = ?", "news", true)
@@ -10,9 +14,13 @@ class ContentsController < ApplicationController
       @oldnews.save
     end
 
+    my_file = params[:content][:image_url]
+    uploader = LinkUrlUploader.new
+    uploader.store!(my_file)
 
     @news = Content.new(news_params)
     @news.active = true
+    @news.image_url = uploader.url
 
     if @news.save
       redirect_to home_path
@@ -22,6 +30,7 @@ class ContentsController < ApplicationController
 
   end
 
+  # callout update (1-3 columns)
   def layout_edit
     @oldlayout = Content.find_by("type_of_content = ? AND active = ?", "layout", true)
     if @oldlayout
@@ -49,7 +58,7 @@ class ContentsController < ApplicationController
   private
 
   def news_params
-    params.require(:content).permit(:headline, :body_copy, :link_copy, :link_url, :active)
+    params.require(:content).permit(:headline, :body_copy, :link_copy, :link_url, :active, :image_url)
   end
 
   def layout_params

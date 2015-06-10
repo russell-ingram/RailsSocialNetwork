@@ -31,7 +31,9 @@
       </div>
 
       <div class="editPhotoUpload">
-        <div class="photoUploadBox"></div>
+        <div class="photoUploadBox">
+          <%= f.file_field :profile_pic_url %>
+        </div>
       </div>
 
       <div class="editContentRight">
@@ -89,7 +91,7 @@
           </div>
         </div>
         <div class="field-area field-summary">
-          <%= f.text_area :country, placeholder: 'Summary' %>
+          <%= f.text_area :emp_summary, placeholder: 'Summary' %>
         </div>
         <div class="pubOrPrivBox">
           <div class="pubLabel">Company type</div>
@@ -144,7 +146,7 @@
 
     <div class="userEditButtons">
       <div class="userAdminButton"><a href="">Send Invitation</a></div>
-      <div class="userAdminButton"><a href="">Save</a></div>
+      <div class="userAdminButton"><%= f.submit 'Save' %></div>
       <div class="userAdminButton greyButton"><a href="/admin">Cancel</a></div>
 
 
