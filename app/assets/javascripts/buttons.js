@@ -9,7 +9,7 @@ $( document ).ready(function() {
     $('.customFileInput').trigger('click');
     $('.customFileInput').change(function(){
       console.log('this');
-      readURL(this);
+      readURL(this,'cms');
     });
 
   })
@@ -19,20 +19,27 @@ $( document ).ready(function() {
     $('.customFileInput').trigger('click');
     $('.customFileInput').change(function(){
       console.log('this');
-      readURL(this);
+      readURL(this, 'profile');
     });
 
   })
 
-  function readURL(input) {
+  function readURL(input,type) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
 
       reader.onload = function (e) {
-          $('.cmsImageUploadButton').css('background', 'url(' + e.target.result + ')');
-          // $('.customFileInput, #uploadClick').hide();
+        if (type === 'cms') {
+          $('.cmsImageUploadButton').css('background-image', 'url(' + e.target.result + ')');
+        }
+        else if (type === 'profile') {
+          $('.photoUploadBox').css('background-image', 'url(' + e.target.result + ')');
+        }
+
+
+          $('.userUploadIcons').hide();
       }
-      $('.deletePhoto').show();
+      // $('.deletePhoto').show();
 
       reader.readAsDataURL(input.files[0]);
     }
