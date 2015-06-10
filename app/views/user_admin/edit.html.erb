@@ -30,11 +30,25 @@
         USER DETAILS
       </div>
 
-      <div class="editPhotoUpload">
+      <div class="editPhotoUpload" id="editPhotoUpload">
+        <% if !@editUser.profile_pic_url.blank? %>
+        <div class="photoUploadBox" style="background-image: url(<%= @editUser.profile_pic_url %>); background-size: 175px 175px;">
+        <% else %>
         <div class="photoUploadBox">
-          <%= f.file_field :profile_pic_url %>
+          <div class="userUploadIcons">
+            <p>
+            <i class="fa fa-camera"></i>
+            <br>
+            Add Photo
+            </p>
+          </div>
+        <% end %>
+
+
         </div>
       </div>
+
+      <%= f.file_field :profile_pic_url, class: 'customFileInput' %>
 
       <div class="editContentRight">
 

@@ -19,9 +19,17 @@
 
       <div class="cmsImageUpload">
         <div class="cmsImageUploadButton">
-          <%= f.file_field :image_url, class: 'customFileInput' %>
+          <div class="userUploadIcons">
+            <p>
+            <i class="fa fa-camera"></i>
+            <br>
+            Add Photo
+            </p>
+          </div>
         </div>
       </div>
+
+      <%= f.file_field :image_url, class: 'customFileInput' %>
 
       <div class="cmsNewsSection">
 

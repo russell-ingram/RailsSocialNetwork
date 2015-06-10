@@ -128,6 +128,19 @@
   width: 175px;
 }
 
+.userUploadIcons {
+  display: table;
+  height: inherit;
+  width: inherit;
+  p {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-transform: uppercase;
+    color: #767676;
+  }
+}
+
 .editField {
   float:left;
   margin-right: 25px;
