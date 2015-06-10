@@ -6,14 +6,15 @@ class MessagesController < ApplicationController
 
   def msg_user
     @recip = User.find(params[:id])
-    puts @recip
+  end
+
+  def msg_all_users
+    @recipients = User.all
   end
 
 
   def create
-    puts "CREATE PARAMS :"
     users = params['recipients_id'].split(',')
-    puts users
     recipients = []
     x = User.where(id: users).all
     # puts x

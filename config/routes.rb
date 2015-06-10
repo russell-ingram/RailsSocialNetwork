@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:new, :create]
 
   get '/messages/new/:id' => 'messages#msg_user', as: 'message_user'
+  get '/admin/messages/new/all' => 'messages#msg_all_users', as: 'message_all_users'
 
   resources :friendships do
     member do
