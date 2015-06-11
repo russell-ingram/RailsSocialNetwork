@@ -3,35 +3,47 @@
 <div class="pageWrap">
 
   <div class="messagesHeader">
-    <div class="pageHeader">Messages</div>
+    <div class="pageHeader">Create Message</div>
   </div>
     <div class="newMessagesFormWrapper">
 
       <div class="newMsgForm formBox">
 
-      <div class="newMsgFormHeader formHeader">NEW MESSAGE</div>
+      <div class="newMsgFormHeader formHeader"></div>
 
 
 
     <%= form_tag messages_path, method: :post do %>
-      <div class="newMsgFormGroup">
-
       <div class="messageReplySingle">
         <div class="messageReplyTo">TO:</div>
-        <div class="messageReplyRecip">
-          All Users
+          <div class="messageReplyRecip">
+            All Users
+          </div>
+      </div>
+
+      <div class="newMsgFormGroup recipientsGroup">
+
+        <%= text_field_tag 'recipients', nil, data: {autocomplete_source: recipients_path }, placeholder: 'TO:', class: 'newMsgFormControl', id: 'allUsersMsgInput' %>
+
+        <%= text_field_tag 'recipients_id', nil, placeholder: 'Recipients', class: 'newMsgFormControlHidden' %>
+
+      </div>
+
+      <div class="sendToAllGroup">
+        <div class="pubOrPrivBox">
+          <div id="sendAllButton">
+            <input type="radio" id="radioSendAll" name="public" value="true">
+            <label for="radio01"><span></span>Send to all users</label>
+          </div>
         </div>
       </div>
-      <%= text_field_tag 'recipients_id', nil, placeholder: 'Recipients', class: 'newMsgFormControlHidden' %>
 
+      <div class="newMsgFormGroup">
+        <%= text_field_tag 'message[subject]', nil, placeholder: 'Subject:', autocomplete: 'off',class: 'newMsgFormControl newMsgSubject', required: true %>
       </div>
 
       <div class="newMsgFormGroup">
-        <%= text_field_tag 'message[subject]', nil, placeholder: 'Subject', autocomplete: 'off',class: 'newMsgFormControl newMsgSubject', required: true %>
-      </div>
-
-      <div class="newMsgFormGroup">
-        <%= text_area_tag 'message[body]', nil, cols: 3, class: 'newMsgFormControl newMessageArea', required: true %>
+        <%= text_area_tag 'message[body]', nil, cols: 3, class: 'newMsgFormControl newMessageArea',placeholder: 'Message:', required: true %>
       </div>
 
       <div class="newMsgBtnSend">

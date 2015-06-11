@@ -132,7 +132,7 @@
 }
 
 .newMessagesFormWrapper form {
-  margin: 0 200px;
+  margin: 0 30px;
   padding-top: 30px;
   overflow: hidden;
   padding-bottom: 30px;
@@ -140,17 +140,49 @@
   font-family: "PNReg";
 }
 
-.newMsgFormControl {
+.newMsgFormControl, ul.tagit {
   margin-bottom: 10px;
   width: 100%;
-  height: 30px;
-  padding-left:10px;
+  height: 45px;
+  padding-left:20px;
 
 }
 
-.newMsgSubject, .newMessageArea {
-  background-color: #f2f3f4;
+.recipientsGroup {
+  width: 80%;
+  float:left;
+}
+
+.sendToAllGroup {
+  display: inline-block;
+  height:45px;
+  line-height: 45px;
+  float:right;
+  .pubOrPrivBox {
+    margin-left: 20px;
+  }
+}
+
+
+
+.newMsgSubject, .newMessageArea, ul.tagit {
+  background-color: #FFFFFF;
   border: 2px solid #cbd0d2;
+}
+
+.newMessageArea {
+  padding-top: 10px;
+}
+
+ul.tagit {
+  font-size: 14px;
+  font-family: "PNReg";
+
+
+}
+
+.ui-widget-content {
+  padding-left: 10px !important;
 }
 
 .newMessageArea {
@@ -300,6 +332,10 @@
 // send message to single user
 
 .messageReplySingle {
+  display: none;
+  float:left;
+  height:45px;
+  line-height:45px;
   div {
     display: inline-block;
     font-family: "PNBold";

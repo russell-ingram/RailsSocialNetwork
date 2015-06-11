@@ -127,5 +127,18 @@ $( document ).ready(function() {
     $('#radio2').val(false);
   });
 
+  $('#sendAllButton').click(function() {
+    if ($('#radioSendAll').is(':checked')) {
+      $("#radioSendAll").prop("checked", false);
+      $('#allUsersMsgInput').css("display","inline-block");
+      $('.messageReplySingle').hide();
+    } else {
+      $("#radioSendAll").prop("checked", true);
+      $('#allUsersMsgInput').hide();
+      $('.messageReplySingle').show();
+    }
+
+  })
+
 
 });

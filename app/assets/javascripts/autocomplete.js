@@ -35,7 +35,8 @@ $( document ).ready(function() {
     },
     removeConfirmation: true,
     caseSensitve: false,
-    allowSpaces: true
+    allowSpaces: true,
+    placeholderText: 'To:'
   });
 
 
@@ -56,7 +57,8 @@ $( document ).ready(function() {
       },
       allowSpaces: false,
       removeConfirmation: true,
-      caseSensitve: false
+      caseSensitve: false,
+      placeholderText: null
     });
   }
 
