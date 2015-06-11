@@ -14,52 +14,6 @@
   width: 100%;
 }
 
-.wrapper-dropdown {
-  display: inline-block;
-  position: relative;
-  outline: none;
-  cursor: pointer;
-
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: 16px;
-
-  width: 299px;
-  height: 60px;
-  line-height: 60px;
-
-  background: transparent;
-  border: 1px solid #d8dcdd;
-}
-
-.carrot {
-  float: right;
-  line-height: 60px;
-  font-size: 10px;
-  padding-right: 10px;
-}
-
-.wrapper-dropdown .dropdown {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  width: inherit;
-  list-style-type: none;
-  margin-top: -2px;
-}
-
-.dropdown.active {
-  opacity: 1;
-  pointer-events: auto;
-  background: white;
-  width: 298px;
-  margin-left: -11px;
-  border: 1px solid #d8dcdd;
-}
-
-.wrapper-dropdown-1.active {
-  background: #F1F1F1;
-}
 
 .searchButton {
   color: white;

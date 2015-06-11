@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   resources :user_admin
 
   get '/admin' => 'user_admin#index'
+  get '/admin/get_users/:type' => 'user_admin#get_users'
+
   get '/admin/edit_user/:id' => 'user_admin#edit', as: 'admin_edit_user'
   patch '/admin/edit_user/:id' => 'user_admin#update', as: 'user_admin_user'
 

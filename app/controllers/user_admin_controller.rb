@@ -1,8 +1,32 @@
 class UserAdminController < ApplicationController
   wrap_parameters format: [:json, :xml]
   def index
-    @users = User.all
+    # defaults to most recent
+    @users = User.order(created_at: :desc)
+
+
+
   end
+
+  def get_users
+    type = params[:type]
+
+    if type == "MOST RECENT"
+      @users = User.order(created_at: :desc)
+    elsif type == "FIRST NAME"
+      @users = User.order(:first_name)
+    else
+      @users = User.order(:last_name)
+    end
+
+
+
+    respond_to do |format|
+      format.json { render json: @users }
+    end
+
+  end
+
 
   def edit
 

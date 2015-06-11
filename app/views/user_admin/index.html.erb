@@ -21,12 +21,24 @@
         <div class="myConnsRightFloat">
           <div class="myConnsSearchButton"><i class="fa fa-search"></i></div>
           <div class="sortLabel">SORT BY:</div>
-          <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
+          <div class="sortToggle">
+
+            <div class="wrapper-dropdown ddFilter" tabindex="1">
+              <span class="ddLabel">MOST RECENT</span>
+              <ul class="dropdown ddFilterSelect">
+                <li class="ddOption">MOST RECENT</li>
+                <li class="ddOption">FIRST NAME</li>
+                <li class="ddOption">LAST NAME</li>
+              </ul>
+            </div>
+
+
+          <i class="fa fa-caret-down messageCaret"></i></div>
         </div>
       </div>
 
 
-
+    <div class="myConnsList">
     <% @users.each do |user| %>
 
       <div class="myConnection">
@@ -55,7 +67,7 @@
 
 
     <% end %>
-
+    </div>
 
   </div>
 
