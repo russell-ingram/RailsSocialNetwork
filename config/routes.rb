@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   get '/admin' => 'user_admin#index'
   get '/admin/get_users/:type' => 'user_admin#get_users'
+  get '/admin/users/autocomplete' => 'user_admin#autocomplete_users'
+  get '/admin/users/search' => 'user_admin#search_users'
 
   get '/admin/edit_user/:id' => 'user_admin#edit', as: 'admin_edit_user'
   patch '/admin/edit_user/:id' => 'user_admin#update', as: 'user_admin_user'
@@ -43,6 +45,8 @@ Rails.application.routes.draw do
   post '/admin/upload' => 'user_admin#uploadFile', as: 'admin_upload_file'
 
   get '/admin/delete/:id' => 'user_admin#destroy', as: 'admin_delete_user'
+
+
 
 
   resources :conversations, only: [:index, :show, :destroy] do

@@ -7,16 +7,16 @@ class UserAdminController < ApplicationController
 
 
   end
-
+  # for filtering
   def get_users
     type = params[:type]
 
-    if type == "MOST RECENT"
-      @users = User.order(created_at: :desc)
+    if type == "LAST NAME"
+      @users = User.order(:last_name)
     elsif type == "FIRST NAME"
       @users = User.order(:first_name)
     else
-      @users = User.order(:last_name)
+      @users = User.order(created_at: :desc)
     end
 
 
@@ -25,6 +25,36 @@ class UserAdminController < ApplicationController
       format.json { render json: @users }
     end
 
+  end
+
+  def autocomplete_users
+    f_n = params[:term].split(' ').first
+    if params[:term].split(' ').length > 1
+      l_n = params[:term].split(' ').last
+      @usersRaw = User.order(:first_name).where("first_name like ? AND last_name like?","%#{f_n}%", "%#{l_n}%")
+    else
+      @usersRaw = User.order(:first_name).where("first_name like ? OR last_name like?", "%#{f_n}%", "%#{f_n}%")
+    end
+
+    @users = []
+    # only returning the names
+    @usersRaw.each do |u|
+      @users << u.full_name
+    end
+    render json: @users
+
+  end
+
+  def search_users
+    f_n = params[:term].split(' ').first
+    if params[:term].split(' ').length > 1
+      l_n = params[:term].split(' ').last
+      @usersRaw = User.order(:first_name).where("first_name like ? AND last_name like?","%#{f_n}%", "%#{l_n}%")
+    else
+      @usersRaw = User.order(:first_name).where("first_name like ? OR last_name like?", "%#{f_n}%", "%#{f_n}%")
+    end
+    # returning all the user data
+    render json: @usersRaw
   end
 
 

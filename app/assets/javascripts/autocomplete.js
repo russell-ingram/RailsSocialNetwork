@@ -58,14 +58,19 @@ $( document ).ready(function() {
       removeConfirmation: true,
       caseSensitve: false
     });
-
-
-
-
   }
 
 
-
+  $('#searchUsersInput').autocomplete({
+    source: '/admin/users/autocomplete',
+    autoFocus: true,
+    minLength: 3,
+    select: function(e, ui) {
+      ($(this).val(ui.item.value));
+      $('#searchUsersButton').click();
+      return false;
+    }
+  })
 
   // var stuff = [
   //   'Russ', 'Max', 'Jeremy'
