@@ -155,8 +155,8 @@
 
 .sendToAllGroup {
   display: inline-block;
-  height:45px;
-  line-height: 45px;
+  height:57px;
+  line-height: 67px;
   float:right;
   .pubOrPrivBox {
     margin-left: 20px;
@@ -165,24 +165,13 @@
 
 
 
-.newMsgSubject, .newMessageArea, ul.tagit {
+.newMsgSubject, .newMessageArea {
   background-color: #FFFFFF;
   border: 2px solid #cbd0d2;
 }
 
 .newMessageArea {
   padding-top: 10px;
-}
-
-ul.tagit {
-  font-size: 14px;
-  font-family: "PNReg";
-
-
-}
-
-.ui-widget-content {
-  padding-left: 10px !important;
 }
 
 .newMessageArea {
@@ -192,6 +181,7 @@ ul.tagit {
 
 .newMsgBtnSend {
   float:right;
+  margin-top: 15px;
 }
 
 .newMsgBtnSend span {
@@ -334,13 +324,17 @@ ul.tagit {
 .messageReplySingle {
   display: none;
   float:left;
-  height:45px;
-  line-height:45px;
+  height:57px;
+  line-height:57px;
   div {
     display: inline-block;
     font-family: "PNBold";
   }
   margin-bottom: 10px;
+}
+
+.showMsgSingle {
+  display: block;
 }
 
 .messageReplyTo {

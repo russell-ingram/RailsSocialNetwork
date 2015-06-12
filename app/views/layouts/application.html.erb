@@ -5,11 +5,12 @@
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//cdn.quilljs.com/0.19.10/quill.snow.css" /> -->
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= yield %>
-
+<script src="//cdn.quilljs.com/0.19.10/quill.min.js"></script>
 </body>
 </html>

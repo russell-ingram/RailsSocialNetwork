@@ -14,20 +14,30 @@ class MessagesController < ApplicationController
 
 
   def create
+    puts params['recipients_id']
     users = params['recipients_id'].split(',')
     recipients = []
+
     x = User.where(id: users).all
-    # puts x
+    puts x
     # users.each do |user_id|
     #   rec = User.where(id: user_id.to_i)
     #   # puts rec.inspect
     #   recipients << rec
     # end
     # puts recipients
-    conversation = current_user.send_message(x, params[:message][:body], params[:message][:subject]).conversation
+    conversation = current_user.send_message(x, params[:message][:body], params[:message][:subject])
     flash[:success] = "Message has been sent!"
     # redirect_to conversation_path(1)
-    redirect_to conversation_path(conversation)
+    puts "Mailboxer:"
+    puts conversation
+    puts "Details:"
+    puts conversation.inspect
+    if conversation
+      redirect_to conversation_path(conversation)
+    else
+      redirect_to '/admin/messages/new/all'
+    end
   end
 
   def recipients

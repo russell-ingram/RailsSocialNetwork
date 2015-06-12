@@ -69,8 +69,10 @@ Rails.application.routes.draw do
 
   resources :content
 
-  post '/admin/content/new' => 'contents#create', as: 'content_contents'
-  post '/admin/content/layout' => 'contents#layout_edit', as: 'edit_layout_contents'
+  patch '/admin/content/#id' => 'contents#update', as: 'content_content'
+
+  post '/admin/content/layout' => 'contents#layout_edit', as: 'edit_layout_content'
+
 
 
 

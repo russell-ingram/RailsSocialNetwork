@@ -1,22 +1,22 @@
 
-<%= render "layouts/header" %>
+<%= render "layouts/adminHeader" %>
 <div class="pageWrap">
 
   <div class="messagesHeader">
-    <div class="pageHeader">Messages</div>
+    <div class="pageHeader">Create Message</div>
   </div>
     <div class="newMessagesFormWrapper">
 
       <div class="newMsgForm formBox">
 
-      <div class="newMsgFormHeader formHeader">NEW MESSAGE</div>
+      <div class="newMsgFormHeader formHeader"></div>
 
 
 
     <%= form_tag messages_path, method: :post do %>
       <div class="newMsgFormGroup">
 
-      <div class="messageReplySingle">
+      <div class="messageReplySingle showMsgSingle">
         <div class="messageReplyTo">TO:</div>
         <div class="messageReplyRecip">
           <%= @recip.full_name %>

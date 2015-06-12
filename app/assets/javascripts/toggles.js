@@ -130,12 +130,14 @@ $( document ).ready(function() {
   $('#sendAllButton').click(function() {
     if ($('#radioSendAll').is(':checked')) {
       $("#radioSendAll").prop("checked", false);
-      $('#allUsersMsgInput').css("display","inline-block");
+      $('.recipientsGroup').css("display","inline-block");
       $('.messageReplySingle').hide();
+      $('#recipients_id').val('all');
     } else {
       $("#radioSendAll").prop("checked", true);
-      $('#allUsersMsgInput').hide();
+      $('.recipientsGroup').hide();
       $('.messageReplySingle').show();
+      $('#recipients_id').val('');
     }
 
   })

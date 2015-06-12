@@ -30,6 +30,7 @@
   width: inherit;
   list-style-type: none;
   margin-top: -2px;
+
 }
 
 .dropdown.active {
@@ -39,6 +40,8 @@
   width: 298px;
   margin-left: -11px;
   border: 1px solid #d8dcdd;
+  max-height: 180px;
+  overflow: auto;
 }
 
 .wrapper-dropdown-1.active {

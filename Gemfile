@@ -44,6 +44,8 @@ gem 'omniauth-linkedin'
 gem "mailboxer"
 gem 'will_paginate'
 
+
+
 # for XLSX file upload
 gem 'roo', '~> 2.0.0'
 

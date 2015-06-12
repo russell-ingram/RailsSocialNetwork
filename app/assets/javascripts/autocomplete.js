@@ -20,15 +20,18 @@ $( document ).ready(function() {
       select: function(e, ui) {
         ($(this).val(ui.item.value))
         $('.newMsgFormControlHidden').val(function(i,v) {
+
           if (v === "") {
+            console.log(ui.item.user_id);
             return ui.item.user_id;
           }
           else {
-            console.log(v);
+
             return v + "," + ui.item.user_id;
           }
 
         });
+        console.log($('.newMsgFormControlHidden').val());
         tagitTag();
         return false
       }

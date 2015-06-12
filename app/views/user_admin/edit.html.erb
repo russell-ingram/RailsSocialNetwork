@@ -32,7 +32,14 @@
 
       <div class="editPhotoUpload" id="editPhotoUpload">
         <% if !@editUser.profile_pic_url.blank? %>
-        <div class="photoUploadBox" style="background-image: url(<%= @editUser.profile_pic_url %>); background-size: 175px 175px;">
+        <div class="photoUploadBox" style="background-image: url(<%= @editUser.profile_pic_url %>);">
+        </div>
+        <div class="userUploadIcons editUploadIcons">
+          <p>
+          <i class="fa fa-pencil-square-o"></i>
+          Edit Photo
+          </p>
+          </div>
         <% else %>
         <div class="photoUploadBox">
           <div class="userUploadIcons">
@@ -42,10 +49,11 @@
             Add Photo
             </p>
           </div>
+        </div>
         <% end %>
 
 
-        </div>
+
       </div>
 
       <%= f.file_field :profile_pic_url, class: 'customFileInput' %>
@@ -95,13 +103,60 @@
         </div>
         <div class="formBoxRow">
           <div class="field field-col-3">
-            <%= f.text_field :enterprise_size, placeholder: 'Enterprise Size' %>
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+              <% if !@editUser.enterprise_size.blank? %>
+                <%= @editUser.enterprise_size %>
+              <% else %>
+                Enterprise Size
+              <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">Large</li>
+                <li class="ddOption fieldOption">Midsize &amp; SMB</li>
+                <li class="ddOption fieldOption">Global</li>
+              </ul>
+            </div>
+            <%= f.text_field :enterprise_size, placeholder: 'Enterprise Size', style: 'display: none;' %>
           </div>
           <div class="field field-col-3">
-            <%= f.text_field :region, placeholder: 'Region' %>
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                <% if !@editUser.region.blank? %>
+                  <%= @editUser.region %>
+                <% else %>
+                  Region
+                <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">North America</li>
+                <li class="ddOption fieldOption">Europe</li>
+                <li class="ddOption fieldOption">Middle East &amp; Africa</li>
+                <li class="ddOption fieldOption">Latin America</li>
+                <li class="ddOption fieldOption">Asia Pacific</li>
+              </ul>
+            </div>
+            <%= f.text_field :region, placeholder: 'Region', style:'display: none;' %>
           </div>
           <div class="field field-col-3">
-            <%= f.text_field :country, placeholder: 'Country' %>
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                <% if !@editUser.country.blank? %>
+                  <%= @editUser.country %>
+                <% else %>
+                  Country
+                <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <% @countries.each do |country| %>
+                <li class="ddOption fieldOption"><%= country %></li>
+                <% end %>
+              </ul>
+            </div>
+            <%= f.text_field :country, placeholder: 'Country',style: 'display:none;' %>
           </div>
         </div>
         <div class="field-area field-summary">

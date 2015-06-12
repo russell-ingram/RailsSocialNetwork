@@ -43,7 +43,9 @@
 
   <div class="homeContentWrapper">
     <div class= "homeContentBox1">
+      <% if @news %>
       <div class="homeContentPic homeContent"><%= image_tag @news.image_url %></div>
+      <% end %>
       <div class="homeContentNews homeContent">
         <div class="homeContentLabel">news</div>
         <div class="homeContentHeadline">
@@ -56,7 +58,7 @@
         </div>
         <div class="newsContent">
           <% if @news %>
-          <%= @news.body_copy %>
+          <%= @news.body_copy.html_safe %>
           <% else %>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium et enim in faucibus. Morbi mauris enim, imperdiet ac nisi in, facilisis pretium quam. Duis ac massa ut mauris bibendum fringilla auctor at mi. Sed semper tincidunt risus, id rutrum tortor dictum a. Maecenas sit amet pretium mi.
           <% end %>

@@ -126,18 +126,30 @@
   background-color: #D8DCDD;
   height: 175px;
   width: 175px;
+  background-size: 175px;
 }
 
 .userUploadIcons {
   display: table;
   height: inherit;
   width: inherit;
+  cursor: pointer;
   p {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     text-transform: uppercase;
     color: #767676;
+
+  }
+}
+
+.editUploadIcons {
+  display:block;
+  width: 100%;
+  p {
+    display: block;
+    color: black;
   }
 }
 

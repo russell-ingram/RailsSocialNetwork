@@ -23,7 +23,7 @@
 
       <div class="newMsgFormGroup recipientsGroup">
 
-        <%= text_field_tag 'recipients', nil, data: {autocomplete_source: recipients_path }, placeholder: 'TO:', class: 'newMsgFormControl', id: 'allUsersMsgInput' %>
+        <%= text_field_tag 'recipients', nil, data: {autocomplete_source: recipients_path }, autocomplete: 'off', placeholder: 'TO:', class: 'newMsgFormControl', id: 'recipients' %>
 
         <%= text_field_tag 'recipients_id', nil, placeholder: 'Recipients', class: 'newMsgFormControlHidden' %>
 
@@ -43,7 +43,17 @@
       </div>
 
       <div class="newMsgFormGroup">
-        <%= text_area_tag 'message[body]', nil, cols: 3, class: 'newMsgFormControl newMessageArea',placeholder: 'Message:', required: true %>
+        <div id="toolbar">
+            <div class="editorButton ql-bold">B</div>
+            <div class="editorButton ql-italic">I</div>
+            <div class="editorButton ql-underline">U</div>
+        </div>
+        <div class="newMsgFormControl newMessageArea" id="editor">
+          <!-- <div class="editorPlaceholder">Message:</div> -->
+        </div>
+        <%= text_area_tag 'message[body]', nil, cols: 3, class: 'newMsgFormControl newMessageArea',placeholder: 'Message:', id: "textAreaEditor", style: 'display: none;' %>
+
+
       </div>
 
       <div class="newMsgBtnSend">
@@ -68,9 +78,6 @@
 
 
     </div>
-
-
-
 
   <div class="footerMargin"></div>
 </div>

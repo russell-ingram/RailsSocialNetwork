@@ -1,0 +1,29 @@
+.ql-editor {
+  height: 300px;
+}
+
+#editor {
+  position: static;
+}
+
+.ql-toolbar {
+  display: none;
+  float:right;
+  margin-top: 15px;
+  margin-bottom: -40px;
+  margin-right: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.editorButton {
+  width:30px;
+  height:30px;
+  line-height:30px;
+  text-align: center;
+  color: #767676;
+  background-color: #e5e8e9;
+  display: inline-block;
+  margin-left: 5px;
+  cursor: pointer;
+}
