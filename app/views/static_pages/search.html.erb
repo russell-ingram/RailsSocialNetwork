@@ -1,60 +1,156 @@
 <%= render "layouts/header" %>
 <div class="pageWrap">
-  <div class="pageHeader">Search</div>
-
-  <div class="searchWrapper">
-
-    <% @users.each do |user| %>
-      <% if user != current_user %>
-      <div class="userList">
-      <% if user.profile_pic_url? %>
-        <div class="userSearchProfilePic">
-          <%= image_tag user.profile_pic_url %>
-        </div>
-
-      <% end %>
-
-        <div class="userListName">
-          <div class="userListName2">
-          <%= link_to user.full_name, user_profile_path(user) %>
+  <div class="searchWrapperBig">
+    <div class="searchResultsWrapper">
+      <div class="pageHeader">Search Results</div>
+      <div class="searchTypesWrapper">
+        <div class="searchResultsHeader">
+          <div class="searchResultsNum">
+            301 Results
           </div>
-          <div>
-          <%= user.email %>
+          <div class="searchResultsFollowButton">
+            follow this search +
           </div>
         </div>
 
-
-
-        <div class="userListAddBtn">
-
-        <% if @friends.include? user %>
-          <div class="connectedBox">CONNECTED</div>
-        <% elsif @pending.include? user %>
-          <div class="pendingBox">PENDING</div>
-        <% elsif @requested.include? user %>
-          <div class="pendingBox"><a href="/connections">ACCEPT?</a></div>
-        <% else %>
-          <div class="addFriendButton">
-          <%= link_to "CONNECT", new_friendship_path(:friend_id => user) %>
+        <div class="searchTagsWrapper">
+          <% @searchTags.each do |tag| %>
+          <div class="searchTag">
+            <div class="searchTagText">
+            <%= tag %>
+            </div>
+            <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
           </div>
-        <% end %>
 
+          <% end %>
         </div>
-
+        <div class="spendingTagsWrapper">
+          <% @spendingTags.each do |stag| %>
+          <div class="spendingTag">
+            <div class="spendingTagHeader">
+              Spending Intention
+            </div>
+            <div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div>
+            <div class="spendingTagText">
+              <%= stag[:intention] %>  •  <%= stag[:sector] %>  •  <%= stag[:vendor] %>
+            </div>
+          </div>
+          <% end %>
+        </div>
 
       </div>
 
+      <div class="searchWrapper">
+      <% @users.each do |user| %>
+
+
+          <div class="myConnection">
+            <div class="myConnWrapper">
+              <div class="myConnProfilePic"><a href="/profile/<%= user.id %>">
+              <% if user.profile_pic_url? %>
+                <img src="<%= user.profile_pic_url %>">
+              <% end %>
+              </a></div>
+
+              <div class="myConnInfo searchInfo">
+                <div class="searchInfoText">
+                  <div class="myConnName"><%= user.position %></div>
+                  <div class="myConnIndustry"><%= user.industry %> in <%= user.region %>, <%= user.enterprise_size %></div>
+                </div>
+              </div>
+
+              <div class="myConnMessage userActionsSidebar searchActionsSidebar">
+                <div class="userListActionsSearch">
+                  <div class="userListAction">
+                  <a href="/messages/new/<%= user.id %>">message <div class="icon icon-fwd-arrow"></div></a>
+                  <div class="userListAction">
+                  <a href="/friendships/new?friend_id=<%= user.id %>">CONNECT<div class="icon icon-fwd-arrow"></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
       <% end %>
+
+      </div>
+    </div>
+    <div class="searchResultsSideBar">
+    <div class="searchSideBarHeader">Your Searches</div>
+    <div class="searchSideBarTabBox">
+      <div class="searchSideBarTab active">Current</div>
+      <div class="searchSideBarTab">Followed</div>
+    </div>
+    <div class="searchSideBarDropdown">
+      <div class="searchSidebarDropdownLeft">
+        <div class="searchSideBarDropdownHeader">Industry</div>
+        <div class="searchSideBarDropdownText active">Education</div>
+      </div>
+      <div class="icon icon-drop-dwn-arrow"></div>
+    </div>
+    <div class="searchSideBarDropdown">
+      <div class="searchSidebarDropdownLeft">
+        <div class="searchSideBarDropdownHeader">Enterprise Size</div>
+        <div class="searchSideBarDropdownText active">Mid-size</div>
+      </div>
+      <div class="icon icon-drop-dwn-arrow"></div>
+    </div>
+    <div class="searchSideBarDropdown">
+      <div class="searchSidebarDropdownLeft">
+        <div class="searchSideBarDropdownHeader">Organization Type</div>
+        <div class="searchSideBarDropdownText">No preference</div>
+      </div>
+      <div class="icon icon-drop-dwn-arrow"></div>
+    </div>
+    <div class="searchSideBarDropdown">
+      <div class="searchSidebarDropdownLeft">
+        <div class="searchSideBarDropdownHeader">Region</div>
+        <div class="searchSideBarDropdownText active">North America</div>
+      </div>
+      <div class="icon icon-drop-dwn-arrow"></div>
+    </div>
+    <div class="searchSideBarDropdown">
+      <div class="searchSidebarDropdownLeft">
+        <div class="searchSideBarDropdownHeader">Country</div>
+        <div class="searchSideBarDropdownText">No preference</div>
+      </div>
+      <div class="icon icon-drop-dwn-arrow"></div>
+    </div>
+    <div class="searchSideBarDropdown last">
+      <div class="searchSidebarDropdownLeft">
+        <div class="searchSideBarDropdownHeader">Job Title</div>
+        <div class="searchSideBarDropdownText active">Chief Information Officer</div>
+      </div>
+      <div class="icon icon-drop-dwn-arrow"></div>
+    </div>
+    <div class="searchSideBarFiller"></div>
+    <% @spendingTags.each do |stag| %>
+    <div class="searchSideBarSpending">
+      <div class="searchSidebarDropdownLeft">
+        <div class="searchSideBarSpendingHeader">Spending Intention</div>
+        <div class="searchSideBarSpendingInfo">
+          <%= stag[:intention] %>  •  <%= stag[:sector] %>  •  <%= stag[:vendor] %>
+        </div>
+      </div>
+      <div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div>
+    </div>
     <% end %>
 
+    <div class="addSpendingIntentionButton">
+      New spending intention +
+    </div>
 
+    <div class="updateSearchButton">Update</div>
 
+    </div>
 
   </div>
 
   <div class="footerMargin"></div>
 </div>
+
 
 
 

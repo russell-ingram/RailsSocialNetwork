@@ -5,10 +5,8 @@ $( document ).ready(function() {
   });
 
   $('.cmsImageUpload').click(function() {
-    console.log('clicked');
     $('.customFileInput').trigger('click');
     $('.customFileInput').change(function(){
-      console.log('this');
       readURL(this,'cms');
     });
 
@@ -18,7 +16,6 @@ $( document ).ready(function() {
     console.log('clicked');
     $('.customFileInput').trigger('click');
     $('.customFileInput').change(function(){
-      console.log('this');
       readURL(this, 'profile');
     });
 
@@ -67,6 +64,10 @@ $( document ).ready(function() {
     if(event.keyCode == 13) {
       $('#searchUsersButton').click();
     }
+  })
+
+  $('.searchTagClose').on('click',function() {
+    $(this).parent().remove();
   })
 
 

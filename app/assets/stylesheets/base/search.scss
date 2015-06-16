@@ -1,3 +1,67 @@
+.searchTypesWrapper {
+  margin: 0 20px 0 117px;
+  // min-height: 300px;
+  background-color: #f2f3f4;
+  margin-bottom: 30px;
+  padding: 30px 25px 25px 25px;
+}
+
+.searchTagsWrapper, .spendingTagsWrapper {
+  overflow: auto;
+  margin-bottom: 15px;
+}
+
+.searchResultsHeader {
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-bottom: 25px;
+  overflow: auto;
+  font-family: "PNBold";
+  div {
+    display: inline-block;
+  }
+}
+
+.searchResultsNum {
+  float:left;
+}
+
+.searchResultsFollowButton {
+  color: #3eb2cc;
+  float:right;
+}
+
+.searchTag, .spendingTag {
+  padding: 0 10px;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  text-transform: uppercase;
+  width: auto;
+  float: left;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.searchTag {
+  background-color: #3eb2cc;
+  height: 45px;
+  line-height: 45px;
+}
+
+.searchTagText, .spendingTagText {
+  float:left;
+}
+
+.searchTagClose {
+  font-family: "PNLight";
+  font-size: 14px;
+  margin-left: 20px;
+  line-height: 49px;
+  float:right;
+  cursor:pointer;
+}
+
 .searchWrapper {
   min-height: 250px;
   padding-top: 20px;
@@ -5,6 +69,217 @@
   margin-top: 30px;
   padding-bottom: 30px;
 }
+
+.spendingTag {
+  background-color: #4D5054;
+  height: 70px;
+  min-width: 275px;
+}
+
+.spendingTagClose {
+  position: relative;
+  top: -40px;
+  left: -2px;
+}
+
+.spendingTagHeader {
+  text-align:left;
+  padding-top: 15px;
+  margin-bottom: 5px;
+}
+.spendingTagText {
+  text-transform: none;
+  font-family: "PNLight";
+  font-size: 16px;
+
+}
+
+.searchInfo {
+  display: table;
+  height: 140px;
+  padding: 0;
+  padding-left: 20px;
+
+}
+
+.searchInfoText {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.searchActionsSidebar {
+  height: 140px;
+  display: table;
+  line-height: default;
+}
+
+.userListActionsSearch {
+  display: table-cell;
+  vertical-align: middle;
+  .userListAction {
+    line-height: 30px;
+    div {
+      float:right;
+      line-height: 35px;
+      margin-left: 5px;
+    }
+  }
+
+}
+
+.searchWrapperBig {
+  overflow: auto;
+  margin-top:-80px;
+}
+
+.searchResultsSideBar {
+  width: 24%;
+  float:left;
+  background-color: #34373D;
+  min-height: 750px;
+  color: #797C7F;
+  text-transform: uppercase;
+  font-size: 14px;
+  div {
+    padding-left: 10px;
+    border-bottom: 1px solid #58595b;
+  }
+}
+
+.searchResultsWrapper {
+  width: 76%;
+  float:left;
+  padding-top:80px;
+}
+
+.searchSideBarHeader {
+  height: 43px;
+  line-height: 43px;
+  border-top: 1px solid #797C7F;
+}
+
+.searchSideBarTabBox {
+  height: 68px;
+  line-height: 68px;
+  text-align: center;
+  padding-left: 0 !important;
+  border-bottom: 3px solid #3eb2cc !important;
+  div {
+    border: none;
+    padding: 0;
+  }
+}
+
+.searchSideBarTab {
+  float:left;
+  width: 50%;
+}
+
+.searchSideBarTab.active {
+  color: #3eb2cc;
+  border-bottom: 10px solid #3eb2cc;
+  height: 68px;
+
+}
+
+.searchSideBarDropdown {
+  height: 75px;
+  display: table;
+  width:100%;
+
+  .icon {
+    line-height: 90px;
+    text-align:right;
+    font-size:30px;
+    height: 75px;
+    margin-right: 10px;
+  }
+  div {
+    border-bottom: none;
+    padding-left: 0;
+  }
+}
+.searchSideBarDropdown.last{
+  border-bottom: none;
+}
+
+.searchSidebarDropdownLeft {
+  width: 85%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.searchSideBarDropdownHeader {
+  font-size: 18px;
+}
+
+.searchSideBarDropdownText {
+  color: #797C7F;
+  text-transform: none;
+  font-family: "PNLight";
+}
+.searchSideBarDropdownText.active {
+  color: #D1D3D4;
+}
+
+.searchSideBarFiller {
+  height: 10px;
+  width: 100%;
+  background-color:#282b30;
+}
+.searchSideBarSpending {
+  background-color: #9A9B9E;
+  color: #282b30;
+  padding: 15px 0;
+  display: table;
+  width: 100%;
+  div {
+    border-bottom: none;
+    padding-left: 0;
+  }
+  div:first-child {
+
+  }
+  .searchTagClose {
+    top: -20px;
+    left: -15px;
+  }
+}
+
+.searchSideBarSpendingHeader {
+  font-size: 18px;
+}
+.searchSideBarSpendingInfo {
+  font-family: "PNLight";
+  text-transform: none;
+}
+
+.addSpendingIntentionButton {
+  color: #D1D3D4;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: none !important;
+}
+
+.updateSearchButton {
+  background-color: #3eb2cc;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: 100px;
+  cursor: pointer;
+
+}
+
+// old stuff, might can delete
+
+
+
 
 .adminUserBox {
   margin-left: 117px;

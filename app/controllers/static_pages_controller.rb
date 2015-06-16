@@ -25,7 +25,13 @@ class StaticPagesController < ApplicationController
 
   def search
     get_users
-    get_friendships
+    # get_friendships
+    @searchTags = ["education", "mid-size", "n. america", "chief information officer"]
+    @spendingTags = [{
+      :intention => "Decreasing",
+      :sector => "Laptops",
+      :vendor => "Apple"
+    }]
   end
 
   def get_friendships
