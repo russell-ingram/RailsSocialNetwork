@@ -9,8 +9,6 @@ Rails.application.routes.draw do
 
   get '/connections' => 'friendships#index'
 
-  get '/search' => 'static_pages#search'
-
 
   get '/profile/:id' => 'static_pages#show_profile', as: 'user_profile'
 
@@ -74,7 +72,12 @@ Rails.application.routes.draw do
   post '/admin/content/layout' => 'contents#layout_edit', as: 'edit_layout_content'
 
 
+  # resources :search
+  get '/search' => 'searchs#search_results'
+  get '/newsearch'  => 'searchs#new_search'
 
+  post '/search/new' => 'searchs#search', as: 'search_searches'
+  post '/search/add_favorite' => 'searchs#save_favorite_search', as: 'search_search'
 
 
 end

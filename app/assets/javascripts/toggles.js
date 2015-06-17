@@ -1,5 +1,7 @@
 $( document ).ready(function() {
 
+
+
   $(".replyButton").click(function() {
     $('.replyForm').addClass('active');
   });
@@ -140,7 +142,9 @@ $( document ).ready(function() {
       $('#recipients_id').val('');
     }
 
-  })
+  });
+
+
 
 
 });

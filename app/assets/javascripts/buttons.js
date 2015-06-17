@@ -68,7 +68,38 @@ $( document ).ready(function() {
 
   $('.searchTagClose').on('click',function() {
     $(this).parent().remove();
-  })
+  });
 
+  $('.formSearchButton').off().on('click', function() {
+    $('#submitSearch').click();
+  });
+  $('.updateSearchButton').off().on('click', function() {
+    $('#submitSearch').click();
+  });
+
+  $('.searchSideBarTab').off().on('click',function() {
+    var tab = $(this)
+    var text = tab.text();
+    $('.searchSideBarTab').removeClass('active');
+    tab.addClass('active');
+    if (text === "Followed") {
+      $('.currentSearchTab').hide();
+      $('.savedSearchTab').show();
+    } else {
+      $('.currentSearchTab').show();
+      $('.savedSearchTab').hide();
+    }
+  });
+
+  $('#searchAddFavButton').off().on('click', function() {
+    // $('#searchFavNameField').addClass('active');
+    var data = $(this).attr('data');
+    console.log(data);
+    console.log(typeof(data));
+    $.post('/search/add_favorite',{"searchData": data},function(data) {
+      // $('#searchFavNameField').removeClass('active');
+      console.log(data.user_id);
+    })
+  });
 
 });

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610082118) do
+ActiveRecord::Schema.define(version: 20150616150729) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20150610082118) do
 
   add_index "friendships", ["state"], name: "index_friendships_on_state"
   add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id"
+
+  create_table "intentions", force: :cascade do |t|
+    t.integer  "intention_id"
+    t.integer  "search_id"
+    t.string   "intention"
+    t.string   "sector"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"
@@ -104,6 +113,20 @@ ActiveRecord::Schema.define(version: 20150610082118) do
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+
+  create_table "searches", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "search_id"
+    t.string   "name"
+    t.string   "industry"
+    t.string   "enterprise"
+    t.string   "organization_type"
+    t.string   "region"
+    t.string   "country"
+    t.string   "job_title"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

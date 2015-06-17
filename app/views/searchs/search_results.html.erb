@@ -1,0 +1,329 @@
+<%= render "layouts/header" %>
+<div class="pageWrap">
+  <div class="searchWrapperBig">
+    <div class="searchResultsWrapper">
+      <div class="pageHeader">Search Results</div>
+      <div class="searchTypesWrapper">
+        <div class="searchResultsHeader">
+          <div class="searchResultsNum">
+            301 Results
+          </div>
+          <div class="searchResultsFollowButtonDiv">
+            <div class="searchResultsFollowButton" id="searchAddFavButton" data="<%= @search.id %>">
+              follow this search +
+            </div>
+            <div class="searchFavNameField">
+              <input type="text" id="searchFavNameField" placeholder="Name You Search">
+              <div class="searchNameFieldBtns">
+                <div class="acceptSearchName"><div class="icon icon-icon-add"></div></div>
+                <div class="cancelSearchName"><div class="icon icon-icon-close"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="searchTagsWrapper">
+        <%= form_for :search do |f| %>
+          <% if !@search.industry.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="industry">
+              <%= @search.industry %>
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <% if !@search.enterprise.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="enterprise">
+              <%= @search.enterprise %>
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <% if !@search.organization_type.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="organization_type">
+              <%= @search.organization_type %>
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <% if !@search.region.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="region">
+              <%= @search.region %>
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <% if !@search.country.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="country">
+              <%= @search.country %>
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <% if !@search.job_title.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="job_title">
+              <%= @search.job_title %>
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.submit 'Submit', id: 'searchEdit', style: 'display:none;' %>
+        <% end %>
+        </div>
+        <div class="spendingTagsWrapper">
+          <% @spendingTags.each do |stag| %>
+          <div class="spendingTag">
+            <div class="spendingTagHeader">
+              Spending Intention
+            </div>
+            <div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div>
+            <div class="spendingTagText">
+              <%= stag[:intention] %>  •  <%= stag[:sector] %>  •  <%= stag[:vendor] %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="searchWrapper">
+      <% if @users != nil %>
+        <% @users.each do |user| %>
+
+
+            <div class="myConnection">
+              <div class="myConnWrapper">
+                <div class="myConnProfilePic"><a href="/profile/<%= user.id %>">
+                <% if user.profile_pic_url? %>
+                  <img src="<%= user.profile_pic_url %>">
+                <% end %>
+                </a></div>
+
+                <div class="myConnInfo searchInfo">
+                  <div class="searchInfoText">
+                    <div class="myConnName"><%= user.position %></div>
+                    <div class="myConnIndustry"><%= user.industry %> in <%= user.region %>, <%= user.enterprise_size %></div>
+                  </div>
+                </div>
+
+                <div class="myConnMessage userActionsSidebar searchActionsSidebar">
+                  <div class="userListActionsSearch">
+                    <div class="userListAction">
+                    <a href="/messages/new/<%= user.id %>">message <div class="icon icon-fwd-arrow"></div></a>
+                    <div class="userListAction">
+                    <a href="/friendships/new?friend_id=<%= user.id %>">CONNECT<div class="icon icon-fwd-arrow"></div></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <% end %>
+      <% end %>
+
+      </div>
+    </div>
+    <div class="searchResultsSideBar">
+      <div class="searchSideBarHeader">Your Searches</div>
+      <div class="searchSideBarTabBox">
+        <div class="searchSideBarTab active">Current</div>
+        <div class="searchSideBarTab">Followed</div>
+      </div>
+
+      <div class="currentSearchTab">
+      <%= form_for :search, url: '/search/new' do |f| %>
+        <div class="searchSideBarDropdown">
+          <div class="searchSidebarDropdownLeft">
+            <div class="searchSideBarDropdownHeader">Industry</div>
+            <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
+
+              <% if !@search.industry.blank? %>
+              <span class="ddLabel searchDDLabel active">
+                  <%= @search.industry %>
+              <% else %>
+              <span class="ddLabel searchDDLabel">
+                  No preference
+              <% end %>
+              </span>
+              <ul class="dropdown fieldDropdown searchDropdown">
+                <li class="ddOption fieldOption">No preference</li>
+                <li class="ddOption fieldOption">Education</li>
+                <li class="ddOption fieldOption">Technology</li>
+              </ul>
+            </div>
+            <%= f.text_field :industry, placeholder: 'Industry',style: 'display:none;' %>
+            <!-- add inputs later -->
+            <!-- style search options -->
+
+
+          </div>
+          <div class="icon icon-drop-dwn-arrow"></div>
+        </div>
+        <div class="searchSideBarDropdown">
+          <div class="searchSidebarDropdownLeft">
+            <div class="searchSideBarDropdownHeader">Enterprise Size</div>
+            <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
+              <% if !@search.enterprise.blank? %>
+              <span class="ddLabel searchDDLabel active">
+                  <%= @search.enterprise %>
+              <% else %>
+              <span class="ddLabel searchDDLabel">
+                  No preference
+              <% end %>
+              <ul class="dropdown fieldDropdown searchDropdown">
+                <li class="ddOption fieldOption">No preference</li>
+                <li class="ddOption fieldOption">Large</li>
+                <li class="ddOption fieldOption">Midsize &amp; SMB</li>
+                <li class="ddOption fieldOption">Global</li>
+              </ul>
+            </div>
+            <%= f.text_field :enterprise, placeholder: 'Enterprise Size', style: 'display: none;' %>
+
+          </div>
+          <div class="icon icon-drop-dwn-arrow"></div>
+        </div>
+        <div class="searchSideBarDropdown">
+          <div class="searchSidebarDropdownLeft">
+            <div class="searchSideBarDropdownHeader">Organization Type</div>
+            <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
+              <% if !@search.organization_type.blank? %>
+              <span class="ddLabel searchDDLabel active">
+                  <%= @search.organization_type %>
+              <% else %>
+              <span class="ddLabel searchDDLabel">
+                  No preference
+              <% end %>
+              <ul class="dropdown fieldDropdown searchDropdown">
+                <li class="ddOption fieldOption">No preference</li>
+                <li class="ddOption fieldOption">Public</li>
+                <li class="ddOption fieldOption">Private</li>
+              </ul>
+            </div>
+            <%= f.text_field :organization_type, placeholder: 'Organization Type',style: 'display:none;' %>
+          </div>
+          <div class="icon icon-drop-dwn-arrow"></div>
+        </div>
+        <div class="searchSideBarDropdown">
+          <div class="searchSidebarDropdownLeft">
+            <div class="searchSideBarDropdownHeader">Region</div>
+            <!-- <div class="searchSideBarDropdownText active">North America</div> -->
+            <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
+              <% if !@search.region.blank? %>
+              <span class="ddLabel searchDDLabel active">
+                  <%= @search.region %>
+              <% else %>
+              <span class="ddLabel searchDDLabel">
+                  No preference
+              <% end %>
+              <ul class="dropdown fieldDropdown searchDropdown">
+                <li class="ddOption fieldOption">No preference</li>
+                <li class="ddOption fieldOption">North America</li>
+                <li class="ddOption fieldOption">Europe</li>
+                <li class="ddOption fieldOption">Middle East &amp; Africa</li>
+                <li class="ddOption fieldOption">Latin America</li>
+                <li class="ddOption fieldOption">Asia Pacific</li>
+              </ul>
+            </div>
+            <%= f.text_field :region, placeholder: 'Region', style:'display: none;' %>
+          </div>
+          <div class="icon icon-drop-dwn-arrow"></div>
+        </div>
+        <div class="searchSideBarDropdown">
+          <div class="searchSidebarDropdownLeft">
+            <div class="searchSideBarDropdownHeader">Country</div>
+            <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
+              <% if !@search.country.blank? %>
+              <span class="ddLabel searchDDLabel active">
+                  <%= @search.country %>
+              <% else %>
+              <span class="ddLabel searchDDLabel">
+                  No preference
+              <% end %>
+              <ul class="dropdown fieldDropdown searchDropdown">
+                <li class="ddOption fieldOption">No preference</li>
+                <% @countries.each do |country| %>
+                <li class="ddOption fieldOption"><%= country %></li>
+                <% end %>
+              </ul>
+            </div>
+            <%= f.text_field :country, placeholder: 'Country',style: 'display:none;' %>
+          </div>
+          <div class="icon icon-drop-dwn-arrow"></div>
+        </div>
+        <div class="searchSideBarDropdown last">
+          <div class="searchSidebarDropdownLeft">
+            <div class="searchSideBarDropdownHeader">Job Title</div>
+            <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
+              <% if !@search.job_title.blank? %>
+              <span class="ddLabel searchDDLabel active">
+                  <%= @search.job_title %>
+              <% else %>
+              <span class="ddLabel searchDDLabel">
+                  No preference
+              <% end %>
+              <ul class="dropdown fieldDropdown searchDropdown">
+                <li class="ddOption fieldOption">Chief Information Officer</li>
+                <li class="ddOption fieldOption">Chief Executive Officer</li>
+              </ul>
+            </div>
+            <%= f.text_field :job_title, placeholder: 'Job Title', style:'display: none;' %>
+          </div>
+          <div class="icon icon-drop-dwn-arrow"></div>
+        </div>
+        <div class="searchSideBarFiller"></div>
+        <% @spendingTags.each do |stag| %>
+        <div class="searchSideBarSpending">
+          <div class="searchSidebarDropdownLeft">
+            <div class="searchSideBarSpendingHeader">Spending Intention</div>
+            <div class="searchSideBarSpendingInfo">
+              <%= stag[:intention] %>  •  <%= stag[:sector] %>  •  <%= stag[:vendor] %>
+            </div>
+          </div>
+          <div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div>
+        </div>
+        <% end %>
+
+        <div class="addSpendingIntentionButton">
+          New spending intention +
+        </div>
+
+        <div class="updateSearchButton">Update</div>
+        <%= f.submit 'Submit', id: 'submitSearch', style: 'display:none;' %>
+        <% end %>
+      </div>
+      <!-- end current tab -->
+      <div class="savedSearchTab">
+      <% @favSearchs.each do |search| %>
+        <div class="favSearch">
+          <div class="favSearchHeader">
+            Unnamed Search
+          </div>
+          <div class="favSearchParams">
+            <% for attribute in ['job_title','industry', 'enterprise', 'region','country', 'organization_type'] %>
+              <% if !search.attributes[attribute].blank? %>
+                <%= search.attributes[attribute].to_s %>,
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+
+    </div>
+    <!-- end sidebar -->
+  </div>
+
+  <div class="footerMargin"></div>
+</div>
+
+
+
+
+<%= render "layouts/footer" %>

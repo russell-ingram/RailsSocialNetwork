@@ -1,0 +1,152 @@
+<%= render "layouts/header" %>
+<div class="pageWrap">
+
+  <div class="pageHeader">Search Results</div>
+  <div class="editProfileWrapper">
+
+    <%= form_for ([:search, @search]) do |f| %>
+
+    <div class="formBox">
+      <div class="formHeader">SPECIFY A SEARCH</div>
+      <div class="searchBoxWrapper">
+        <div class="basicSearchOptions">
+          <div class="formBoxRow">
+            <div class="field field-col-3">
+              <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+                <span class="ddLabel">
+                  Region
+                </span>
+                <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+                <ul class="dropdown fieldDropdown">
+                  <li class="ddOption fieldOption">North America</li>
+                  <li class="ddOption fieldOption">Europe</li>
+                  <li class="ddOption fieldOption">Middle East &amp; Africa</li>
+                  <li class="ddOption fieldOption">Latin America</li>
+                  <li class="ddOption fieldOption">Asia Pacific</li>
+                </ul>
+              </div>
+              <%= f.text_field :region, placeholder: 'Enterprise Size', style: 'display: none;' %>
+            </div>
+
+            <div class="field field-col-3">
+              <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+                <span class="ddLabel">
+                  Industry
+                </span>
+                <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+                <ul class="dropdown fieldDropdown">
+                  <li class="ddOption fieldOption">Technology</li>
+                  <li class="ddOption fieldOption">Education</li>
+                </ul>
+              </div>
+              <%= f.text_field :industry, placeholder: 'Industry',style: 'display:none;' %>
+            </div>
+
+            <div class="field field-col-3">
+              <div class="addSpendingIntentionFieldButton">
+                Spending Intentions
+                <div class="icon icon-icon-add"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="spendingIntetions">
+            <div class="emptyIntentions">
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="advancedSearchOptions">
+
+            <div class="advancedSearchHeader">Advanced Options</div>
+
+            <div class="formBoxRow">
+              <div class="field field-col-4">
+                <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+                  <span class="ddLabel">
+                    Enterprise Size
+                  </span>
+                  <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+                  <ul class="dropdown fieldDropdown">
+                    <li class="ddOption fieldOption">Large</li>
+                    <li class="ddOption fieldOption">Midsize &amp; SMB</li>
+                    <li class="ddOption fieldOption">Global</li>
+                  </ul>
+                </div>
+                <%= f.text_field :enterprise, placeholder: 'Enterprise Size', style: 'display: none;' %>
+              </div>
+              <div class="field field-col-4">
+                <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+                  <span class="ddLabel">
+                      Job Title
+                  </span>
+                  <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+                  <ul class="dropdown fieldDropdown">
+                    <li class="ddOption fieldOption">Chief Information Officer</li>
+                    <li class="ddOption fieldOption">Chief Executive Officer</li>
+
+                  </ul>
+                </div>
+                <%= f.text_field :job_title, placeholder: 'Job Title', style:'display: none;' %>
+              </div>
+
+              <div class="field field-col-4">
+                <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+                  <span class="ddLabel">
+                      Organization Type
+                  </span>
+                  <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+                  <ul class="dropdown fieldDropdown">
+                    <li class="ddOption fieldOption">Public</li>
+                    <li class="ddOption fieldOption">Private</li>
+                  </ul>
+                </div>
+                <%= f.text_field :organization_type, placeholder: 'Organization Type',style: 'display:none;' %>
+              </div>
+
+              <div class="field field-col-4">
+                <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+                  <span class="ddLabel">
+                      Country
+                  </span>
+                  <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+                  <ul class="dropdown fieldDropdown">
+                    <% @countries.each do |country| %>
+                    <li class="ddOption fieldOption"><%= country %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <%= f.text_field :country, placeholder: 'Country',style: 'display:none;' %>
+              </div>
+            </div>
+
+            <div class="formSearchButton">
+              Submit
+              <div class="icon icon-fwd-arrow"></div>
+            </div>
+            <%= f.submit 'Submit', id: 'submitSearch', style: 'display:none;' %>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+
+
+
+
+
+  <div class="footerMargin"></div>
+</div>
+
+
+
+
+<%= render "layouts/footer" %>

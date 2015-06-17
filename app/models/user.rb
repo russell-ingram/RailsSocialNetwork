@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_pic_url, ProfilepicUploader
 
+  has_many :searchs
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+
   $( ".wrapper-dropdown" ).click(function() {
     var selectedDrop = $(this).find('.dropdown');
     var selectedLabel = $(this).find('.ddLabel');
@@ -12,7 +13,6 @@ $( document ).ready(function() {
 
     $(".filterOption").off().on('click',function() {
       var option = $(this).text();
-      console.log(option);
       selectedLabel.text(option);
       sortFilter(option);
 
@@ -20,13 +20,33 @@ $( document ).ready(function() {
 
     $(".fieldOption").off().on('click', function () {
       var option = $(this).text();
-      console.log(option);
       selectedLabel.text(option);
       var input = selectedLabel.parent().next();
       input.val(option);
-      console.log(input);
+      if (selectedLabel.hasClass('searchDDLabel')) {
+        if (option === 'No preference') {
+          selectedLabel.removeClass('active');
+        } else {
+          selectedLabel.addClass('active');
+        }
+      }
 
-    })
+    });
+
+    if (selectedDrop.hasClass('searchDropdown')) {
+      var top = $(this).parent().parent()
+      if (top.hasClass('active')){
+        top.removeClass('active');
+      } else {
+        $('.searchSideBarDropdown').removeClass('active');
+        top.addClass('active');
+      }
+      // console.log(selectedLabel.text())
+
+    }
+
+
+
 
   });
 

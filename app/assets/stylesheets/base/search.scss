@@ -28,7 +28,8 @@
 
 .searchResultsFollowButton {
   color: #3eb2cc;
-  float:right;
+
+  cursor: pointer;
 }
 
 .searchTag, .spendingTag {
@@ -141,7 +142,7 @@
   text-transform: uppercase;
   font-size: 14px;
   div {
-    padding-left: 10px;
+    padding-left: 15px;
     border-bottom: 1px solid #58595b;
   }
 }
@@ -173,6 +174,7 @@
 .searchSideBarTab {
   float:left;
   width: 50%;
+  cursor:pointer;
 }
 
 .searchSideBarTab.active {
@@ -276,6 +278,122 @@
 
 }
 
+.searchBoxWrapper {
+
+}
+
+.basicSearchOptions {
+  background-color: #EFF1F1;
+  padding: 0 30px;
+  padding-top: 30px;
+  .formBoxRow {
+    padding-bottom: 30px;
+  }
+}
+
+
+.addSpendingIntentionFieldButton {
+  height: 45px;
+  line-height: 45px;
+  width: 100%;
+  background-color: #FFF;
+  font-size: 14px;
+  font-family: "PNReg";
+  color: #797C7F;
+  border-radius: 3px;
+  border: 1px solid #D8DCDD;
+  padding-left: 15px;
+  .icon {
+    float:right;
+    margin-right: 15px;
+  }
+}
+
+.advancedSearchOptions {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.advancedSearchHeader {
+  text-transform: uppercase;
+  color: #3eb2cc;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+.formSearchButton {
+  background-color: #3eb2cc;
+  color: #FFF;
+  width: 180px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  float:right;
+  margin-bottom: 30px;
+  .icon {
+    display: inline-block;
+    position: relative;
+    top: 1px;
+    font-size: 13px;
+  }
+}
+
+.searchResultsFollowButtonDiv {
+  float:right;
+  div {
+    // display: block;
+  }
+}
+.searchFavNameField {
+  display: none !important;
+  div {
+    display: inline-block;
+  }
+}
+
+#searchFavNameField {
+  position: relative;
+  height: 45px;
+  width: 150px;
+  background-color: #282b30;
+  color: white;
+  padding-left: 10px;
+  transition: height 0.5s ease;
+  // display: none;
+}
+#searchFavNameField.active {
+  height: 45px;
+  // display: block;
+}
+
+.searchNameFieldBtns {
+  div {
+    width: 20px;
+    height: 100%;
+  }
+
+}
+
+.acceptSearchName {
+  color: white;
+  background-color: #3eb2cc;
+}
+.cancelSearchName {
+  color: white;
+  background-color: #282b30;
+}
+
+.favSearch {
+  background-color: white;
+  margin-top: 20px;
+}
+
+.savedSearchTab {
+  display: none;
+}
+
 // old stuff, might can delete
 
 
@@ -368,3 +486,6 @@
   margin-right: 20px;
 }
 
+.currentSearchTab {
+  padding-left: 0 !important;
+}

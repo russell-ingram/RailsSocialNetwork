@@ -63,3 +63,39 @@
     text-align: center;
   }
 }
+
+.searchSideBarWrapperDropdown {
+  background-color: inherit !important;
+  border: none !important;
+  height: 35px !important;
+  margin-top: -10px !important;
+  width: 150% !important;
+}
+
+.searchDropdown {
+  background-color: #282b30 !important;
+  max-height: 0px;
+  transition: max-height 0.5s ease;
+}
+.searchDropdown.active {
+  padding-left: 15px !important;
+  margin-left: -14px !important;
+  z-index: 2;
+  border: none !important;
+  max-height: 180px;
+  :hover {
+    color: #3eb2cc;
+  }
+}
+
+.searchSideBarDropdown {
+  transition: color 0.5s ease;
+}
+
+.searchSideBarDropdown.active {
+  color: white;
+}
+
+.searchDDLabel.active {
+  color: white;
+}
