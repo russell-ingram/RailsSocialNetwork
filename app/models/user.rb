@@ -39,9 +39,19 @@ class User < ActiveRecord::Base
     first_name + ' ' + last_name
   end
 
+  def self.search(search)
+    puts "SEARCH:"
+    puts search.inspect
+    users = User.all
 
-  # def name
-  #   return "Name"
-  # end
+    users = users.where(["industry LIKE ?", search[:industry]]) if search[:industry].present?
+    users = users.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
+    users = users.where(["region LIKE ?", search[:region]]) if search[:region].present?
+    users = users.where(["country LIKE ?", search[:country]]) if search[:country].present?
+    users = users.where(["position LIKE ?", search[:job_title]]) if search[:job_title].present?
+    users = users.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
+
+    return users
+  end
 
 end

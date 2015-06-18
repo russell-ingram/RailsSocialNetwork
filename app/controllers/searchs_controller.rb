@@ -14,7 +14,7 @@ class SearchsController < ApplicationController
     @search = Search.new(search_params)
     @search.save
 
-    @users = User.order(created_at: :desc).where("country like ?", @search[:country])
+    @users = User.search(@search)
 
 
 # "industry like ? AND enterprise_size like ? AND region like ? AND country like ? AND position like ?",@search[:industry], @search[:enterprise], @search[:region], @search[:country], @search[:job_title]
