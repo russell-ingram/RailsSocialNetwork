@@ -73,8 +73,8 @@ Rails.application.routes.draw do
 
 
   # resources :search
-  get '/search' => 'searchs#search_results'
-  get '/newsearch'  => 'searchs#new_search'
+  get '/search/results' => 'searchs#search_results'
+  get '/search'  => 'searchs#new_search'
 
   post '/search/new' => 'searchs#search', as: 'search_searches'
   post '/search/add_favorite' => 'searchs#save_favorite_search', as: 'search_search'

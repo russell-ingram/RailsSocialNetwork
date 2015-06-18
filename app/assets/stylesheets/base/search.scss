@@ -332,6 +332,7 @@
   text-transform: uppercase;
   float:right;
   margin-bottom: 30px;
+  cursor: pointer;
   .icon {
     display: inline-block;
     position: relative;
@@ -393,6 +394,13 @@
 .savedSearchTab {
   display: none;
 }
+
+.searchFormBox {
+  overflow: visible;
+  min-height: 390px;
+}
+
+
 
 // old stuff, might can delete
 
