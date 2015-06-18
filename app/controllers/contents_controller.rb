@@ -2,7 +2,6 @@ class ContentsController < ApplicationController
 
   # news update
   def update
-    puts "PARAMS: "
     # puts params[:content][:image_url]
 
 

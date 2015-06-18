@@ -69,7 +69,7 @@ Rails.application.routes.draw do
 
   patch '/admin/content/#id' => 'contents#update', as: 'content_content'
 
-  post '/admin/content/layout' => 'contents#layout_edit', as: 'edit_layout_content'
+  patch '/admin/content/layout/#id' => 'contents#layout_edit', as: 'edit_layout_content'
 
 
   # resources :search

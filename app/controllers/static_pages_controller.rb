@@ -54,6 +54,8 @@ class StaticPagesController < ApplicationController
       @news.body_copy = ""
       @news.save
     end
+    puts "NEWS:"
+    puts @news.inspect
 
     @layout = Content.find_by("type_of_content = ? AND active = ?", "layout", true)
     if @layout == nil
