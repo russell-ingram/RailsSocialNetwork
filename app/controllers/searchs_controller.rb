@@ -40,6 +40,8 @@ class SearchsController < ApplicationController
   def new_search
     @countries = countries_list
     @search = Search.new
+    @sectors = Sector.all
+    @vendors = Vendor.all
   end
 
   def save_favorite_search
@@ -72,7 +74,7 @@ class SearchsController < ApplicationController
   end
 
   def search_params
-    params.require(:search).permit(:name, :industry, :enterprise, :organization_type, :region, :country, :job_title)
+    params.require(:search).permit(:name, :industry, :enterprise, :organization_type, :region, :country, :job_title, :results)
   end
 
 end

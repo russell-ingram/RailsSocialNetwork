@@ -125,10 +125,83 @@ class UserAdminController < ApplicationController
 
     xlsxFile = params[:file]
 
-    xlsx = Roo::Excelx.new(xlsxFile.path)
+    xlsx = Roo::Excelx.new(xlsxFile.path,:minimal_load => true)
+    # header = xlsx.first_row
+    # p header
+    survey_id = xlsx.sheets[0].to_i
+    s = Survey.new
+    s.survey_id
+    # add date time
+    s.save
 
-    xlsx.each_with_pagename do |name, sheet|
-      p sheet.row(1)
+    xlsx.each_row_streaming do |row|
+
+      y = row[0].coordinate.row
+
+      if y != 1
+        u = User.find_by("uid = ?", row[0].value)
+
+        if u
+          # do stuff to edit existing user
+        else
+          u = User.new
+          u.uid = row[0].value
+          u.email = row[1].value
+          u.first_name = row[2].value
+          u.last_name = row[3].value
+          u.password = "password"
+          # this needs to be based on organizations in db later
+          u.employer = row[5].value
+          # this should work with normal titles, but is using standard title for now
+          u.position = row[8].value
+          u.industry = row[9].value
+          u.enterprise_size = row[10].value
+          u.region = row[11].value
+          u.footprint = row[12].value
+          u.country = row[13].value
+          u.save
+
+          # iterate through columns w/ survey for results upload
+          22.upto(xlsx.last_column) do |index|
+            arr = xlsx.column(index)[0].split('_')
+            vendor_name = arr[0]
+            sector_name = arr[1]
+
+            # v = Vendor.find_by("name = ?", vendor_name)
+            # if v
+            # else
+            #   v = Vendor.new
+            #   v.name = vendor_name
+            #   v.save
+            # end
+            # sect = Sector.find_by("name = ?", sector_name)
+            # if sect
+            # else
+            #   sect = Sector.new
+            #   sect.name = sector_name
+            #   sect.save
+            # end
+
+
+            # i = Intention.new
+            # i.survey_id = survey_id
+            # i.vendor_id = v.id
+            # i.sector_id = sect.id
+            # i.user_id = u.uid
+            # i.intention = xlsx.column(index)[y]
+            # i.save
+
+
+          end
+        end
+
+
+
+
+
+
+      end
+
     end
 
 

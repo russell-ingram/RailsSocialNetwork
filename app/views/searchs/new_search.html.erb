@@ -167,11 +167,9 @@
               </span>
               <span class="carrot"><i class="fa fa-chevron-down"></i></span>
               <ul class="dropdown fieldDropdown">
-                <li class="ddOption fieldOption">North America</li>
-                <li class="ddOption fieldOption">Europe</li>
-                <li class="ddOption fieldOption">Middle East &amp; Africa</li>
-                <li class="ddOption fieldOption">Latin America</li>
-                <li class="ddOption fieldOption">Asia Pacific</li>
+                    <% @sectors.each do |sector| %>
+                    <li class="ddOption fieldOption"><%= sector.name %></li>
+                    <% end %>
               </ul>
             </div>
             <input placeholder="Sector" style="display: none;" type="text" name="intention[sector]" id="intention_sector">
@@ -186,11 +184,9 @@
               </span>
               <span class="carrot"><i class="fa fa-chevron-down"></i></span>
               <ul class="dropdown fieldDropdown">
-                <li class="ddOption fieldOption">North America</li>
-                <li class="ddOption fieldOption">Europe</li>
-                <li class="ddOption fieldOption">Middle East &amp; Africa</li>
-                <li class="ddOption fieldOption">Latin America</li>
-                <li class="ddOption fieldOption">Asia Pacific</li>
+                    <% @vendors.each do |vendor| %>
+                    <li class="ddOption fieldOption"><%= vendor.name %></li>
+                    <% end %>
               </ul>
             </div>
             <input placeholder="Vendor" style="display: none;" type="text" name="intention[vendor]" id="intention_vendor">

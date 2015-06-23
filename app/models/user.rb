@@ -43,6 +43,38 @@ class User < ActiveRecord::Base
   def self.search(search)
     puts "SEARCH:"
     puts search.inspect
+    p search.results.class
+    if search.results != ""
+      res = JSON.parse(search.results)
+      p res[0]
+      intentions = Intention.all
+      if res[0]["vendor"] != "Any"
+        # if res[0]["vendor"] = "Any"
+        # end
+        v = Vendor.find_by("name = ?", res[0]["vendor"])
+        intentions = intentions.where(["vendor_id = ?", v.id]) if v != "Any"
+      end
+      if res[0]["sector"] != "Any"
+        sect = Sector.find_by("name = ?", res[0]["sector"])
+        intentions = intentions.where(["sector_id = ?", sect.id]) if sect != "Any"
+      end
+
+      intentions = intentions.where(["intention = ?", res[0]["intention"].upcase]) if res[0]["intention"] != "Any"
+
+
+
+      p "Intentions found:"
+      p intentions.inspect
+      user_ids = []
+      intentions.each do | i |
+        user_ids << i.user_id
+      end
+    end
+
+
+
+
+
     users = User.all
 
     users = users.where(["industry LIKE ?", search[:industry]]) if search[:industry].present?
@@ -51,6 +83,7 @@ class User < ActiveRecord::Base
     users = users.where(["country LIKE ?", search[:country]]) if search[:country].present?
     users = users.where(["position LIKE ?", search[:job_title]]) if search[:job_title].present?
     users = users.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
+    users = users.find(user_ids) if user_ids.present?
 
     return users
   end
