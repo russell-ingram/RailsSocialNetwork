@@ -167,29 +167,29 @@ class UserAdminController < ApplicationController
             vendor_name = arr[0]
             sector_name = arr[1]
 
-            # v = Vendor.find_by("name = ?", vendor_name)
-            # if v
-            # else
-            #   v = Vendor.new
-            #   v.name = vendor_name
-            #   v.save
-            # end
-            # sect = Sector.find_by("name = ?", sector_name)
-            # if sect
-            # else
-            #   sect = Sector.new
-            #   sect.name = sector_name
-            #   sect.save
-            # end
+            v = Vendor.find_by("name = ?", vendor_name)
+            if v
+            else
+              v = Vendor.new
+              v.name = vendor_name
+              v.save
+            end
+            sect = Sector.find_by("name = ?", sector_name)
+            if sect
+            else
+              sect = Sector.new
+              sect.name = sector_name
+              sect.save
+            end
 
 
-            # i = Intention.new
-            # i.survey_id = survey_id
-            # i.vendor_id = v.id
-            # i.sector_id = sect.id
-            # i.user_id = u.uid
-            # i.intention = xlsx.column(index)[y]
-            # i.save
+            i = Intention.new
+            i.survey_id = survey_id
+            i.vendor_id = v.id
+            i.sector_id = sect.id
+            i.user_id = u.uid
+            i.intention = xlsx.column(index)[y]
+            i.save
 
 
           end
