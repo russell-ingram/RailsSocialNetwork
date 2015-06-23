@@ -102,4 +102,114 @@ $( document ).ready(function() {
     })
   });
 
+  var searchCounter = 0;
+
+  $('.modalDoneButton').off().on('click', function() {
+    searchCounter++;
+    var h = $('.searchFormBox').height();
+    console.log(h);
+    $('.searchFormBox').height(h+60);
+
+    var vendor = $('#intention_vendor').val();
+    var sector = $('#intention_sector').val();
+    var intention = $("#intention_intention").val();
+    intention = intention.charAt(0).toUpperCase() + intention.slice(1).toLowerCase();
+    if (intention === "") {
+      intention = "Any";
+    }
+    if (sector === "") {
+      sector = "Any";
+    }
+    if (vendor === "") {
+      vendor = "Any";
+    }
+
+    var newIntObj = {
+      "intention": intention,
+      "vendor": vendor,
+      "sector": sector
+    };
+
+    var newIntention = '<div class="addedSpendingIntention"><div class="elemNum">'+searchCounter+'</div><div class="addedSpendingIntentionLeft"><div class="addedSpendingIntentionHeader">SPENDING INTENTION</div><div class="addedSpendingIntentionText">'+intention+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+sector+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+vendor+'</div></div><div class="addedSpendingIntentionDelete"><div class="icon icon-icon-close"></div></div></div>'
+    var jsonResults = $('#resultsField').val();
+    if (jsonResults && jsonResults !== "") {
+      var oldObj = JSON.parse(jsonResults);
+      console.log(oldObj);
+      oldObj.push(newIntObj);
+      var newObj = JSON.stringify(oldObj);
+      $('#resultsField').val(newObj);
+    } else {
+      var newObjStr = JSON.stringify([newIntObj]);
+      $('#resultsField').val(newObjStr);
+    }
+
+    $('.spendingIntentions').append(newIntention);
+    resetModalValues();
+
+
+
+  });
+
+  $('.spendingIntentions').on('click','.addedSpendingIntentionDelete', function() {
+
+    var h = $('.searchFormBox').height();
+    $('.searchFormBox').height(h-60);
+
+    var num = $(this).parent().find('.elemNum').text();
+    num = parseInt(num);
+    $(this).parent().remove();
+    var results = $('#resultsField').val();
+    var json = JSON.parse(results);
+    json[num-1] = "";
+    $('#resultsField').val(JSON.stringify(json));
+
+
+  })
+
+  function resetModalValues () {
+
+    var input1 = $("#intention_sector");
+    var input2 = $("#intention_vendor");
+
+    input1.prev().find('.ddLabel').text("Search infrastructure");
+    input2.prev().find('.ddLabel').text("Search vendors");
+
+    input1.val("");
+    input2.val("");
+    $("#intention_intention").val("");
+
+
+    $(".intentionSelectModal").each(function(i) {
+      var icon = $(this).find('.icon')
+      if (i === 0) {
+        icon.addClass('icon-selection-true');
+        $(this).addClass('active');
+      } else {
+        icon.removeClass('icon-selection-true');
+        icon.addClass('icon-selection-false');
+        $(this).removeClass('active');
+      }
+
+    });
+
+
+
+  }
+
+
+
+
+  $(".intentionSelectModal").off().on('click', function() {
+    $(".intentionSelectModal").removeClass('active');
+    $(".intentionSelectModal").each(function(i) {
+      var icon = $(this).find('.icon')
+      icon.removeClass('icon-selection-true');
+      icon.addClass('icon-selection-false');
+    })
+    $(this).addClass('active');
+    $(this).find('.icon').addClass('icon-selection-true');
+    var choice = $(this).find('.intentionModalText').text();
+    $('#intention_intention').val(choice);
+  })
+
 });

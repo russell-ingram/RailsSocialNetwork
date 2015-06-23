@@ -286,19 +286,21 @@
   background-color: #EFF1F1;
   padding: 0 30px;
   padding-top: 30px;
+  border-bottom: 1px solid #CCCED0;
+  padding-bottom: 30px;
   .formBoxRow {
-    padding-bottom: 30px;
+    margin-bottom: 30px;
   }
 }
 
 
 .addSpendingIntentionFieldButton {
-  height: 45px;
-  line-height: 45px;
+  height: 60px;
+  line-height: 60px;
   width: 100%;
   background-color: #FFF;
-  font-size: 14px;
-  font-family: "PNReg";
+  font-size: 18px;
+  font-family: "PNLight";
   color: #797C7F;
   border-radius: 3px;
   border: 1px solid #D8DCDD;
@@ -397,9 +399,131 @@
 
 .searchFormBox {
   overflow: visible;
-  min-height: 390px;
+  height: 440px;
 }
 
+.addIntentionModal {
+  width: 42%;
+}
+.formBoxModal {
+  background-color: #EFF1f1;
+  min-height: 350px;
+  height: auto !important;
+}
+.modalBody {
+  padding: 30px;
+  color: #797C7F;
+}
+.modalIntentions {
+  width: 30%;
+  float:left;
+}
+.modalIntentionsRight {
+  width: 70%;
+  float:right;
+  .field {
+    margin-bottom: 20px;
+  }
+}
+.intentionSelectModal {
+  cursor: pointer;
+  div {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+  }
+  .icon {
+    color: #e5e8e9;
+    font-size: 22px;
+  }
+  .intentionModalText {
+    margin-left: 10px;
+    position: relative;
+    top: -5px;
+  }
+}
+
+.intentionSelectModal.active {
+  .icon {
+    color: #3eb2cc;
+  }
+  color: #3eb2cc;
+}
+
+.intentionsHeader {
+  margin-bottom: 10px;
+  color: #767676;
+  font-size: 18px;
+}
+
+.close-modal, .modalDoneButton {
+  color: white;
+  height: 45px;
+  width: 220px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
+.close-modal {
+  background-color: #282b30;
+  position: relative;
+  float: right;
+  margin-top: -100px;
+  margin-right: 30px;
+
+}
+
+.modalDoneButton {
+  background-color: #3eb2cc;
+  margin-top: 29px;
+
+}
+
+.spendingIntentions {
+  width: 100%;
+
+  div {
+    display: inline-block;
+  }
+}
+
+.addedSpendingIntention {
+  width: 100%;
+  height: 60px;
+  line-height: 65px;
+  border-top: 1px solid #CCCED0;
+}
+.addedSpendingIntention:last-of-type {
+  border-bottom: 1px solid #CCCED0;
+}
+.addedSpendingIntentionLeft {
+  float:left;
+  font-size: 18px;
+  :first-child {
+    margin-right: 25px;
+  }
+}
+.addedSpendingIntentionText {
+  font-family: "PNLight";
+  margin-right: 10px;
+}
+.addedSpendingIntentionDelete {
+  float:right;
+  margin-right: 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.wrapper60px {
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
+}
+.elemNum {
+  display: none !important;
+}
 
 
 // old stuff, might can delete

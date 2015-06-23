@@ -12,7 +12,7 @@
         <div class="basicSearchOptions">
           <div class="formBoxRow">
             <div class="field field-col-3">
-              <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <div class="wrapper-dropdown wrapperFieldDropdown wrapper60px" tabindex="1">
                 <span class="ddLabel">
                   Region
                 </span>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="field field-col-3">
-              <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <div class="wrapper-dropdown wrapperFieldDropdown wrapper60px" tabindex="1">
                 <span class="ddLabel">
                   Industry
                 </span>
@@ -43,18 +43,19 @@
             </div>
 
             <div class="field field-col-3">
+            <a href="#ex1" rel="modal:open">
               <div class="addSpendingIntentionFieldButton">
                 Spending Intentions
                 <div class="icon icon-icon-add"></div>
               </div>
+            </a>
             </div>
           </div>
 
-          <div class="spendingIntetions">
-            <div class="emptyIntentions">
-            </div>
-          </div>
+          <div class="spendingIntentions">
 
+          </div>
+          <%= f.text_field :results, placeholder: 'Results', style: 'display: none;', id: 'resultsField' %>
 
 
         </div>
@@ -139,9 +140,70 @@
     <% end %>
   </div>
 
+  <div id="ex1" class="addIntentionModal" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal">
+      <div class="formHeader">SPECIFY A SEARCH</div>
+      <div class="modalBody">
+        <div class="modalIntentions">
+          <div class="modalSectionHeader intentionsHeader">
+            INTENTION
+          </div>
+          <div class="intentionSelectModal active"><div class="icon icon-selection-true"></div><div class="intentionModalText">ANY</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">ADOPT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">INCREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">FLAT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">DECREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">REPLACE</div></div>
+        </div>
+        <input placeholder="Intention" style="display: none;" type="text" name="intention[intention]" id="intention_intention">
+        <div class="modalIntentionsRight">
+          <div class="modalSectionHeader intentionsHeader">
+            SECTOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                Search infrastructure
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">North America</li>
+                <li class="ddOption fieldOption">Europe</li>
+                <li class="ddOption fieldOption">Middle East &amp; Africa</li>
+                <li class="ddOption fieldOption">Latin America</li>
+                <li class="ddOption fieldOption">Asia Pacific</li>
+              </ul>
+            </div>
+            <input placeholder="Sector" style="display: none;" type="text" name="intention[sector]" id="intention_sector">
+          </div>
+          <div class="modalSectionHeader intentionsHeader">
+            VENDOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                Search vendors
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">North America</li>
+                <li class="ddOption fieldOption">Europe</li>
+                <li class="ddOption fieldOption">Middle East &amp; Africa</li>
+                <li class="ddOption fieldOption">Latin America</li>
+                <li class="ddOption fieldOption">Asia Pacific</li>
+              </ul>
+            </div>
+            <input placeholder="Vendor" style="display: none;" type="text" name="intention[vendor]" id="intention_vendor">
+          </div>
 
+          <div class="modalDoneButton">
+            <a href="" rel="modal:close">DONE</a>
+          </div>
 
-
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="footerMargin"></div>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616150729) do
+ActiveRecord::Schema.define(version: 20150622175240) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -56,10 +56,18 @@ ActiveRecord::Schema.define(version: 20150616150729) do
     t.integer  "intention_id"
     t.integer  "search_id"
     t.string   "intention"
-    t.string   "sector"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "sector_id"
+    t.integer  "vendor_id"
+    t.integer  "survey_id"
+    t.integer  "user_id"
   end
+
+  add_index "intentions", ["sector_id"], name: "index_intentions_on_sector_id"
+  add_index "intentions", ["survey_id"], name: "index_intentions_on_survey_id"
+  add_index "intentions", ["user_id"], name: "index_intentions_on_user_id"
+  add_index "intentions", ["vendor_id"], name: "index_intentions_on_vendor_id"
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"
@@ -126,6 +134,21 @@ ActiveRecord::Schema.define(version: 20150616150729) do
     t.string   "job_title"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.text     "results"
+  end
+
+  create_table "sectors", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.integer  "survey_id"
+    t.datetime "date_taken"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -162,5 +185,12 @@ ActiveRecord::Schema.define(version: 20150616150729) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "vendors", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end

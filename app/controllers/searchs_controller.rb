@@ -46,7 +46,9 @@ class SearchsController < ApplicationController
     puts "PARAMS:"
     @search = Search.find(params[:searchData]);
     @search[:user_id] = current_user.id
+    @search[:results] = {"test"=> ["one"=>"1","two"=>"2"]}
     @search.save
+    puts @search.results["test"][0]["one"]
     render json: @search
   end
 
