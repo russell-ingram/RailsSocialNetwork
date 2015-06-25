@@ -46,8 +46,10 @@ class User < ActiveRecord::Base
     p search.results.class
     if search.results != ""
       res = JSON.parse(search.results)
-      p res[0]
+      # p res[0]
       intentions = Intention.all
+      p "Length:"
+      p intentions.length
       if res[0]["vendor"] != "Any"
         # if res[0]["vendor"] = "Any"
         # end

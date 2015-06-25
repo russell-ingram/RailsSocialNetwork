@@ -1,8 +1,8 @@
-<%= render "layouts/header" %>
+<%= render "layouts/adminHeader" %>
 <div class="pageWrap">
   <div class="pageHeader">Create User</div>
 
-  <div class="searchWrapper createNewWrapper">
+  <div class="editProfileWrapper">
 
 <%= form_for ([:user_admin, @editUser]) do |f| %>
   <% if @editUser.errors.any? %>
@@ -17,47 +17,202 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, autocomplete: 'off' %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name, autocomplete: 'off' %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email, autocomplete: 'off' %>
-  </div>
-  <div class="field">
-    <%= f.label :employer %><br>
-    <%= f.text_field :employer, autocomplete: 'off' %>
-  </div>
-  <div class="field">
-    <%= f.label :industry %><br>
-    <%= f.text_field :industry, autocomplete: 'off' %>
-  </div>
-  <div class="field">
-    <%= f.label :region %><br>
-    <%= f.text_field :region, input_html: { autocomplete: 'off' } %>
-  </div>
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        USER DETAILS
+      </div>
 
-  <div class="field">
-    <%= f.label :profile_pic %><br>
-    <%= f.text_field :profile_pic_url, input_html: { autocomplete: 'off' } %>
-  </div>
+      <div class="editPhotoUpload" id="editPhotoUpload">
+        <% if !@editUser.profile_pic_url.blank? %>
+        <div class="photoUploadBox" style="background-image: url(<%= @editUser.profile_pic_url %>);">
+        </div>
+        <div class="userUploadIcons editUploadIcons">
+          <p>
+          <i class="fa fa-pencil-square-o"></i>
+          Edit Photo
+          </p>
+          </div>
+        <% else %>
+        <div class="photoUploadBox">
+          <div class="userUploadIcons">
+            <p>
+            <i class="fa fa-camera"></i>
+            <br>
+            Add Photo
+            </p>
+          </div>
+        </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password, input_html: { autocomplete: 'off' } %>
-  </div>
-  <div class="newMsgBtnSend createUserButton">
-    <span>
-      <span>
-          <input type="Submit" value="Create">
-      </span>
-    </span>
-   </div>
+
+
+      </div>
+
+      <%= f.file_field :profile_pic_url, class: 'customFileInput' %>
+
+      <div class="editContentRight">
+
+        <div class="field editField">
+          <%= f.text_field :first_name, placeholder: 'First name', required: true %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :last_name, placeholder: 'Last name', required: true %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :position, placeholder: 'Job title' %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :footprint, placeholder: 'IT Footprint' %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :email, placeholder: 'Email address', required: true %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :linked_in_url, placeholder: 'Connected LinkedIn account' %>
+        </div>
+
+
+      </div>
+
+
+
+
+    </div>
+
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        EMPLOYER DETAILS
+      </div>
+      <div class="formBoxField">
+        <div class="formBoxRow">
+          <div class="field field-col-2">
+            <%= f.text_field :employer, placeholder: 'Employer' %>
+          </div>
+          <div class="field field-col-2">
+            <%= f.text_field :industry, placeholder: 'Industry' %>
+          </div>
+
+        </div>
+        <div class="formBoxRow">
+          <div class="field field-col-3">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+              <% if !@editUser.enterprise_size.blank? %>
+                <%= @editUser.enterprise_size %>
+              <% else %>
+                Enterprise Size
+              <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">Large</li>
+                <li class="ddOption fieldOption">Midsize &amp; SMB</li>
+                <li class="ddOption fieldOption">Global</li>
+              </ul>
+            </div>
+            <%= f.text_field :enterprise_size, placeholder: 'Enterprise Size', style: 'display: none;' %>
+          </div>
+          <div class="field field-col-3">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                <% if !@editUser.region.blank? %>
+                  <%= @editUser.region %>
+                <% else %>
+                  Region
+                <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">North America</li>
+                <li class="ddOption fieldOption">Europe</li>
+                <li class="ddOption fieldOption">Middle East &amp; Africa</li>
+                <li class="ddOption fieldOption">Latin America</li>
+                <li class="ddOption fieldOption">Asia Pacific</li>
+              </ul>
+            </div>
+            <%= f.text_field :region, placeholder: 'Region', style:'display: none;' %>
+          </div>
+          <div class="field field-col-3">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                <% if !@editUser.country.blank? %>
+                  <%= @editUser.country %>
+                <% else %>
+                  Country
+                <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <% @countries.each do |country| %>
+                <li class="ddOption fieldOption"><%= country %></li>
+                <% end %>
+              </ul>
+            </div>
+            <%= f.text_field :country, placeholder: 'Country',style: 'display:none;' %>
+          </div>
+        </div>
+        <div class="field-area field-summary">
+          <%= f.text_area :emp_summary, placeholder: 'Summary' %>
+        </div>
+        <div class="pubOrPrivBox">
+          <div class="pubLabel">Company type</div>
+          <div id="pubButton1">
+            <input type="radio" id="radio1" name="public" value="true" checked>
+            <label for="radio01"><span></span>Privately Held</label>
+          </div>
+          <!-- <br> -->
+          <div id="pubButton2">
+            <input type="radio" id="radio2" name="public" value="false">
+            <label for="radio02"><span></span>Publicly Held</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="userEditBox formBox pastExperienceFormBox">
+      <div class="profileTabBoxLabel formHeader">
+        PAST EXPERIENCE
+      </div>
+      <div class="formBoxField">
+        <div class="formBoxRow">
+          <div class="field field-col-2">
+            <input placeholder="Title" type="text" name="past_emp[title]" id="past_emp_title">
+          </div>
+          <div class="field field-col-2">
+            <input placeholder="Company" type="text" name="past_emp[company]" id="past_emp_company">
+          </div>
+          <div class="pastEmpDates pubLabel">
+            <div class="pastEmpDateLabel">Start date</div>
+            <div class="field pastEmpDateBox">
+              <input placeholder="MM/YYYY" type="text" name="past_emp[start_date]" id="past_emp_start_date">
+            </div>
+            <div class="pastEmpDateLabel">End date</div>
+            <div class="field pastEmpDateBox">
+              <input placeholder="MM/YYYY" type="text" name="past_emp[end_date]" id="past_emp_end_date">
+            </div>
+          </div>
+          <div class="pastEmpDescriptionBox field-area field-summary">
+            <textarea name="past_emp[description]" placeholder="Description"></textarea>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="addPastPosition">
+      <i class="fa fa-plus"></i>ADD ANOTHER POSITION
+    </div>
+
+    <div class="userEditButtons">
+      <div class="userAdminButton"><a href="">Send Invitation</a></div>
+      <div class="userAdminButton"><%= f.submit 'Save' %></div>
+      <div class="userAdminButton greyButton"><a href="/admin">Cancel</a></div>
+
+
+    </div>
+
 <% end %>
 
 

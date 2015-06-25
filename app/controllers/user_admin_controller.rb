@@ -100,10 +100,12 @@ class UserAdminController < ApplicationController
 
   def new
     @editUser = User.new
+    @countries = countries_list
   end
 
   def create
     @editUser = User.new(new_user_params)
+    @editUser.password = "password"
     respond_to do |format|
       if @editUser.save
         format.html { redirect_to '/admin' }

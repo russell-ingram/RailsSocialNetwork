@@ -14,6 +14,40 @@
   width: 100%;
 }
 
+.homeAddIntentions {
+  width: 299px;
+  height: 60px;
+  display: inline-block;
+  margin-right: 16px;
+  div {
+    font-size: 12px;
+    font-family: "PNBold";
+  }
+}
+
+.searchBarHomeAdvancedOptions {
+  color: #3eb2cc;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  cursor: pointer;
+  div {
+    display: inline-block;
+    margin-left: 5px;
+    position: relative;
+    top: 1px;
+  }
+}
+
+.homePageAdvancedRow {
+  padding-right: 117px;
+  display: none;
+  height: 0px;
+  transition: height 2s ease;
+}
+.homePageAdvancedRow.active {
+  display: block;
+  height: auto;
+}
 
 .searchButton {
   color: white;
@@ -31,6 +65,10 @@
   letter-spacing: 0.10em;
 
   cursor: pointer;
+}
+.fixIt {
+  position: relative;
+  top: -2px;
 }
 
 .fa-chevron-right {

@@ -179,3 +179,20 @@ textarea, input, select {
   height: 100%;
 }
 
+@media only screen
+and (min-device-width : 1280px)
+and (max-device-width : 1386px) {
+
+
+}
+
+@media only screen
+and (min-device-width : 1386px) {
+
+  .pageWrap {
+    width: 1386px;
+  }
+
+}
+
+
