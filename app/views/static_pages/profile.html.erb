@@ -31,6 +31,9 @@
       <div class="profileTabBoxLabel formHeader">
         SUMMARY
       </div>
+      <div class="profileTabSummaryText">
+        <%= current_user.summary.html_safe %>
+      </div>
     </div>
     <div class="profileTabBox formBox">
       <div class="profileTabBoxLabel formHeader">

@@ -91,9 +91,15 @@
       <div class="profileTabBoxLabel formHeader">
         SUMMARY
       </div>
-      <div class="field-area field-summary">
-        <%= f.text_area :summary, placeholder: 'Summary' %>
+      <div id="toolbar" class="ql-toolbar ql-summaryBar" style="display: block;">
+        <div class="editorButton ql-bold">B</div>
+        <div class="editorButton ql-italic">I</div>
+        <div class="editorButton ql-underline">U</div>
       </div>
+        <div class="newMsgFormControl newMessageArea userSummaryField" id="editor">
+          <%= @editUser.summary %>
+        </div>
+        <%= f.text_area :summary, placeholder: 'Summary',id:'textAreaEditor', style: 'display: none;' %>
 
 
     </div>

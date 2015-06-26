@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622175240) do
+ActiveRecord::Schema.define(version: 20150625055204) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 20150622175240) do
     t.string   "region"
     t.string   "country"
     t.text     "emp_summary"
+    t.text     "summary"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
