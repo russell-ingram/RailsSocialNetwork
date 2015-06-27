@@ -1,43 +1,22 @@
-require "bundler/capistrano"
+set :application, 'ETRFITO'
+set :repo_url, 'git@bitbucket.org:disasteruss/etr-dev.git'
+set :user, "disasteruss"
+set :password, "acer321"
 
-set :application, "ETR Dev"
-set :user, "russ"
+set :deploy_to, '/home/deploy/etr-dev'
 
-set :scm, :git
-set :repository, "git@bitbucket.org:disasteruss/etr-dev.git"
-set :branch, "master"
-set :use_sudo, true
-
-server "etrfito3.cloudapp.net", :web, :app, :db, primary: true
-
-set :deploy_to, "/home/#{user}/apps/#{application}"
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
-ssh_options[:port] = 22
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :deploy do
-  desc "Fix permissions"
-  task :fix_permissions, :roles => [ :app, :db, :web ] do
-    run "chmod +x #{release_path}/config/unicorn_init.sh"
-  end
 
-  %w[start stop restart].each do |command|
-    desc "#{command} unicorn server"
-    task command, roles: :app, except: {no_release: true} do
-      run "service unicorn_#{application} #{command}"
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join('tmp/restart.txt')
     end
   end
 
-  task :setup_config, roles: :app do
-    sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-    sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
-    sudo "mkdir -p #{shared_path}/config"
-  end
-  after "deploy:setup", "deploy:setup_config"
-
-  task :symlink_config, roles: :app do
-    # Add database config here
-  end
-  after "deploy:finalize_update", "deploy:fix_permissions"
-  after "deploy:finalize_update", "deploy:symlink_config"
+  after :publishing, 'deploy:restart'
+  after :finishing, 'deploy:cleanup'
 end

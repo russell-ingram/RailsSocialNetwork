@@ -57,7 +57,9 @@ gem 'roo', '~> 2.0.0'
 gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+# gem 'capistrano'
+gem 'capistrano-rails'
+# gem 'capistrano-bundler'
 
 gem 'aasm'
 
