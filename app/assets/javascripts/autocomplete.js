@@ -42,13 +42,65 @@ $( document ).ready(function() {
     placeholderText: 'To:'
   });
 
-
   function tagitTag () {
     console.log("TAGGED IT");
 
     $('#recipients').tagit({
       autocomplete: {
        source: $('#recipients').data('autocomplete-source'),
+        autoFocus: true,
+        minLength: 3,
+        select: function(e, ui) {
+          ($(this).val(ui.item.value))
+          console.log('hello');
+
+          return false
+        }
+      },
+      allowSpaces: false,
+      removeConfirmation: true,
+      caseSensitve: false,
+      placeholderText: null
+    });
+  }
+
+
+  $('#admin_recipients').tagit({
+    autocomplete: {
+     source: $('#admin_recipients').data('autocomplete-source'),
+      autoFocus: true,
+      minLength: 3,
+      select: function(e, ui) {
+        ($(this).val(ui.item.value))
+        $('.newMsgFormControlHidden').val(function(i,v) {
+
+          if (v === "") {
+            console.log(ui.item.user_id);
+            return ui.item.user_id;
+          }
+          else {
+
+            return v + "," + ui.item.user_id;
+          }
+
+        });
+        console.log($('.newMsgFormControlHidden').val());
+        tagitTagAll();
+        return false
+      }
+    },
+    removeConfirmation: true,
+    caseSensitve: false,
+    allowSpaces: true,
+    placeholderText: 'To:'
+  });
+
+  function tagitTagAll () {
+    console.log("TAGGED IT");
+
+    $('#admin_recipients').tagit({
+      autocomplete: {
+       source: $('#admin_recipients').data('autocomplete-source'),
         autoFocus: true,
         minLength: 3,
         select: function(e, ui) {

@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="replySubject"><%= @conversation.subject %></div>
-        <div class="replyBody"><%= message.body %></div>
+        <div class="replyBody"><%= message.body.html_safe %></div>
 
         <div class="replyButton">
           REPLY

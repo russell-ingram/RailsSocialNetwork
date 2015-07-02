@@ -23,7 +23,7 @@
 
       <div class="newMsgFormGroup recipientsGroup">
 
-        <%= text_field_tag 'recipients', nil, data: {autocomplete_source: recipients_path }, autocomplete: 'off', placeholder: 'TO:', class: 'newMsgFormControl', id: 'recipients' %>
+        <%= text_field_tag 'recipients', nil, data: {autocomplete_source: admin_recipients_path }, autocomplete: 'off', placeholder: 'TO:', class: 'newMsgFormControl', id: 'admin_recipients' %>
 
         <%= text_field_tag 'recipients_id', nil, placeholder: 'Recipients', class: 'newMsgFormControlHidden' %>
 
@@ -33,7 +33,7 @@
         <div class="pubOrPrivBox">
           <div id="sendAllButton">
             <input type="radio" id="radioSendAll" name="public" value="true">
-            <label for="radio01"><span></span>Send to all users</label>
+            <label for="radio01"><span><div class="checkBoxIcon icon icon-selection-false"></div></span>Send to all users</label>
           </div>
         </div>
       </div>

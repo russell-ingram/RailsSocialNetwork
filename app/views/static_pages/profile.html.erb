@@ -32,7 +32,9 @@
         SUMMARY
       </div>
       <div class="profileTabSummaryText">
-        <%= current_user.summary.html_safe %>
+        <% if current_user.summary? %>
+          <%= current_user.summary.html_safe %>
+        <% end %>
       </div>
     </div>
     <div class="profileTabBox formBox">

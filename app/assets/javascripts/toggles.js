@@ -127,11 +127,20 @@ $( document ).ready(function() {
       $('.recipientsGroup').css("display","inline-block");
       $('.messageReplySingle').hide();
       $('#recipients_id').val('all');
+      $('.checkBoxIcon').removeClass('icon-selection-true');
+      $('.checkBoxIcon').addClass('icon-selection-false');
+      $('.checkBoxIcon').css("color","#cbd0d2");
+      $('.tagit-choice-editable').each(function() {
+        $(this).remove();
+      })
     } else {
       $("#radioSendAll").prop("checked", true);
       $('.recipientsGroup').hide();
       $('.messageReplySingle').show();
       $('#recipients_id').val('');
+      $('.checkBoxIcon').removeClass('icon-selection-false');
+      $('.checkBoxIcon').addClass('icon-selection-true');
+      $('.checkBoxIcon').css("color","#3eb2cc");
     }
 
   });

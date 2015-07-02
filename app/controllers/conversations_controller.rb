@@ -6,6 +6,8 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
+    puts "Conversations:"
+    puts @conversations
 
   end
 
@@ -24,6 +26,8 @@ class ConversationsController < ApplicationController
 
   def get_mailbox
     @mailbox ||= current_user.mailbox
+    puts "MAILBOX:"
+    puts @mailbox.inspect
   end
 
   def get_conversation

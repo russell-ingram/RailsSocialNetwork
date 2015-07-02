@@ -63,4 +63,27 @@ class MessagesController < ApplicationController
 
 
   end
+
+  def admin_recipients
+    f_n = params[:term].split(' ').first
+    if params[:term].split(' ').length > 1
+      l_n = params[:term].split(' ').last
+      @recipients = User.order(:first_name).where("first_name like ? AND last_name like?","%#{f_n}%", "%#{l_n}%")
+    else
+      @recipients = User.order(:first_name).where("first_name like ? OR last_name like?", "%#{f_n}%", "%#{f_n}%")
+    end
+
+    @recipientsAll = []
+
+    @recipients.each do |user|
+      u_data = { "label" => user.full_name, "user_id" => user.id }
+      @recipientsAll << u_data
+    end
+
+    render json: @recipientsAll
+
+
+  end
+
+
 end

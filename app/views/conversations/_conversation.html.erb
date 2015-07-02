@@ -18,7 +18,7 @@
       <div class="messageEmployer"><%= message.sender.employer %></div>
     </div>
     <div class="messageTitle"><i class="fa fa-circle"></i><%= conversation.subject %></div>
-    <div class="messageContent"><%= message.body %></div>
+    <div class="messageContent"><%= message.body.html_safe %></div>
 
 
 

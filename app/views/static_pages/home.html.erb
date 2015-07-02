@@ -11,18 +11,18 @@
         <span class="ddLabel">Region</span>
         <span class="carrot"><i class="fa fa-chevron-down"></i></span>
         <ul class="dropdown">
-          <li class="ddOption">option1</li>
-          <li class="ddOption">option2</li>
-          <li class="ddOption">option3</li>
+            <% @regions.each do |region| %>
+            <li class="ddOption fieldOption"><%= region %></li>
+            <% end %>
         </ul>
       </div>
       <div class="wrapper-dropdown" tabindex="1">
         <span class="ddLabel">Industry</span>
         <span class="carrot"><i class="fa fa-chevron-down"></i></span>
         <ul class="dropdown">
-          <li class="ddOption">option1</li>
-          <li class="ddOption">option2</li>
-          <li class="ddOption">option3</li>
+            <% @industries.each do |industry| %>
+            <li class="ddOption fieldOption"><%= industry %></li>
+            <% end %>
         </ul>
       </div>
       <div class="homeAddIntentions">
@@ -53,9 +53,9 @@
           </span>
           <span class="carrot"><i class="fa fa-chevron-down"></i></span>
           <ul class="dropdown fieldDropdown">
-            <li class="ddOption fieldOption">Large</li>
-            <li class="ddOption fieldOption">Midsize &amp; SMB</li>
-            <li class="ddOption fieldOption">Global</li>
+            <li class="ddOption fieldOption">LARGE</li>
+            <li class="ddOption fieldOption">SMALL</li>
+            <li class="ddOption fieldOption">MIDSIZE</li>
           </ul>
         </div>
         <%= f.text_field :enterprise, placeholder: 'Enterprise Size', style: 'display: none;' %>

@@ -104,6 +104,10 @@
   cursor: pointer;
 }
 
+.deleteUserModalInfo {
+  height: 171px;
+}
+
 .userEditBox {
   background-color: #EFF1F1;
 }
@@ -202,8 +206,14 @@
       border-radius:  50%;
       background-color: #cbd0d2;
     }
+    .icon {
+      margin-top:-20px;
+      font-size:18px;
+      color: #cbd0d2;
+    }
     input:checked + label span {
-      background-color: #767676;
+      background-color: #FFFFFF;
+
     }
   }
 }

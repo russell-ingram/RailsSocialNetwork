@@ -40,6 +40,22 @@ class User < ActiveRecord::Base
     first_name + ' ' + last_name
   end
 
+  def ent_no_caps
+    if enterprise_size
+      enterprise_size.capitalize
+    else
+      "Unlisted Size"
+    end
+  end
+
+  def job_title_option
+    if position
+      position
+    else
+      "Unlisted Position"
+    end
+  end
+
   def self.search(search)
     puts "SEARCH:"
     puts search.inspect
