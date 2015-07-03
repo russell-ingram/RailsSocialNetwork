@@ -23,7 +23,7 @@
         </div>
 
         <div class="searchTagsWrapper">
-        <%= form_for :search do |f| %>
+        <%= form_for ([:search, @search]) do |f| %>
           <% if !@search.industry.blank? %>
             <div class="searchTag">
               <div class="searchTagText" value="industry">
@@ -32,6 +32,7 @@
               <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
             </div>
           <% end %>
+          <%= f.text_field :industry, placeholder: 'Industry',style: 'display:none;' %>
           <% if !@search.enterprise.blank? %>
             <div class="searchTag">
               <div class="searchTagText" value="enterprise">
@@ -40,6 +41,7 @@
               <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
             </div>
           <% end %>
+          <%= f.text_field :enterprise, placeholder: 'Enterprise',style: 'display:none;' %>
           <% if !@search.organization_type.blank? %>
             <div class="searchTag">
               <div class="searchTagText" value="organization_type">
@@ -48,6 +50,7 @@
               <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
             </div>
           <% end %>
+          <%= f.text_field :organization_type, placeholder: 'organization_type',style: 'display:none;' %>
           <% if !@search.region.blank? %>
             <div class="searchTag">
               <div class="searchTagText" value="region">
@@ -56,6 +59,7 @@
               <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
             </div>
           <% end %>
+          <%= f.text_field :region, placeholder: 'region',style: 'display:none;' %>
           <% if !@search.country.blank? %>
             <div class="searchTag">
               <div class="searchTagText" value="country">
@@ -64,6 +68,7 @@
               <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
             </div>
           <% end %>
+          <%= f.text_field :country, placeholder: 'country',style: 'display:none;' %>
           <% if !@search.job_title.blank? %>
             <div class="searchTag">
               <div class="searchTagText" value="job_title">
@@ -72,7 +77,8 @@
               <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
             </div>
           <% end %>
-          <%= f.submit 'Submit', id: 'searchEdit', style: 'display:none;' %>
+          <%= f.text_field :job_title, placeholder: 'job_title',style: 'display:none;' %>
+          <%= f.submit 'Submit', id: 'searchEdit', style: "display: none;" %>
         <% end %>
         </div>
         <div class="spendingTagsWrapper">
@@ -83,7 +89,7 @@
             </div>
             <div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div>
             <div class="spendingTagText">
-              <%= stag[:intention] %>  •  <%= stag[:sector] %>  •  <%= stag[:vendor] %>
+              <%= stag["intention"].gsub /"/, '' %>  •  <%= stag["sector"].gsub /"/, '' %>  •  <%= stag["vendor"].gsub /"/, '' %>
             </div>
           </div>
           <% end %>
@@ -156,9 +162,9 @@
               <% end %>
               </span>
               <ul class="dropdown fieldDropdown searchDropdown">
-                <li class="ddOption fieldOption">No preference</li>
-                <li class="ddOption fieldOption">Education</li>
-                <li class="ddOption fieldOption">Technology</li>
+                <li class="ddOption fieldOption resultsOption">No preference</li>
+                <li class="ddOption fieldOption resultsOption">Education</li>
+                <li class="ddOption fieldOption resultsOption">Technology</li>
               </ul>
             </div>
             <%= f.text_field :industry, placeholder: 'Industry',style: 'display:none;' %>
@@ -182,10 +188,10 @@
               <% end %>
               </span>
               <ul class="dropdown fieldDropdown searchDropdown">
-                <li class="ddOption fieldOption">No preference</li>
-                <li class="ddOption fieldOption">Large</li>
-                <li class="ddOption fieldOption">Midsize &amp; SMB</li>
-                <li class="ddOption fieldOption">Global</li>
+                <li class="ddOption fieldOption resultsOption">No preference</li>
+                <li class="ddOption fieldOption resultsOption">Large</li>
+                <li class="ddOption fieldOption resultsOption">Midsize &amp; SMB</li>
+                <li class="ddOption fieldOption resultsOption">Global</li>
               </ul>
             </div>
             <%= f.text_field :enterprise, placeholder: 'Enterprise Size', style: 'display: none;' %>
@@ -206,9 +212,9 @@
               <% end %>
               </span>
               <ul class="dropdown fieldDropdown searchDropdown">
-                <li class="ddOption fieldOption">No preference</li>
-                <li class="ddOption fieldOption">Public</li>
-                <li class="ddOption fieldOption">Private</li>
+                <li class="ddOption fieldOption resultsOption">No preference</li>
+                <li class="ddOption fieldOption resultsOption">Public</li>
+                <li class="ddOption fieldOption resultsOption">Private</li>
               </ul>
             </div>
             <%= f.text_field :organization_type, placeholder: 'Organization Type',style: 'display:none;' %>
@@ -229,12 +235,12 @@
               <% end %>
               </span>
               <ul class="dropdown fieldDropdown searchDropdown">
-                <li class="ddOption fieldOption">No preference</li>
-                <li class="ddOption fieldOption">North America</li>
-                <li class="ddOption fieldOption">Europe</li>
-                <li class="ddOption fieldOption">Middle East &amp; Africa</li>
-                <li class="ddOption fieldOption">Latin America</li>
-                <li class="ddOption fieldOption">Asia Pacific</li>
+                <li class="ddOption fieldOption resultsOption">No preference</li>
+                <li class="ddOption fieldOption resultsOption">North America</li>
+                <li class="ddOption fieldOption resultsOption">Europe</li>
+                <li class="ddOption fieldOption resultsOption">Middle East &amp; Africa</li>
+                <li class="ddOption fieldOption resultsOption">Latin America</li>
+                <li class="ddOption fieldOption resultsOption">Asia Pacific</li>
               </ul>
             </div>
             <%= f.text_field :region, placeholder: 'Region', style:'display: none;' %>
@@ -254,9 +260,9 @@
               <% end %>
               </span>
               <ul class="dropdown fieldDropdown searchDropdown">
-                <li class="ddOption fieldOption">No preference</li>
+                <li class="ddOption fieldOption resultsOption">No preference</li>
                 <% @countries.each do |country| %>
-                <li class="ddOption fieldOption"><%= country %></li>
+                <li class="ddOption fieldOption resultsOption"><%= country %></li>
                 <% end %>
               </ul>
             </div>
@@ -277,8 +283,8 @@
               <% end %>
               </span>
               <ul class="dropdown fieldDropdown searchDropdown">
-                <li class="ddOption fieldOption">Chief Information Officer</li>
-                <li class="ddOption fieldOption">Chief Executive Officer</li>
+                <li class="ddOption fieldOption resultsOption">Chief Information Officer</li>
+                <li class="ddOption fieldOption resultsOption">Chief Executive Officer</li>
               </ul>
             </div>
             <%= f.text_field :job_title, placeholder: 'Job Title', style:'display: none;' %>
@@ -286,22 +292,24 @@
           <div class="icon icon-drop-dwn-arrow"></div>
         </div>
         <div class="searchSideBarFiller"></div>
+        <div class="spendingIntentionsOptions sideBarIntentions">
         <% @spendingTags.each do |stag| %>
-        <div class="searchSideBarSpending">
-          <div class="searchSidebarDropdownLeft">
-            <div class="searchSideBarSpendingHeader">Spending Intention</div>
-            <div class="searchSideBarSpendingInfo">
-              <%= stag[:intention] %>  •  <%= stag[:sector] %>  •  <%= stag[:vendor] %>
+          <div class="searchSideBarSpending">
+            <div class="searchSidebarDropdownLeft">
+              <div class="searchSideBarSpendingHeader">Spending Intention</div>
+              <div class="searchSideBarSpendingInfo">
+                <%= stag["intention"].gsub /"/, '' %>  •  <%= stag["sector"].gsub /"/, '' %>  •  <%= stag["vendor"].gsub /"/, '' %>
+              </div>
             </div>
+            <div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div>
           </div>
-          <div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div>
-        </div>
         <% end %>
-
-        <div class="addSpendingIntentionButton">
-          New spending intention +
         </div>
-
+        <a href="#ex1" rel="modal:open">
+          <div class="addSpendingIntentionButton">
+            New spending intention +
+          </div>
+        </a>
         <div class="updateSearchButton">Update</div>
         <%= f.submit 'Submit', id: 'submitSearch', style: 'display:none;' %>
         <% end %>
@@ -320,6 +328,9 @@
               <% end %>
             <% end %>
           </div>
+          <div class="numOfPeers">
+            12 Peers <div class="icon icon-fwd-arrow"></div>
+          </div>
         </div>
       <% end %>
       </div>
@@ -327,6 +338,74 @@
     </div>
     <!-- end sidebar -->
   </div>
+
+
+  <div id="ex1" class="addIntentionModal" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal">
+      <div class="formHeader">SPECIFY A SEARCH</div>
+      <div class="modalBody">
+        <div class="modalIntentions">
+          <div class="modalSectionHeader intentionsHeader">
+            INTENTION
+          </div>
+          <div class="intentionSelectModal active"><div class="icon icon-selection-true"></div><div class="intentionModalText">ANY</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">ADOPT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">INCREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">FLAT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">DECREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">REPLACE</div></div>
+        </div>
+        <input placeholder="Intention" style="display: none;" type="text" name="intention[intention]" id="intention_intention">
+        <div class="modalIntentionsRight">
+          <div class="modalSectionHeader intentionsHeader">
+            SECTOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                Search infrastructure
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                    <% @sectors.each do |sector| %>
+                    <li class="ddOption fieldOption"><%= sector.name %></li>
+                    <% end %>
+              </ul>
+            </div>
+            <input placeholder="Sector" style="display: none;" type="text" name="intention[sector]" id="intention_sector">
+          </div>
+          <div class="modalSectionHeader intentionsHeader">
+            VENDOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                Search vendors
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                    <% @vendors.each do |vendor| %>
+                    <li class="ddOption fieldOption"><%= vendor.name %></li>
+                    <% end %>
+              </ul>
+            </div>
+            <input placeholder="Vendor" style="display: none;" type="text" name="intention[vendor]" id="intention_vendor">
+          </div>
+
+          <div class="modalDoneButton" id="modalSideBarDoneButton">
+            <a href="" rel="modal:close">DONE</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
 
   <div class="footerMargin"></div>
 </div>

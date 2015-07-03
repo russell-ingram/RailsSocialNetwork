@@ -13,24 +13,24 @@
 }
 
 .headerWrapper {
-  width: 90%;
+  width: 1386px;
   margin: 0 auto;
 }
 
 .logo {
   float: left;
-  margin-left: 60px;
 }
 
 .navBar {
   float: right;
+  margin-right: -6px;
 }
 
 .hoverDiv {
   display: inline-block;
   text-decoration: none;
   color: #FFF;
-  margin-right: 70px;
+  margin-left: 70px;
   letter-spacing: 0.20em;
   float:left;
 }

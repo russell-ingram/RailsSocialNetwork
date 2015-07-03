@@ -4,11 +4,8 @@ class SearchsController < ApplicationController
     @industries = industries_list
     @searchTags = []
     @spendingTags = []
-    # @spendingTags = [{
-    #   :intention => "Decreasing",
-    #   :sector => "Laptops",
-    #   :vendor => "Apple"
-    # }]
+    @sectors = Sector.all
+    @vendors = Vendor.all
 
     @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id)
 
@@ -17,9 +14,45 @@ class SearchsController < ApplicationController
 
     @users = User.search(@search)
 
+    @newSearch = @search
+    results = []
 
     @searchData = @search.to_json
+
+    # converting results string back into accessible hash
+    if @search.results != ''
+      @spendingTags = format_results(@search, results)
+    end
+
+    # end conversion save results as tags
+
     render 'search_results'
+  end
+
+  def update_search
+    @countries = countries_list
+    @industries = industries_list
+    @sectors = Sector.all
+    @vendors = Vendor.all
+    @searchTags = []
+    @spendingTags = []
+    @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id)
+
+    @search = Search.find(params[:id])
+    @newSearch = search_params
+    p @search
+
+    @search.update(@newSearch)
+
+    @users = User.search(@search)
+
+
+    if @search.results != ''
+      @spendingTags = format_results(@search, results)
+    end
+
+    render 'search_results'
+
   end
 
   def search_results
@@ -83,6 +116,47 @@ class SearchsController < ApplicationController
 
   def search_params
     params.require(:search).permit(:name, :industry, :enterprise, :organization_type, :region, :country, :job_title, :results)
+  end
+
+  def format_results(search,results)
+    l = @search.results.length
+    @search.results[l-1] = ''
+    @search.results[0] = ''
+    t = @search.results.split('{')
+    t.each do |r|
+      if r != ''
+        rl = r.length
+        if r[rl-1] == ','
+          res = r[0..(rl-3)]
+          res_arr = res.split(',')
+          res_obj = {}
+          res_arr.each do |a|
+            key = a.split(':')
+            kl = key[0].length
+            key[0][kl-1] = ''
+            key[0][0] = ''
+            res_obj[key[0]] = key[1]
+          end
+          results << res_obj
+        elsif r[rl-1] == '}'
+          res = r[0..(rl-2)]
+          res_arr = res.split(',')
+          res_obj = {}
+          res_arr.each do |a|
+            key = a.split(':')
+            kl = key[0].length
+            key[0][kl-1] = ''
+            key[0][0] = ''
+            res_obj[key[0]] = key[1]
+          end
+          results << res_obj
+        end
+      end
+    end
+
+    return results
+
+
   end
 
 end

@@ -64,8 +64,10 @@ $( document ).ready(function() {
     }
   })
 
-  $('.searchTagClose').on('click',function() {
+  $('.searchTagClose').off().on('click',function() {
+    $(this).parent().next().val('');
     $(this).parent().remove();
+    $('#searchEdit').click();
   });
 
   $('.formSearchButton').off().on('click', function() {
@@ -102,7 +104,7 @@ $( document ).ready(function() {
 
   var searchCounter = 0;
 
-  $('.modalDoneButton').off().on('click', function() {
+  $('#modalDoneButton').off().on('click', function() {
     searchCounter++;
     var h = $('.searchFormBox').height();
 
@@ -128,6 +130,8 @@ $( document ).ready(function() {
       "sector": sector
     };
 
+
+
     var newIntention = '<div class="addedSpendingIntention"><div class="elemNum">'+searchCounter+'</div><div class="addedSpendingIntentionLeft"><div class="addedSpendingIntentionHeader">'+searchCounter+'.</div><div class="addedSpendingIntentionText">'+intention+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+sector+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+vendor+'</div></div><div class="addedSpendingIntentionDelete"><div class="icon icon-icon-close"></div></div></div>'
     var jsonResults = $('#resultsField').val();
     if (jsonResults && jsonResults !== "") {
@@ -141,12 +145,69 @@ $( document ).ready(function() {
       $('#resultsField').val(newObjStr);
     }
     $('.spendingIntentions').show();
+    var h = $('.searchFormBox').height();
+    $('.searchFormBox').height(h+30);
     $('.spendingIntentionsOptions').append(newIntention);
     resetModalValues();
 
 
 
   });
+
+
+  $('#modalSideBarDoneButton').off().on('click', function() {
+    searchCounter++;
+    // var h = $('.searchFormBox').height();
+
+    // $('.searchFormBox').height(h+60);
+
+    var vendor = $('#intention_vendor').val();
+    var sector = $('#intention_sector').val();
+    var intention = $("#intention_intention").val();
+    intention = intention.charAt(0).toUpperCase() + intention.slice(1).toLowerCase();
+    if (intention === "") {
+      intention = "Any";
+    }
+    if (sector === "") {
+      sector = "Any";
+    }
+    if (vendor === "") {
+      vendor = "Any";
+    }
+
+    var newIntObj = {
+      "intention": intention,
+      "vendor": vendor,
+      "sector": sector
+    };
+    console.log(newIntObj);
+    // need to add an elem counter?
+    var newIntention = '<div class="searchSideBarSpending"><div class="searchSidebarDropdownLeft"><div class="searchSideBarSpendingHeader">Spending Intention</div><div class="searchSideBarSpendingInfo">'+intention+'  •  '+sector+'  •  '+vendor+'</div></div><div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div></div>';
+
+    // for submitting new params?
+
+    // var jsonResults = $('#resultsField').val();
+    // if (jsonResults && jsonResults !== "") {
+    //   var oldObj = JSON.parse(jsonResults);
+
+    //   oldObj.push(newIntObj);
+    //   var newObj = JSON.stringify(oldObj);
+    //   $('#resultsField').val(newObj);
+    // } else {
+    //   var newObjStr = JSON.stringify([newIntObj]);
+    //   $('#resultsField').val(newObjStr);
+    // }
+    // $('.spendingIntentions').show();
+    // var h = $('.searchFormBox').height();
+    // $('.searchFormBox').height(h+30);
+    $('.spendingIntentionsOptions').append(newIntention);
+    resetModalValues();
+
+
+
+  });
+
+
 
   $('.spendingIntentions').on('click','.addedSpendingIntentionDelete', function() {
 

@@ -48,6 +48,7 @@
   background-color: #3eb2cc;
   height: 45px;
   line-height: 45px;
+  margin-bottom: 10px;
 }
 
 .searchTagText, .spendingTagText {
@@ -263,6 +264,10 @@
   border-bottom: none !important;
 }
 
+.sideBarIntentions {
+  padding-left: 0 !important;
+}
+
 .updateSearchButton {
   background-color: #3eb2cc;
   width: 80%;
@@ -397,12 +402,47 @@
 }
 
 .favSearch {
-  background-color: white;
+  background-color: #f2f3f4;
+  margin: 0 auto;
   margin-top: 20px;
+  height: 120px;
+  width: 90%;
+  padding: 15px;
+  text-transform: none;
+  div {
+    padding-left: 0;
+    border: none;
+  }
+
+}
+
+.favSearchHeader {
+  color: #34373D;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.favSearchParams {
+  font-family: "PNLight";
+}
+
+.numOfPeers {
+  color: #3eb2cc;
+  text-transform: uppercase;
+  position: relative;
+  bottom: -20px;
+  div {
+    display: inline-block;
+    top: 3px;
+    font-size: 15px;
+    position: relative;
+  }
+
 }
 
 .savedSearchTab {
   display: none;
+  padding-left: 0 !important;
 }
 
 .searchFormBox {
@@ -642,3 +682,7 @@
 .currentSearchTab {
   padding-left: 0 !important;
 }
+
+
+
+
