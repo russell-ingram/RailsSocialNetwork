@@ -27,12 +27,20 @@
         <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
       </div>
     </div>
+    <% if @conversations.length > 0 %>
     <div class="inbox">
       <%= render partial: 'conversations/conversation', collection: @conversations %>
     </div>
     <div class="outbox" style="display: none;">
       <%= render partial: 'conversations/conversation', collection: @sentconversations %>
     </div>
+
+    <% else %>
+      <div class="noMessages">
+        You don't have any messages yet. Connect with people and start a conversation.
+      </div>
+
+    <% end %>
   </div><!-- end messages wrapper -->
 
 
