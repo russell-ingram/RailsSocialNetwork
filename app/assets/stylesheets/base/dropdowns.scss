@@ -43,10 +43,16 @@
   border: 1px solid #d8dcdd;
   max-height: 180px;
   overflow: auto;
+  margin-top: 15px;
+  padding-left: 0;
 }
 
 .wrapper-dropdown-1.active {
   background: #F1F1F1;
+}
+
+.wrapper-dropdown.active {
+  border: 1px solid #3eb2cc;
 }
 
 .ddFilter {

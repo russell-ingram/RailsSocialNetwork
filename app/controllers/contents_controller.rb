@@ -19,8 +19,12 @@ class ContentsController < ApplicationController
 
     @news = Content.new(news_params)
     @news.active = true
-    @news.image_url = uploader.url
 
+    if my_file
+      @news.image_url = uploader.url
+    else
+      @news.image_url = @oldnews.image_url
+    end
     if @news.save
       redirect_to home_path
     else
@@ -35,9 +39,7 @@ class ContentsController < ApplicationController
     if @oldlayout
       @oldlayout.active = false
       if @oldlayout.save
-        puts "OLDLAYOUT EDITED"
       else
-        puts "OLDLAYOUT DIDNT SAVE"
       end
     end
 

@@ -1,6 +1,17 @@
 $( document ).ready(function() {
 
   $( ".wrapper-dropdown" ).click(function() {
+
+    if ($(this).hasClass('active')) {
+      $('.wrapper-dropdown').removeClass('active');
+    } else {
+      $('.wrapper-dropdown').removeClass('active');
+      $(this).addClass('active');
+    }
+
+
+
+
     var selectedDrop = $(this).find('.dropdown');
     var selectedLabel = $(this).find('.ddLabel');
     if (selectedDrop.hasClass('active')) {
@@ -13,6 +24,17 @@ $( document ).ready(function() {
 
     $(".filterOption").off().on('click',function() {
       var option = $(this).text();
+
+      if (option === "Inbox") {
+        $('.inbox').show();
+        $('.outbox').hide();
+      } else if (option === "Outbox") {
+        $('.inbox').hide();
+        $('.outbox').show();
+      }
+
+
+      console.log(option);
       selectedLabel.text(option);
       sortFilter(option);
 

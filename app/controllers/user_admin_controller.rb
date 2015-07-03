@@ -65,6 +65,7 @@ class UserAdminController < ApplicationController
 
   def update
     @editUser = User.find(params[:id])
+    @newUser = user_params
 
     my_file = params[:user][:profile_pic_url]
     uploader = ProfilepicUploader.new
@@ -76,9 +77,19 @@ class UserAdminController < ApplicationController
     # profile_pic = File.basename(params[:user][:profile_pic_url])
     # puts "identifier"
     # puts profile_pic
+    if params[:user][:admin] == "Admin" || params[:user][:admin] == true
+      puts "CHANGED TO TRUE"
+      @newUser[:admin] = true
+    else
+      puts "LEFT AS FALSE"
+      @newUser[:admin] = false
+    end
+
+    puts "user:"
+    puts @newUser
 
     respond_to do |format|
-      if @editUser.update(user_params)
+      if @editUser.update(@newUser)
         if uploader.url
           @editUser.update_columns(profile_pic_url: uploader.filename)
         end
@@ -215,11 +226,11 @@ class UserAdminController < ApplicationController
 
   def user_params
     # puts params
-    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url, :position, :footprint, :linked_in_url, :enterprise_size, :region, :country, :emp_summary, :summary)
+    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url, :position, :footprint, :linked_in_url, :enterprise_size, :region, :country, :emp_summary, :summary, :admin)
   end
 
   def new_user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :password, :password_confirmation, :profile_pic_url, :summary)
+    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :password, :password_confirmation, :profile_pic_url, :summary, :admin)
   end
 
   def countries_list

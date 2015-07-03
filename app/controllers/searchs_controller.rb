@@ -1,6 +1,7 @@
 class SearchsController < ApplicationController
   def search
     @countries = countries_list
+    @industries = industries_list
     @searchTags = []
     @spendingTags = []
     # @spendingTags = [{
@@ -39,6 +40,7 @@ class SearchsController < ApplicationController
 
   def new_search
     @countries = countries_list
+    @industries = industries_list
     @search = Search.new
     @sectors = Sector.all
     @vendors = Vendor.all
@@ -54,10 +56,19 @@ class SearchsController < ApplicationController
     render json: @search
   end
 
+  def delete_favorite_search
+    @search = Search.find(params[:id])
+    if @search.destroy
+      redirect_to '/home'
+    end
+  end
 
 
 
 
+  def industries_list
+    ["Education", "Services/Consulting", "IT/TelCo", "Financials/Insurance", "Healthcare/Pharma", "Retail/Consumer", "Industrials/Materials/Manufacturing", "Government", "Restricted", "Other", "Nonprofit", "Energy/Utilities"]
+  end
 
 
 

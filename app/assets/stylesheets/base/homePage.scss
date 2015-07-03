@@ -8,6 +8,7 @@
 .searchBarHomeLabel {
   font-size: 18px;
   color: #797c7f;
+  margin-bottom: 15px;
 }
 
 .searchBarHome {
@@ -23,6 +24,9 @@
     font-size: 12px;
     font-family: "PNBold";
   }
+}
+.homePageIntentionsList {
+  padding-right: 117px;
 }
 
 .searchBarHomeAdvancedOptions {
@@ -68,7 +72,7 @@
 }
 .fixIt {
   position: relative;
-  top: -2px;
+  top: -1px;
 }
 
 .fa-chevron-right {
@@ -215,9 +219,21 @@
 }
 
 .followedSearchRemove {
-  color: #282b30;
   margin-left: 20px;
   text-decoration: none;
+}
+.favRemoveText {
+  display: inline-block;
+  color: #282b30;
+}
+
+.noFollowedSearchesText {
+  font-family: "PNLight";
+  font-size: 32px;
+  text-align: center;
+  margin-top: 50px;
+  font-style: italic;
+
 }
 
 .searchesViewMore {

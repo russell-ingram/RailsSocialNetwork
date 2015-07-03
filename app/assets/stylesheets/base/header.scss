@@ -26,24 +26,48 @@
   float: right;
 }
 
-.navBar a {
+.hoverDiv {
   display: inline-block;
   text-decoration: none;
-  color: inherit;
+  color: #FFF;
   margin-right: 70px;
   letter-spacing: 0.20em;
   float:left;
 }
 
-.menuIcon {
-  height: 35px;
-  width: auto;
-  vertical-align: middle;
-  margin-right: -10px;
-  margin-top: -5px;
+.hoverDiv:hover {
+  color: #3eb2cc;
 }
+
+.menuIcon {
+  font-size: 38px;
+  position: relative;
+  top: 7px;
+  cursor: pointer;
+}
+
+.mailMenuDrop {
+  display: none;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: #FFF;
+  right: 250px;
+  top: 60px;
+  border: 1px solid #d8dcdd;
+  box-shadow: 2px 2px 5px #888888;
+}
+
+.mailMenuDrop.active {
+  display: block;
+}
+
 .adminMenuIcon {
   height: 25px;
+}
+
+.mailMenuIcon.active {
+  color: #3eb2cc;
 }
 
 .menuLogo {

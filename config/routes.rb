@@ -79,6 +79,7 @@ Rails.application.routes.draw do
 
   post '/search/new' => 'searchs#search', as: 'search_searches'
   post '/search/add_favorite' => 'searchs#save_favorite_search', as: 'search_search'
+  get '/search/delete_favorite/:id' => 'searchs#delete_favorite_search', as: 'search_delete'
 
 
 end

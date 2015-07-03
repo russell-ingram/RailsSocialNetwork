@@ -16,6 +16,7 @@
             <% end %>
         </ul>
       </div>
+      <%= f.text_field :region, placeholder: 'Region', style: 'display: none;' %>
       <div class="wrapper-dropdown" tabindex="1">
         <span class="ddLabel">Industry</span>
         <span class="carrot"><i class="fa fa-chevron-down"></i></span>
@@ -35,12 +36,6 @@
       </div>
       <div class="searchButton fixIt">search<i class="fa fa-chevron-right"></i></div>
     </div>
-    <div class="spendingIntentions">
-
-    </div>
-    <%= f.text_field :results, placeholder: 'Results', style: 'display: none;', id: 'resultsField' %>
-
-
     <div class="searchBarHomeAdvancedOptions">
       Advanced Options <div class="icon icon-icon-add"></div>
     </div>
@@ -104,6 +99,15 @@
         <%= f.text_field :country, placeholder: 'Country',style: 'display:none;' %>
       </div>
     </div>
+
+    <div class="spendingIntentions homePageIntentionsList" style="display:none;">
+      <div class="spendingIntentionsHeader">SPENDING INTENTIONS</div>
+      <div class="spendingIntentionsOptions">
+
+      </div>
+    </div>
+    <%= f.text_field :results, placeholder: 'Results', style: 'display: none;', id: 'resultsField' %>
+
 
 
 
@@ -244,24 +248,61 @@
 
       <div class="homeContentFollowed homeContent">
         <div class="homeContentLabel">followed searches</div>
-        <div class="followedSearch">
-          <div class="followedSearchTitle">Clean Energy Sector CIOs in N. America</div>
-          <div class="followedSearchDesc">CIO, Energy / Clean Energy, Mid to Large Enterprise, N. America</div>
-          <div class="viewMoreContent">125 Peers <i class="fa fa-chevron-right"></i><a class="followedSearchRemove" href="">remove</a></div>
-        </div>
-        <div class="followedSearch">
-          <div class="followedSearchTitle">Clean Energy Sector CIOs in N. America</div>
-          <div class="followedSearchDesc">CIO, Energy / Clean Energy, Mid to Large Enterprise, N. America</div>
-          <div class="viewMoreContent">125 Peers <i class="fa fa-chevron-right"></i><a class="followedSearchRemove" href="">remove</a></div>
-        </div>
-        <div class="followedSearch">
-          <div class="followedSearchTitle">Clean Energy Sector CIOs in N. America</div>
-          <div class="followedSearchDesc">CIO, Energy / Clean Energy, Mid to Large Enterprise, N. America</div>
-          <div class="viewMoreContent">125 Peers <i class="fa fa-chevron-right"></i><a class="followedSearchRemove" href="">remove</a></div>
-        </div>
-        <div class="viewMoreContent searchesViewMore">view all<i class="fa fa-chevron-right"></i></div>
-      </div>
 
+        <% if @favSearchs.length > 0 %>
+          <% @favSearchs.each_with_index do |f,i| %>
+            <div class="followedSearch">
+              <div class="followedSearchTitle">
+                <% if f.name %>
+                <%= f.name %>
+                <% else %>
+                Unnamed Search
+                <% end %>
+              </div>
+              <div class="followedSearchDesc">
+
+            <% for attribute in ['job_title','industry', 'enterprise', 'region','country', 'organization_type'] %>
+              <% if !f.attributes[attribute].blank? %>
+                <%= f.attributes[attribute].to_s %>,
+              <% end %>
+            <% end %>
+
+              </div>
+              <div class="viewMoreContent">125 Peers <i class="fa fa-chevron-right"></i><div class="favRemoveText"><a class="followedSearchRemove" href="#ex<%= i %>" rel="modal:open">
+
+              remove</a></div><div style="display:none;"><%= f.id %></div></div>
+            </div>
+
+            <div id="ex<%= i %>" class="addIntentionModal" style="display:none;">
+              <div class="formBox searchFormBox formBoxModal">
+                <div class="formHeader">CONFIRM DELETE SEARCH</div>
+                <div class="modalBody">
+
+                  <div class="modalIntentionsRight">
+                    <div class="deleteUserModalInfo">
+                      Are you sure you would like to delete this search?
+                    </div>
+                    <div class="modalDoneButton">
+                      <%= link_to "Confirm", search_delete_path(f) %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="viewMoreContent searchesViewMore">view all<i class="fa fa-chevron-right"></i></div>
+
+          <% end %>
+        <% else %>
+          <div class="noFollowedSearchesText">
+          You have no followed searches yet. Search for technology adoption leaders and save your search criteria.
+          </div>
+        <% end %>
+
+
+
+      </div>
+<!-- end followed searches -->
       <div class="homeContentInvite homeContent">
         <div class="homeInviteTitle">invite your peers</div>
         <div class="homeInviteText">Please be aware the only people that are to be invited are other enterprise IT end users.</div>

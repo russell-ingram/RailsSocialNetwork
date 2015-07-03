@@ -100,8 +100,35 @@
   float: right;
   display: inline-block;
   color: #797c7f;
+  font-family: "PNBold";
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.userPermissions {
+  margin-right: 30px;
+  cursor: default;
+  div {
+    display: inline-block;
+  }
+}
+
+.userPermissionsInput {
   font-family: "PNReg";
   cursor: pointer;
+  margin-top: -11px;
+  .wrapper-dropdown {
+    position: static;
+    border: none;
+  }
+  .fieldDropdown {
+    width: 5.6%;
+  }
+  .icon {
+    position: relative;
+    top: 5px;
+    font-size: 20px;
+  }
 }
 
 .deleteUserModalInfo {
@@ -329,6 +356,9 @@
 
 .field-col-2 {
   width: 527px;
+}
+.fieldCol2First {
+  margin-right: 37px;
 }
 .field-col-3 {
   width: 343px;

@@ -52,6 +52,26 @@
   padding-left: 10px;
 }
 
+.inboxToggle {
+  .wrapper-dropdown {
+    border: none;
+    width: 110px;
+    .carrot {
+      position: relative;
+      top: 2px;
+    }
+    .dropdown {
+      width: 110px;
+      color: #282b30;
+    }
+  }
+}
+.inboxToggle:hover {
+  color: #3eb2cc;
+}
+
+
+
 .searchMsgsBarFloatRight {
   float:right;
 }

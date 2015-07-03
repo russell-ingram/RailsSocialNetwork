@@ -2,11 +2,14 @@
   <div class="headerWrapper">
     <div class="logo"><a href="/home"><%= image_tag("fito-logo.svg", class: "menuLogo")  %></a></div>
     <div class="navBar">
-      <a href="/admin">ADMIN</a>
-      <a href="/search">SEARCH</a>
-      <a href="/connections">CONNECTIONS</a>
-      <a href="/messages"><%= image_tag("icon-mail.svg", class: "menuIcon") %></a>
-      <a href="/profile"><%= image_tag("icon-profile.svg", class: "menuIcon") %></a>
+      <div class="hoverDiv"><a href="/admin">ADMIN</a></div>
+      <div class="hoverDiv"><a href="/search">SEARCH</a></div>
+      <div class="hoverDiv"><a href="/connections">CONNECTIONS</a></div>
+      <div class="hoverDiv mailMenuIcon"><a href="/messages"><div class="icon icon-icon-mail menuIcon"></div></a></div>
+      <div class="mailMenuDrop">
+
+      </div>
+      <div class="hoverDiv"><a href="/profile"><div class="icon icon-icon-profile menuIcon"></div></a></div>
     </div>
   </div>
 </div>

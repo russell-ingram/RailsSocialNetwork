@@ -161,11 +161,24 @@ textarea, input, select {
     line-height: inherit;
   }
 }
+.wrapperFieldDropdown.active {
+  border: 1px solid #3eb2cc;
+}
 
 .fieldDropdown.active {
   width: 100.6%;
   margin-left: -16px;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+.ddOption {
   padding-left: 25px;
+}
+.ddOption:hover {
+  background-color: #3eb2cc;
+  color: #FFFFFF;
+
 }
 
 

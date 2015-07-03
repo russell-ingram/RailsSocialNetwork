@@ -3,7 +3,73 @@
 <div class="pageHeaderBar">
   <div class="pageHeader floatHeader">Edit User</div>
 
-  <div class="deleteUserButton"><%= link_to "DELETE", admin_delete_user_path(@editUser), data: { confirm: "Are you sure you would like to delete this user?" } %></div>
+<%= form_for ([:user_admin, @editUser]) do |f| %>
+
+
+
+
+  <div class="deleteUserButton">
+    <a href="#ex1" rel="modal:open">
+        DELETE
+    </a>
+  </div>
+
+
+
+<div id="ex1" class="addIntentionModal" style="display:none;">
+  <div class="formBox searchFormBox formBoxModal">
+    <div class="formHeader">CONFIRM DELETE</div>
+    <div class="modalBody">
+      <div class="modalIntentions">
+        <div class="myConnProfilePic">
+          <a href="/profile/<%= @editUser.id %>">
+            <% if @editUser.profile_pic_url? %>
+              <img src="<%= @editUser.profile_pic_url %>">
+            <% end %>
+          </a>
+        </div>
+      </div>
+      <div class="modalIntentionsRight">
+        <div class="deleteUserModalInfo">
+          Are you sure you would like to delete <%= @editUser.full_name %>?
+        </div>
+        <div class="modalDoneButton">
+          <%= link_to "Confirm", admin_delete_user_path(@editUser) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  <div class="deleteUserButton userPermissions">
+    <div class="permissionsLabel">Permissions:</div>
+
+    <div class="userPermissionsInput">
+
+        <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+          <span class="ddLabel">
+            <% if @editUser.admin %>
+              Admin
+            <% else %>
+              User
+            <% end %>
+          </span>
+          <div class="icon icon-drop-dwn-arrow"></div>
+          <ul class="dropdown fieldDropdown">
+            <li class="ddOption fieldOption">User</li>
+            <li class="ddOption fieldOption">Admin</li>
+          </ul>
+        </div>
+        <%= f.text_field :admin, placeholder: 'Admin Status', style: 'display: none;' %>
+
+    </div>
+  </div>
+
 </div>
 
 
@@ -11,7 +77,7 @@
 
 
 
-<%= form_for ([:user_admin, @editUser]) do |f| %>
+
   <% if @editUser.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@editUser.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -132,8 +198,8 @@
               <span class="carrot"><i class="fa fa-chevron-down"></i></span>
               <ul class="dropdown fieldDropdown">
                 <li class="ddOption fieldOption">Large</li>
-                <li class="ddOption fieldOption">Midsize &amp; SMB</li>
-                <li class="ddOption fieldOption">Global</li>
+                <li class="ddOption fieldOption">Midsize</li>
+                <li class="ddOption fieldOption">Small</li>
               </ul>
             </div>
             <%= f.text_field :enterprise_size, placeholder: 'Enterprise Size', style: 'display: none;' %>
@@ -150,10 +216,9 @@
               <span class="carrot"><i class="fa fa-chevron-down"></i></span>
               <ul class="dropdown fieldDropdown">
                 <li class="ddOption fieldOption">North America</li>
-                <li class="ddOption fieldOption">Europe</li>
-                <li class="ddOption fieldOption">Middle East &amp; Africa</li>
+                <li class="ddOption fieldOption">EMEA</li>
+                <li class="ddOption fieldOption">APAC</li>
                 <li class="ddOption fieldOption">Latin America</li>
-                <li class="ddOption fieldOption">Asia Pacific</li>
               </ul>
             </div>
             <%= f.text_field :region, placeholder: 'Region', style:'display: none;' %>
@@ -232,12 +297,39 @@
     </div>
 
     <div class="userEditButtons">
-      <div class="userAdminButton"><a href="">Send Invitation</a></div>
+      <div class="userAdminButton"><a href="#msgModal" rel="modal:open">Send Invitation</a></div>
       <div class="userAdminButton"><%= f.submit 'Save' %></div>
       <div class="userAdminButton greyButton"><a href="/admin">Cancel</a></div>
 
 
     </div>
+
+<div id="msgModal" class="addIntentionModal" style="display:none;">
+  <div class="formBox searchFormBox formBoxModal">
+    <div class="formHeader">SEND INVITATION</div>
+    <div class="modalBody">
+      <div class="modalIntentions">
+      </div>
+      <div class="modalIntentionsRight">
+        <div class="deleteUserModalInfo">
+          (NOT FUNCTIONAL YET)
+          </br>
+          Send invitation to <%= @editUser.full_name %>?
+        </div>
+        <div class="modalDoneButton">
+          SEND
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 
 

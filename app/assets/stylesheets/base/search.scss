@@ -306,8 +306,16 @@
   border: 1px solid #D8DCDD;
   padding-left: 15px;
   .icon {
-    float:right;
-    margin-right: 15px;
+    float: right;
+    width: 60px;
+    height: 60px;
+    background-color: #e5e8e9;
+    border-radius: 0 3px 3px 0;
+    border: 1px solid #D8DCDD;
+    margin-top: -1px;
+    margin-right: -1px;
+    text-align: center;
+    font-size: 18px;
   }
 }
 
@@ -483,17 +491,27 @@
 
 .spendingIntentions {
   width: 100%;
-
-  div {
-    display: inline-block;
-  }
 }
+
+.spendingIntentionsHeader {
+  background-color: #e5e8e9;
+  height: 35px;
+  line-height: 40px;
+  padding-left: 15px;
+}
+
+
 
 .addedSpendingIntention {
   width: 100%;
   height: 60px;
   line-height: 65px;
   border-top: 1px solid #CCCED0;
+  background-color: #FFF;
+  padding-left: 15px;
+  div {
+    display: inline-block;
+  }
 }
 .addedSpendingIntention:last-of-type {
   border-bottom: 1px solid #CCCED0;
@@ -501,8 +519,10 @@
 .addedSpendingIntentionLeft {
   float:left;
   font-size: 18px;
+  height: 60px;
+  line-height: 60px;
   :first-child {
-    margin-right: 25px;
+    margin-right: 10px;
   }
 }
 .addedSpendingIntentionText {
@@ -514,6 +534,7 @@
   margin-right: 15px;
   font-size: 14px;
   cursor: pointer;
+  height: 60px;
 }
 
 .wrapper60px {

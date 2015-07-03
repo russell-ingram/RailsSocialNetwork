@@ -10,16 +10,15 @@
     <div class="messagesBar">
 
       <div class="inboxToggle">
-        Inbox<i class="fa fa-caret-down messageCaret"></i>
-    <!--     <div class="wrapper-dropdown" tabindex="1">
-          <span class="ddLabel">industry</span>
-          <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+
+        <div class="wrapper-dropdown" tabindex="1">
+          <span class="ddLabel">Inbox</span>
+          <span class="carrot"><div class="icon icon-carot"></div></span>
           <ul class="dropdown">
-            <li class="ddOption">option1</li>
-            <li class="ddOption">option2</li>
-            <li class="ddOption">option3</li>
+            <li class="ddOption filterOption mailToggle">Inbox</li>
+            <li class="ddOption filterOption mailToggle">Outbox</li>
           </ul>
-        </div> -->
+        </div>
 
       </div>
       <div class="searchMsgsBarFloatRight">
@@ -28,8 +27,12 @@
         <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
       </div>
     </div>
-
+    <div class="inbox">
       <%= render partial: 'conversations/conversation', collection: @conversations %>
+    </div>
+    <div class="outbox" style="display: none;">
+      <%= render partial: 'conversations/conversation', collection: @sentconversations %>
+    </div>
   </div><!-- end messages wrapper -->
 
 

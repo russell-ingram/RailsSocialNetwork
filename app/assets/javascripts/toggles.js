@@ -160,7 +160,16 @@ $( document ).ready(function() {
 
   })
 
-
+  // $('.mailMenuIcon').click(function() {
+  //   if ($('.mailMenuIcon').hasClass('active')) {
+  //     $('.mailMenuIcon').removeClass('active');
+  //     $('.mailMenuDrop').removeClass('active');
+  //   } else {
+  //     $('.mailMenuIcon').addClass('active');
+  //     $('.mailMenuDrop').addClass('active');
+  //   }
+    // $('.mailMenuDrop').show();
+  // })
 
 
 
