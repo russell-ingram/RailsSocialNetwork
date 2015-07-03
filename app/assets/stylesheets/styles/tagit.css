@@ -44,7 +44,7 @@ ul.tagit li.tagit-choice .tagit-close {
     position: absolute;
     right: .1em;
     top: 50%;
-    margin-top: -8px;
+    margin-top: -10px;
     line-height: 17px;
 }
 
@@ -73,4 +73,26 @@ ul.tagit input[type="text"] {
     width: inherit;
     background-color: inherit;
     outline: none;
+}
+
+.ui-menu-item {
+    color: #3eb2cc;
+}
+.ui-state-focus {
+    color: #FFF !important;
+    background: #3eb2cc !important;
+}
+.tagit-choice-editable a {
+    width: initial;
+    height: initial;
+}
+
+
+.tagit-choice-editable {
+    width: 125px;
+    height: 30px;
+    line-height: 23px !important;
+    margin-top: 5px !important;
+    font-family: "PNReg";
+
 }
