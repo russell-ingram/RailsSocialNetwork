@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  console.log('Buttons loaded');
+
   $('.addPastPosition').click(function(){
     $('.pastExperienceFormBox').append("<div class=\"formBoxField\"><div class=\"formBoxRow\"><div class=\"field field-col-2 fieldCol2First\"><input placeholder=\"Title\" type=\"text\" name=\"past_emp[title]\" id=\"past_emp_title\"></div><div class=\"field field-col-2\"><input placeholder=\"Company\" type=\"text\" name=\"past_emp[company]\" id=\"past_emp_company\"></div><div class=\"pastEmpDates pubLabel\"><div class=\"pastEmpDateLabel\">Start date</div><div class=\"field pastEmpDateBox\"><input placeholder=\"MM/YYYY\" type=\"text\" name=\"past_emp[start_date]\" id=\"past_emp_start_date\"></div><div class=\"pastEmpDateLabel\">End date</div><div class=\"field pastEmpDateBox\"><input placeholder=\"MM/YYYY\" type=\"text\" name=\"past_emp[end_date]\" id=\"past_emp_end_date\"></div></div><div class=\"pastEmpDescriptionBox field-area field-summary\"><textarea name=\"past_emp[description]\" placeholder=\"Description\"></textarea></div></div></div>");
   });
@@ -13,7 +13,6 @@ $( document ).ready(function() {
   })
 
   $('#editPhotoUpload').click(function() {
-    console.log('clicked');
     $('.customFileInput').trigger('click');
     $('.customFileInput').change(function(){
       readURL(this, 'profile');
@@ -51,7 +50,6 @@ $( document ).ready(function() {
         var user = data[i];
         var pic = '';
         if (user.profile_pic_url) {
-          console.log(user.profile_pic_url);
           pic = '<img src="'+user.profile_pic_url.url+'">';
         };
         var connBox = '<div class="myConnection"><div class="myConnWrapper"><div class="myConnProfilePic"><a href="/profile/'+user.id+'">'+pic+'</a></div><div class="myConnInfo"><div class="myConnName"><a href="/profile/'+user.id+'">'+user.first_name+' '+user.last_name+'</a></div><div class="myConnCompany">'+user.employer+'</div><div class="myConnIndustry">'+user.industry+'</div></div><div class="myConnMessage userActionsSidebar"><div class="userListAction"><a href="/admin/edit_user/'+user.id+'">review</a></div><div class="userListAction deleteAction"><a data-confirm="Are you sure you would like to delete this user?" href="/admin/delete/'+user.id+'">delete</a></div><div class="userListAction"><a href="/messages/new/'+user.id+'">send message</a></div></div></div></div>'
@@ -94,11 +92,11 @@ $( document ).ready(function() {
   $('#searchAddFavButton').off().on('click', function() {
     // $('#searchFavNameField').addClass('active');
     var data = $(this).attr('data');
-    console.log(data);
-    console.log(typeof(data));
+
     $.post('/search/add_favorite',{"searchData": data},function(data) {
       // $('#searchFavNameField').removeClass('active');
-      console.log(data.user_id);
+      $('#searchAddFavButton').html("Search saved! <i class='fa fa-check'></i> ")
+      $('#searchAddFavButton').css('color', '#00CC00');
     })
   });
 
@@ -107,7 +105,7 @@ $( document ).ready(function() {
   $('.modalDoneButton').off().on('click', function() {
     searchCounter++;
     var h = $('.searchFormBox').height();
-    console.log(h);
+
     $('.searchFormBox').height(h+60);
 
     var vendor = $('#intention_vendor').val();
@@ -134,7 +132,7 @@ $( document ).ready(function() {
     var jsonResults = $('#resultsField').val();
     if (jsonResults && jsonResults !== "") {
       var oldObj = JSON.parse(jsonResults);
-      console.log(oldObj);
+
       oldObj.push(newIntObj);
       var newObj = JSON.stringify(oldObj);
       $('#resultsField').val(newObj);

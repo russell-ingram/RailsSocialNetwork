@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
     puts "SEARCH:"
     puts search.inspect
     p search.results.class
-    if search.results != ""
+    if search.results && search.results != ""
       res = JSON.parse(search.results)
       # p res[0]
       intentions = Intention.all

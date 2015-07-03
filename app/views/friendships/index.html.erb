@@ -1,8 +1,9 @@
 <%= render "layouts/header" %>
   <div class="pageWrap">
+    <% if @requested_friendships.length > 0 %>
     <div class="pageHeader">Requested Connections</div>
-
-      <% @friendships.each do |friendship| %>
+    <% end %>
+      <% @requested_friendships.each do |friendship| %>
         <% if friendship.requested? %>
         <% friend = friendship.friend %>
 
@@ -62,8 +63,8 @@
           <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
         </div>
       </div>
-
-      <% @friendships.each do |friendship| %>
+      <% if @accepted_friendships.length > 0 %>
+      <% @accepted_friendships.each do |friendship| %>
         <% if friendship.accepted? %>
         <% friend = friendship.friend %>
 
@@ -87,6 +88,11 @@
 
         <% end %>
 
+      <% end %>
+      <% else %>
+      <div class="noConnectionsMade">
+      You currently don't have any connections. Use search to find adoption technology leaders and connect with them.
+      </div>
       <% end %>
 
 

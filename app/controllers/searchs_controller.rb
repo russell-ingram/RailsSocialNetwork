@@ -18,9 +18,6 @@ class SearchsController < ApplicationController
     @users = User.search(@search)
 
 
-# "industry like ? AND enterprise_size like ? AND region like ? AND country like ? AND position like ?",@search[:industry], @search[:enterprise], @search[:region], @search[:country], @search[:job_title]
-
-
     @searchData = @search.to_json
     render 'search_results'
   end
