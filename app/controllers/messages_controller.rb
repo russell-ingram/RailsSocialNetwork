@@ -26,8 +26,10 @@ class MessagesController < ApplicationController
     #   recipients << rec
     # end
     # puts recipients
+    flash.clear
     conversation = current_user.send_message(x, params[:message][:body], params[:message][:subject])
     flash[:success] = "Your message has been successfully sent!"
+
     # redirect_to conversation_path(1)
     puts "Mailboxer:"
     puts conversation
