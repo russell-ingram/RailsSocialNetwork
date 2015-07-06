@@ -10,7 +10,7 @@
     </div>
     <div class="profileInfo">
       <div class="profileName"><%= current_user.full_name %></div>
-      <div class="profilePosition"><%= @user.position %></div>
+      <div class="profilePosition"><%= current_user.position %></div>
       <div class="profileEmployer"><%= current_user.employer %></div>
       <div class="profileIndustry">
         <i class="fa fa-building-o"></i><%= current_user.industry %>
