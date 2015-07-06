@@ -79,7 +79,7 @@ class UserAdminController < ApplicationController
     # profile_pic = File.basename(params[:user][:profile_pic_url])
     # puts "identifier"
     # puts profile_pic
-    if params[:user][:admin] == "Admin" || params[:user][:admin] == true
+    if params[:user][:admin] == "Admin" || params[:user][:admin] == true || params[:user][:admin] == "true"
       puts "CHANGED TO TRUE"
       @newUser[:admin] = true
     else
