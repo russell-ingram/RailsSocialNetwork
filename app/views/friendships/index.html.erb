@@ -2,8 +2,8 @@
   <div class="pageWrap">
     <% if @requested_friendships.length > 0 %>
     <div class="pageHeader">Requested Connections</div>
-    <div class="connectionRequestsWrapper">
     <% end %>
+      <div class="connectionRequestsWrapper">
       <% @requested_friendships.each do |friendship| %>
         <% if friendship.requested? %>
         <% friend = friendship.friend %>
