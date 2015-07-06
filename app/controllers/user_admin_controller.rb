@@ -1,10 +1,11 @@
 class UserAdminController < ApplicationController
   wrap_parameters format: [:json, :xml]
+  before_action :authenticate_user!
+  before_action :admin_user, :only => [:index, :update, :destroy, :new, :create, :upload, :uploadFile]
+
   def index
     # defaults to most recent
     @users = User.order(created_at: :desc)
-
-
 
   end
   # for filtering
@@ -61,6 +62,7 @@ class UserAdminController < ApplicationController
   def edit
     @editUser = User.find(params[:id])
     @countries = countries_list
+    @industries = industries_list
   end
 
   def update
@@ -238,5 +240,17 @@ class UserAdminController < ApplicationController
 
   end
 
+  def industries_list
+    ["Education", "Services/Consulting", "IT/TelCo", "Financials/Insurance", "Healthcare/Pharma", "Retail/Consumer", "Industrials/Materials/Manufacturing", "Government", "Restricted", "Other", "Nonprofit", "Energy/Utilities"]
+  end
+
+
+  def admin_user
+    if current_user.admin
+      return true
+    else
+      redirect_to '/unauthorized'
+    end
+  end
 
 end

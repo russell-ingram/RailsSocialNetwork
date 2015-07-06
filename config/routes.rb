@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/connections' => 'friendships#index'
 
+  get '/unauthorized' => 'static_pages#unauth'
+
 
   get '/profile/:id' => 'static_pages#show_profile', as: 'user_profile'
 

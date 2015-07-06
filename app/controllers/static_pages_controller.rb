@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
     @industries = industries_list
     @sectors = Sector.all
     @vendors = Vendor.all
-    @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id)
+    @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id).take(3)
 
     @news = Content.find_by("type_of_content = ? AND active = ?", "news", true)
     if @news == nil
@@ -45,6 +45,9 @@ class StaticPagesController < ApplicationController
   end
   def connections
 
+  end
+
+  def unauth
   end
 
 

@@ -74,6 +74,12 @@ $( document ).ready(function() {
   $('#pubButton1').click(function() {
     $("#radio1").prop("checked", true);
     $("#radio1").val(true);
+    $("#radio1").next().find('.pubBoxIcon').removeClass('icon-selection-false');
+    $("#radio1").next().find('.pubBoxIcon').addClass('icon-selection-true');
+    $("#radio1").next().find('.pubBoxIcon').addClass('active');
+    $("#radio2").next().find('.pubBoxIcon').removeClass('icon-selection-true');
+    $("#radio2").next().find('.pubBoxIcon').removeClass('active');
+    $("#radio2").next().find('.pubBoxIcon').addClass('icon-selection-false');
 
     var unchecked = $('#radio2');
     unchecked.prop("checked", false);
@@ -83,6 +89,13 @@ $( document ).ready(function() {
   $('#pubButton2').click(function() {
     $("#radio2").prop("checked", true);
     $("#radio1").val(true);
+
+    $("#radio2").next().find('.pubBoxIcon').removeClass('icon-selection-false');
+    $("#radio2").next().find('.pubBoxIcon').addClass('icon-selection-true');
+    $("#radio2").next().find('.pubBoxIcon').addClass('active');
+    $("#radio1").next().find('.pubBoxIcon').removeClass('icon-selection-true');
+    $("#radio1").next().find('.pubBoxIcon').removeClass('active');
+    $("#radio1").next().find('.pubBoxIcon').addClass('icon-selection-false');
 
     var unchecked = $('#radio1');
     unchecked.prop("checked", false);

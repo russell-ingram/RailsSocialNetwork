@@ -163,7 +163,9 @@
         <div class="editorButton ql-underline">U</div>
       </div>
         <div class="newMsgFormControl newMessageArea userSummaryField" id="editor">
-          <%= @editUser.summary %>
+          <% if @editUser.summary? %>
+          <%= @editUser.summary.html_safe %>
+          <% end %>
         </div>
         <%= f.text_area :summary, placeholder: 'Summary',id:'textAreaEditor', style: 'display: none;' %>
 
@@ -181,7 +183,22 @@
             <%= f.text_field :employer, placeholder: 'Employer' %>
           </div>
           <div class="field field-col-2">
-            <%= f.text_field :industry, placeholder: 'Industry' %>
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+              <% if !@editUser.industry.blank? %>
+                <%= @editUser.industry %>
+              <% else %>
+                Industry
+              <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <% @industries.each do |industry| %>
+                <li class="ddOption fieldOption"><%= industry %></li>
+                <% end %>
+              </ul>
+            </div>
+            <%= f.text_field :industry, placeholder: 'Industry', style: 'display: none;' %>
           </div>
 
         </div>
@@ -249,12 +266,12 @@
           <div class="pubLabel">Company type</div>
           <div id="pubButton1">
             <input type="radio" id="radio1" name="public" value="true" checked>
-            <label for="radio01"><span></span>Privately Held</label>
+            <label for="radio01"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Privately Held</div></label>
           </div>
           <!-- <br> -->
           <div id="pubButton2">
             <input type="radio" id="radio2" name="public" value="false">
-            <label for="radio02"><span></span>Publicly Held</label>
+            <label for="radio02"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Publicly Held</div></label>
           </div>
         </div>
       </div>

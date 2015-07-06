@@ -27,16 +27,19 @@ class MessagesController < ApplicationController
     # end
     # puts recipients
     conversation = current_user.send_message(x, params[:message][:body], params[:message][:subject])
-    flash[:success] = "Message has been sent!"
+    flash[:success] = "Your message has been successfully sent!"
     # redirect_to conversation_path(1)
     puts "Mailboxer:"
     puts conversation
     puts "Details:"
     puts conversation.inspect
     if conversation
-      redirect_to conversation_path(conversation)
+      puts "CONVERSATION PATH!!!!"
+      flash[:success] = "Message sent!"
+
+      redirect_to '/messages'
     else
-      redirect_to '/admin/messages/new/all'
+      redirect_to '/messages'
     end
   end
 

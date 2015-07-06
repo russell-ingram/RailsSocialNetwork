@@ -2,6 +2,7 @@
   <div class="pageWrap">
     <% if @requested_friendships.length > 0 %>
     <div class="pageHeader">Requested Connections</div>
+    <div class="connectionRequestsWrapper">
     <% end %>
       <% @requested_friendships.each do |friendship| %>
         <% if friendship.requested? %>
@@ -16,7 +17,7 @@
 
         </a></div>
         <div class="connectionRequestInfo">
-          <div class="connectionReqDate">June 15, 2015</div>
+          <div class="connectionReqDate"><%= friendship.created_at.strftime("%B %e, %Y") %></div>
           <div class="connectionReqName"><%= link_to friend.full_name, user_profile_path(friend) %></div>
           <div class="connectionReqCompany"><%= friend.employer %></div>
           <div class="connectionReqIndustry">CIO, Energy / Clean Energy, Mid to Large Enterprise</div>
@@ -37,7 +38,7 @@
           <!-- <button class="connectionButtonReject">Reject</button> -->
           <span class="connectionButtonReject">
             <span>
-                <input type="Submit" value="Reject">
+                <input type="Submit" value="Ignore">
             </span>
           </span>
         <% end %>
@@ -50,7 +51,7 @@
         <% end %>
       <% end %>
 
-    <div class="connectionRequestsWrapper">
+
 
     </div>
 

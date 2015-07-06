@@ -5,6 +5,12 @@
     <div class="composeButton searchButton"><%= link_to 'COMPOSE', new_message_path %></div>
   </div>
 
+  <div class="flashMessages">
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
+  </div>
+
   <div class="messagesWrapper">
 
     <div class="messagesBar">

@@ -76,6 +76,9 @@ $( document ).ready(function() {
   $('.updateSearchButton').off().on('click', function() {
     $('#submitSearch').click();
   });
+  $('.fixIt').off().on('click', function() {
+    $('#submitSearch').click();
+  });
 
   $('.searchSideBarTab').off().on('click',function() {
     var tab = $(this)

@@ -310,6 +310,9 @@
             New spending intention +
           </div>
         </a>
+
+        <%= f.text_field :results, placeholder: 'Results', style: 'display: none;', id: 'resultsField' %>
+
         <div class="updateSearchButton">Update</div>
         <%= f.submit 'Submit', id: 'submitSearch', style: 'display:none;' %>
         <% end %>
