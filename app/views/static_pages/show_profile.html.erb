@@ -1,23 +1,25 @@
 <%= render "layouts/header" %>
 <div class="pageWrap">
-  <div class="pageHeader">Profile
+  <div class="pageHeader profileTopHeader">Profile
   </div>
-  <div class="adminLink"><a href="/admin">Edit as Admin<i class="fa fa-chevron-right"></i></a></div>
+  <!-- <div class="adminLink"><a href="/admin">Edit as Admin<i class="fa fa-chevron-right"></i></a></div> -->
 
   <div class="profileHeader">
     <div class="profilePic">
       <% if @user.profile_pic_url? %>
         <%= image_tag @user.profile_pic_url %>
+      <% else %>
+        <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
       <% end %>
     </div>
     <div class="profileInfo">
       <div class="profileName"><%= @user.full_name %></div>
-      <div class="profilePosition">Chief Information Office (CIO)</div>
+      <div class="profilePosition"><%= @user.position %></div>
       <div class="profileEmployer"><%= @user.employer %></div>
       <div class="profileIndustry">
         <i class="fa fa-building-o"></i><%= @user.industry %>
       </div>
-      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= @user.region %></div>
+      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= @user.country %></div>
 
         <% if @friends.include? @user %>
           <div class="profileButton profileConnected">CONNECTED</div>
@@ -48,16 +50,21 @@
   </div>
 
   <div class="profileTabWrapper">
-    <div class="profileTabBox">
-      <div class="profileTabBoxLabel">
+    <div class="profileTabBox formBox summaryFormBox">
+      <div class="profileTabBoxLabel formHeader">
         SUMMARY
       </div>
-    </div>
-    <div class="profileTabBox">
-      <div class="profileTabBoxLabel">
-        EXPERIENCE
+      <div class="profileTabSummaryText">
+        <% if @user.summary? %>
+          <%= current_user.summary.html_safe %>
+        <% end %>
       </div>
     </div>
+    <!-- <div class="profileTabBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        EXPERIENCE
+      </div>
+    </div> -->
   </div>
 
 

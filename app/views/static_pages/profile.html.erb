@@ -1,6 +1,6 @@
 <%= render "layouts/header" %>
 <div class="pageWrap">
-  <div class="pageHeader">Profile
+  <div class="pageHeader profileTopHeader">Profile
   </div>
   <!-- <div class="adminLink"><a href="/admin">Admin Dashboard<i class="fa fa-chevron-right"></i></a></div> -->
 
@@ -10,7 +10,7 @@
     </div>
     <div class="profileInfo">
       <div class="profileName"><%= current_user.full_name %></div>
-      <div class="profilePosition">Chief Information Office (CIO)</div>
+      <div class="profilePosition"><%= @user.position %></div>
       <div class="profileEmployer"><%= current_user.employer %></div>
       <div class="profileIndustry">
         <i class="fa fa-building-o"></i><%= current_user.industry %>

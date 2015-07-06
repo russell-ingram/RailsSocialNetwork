@@ -24,8 +24,14 @@
   padding-bottom: 40px;
 }
 
+.profileTopHeader {
+  margin-top: -15px;
+}
+
 .profilePic {
   float: left;
+  height: 200px;
+  overflow:hidden;
 }
 .profilePic img {
 
@@ -117,4 +123,8 @@
 
 .profileConnected {
   background-color: #34373d;
+}
+
+.summaryFormBox {
+  min-height: 0px;
 }
