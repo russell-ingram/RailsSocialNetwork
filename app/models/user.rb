@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
 
   has_many :pending_friends, through: :pending_user_friendships, source: :friend
 
+  has_many :works
+  accepts_nested_attributes_for :works, :allow_destroy => true, :reject_if => :all_blank
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:linkedin]

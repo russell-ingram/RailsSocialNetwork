@@ -31,10 +31,50 @@ class StaticPagesController < ApplicationController
   end
 
   def profile
+    @accepted_friendships = []
+    @friendships = current_user.friendships.includes(:friend)
+    @friendships.each do |f|
+      @accepted_friendships << f if f.state == 'accepted'
+    end
+    @current_pos
+    current_user.works.each do |work|
+      if work.current?
+        @current_pos = work
+        p "CURRENT POS"
+        p @current_pos
+      end
+    end
+
+    if @current_pos.blank?
+      @current_pos.job_title = "Unlisted"
+      @current_pos.company = "Unlisted"
+      @current_pos.industry = "Unlisted"
+      @current_pos.country = "Unlisted"
+    end
+
+
+
+
   end
 
   def show_profile
     @user = User.find(params[:id])
+    @current_pos
+    @user.works.each do |work|
+      if work.current?
+        @current_pos = work
+        p "CURRENT POS"
+        p @current_pos
+      end
+    end
+
+    if @current_pos.blank?
+      @current_pos.position = "Unlisted"
+      @current_pos.employer = "Unlisted"
+      @current_pos.industry = "Unlisted"
+      @current_pos.country = "Unlisted"
+    end
+
     get_friendships
   end
 

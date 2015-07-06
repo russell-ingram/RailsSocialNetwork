@@ -61,6 +61,21 @@ class UserAdminController < ApplicationController
 
   def edit
     @editUser = User.find(params[:id])
+    p "EDIT:"
+    # p @editUser
+    @editUser.works ||= Work.new
+    if @editUser.works.length < 3
+      if @editUser.works[0].blank?
+        @editUser.works << Work.new
+      end
+      if @editUser.works[1].blank?
+        @editUser.works << Work.new
+      end
+      if @editUser.works[2].blank?
+        @editUser.works << Work.new
+      end
+    end
+    p @editUser.works
     @countries = countries_list
     @industries = industries_list
   end
@@ -228,7 +243,7 @@ class UserAdminController < ApplicationController
 
   def user_params
     # puts params
-    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url, :position, :footprint, :linked_in_url, :enterprise_size, :region, :country, :emp_summary, :summary, :admin)
+    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url, :position, :footprint, :linked_in_url, :enterprise_size, :region, :country, :emp_summary, :summary, :admin, :works_attributes => [:company, :industry, :enterprise_size, :region, :country, :summary, :id, :job_title, :footprint, :current, :start_date, :end_date, :public])
   end
 
   def new_user_params

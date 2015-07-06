@@ -71,36 +71,51 @@ $( document ).ready(function() {
   })
 
 
-  $('#pubButton1').click(function() {
-    $("#radio1").prop("checked", true);
-    $("#radio1").val(true);
-    $("#radio1").next().find('.pubBoxIcon').removeClass('icon-selection-false');
-    $("#radio1").next().find('.pubBoxIcon').addClass('icon-selection-true');
-    $("#radio1").next().find('.pubBoxIcon').addClass('active');
-    $("#radio2").next().find('.pubBoxIcon').removeClass('icon-selection-true');
-    $("#radio2").next().find('.pubBoxIcon').removeClass('active');
-    $("#radio2").next().find('.pubBoxIcon').addClass('icon-selection-false');
+  $('.pubButton').click(function() {
+    var radio = $(this).find('.pubInputCheck');
+    var radio2;
+    var input;
+    if ($(this).is('#pubButton1')) {
+      radio2 = $(this).next().find('.pubInputCheck');
+      input = $(this).next().next();
+      input.val("false");
+    } else {
+      radio2 = $(this).prev().find('.pubInputCheck');
+      input = $(this).next();
+      input.val("true");
+    }
+
+
+    radio.prop("checked", true);
+    radio.val(true);
+    radio.next().find('.pubBoxIcon').removeClass('icon-selection-false');
+    radio.next().find('.pubBoxIcon').addClass('icon-selection-true');
+    radio.next().find('.pubBoxIcon').addClass('active');
+    radio2.next().find('.pubBoxIcon').removeClass('icon-selection-true');
+    radio2.next().find('.pubBoxIcon').removeClass('active');
+    radio2.next().find('.pubBoxIcon').addClass('icon-selection-false');
 
     var unchecked = $('#radio2');
-    unchecked.prop("checked", false);
-    unchecked.val(false);
+    radio2.prop("checked", false);
+    radio2.val(false);
+
   });
 
-  $('#pubButton2').click(function() {
-    $("#radio2").prop("checked", true);
-    $("#radio1").val(true);
+  // $('#pubButton2').click(function() {
+  //   $("#radio2").prop("checked", true);
+  //   $("#radio1").val(true);
 
-    $("#radio2").next().find('.pubBoxIcon').removeClass('icon-selection-false');
-    $("#radio2").next().find('.pubBoxIcon').addClass('icon-selection-true');
-    $("#radio2").next().find('.pubBoxIcon').addClass('active');
-    $("#radio1").next().find('.pubBoxIcon').removeClass('icon-selection-true');
-    $("#radio1").next().find('.pubBoxIcon').removeClass('active');
-    $("#radio1").next().find('.pubBoxIcon').addClass('icon-selection-false');
+  //   $("#radio2").next().find('.pubBoxIcon').removeClass('icon-selection-false');
+  //   $("#radio2").next().find('.pubBoxIcon').addClass('icon-selection-true');
+  //   $("#radio2").next().find('.pubBoxIcon').addClass('active');
+  //   $("#radio1").next().find('.pubBoxIcon').removeClass('icon-selection-true');
+  //   $("#radio1").next().find('.pubBoxIcon').removeClass('active');
+  //   $("#radio1").next().find('.pubBoxIcon').addClass('icon-selection-false');
 
-    var unchecked = $('#radio1');
-    unchecked.prop("checked", false);
-    unchecked.val(false);
-  });
+  //   var unchecked = $('#radio1');
+  //   unchecked.prop("checked", false);
+  //   unchecked.val(false);
+  // });
 
 
   $('#callButton1').click(function() {
@@ -158,6 +173,35 @@ $( document ).ready(function() {
 
   });
 
+  $('.currentPostButton').click(function() {
+    var btn = $(this).find(".radioSendAll");
+    var icon = $(this).find(".checkBoxIcon");
+    if (btn.is(':checked')) {
+      btn.prop("checked", false);
+      icon.removeClass('icon-selection-true');
+      icon.addClass('icon-selection-false');
+      // icon.css("color","#cbd0d2");
+      $(this).next().val('false');
+    } else {
+      btn.prop("checked", true);
+      $('.checkBoxIcon').each(function() {
+        if ($(this).hasClass('icon-selection-true')) {
+          $(this).removeClass('icon-selection-true');
+          $(this).addClass('icon-selection-false');
+          // $(this).css("color","#cbd0d2");
+          $(this).next().val('false');
+        }
+      })
+      icon.removeClass('icon-selection-false');
+      icon.addClass('icon-selection-true');
+      // icon.css("color","#3eb2cc");
+      $(this).next().val('true');
+    }
+
+  });
+
+
+
   $(".searchBarHomeAdvancedOptions").on('click', function() {
     var row = $('.homePageAdvancedRow');
     var icon = $('.searchBarHomeAdvancedOptions').children();
@@ -183,6 +227,20 @@ $( document ).ready(function() {
   //   }
     // $('.mailMenuDrop').show();
   // })
+
+  $(".profileTabLabel").off().on('click', function() {
+    if ($(this).hasClass('infoTab')) {
+      $('.profileInformationTab').addClass('active');
+      $('.infoTab').addClass('active');
+      $('.profileConnectionsTab').removeClass('active');
+      $('.connTab').removeClass('active');
+    } else {
+      $('.profileInformationTab').removeClass('active');
+      $('.infoTab').removeClass('active');
+      $('.profileConnectionsTab').addClass('active');
+      $('.connTab').addClass('active');
+    }
+  });
 
 
 

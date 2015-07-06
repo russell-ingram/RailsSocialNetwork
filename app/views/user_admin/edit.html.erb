@@ -132,16 +132,10 @@
         <div class="field editField">
           <%= f.text_field :last_name, placeholder: 'Last name' %>
         </div>
-        <div class="field editField">
-          <%= f.text_field :position, placeholder: 'Job title' %>
-        </div>
-        <div class="field editField">
-          <%= f.text_field :footprint, placeholder: 'IT Footprint' %>
-        </div>
-        <div class="field editField">
+        <div class="field editField fullField">
           <%= f.text_field :email, placeholder: 'Email address' %>
         </div>
-        <div class="field editField">
+        <div class="field editField fullField">
           <%= f.text_field :linked_in_url, placeholder: 'Connected LinkedIn account' %>
         </div>
 
@@ -172,21 +166,40 @@
 
     </div>
 
-
-    <div class="userEditBox formBox">
+  <%= f.fields_for :works do |ff| %>
+    <% if ff.object.job_title.blank? && ff.index > 0 %>
+    <div class="userEditBox formBox pastPositionBox" id="pastExp<%= ff.index %>">
+    <% else %>
+    <div class="userEditBox formBox pastPositionBox active" id="pastExp<%= ff.index %>">
+    <% end %>
       <div class="profileTabBoxLabel formHeader">
-        EMPLOYER DETAILS
+      <% if ff.index > 0 %>
+        PAST EXPERIENCE
+      <% else %>
+        EXPERIENCE
+      <% end %>
       </div>
+
+
       <div class="formBoxField">
         <div class="formBoxRow">
           <div class="field field-col-2">
-            <%= f.text_field :employer, placeholder: 'Employer' %>
+            <%= ff.text_field :job_title, placeholder: 'Job title' %>
+          </div>
+          <div class="field field-col-2">
+            <%= ff.text_field :footprint, placeholder: 'IT Footprint' %>
+          </div>
+        </div>
+
+        <div class="formBoxRow">
+          <div class="field field-col-2">
+            <%= ff.text_field :company, placeholder: 'Employer' %>
           </div>
           <div class="field field-col-2">
             <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
               <span class="ddLabel">
-              <% if !@editUser.industry.blank? %>
-                <%= @editUser.industry %>
+              <% if !ff.object.industry.blank? %>
+                <%= ff.object.industry %>
               <% else %>
                 Industry
               <% end %>
@@ -198,7 +211,7 @@
                 <% end %>
               </ul>
             </div>
-            <%= f.text_field :industry, placeholder: 'Industry', style: 'display: none;' %>
+            <%= ff.text_field :industry, placeholder: 'Industry', style: 'display: none;' %>
           </div>
 
         </div>
@@ -206,8 +219,8 @@
           <div class="field field-col-3">
             <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
               <span class="ddLabel">
-              <% if !@editUser.enterprise_size.blank? %>
-                <%= @editUser.enterprise_size %>
+              <% if !ff.object.enterprise_size.blank? %>
+                <%= ff.object.enterprise_size %>
               <% else %>
                 Enterprise Size
               <% end %>
@@ -219,13 +232,13 @@
                 <li class="ddOption fieldOption">Small</li>
               </ul>
             </div>
-            <%= f.text_field :enterprise_size, placeholder: 'Enterprise Size', style: 'display: none;' %>
+            <%= ff.text_field :enterprise_size, placeholder: 'Enterprise Size', style: 'display: none;' %>
           </div>
           <div class="field field-col-3">
             <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
               <span class="ddLabel">
-                <% if !@editUser.region.blank? %>
-                  <%= @editUser.region %>
+                <% if !ff.object.region.blank? %>
+                  <%= ff.object.region %>
                 <% else %>
                   Region
                 <% end %>
@@ -238,13 +251,13 @@
                 <li class="ddOption fieldOption">Latin America</li>
               </ul>
             </div>
-            <%= f.text_field :region, placeholder: 'Region', style:'display: none;' %>
+            <%= ff.text_field :region, placeholder: 'Region', style:'display: none;' %>
           </div>
           <div class="field field-col-3">
             <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
               <span class="ddLabel">
-                <% if !@editUser.country.blank? %>
-                  <%= @editUser.country %>
+                <% if !ff.object.country.blank? %>
+                  <%= ff.object.country %>
                 <% else %>
                   Country
                 <% end %>
@@ -256,29 +269,76 @@
                 <% end %>
               </ul>
             </div>
-            <%= f.text_field :country, placeholder: 'Country',style: 'display:none;' %>
+            <%= ff.text_field :country, placeholder: 'Country',style: 'display:none;' %>
           </div>
         </div>
-        <div class="field-area field-summary">
-          <%= f.text_area :emp_summary, placeholder: 'Summary' %>
+        <div class="field-area field-summary experienceSummaryBox">
+          <%= ff.text_area :summary, placeholder: 'Summary' %>
         </div>
         <div class="pubOrPrivBox">
+
+
+
+
+
+          <div id="currentPosButton" class="currentPostButton">
+            <input type="radio" class="radioSendAll" name="public" value="true">
+            <% if ff.object.current? %>
+            <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div></span>CURRENT POSITION</label>
+            <% else %>
+            <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>CURRENT POSITION</label>
+            <% end %>
+          </div>
+          <%= ff.text_area :current, placeholder: 'current', style: "display:none;" %>
+
+
+
+
+          <div class="pastEmpDates pubLabel">
+            <div class="pastEmpDateLabel">Start date</div>
+            <div class="field pastEmpDateBox">
+              <%= ff.text_field :start_date, placeholder: 'MM/YYYY', id:"past_emp_start_date" %>
+              <!-- <input placeholder="MM/YYYY" type="text" name="past_emp[start_date]" id="past_emp_start_date"> -->
+            </div>
+            <div class="pastEmpDateLabel">End date</div>
+            <div class="field pastEmpDateBox">
+              <%= ff.text_field :end_date, placeholder: 'MM/YYYY', id:"past_emp_end_date" %>
+              <!-- <input placeholder="MM/YYYY" type="text" name="past_emp[end_date]" id="past_emp_end_date"> -->
+            </div>
+          </div>
+
+
+
           <div class="pubLabel">Company type</div>
-          <div id="pubButton1">
-            <input type="radio" id="radio1" name="public" value="true" checked>
+          <div id="pubButton1" class="pubButton">
+          <% if ff.object.public? %>
+            <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true">
+            <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Privately Held</div></label>
+          <% else %>
+            <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true" checked>
             <label for="radio01"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Privately Held</div></label>
+          <% end %>
+
           </div>
           <!-- <br> -->
-          <div id="pubButton2">
-            <input type="radio" id="radio2" name="public" value="false">
+          <div id="pubButton2" class="pubButton">
+          <% if ff.object.public? %>
+            <input type="radio" class="pubInputCheck" id="radio2" name="public" value="true" checked>
+            <label for="radio02"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Publicly Held</div></label>
+          <% else %>
+            <input type="radio" class="pubInputCheck" id="radio2" name="public" value="false">
             <label for="radio02"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Publicly Held</div></label>
+          <% end %>
           </div>
+          <%= ff.text_area :public, placeholder: 'public', style: "display:none;" %>
         </div>
       </div>
 
     </div>
 
-    <div class="userEditBox formBox pastExperienceFormBox">
+    <% end %>
+
+<!--     <div class="userEditBox formBox pastExperienceFormBox">
       <div class="profileTabBoxLabel formHeader">
         PAST EXPERIENCE
       </div>
@@ -306,7 +366,7 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
 
 
     <div class="addPastPosition">

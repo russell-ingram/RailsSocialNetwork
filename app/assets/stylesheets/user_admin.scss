@@ -194,6 +194,12 @@
   }
 }
 
+.fullField {
+  input {
+    width: 702px;
+  }
+}
+
 .formBoxField {
   padding: 30px;
 }
@@ -222,31 +228,37 @@
   }
   div {
     margin-bottom: 10px;
-    input + label span {
-      display:inline-block;
-      width:19px;
-      height:19px;
-      margin:-1px 4px 0 0;
-      vertical-align:middle;
-      cursor:pointer;
-      -moz-border-radius:  50%;
-      border-radius:  50%;
-      background-color: #cbd0d2;
-    }
     .icon {
       margin-top:-20px;
       font-size:18px;
       color: #cbd0d2;
     }
     input:checked + label span {
-      background-color: #FFFFFF;
 
     }
   }
 }
 
+.pubOrPrivBox > :first-child {
+  margin-bottom: 0;
+}
+
+
+
 #pubButton1, #pubButton2 {
   cursor: pointer !important;
+  input + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    cursor:pointer;
+    -moz-border-radius:  50%;
+    border-radius:  50%;
+    background-color: #cbd0d2;
+  }
+
 }
 
 .pubBoxIcon {
@@ -270,6 +282,14 @@
   text-transform: none;
 }
 
+.currentPosCheck {
+  display: inline-block;
+  top: 3px;
+  position: relative;
+  margin-right: 5px;
+  margin-top: 0 !important;
+}
+
 .pastEmpDates {
   float:left;
   margin-top: 10px;
@@ -289,11 +309,21 @@
   margin-bottom: 5px;
 }
 
+.pastEmpDateBox {
+  input {
+    display: block;
+  }
+}
+
 .field-summary {
   width: 880px;
   height: 161px;
   float: left;
   margin-bottom: 30px;
+}
+
+.experienceSummaryBox {
+  height: 380px;
 }
 
 
@@ -318,6 +348,14 @@
     margin-right: 10px;
     margin-left: -15px;
   }
+}
+
+.pastPositionBox {
+  display: none;
+}
+
+.pastPositionBox.active {
+  display: block;
 }
 
 

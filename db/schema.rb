@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625055204) do
+ActiveRecord::Schema.define(version: 20150706191433) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -192,6 +192,24 @@ ActiveRecord::Schema.define(version: 20150625055204) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.string   "company"
+    t.string   "industry"
+    t.string   "enterprise_size"
+    t.string   "region"
+    t.string   "country"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.text     "summary"
+    t.boolean  "current"
+    t.boolean  "public"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.string   "job_title"
+    t.string   "footprint"
   end
 
 end

@@ -10,22 +10,22 @@
     </div>
     <div class="profileInfo">
       <div class="profileName"><%= current_user.full_name %></div>
-      <div class="profilePosition"><%= current_user.position %></div>
-      <div class="profileEmployer"><%= current_user.employer %></div>
+      <div class="profilePosition"><%= @current_pos.job_title %></div>
+      <div class="profileEmployer"><%= @current_pos.company %></div>
       <div class="profileIndustry">
-        <i class="fa fa-building-o"></i><%= current_user.industry %>
+        <i class="fa fa-building-o"></i><%= @current_pos.industry %>
       </div>
-      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= current_user.country %></div>
+      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= @current_pos.country %></div>
 
     </div>
 
   </div>
 
   <div class="profileTab">
-    <div class="profileTabLabel active">INFORMATION</div>
-    <div class="profileTabLabel">CONNECTIONS</div>
+    <div class="profileTabLabel infoTab active">INFORMATION</div>
+    <div class="profileTabLabel connTab">CONNECTIONS</div>
   </div>
-
+<div class="profileInformationTab active">
   <div class="profileTabWrapper">
     <div class="profileTabBox formBox">
       <div class="profileTabBoxLabel formHeader">
@@ -37,14 +37,80 @@
         <% end %>
       </div>
     </div>
+    <% if current_user.works.length && current_user.works.length > 0 %>
     <div class="profileTabBox formBox">
       <div class="profileTabBoxLabel formHeader">
         EXPERIENCE
       </div>
+      <div class="workBoxWrapper">
+      <% current_user.works.each do |work| %>
+        <% if work.job_title? %>
+      <div class="workBox">
+        <div class="workJobTitle">
+          <%= work.job_title %>
+        </div>
+        <div class="workCompany">
+          <%= work.company %>
+        </div>
+        <div class="workDates">
+          <% if work.current? %>
+          <%= work.start_date %> - Present
+          <% else %>
+          <%= work.start_date %> - <%= work.end_date %>
+          <% end %>
+        </div>
+        <div class="workSummary">
+          <%= work.summary %>
+        </div>
+      </div>
+        <% end %>
+      <% end %>
+      </div>
+
+    </div>
+
+    <% end %>
+  </div>
+</div>
+<!-- end profile info tab -->
+  <div class="profileConnectionsTab">
+    <div class="profileTabWrapper">
+      <div class="profileConnections">
+      <div class="friendsTabWrapper">
+        <% if @friendships.length > 0 %>
+          <% @friendships.each do |friendship| %>
+          <% friend = friendship.friend %>
+
+      <div class="myConnection">
+        <div class="myConnWrapper">
+          <div class="myConnProfilePic"><a href="/profile/<%= friend.id %>">
+          <% if friend.profile_pic_url? %>
+            <%= image_tag friend.profile_pic_url %>
+          <% else %>
+            <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+          <% end %>
+          </a></div>
+
+          <div class="myConnInfo">
+            <div class="myConnName"><%= link_to friend.full_name, user_profile_path(friend) %></div>
+            <div class="myConnCompany"><%= friend.employer %></div>
+            <div class="myConnIndustry"><%= friend.industry %></div>
+          </div>
+          <div class="myConnMessage"><a href="/messages/new">MESSAGE<i class="fa fa-chevron-right"></i></a></div>
+        </div>
+      </div>
+
+          <% end %>
+        <% else %>
+          You currently have no connections.
+        <% end %>
+      </div>
+      </div>
     </div>
   </div>
 
-
+<!-- end profile conns tab -->
+<div class="footerMargin"></div>
 </div>
 
 

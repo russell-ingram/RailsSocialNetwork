@@ -199,6 +199,16 @@ textarea, input, select {
   height: 100%;
 }
 
+// icon global rules:
+.icon-selection-true {
+  color: #3eb2cc !important;
+}
+
+.icon-selection-false {
+  color: #cbd0d2 !important;
+}
+
+
 @media only screen
 and (min-device-width : 1280px)
 and (max-device-width : 1386px) {
