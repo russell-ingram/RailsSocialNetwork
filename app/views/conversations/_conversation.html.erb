@@ -1,8 +1,16 @@
 
 <div class="message">
-  <div class="messageProfilePicBox"></div>
+<% message = conversation.last_message %>
+  <div class="messageProfilePicBox">
+  <% if message.sender.profile_pic_url? %>
+    <%= image_tag message.sender.profile_pic_url %>
+  <% else %>
+    <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
+  <% end %>
 
-        <% message = conversation.last_message %>
+  </div>
+
+
 
 
   <div class="messageTimeStamp"><%= message.created_at.strftime("%l:%M %p %B %-d, %Y") %></div>

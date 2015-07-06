@@ -104,8 +104,12 @@
 .messageProfilePicBox {
   height: 140px;
   width: 140px;
-  background-color: black;
+  max-height:140px;
   float:left;
+  overflow:hidden;
+  img {
+    width: 140px;
+  }
 }
 
 .messageContentBox {
