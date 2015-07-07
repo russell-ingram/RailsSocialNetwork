@@ -56,8 +56,9 @@
 
           <div class="myConnInfo">
             <div class="myConnName"><%= link_to user.full_name, user_profile_path(user) %></div>
-            <div class="myConnCompany"><%= user.employer %></div>
-            <div class="myConnIndustry"><%= user.job_title_option %>, <%= user.industry %>, <%= user.ent_no_caps %></div>
+            <% position = user.current_pos %>
+            <div class="myConnCompany"><%= position["company"] %></div>
+            <div class="myConnIndustry"><%= position["job_title"] %>, <%= position["industry"] %>, <%= position["enterprise_size"] %></div>
           </div>
 
           <div class="myConnMessage userActionsSidebar">

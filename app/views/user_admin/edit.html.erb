@@ -297,12 +297,12 @@
           <div class="pastEmpDates pubLabel">
             <div class="pastEmpDateLabel">Start date</div>
             <div class="field pastEmpDateBox">
-              <%= ff.text_field :start_date, placeholder: 'MM/YYYY', id:"past_emp_start_date" %>
+              <%= ff.text_field :start_date, placeholder: 'MM/YYYY', id:"past_emp_start_date#{ff.index}" %>
               <!-- <input placeholder="MM/YYYY" type="text" name="past_emp[start_date]" id="past_emp_start_date"> -->
             </div>
             <div class="pastEmpDateLabel">End date</div>
             <div class="field pastEmpDateBox">
-              <%= ff.text_field :end_date, placeholder: 'MM/YYYY', id:"past_emp_end_date" %>
+              <%= ff.text_field :end_date, placeholder: 'MM/YYYY', id:"past_emp_end_date#{ff.index}" %>
               <!-- <input placeholder="MM/YYYY" type="text" name="past_emp[end_date]" id="past_emp_end_date"> -->
             </div>
           </div>

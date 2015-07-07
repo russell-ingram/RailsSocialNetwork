@@ -60,15 +60,15 @@ class User < ActiveRecord::Base
   end
 
   def self.search(search)
-    puts "SEARCH:"
-    puts search.inspect
-    p search.results.class
+    # puts "SEARCH:"
+    # puts search.inspect
+    # p search.results.class
     if search.results && search.results != ""
       res = JSON.parse(search.results)
       # p res[0]
       intentions = Intention.all
-      p "Length:"
-      p intentions.length
+      # p "Length:"
+      # p intentions.length
       if res[0]["vendor"] != "Any"
         # if res[0]["vendor"] = "Any"
         # end
@@ -84,8 +84,8 @@ class User < ActiveRecord::Base
 
 
 
-      p "Intentions found:"
-      p intentions.inspect
+      # p "Intentions found:"
+      # p intentions.inspect
       user_ids = []
       intentions.each do | i |
         user_ids << i.user_id
@@ -107,6 +107,26 @@ class User < ActiveRecord::Base
     users = users.find(user_ids) if user_ids.present?
 
     return users
+  end
+
+  def current_pos
+    @user_pos
+    works.each do |work|
+      if work.current?
+        @user_pos = work
+      end
+    end
+    if @user_pos.blank?
+      @user_pos = {
+        "job_title" => "Unlisted",
+        "company" => "Unlisted",
+        "enterprise_size" => "Unlisted",
+        "region" => "Unlisted",
+        "country" => "Unlisted",
+        "industry" => "Unlisted"
+      }
+    end
+    return @user_pos
   end
 
 end

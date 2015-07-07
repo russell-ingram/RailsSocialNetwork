@@ -8,14 +8,15 @@
     <div class="profilePic">
       <%= image_tag current_user.profile_pic_url %>
     </div>
+    <% position = current_user.current_pos %>
     <div class="profileInfo">
       <div class="profileName"><%= current_user.full_name %></div>
-      <div class="profilePosition"><%= @current_pos.job_title %></div>
-      <div class="profileEmployer"><%= @current_pos.company %></div>
+      <div class="profilePosition"><%= position[:job_title] %></div>
+      <div class="profileEmployer"><%= position.company %></div>
       <div class="profileIndustry">
-        <i class="fa fa-building-o"></i><%= @current_pos.industry %>
+        <i class="fa fa-building-o"></i><%= position.industry %>
       </div>
-      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= @current_pos.country %></div>
+      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= position.country %></div>
 
     </div>
 
@@ -27,7 +28,7 @@
   </div>
 <div class="profileInformationTab active">
   <div class="profileTabWrapper">
-    <div class="profileTabBox formBox">
+    <div class="profileTabBox formBox summaryFormBox">
       <div class="profileTabBoxLabel formHeader">
         SUMMARY
       </div>

@@ -36,21 +36,21 @@ class StaticPagesController < ApplicationController
     @friendships.each do |f|
       @accepted_friendships << f if f.state == 'accepted'
     end
-    @current_pos
-    current_user.works.each do |work|
-      if work.current?
-        @current_pos = work
-        p "CURRENT POS"
-        p @current_pos
-      end
-    end
+    # @current_pos
+    # current_user.works.each do |work|
+    #   if work.current?
+    #     @current_pos = work
+    #     p "CURRENT POS"
+    #     p @current_pos
+    #   end
+    # end
 
-    if @current_pos.blank?
-      @current_pos.job_title = "Unlisted"
-      @current_pos.company = "Unlisted"
-      @current_pos.industry = "Unlisted"
-      @current_pos.country = "Unlisted"
-    end
+    # if @current_pos.blank?
+    #   @current_pos.job_title = "Unlisted"
+    #   @current_pos.company = "Unlisted"
+    #   @current_pos.industry = "Unlisted"
+    #   @current_pos.country = "Unlisted"
+    # end
 
 
 
