@@ -78,11 +78,11 @@
     <div class="profileTabWrapper">
       <div class="profileConnections">
       <div class="friendsTabWrapper">
-        <% if @friendships.length > 0 %>
-          <% @friendships.each do |friendship| %>
+        <% if @accepted_friendships.length > 0 %>
+          <% @accepted_friendships.each do |friendship| %>
           <% friend = friendship.friend %>
 
-      <div class="myConnection">
+      <div class="myConnection profileConnection">
         <div class="myConnWrapper">
           <div class="myConnProfilePic"><a href="/profile/<%= friend.id %>">
           <% if friend.profile_pic_url? %>
