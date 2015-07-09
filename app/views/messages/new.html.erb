@@ -20,8 +20,8 @@
     <%= form_tag messages_path, method: :post do %>
       <div class="newMsgFormGroup">
 
-      <%= text_field_tag 'recipients', nil, data: {autocomplete_source: recipients_path }, placeholder: 'Recipients', class: 'newMsgFormControl' %>
-      <%= text_field_tag 'recipients_id', nil, placeholder: 'Recipients', class: 'newMsgFormControlHidden' %>
+      <%= text_field_tag 'recipients', nil, data: {autocomplete_source: recipients_path }, class: 'newMsgFormControl' %>
+      <%= text_field_tag 'recipients_id', nil, class: 'newMsgFormControlHidden' %>
 
       </div>
 

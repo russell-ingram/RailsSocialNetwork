@@ -54,7 +54,7 @@
 
 
     </div>
-
+<% if @accepted_friendships.length > 0 %>
     <div class="myConnsWrapper">
       <div class="myConnsHeaderBar">
         <div class="myConnsLabel">my connections</div>
@@ -64,7 +64,7 @@
           <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
         </div>
       </div>
-      <% if @accepted_friendships.length > 0 %>
+
       <% @accepted_friendships.each do |friendship| %>
         <% if friendship.accepted? %>
         <% friend = friendship.friend %>
@@ -90,20 +90,27 @@
         <% end %>
 
       <% end %>
+        <div class="myConnFiller"></div>
+        <div class="connectionsPagination"></div>
+        </div>
       <% else %>
-      <div class="noConnectionsMade">
-      You currently don't have any connections. Use search to find adoption technology leaders and connect with them.
-      </div>
-      <% end %>
-
-
-      <div class="myConnFiller"></div>
-
-
-
-      <div class="connectionsPagination"></div>
-
+  <div class="noMsgsWrap">
+    <div class="noMessages">
+      You don't have any connections yet.</br> Use search to find adoption technology leaders and connect with them.
     </div>
+    <div class="startSearchBtn startSearchFullBtn"><a href="/search">START A SEARCH</a></div>
+  </div>
+
+  <% end %>
+
+
+
+
+
+
+
+
+
 
     <div class="footerMargin"></div>
 

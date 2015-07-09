@@ -247,9 +247,10 @@
       </div>
 
       <div class="homeContentFollowed homeContent">
-        <div class="homeContentLabel">followed searches</div>
+
 
         <% if @favSearchs.length > 0 %>
+          <div class="homeContentLabel">followed searches</div>
           <% @favSearchs.each_with_index do |f,i| %>
             <div class="followedSearch">
               <div class="followedSearchTitle">
@@ -268,7 +269,7 @@
             <% end %>
 
               </div>
-              <div class="viewMoreContent">125 Peers <i class="fa fa-chevron-right"></i><div class="favRemoveText"><a class="followedSearchRemove" href="#ex<%= i %>" rel="modal:open">
+              <div class="viewMoreContent">125 Peers <div class="icon icon-fwd-arrow"></div><div class="favRemoveText"><a class="followedSearchRemove" href="#ex<%= i %>" rel="modal:open">
 
               remove</a></div><div style="display:none;"><%= f.id %></div></div>
             </div>
@@ -293,11 +294,14 @@
 
 
           <% end %>
-          <div class="viewMoreContent searchesViewMore">view all<i class="fa fa-chevron-right"></i></div>
+          <div class="viewMoreContent searchesViewMore">
+          <a href="/search">
+          view all<div class="icon icon-fwd-arrow"></div></a></div>
         <% else %>
           <div class="noFollowedSearchesText">
           You have no followed searches yet. Search for technology adoption leaders and save your search criteria.
           </div>
+          <div class="startSearchBtn"><a href="/search">START A SEARCH</a></div>
         <% end %>
 
 

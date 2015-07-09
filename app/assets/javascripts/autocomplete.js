@@ -14,7 +14,7 @@ $( document ).ready(function() {
 
   $('#recipients').tagit({
     autocomplete: {
-     source: $('#recipients').data('autocomplete-source'),
+      source: $('#recipients').data('autocomplete-source'),
       autoFocus: true,
       minLength: 3,
       select: function(e, ui) {
@@ -22,7 +22,7 @@ $( document ).ready(function() {
         $('.newMsgFormControlHidden').val(function(i,v) {
 
           if (v === "") {
-            console.log(ui.item.user_id);
+            // console.log(ui.item.user_id);
             return ui.item.user_id;
           }
           else {
@@ -31,10 +31,15 @@ $( document ).ready(function() {
           }
 
         });
-        console.log($('.newMsgFormControlHidden').val());
+        // console.log($('.newMsgFormControlHidden').val());
+        $(".ui-autocomplete-input").removeAttr('placeholder');
         tagitTag();
         return false
       }
+    },
+    beforeTagAdded: function (e, ui) {
+      console.log(ui);
+      console.log(e);
     },
     removeConfirmation: true,
     caseSensitve: false,
@@ -43,7 +48,7 @@ $( document ).ready(function() {
   });
 
   function tagitTag () {
-    console.log("TAGGED IT");
+    // console.log("TAGGED IT");
 
     $('#recipients').tagit({
       autocomplete: {
@@ -53,14 +58,14 @@ $( document ).ready(function() {
         select: function(e, ui) {
           ($(this).val(ui.item.value))
           console.log('hello');
-
+          $(".ui-autocomplete-input").removeAtrr('placeholder');
           return false
         }
       },
       allowSpaces: false,
       removeConfirmation: true,
       caseSensitve: false,
-      placeholderText: null
+      placeholderText: ""
     });
   }
 
@@ -104,11 +109,14 @@ $( document ).ready(function() {
         autoFocus: true,
         minLength: 3,
         select: function(e, ui) {
-          ($(this).val(ui.item.value))
-          console.log('hello');
+          // ($(this).val(ui.item.value))
+          // console.log('hello');
 
           return false
-        }
+        },
+      },
+      beforeTagAdded: function (e, ui) {
+        console.log()
       },
       allowSpaces: false,
       removeConfirmation: true,

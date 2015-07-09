@@ -29,8 +29,9 @@ ul.tagit li.tagit-choice-editable {
 }
 
 ul.tagit li.tagit-new {
-    height:45px;
+    height:41px;
     line-height: 45px;
+    margin: 0;
     margin-left: 10px;
     width: 250px;
 }

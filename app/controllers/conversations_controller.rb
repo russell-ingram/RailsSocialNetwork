@@ -5,6 +5,7 @@ class ConversationsController < ApplicationController
 
 
   def index
+    # flash[:success] = "MESSAGE SENT"
     @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
     @sentconversations = @mailbox.sentbox.paginate(page: params[:page], per_page: 10)
 

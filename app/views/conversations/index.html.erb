@@ -1,16 +1,18 @@
 <%= render "layouts/header" %>
+
 <div class="pageWrap">
+<% flash.each do |name, msg| -%>
+  <div class="flashMessages">
+      <%= content_tag :div, msg, class: name %>
+  </div>
+<% end -%>
   <div class="messagesHeader">
     <div class="pageHeader">Messages</div>
     <div class="composeButton searchButton"><%= link_to 'COMPOSE', new_message_path %></div>
   </div>
 
-  <div class="flashMessages">
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
-  </div>
 
+<% if @conversations.length > 0 %>
   <div class="messagesWrapper">
 
     <div class="messagesBar">
@@ -38,19 +40,20 @@
         <div class="searchMessagesButton"></div>
       </div>
     </div>
-    <% if @conversations.length > 0 %>
+
     <div class="inbox">
       <%= render partial: 'conversations/conversation', collection: @conversations %>
     </div>
 
-    <% else %>
-      <div class="noMessages">
-        You don't have any messages yet. Connect with people and start a conversation.
-      </div>
-
-    <% end %>
   </div><!-- end messages wrapper -->
-
+  <% else %>
+  <div class="noMsgsWrap">
+    <div class="noMessages">
+      You don't have any messages yet.</br> Connect with people and start a conversation.
+    </div>
+    <div class="startSearchBtn startSearchFullBtn"><a href="/search">START A SEARCH</a></div>
+  </div>
+  <% end %>
 
 
     <div class="messagesPagination"><%= will_paginate %></div>
