@@ -90,5 +90,9 @@ $( document ).ready(function() {
 
   }
 
+  function msgFilter(type) {
+
+  }
+
 
 });

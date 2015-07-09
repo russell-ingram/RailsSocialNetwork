@@ -53,8 +53,11 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :show, :destroy] do
     member do
       post :reply
+      post :delete
     end
   end
+
+  get '/conversations/:type' => 'conversation#sort_conversations'
 
   resources :messages, only: [:new, :create]
 

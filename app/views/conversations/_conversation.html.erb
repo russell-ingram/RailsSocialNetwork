@@ -1,36 +1,77 @@
 
+<% if conversation.is_unread?(current_user) %>
+<div class="message active">
+<% else %>
 <div class="message">
+<% end %>
 <% message = conversation.last_message %>
+<% sender = message.sender %>
+<% send_pos = sender.current_pos %>
+<% recipients = conversation.recipients %>
   <div class="messageProfilePicBox">
-  <% if message.sender.profile_pic_url? %>
-    <%= image_tag message.sender.profile_pic_url %>
+    <a href="/profile/<%= sender.id %>">
+  <% if sender.profile_pic_url? %>
+    <%= image_tag sender.profile_pic_url %>
   <% else %>
     <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
   <% end %>
-
+    </a>
   </div>
 
 
 
 
-  <div class="messageTimeStamp"><%= message.created_at.strftime("%l:%M %p %B %-d, %Y") %></div>
+
   <div class="messageContentBox">
-
-
-
 
     <div class="messageUserInfo">
 
 
-      <div class="messageName"><%= message.sender.first_name %> <%= message.sender.last_name %></div>
-      <div class="messageEmployer"><%= message.sender.employer %></div>
+      <div class="messageName">
+        <a href="/profile/<%=sender.id%>"><%= sender.full_name %></a>
+      </div>
+      <div class="messageEmployer"><%= send_pos.job_title %> at <%= send_pos.company %></div>
+
+      <div class="messageTimeStamp"><%= message.created_at.strftime("%l:%M %p %B %-d, %Y") %></div>
     </div>
-    <div class="messageTitle"><i class="fa fa-circle"></i><%= conversation.subject %></div>
+
+    <% if conversation.is_unread?(current_user) %>
+      <div class="messageTitle"><div class="icon icon-selection-false"></div><%= conversation.subject %></div>
+    <% else %>
+      <div class="messageTitle"><%= conversation.subject %></div>
+    <% end %>
+
     <div class="messageContent"><%= message.body.html_safe %></div>
 
 
+    <div class="messageBottomInfo">
+      <div class="viewMoreContent viewFullMessage"><%= link_to raw("FULL MESSAGE <div class='icon icon-fwd-arrow'></div>"), conversation_path(conversation) %>
 
-    <div class="viewMoreContent viewFullMessage"><%= link_to "FULL MESSAGE", conversation_path(conversation) %><i class="fa fa-chevron-right"></i></div>
+      </div>
+      <div class="bottomRightMessageContent">
+        <div class="bottomRightMessagePics">
+        <% recipients.first(4).each do |r| %>
+          <div class="miniImg">
+            <a href="/profile/<%= r.id %>">
+          <% if r.profile_pic_url? %>
+            <%= image_tag r.profile_pic_url %>
+          <% else %>
+            <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+          <% end %>
+            </a>
+          </div>
+        <% end %>
+        </div>
+        <div class="bottomRightMessageInfo">
+        <% if conversation.count_messages < 2 %>
+          <%= conversation.count_messages %> MESSAGE / <%= recipients.length %> PARTICIPANTS
+        <% else %>
+        <%= conversation.count_messages %> MESSAGES / <%= recipients.length %> PARTICIPANTS
+
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 
 

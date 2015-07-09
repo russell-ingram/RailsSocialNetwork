@@ -17,28 +17,30 @@
 
       <div class="inboxToggle">
 
-        <div class="wrapper-dropdown" tabindex="1">
-          <span class="ddLabel">Inbox</span>
-          <span class="carrot"><div class="icon icon-carot"></div></span>
-          <ul class="dropdown">
-            <li class="ddOption filterOption mailToggle">Inbox</li>
-            <li class="ddOption filterOption mailToggle">Outbox</li>
-          </ul>
-        </div>
+        <div class="sortLabel">SORT BY:</div>
+          <div class="sortToggle">
+
+            <div class="wrapper-dropdown ddFilter ddToggle" tabindex="1">
+              <span class="ddLabel ddFilterLabel">MOST RECENT</span>
+              <div class="icon icon-carot messageCarot"></div>
+              <ul class="dropdown ddFilterSelect">
+                <li class="ddOption filterOption filterToggle">MOST RECENT</li>
+                <li class="ddOption filterOption filterToggle">FIRST NAME</li>
+                <li class="ddOption filterOption filterToggle">LAST NAME</li>
+              </ul>
+            </div>
+
+
+          </div>
 
       </div>
       <div class="searchMsgsBarFloatRight">
-        <div class="searchMessagesButton"><i class="fa fa-search"></i></div>
-        <div class="sortLabel">SORT BY:</div>
-        <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
+        <div class="searchMessagesButton"></div>
       </div>
     </div>
     <% if @conversations.length > 0 %>
     <div class="inbox">
       <%= render partial: 'conversations/conversation', collection: @conversations %>
-    </div>
-    <div class="outbox" style="display: none;">
-      <%= render partial: 'conversations/conversation', collection: @sentconversations %>
     </div>
 
     <% else %>

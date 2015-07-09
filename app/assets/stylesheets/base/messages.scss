@@ -47,27 +47,36 @@
 
 .inboxToggle, .sortLabel {
   font-family: "PNLight";
+  margin-right: -10px;
+  float:left;
+  // height: 50px;
+  // line-height: 50px;
 }
 
-.messageCaret {
-  padding-left: 10px;
-}
 
 .inboxToggle {
-  .wrapper-dropdown {
-    border: none;
-    width: 110px;
-    .carrot {
-      position: relative;
-      top: 2px;
-    }
-    .dropdown {
-      width: 110px;
-      color: #282b30;
-    }
-  }
+  // .wrapper-dropdown {
+  //   border: none;
+  //   width: 110px;
+  //   .carrot {
+  //     position: relative;
+  //     top: 2px;
+  //     line-height: 50px;
+  //   }
+  //   .dropdown {
+  //     width: 110px;
+  //     color: #282b30;
+  //   }
+  // }
 }
 .inboxToggle:hover {
+  // color: #3eb2cc;
+}
+
+.sortToggle {
+  font-family: "PNBold";
+}
+.sortToggle:hover {
   color: #3eb2cc;
 }
 
@@ -95,11 +104,21 @@
 }
 
 .message {
-  height: 200px;
-  background-color: #f2f3f4;
-  margin-bottom: 2px;
+  height: 255px;
+  background-color: #eff1f2;
+  border-bottom: 2px solid #dcddde;
   padding: 30px;
   font-size: 14px;
+}
+
+.message.active {
+  background-color: #fafbfb;
+  margin-bottom: 0px;
+
+}
+
+.message:last-child {
+  border-bottom: none;
 }
 
 .messageProfilePicBox {
@@ -115,13 +134,13 @@
 
 .messageContentBox {
   float:left;
-  width: 80%;
+  width: 84%;
   margin-left: 30px;
-  margin-top: -8px;
+  margin-top: 5px;
 }
 .messageTimeStamp {
   float:right;
-  margin-top: -5px;
+  color: #797c7f;
 }
 
 .messageName {
@@ -135,28 +154,75 @@
 }
 
 .messageUserInfo {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  div {
+    display:inline-block;
+
+  }
 }
 
 .messageTitle {
   font-size: 18px;
-  color: #797c7f;
+  color: #282b30;
   margin-bottom: 5px;
 }
 
-.messageTitle i {
-  color: #3eb2cc;
-  margin-right: 5px;
+.messageTitle {
+  .icon {
+    color: #3eb2cc !important;
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 12px;
+  }
 }
 
 .messageContent {
+  display: block;
+  display: -webkit-box;
   font-family: "LoraLight";
   font-size: 16px;
   min-height: 50px;
   max-height: 57px;
+  width: 700px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: -5px;
+  text-overflow: ellipsis;
+
+
 }
+
+.messageBottomInfo {
+  margin-top: 50px;
+}
+
+.bottomRightMessageContent {
+  float:right;
+  margin-top: -40px;
+}
+
+.bottomRightMessagePics {
+  overflow: auto;
+  margin-bottom: 10px;
+  div {
+    width: 40px;
+    height:40px;
+    overflow:hidden;
+    float:right;
+    display: inline-block;
+    margin-right:1px;
+    img {
+      width: 40px;
+    }
+  }
+}
+
+.bottomRightMessageInfo {
+  color: #797c7f;
+}
+
+
+
 
 .messagesPagination {
   margin-top: 20px;
@@ -223,10 +289,11 @@
 
 .newMsgBtnSend span {
   display:block;
-  height: 30px;
-  width:125px;
+  height: 45px;
+  line-height: 45px;
+  width:150px;
   color: #FFFFFF;
-  line-height: 30px;
+
   text-align: center;
   text-transform: uppercase;
   background-color: #3eb2cc;
@@ -236,6 +303,16 @@
 .newMsgBtnSend span * {
   all: inherit;
 }
+
+.hiddenReply {
+  display: none;
+  border-top: 2px solid #dcddde;
+}
+
+.hiddenReply.active {
+  display: block;
+}
+
 
 .replyFormHeader {
   color: #FFF;
@@ -325,23 +402,28 @@
 
 .showAllMessages {
   margin-right: 10px;
-
+  cursor: pointer;
+}
+.sft {
+  display: inline-block;
 }
 
 .numMessages {
   font-family: "PNLight";
 }
 
-.replyMsgFormGroup * {
+.replyMsgFormGroup {
   background-color: #e5e8e9;
   font-family: "PNBold";
   font-size:14px;
   margin-top: -1px;
+  color: #3eb2cc;
 }
 
 .replyMsgFormGroup {
   font-size: 14px;
   font-family: "PNBold";
+  margin-bottom: 5px;
 }
 
 .replyForm {
@@ -382,10 +464,18 @@
   color: #3eb2cc;
 }
 
+.userReplyLink {
+  display: inline-block;
+  color: #3eb2cc !important;
+}
 
+.toDiv {
+  color: #737373;
+  display: inline-block;
+}
 
-
-
-
+.sendersInfoDiv {
+  color: #3eb2cc;
+}
 
 

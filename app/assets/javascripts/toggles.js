@@ -242,6 +242,21 @@ $( document ).ready(function() {
     }
   });
 
+  $('.showAllMessages').off().on('click', function() {
+    if ($('.showAllMessages').hasClass('active')) {
+      $(this).removeClass('active');
+      $(".sft").text('SHOW FULL THREAD');
+      $('.hiddenReply').each(function() {
+        $(this).removeClass('active');
+      })
+    } else {
+      $(this).addClass('active');
+      $(".sft").text('HIDE FULL THREAD');
+      $('.hiddenReply').each(function() {
+        $(this).addClass('active');
+      })
+    }
+  })
 
 
 

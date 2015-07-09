@@ -8,23 +8,78 @@
   <div class="replyFormWrapper newMessagesFormWrapper">
     <div class="replyFormHeader formHeader"><a href="/messages"><i class="fa fa-chevron-left"></i> INBOX</a></div>
 
-    <% message = @conversation.last_message %>
 
+<!-- start message -->
+  <% @messages.reverse.each_with_index do |message, index| %>
+    <% sender = message.sender %>
+    <% send_pos = sender.current_pos %>
+
+    <% if index > 0 %>
+    <div class="replyFormBody hiddenReply">
+    <% else %>
     <div class="replyFormBody">
+    <% end %>
       <div class="replyPicColumn">
         <div class="replyPic">
-          <%= image_tag message.sender.profile_pic_url %>
+          <% if sender.profile_pic_url? %>
+            <%= image_tag sender.profile_pic_url %>
+          <% else %>
+          <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
+          <% end %>
         </div>
 
       </div>
       <div class="replyContentColumn">
         <div class="replyToFrom">
           <div class="replyFrom">
-            From: <div class="messageName replyName"><%= message.sender.full_name %></div><div class="senderInfo">Chief Information Officer (CIO) at <%= message.sender.employer %></div>
+            From: <div class="messageName replyName">
+            <a href="/profile/<%= sender.id %>">
+              <%= sender.full_name %>
+            </a>
+            </div><div class="senderInfo"><%= send_pos.job_title %> at <%= send_pos.company %></div>
           </div>
           <div class="replyTo">
-            To: <div class="senderInfo">
-              me
+            To: <div class="senderInfo sendersInfoDiv">
+              <div class="toDiv">me,</div>
+              <% recipients = message.recipients %>
+              <% if recipients[recipients.length-1] == current_user %>
+                <% atTheEnd = true %>
+              <% else %>
+                <% atTheEnd = false %>
+              <% end %>
+              <% recipients.each_with_index do |u,i| %>
+                <% if i == (recipients.length - 1) %>
+
+                  <% if u != current_user %>
+                    <a href="/profile/<%= u.id %>" class="userReplyLink">
+                    <%= u.full_name %>
+                    </a>
+                  <% end %>
+
+                <% else %>
+                  <% if u != current_user %>
+
+                    <% if i == (recipients.length - 2) %>
+                      <% if atTheEnd %>
+                        <a href="/profile/<%= u.id %>" class="userReplyLink">
+                        <%= u.full_name %>
+                        </a>
+                      <% else %>
+                        <a href="/profile/<%= u.id %>" class="userReplyLink">
+                        <%= u.full_name %>
+                        </a>, <div class="toDiv"> and</div>
+                      <% end %>
+                    <% else %>
+                      <a href="/profile/<%= u.id %>" class="userReplyLink">
+                      <%= u.full_name %>
+                      </a>
+                    <% end %>
+
+                  <% end %>
+
+                <% end %>
+                <!-- end loop -->
+              <% end %>
             </div>
           </div>
         </div>
@@ -37,30 +92,41 @@
           </div>
         </div>
         <div class="replySubject"><%= @conversation.subject %></div>
-        <div class="replyBody"><%= message.body.html_safe %></div>
+        <div class="replyBody"><%= simple_format(message.body).html_safe %></div>
 
+      <% if index > 0 %>
+
+      <% else %>
         <div class="replyButton">
           REPLY
         </div>
         <div class="otherOptions">
           <div class="showAllMessages">
-            SHOW FULL THREAD <div class="numMessages"> <%= @conversation.count_messages %> MESSAGES</div>
+            <div class="sft">SHOW FULL THREAD </div> <div class="numMessages"> <%= @conversation.count_messages %> MESSAGES</div>
           </div>
-          <div class="deleteMessage">DELETE</div>
+          <div class="deleteMessage">
+          <%= link_to "DELETE", delete_conversation_path(@conversation), method: :post %>
+
+          </div>
         </div>
-
-
-
-
-      </div>
+      <% end %>
 
 
 
       </div>
+
+
+
+      </div>
+      <% end %>
+<!-- end messages -->
+
+
+
 
   </div>
 
-
+<!-- replyformwrapper end -->
 
     <div class="newMessagesFormWrapper replyForm">
 
@@ -71,9 +137,50 @@
 
 
     <%= form_tag reply_conversation_path(@conversation), method: :post do %>
+
+
       <div class="replyMsgFormGroup">
-        TO:
-        <%= text_field_tag 'recipients', message.sender.full_name, class: 'messageName replyName', :readonly => true %>
+        <div class="toDiv">TO: </div>
+              <% if @recipients[@recipients.length-1] == current_user %>
+                <% atTheEnd = true %>
+              <% else %>
+                <% atTheEnd = false %>
+              <% end %>
+
+
+              <% @recipients.each_with_index do |u,i| %>
+                <% if i == (@recipients.length - 1) %>
+
+                  <% if u != current_user %>
+                    <a href="/profile/<%= u.id %>" class="userReplyLink">
+                    <%= u.full_name %>
+                    </a>
+                  <% end %>
+
+                <% else %>
+                  <% if u != current_user %>
+
+                    <% if i == (@recipients.length - 2) %>
+                      <% if atTheEnd %>
+                        <a href="/profile/<%= u.id %>" class="userReplyLink">
+                        <%= u.full_name %>
+                        </a>
+                      <% else %>
+                        <a href="/profile/<%= u.id %>" class="userReplyLink">
+                        <%= u.full_name %>
+                        </a>,
+                      <% end %>
+                    <% else %>
+                      <a href="/profile/<%= u.id %>" class="userReplyLink">
+                      <%= u.full_name %>
+                      </a>
+                    <% end %>
+
+                  <% end %>
+
+                <% end %>
+                <!-- end loop -->
+              <% end %>
 
       </div>
 

@@ -55,6 +55,7 @@
   border: 1px solid #3eb2cc;
 }
 
+
 .ddFilter {
   border: none;
   width: 130px;
@@ -62,12 +63,24 @@
   text-align:right;
 }
 
+.ddFilterLabel {
+  min-width: 50px;
+}
+
+.ddFilter.active {
+  border: none;
+}
+
 .ddFilterSelect.active {
-  padding-left: 10px;
-  width: 130px;
+  width: 160px;
+  margin-left: 5px;
+  color: #282b30;
+  font-family: "PNLight";
+
   .ddOption {
     line-height: 40px;
     text-align: center;
+    padding-left: 0;
   }
 }
 
@@ -109,3 +122,36 @@
 .resultsOption:hover {
   background-color: grey !important;
 }
+
+.messageCarot {
+  float: right;
+  line-height: 60px;
+  font-size: 13px;
+  padding-right: 10px;
+  position: relative;
+  margin-left: 10px;
+}
+
+
+.ddToggle {
+  height: 50px;
+  line-height: 50px;
+  .messageCarot {
+    top: -53px;
+    right: -32px;
+  }
+}
+
+.floatRightToggle {
+  height: 60px;
+  line-height: 60px;
+}
+
+.floatRightToggle {
+  .messageCarot {
+    top: -58px;
+    right: -32px;
+  }
+}
+
+
