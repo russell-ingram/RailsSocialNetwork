@@ -122,6 +122,7 @@ $( document ).ready(function() {
   var searchCounter = 0;
 
   $('#modalDoneButton').off().on('click', function() {
+    console.log("CLICKED MODAL DONE BUTTON");
     searchCounter++;
     var h = $('.searchFormBox').height();
 
@@ -258,6 +259,7 @@ $( document ).ready(function() {
     $(".intentionSelectModal").each(function(i) {
       var icon = $(this).find('.icon')
       if (i === 0) {
+        icon.removeClass('icon-selection-false');
         icon.addClass('icon-selection-true');
         $(this).addClass('active');
       } else {
@@ -283,6 +285,7 @@ $( document ).ready(function() {
       icon.addClass('icon-selection-false');
     })
     $(this).addClass('active');
+    $(this).find('.icon').removeClass('icon-selection-false');
     $(this).find('.icon').addClass('icon-selection-true');
     var choice = $(this).find('.intentionModalText').text();
     $('#intention_intention').val(choice);

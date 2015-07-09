@@ -7,8 +7,8 @@ class StaticPagesController < ApplicationController
     @countries = countries_list
     @regions = regions_list
     @industries = industries_list
-    @sectors = Sector.all
-    @vendors = Vendor.all
+    @sectors = Sector.order(:name)
+    @vendors = Vendor.order(:name)
     @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id).take(3)
 
     @news = Content.find_by("type_of_content = ? AND active = ?", "news", true)
