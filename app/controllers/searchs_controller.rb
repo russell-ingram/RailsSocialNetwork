@@ -4,15 +4,17 @@ class SearchsController < ApplicationController
     @industries = industries_list
     @searchTags = []
     @spendingTags = []
-    @sectors = Sector.all
-    @vendors = Vendor.all
+    @sectors = Sector.order(:name)
+    @vendors = Vendor.order(:name)
 
     @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id)
 
     @search = Search.new(search_params)
+    @users = User.search(@search)
+    @search.peers = @users.length
     @search.save
 
-    @users = User.search(@search)
+
 
     @newSearch = @search
     results = []
@@ -59,21 +61,16 @@ class SearchsController < ApplicationController
     @search = Search.new
     get_users
     @countries = countries_list
-    # get_friendships
-    @searchTags = ["education", "mid-size", "n. america", "chief information officer"]
-    @spendingTags = [{
-      :intention => "Decreasing",
-      :sector => "Laptops",
-      :vendor => "Apple"
-    }]
+
   end
 
   def new_search
     @countries = countries_list
     @industries = industries_list
     @search = Search.new
-    @sectors = Sector.all
-    @vendors = Vendor.all
+    @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id)
+    @sectors = Sector.order(:name)
+    @vendors = Vendor.order(:name)
   end
 
   def save_favorite_search
@@ -82,14 +79,13 @@ class SearchsController < ApplicationController
     @search[:user_id] = current_user.id
     @search[:results] = {"test"=> ["one"=>"1","two"=>"2"]}
     @search.save
-    puts @search.results["test"][0]["one"]
     render json: @search
   end
 
   def delete_favorite_search
     @search = Search.find(params[:id])
     if @search.destroy
-      redirect_to '/home'
+      redirect_to :back
     end
   end
 

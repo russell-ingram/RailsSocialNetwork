@@ -450,6 +450,81 @@
   height: 440px;
 }
 
+.followedSearchFormBox {
+  height: auto;
+  overflow: auto;
+  background-color: #EFF1F1;
+}
+
+.favSearchMainWrapper {
+  padding: 40px;
+}
+
+.favSearchMain {
+  background-color: #D8DCDD;
+  height: 100px;
+  width: 48%;
+  float:left;
+  display: inline-block;
+  border-radius: 15px;
+}
+
+.fsmLeft {
+  float:left;
+  margin: 15px 0 15px 20px;
+}
+
+.fsmTitle {
+  font-size: 20px;
+  color: #34373D;
+  margin-bottom: 5px;
+}
+
+.fsmInfo {
+  font-size: 14px;
+  color: #797C7F;
+  font-family: "PNReg";
+  width: 350px;
+}
+
+.fsmRight {
+  float:right;
+  height: 100%;
+  width: 23%;
+}
+.fsmPeers {
+  display: inline-block;
+  color: #3eb2cc;
+  text-transform: uppercase;
+  float:left;
+  text-align:right;
+  margin-top: 16px;
+  margin-right: 20px;
+}
+.fsmPeersNum {
+  font-size: 40px;
+}
+.fsmPeersText {
+  font-size: 14px;
+  margin-top: -10px;
+
+}
+.fsmDelete {
+  display: inline-block;
+  border-left: 1px solid #BBBDC0;
+  height: 100%;
+  width: 35px;
+  float: left;
+  line-height: 100px;
+  text-align: center;
+  font-size: 10px;
+  color: #767676;
+  cursor: pointer;
+  a {
+    margin-left: 0;
+  }
+}
+
 .addIntentionModal {
   width: 42%;
 }
@@ -458,6 +533,11 @@
   min-height: 350px;
   height: auto !important;
 }
+
+.confirmBoxModal {
+  min-height: 250px;
+}
+
 .modalBody {
   padding: 30px;
   color: #797C7F;
@@ -473,6 +553,13 @@
     margin-bottom: 20px;
   }
 }
+.modalDeleteIntentions {
+  width: 100%;
+  .modalDoneButton {
+    margin-left: 105px;
+  }
+}
+
 .intentionSelectModal {
   cursor: pointer;
   div {
@@ -511,6 +598,7 @@
   line-height: 45px;
   text-align: center;
   text-transform: uppercase;
+  font-size: 16px;
 }
 
 
@@ -523,9 +611,26 @@
 
 }
 
+.deleteIntentionModal {
+  .close-modal {
+    margin-right: 105px;
+    margin-top: -109px;
+  }
+}
+
+.deleteIntentionInfo {
+  text-align: center;
+  font-size: 24px;
+  line-height: 30px;
+  width: 300px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+
 .modalDoneButton {
   background-color: #3eb2cc;
-  margin-top: 29px;
+  margin-top: 20px;
 
 }
 

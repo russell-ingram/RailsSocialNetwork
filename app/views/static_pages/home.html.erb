@@ -269,18 +269,16 @@
             <% end %>
 
               </div>
-              <div class="viewMoreContent">125 Peers <div class="icon icon-fwd-arrow"></div><div class="favRemoveText"><a class="followedSearchRemove" href="#ex<%= i %>" rel="modal:open">
+              <div class="viewMoreContent"><%= f.peers %> Peers <div class="icon icon-fwd-arrow"></div><div class="favRemoveText"><a class="followedSearchRemove" href="#ex<%= f.id %>" rel="modal:open">
 
               remove</a></div><div style="display:none;"><%= f.id %></div></div>
             </div>
 
-            <div id="ex<%= i %>" class="addIntentionModal" style="display:none;">
-              <div class="formBox searchFormBox formBoxModal">
-                <div class="formHeader">CONFIRM DELETE SEARCH</div>
+            <div id="ex<%= f.id %>" class="addIntentionModal deleteIntentionModal" style="display:none;">
+              <div class="formBox searchFormBox formBoxModal confirmBoxModal">
                 <div class="modalBody">
-
-                  <div class="modalIntentionsRight">
-                    <div class="deleteUserModalInfo">
+                  <div class="modalIntentionsRight modalDeleteIntentions">
+                    <div class="deleteUserModalInfo deleteIntentionInfo">
                       Are you sure you would like to delete this search?
                     </div>
                     <div class="modalDoneButton">
@@ -290,6 +288,13 @@
                 </div>
               </div>
             </div>
+
+
+
+
+
+
+
 
 
 

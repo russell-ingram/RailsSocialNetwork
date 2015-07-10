@@ -5,13 +5,26 @@
     <% if current_user.admin %>
       <div class="hoverDiv"><a href="/admin">ADMIN</a></div>
     <% end %>
+      <% if current_page?('/search') || controller.controller_name == "searchs" %>
+      <div class="hoverDiv active"><a href="/search">SEARCH</a></div>
+      <% else %>
       <div class="hoverDiv"><a href="/search">SEARCH</a></div>
+      <% end %>
+      <% if controller.controller_name == "friendships" %>
+      <div class="hoverDiv active"><a href="/connections">CONNECTIONS</a></div>
+      <% else %>
       <div class="hoverDiv"><a href="/connections">CONNECTIONS</a></div>
+      <% end %>
+      <% if controller.controller_name == "conversations" %>
+      <div class="hoverDiv mailMenuIcon active"><a href="/messages"><div class="icon icon-icon-mail menuIcon"></div></a></div>
+      <% else %>
       <div class="hoverDiv mailMenuIcon"><a href="/messages"><div class="icon icon-icon-mail menuIcon"></div></a></div>
-      <div class="mailMenuDrop">
-
-      </div>
+      <% end %>
+      <% if current_page?('/profile') %>
+      <div class="hoverDiv active"><a href="/profile"><div class="icon icon-icon-profile menuIcon"></div></a></div>
+      <% else %>
       <div class="hoverDiv"><a href="/profile"><div class="icon icon-icon-profile menuIcon"></div></a></div>
+      <% end %>
     </div>
   </div>
 </div>

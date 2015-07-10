@@ -38,8 +38,14 @@
 .hoverDiv:hover {
   color: #3eb2cc;
 }
+.hoverDiv.active {
+  color: #3eb2cc;
+}
 
 .adminHover:hover {
+  color: black;
+}
+.adminHover.active {
   color: black;
 }
 

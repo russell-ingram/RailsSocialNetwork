@@ -2,9 +2,21 @@
   <div class="headerWrapper">
     <div class="logo"><a href="/home"><%= image_tag("fito-logo_secondary.svg", class: "menuLogo adminMenuLogo")  %></a></div>
     <div class="navBar">
+      <% if current_page?('/admin/messages/new/all') %>
+      <div class="hoverDiv adminHover active"><a href="/admin/messages/new/all">SEND MESSAGE</a></div>
+      <% else %>
       <div class="hoverDiv adminHover"><a href="/admin/messages/new/all">SEND MESSAGE</a></div>
+      <% end %>
+      <% if controller.controller_name == "user_admin" %>
+      <div class="hoverDiv adminHover active"><a href="/admin">MANAGE USERS</a></div>
+      <% else %>
       <div class="hoverDiv adminHover"><a href="/admin">MANAGE USERS</a></div>
+      <% end %>
+      <% if current_page?('/admin/content') %>
+      <div class="hoverDiv adminHover active"><a href="/admin/content">MANAGE CMS</a></div>
+      <% else %>
       <div class="hoverDiv adminHover"><a href="/admin/content">MANAGE CMS</a></div>
+      <% end %>
       <!-- <a href="">SURVEY RESULTS</a> -->
       <div class="hoverDiv adminHover"><a href="/profile"><%= image_tag("icon-settings.svg", class: "menuIcon adminMenuIcon") %></a></div>
     </div>
