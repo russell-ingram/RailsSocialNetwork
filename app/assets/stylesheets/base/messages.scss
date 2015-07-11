@@ -267,11 +267,19 @@
 
 .sendToAllGroup {
   display: inline-block;
-  height:57px;
-  line-height: 67px;
   float:right;
+  margin-top:25px;
   .pubOrPrivBox {
     margin-left: 20px;
+    #sendAllButton {
+       span {
+        display: inline-block;
+        position: relative;
+        top: 18px;
+        margin-right: 5px;
+      }
+      display: inline-block;
+    }
   }
 }
 

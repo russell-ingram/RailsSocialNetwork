@@ -74,8 +74,10 @@ class SearchsController < ApplicationController
   end
 
   def save_favorite_search
-    puts "PARAMS:"
-    @search = Search.find(params[:searchData]);
+    @search = Search.find(params[:searchData])
+    @search[:name] = params[:name]
+    p "NAME:"
+    p params[:name]
     @search[:user_id] = current_user.id
     @search[:results] = {"test"=> ["one"=>"1","two"=>"2"]}
     @search.save

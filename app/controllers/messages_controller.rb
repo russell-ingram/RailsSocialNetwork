@@ -31,15 +31,17 @@ class MessagesController < ApplicationController
     flash[:success] = "Your message has been successfully sent!"
 
     # redirect_to conversation_path(1)
-    puts "Mailboxer:"
-    puts conversation
-    puts "Details:"
-    puts conversation.inspect
+    p "CONTROLLER"
+    p params[:controller]
+
     if conversation
       puts "CONVERSATION PATH!!!!"
       flash[:success] = "Message sent!"
-
-      redirect_to '/messages'
+      if !params[:msgAll].blank? and params[:msgAll] == "msgAll"
+        redirect_to '/admin/messages/new/all'
+      else
+        redirect_to '/messages'
+      end
     else
       redirect_to '/messages'
     end

@@ -9,10 +9,11 @@
 <% send_pos = sender.current_pos %>
 <% recipients = conversation.recipients %>
   <div class="messageProfilePicBox">
-    <a href="/profile/<%= sender.id %>">
   <% if sender.profile_pic_url? %>
+    <a href="/profile">
     <%= image_tag sender.profile_pic_url %>
   <% else %>
+    <a href="/profile/<%= sender.id %>">
     <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
   <% end %>
     </a>
@@ -52,7 +53,11 @@
         <div class="bottomRightMessagePics">
         <% recipients.first(4).each do |r| %>
           <div class="miniImg">
+          <% if r == current_user %>
+            <a href="/profile">
+          <% else %>
             <a href="/profile/<%= r.id %>">
+          <% end %>
           <% if r.profile_pic_url? %>
             <%= image_tag r.profile_pic_url %>
           <% else %>

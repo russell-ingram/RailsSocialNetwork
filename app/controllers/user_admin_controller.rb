@@ -95,10 +95,8 @@ class UserAdminController < ApplicationController
     # puts "identifier"
     # puts profile_pic
     if params[:user][:admin] == "Admin" || params[:user][:admin] == true || params[:user][:admin] == "true"
-      puts "CHANGED TO TRUE"
       @newUser[:admin] = true
     else
-      puts "LEFT AS FALSE"
       @newUser[:admin] = false
     end
 
@@ -175,20 +173,29 @@ class UserAdminController < ApplicationController
           # do stuff to edit existing user
         else
           u = User.new
+          u.works = []
+          w = Work.new
           u.uid = row[0].value
           u.email = row[1].value
           u.first_name = row[2].value
           u.last_name = row[3].value
           u.password = "password"
           # this needs to be based on organizations in db later
-          u.employer = row[5].value
+          w.company = row[5].value
           # this should work with normal titles, but is using standard title for now
-          u.position = row[8].value
-          u.industry = row[9].value
-          u.enterprise_size = row[10].value
-          u.region = row[11].value
-          u.footprint = row[12].value
-          u.country = row[13].value
+          w.job_title = row[8].value
+          w.industry = row[9].value
+          w.enterprise_size = row[10].value
+          w.region = row[11].value
+          w.footprint = row[12].value
+          w.country = row[13].value
+          w.current = true
+          if row[15].value == "Public"
+            w.public = true
+          else
+            w.public = false
+          end
+          u.works << w
           u.save
 
           # iterate through columns w/ survey for results upload

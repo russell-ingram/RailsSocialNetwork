@@ -30,6 +30,12 @@
   color: #3eb2cc;
 
   cursor: pointer;
+  .icon {
+    position: relative;
+    top: 2px;
+    font-size: 16px;
+    margin-left: 10px;
+  }
 }
 
 .searchTag, .spendingTag {
@@ -457,16 +463,19 @@
 }
 
 .favSearchMainWrapper {
-  padding: 40px;
+  padding-left: 40px;
+  padding-top: 40px;
 }
 
 .favSearchMain {
   background-color: #D8DCDD;
   height: 100px;
-  width: 48%;
+  width: 46.5%;
   float:left;
   display: inline-block;
   border-radius: 15px;
+  margin-right: 30px;
+  margin-bottom: 30px;
 }
 
 .fsmLeft {
@@ -630,8 +639,12 @@
 
 .modalDoneButton {
   background-color: #3eb2cc;
-  margin-top: 20px;
+  margin-top: 29px;
 
+}
+
+.confirmDeleteButton {
+  margin-top: 20px;
 }
 
 .spendingIntentions {
@@ -691,6 +704,26 @@
   display: none !important;
 }
 
+
+.saveSearchNameField {
+  float: none !important;
+  margin: 0 auto !important;
+  input {
+    width: 100% !important;
+  }
+}
+
+.modalDoneAddFav {
+  margin-left: 175px !important;
+  margin-top: 50px;
+}
+
+.addFavModalBox {
+  .close-modal {
+    margin-right: 32px;
+    margin-top: -106px;
+  }
+}
 
 // old stuff, might can delete
 

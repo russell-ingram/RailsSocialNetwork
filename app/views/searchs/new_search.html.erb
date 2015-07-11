@@ -148,12 +148,13 @@
 <% if @favSearchs.length > 0 %>
   <div class="formBox followedSearchFormBox">
     <div class="formHeader">FOLLOWED SEARCHES</div>
-    <% @favSearchs.each do |f| %>
     <div class="favSearchMainWrapper">
+    <% @favSearchs.each do |f| %>
+
       <div class="favSearchMain">
         <div class="fsmLeft">
           <div class="fsmTitle">
-            <% if f.name %>
+            <% if f.name && f.name != "" %>
             <%= f.name %>
             <% else %>
             Unnamed Search
@@ -181,7 +182,7 @@
         </div>
 
       </div>
-    </div>
+
 
     <div id="ex<%= f.id %>" class="addIntentionModal deleteIntentionModal" style="display:none;">
       <div class="formBox searchFormBox formBoxModal confirmBoxModal">
@@ -190,7 +191,7 @@
             <div class="deleteUserModalInfo deleteIntentionInfo">
               Are you sure you would like to delete this search?
             </div>
-            <div class="modalDoneButton">
+            <div class="modalDoneButton confirmDeleteButton">
               <%= link_to "Confirm", search_delete_path(f) %>
             </div>
           </div>
@@ -200,6 +201,7 @@
 
 
     <% end %>
+    </div>
   </div>
 <% end %>
 

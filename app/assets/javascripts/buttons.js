@@ -109,20 +109,20 @@ $( document ).ready(function() {
   });
 
   $('#searchAddFavButton').off().on('click', function() {
-    // $('#searchFavNameField').addClass('active');
-    var data = $(this).attr('data');
 
-    $.post('/search/add_favorite',{"searchData": data},function(data) {
-      // $('#searchFavNameField').removeClass('active');
-      $('#searchAddFavButton').html("Search saved! <i class='fa fa-check'></i> ")
-      $('#searchAddFavButton').css('color', '#00CC00');
+    var data = $(this).attr('data');
+    var name = $("#saved_search_name").val();
+
+    $.post('/search/add_favorite',{"searchData": data, "name":name},function(data) {
+
+      $('#addSearchLink').html("ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div> ")
     })
   });
 
   var searchCounter = 0;
 
   $('#modalDoneButton').off().on('click', function() {
-    console.log("CLICKED MODAL DONE BUTTON");
+
     searchCounter++;
     var h = $('.searchFormBox').height();
 
@@ -198,7 +198,6 @@ $( document ).ready(function() {
       "vendor": vendor,
       "sector": sector
     };
-    console.log(newIntObj);
     // need to add an elem counter?
     var newIntention = '<div class="searchSideBarSpending"><div class="searchSidebarDropdownLeft"><div class="searchSideBarSpendingHeader">Spending Intention</div><div class="searchSideBarSpendingInfo">'+intention+'  •  '+sector+'  •  '+vendor+'</div></div><div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div></div>';
 
@@ -239,7 +238,10 @@ $( document ).ready(function() {
     var json = JSON.parse(results);
     json[num-1] = "";
     $('#resultsField').val(JSON.stringify(json));
-
+    searchCounter--;
+    if (searchCounter < 1) {
+      $('.spendingIntentions').hide();
+    }
 
   })
 

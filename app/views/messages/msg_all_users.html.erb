@@ -1,6 +1,11 @@
 
 <%= render "layouts/adminHeader" %>
 <div class="pageWrap">
+<% flash.each do |name, msg| -%>
+  <div class="flashMessages">
+      <%= content_tag :div, msg, class: name %>
+  </div>
+<% end -%>
 
     <div class="pageHeader">Create Message</div>
     <div class="newMessagesFormWrapper">
@@ -53,6 +58,8 @@
 
 
       </div>
+
+        <input type='text' name='msgAll' value='msgAll' style="display:none;" >
 
       <div class="newMsgBtnSend">
         <span>

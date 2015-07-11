@@ -9,18 +9,38 @@
             <%= @users.length %> Results
           </div>
           <div class="searchResultsFollowButtonDiv">
-            <div class="searchResultsFollowButton" id="searchAddFavButton" data="<%= @search.id %>">
-              follow this search +
-            </div>
-            <div class="searchFavNameField">
-              <input type="text" id="searchFavNameField" placeholder="Name You Search">
-              <div class="searchNameFieldBtns">
-                <div class="acceptSearchName"><div class="icon icon-icon-add"></div></div>
-                <div class="cancelSearchName"><div class="icon icon-icon-close"></div></div>
-              </div>
+            <div class="searchResultsFollowButton" data="<%= @search.id %>">
+              <a href="#addSearchModal" rel="modal:open" id="addSearchLink">
+              <% if @search.name? %>
+                ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div>
+              <% else %>
+                follow this search +
+              <% end %>
+              </a>
             </div>
           </div>
         </div>
+
+    <div id="addSearchModal" class="addIntentionModal deleteIntentionModal addFavModalBox" style="display:none;">
+      <div class="formBox searchFormBox formBoxModal confirmBoxModal">
+      <div class="formHeader">NAME THIS SEARCH</div>
+        <div class="modalBody">
+          <div class="field editField fullField saveSearchNameField">
+            <input placeholder="" type="text" name="" id="saved_search_name">
+          </div>
+
+
+          <div class="modalIntentionsRight modalDeleteIntentions">
+            <div class="modalDoneButton modalDoneAddFav" id="searchAddFavButton" data="<%= @search.id %>">
+              <a href="#close-modal" rel="modal:close">
+              SAVE
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
         <div class="searchTagsWrapper">
         <%= form_for ([:search, @search]) do |f| %>
