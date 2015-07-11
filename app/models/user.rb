@@ -69,42 +69,74 @@ class User < ActiveRecord::Base
       intentions = Intention.all
       # p "Length:"
       # p intentions.length
+      p res[0]
       if res[0]["vendor"] != "Any"
         # if res[0]["vendor"] = "Any"
         # end
         v = Vendor.find_by("name = ?", res[0]["vendor"])
+
         intentions = intentions.where(["vendor_id = ?", v.id]) if v != "Any"
+
+
       end
       if res[0]["sector"] != "Any"
         sect = Sector.find_by("name = ?", res[0]["sector"])
+        p sect.inspect
         intentions = intentions.where(["sector_id = ?", sect.id]) if sect != "Any"
+
       end
 
       intentions = intentions.where(["intention = ?", res[0]["intention"].upcase]) if res[0]["intention"] != "Any"
-
+      p "intentions:"
+      p intentions.inspect
 
 
       # p "Intentions found:"
       # p intentions.inspect
-      user_ids = []
+      user_uids = []
+
       intentions.each do | i |
-        user_ids << i.user_id
+        user_uids << i.user_id
       end
+      puts "USER IDS FROM INTENTIONS:"
+      puts user_uids
+
     end
 
 
 
+    wids = []
+    # search all works and filter current and these
+    # then find all users with the id's?
+    works = Work.all
 
+    works = works.where('current'=>true)
+    works = works.where(["industry LIKE ?", search[:industry]]) if search[:industry].present?
+    works = works.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
+    works = works.where(["region LIKE ?", search[:region]]) if search[:region].present?
+    works = works.where(["country LIKE ?", search[:country]]) if search[:country].present?
+    works = works.where(["position LIKE ?", search[:job_title]]) if search[:job_title].present?
+    works = works.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
+    if search[:organization_type].present?
+      if search[:organization_type] == "Public"
+        works = works.where('public'=>true)
+      elsif search[:organization_type] == "Private"
+        works = works.where('public'=>false)
+      end
+    end
+
+    works = works.where(:user_id=>user_uids) if user_uids.present?
+
+    works.each do |w|
+      wids << w.user_id.to_s + ".0"
+    end
+
+    # puts "WIDS:"
+    # p wids
 
     users = User.all
 
-    users = users.where(["industry LIKE ?", search[:industry]]) if search[:industry].present?
-    users = users.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
-    users = users.where(["region LIKE ?", search[:region]]) if search[:region].present?
-    users = users.where(["country LIKE ?", search[:country]]) if search[:country].present?
-    users = users.where(["position LIKE ?", search[:job_title]]) if search[:job_title].present?
-    users = users.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
-    users = users.find(user_ids) if user_ids.present?
+    users = users.where(:uid=>wids)
 
     return users
   end
@@ -126,6 +158,15 @@ class User < ActiveRecord::Base
         "industry" => "Unlisted"
       }
     end
+    # @user_pos_clone = @user_pos.clone.tap {
+    #   |h| h.each {|k,v|
+    #     if h[k].blank?
+    #       h[k] = "Unlisted"
+    #     end
+    #   }
+    # }
+    # p "CLONE:"
+    # puts @user_pos_clone
     return @user_pos
   end
 

@@ -121,7 +121,8 @@
       <% if @users != nil %>
         <% @users.each do |user| %>
 
-
+          <% if user != current_user %>
+            <% pos = user.current_pos %>
             <div class="myConnection">
               <div class="myConnWrapper">
                 <div class="myConnProfilePic"><a href="/profile/<%= user.id %>">
@@ -135,8 +136,8 @@
 
                 <div class="myConnInfo searchInfo">
                   <div class="searchInfoText">
-                    <div class="myConnName"><%= user.position %></div>
-                    <div class="myConnIndustry"><%= user.industry %> in <%= user.region %>, <%= user.enterprise_size %></div>
+                    <div class="myConnName"><%= pos[:job_title] %></div>
+                    <div class="myConnIndustry"><%= pos[:industry] %> in <%= pos[:region] %>, <%= pos[:enterprise_size] %></div>
                   </div>
                 </div>
 
@@ -152,7 +153,7 @@
               </div>
             </div>
           </div>
-
+          <% end %>
 
         <% end %>
       <% end %>
