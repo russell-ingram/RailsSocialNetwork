@@ -83,20 +83,30 @@ class User < ActiveRecord::Base
         sect = Sector.find_by("name = ?", res[0]["sector"])
         # p sect.inspect
         intentions = intentions.where(["sector_id = ?", sect.id]) if sect != "Any"
-
+      # p "intentions:"
+      # p intentions.length
       end
 
-      intentions = intentions.where(["intention = ?", res[0]["intention"].upcase]) if res[0]["intention"] != "Any"
-      # p "intentions:"
-      # p intentions.inspect
+      int_str = ""
+      if res[0]["intention"] == "Adopt"
+        int_str = "ADOPTION"
+      elsif res[0]["intention"] == "Replace"
+        int_str = "REPLACING"
+      else
+        int_str = res[0]["intention"]
+      end
+      p "INT STRING:"
+      puts int_str
+      intentions = intentions.where(["intention = ?", int_str.upcase]) if res[0]["intention"] != "Any"
 
 
-      # p "Intentions found:"
-      # p intentions.inspect
+
+      p "Intentions found:"
+      p intentions.inspect
       user_uids = []
 
       intentions.each do | i |
-        user_uids << i.user_id
+        user_uids << i.user_id.to_s + ".0"
       end
       puts "USER IDS FROM INTENTIONS:"
       puts user_uids
