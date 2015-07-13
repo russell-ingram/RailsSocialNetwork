@@ -66,6 +66,10 @@ class StaticPagesController < ApplicationController
     @friendships.each do |f|
       @accepted_friendships << f if f.state == 'accepted'
     end
+
+    if @user = current_user
+      redirect_to '/profile'
+    end
   end
 
   def setting
