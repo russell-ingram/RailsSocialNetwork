@@ -304,6 +304,9 @@ $( document ).ready(function() {
     $('.fitoLandingSignInWrapper').addClass('active');
   })
 
+  $(".fitoLandingSignInSubmit").off().on('click', function() {
+    $("#landingSubmitLogin").click();
+  })
 
 
 });
