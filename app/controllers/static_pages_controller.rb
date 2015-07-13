@@ -59,6 +59,7 @@ class StaticPagesController < ApplicationController
 
   def show_profile
     @user = User.find(params[:id])
+    puts @user.inspect
 
     get_friendships
     @accepted_friendships = []
@@ -67,7 +68,7 @@ class StaticPagesController < ApplicationController
       @accepted_friendships << f if f.state == 'accepted'
     end
 
-    if @user = current_user
+    if @user == current_user
       redirect_to '/profile'
     end
   end
