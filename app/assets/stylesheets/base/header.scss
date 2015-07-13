@@ -42,6 +42,26 @@
   color: #3eb2cc;
 }
 
+.notificationMenuIcon {
+  display: inline-block;
+  float:left;
+  letter-spacing: 0.20em;
+  text-decoration: none;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #3eb2cc;
+  margin-top: 30px;
+  a {
+    position: relative;
+    background-color: transparent;
+    text-align: center;
+    top: -29px;
+    left: 1px;
+  }
+}
+
 .adminHover:hover {
   color: black;
 }

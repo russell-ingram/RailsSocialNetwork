@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710175342) do
+ActiveRecord::Schema.define(version: 20150712233926) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -211,6 +211,7 @@ ActiveRecord::Schema.define(version: 20150710175342) do
     t.integer  "user_id"
     t.string   "job_title"
     t.string   "footprint"
+    t.string   "uid"
   end
 
 end

@@ -21,11 +21,17 @@
     <% end %>
       <div class="replyPicColumn">
         <div class="replyPic">
+        <% if sender != current_user %>
+          <a href="/profile/<%= sender.id %>">
+        <% else %>
+          <a href="/profile">
+        <% end %>
           <% if sender.profile_pic_url? %>
             <%= image_tag sender.profile_pic_url %>
           <% else %>
           <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
           <% end %>
+        </a>
         </div>
 
       </div>
@@ -33,7 +39,11 @@
         <div class="replyToFrom">
           <div class="replyFrom">
             From: <div class="messageName replyName">
+            <% if sender != current_user %>
             <a href="/profile/<%= sender.id %>">
+            <% else %>
+            <a href="/profile">
+            <% end %>
               <%= sender.full_name %>
             </a>
             </div><div class="senderInfo"><%= send_pos.job_title %> at <%= send_pos.company %></div>

@@ -81,14 +81,14 @@ class User < ActiveRecord::Base
       end
       if res[0]["sector"] != "Any"
         sect = Sector.find_by("name = ?", res[0]["sector"])
-        p sect.inspect
+        # p sect.inspect
         intentions = intentions.where(["sector_id = ?", sect.id]) if sect != "Any"
 
       end
 
       intentions = intentions.where(["intention = ?", res[0]["intention"].upcase]) if res[0]["intention"] != "Any"
-      p "intentions:"
-      p intentions.inspect
+      # p "intentions:"
+      # p intentions.inspect
 
 
       # p "Intentions found:"
@@ -116,7 +116,6 @@ class User < ActiveRecord::Base
     works = works.where(["region LIKE ?", search[:region]]) if search[:region].present?
     works = works.where(["country LIKE ?", search[:country]]) if search[:country].present?
     works = works.where(["position LIKE ?", search[:job_title]]) if search[:job_title].present?
-    works = works.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
     if search[:organization_type].present?
       if search[:organization_type] == "Public"
         works = works.where('public'=>true)
@@ -125,10 +124,10 @@ class User < ActiveRecord::Base
       end
     end
 
-    works = works.where(:user_id=>user_uids) if user_uids.present?
+    works = works.where(:uid=>user_uids) if user_uids.present?
 
     works.each do |w|
-      wids << w.user_id.to_s + ".0"
+      wids << w.uid.to_s
     end
 
     # puts "WIDS:"
@@ -136,7 +135,16 @@ class User < ActiveRecord::Base
 
     users = User.all
 
-    users = users.where(:uid=>wids)
+
+
+    if (!search[:industry].present? && !search[:enterprise].present? && !search[:region].present? && !search[:country].present? && !search[:job_title].present? && !search[:organization_type].present? && !search.results.present?)
+      p "NOTHING IS PRESENT SO WE ARE RETURNING EVERYTHING"
+    else
+      p "STUFF IS PRESENT"
+      p wids
+      users = users.where(:uid=>wids)
+      p users.length
+    end
 
     return users
   end
@@ -168,6 +176,26 @@ class User < ActiveRecord::Base
     # p "CLONE:"
     # puts @user_pos_clone
     return @user_pos
+  end
+
+  def unread_msgs
+    @conversations ||= mailbox.conversations
+    @unread = 0
+    @conversations.each do |c|
+      if c.is_unread?(self)
+        @unread += 1
+      end
+    end
+    return @unread
+  end
+
+  def friendship_requests
+    @requested_friendships = []
+    @friendships = self.friendships.includes(:friend)
+    @friendships.each do |f|
+      @requested_friendships << f if f.state == 'requested'
+    end
+    return @requested_friendships.length
   end
 
 end
