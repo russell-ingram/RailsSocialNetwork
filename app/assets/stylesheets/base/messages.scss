@@ -113,17 +113,18 @@
 }
 
 .message {
-  height: 255px;
+  height: auto;
+  overflow: auto;
   background-color: #eff1f2;
-  border-bottom: 2px solid #dcddde;
-  padding: 30px;
+  border-bottom: 2px solid #FFF;
+  padding: 20px;
   font-size: 14px;
 }
 
 .message.active {
   background-color: #fafbfb;
   margin-bottom: 0px;
-
+  border-bottom: 2px solid #dcddde;
 }
 
 .message:last-child {
@@ -131,21 +132,20 @@
 }
 
 .messageProfilePicBox {
-  height: 140px;
-  width: 140px;
-  max-height:140px;
+  height: 130px;
+  width: 130px;
+  max-height:130px;
   float:left;
   overflow:hidden;
   img {
-    width: 140px;
+    width: 130px;
   }
 }
 
 .messageContentBox {
   float:left;
-  width: 80%;
-  margin-left: 30px;
-  margin-top: 5px;
+  width: 83.8%;
+  margin-left: 20px;
 }
 .messageTimeStamp {
   float:right;
@@ -163,7 +163,7 @@
 }
 
 .messageUserInfo {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   div {
     display:inline-block;
 
@@ -190,7 +190,7 @@
   display: -webkit-box;
   font-family: "LoraLight";
   font-size: 16px;
-  min-height: 50px;
+  height: auto;
   max-height: 57px;
   width: 700px;
   -webkit-line-clamp: 3;
@@ -202,7 +202,7 @@
 }
 
 .messageBottomInfo {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .bottomRightMessageContent {
@@ -368,8 +368,7 @@
 }
 
 .replyToFrom {
-  font-size: 12px;
-  padding-top: 5px;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 
@@ -389,13 +388,13 @@
 .replyBody {
   font-family: "LoraReg";
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 34px;
 }
 
 .replyTimeStamp {
   float:right;
-  font-size: 12px;
-  margin-top: -45px;
+  font-size: 14px;
+  margin-top: -43px;
 }
 
 .replyTimeStamp div {
@@ -418,7 +417,7 @@
 }
 
 .showAllMessages {
-  margin-right: 10px;
+  margin-right: 15px;
   cursor: pointer;
 }
 .sft {
@@ -427,6 +426,7 @@
 
 .numMessages {
   font-family: "PNLight";
+  margin-left: 15px;
 }
 
 .replyMsgFormGroup {
@@ -493,6 +493,11 @@
 
 .sendersInfoDiv {
   color: #3eb2cc;
+  a {
+    font-family: "PNBold";
+  }
 }
 
-
+.replySubject {
+  font-size: 20px;
+}

@@ -85,7 +85,7 @@ canvas {
   width: 1020px;
   margin: 0 auto;
   margin-bottom: -300px;
-  padding-top: 80px;
+  padding-top: 50px;
   font-family: "PNBold";
 
   background-color: white;
@@ -197,6 +197,9 @@ canvas {
 
 .ddOption {
   padding-left: 25px;
+  height: 40px;
+  line-height: 40px;
+
 }
 .ddOption:hover {
   background-color: #3eb2cc;

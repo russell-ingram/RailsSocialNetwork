@@ -127,10 +127,13 @@
             </div>
 
             <div class="formSearchButton">
-              Submit
+              <div class="buttonTextDiv">
+              SEARCH
               <div class="icon icon-fwd-arrow"></div>
+              </div>
+
             </div>
-            <%= f.submit 'Submit', id: 'submitSearch', style: 'display:none;' %>
+            <%= f.submit 'SEARCH', id: 'submitSearch', style: 'display:none;' %>
 
 
 
@@ -184,7 +187,7 @@
       </div>
 
 
-    <div id="ex<%= f.id %>" class="addIntentionModal deleteIntentionModal" style="display:none;">
+    <div id="ex<%= f.id %>" class="addIntentionModal deleteIntentionModal deleteOnlyInt" style="display:none;">
       <div class="formBox searchFormBox formBoxModal confirmBoxModal">
         <div class="modalBody">
           <div class="modalIntentionsRight modalDeleteIntentions">
