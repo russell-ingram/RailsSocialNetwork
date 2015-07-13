@@ -76,7 +76,7 @@
       </div>
 
 <div id="ex<%= index %>" class="addIntentionModal" style="display:none;">
-  <div class="formBox searchFormBox formBoxModal">
+  <div class="formBox searchFormBox formBoxModal confirmModalBox">
     <div class="formHeader">CONFIRM DELETE</div>
     <div class="modalBody">
       <div class="modalIntentions">
@@ -84,6 +84,8 @@
           <a href="/profile/<%= user.id %>">
             <% if user.profile_pic_url? %>
               <img src="<%= user.profile_pic_url %>">
+            <% else %>
+              <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
             <% end %>
           </a>
         </div>

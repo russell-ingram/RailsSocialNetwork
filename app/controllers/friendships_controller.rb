@@ -15,15 +15,15 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def new
-    if params[:friend_id]
-      @friend = User.find(params[:friend_id])
-      @friendship = current_user.friendships.new(friend: @friend)
-    else
-      # flash[:error] = "Friend required"
-    end
+  # def new
+    # if params[:friend_id]
+    #   @friend = User.find(params[:friend_id])
+    #   @friendship = current_user.friendships.new(friend: @friend)
+    # else
+    #   # flash[:error] = "Friend required"
+    # end
 
-  end
+  # end
 
   def accept
     @friendship = current_user.friendships.find(params[:id])
@@ -54,29 +54,23 @@ class FriendshipsController < ApplicationController
 
   def create
 
-    if params[:friendship] && params[:friendship].has_key?(:friend_id)
-      @friend = User.find(params[:friendship][:friend_id])
-      @friendship = Friendship.request(current_user,@friend)
-      respond_to do |format|
-        if @friendship.new_record?
-          format.html do
-            # flash[:error] = "Something went wrong."
-            redirect_to '/search'
-          end
-          format.json { render json: @friendship.to_json, status: :precondition_failed }
-        else
-          format.html do
-            # flash[:success] = "Friend request sent."
-            redirect_to '/connections'
-          end
-          format.json { render json: @friendship.to_json }
+    @friend = User.find(params[:id])
+    @friendship = Friendship.request(current_user,@friend)
+    respond_to do |format|
+      if @friendship.new_record?
+        format.html do
+          # flash[:error] = "Something went wrong."
+          format.json {render json: "Friend request sent"}
         end
+        format.json { render json: @friendship.to_json, status: :precondition_failed }
+      else
+        format.html do
+          # flash[:success] = "Friend request sent."
+          redirect_to '/connections'
+        end
+        format.json { render json: @friendship.to_json }
       end
-    else
-      # flash[:error] = "Friend required"
-      redirect_to '/search'
     end
-
   end
 
 

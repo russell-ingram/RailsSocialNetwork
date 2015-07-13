@@ -11,12 +11,12 @@
     <% position = current_user.current_pos %>
     <div class="profileInfo">
       <div class="profileName"><%= current_user.full_name %></div>
-      <div class="profilePosition"><%= position[:job_title] %></div>
-      <div class="profileEmployer"><%= position.company %></div>
+      <div class="profilePosition"><%= position["job_title"] %></div>
+      <div class="profileEmployer"><%= position["company"] %></div>
       <div class="profileIndustry">
-        <i class="fa fa-building-o"></i><%= position.industry %>
+        <i class="fa fa-building-o"></i><%= position["industry"] %>
       </div>
-      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= position.country %></div>
+      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= position["country"] %></div>
 
     </div>
 
@@ -94,8 +94,9 @@
 
           <div class="myConnInfo">
             <div class="myConnName"><%= link_to friend.full_name, user_profile_path(friend) %></div>
-            <div class="myConnCompany"><%= friend.employer %></div>
-            <div class="myConnIndustry"><%= friend.industry %></div>
+            <% friend_pos = friend.current_pos %>
+            <div class="myConnCompany"><%= friend_pos["company"] %></div>
+            <div class="myConnIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>
           </div>
           <div class="myConnMessage"><a href="/messages/new">MESSAGE<i class="fa fa-chevron-right"></i></a></div>
         </div>

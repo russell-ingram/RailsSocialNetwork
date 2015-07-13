@@ -354,10 +354,86 @@
 }
 
 
+// index page styles
 
 
+.fitoLandingFloat {
+  background-color: transparent;
+  float: left;
+  position: relative;
+  bottom: 700px;
+  width: 100%;
+}
 
+.fitoLandingWrapper {
 
+  margin: 0 auto;
+  color: #FFFFFF;
+  text-align: center;
+}
 
+.fitoLandingLogo {
+  font-family: "PNReg";
+  font-size: 40px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid rgba(255,255,255,0.6);
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  letter-spacing: 0.2em;
+}
+.fitoLandingText {
+  font-family: "PNLight";
+  font-size: 18px;
+  margin: 0 auto;
+  width: 400px;
+  line-height: 30px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  color: rgba(255,255,255,0.6);
+
+}
+
+.fitoLandingSignInButton {
+  font-family: "PNReg";
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  border: 2px solid rgba(255,255,255,0.6);
+  width: 185px;
+  height: 50px;
+  margin: 0 auto;
+  line-height: 50px;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+}
+
+.fitoLandingSignInButton:hover {
+  color: #FFF;
+  border: 2px solid #FFF;
+}
+.fitoLandingSignInWrapper {
+  background-color: #282b30;
+  form {
+    width: 435px;
+    height: 500px;
+    margin: 0 auto;
+  }
+}
+
+.loginField {
+  width: 435px;
+  height: 47px;
+  margin-bottom: 16px;
+  border: 1px solid #3a3a3d;
+}
+
+.loginField input {
+  color: #1a1b1f;
+  font-family: "PNLight";
+  font-size: 14px;
+  padding-left: 15px;
+
+}
 
 

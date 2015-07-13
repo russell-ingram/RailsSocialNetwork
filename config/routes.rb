@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     member do
       put :accept
       delete :block
+      post :create, as: 'create'
     end
   end
 

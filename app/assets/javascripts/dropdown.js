@@ -48,6 +48,8 @@ $( document ).ready(function() {
       if (selectedLabel.hasClass('searchDDLabel')) {
         if (option === 'No preference') {
           selectedLabel.removeClass('active');
+          input.val('');
+
         } else {
           selectedLabel.addClass('active');
         }

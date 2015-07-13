@@ -1,15 +1,50 @@
+
+<canvas id="fitoLandingCanvas">
+
+
+
+</canvas>
+<div class="fitoLandingFloat">
+  <div class="fitoLandingWrapper">
+    <div class="fitoLandingLogo">FITO</div>
+    <div class="fitoLandingText">the next-gen platform for cio level networking and peer benchmarking research</div>
+
+    <div class="fitoLandingSignInButton">SIGN-IN</div>
+  </div>
+</div>
+
+<div class="fitoLandingSignInWrapper">
+  <%= form_for(:user, url: session_path(:user)) do |f| %>
+    <div class="field loginField">
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field loginField">
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+  <% end %>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
 
 <script>
+$( document ).ready(function() {
   var pattern = Trianglify({
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight,
+      x_colors: ["#4D7777","#006666","#003D3D"],
+      cell_size: 175
   });
-  document.body.appendChild(pattern.canvas())
+  pattern.canvas(document.getElementById("fitoLandingCanvas"));
 
   document.body.addEventListener('mousemove', function(e) {
-    var x = e.clientX;
-    var y = e.clientY;
-    console.log(x,y);
+    // var x = e.clientX;
+    // var y = e.clientY;
+    // console.log(x,y);
   })
+});
 </script>

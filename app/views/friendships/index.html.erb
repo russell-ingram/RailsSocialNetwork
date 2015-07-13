@@ -13,14 +13,17 @@
 
         <% if friend.profile_pic_url? %>
           <%= image_tag friend.profile_pic_url %>
+        <% else %>
+          <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
         <% end %>
 
         </a></div>
         <div class="connectionRequestInfo">
           <div class="connectionReqDate"><%= friendship.created_at.strftime("%B %e, %Y") %></div>
           <div class="connectionReqName"><%= link_to friend.full_name, user_profile_path(friend) %></div>
-          <div class="connectionReqCompany"><%= friend.employer %></div>
-          <div class="connectionReqIndustry">CIO, Energy / Clean Energy, Mid to Large Enterprise</div>
+          <% friend_pos = friend.current_pos %>
+          <div class="connectionReqCompany"><%= friend_pos["company"] %></div>
+          <div class="connectionReqIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>
           <div class="connectionReqSimilarity">this user is in the same industry</div>
           <div class="connectionReqMsg">Hi James, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tempor libero. Quisque vulputate porttitor ligula, eget sollicitudin...</div>
           <div class="viewMoreContent fullReqMessage">full message<i class="fa fa-chevron-right"></i></div>
@@ -59,7 +62,7 @@
       <div class="myConnsHeaderBar">
         <div class="myConnsLabel">my connections</div>
         <div class="myConnsRightFloat">
-          <div class="myConnsSearchButton"><i class="fa fa-search"></i></div>
+          <div class="myConnsSearchButton"></div>
           <div class="sortLabel">SORT BY:</div>
           <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
         </div>
@@ -74,13 +77,16 @@
           <div class="myConnProfilePic"><a href="/profile/<%= friend.id %>">
           <% if friend.profile_pic_url? %>
             <%= image_tag friend.profile_pic_url %>
+          <% else %>
+            <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
           <% end %>
           </a></div>
 
           <div class="myConnInfo">
             <div class="myConnName"><%= link_to friend.full_name, user_profile_path(friend) %></div>
-            <div class="myConnCompany"><%= friend.employer %></div>
-            <div class="myConnIndustry"><%= friend.industry %></div>
+            <% friend_pos = friend.current_pos %>
+            <div class="myConnCompany"><%= friend_pos["company"] %></div>
+            <div class="myConnIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>
           </div>
           <div class="myConnMessage"><a href="/messages/new">MESSAGE<i class="fa fa-chevron-right"></i></a></div>
         </div>

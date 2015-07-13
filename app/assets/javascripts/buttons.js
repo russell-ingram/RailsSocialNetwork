@@ -84,6 +84,12 @@ $( document ).ready(function() {
     $('#searchEdit').click();
   });
 
+  $('.spendingTagClose').off().on('click',function() {
+    $('#resultsFieldTagsField').val('');
+    $(this).parent().remove();
+    $('#searchEdit').click();
+  });
+
   $('.formSearchButton').off().on('click', function() {
     $('#submitSearch').click();
   });

@@ -162,6 +162,7 @@ class User < ActiveRecord::Base
   def current_pos
     @user_pos
     works.each do |work|
+      p work.inspect
       if work.current?
         @user_pos = work
       end

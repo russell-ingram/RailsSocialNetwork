@@ -42,13 +42,15 @@ class SearchsController < ApplicationController
 
     @search = Search.find(params[:id])
     @newSearch = search_params
-    p @search
+
 
     @search.update(@newSearch)
 
     @users = User.search(@search)
+    p "SEARCHHH:"
+    p @search.results
 
-
+    results = []
     if @search.results != ''
       @spendingTags = format_results(@search, results)
     end

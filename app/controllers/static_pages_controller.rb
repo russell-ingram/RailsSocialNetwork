@@ -59,23 +59,13 @@ class StaticPagesController < ApplicationController
 
   def show_profile
     @user = User.find(params[:id])
-    @current_pos
-    @user.works.each do |work|
-      if work.current?
-        @current_pos = work
-        p "CURRENT POS"
-        p @current_pos
-      end
-    end
-
-    if @current_pos.blank?
-      @current_pos.position = "Unlisted"
-      @current_pos.employer = "Unlisted"
-      @current_pos.industry = "Unlisted"
-      @current_pos.country = "Unlisted"
-    end
 
     get_friendships
+    @accepted_friendships = []
+    @friendships = @user.friendships.includes(:friend)
+    @friendships.each do |f|
+      @accepted_friendships << f if f.state == 'accepted'
+    end
   end
 
   def setting

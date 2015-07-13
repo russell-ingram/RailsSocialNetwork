@@ -33,7 +33,7 @@
       <div class="messageName">
         <a href="/profile/<%=sender.id%>"><%= sender.full_name %></a>
       </div>
-      <div class="messageEmployer"><%= send_pos.job_title %> at <%= send_pos.company %></div>
+      <div class="messageEmployer"><%= send_pos["job_title"] %> at <%= send_pos["company"] %></div>
 
       <div class="messageTimeStamp"><%= message.created_at.strftime("%l:%M %p %B %-d, %Y") %></div>
     </div>

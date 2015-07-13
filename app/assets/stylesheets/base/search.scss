@@ -551,6 +551,28 @@
   padding: 30px;
   color: #797C7F;
 }
+.confirmModalBox {
+  min-height: 250px;
+  .modalBody {
+    padding: 0;
+    .deleteUserModalInfo {
+      font-size: 18px;
+      padding-top:50px;
+    }
+
+    .myConnProfilePic {
+      height: 200px;
+      width: 200px;
+      img {
+        width:200px;
+      }
+    }
+  }
+  .modalDoneButton {
+    margin-top: 10px;
+  }
+}
+
 .modalIntentions {
   width: 30%;
   float:left;

@@ -4,7 +4,7 @@
 
 <!-- start search bar -->
   <div class="searchBarHomeWrapper">
-    <div class="searchBarHomeLabel">Find other technology leaders"</div>
+    <div class="searchBarHomeLabel">Find other technology leaders</div>
     <%= form_for ([:search, @search]) do |f| %>
     <div class="searchBarHome">
       <div class="wrapper-dropdown" tabindex="1">
@@ -281,7 +281,7 @@
                     <div class="deleteUserModalInfo deleteIntentionInfo">
                       Are you sure you would like to delete this search?
                     </div>
-                    <div class="modalDoneButton">
+                    <div class="modalDoneButton confirmDeleteButton">
                       <%= link_to "Confirm", search_delete_path(f) %>
                     </div>
                   </div>
