@@ -1,9 +1,9 @@
 .searchTypesWrapper {
-  margin: 0 20px 0 117px;
+  margin: 0 25px 0 25px;
   // min-height: 300px;
   background-color: #f2f3f4;
   margin-bottom: 30px;
-  padding: 30px 25px 25px 25px;
+  padding: 30px 25px 0 25px;
 }
 
 .searchTagsWrapper, .spendingTagsWrapper {
@@ -46,7 +46,7 @@
   text-transform: uppercase;
   width: auto;
   float: left;
-  margin-right: 20px;
+  margin-right: 10px;
   font-size: 14px;
 }
 
@@ -118,18 +118,28 @@
 .searchActionsSidebar {
   height: 140px;
   display: table;
+  margin-top: 58px;
   line-height: default;
 }
 
 .userListActionsSearch {
   display: table-cell;
   vertical-align: middle;
+  font-size: 14px;
+  position: relative;
+  top: -7px;
   .userListAction {
-    line-height: 30px;
+    line-height: 18px;
+    margin-bottom: 10px;
     div {
       float:right;
-      line-height: 35px;
+      line-height: 15px;
       margin-left: 5px;
+    }
+    .icon {
+      font-size: 12px;
+      position: relative;
+      top: 2px;
     }
   }
 
@@ -141,7 +151,7 @@
 }
 
 .searchResultsSideBar {
-  width: 24%;
+  width: 255px;
   float:left;
   background-color: #34373D;
   min-height: 750px;
@@ -155,9 +165,9 @@
 }
 
 .searchResultsWrapper {
-  width: 76%;
+  width: 765px;
   float:left;
-  padding-top:80px;
+  padding-top:50px;
 }
 
 .searchSideBarHeader {
@@ -219,7 +229,7 @@
 }
 
 .searchSideBarDropdownHeader {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .searchSideBarDropdownText {
@@ -276,7 +286,7 @@
 
 .updateSearchButton {
   background-color: #3eb2cc;
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
   margin-top: 50px;
   height: 45px;
@@ -286,7 +296,7 @@
   text-transform: uppercase;
   margin-bottom: 100px;
   cursor: pointer;
-
+  padding-left: 0 !important;
 }
 
 .searchBoxWrapper {
@@ -318,7 +328,7 @@
   padding-left: 15px;
   .icon {
     float: right;
-    width: 60px;
+    width: 50px;
     height: 60px;
     background-color: #e5e8e9;
     border-radius: 0 3px 3px 0;
@@ -481,6 +491,7 @@
 .fsmLeft {
   float:left;
   margin: 15px 0 15px 20px;
+  width: 70%;
 }
 
 .fsmTitle {
@@ -499,7 +510,7 @@
 .fsmRight {
   float:right;
   height: 100%;
-  width: 23%;
+  width: 22%;
 }
 .fsmPeers {
   display: inline-block;
@@ -508,7 +519,7 @@
   float:left;
   text-align:right;
   margin-top: 16px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .fsmPeersNum {
   font-size: 40px;
@@ -523,7 +534,7 @@
   border-left: 1px solid #BBBDC0;
   height: 100%;
   width: 35px;
-  float: left;
+  float:right;
   line-height: 100px;
   text-align: center;
   font-size: 10px;
@@ -552,24 +563,24 @@
   color: #797C7F;
 }
 .confirmModalBox {
-  min-height: 250px;
+  min-height: 200px;
   .modalBody {
     padding: 0;
     .deleteUserModalInfo {
       font-size: 18px;
-      padding-top:50px;
+      padding-top:20px;
     }
 
     .myConnProfilePic {
-      height: 200px;
-      width: 200px;
+      height: 150px;
+      width: 150px;
       img {
-        width:200px;
+        width:150px;
       }
     }
   }
   .modalDoneButton {
-    margin-top: 10px;
+    margin-top: -41px;
   }
 }
 
@@ -587,7 +598,7 @@
 .modalDeleteIntentions {
   width: 100%;
   .modalDoneButton {
-    margin-left: 105px;
+    margin-left: 80px;
   }
 }
 
@@ -625,7 +636,7 @@
 .close-modal, .modalDoneButton {
   color: white;
   height: 45px;
-  width: 220px;
+  width: 155px;
   line-height: 45px;
   text-align: center;
   text-transform: uppercase;
@@ -644,7 +655,7 @@
 
 .deleteIntentionModal {
   .close-modal {
-    margin-right: 105px;
+    margin-right: 90px;
     margin-top: -109px;
   }
 }
@@ -661,7 +672,7 @@
 
 .modalDoneButton {
   background-color: #3eb2cc;
-  margin-top: 29px;
+  margin-top: 26px;
 
 }
 
@@ -736,8 +747,8 @@
 }
 
 .modalDoneAddFav {
-  margin-left: 175px !important;
-  margin-top: 50px;
+  margin-left: 140px !important;
+  margin-top: 49px;
 }
 
 .addFavModalBox {
@@ -753,8 +764,8 @@
 
 
 .adminUserBox {
-  margin-left: 117px;
-  margin-right: 117px;
+  margin-left: 25px;
+  margin-right: 25px;
   height: 200px;
   background-color: #f2f3f4;
   padding-top: 30px;
@@ -776,7 +787,7 @@
 
 .userList {
   min-height: 100px;
-  padding: 0 117px;
+  padding: 0 25px;
   margin-top: 5px;
   padding-top: 20px;
   background-color: #f2f3f4;

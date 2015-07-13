@@ -11,7 +11,7 @@
 
 .userAdminSearch {
   float:right;
-  margin-right: 117px;
+  margin-right: 25px;
   margin-top: -15px;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .userActionsSidebar {
-  margin-top: 5px;
+  height:auto;
 }
 
 .userListAction {
@@ -73,8 +73,8 @@
 }
 
 .createNewWrapper {
-  padding-left: 117px;
-  padding-right: 117px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .createUserButton {
@@ -91,8 +91,8 @@
 
 
 .editProfileWrapper {
-  padding-left:117px;
-  padding-right: 117px;
+  padding-left:25px;
+  padding-right: 25px;
   padding-top: 40px;
 }
 
@@ -166,8 +166,8 @@
   width: inherit;
   cursor: pointer;
   p {
-    display: table-cell;
-    vertical-align: middle;
+    // display: table-cell;
+    // vertical-align: middle;
     text-align: center;
     text-transform: uppercase;
     color: #767676;
@@ -417,7 +417,7 @@
   margin-right: 37px;
 }
 .field-col-3 {
-  width: 343px;
+  width: 290px;
 }
 .field-col-4 {
   width: 24%;
@@ -426,7 +426,7 @@
 
 .uploadXLSForm {
   margin-top: 30px;
-  margin-left: 117px;
+  margin-left: 25px;
   margin-bottom: 100px;
 }
 

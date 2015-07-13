@@ -1,5 +1,5 @@
 .searchBarHomeWrapper {
-  margin-left: 117px;
+  margin-left: 25px;
   text-transform: uppercase;
   font-family: "PNBold";
   font-size: 14px;
@@ -16,17 +16,20 @@
 }
 
 .homeAddIntentions {
-  width: 299px;
+  width: 24%;
   height: 60px;
   display: inline-block;
   margin-right: 16px;
+  a {
+    width: 100%;
+  }
   div {
     font-size: 14px;
     font-family: "PNBold";
   }
 }
 .homePageIntentionsList {
-  padding-right: 117px;
+  padding-right: 24px;
 }
 
 .searchBarHomeAdvancedOptions {
@@ -43,7 +46,7 @@
 }
 
 .homePageAdvancedRow {
-  padding-right: 117px;
+  padding-right: 25px;
   display: none;
   height: 0px;
   transition: height 2s ease;
@@ -55,7 +58,7 @@
 
 .searchButton {
   color: white;
-  font-size: 10px;
+  font-size: 14px;
   text-align: center;
 
   display: inline-block;
@@ -63,7 +66,7 @@
   border-radius: 0;
   background: #3eb2cc;
   height: 60px;
-  width: 192px;
+  width: 19.4%;
   line-height: 60px;
 
   letter-spacing: 0.10em;
@@ -83,64 +86,62 @@
 
 
 .homeContentWrapper {
-  height: 946px;
+  height: 900px;
   margin-top: 80px;
 }
 
 .homeContent {
   float:left;
   width: 100%;
-  padding: 70px;
+  padding: 30px;
   font-family: "PNBold";
   font-size: 36px;
   color: #282b30;
 }
 
 .homeContentBox1 {
-  width: 523px;
+  width: 38%;
   height: inherit;
   float: left;
 }
 
 .homeContentBox2 {
-  width: 863px;
+  width: 62%;
   height: inherit;
   float: left;
 }
 
 
 .homeContentPic {
-  height: 349px;
+  height: 30%;
   padding: 0;
   img {
-    width: 523px;
+    width: 100%;
   }
 }
 
 .homeContentResearch {
-  height: 465px;
+  height: 49%;
   background-color: #e5e8e9;
 }
 
 .homeContentNews {
-  height: 597px;
+  height: 70%;
   background-color: #f2f3f4;
 }
 
 .homeContentFollowed {
-  width: 537px;
-  height: 481px;
+  width: 62%;
+  height: 51%;
   background-color: #cbd0d2;
 }
 
 .homeContentInvite {
-  width: 326px;
-  height: 481px;
+  width: 38%;
+  height: 51%;
   background-color: #f2f3f4;
   text-align: center;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 140px;
+  padding-top: 85px;
 }
 
 .homeContentLabel {
@@ -271,6 +272,8 @@
   color: #282b30;
   text-transform: uppercase;
   margin-bottom: 20px;
+  width: 108px;
+  margin: 0 auto;
 }
 
 .homeInviteText {
@@ -278,16 +281,19 @@
   font-size: 16px;
   margin-bottom: 50px;
   font-family: "LoraReg";
+  margin-top: 10px;
 }
 
 .inviteButton {
   border: 6px solid #3eb2cc;
   text-transform: uppercase;
   color: #3eb2cc;
-  height: 60px;
-  font-size: 18px;
-  line-height: 50px;
+  height: 50px;
+  font-size: 14px;
+  line-height: 40px;
   margin: 0 auto;
+  width: 160px;
+  letter-spacing: 0.10em;
 
 }
 
@@ -316,34 +322,35 @@
 
 .homeConnectionBox {
   float: left;
+  width: 340px;
 }
 
 .homeConnectionProfile, .homeConnectionPic {
-  height: 231px;
-  width: 231px;
+  height: 170px;
+  width: 170px;
   float: left;
 }
 
 
 .homeConnectionProfile {
   background-color: #282b30;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 50px;
+  padding: 15px;
 }
 
 .homeConnectionPic img {
-  height: 231px;;
+  height: 170px;
 }
 
 .hcpTitle {
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .hcpDesc {
   font-family: "PNReg";
+  color: rgba(255,255,255,0.85);
   margin-bottom: 20px;
+  max-width: 80%;
 }
 
 .hcpMsg, .hcpConnect {

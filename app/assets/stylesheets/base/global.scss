@@ -82,7 +82,7 @@ canvas {
 
 .pageWrap {
   min-height: 100%;
-  width: 1386px;
+  width: 1020px;
   margin: 0 auto;
   margin-bottom: -300px;
   padding-top: 80px;
@@ -114,12 +114,12 @@ canvas {
 }
 
 .pageHeader {
-  padding-left: 117px;
-  font-size: 24px;
+  padding-left: 25px;
+  font-size: 20px;
   color: #3eb2cc;
   text-transform: uppercase;
   // margin-top: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .floatHeader {
@@ -163,7 +163,7 @@ canvas {
 
 .pageHeaderBar {
   overflow: hidden;
-  padding-right: 117px;
+  padding-right: 25px;
 }
 
 .field input, .wrapperFieldDropdown {
