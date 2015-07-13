@@ -414,12 +414,23 @@
 }
 .fitoLandingSignInWrapper {
   background-color: #282b30;
+  float: left;
+  width: 100%;
+  padding-top: 60px;
+  position: relative;
+  bottom: 0;
+  transition: bottom 0.3s ease-out;
   form {
     width: 435px;
     height: 500px;
     margin: 0 auto;
   }
 }
+
+.fitoLandingSignInWrapper.active {
+  bottom: 750px;
+}
+
 
 .loginField {
   width: 435px;
@@ -429,7 +440,7 @@
 }
 
 .loginField input {
-  color: #1a1b1f;
+  background-color: #1a1b1f;
   font-family: "PNLight";
   font-size: 14px;
   padding-left: 15px;

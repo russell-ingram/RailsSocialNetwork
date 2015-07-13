@@ -299,4 +299,11 @@ $( document ).ready(function() {
     $('#intention_intention').val(choice);
   })
 
+
+  $("#fitoLandingSignInButton").off().on('click', function() {
+    $('.fitoLandingSignInWrapper').addClass('active');
+  })
+
+
+
 });

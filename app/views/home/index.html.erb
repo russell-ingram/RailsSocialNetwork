@@ -9,18 +9,18 @@
     <div class="fitoLandingLogo">FITO</div>
     <div class="fitoLandingText">the next-gen platform for cio level networking and peer benchmarking research</div>
 
-    <div class="fitoLandingSignInButton">SIGN-IN</div>
+    <div class="fitoLandingSignInButton" id="fitoLandingSignInButton">SIGN-IN</div>
   </div>
 </div>
 
 <div class="fitoLandingSignInWrapper">
   <%= form_for(:user, url: session_path(:user)) do |f| %>
     <div class="field loginField">
-      <%= f.text_field :email %>
+      <%= f.text_field :email, placeholder: 'email' %>
     </div>
 
     <div class="field loginField">
-      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.password_field :password, placeholder: 'password' %>
     </div>
 
     <div class="actions">
