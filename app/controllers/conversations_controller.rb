@@ -6,6 +6,17 @@ class ConversationsController < ApplicationController
 
   def index
     # flash[:success] = "MESSAGE SENT"
+    @has_friends = false
+    @accepted_friendships = []
+
+    @friendships = current_user.friendships.includes(:friend)
+    @friendships.each do |f|
+      @accepted_friendships << f if f.state == 'accepted'
+    end
+
+    if @accepted_friendships.length > 0
+      @has_friends = true
+    end
     @conversations = @mailbox.conversations.paginate(page: params[:page], per_page: 10)
 
 

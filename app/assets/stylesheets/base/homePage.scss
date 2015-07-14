@@ -86,14 +86,14 @@
 
 
 .homeContentWrapper {
-  height: 900px;
-  margin-top: 80px;
+  height: 956px;
+  margin-top: 50px;
 }
 
 .homeContent {
   float:left;
   width: 100%;
-  padding: 30px;
+  padding: 60px;
   font-family: "PNBold";
   font-size: 36px;
   color: #282b30;
@@ -121,7 +121,7 @@
 }
 
 .homeContentResearch {
-  height: 49%;
+  height: 51%;
   background-color: #e5e8e9;
 }
 
@@ -132,42 +132,50 @@
 
 .homeContentFollowed {
   width: 62%;
-  height: 51%;
+  height: 49%;
   background-color: #cbd0d2;
 }
 
 .homeContentInvite {
   width: 38%;
-  height: 51%;
+  height: 49%;
   background-color: #f2f3f4;
   text-align: center;
-  padding-top: 85px;
+  padding: 40px;
 }
 
 .homeContentLabel {
   text-transform: uppercase;
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #737373;
 }
 
 .homeContentHeadline {
-  border-left: 8px solid #34373d;
-  margin-bottom: 20px;
-  padding-left: 20px;
+  // border-left: 8px solid #34373d;
+  margin-bottom: 25px;
+  // padding-left: 10px;
   max-width: 500px;
+  line-height: 36px;
 }
 
 .newsDate {
   text-transform: uppercase;
   font-size: 12px;
   color: #737373;
+  margin-bottom: -5px;
+}
+
+.newsHeadline {
+  margin-top: -10px;
 }
 
 .newsContent {
-  font-size: 16px;
-  font-color: #445058;
+  font-size: 14px;
+  color: #445058;
   font-family: "LoraReg";
+  line-height:20px;
+  width: 90%;
 }
 
 .viewMoreContent {
@@ -176,6 +184,7 @@
   text-transform: uppercase;
   margin-top:10px;
   display: inline-block;
+  letter-spacing: 0.025em;
   div {
     display: inline-block;
     font-size: 15px;
@@ -194,9 +203,9 @@
 
 .researchCol {
   float: left;
-  width: 25%;
+  width: 27%;
   display: inline-block;
-  margin-right: 40px;
+  margin-right: 30px;
 }
 
 .researchNum {
@@ -205,9 +214,11 @@
   font-family: "PNLight";
 }
 .researchText {
-  font-size: 16px;
-  font-color: #445058;
+  font-size: 14px;
+  color: #445058;
   font-family: "LoraItalic";
+  margin-top: -3px;
+  line-height: 20px;
 
 }
 
@@ -244,7 +255,7 @@
   color: #282b30;
   text-transform: uppercase;
   text-align: center;
-  margin-top: 70px;
+  margin-top: 55px;
 }
 
 .startSearchBtn {
@@ -253,10 +264,11 @@
   line-height: 54px;
   color: #3eb2cc;
   border: 6px solid #3eb2cc;
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
   margin: 0 auto;
-  margin-top: 70px;
+  margin-top: 40px;
+  letter-spacing: 0.1em;
   a {
     width: 245px;
   }
@@ -274,14 +286,16 @@
   margin-bottom: 20px;
   width: 108px;
   margin: 0 auto;
+  margin-top: 50px;
 }
 
 .homeInviteText {
   color: #445058;
-  font-size: 16px;
-  margin-bottom: 50px;
+  font-size: 14px;
+  margin-bottom: 40px;
   font-family: "LoraReg";
   margin-top: 10px;
+  line-height: 20px;
 }
 
 .inviteButton {
@@ -334,7 +348,7 @@
 
 .homeConnectionProfile {
   background-color: #282b30;
-  padding: 15px;
+  padding: 20px;
 }
 
 .homeConnectionPic img {
@@ -349,14 +363,14 @@
 .hcpDesc {
   font-family: "PNReg";
   color: rgba(255,255,255,0.85);
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   max-width: 80%;
 }
 
 .hcpMsg, .hcpConnect {
   color: #3eb2cc;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 

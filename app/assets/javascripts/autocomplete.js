@@ -89,7 +89,7 @@ $( document ).ready(function() {
           }
 
         });
-        console.log($('.newMsgFormControlHidden').val());
+        $(".ui-autocomplete-input").removeAttr('placeholder');
         tagitTagAll();
         return false
       }

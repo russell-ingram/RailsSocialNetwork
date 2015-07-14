@@ -2,10 +2,12 @@
 <%= render "layouts/adminHeader" %>
 <div class="pageWrap">
 <% flash.each do |name, msg| -%>
+  <% if !msg.blank? %>
   <div class="flashMessages">
       <%= content_tag :div, msg, class: name unless msg.blank? %>
   </div>
-<% end -%>
+  <% end %>
+<% end %>
 
     <div class="pageHeader">Create Message</div>
     <div class="newMessagesFormWrapper">
