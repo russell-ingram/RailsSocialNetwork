@@ -353,7 +353,7 @@ class UserAdminController < ApplicationController
   end
 
   def new_user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :password, :password_confirmation, :profile_pic_url, :summary, :admin)
+    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url, :linked_in_url, :summary, :admin, :works_attributes => [:company,:industry, :enterprise_size, :region, :country, :summary, :id, :job_title, :footprint, :current, :start_date, :end_date, :public])
   end
 
   def countries_list
