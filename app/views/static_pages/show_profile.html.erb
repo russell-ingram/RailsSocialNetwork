@@ -30,15 +30,44 @@
           This @user has asked to be your friend.
         <% else %>
           <div class="profileButton profileConnect">
-          <%= link_to "CONNECT", new_friendship_path(:friend_id => @user) %>
+            <a href="#connectUser" rel="modal:open">
+            CONNECT</a>
           </div>
         <% end %>
 
+              <div id="connectUser" class="addIntentionModal confirmConnectModal" style="display:none;">
+                <div class="formBox searchFormBox formBoxModal confirmModalBox">
+                  <div class="formHeader">CONFIRM CONNECT</div>
+                  <div class="modalBody">
+                    <div class="modalIntentions">
+                      <div class="myConnProfilePic">
+                        <a href="/profile/<%= @user.id %>">
+                          <% if @user.profile_pic_url? %>
+                            <img src="<%= @user.profile_pic_url %>">
+                          <% else %>
+                            <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+                          <% end %>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="modalIntentionsRight">
+                      <div class="deleteUserModalInfo">
+                        Are you sure you would like to connect with <%= @user.full_name %>?
+                      </div>
+                      <div class="modalDoneButton">
+                        <%= link_to "Confirm", create_friendship_path(@user), method: :post %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 
 
 
-      <div class="profileButton profileMessage"><a href="/messages/new">SEND MESSAGE</a>
+
+
+      <div class="profileButton profileMessage"><a href="/messages/new/<%= @user.id %>">SEND MESSAGE</a>
       </div>
 
     </div>

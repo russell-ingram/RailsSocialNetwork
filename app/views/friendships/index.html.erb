@@ -1,9 +1,11 @@
 <%= render "layouts/header" %>
   <div class="pageWrap">
+    <div class="pageHeader">Connections</div>
     <% if @requested_friendships.length > 0 %>
-    <div class="pageHeader">Requested Connections</div>
-    <% end %>
-      <div class="connectionRequestsWrapper">
+
+
+      <div class="connectionRequestsWrapper formBox">
+      <div class="formHeader">REQUESTED CONNECTIONS</div>
       <% @requested_friendships.each do |friendship| %>
         <% if friendship.requested? %>
         <% friend = friendship.friend %>
@@ -57,16 +59,18 @@
 
 
     </div>
+  <% end %>
 <% if @accepted_friendships.length > 0 %>
-    <div class="myConnsWrapper">
-      <div class="myConnsHeaderBar">
+    <div class="connectionsWrapper formBox">
+<!--       <div class="myConnsHeaderBar">
         <div class="myConnsLabel">my connections</div>
         <div class="myConnsRightFloat">
           <div class="myConnsSearchButton"></div>
           <div class="sortLabel">SORT BY:</div>
           <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
         </div>
-      </div>
+      </div> -->
+      <div class="formHeader">MY CONNECTIONS</div>
 
       <% @accepted_friendships.each do |friendship| %>
         <% if friendship.accepted? %>
@@ -96,10 +100,14 @@
         <% end %>
 
       <% end %>
-        <div class="myConnFiller"></div>
-        <div class="connectionsPagination"></div>
+        <!-- <div class="myConnFiller"></div> -->
+        <!-- <div class="connectionsPagination"></div> -->
         </div>
-      <% else %>
+  <% elsif @requested_friendships.length > 0 %>
+
+
+  <% else %>
+
   <div class="noMsgsWrap">
     <div class="noMessages">
       You don't have any connections yet.</br> Use search to find adoption technology leaders and connect with them.

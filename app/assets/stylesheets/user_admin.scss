@@ -102,10 +102,11 @@
   font-family: "PNBold";
   cursor: pointer;
   text-transform: uppercase;
+  line-height: 25px;
+  font-size: 14px;
 }
 
 .userPermissions {
-  margin-right: 30px;
   cursor: default;
   div {
     display: inline-block;
@@ -114,19 +115,42 @@
 
 .userPermissionsInput {
   font-family: "PNReg";
+  font-size: 14px;
   cursor: pointer;
   margin-top: -11px;
   .wrapper-dropdown {
     position: static;
     border: none;
+    min-width: 100px;
+    padding-right: 0;
+    margin-right: 0;
   }
   .fieldDropdown {
-    width: 5.6%;
+    width: 6.6%;
+    margin-left: -10px;
+    margin-top: -10px;
   }
   .icon {
     position: relative;
     top: 5px;
     font-size: 20px;
+  }
+  .ddOption {
+    padding-left: 20px;
+  }
+}
+
+.createUserPermissions {
+}
+
+.createUserPermissionsDrop {
+  text-align: right;
+  .ddOption {
+    text-align: center;
+    padding-left: 0;
+  }
+  .fieldDropdown {
+    margin-left: 1px;
   }
 }
 
@@ -148,7 +172,7 @@
   float:left;
   margin-top: 30px;
   margin-left: 10px;
-  max-width: 800px;
+  max-width: 740px;
   padding-bottom: 10px;
 }
 
@@ -165,8 +189,8 @@
   width: inherit;
   cursor: pointer;
   p {
-    // display: table-cell;
-    // vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
     text-align: center;
     text-transform: uppercase;
     color: #767676;
@@ -323,6 +347,7 @@
 
 .experienceSummaryBox {
   height: 380px;
+  width: 700px;
 }
 
 
@@ -401,7 +426,7 @@
 
 .ql-summaryBar {
   top: 25px;
-  right: 220px;
+  right: 30px;
 }
 
 .profileTabSummaryText {
@@ -410,7 +435,7 @@
 
 
 .field-col-2 {
-  width: 527px;
+  width: 444px;
 }
 .fieldCol2First {
   margin-right: 37px;

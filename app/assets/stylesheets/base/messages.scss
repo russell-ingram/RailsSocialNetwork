@@ -191,9 +191,8 @@
   font-family: "LoraLight";
   font-size: 16px;
   height: auto;
-  max-height: 57px;
   width: 700px;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -237,6 +236,34 @@
   margin-top: 20px;
   margin-bottom: 50px;
 }
+
+.pagination {
+  float:right;
+  margin-right: 20px;
+  color: #797c7f;
+  span {
+    display: none;
+  }
+  .next_page, .previous_page {
+    display: none;
+  }
+  em, a {
+    float:left;
+    margin-right: 5px;
+    padding:0.2em 0.6em;
+  }
+  em {
+    color: white;
+    background-color: #3eb2cc;
+    font-style: normal;
+  }
+  a:hover {
+    // background-color: #797c7f;
+  }
+}
+// .pagination:hover {
+//   color: #FFF;
+// }
 
 .newMessagesFormWrapper {
   padding: 0 25px;

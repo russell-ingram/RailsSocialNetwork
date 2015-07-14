@@ -75,7 +75,6 @@ class UserAdminController < ApplicationController
         @editUser.works << Work.new
       end
     end
-    p @editUser.works
     @countries = countries_list
     @industries = industries_list
   end
@@ -126,7 +125,20 @@ class UserAdminController < ApplicationController
 
   def new
     @editUser = User.new
+    @editUser.works ||= Work.new
+    if @editUser.works.length < 3
+      if @editUser.works[0].blank?
+        @editUser.works << Work.new
+      end
+      if @editUser.works[1].blank?
+        @editUser.works << Work.new
+      end
+      if @editUser.works[2].blank?
+        @editUser.works << Work.new
+      end
+    end
     @countries = countries_list
+    @industries = industries_list
   end
 
   def create
