@@ -6,11 +6,14 @@ $( document ).ready(function() {
   });
 
   $(".callButton").click(function() {
-    $('.columnLayout').removeClass('layoutOption3');
-    $('.columnLayout').removeClass('layoutOption2');
-    $('.columnLayout').removeClass('layoutOption1');
 
-
+    var myBtn = $(this);
+    $(".callButton").each(function() {
+      $(this).find('.pubBoxIcon').removeClass('icon-selection-true');
+      $(this).find('.pubBoxIcon').addClass('icon-selection-false');
+    });
+    $(this).find('.pubBoxIcon').removeClass('icon-selection-false')
+    $(this).find('.pubBoxIcon').addClass('icon-selection-true');
     if ($(this).is('#callButton3')) {
 
       $('.callCol').each(function() {
@@ -33,15 +36,7 @@ $( document ).ready(function() {
       $('.col-opt-3').each(function(){
         $(this).hide();
       });
-      // $('.columnTag').each(function() {
-      //   $(this).removeClass('column-12');
-      //   $(this).removeClass('column-4');
-      //   $(this).show();
-      //   $(this).addClass('column-6');
-      // });
-      // $('.columnLayout').addClass('layoutOption2');
       $('.hiddenLayoutOptionField').val('2');
-      // $('.columnOption3').hide();
     }
     else {
       $('.callCol').each(function() {
@@ -118,36 +113,36 @@ $( document ).ready(function() {
   // });
 
 
-  $('#callButton1').click(function() {
-    $("#radio1").prop("checked", true);
-    $("#radio1").val(true);
+  // $('#callButton1').click(function() {
+  //   $("#radio1").prop("checked", true);
+  //   $("#radio1").val(true);
 
 
-    $('#radio2').prop("checked", false);
-    $('#radio2').val(false);
-    $('#radio3').prop("checked", false);
-    $('#radio3').val(false);
-  });
+  //   $('#radio2').prop("checked", false);
+  //   $('#radio2').val(false);
+  //   $('#radio3').prop("checked", false);
+  //   $('#radio3').val(false);
+  // });
 
-  $('#callButton2').click(function() {
-    $("#radio2").prop("checked", true);
-    $("#radio2").val(true);
+  // $('#callButton2').click(function() {
+  //   $("#radio2").prop("checked", true);
+  //   $("#radio2").val(true);
 
-    $('#radio1').prop("checked", false);
-    $('#radio1').val(false);
-    $('#radio3').prop("checked", false);
-    $('#radio3').val(false);
-  });
+  //   $('#radio1').prop("checked", false);
+  //   $('#radio1').val(false);
+  //   $('#radio3').prop("checked", false);
+  //   $('#radio3').val(false);
+  // });
 
-  $('#callButton3').click(function() {
-    $("#radio3").prop("checked", true);
-    $("#radio3").val(true);
+  // $('#callButton3').click(function() {
+  //   $("#radio3").prop("checked", true);
+  //   $("#radio3").val(true);
 
-    $('#radio1').prop("checked", false);
-    $('#radio1').val(false);
-    $('#radio2').prop("checked", false);
-    $('#radio2').val(false);
-  });
+  //   $('#radio1').prop("checked", false);
+  //   $('#radio1').val(false);
+  //   $('#radio2').prop("checked", false);
+  //   $('#radio2').val(false);
+  // });
 
   $('#sendAllButton').click(function() {
     if ($('#radioSendAll').is(':checked')) {

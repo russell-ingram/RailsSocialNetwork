@@ -111,20 +111,21 @@
           <div class="pubOrPrivBox calloutBox">
             <div class="cmsEditHeader">Number of Callouts</div>
             <div id="callButton1" class="callButton">
-              <input type="radio" id="radio1" name="public" value="false">
-              <label for="radio01"><span></span>1</label>
+              <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true">
+              <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">1</div></label>
             </div>
             <!-- <br> -->
             <div id="callButton2" class="callButton">
-              <input type="radio" id="radio2" name="public" value="false">
-              <label for="radio02"><span></span>2</label>
+              <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true">
+              <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">2</div></label>
             </div>
             <div id="callButton3" class="callButton">
-              <input type="radio" id="radio3" name="public" value="true" checked>
-              <label for="radio03"><span></span>3</label>
+              <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true">
+              <label for="radio01"><div class="pubBoxIcon icon icon-selection-true"></div><div class="pubText">3</div></label>
             </div>
           </div>
         </div>
+        <%= f.text_field :layout_option, autocomplete: 'off', class: 'hiddenLayoutOptionField', :value => '3' %>
 
       </div>
 
@@ -216,7 +217,7 @@
             </div>
           </div>
         </div>
-          <%= f.text_field :layout_option, autocomplete: 'off', class: 'hiddenLayoutOptionField', :value => '3' %>
+
         </div>
 
         <div class="cmsSaveButton">
