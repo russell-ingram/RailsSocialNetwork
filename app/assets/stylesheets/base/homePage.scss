@@ -6,9 +6,10 @@
 }
 
 .searchBarHomeLabel {
-  font-size: 18px;
+  font-size: 14px;
   color: #797c7f;
   margin-bottom: 15px;
+  letter-spacing: 0.025em;
 }
 
 .searchBarHome {
@@ -26,6 +27,9 @@
   div {
     font-size: 14px;
     font-family: "PNBold";
+  }
+  .addSpendingIntentionFieldButton {
+    border-radius: 0;
   }
 }
 .homePageIntentionsList {
@@ -66,7 +70,7 @@
   border-radius: 0;
   background: #3eb2cc;
   height: 60px;
-  width: 19.4%;
+  width: 150px;
   line-height: 60px;
 
   letter-spacing: 0.10em;
@@ -128,16 +132,19 @@
 .homeContentNews {
   height: 70%;
   background-color: #f2f3f4;
+  padding-left: 40px;
+  padding-right: 80px;
 }
 
 .homeContentFollowed {
-  width: 62%;
+  width: 50%;
   height: 49%;
   background-color: #cbd0d2;
+  padding: 40px;
 }
 
 .homeContentInvite {
-  width: 38%;
+  width: 50%;
   height: 49%;
   background-color: #f2f3f4;
   text-align: center;
@@ -146,9 +153,10 @@
 
 .homeContentLabel {
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 14px;
   margin-bottom: 10px;
   color: #737373;
+  letter-spacing: 0.025em;
 }
 
 .homeContentHeadline {
@@ -156,7 +164,8 @@
   margin-bottom: 25px;
   // padding-left: 10px;
   max-width: 500px;
-  line-height: 36px;
+  line-height: 35px;
+  letter-spacing: -0.01em;
 }
 
 .newsDate {
@@ -203,15 +212,19 @@
 
 .researchCol {
   float: left;
-  width: 27%;
+  width: 157px;
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 20px;
+}
+.researchCol:last-child {
+  margin-right: 0;
 }
 
 .researchNum {
-  font-size: 70px;
+  font-size: 63px;
   color: #3eb2cc;
   font-family: "PNLight";
+  letter-spacing: -0.02em;
 }
 .researchText {
   font-size: 14px;
@@ -255,22 +268,22 @@
   color: #282b30;
   text-transform: uppercase;
   text-align: center;
-  margin-top: 55px;
+  margin-top: 70px;
 }
 
 .startSearchBtn {
-  width: 254px;
+  width: 235px;
   height: 60px;
-  line-height: 54px;
+  line-height: 50px;
   color: #3eb2cc;
   border: 6px solid #3eb2cc;
   font-size: 14px;
   text-align: center;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 25px;
   letter-spacing: 0.1em;
   a {
-    width: 245px;
+    width: 225px;
   }
 }
 
@@ -280,13 +293,14 @@
 }
 
 .homeInviteTitle {
-  font-size: 18px;
+  font-size: 14px;
   color: #282b30;
   text-transform: uppercase;
   margin-bottom: 20px;
   width: 108px;
   margin: 0 auto;
   margin-top: 50px;
+  letter-spacing: 0.025em;
 }
 
 .homeInviteText {
@@ -320,11 +334,12 @@
 .homeConnectionsHeader {
   height: 58px;
   line-height: 58px;
-  font-size: 18px;
+  font-size: 14px;
   text-transform: uppercase;
   padding-left: 20px;
   color: #737373;
   font-family: "PNBold";
+  letter-spacing: 0.025em;
 }
 
 .homeConnections {
@@ -358,6 +373,7 @@
 .hcpTitle {
   text-transform: uppercase;
   margin-bottom: 5px;
+  letter-spacing: 0.025em;
 }
 
 .hcpDesc {

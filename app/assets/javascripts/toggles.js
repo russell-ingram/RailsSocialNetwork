@@ -202,12 +202,12 @@ $( document ).ready(function() {
     var icon = $('.searchBarHomeAdvancedOptions').children();
     if (row.hasClass('active')) {
       row.removeClass('active');
-      icon.removeClass('icon-icon-close');
+      icon.removeClass('icon-icon-dash');
       icon.addClass('icon-icon-add');
     } else {
       row.addClass('active');
       icon.removeClass('icon-icon-add');
-      icon.addClass('icon-icon-close');
+      icon.addClass('icon-icon-dash');
     }
 
   })

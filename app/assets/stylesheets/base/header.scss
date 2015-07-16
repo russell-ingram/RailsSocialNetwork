@@ -5,7 +5,7 @@
   line-height: 90px;
   font-family: "PNBold";
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .adminHeader {
@@ -47,7 +47,7 @@
   float:left;
   letter-spacing: 0.20em;
   text-decoration: none;
-  margin-left: 10px;
+  margin-left: -15px;
   width: 30px;
   height: 30px;
   border-radius: 20px;
@@ -70,9 +70,9 @@
 }
 
 .menuIcon {
-  font-size: 32px;
+  font-size: 30px;
   position: relative;
-  top: 6px;
+  top: 5px;
   cursor: pointer;
 }
 
@@ -94,6 +94,7 @@
 
 .adminMenuIcon {
   height: 25px;
+  top: 8px;
 }
 
 .mailMenuIcon.active {

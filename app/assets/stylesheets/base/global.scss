@@ -85,7 +85,7 @@ canvas {
   width: 1020px;
   margin: 0 auto;
   margin-bottom: -300px;
-  padding-top: 50px;
+  padding-top: 42px;
   font-family: "PNBold";
 
   background-color: white;
@@ -100,8 +100,8 @@ canvas {
   color: #FFF;
   background-color: #22bf0d;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  margin-top: -50px;
+  margin-bottom: 12px;
+  margin-top: -42px;
   letter-spacing: 0.025em;
   font-size: 12px;
 
@@ -115,11 +115,12 @@ canvas {
 
 .pageHeader {
   padding-left: 25px;
-  font-size: 20px;
+  font-size: 18px;
   color: #3eb2cc;
   text-transform: uppercase;
   // margin-top: 15px;
   margin-bottom: 40px;
+  letter-spacing: 0.025em;
 }
 
 .floatHeader {
@@ -140,12 +141,13 @@ canvas {
 }
 
 .formHeader {
-  height: 50px;
-  line-height: 50px;
+  height: 45px;
+  line-height: 45px;
   color: #3eb2cc;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #282b30;
   padding-left: 30px;
+  letter-spacing: 0.025em;
 }
 
 .formBox {
@@ -182,6 +184,8 @@ canvas {
   line-height: 45px;
   .carrot {
     line-height: inherit;
+    position: relative;
+    top: 3px;
   }
 }
 .wrapperFieldDropdown.active {
@@ -196,7 +200,7 @@ canvas {
 }
 
 .ddOption {
-  padding-left: 25px;
+  padding-left: 15px;
   height: 40px;
   line-height: 40px;
 

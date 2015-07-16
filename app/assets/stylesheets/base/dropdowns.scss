@@ -4,7 +4,7 @@
   outline: none;
   cursor: pointer;
 
-  padding-left: 10px;
+  padding-left: 15px;
   padding-right: 10px;
   margin-right: 16px;
 
@@ -19,9 +19,8 @@
 
 .carrot {
   float: right;
-  line-height: 60px;
-  font-size: 10px;
-  padding-right: 10px;
+  line-height: 65px;
+  font-size: 20px;
 }
 
 .wrapper-dropdown .dropdown {
@@ -38,8 +37,8 @@
   opacity: 1;
   pointer-events: auto;
   background: white;
-  width: 298px;
-  margin-left: -11px;
+  width: 100.7%;
+  margin-left: -16px;
   border: 1px solid #d8dcdd;
   max-height: 180px;
   overflow: auto;
@@ -53,6 +52,9 @@
 
 .wrapper-dropdown.active {
   border: 1px solid #3eb2cc;
+  .icon {
+    color: #3eb2cc;
+  }
 }
 
 
