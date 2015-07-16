@@ -73,5 +73,34 @@ class FriendshipsController < ApplicationController
     end
   end
 
+  def filter
+    type = params[:type]
+
+    @friend_ids = []
+    current_user.friendships.each do |f|
+      @friend_ids << f.friend_id if f.state == 'accepted'
+    end
+
+    if type == 'FIRST NAME'
+      @friends = User.order(:first_name).where(:id => @friend_ids)
+    elsif type == 'LAST NAME'
+      @friends = User.order(:last_name).where(:id => @friend_ids)
+    else
+      @friends = User.order(created_at: :desc).where(:id => @friend_ids)
+    end
+    @friend_arr = []
+    @friends.each do |f|
+      @u = {}
+      @u['user'] = f
+      @u['work'] = f.current_pos
+      @friend_arr << @u
+    end
+
+    respond_to do |format|
+      format.json { render json: @friend_arr }
+    end
+
+  end
+
 
 end

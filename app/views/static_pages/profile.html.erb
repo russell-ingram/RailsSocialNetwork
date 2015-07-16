@@ -6,7 +6,11 @@
 
   <div class="profileHeader">
     <div class="profilePic">
-      <%= image_tag current_user.profile_pic_url %>
+      <% if current_user.profile_pic_url? %>
+        <%= image_tag current_user.profile_pic_url %>
+      <% else %>
+        <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
+      <% end %>
     </div>
     <% position = current_user.current_pos %>
     <div class="profileInfo">
@@ -17,6 +21,7 @@
         <i class="fa fa-building-o"></i><%= position["industry"] %>
       </div>
       <div class="profileLocation"><i class="fa fa-map-marker"></i><%= position["country"] %></div>
+      <div class="profileButton profileConnected"><%= link_to "UPDATE", edit_profile_path %></div>
 
     </div>
 

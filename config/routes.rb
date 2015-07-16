@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get '/profile/:id' => 'static_pages#show_profile', as: 'user_profile'
 
+
   get '/recipients' => 'messages#recipients', as: 'recipients'
   get '/allrecipients' => 'messages#admin_recipients', as: 'admin_recipients'
 
@@ -47,6 +48,8 @@ Rails.application.routes.draw do
 
   get '/admin/delete/:id' => 'user_admin#destroy', as: 'admin_delete_user'
 
+  get '/user/edit' => 'user_admin#edit_self', as: 'edit_profile'
+
 
 
 
@@ -71,6 +74,8 @@ Rails.application.routes.draw do
       post :create, as: 'create'
     end
   end
+
+  get '/connections/all/:type' => 'friendships#filter', as: 'filter'
 
   resources :content
 

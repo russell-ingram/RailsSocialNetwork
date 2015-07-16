@@ -70,7 +70,44 @@
           <div class="sortToggle">MOST RECENT<i class="fa fa-caret-down messageCaret"></i></div>
         </div>
       </div> -->
-      <div class="formHeader">MY CONNECTIONS</div>
+<!--       <div class="formHeader">
+        <div class="formBoxLabel">
+        MY CONNECTIONS
+        </div>
+        <div class="formBoxToggles">
+
+        </div>
+
+      </div> -->
+
+    <div class="messagesBar">
+      <div class="msgsBarName">MY CONNECTIONS</div>
+
+      <div class="inboxToggle toggleFloatRight">
+        <div class="sortLabel">SORT BY:</div>
+          <div class="sortToggle">
+
+            <div class="wrapper-dropdown ddFilter ddToggle" name="connection" tabindex="1">
+              <span class="ddLabel ddFilterLabel">MOST RECENT</span>
+              <div class="icon icon-carot messageCarot"></div>
+              <ul class="dropdown ddFilterSelect">
+                <li class="ddOption filterOption filterToggle">MOST RECENT</li>
+                <li class="ddOption filterOption filterToggle">FIRST NAME</li>
+                <li class="ddOption filterOption filterToggle">LAST NAME</li>
+              </ul>
+            </div>
+
+
+          </div>
+
+
+      </div>
+      <div class="icon icon-icon-search toggleRightSearch"></div>
+<!--       <div class="searchMsgsBarFloatRight">
+        <div class="searchMessagesButton"></div>
+      </div> -->
+    </div>
+    <div class="connsRefillableWrapper">
 
       <% @accepted_friendships.each do |friendship| %>
         <% if friendship.accepted? %>
@@ -92,7 +129,7 @@
             <div class="myConnCompany"><%= friend_pos["company"] %></div>
             <div class="myConnIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>
           </div>
-          <div class="myConnMessage"><a href="/messages/new/<%= friend.id %>">MESSAGE<i class="fa fa-chevron-right"></i></a></div>
+          <div class="myConnMessage"><a href="/messages/new/<%= friend.id %>">MESSAGE<div class="icon icon-fwd-arrow"></div></a></div>
         </div>
       </div>
 
@@ -100,9 +137,10 @@
         <% end %>
 
       <% end %>
-        <!-- <div class="myConnFiller"></div> -->
-        <!-- <div class="connectionsPagination"></div> -->
-        </div>
+      </div>
+      <!-- conns wrapper -->
+  </div>
+  <!-- end form box -->
   <% elsif @requested_friendships.length > 0 %>
 
 

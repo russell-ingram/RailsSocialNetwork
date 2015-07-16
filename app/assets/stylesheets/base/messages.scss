@@ -49,10 +49,30 @@
   font-family: "PNLight";
   margin-right: -10px;
   float:left;
-  // height: 50px;
-  // line-height: 50px;
 }
 
+.toggleFloatRight {
+  float:right;
+  margin-right: 10px;
+  .ddFilterSelect {
+    margin-left: -20px;
+  }
+}
+
+.msgsBarName {
+  display: inline-block;
+  font-size: 16px;
+  color: #3eb2cc;
+}
+.toggleRightSearch {
+  display: inline-block;
+  float:right;
+  margin-right: 15px;
+  font-size: 18px;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}
 
 .inboxToggle {
   // .wrapper-dropdown {
@@ -234,7 +254,9 @@
 
 .messagesPagination {
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  height: 10px;
+
 }
 
 .pagination {

@@ -1,0 +1,369 @@
+<%= render "layouts/header" %>
+<div class="pageWrap">
+<div class="pageHeaderBar">
+  <div class="pageHeader floatHeader">Edit Profile</div>
+
+<%= form_for ([:user_admin, @editUser]) do |f| %>
+
+</div>
+
+
+  <div class="editProfileWrapper">
+
+
+
+
+  <% if @editUser.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@editUser.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @editUser.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        USER DETAILS
+      </div>
+
+      <div class="editPhotoUpload" id="editPhotoUpload">
+        <% if !@editUser.profile_pic_url.blank? %>
+        <div class="photoUploadBox" style="background-image: url(<%= @editUser.profile_pic_url %>);">
+        </div>
+        <div class="userUploadIcons editUploadIcons">
+          <p>
+          <i class="fa fa-pencil-square-o"></i>
+          Edit Photo
+          </p>
+          </div>
+        <% else %>
+        <div class="photoUploadBox">
+          <div class="userUploadIcons">
+            <p>
+            <i class="fa fa-camera"></i>
+            <br>
+            Add Photo
+            </p>
+          </div>
+        </div>
+        <% end %>
+
+
+
+      </div>
+
+      <%= f.file_field :profile_pic_url, class: 'customFileInput' %>
+
+      <div class="editContentRight">
+
+        <div class="field editField">
+          <%= f.text_field :first_name, placeholder: 'First name' %>
+        </div>
+        <div class="field editField">
+          <%= f.text_field :last_name, placeholder: 'Last name' %>
+        </div>
+        <div class="field editField fullField">
+          <%= f.text_field :email, placeholder: 'Email address' %>
+        </div>
+        <div class="field editField fullField">
+          <%= f.text_field :linked_in_url, placeholder: 'Connected LinkedIn account' %>
+        </div>
+
+
+      </div>
+
+
+
+
+    </div>
+
+    <div class="userEditBox formBox">
+      <div class="profileTabBoxLabel formHeader">
+        SUMMARY
+      </div>
+      <div id="toolbar" class="ql-toolbar ql-summaryBar" style="display: block;">
+        <div class="editorButton ql-bold">B</div>
+        <div class="editorButton ql-italic">I</div>
+        <div class="editorButton ql-underline">U</div>
+      </div>
+        <div class="newMsgFormControl newMessageArea userSummaryField" id="editor">
+          <% if @editUser.summary? %>
+          <%= @editUser.summary.html_safe %>
+          <% end %>
+        </div>
+        <%= f.text_area :summary, placeholder: 'Summary',id:'textAreaEditor', style: 'display: none;' %>
+
+
+    </div>
+
+  <%= f.fields_for :works do |ff| %>
+    <% if ff.object.job_title.blank? && ff.index > 0 %>
+    <div class="userEditBox formBox pastPositionBox" id="pastExp<%= ff.index %>">
+    <% else %>
+    <div class="userEditBox formBox pastPositionBox active" id="pastExp<%= ff.index %>">
+    <% end %>
+      <div class="profileTabBoxLabel formHeader">
+      <% if ff.index > 0 %>
+        PAST EXPERIENCE
+      <% else %>
+        EXPERIENCE
+      <% end %>
+      </div>
+
+
+      <div class="formBoxField">
+        <div class="formBoxRow">
+          <div class="field field-col-2">
+            <%= ff.text_field :job_title, placeholder: 'Job title' %>
+          </div>
+          <div class="field field-col-2">
+            <%= ff.text_field :footprint, placeholder: 'IT Footprint' %>
+          </div>
+        </div>
+
+        <div class="formBoxRow">
+          <div class="field field-col-2">
+            <%= ff.text_field :company, placeholder: 'Employer' %>
+          </div>
+          <div class="field field-col-2">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+              <% if !ff.object.industry.blank? %>
+                <%= ff.object.industry %>
+              <% else %>
+                Industry
+              <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <% @industries.each do |industry| %>
+                <li class="ddOption fieldOption"><%= industry %></li>
+                <% end %>
+              </ul>
+            </div>
+            <%= ff.text_field :industry, placeholder: 'Industry', style: 'display: none;' %>
+          </div>
+
+        </div>
+        <div class="formBoxRow">
+          <div class="field field-col-3">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+              <% if !ff.object.enterprise_size.blank? %>
+                <%= ff.object.enterprise_size %>
+              <% else %>
+                Enterprise Size
+              <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">Large</li>
+                <li class="ddOption fieldOption">Midsize</li>
+                <li class="ddOption fieldOption">Small</li>
+              </ul>
+            </div>
+            <%= ff.text_field :enterprise_size, placeholder: 'Enterprise Size', style: 'display: none;' %>
+          </div>
+          <div class="field field-col-3">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                <% if !ff.object.region.blank? %>
+                  <%= ff.object.region %>
+                <% else %>
+                  Region
+                <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">North America</li>
+                <li class="ddOption fieldOption">EMEA</li>
+                <li class="ddOption fieldOption">APAC</li>
+                <li class="ddOption fieldOption">Latin America</li>
+              </ul>
+            </div>
+            <%= ff.text_field :region, placeholder: 'Region', style:'display: none;' %>
+          </div>
+          <div class="field field-col-3">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                <% if !ff.object.country.blank? %>
+                  <%= ff.object.country %>
+                <% else %>
+                  Country
+                <% end %>
+              </span>
+              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <ul class="dropdown fieldDropdown">
+                <% @countries.each do |country| %>
+                <li class="ddOption fieldOption"><%= country %></li>
+                <% end %>
+              </ul>
+            </div>
+            <%= ff.text_field :country, placeholder: 'Country',style: 'display:none;' %>
+          </div>
+        </div>
+        <div class="field-area field-summary experienceSummaryBox">
+          <%= ff.text_area :summary, placeholder: 'Summary' %>
+        </div>
+        <div class="pubOrPrivBox">
+
+
+
+
+
+          <div id="currentPosButton" class="currentPostButton">
+            <input type="radio" class="radioSendAll" name="public" value="true">
+            <% if ff.object.current? %>
+            <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div></span>CURRENT POSITION</label>
+            <% else %>
+            <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>CURRENT POSITION</label>
+            <% end %>
+          </div>
+          <%= ff.text_area :current, placeholder: 'current', style: "display:none;" %>
+
+
+
+
+          <div class="pastEmpDates pubLabel">
+            <div class="pastEmpDateLabel">Start date</div>
+            <div class="field pastEmpDateBox">
+              <%= ff.text_field :start_date, placeholder: 'MM/YYYY', id:"past_emp_start_date#{ff.index}" %>
+              <!-- <input placeholder="MM/YYYY" type="text" name="past_emp[start_date]" id="past_emp_start_date"> -->
+            </div>
+            <div class="pastEmpDateLabel">End date</div>
+            <div class="field pastEmpDateBox">
+              <%= ff.text_field :end_date, placeholder: 'MM/YYYY', id:"past_emp_end_date#{ff.index}" %>
+              <!-- <input placeholder="MM/YYYY" type="text" name="past_emp[end_date]" id="past_emp_end_date"> -->
+            </div>
+          </div>
+
+
+
+          <div class="pubLabel">Company type</div>
+          <div id="pubButton1" class="pubButton">
+          <% if ff.object.public? %>
+            <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true">
+            <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Privately Held</div></label>
+          <% else %>
+            <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true" checked>
+            <label for="radio01"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Privately Held</div></label>
+          <% end %>
+
+          </div>
+          <!-- <br> -->
+          <div id="pubButton2" class="pubButton">
+          <% if ff.object.public? %>
+            <input type="radio" class="pubInputCheck" id="radio2" name="public" value="true" checked>
+            <label for="radio02"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Publicly Held</div></label>
+          <% else %>
+            <input type="radio" class="pubInputCheck" id="radio2" name="public" value="false">
+            <label for="radio02"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Publicly Held</div></label>
+          <% end %>
+          </div>
+          <%= ff.text_area :public, placeholder: 'public', style: "display:none;" %>
+        </div>
+      </div>
+
+    </div>
+
+    <% end %>
+
+<!--     <div class="userEditBox formBox pastExperienceFormBox">
+      <div class="profileTabBoxLabel formHeader">
+        PAST EXPERIENCE
+      </div>
+      <div class="formBoxField">
+        <div class="formBoxRow">
+          <div class="field field-col-2">
+            <input placeholder="Title" type="text" name="past_emp[title]" id="past_emp_title">
+          </div>
+          <div class="field field-col-2">
+            <input placeholder="Company" type="text" name="past_emp[company]" id="past_emp_company">
+          </div>
+          <div class="pastEmpDates pubLabel">
+            <div class="pastEmpDateLabel">Start date</div>
+            <div class="field pastEmpDateBox">
+              <input placeholder="MM/YYYY" type="text" name="past_emp[start_date]" id="past_emp_start_date">
+            </div>
+            <div class="pastEmpDateLabel">End date</div>
+            <div class="field pastEmpDateBox">
+              <input placeholder="MM/YYYY" type="text" name="past_emp[end_date]" id="past_emp_end_date">
+            </div>
+          </div>
+          <div class="pastEmpDescriptionBox field-area field-summary">
+            <textarea name="past_emp[description]" placeholder="Description"></textarea>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+
+
+    <div class="addPastPosition">
+      <i class="fa fa-plus"></i>ADD ANOTHER POSITION
+    </div>
+
+    <div class="userEditButtons">
+      <div class="userAdminButton"><a href="#msgModal" rel="modal:open">Send Invitation</a></div>
+      <div class="userAdminButton"><%= f.submit 'Save' %></div>
+      <div class="userAdminButton greyButton"><a href="/admin">Cancel</a></div>
+
+
+    </div>
+
+<div id="msgModal" class="addIntentionModal" style="display:none;">
+  <div class="formBox searchFormBox formBoxModal">
+    <div class="formHeader">SEND INVITATION</div>
+    <div class="modalBody">
+      <div class="modalIntentions">
+      </div>
+      <div class="modalIntentionsRight">
+        <div class="deleteUserModalInfo">
+          (NOT FUNCTIONAL YET)
+          </br>
+          Send invitation to <%= @editUser.full_name %>?
+        </div>
+        <div class="modalDoneButton">
+          SEND
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <div class="footerMargin"></div>
+</div>
+
+
+
+<%= render "layouts/footer" %>

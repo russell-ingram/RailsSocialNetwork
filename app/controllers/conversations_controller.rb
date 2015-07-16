@@ -17,7 +17,19 @@ class ConversationsController < ApplicationController
     if @accepted_friendships.length > 0
       @has_friends = true
     end
-    @conversations = @mailbox.conversations.paginate(page: params[:page], per_page: 10)
+    @all_conversations = @mailbox.conversations
+    puts "TYPE:"
+    puts @all_conversations.inspect
+    # .where(:trashed => false)
+    @conversations = []
+    # only finding non-deleted conversations
+    @all_conversations.each do |c|
+      if !c.is_trashed?(current_user)
+        @conversations << c
+      end
+    end
+    require 'will_paginate/array'
+    @conversations = @conversations.paginate(page: params[:page], per_page: 10)
 
 
   end

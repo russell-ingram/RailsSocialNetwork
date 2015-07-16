@@ -20,10 +20,16 @@ class UserAdminController < ApplicationController
       @users = User.order(created_at: :desc)
     end
 
-
+    @users_arr = []
+    @users.each do |f|
+      @u = {}
+      @u['user'] = f
+      @u['work'] = f.current_pos
+      @users_arr << @u
+    end
 
     respond_to do |format|
-      format.json { render json: @users }
+      format.json { render json: @users_arr }
     end
 
   end
@@ -61,8 +67,25 @@ class UserAdminController < ApplicationController
 
   def edit
     @editUser = User.find(params[:id])
-    p "EDIT:"
-    # p @editUser
+    @editUser.works ||= Work.new
+    if @editUser.works.length < 3
+      if @editUser.works[0].blank?
+        @editUser.works << Work.new
+      end
+      if @editUser.works[1].blank?
+        @editUser.works << Work.new
+      end
+      if @editUser.works[2].blank?
+        @editUser.works << Work.new
+      end
+    end
+    @countries = countries_list
+    @industries = industries_list
+  end
+
+  def edit_self
+    p "EDIT SELF LOADED"
+    @editUser = current_user
     @editUser.works ||= Work.new
     if @editUser.works.length < 3
       if @editUser.works[0].blank?
@@ -87,9 +110,6 @@ class UserAdminController < ApplicationController
     uploader = ProfilepicUploader.new
     uploader.store!(my_file)
 
-    puts "UPLOADER:"
-    puts uploader.filename
-
     # profile_pic = File.basename(params[:user][:profile_pic_url])
     # puts "identifier"
     # puts profile_pic
@@ -99,15 +119,16 @@ class UserAdminController < ApplicationController
       @newUser[:admin] = false
     end
 
-    puts "user:"
-    puts @newUser
-
     respond_to do |format|
       if @editUser.update(@newUser)
         if uploader.url
           @editUser.update_columns(profile_pic_url: uploader.filename)
         end
-        format.html { redirect_to '/admin' }
+        if @editUser == current_user
+          format.html { redirect_to '/profile' }
+        else
+          format.html { redirect_to '/admin' }
+        end
       else
         format.html { render :edit }
         format.json { render json: @editUser.errors, status: :unprocessable_entity }
@@ -172,9 +193,9 @@ class UserAdminController < ApplicationController
     s = Survey.new
     s.survey_id = survey_id
 
-    Intention.delete_all()
-    Vendor.delete_all()
-    Sector.delete_all()
+    # Intention.delete_all()
+    # Vendor.delete_all()
+    # Sector.delete_all()
 
     # add date time
     # s.save
@@ -187,79 +208,79 @@ class UserAdminController < ApplicationController
         u = User.find_by("uid = ?", row[0].value)
 
         if u
-          # do stuff to edit existing user
-          u.works.each do |wd|
-            Work.destroy(wd)
-          end
-          User.destroy(u)
-          u = User.new
-          u.works = []
-          w = Work.new
-          u.uid = row[0].value
-          u.email = row[1].value
-          u.first_name = row[2].value
-          u.last_name = row[3].value
-          u.password = "password"
-          # this needs to be based on organizations in db later
-          w.company = row[5].value
-          # this should work with normal titles, but is using standard title for now
-          w.job_title = row[8].value
-          w.industry = row[9].value
-          w.enterprise_size = row[10].value
-          w.region = row[11].value
-          w.footprint = row[12].value
-          w.country = row[13].value
-          w.uid = u.uid
-          w.current = true
-          if row[15].value == "Public"
-            w.public = true
-          else
-            w.public = false
-          end
-          u.works << w
-          u.save
+          # # do stuff to edit existing user
+          # u.works.each do |wd|
+          #   Work.destroy(wd)
+          # end
+          # # User.destroy(u)
+          # u = User.new
+          # u.works = []
+          # w = Work.new
+          # u.uid = row[0].value
+          # u.email = row[1].value
+          # u.first_name = row[2].value
+          # u.last_name = row[3].value
+          # u.password = "password"
+          # # this needs to be based on organizations in db later
+          # w.company = row[5].value
+          # # this should work with normal titles, but is using standard title for now
+          # w.job_title = row[8].value
+          # w.industry = row[9].value
+          # w.enterprise_size = row[10].value
+          # w.region = row[11].value
+          # w.footprint = row[12].value
+          # w.country = row[13].value
+          # w.uid = u.uid
+          # w.current = true
+          # if row[15].value == "Public"
+          #   w.public = true
+          # else
+          #   w.public = false
+          # end
+          # u.works << w
+          # u.save
 
-          # iterate through columns w/ survey for results upload
-          # xlsx.last_column
-          22.upto(xlsx.last_column) do |index|
-            if xlsx.column(index)[y]
-              arr = xlsx.column(index)[0].split('_')
-              vendor_name = arr[0]
-              sector_name = arr[1]
+          # # iterate through columns w/ survey for results upload
+          # # xlsx.last_column
+          # 22.upto(xlsx.last_column) do |index|
+          #   if xlsx.column(index)[y]
+          #     arr = xlsx.column(index)[0].split('_')
+          #     vendor_name = arr[0]
+          #     sector_name = arr[1]
 
-              v = Vendor.find_by("name = ?", vendor_name)
-              if v
-              else
-                v = Vendor.new
-                v.name = vendor_name
-                v.save
-              end
-              sect = Sector.find_by("name = ?", sector_name)
-              if sect
-              else
-                sect = Sector.new
-                sect.name = sector_name
-                sect.save
-              end
-
-
-              i = Intention.new
-              i.survey_id = survey_id
-              i.vendor_id = v.id
-              i.sector_id = sect.id
-              i.user_id = u.uid
-              i.intention = xlsx.column(index)[y]
+          #     v = Vendor.find_by("name = ?", vendor_name)
+          #     if v
+          #     else
+          #       v = Vendor.new
+          #       v.name = vendor_name
+          #       v.save
+          #     end
+          #     sect = Sector.find_by("name = ?", sector_name)
+          #     if sect
+          #     else
+          #       sect = Sector.new
+          #       sect.name = sector_name
+          #       sect.save
+          #     end
 
 
-              puts "INTENTION:"
-              puts i.inspect
-              i.save
-            end
+          #     i = Intention.new
+          #     i.survey_id = survey_id
+          #     i.vendor_id = v.id
+          #     i.sector_id = sect.id
+          #     i.user_id = u.uid
+          #     i.intention = xlsx.column(index)[y]
+
+
+          #     puts "INTENTION:"
+          #     puts i.inspect
+          #     i.save
+          #   end
 
 
 
 
-          end
+          # end
         else
           u = User.new
           u.works = []

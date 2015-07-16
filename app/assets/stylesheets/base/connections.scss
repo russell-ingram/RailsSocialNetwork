@@ -189,6 +189,12 @@
   line-height: 140px;
   color: #3eb2cc;
   text-transform: uppercase;
+  .icon {
+    display: inline-block;
+    position: relative;
+    margin-left:3px;
+    top: 2px;
+  }
 }
 
 .connectionsPagination {
