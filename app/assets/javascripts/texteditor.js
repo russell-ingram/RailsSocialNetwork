@@ -3,7 +3,8 @@ $( document ).ready(function() {
   // Need to refactor these to make more efficient using THIS,etc.
 
   var configs = {
-    readOnly: false
+    readOnly: false,
+    formats: ['bold', 'italic', 'underline']
   }
 
   if ($('#editor').length) {

@@ -43,6 +43,7 @@
   display: inline-block;
 
   text-transform: uppercase;
+  height: 45px;
 }
 
 .inboxToggle, .sortLabel {
@@ -96,6 +97,7 @@
 
 .sortToggle {
   font-family: "PNBold";
+  display: inline;
 }
 .sortToggle:hover {
   color: #3eb2cc;

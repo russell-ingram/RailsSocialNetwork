@@ -10,7 +10,7 @@ class SearchsController < ApplicationController
     @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id)
 
     @search = Search.new(search_params)
-    @users = User.search(@search)
+    @users = User.search(@search,current_user)
     @search.peers = @users.length
     @search.save
 

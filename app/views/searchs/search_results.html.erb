@@ -127,7 +127,6 @@
         <% if @users != nil %>
           <% @users.each_with_index do |user,index| %>
 
-            <% if user != current_user %>
               <% pos = user.current_pos %>
               <div class="myConnection">
                 <div class="myConnWrapper">
@@ -191,7 +190,6 @@
               </div>
 
 
-            <% end %>
 
           <% end %>
         <% end %>
@@ -384,7 +382,11 @@
       <% @favSearchs.each do |search| %>
         <div class="favSearch">
           <div class="favSearchHeader">
+            <% if search.name %>
+            <%= search.name %>
+            <% else %>
             Unnamed Search
+            <% end %>
           </div>
           <div class="favSearchParams">
             <% for attribute in ['job_title','industry', 'enterprise', 'region','country', 'organization_type'] %>

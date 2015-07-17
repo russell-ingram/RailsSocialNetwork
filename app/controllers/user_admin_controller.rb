@@ -146,6 +146,7 @@ class UserAdminController < ApplicationController
 
   def new
     @editUser = User.new
+    p @editUser
     @editUser.works ||= Work.new
     if @editUser.works.length < 3
       if @editUser.works[0].blank?
@@ -295,7 +296,7 @@ class UserAdminController < ApplicationController
           # this should work with normal titles, but is using standard title for now
           w.job_title = row[8].value
           w.industry = row[9].value
-          w.enterprise_size = row[10].value
+          w.enterprise_size = row[10].value.capitalize
           w.region = row[11].value
           w.footprint = row[12].value
           w.country = row[13].value

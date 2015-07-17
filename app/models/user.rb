@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.search(search)
+  def self.search(search,current_user)
     # puts "SEARCH:"
     # puts search.inspect
     # p search.results.class
@@ -134,7 +134,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    works = works.where(:uid=>user_uids) if user_uids.present?
+    works = works.where(:uid=>user_uids) if search.results.present?
 
     works.each do |w|
       wids << w.uid.to_s
@@ -142,19 +142,17 @@ class User < ActiveRecord::Base
 
     # puts "WIDS:"
     # p wids
-
-    users = User.all
-
+    p "current_user:"
+    p current_user
+    users = User.where.not(id: current_user.id)
 
 
     if (!search[:industry].present? && !search[:enterprise].present? && !search[:region].present? && !search[:country].present? && !search[:job_title].present? && !search[:organization_type].present? && !search.results.present?)
-      p "NOTHING IS PRESENT SO WE ARE RETURNING EVERYTHING"
     else
-      p "STUFF IS PRESENT"
-      p wids
       users = users.where(:uid=>wids)
       p users.length
     end
+
 
     return users
   end

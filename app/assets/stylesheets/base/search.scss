@@ -3,7 +3,7 @@
   // min-height: 300px;
   background-color: #f2f3f4;
   margin-bottom: 30px;
-  padding: 30px 25px 0 25px;
+  padding: 30px 25px 30px 25px;
 }
 
 .searchTagsWrapper, .spendingTagsWrapper {
@@ -599,7 +599,20 @@
   width: 68%;
   float:right;
   .field {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    .wrapper-dropdown {
+      font-size: 12px;
+      .ddLabel {
+        display: inline-block;
+        overflow: hidden;
+        width: 85%;
+        height: inherit;
+      }
+      .fieldDropdown.active {
+        margin-top: 0;
+      }
+
+    }
   }
 }
 .modalDeleteIntentions {
@@ -695,7 +708,7 @@
 
 .modalDoneButton {
   background-color: #3eb2cc;
-  margin-top: 26px;
+  margin-top: 29px;
 
 }
 
@@ -705,6 +718,7 @@
 
 .spendingIntentions {
   width: 100%;
+  margin-top: 30px;
 }
 
 .spendingIntentionsHeader {
@@ -770,7 +784,7 @@
 }
 
 .modalDoneAddFav {
-  margin-left: 120px !important;
+  margin-left: 145px !important;
   margin-top: 30px;
 }
 

@@ -250,6 +250,8 @@
 
 
         <% if @favSearchs.length > 0 %>
+
+          <div class="followedSearchesWrapperHome">
           <div class="homeContentLabel">followed searches</div>
           <% @favSearchs.each_with_index do |f,i| %>
             <div class="followedSearch">
@@ -300,8 +302,10 @@
 
           <% end %>
           <div class="viewMoreContent searchesViewMore">
+
           <a href="/search">
           view all<div class="icon icon-fwd-arrow"></div></a></div>
+        </div>
         <% else %>
           <div class="noFollowedSearchesText">
           You have no followed searches as of yet. Search for other technology leaders and save your search criteria.

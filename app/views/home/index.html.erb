@@ -6,7 +6,10 @@
 </canvas>
 <div class="fitoLandingFloat">
   <div class="fitoLandingWrapper">
-    <div class="fitoLandingLogo">FITO</div>
+    <div class="fitoLandingLogo"><%= image_tag("fito-no-tagline.svg", class: "menuLogo")  %></div>
+    <div class="fitoLandingFadeBar">
+      <%= image_tag("divider-fade.svg")  %>
+    </div>
     <div class="fitoLandingText">the next-gen platform for cio level networking and peer benchmarking research</div>
 
     <div class="fitoLandingSignInButton" id="fitoLandingSignInButton">SIGN-IN</div>
@@ -14,7 +17,7 @@
 </div>
 
 <div class="fitoLandingSignInWrapper">
-  <%= form_for(:user, url: session_path(:user)) do |f| %>
+  <%= form_for :user, url: session_path(:user), :html => {id: 'signInForm'} do |f| %>
     <div class="field loginField">
       <%= f.text_field :email, placeholder: 'email' %>
     </div>
@@ -23,14 +26,63 @@
       <%= f.password_field :password, placeholder: 'password' %>
     </div>
 
+    <div class="forgotPasswordButton">
+      forgot password
+    </div>
+
     <div class="fitoLandingSignInSubmit">
       LOGIN
 
     </div>
-    <%= f.submit "Log in", id: "landingSubmitLogin", style: "display:none;" %>
+    <div class="fitoLandingRequestBtn">
+    - request access
     </div>
+    <%= f.submit "Log in", id: "landingSubmitLogin", style: "display:none;" %>
+
   <% end %>
+  <div class="fitoLandingRequestWrapper">
+    <%= form_for(@newRequest, as: :request, html: {method: :post})  do |f| %>
+    <div class="fitoRequestHeader">
+      fito is an invitation based service. </br>
+      to request access, please provide your details below </br>
+      for our team to review.
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :first_name, placeholder: 'first name' %>
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :last_name, placeholder: 'last name' %>
+    </div>
+    <div class="fitoRequestChoiceText">
+      one of the following are required
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile name' %>
+    </div>
+    <div class="fitoRequestOrText">or</div>
+    <div class="field loginField">
+      <%= f.text_field :job_title, placeholder: 'job title' %>
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :company, placeholder: 'company' %>
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :email, placeholder: 'email address' %>
+    </div>
+    <div class="fitoLandingRequestSubmit">
+      Send Request
+    </div>
+    <div class="fitoLandingSignInToggle">
+    - sign-in -
+    </div>
+
+      <%= f.submit 'Submit Request', style: 'display:none;' %>
+    <% end %>
+  </div>
 </div>
+
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
 
@@ -39,7 +91,7 @@ $( document ).ready(function() {
   var pattern = Trianglify({
       width: window.innerWidth,
       height: window.innerHeight,
-      x_colors: ["#4D7777","#006666","#003D3D"],
+      x_colors: ["#166879","#004f61","#001b22"],
       cell_size: 175
   });
   pattern.canvas(document.getElementById("fitoLandingCanvas"));
@@ -49,5 +101,8 @@ $( document ).ready(function() {
     // var y = e.clientY;
     // console.log(x,y);
   })
+
+  $('body').addClass('homePageBody');
+
 });
 </script>

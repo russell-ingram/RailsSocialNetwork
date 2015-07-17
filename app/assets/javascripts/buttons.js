@@ -121,8 +121,26 @@ $( document ).ready(function() {
 
     $.post('/search/add_favorite',{"searchData": data, "name":name},function(data) {
 
-      $('#addSearchLink').html("ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div> ")
+      $('#addSearchLink').html("ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div> ");
+      // console.log(data);
+      var props_string = '';
+      $.each(data,function(k,v) {
+
+        if (v !== '') {
+
+          if (k === 'job_title' || k === 'industry' || k === 'enterprise' || k === 'region' || k === 'country' ) {
+            props_string += v + ',';
+          }
+        }
+      });
+
+      var props_string = props_string.slice(0,-1);
+
+      var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'</div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
+
+      $('.savedSearchTab').prepend(searchElem);
     })
+
   });
 
   var searchCounter = 0;
@@ -302,11 +320,23 @@ $( document ).ready(function() {
 
   $("#fitoLandingSignInButton").off().on('click', function() {
     $('.fitoLandingSignInWrapper').addClass('active');
+    $('body').removeClass('homePageBody');
   })
 
   $(".fitoLandingSignInSubmit").off().on('click', function() {
     $("#landingSubmitLogin").click();
   })
+
+  $(".fitoLandingRequestBtn").off().on('click', function () {
+    $('#signInForm').hide();
+    $('.fitoLandingRequestWrapper').show();
+  });
+
+  $(".fitoLandingSignInToggle").off().on('click', function() {
+    $('.fitoLandingRequestWrapper').hide();
+    $('#signInForm').show();
+  })
+
 
 
 });

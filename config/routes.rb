@@ -93,5 +93,10 @@ Rails.application.routes.draw do
   post '/search/add_favorite' => 'searchs#save_favorite_search', as: 'favorite_search'
   get '/search/delete_favorite/:id' => 'searchs#delete_favorite_search', as: 'search_delete'
 
+  resources :requests do
+    member do
+      post :create, as: 'request'
+    end
+  end
 
 end

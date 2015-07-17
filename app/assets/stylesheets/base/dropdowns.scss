@@ -8,7 +8,7 @@
   padding-right: 10px;
   margin-right: 16px;
 
-  width: 240px;
+  width: 251px;
   height: 60px;
   line-height: 60px;
 
@@ -19,8 +19,8 @@
 
 .carrot {
   float: right;
-  line-height: 65px;
-  font-size: 20px;
+  line-height: 70px;
+  font-size: 33px;
 }
 
 .wrapper-dropdown .dropdown {
@@ -60,13 +60,14 @@
 
 .ddFilter {
   border: none;
-  width: 130px;
+  width: 160px;
   margin-right: 0;
   text-align:right;
 }
 
 .ddFilterLabel {
   min-width: 50px;
+  display: inline-block;
 }
 
 .ddFilter.active {
@@ -129,9 +130,9 @@
   float: right;
   line-height: 60px;
   font-size: 13px;
-  padding-right: 10px;
-  position: relative;
   margin-left: 10px;
+  position: relative;
+  top: -4px;
 }
 
 
@@ -139,20 +140,19 @@
   height: 50px;
   line-height: 50px;
   .messageCarot {
-    top: -53px;
-    right: -32px;
   }
 }
 
 .floatRightToggle {
   height: 60px;
   line-height: 60px;
+
+
 }
 
 .floatRightToggle {
   .messageCarot {
-    top: -58px;
-    right: -32px;
+    top: 2px;
   }
 }
 
