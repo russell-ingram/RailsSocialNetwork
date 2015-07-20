@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     '/home'
   end
   def after_sign_out_path_for(resource_or_scope)
-    '/login'
+    '/'
   end
 
   rescue_from ActiveRecord::RecordNotFound do

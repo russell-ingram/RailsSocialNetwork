@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   devise_scope :user do
-    get '/login' => "devise/sessions#new", as: 'new_user_session'
+    # get '/login' => "devise/sessions#new", as: 'new_user_session'
     get '/logout' => "devise/sessions#destroy", as: 'destroy_user_session'
     post '/login' => "devise/sessions#create", as: 'user_session'
   end
