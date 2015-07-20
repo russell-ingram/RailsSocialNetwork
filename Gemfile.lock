@@ -107,6 +107,8 @@ GEM
     json (1.8.3)
     kgio (2.9.3)
     libv8 (3.16.14.7)
+    local_time (1.0.2)
+      coffee-rails
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     macaddr (1.7.1)
@@ -239,6 +241,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
+  local_time
   mailboxer
   omniauth
   omniauth-linkedin

@@ -45,6 +45,10 @@ gem "mailboxer"
 gem 'will_paginate'
 
 
+# get local times via js
+gem 'local_time'
+
+
 
 # for XLSX file upload
 gem 'roo', '~> 2.0.0'

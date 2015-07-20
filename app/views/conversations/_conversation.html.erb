@@ -35,7 +35,7 @@
       </div>
       <div class="messageEmployer"><%= send_pos["job_title"] %> at <%= send_pos["company"] %></div>
 
-      <div class="messageTimeStamp"><%= message.created_at.strftime("%l:%M %p %B %-d, %Y") %></div>
+      <div class="messageTimeStamp"><%= local_time(message.created_at,format: '%l:%M%P', class: 'date-time-time') %><%= local_time(message.created_at, format: ' %B %d, %Y',class: 'date-time-date') %></div>
     </div>
 
     <% if conversation.is_unread?(current_user) %>

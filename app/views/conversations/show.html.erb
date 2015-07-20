@@ -94,12 +94,7 @@
           </div>
         </div>
         <div class="replyTimeStamp">
-          <div class="timeStampTime senderInfo">
-            <%= message.created_at.strftime("%l:%M %P") %>
-          </div>
-          <div class="timeStampDate">
-            <%= message.created_at.strftime("%B %-d, %Y") %>
-          </div>
+<%= local_time(message.created_at,format: '%l:%M%P', class: 'date-time-time') %><%= local_time(message.created_at, format: ' %B %d, %Y',class: 'date-time-date') %>
         </div>
         <div class="replySubject"><%= @conversation.subject %></div>
         <div class="replyBody"><%= simple_format(message.body).html_safe %></div>
