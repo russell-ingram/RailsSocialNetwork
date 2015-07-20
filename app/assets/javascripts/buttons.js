@@ -121,7 +121,8 @@ $( document ).ready(function() {
 
     $.post('/search/add_favorite',{"searchData": data, "name":name},function(data) {
 
-      $('#addSearchLink').html("ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div> ");
+      $('.searchResultsFollowButton').html("ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div> ");
+      $('.searchResultsFollowButton').addClass('inactive');
       // console.log(data);
       var props_string = '';
       $.each(data,function(k,v) {

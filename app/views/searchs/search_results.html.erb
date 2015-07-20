@@ -152,8 +152,19 @@
                       <a href="/messages/new/<%= user.id %>">message <div class="icon icon-fwd-arrow"></div></a>
                       </div>
                       <div class="userListAction">
+                      <% if @friends.include? user %>
+                      <a href="/profile/<%= user.id %>">
+                      CONNECTED<div class="icon icon-fwd-arrow"></div></a>
+                      <% elsif @pending.include? user %>
+                      <a href="/profile/<%= user.id %>">
+                      PENDING<div class="icon icon-fwd-arrow"></div></a>
+                      <% elsif @requested.include? user %>
+                      <a href="/profile/<%= user.id %>">
+                      RESPOND TO CONNECTION REQUEST<div class="icon icon-fwd-arrow"></div></a>
+                      <% else %>
                       <a href="#connect<%= index %>" rel="modal:open">
                       CONNECT<div class="icon icon-fwd-arrow"></div></a>
+                      <% end %>
                       </div>
                     </div>
                   </div>

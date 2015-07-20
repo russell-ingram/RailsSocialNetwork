@@ -1,4 +1,5 @@
 class Work < ActiveRecord::Base
+  include ActiveModel::Dirty
   belongs_to :user
 
   def work_params

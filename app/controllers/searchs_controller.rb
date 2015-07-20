@@ -14,7 +14,7 @@ class SearchsController < ApplicationController
     @search.peers = @users.length
     @search.save
 
-
+    get_friendships
 
     @newSearch = @search
     results = []
@@ -45,8 +45,9 @@ class SearchsController < ApplicationController
 
 
     @search.update(@newSearch)
+    get_friendships
 
-    @users = User.search(@search)
+    @users = User.search(@search, current_user)
     p "SEARCHHH:"
     p @search.results
 
@@ -93,8 +94,21 @@ class SearchsController < ApplicationController
     end
   end
 
-
-
+  def get_friendships
+    @friendships = current_user.friendships
+    @friends = []
+    @requested = []
+    @pending = []
+    @friendships.each { |friendship|
+      if friendship.accepted?
+        @friends << friendship.friend
+      elsif friendship.pending?
+        @pending << friendship.friend
+      elsif friendship.requested?
+        @requested << friendship.friend
+      end
+    }
+  end
 
   def industries_list
     ["Education", "Services/Consulting", "IT/TelCo", "Financials/Insurance", "Healthcare/Pharma", "Retail/Consumer", "Industrials/Materials/Manufacturing", "Government", "Restricted", "Other", "Nonprofit", "Energy/Utilities"]

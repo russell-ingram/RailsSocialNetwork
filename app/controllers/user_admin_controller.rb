@@ -1,7 +1,7 @@
 class UserAdminController < ApplicationController
   wrap_parameters format: [:json, :xml]
   before_action :authenticate_user!
-  before_action :admin_user, :only => [:index, :update, :destroy, :new, :create, :upload, :uploadFile]
+  before_action :admin_user, :only => [:index, :destroy, :new, :create, :upload, :uploadFile, :edit]
 
   def index
     # defaults to most recent
@@ -104,26 +104,32 @@ class UserAdminController < ApplicationController
 
   def update
     @editUser = User.find(params[:id])
+    if @editUser != current_user
+      admin_user
+    end
     @newUser = user_params
 
     my_file = params[:user][:profile_pic_url]
-    uploader = ProfilepicUploader.new
-    uploader.store!(my_file)
+    # uploader = ProfilepicUploader.new
+    # uploader.store!(my_file)
 
     # profile_pic = File.basename(params[:user][:profile_pic_url])
     # puts "identifier"
     # puts profile_pic
-    if params[:user][:admin] == "Admin" || params[:user][:admin] == true || params[:user][:admin] == "true"
-      @newUser[:admin] = true
-    else
-      @newUser[:admin] = false
+    if @editUser != current_user
+      if params[:user][:admin] == "Admin" || params[:user][:admin] == true || params[:user][:admin] == "true"
+        @newUser[:admin] = true
+      else
+        @newUser[:admin] = false
+      end
     end
 
     respond_to do |format|
       if @editUser.update(@newUser)
-        if uploader.url
-          @editUser.update_columns(profile_pic_url: uploader.filename)
-        end
+        @editUser.save
+        # if uploader.url
+          # @editUser.update_columns(profile_pic_url: uploader.filename)
+        # end
         if @editUser == current_user
           format.html { redirect_to '/profile' }
         else
@@ -367,7 +373,21 @@ class UserAdminController < ApplicationController
     redirect_to '/admin/upload'
   end
 
-
+  def get_friendships
+    @friendships = current_user.friendships
+    @friends = []
+    @requested = []
+    @pending = []
+    @friendships.each { |friendship|
+      if friendship.accepted?
+        @friends << friendship.friend
+      elsif friendship.pending?
+        @pending << friendship.friend
+      elsif friendship.requested?
+        @requested << friendship.friend
+      end
+    }
+  end
 
   def user_params
     # puts params

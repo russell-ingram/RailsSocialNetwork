@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  include ActiveModel::Dirty
+  after_save :notify_changes
   acts_as_messageable
 
   has_many :friendships
@@ -206,5 +208,25 @@ class User < ActiveRecord::Base
     end
     return @requested_friendships.length
   end
+
+  def notify_changes
+    puts "CHANGES HAPPENING"
+    # puts self.changed
+    # puts self.previous_changes
+    @changes = self.previous_changes
+    @work_changes = []
+    self.works.each do |w|
+      puts w.changed?
+      if w.changed?
+
+        @work_changes << w.previous_changes
+      end
+    end
+    puts @work_changes
+
+    # EtrMailer.notify_changes_email(self,@changes).deliver_now
+
+  end
+
 
 end
