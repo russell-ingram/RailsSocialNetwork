@@ -1,0 +1,48 @@
+<% if @conversations.length > 0 %>
+  <div class="messagesWrapper">
+
+    <div class="messagesBar">
+
+      <div class="inboxToggle">
+
+        <div class="sortLabel">SORT BY:</div>
+          <div class="sortToggle">
+
+            <div class="wrapper-dropdown ddFilter ddToggle" name="message" tabindex="1" id='messageToggle'>
+              <span class="ddLabel ddFilterLabel"><%= @type %></span>
+              <div class="icon icon-carot messageCarot"></div>
+              <ul class="dropdown ddFilterSelect">
+                <li class="ddOption filterOption filterToggle">
+                <%= link_to "MOST RECENT", controller: 'conversations', action: 'index', type: 'recent' %></li>
+                <li class="ddOption filterOption filterToggle">
+                  <%= link_to "FIRST NAME", controller: 'conversations', action: 'index', type: 'first' %></li>
+                <li class="ddOption filterOption filterToggle">
+                <%= link_to "LAST NAME", controller: 'conversations', action: 'index', type: 'last' %></li>
+              </ul>
+            </div>
+
+
+          </div>
+
+      </div>
+      <!-- <div class="searchMsgsBarFloatRight">
+        <div class="searchMessagesButton"></div>
+      </div> -->
+    </div>
+
+
+    <div class="inbox">
+      <%= render partial: 'conversations/conversation', collection: @conversations %>
+    </div>
+
+  </div><!-- end messages wrapper -->
+  <div class="messagesPagination"><%= will_paginate %></div>
+
+  <% else %>
+  <div class="noMsgsWrap">
+    <div class="noMessages">
+      You don't have any messages yet.</br> Connect with people and start a conversation.
+    </div>
+    <div class="startSearchBtn startSearchFullBtn"><a href="/search">START A SEARCH</a></div>
+  </div>
+  <% end %>

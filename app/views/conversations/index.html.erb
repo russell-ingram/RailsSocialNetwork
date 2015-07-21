@@ -15,52 +15,13 @@
     <% end %>
   </div>
 
-
-<% if @conversations.length > 0 %>
-  <div class="messagesWrapper">
-
-    <div class="messagesBar">
-
-      <div class="inboxToggle">
-
-        <div class="sortLabel">SORT BY:</div>
-          <div class="sortToggle">
-
-            <div class="wrapper-dropdown ddFilter ddToggle" tabindex="1">
-              <span class="ddLabel ddFilterLabel">MOST RECENT</span>
-              <div class="icon icon-carot messageCarot"></div>
-              <ul class="dropdown ddFilterSelect">
-                <li class="ddOption filterOption filterToggle">MOST RECENT</li>
-                <li class="ddOption filterOption filterToggle">FIRST NAME</li>
-                <li class="ddOption filterOption filterToggle">LAST NAME</li>
-              </ul>
-            </div>
+<div id="inboxWrapper">
+  <%= render partial: 'conversations/inbox' %>
+</div>
 
 
-          </div>
-
-      </div>
-      <!-- <div class="searchMsgsBarFloatRight">
-        <div class="searchMessagesButton"></div>
-      </div> -->
-    </div>
-
-    <div class="inbox">
-      <%= render partial: 'conversations/conversation', collection: @conversations %>
-    </div>
-
-  </div><!-- end messages wrapper -->
-  <% else %>
-  <div class="noMsgsWrap">
-    <div class="noMessages">
-      You don't have any messages yet.</br> Connect with people and start a conversation.
-    </div>
-    <div class="startSearchBtn startSearchFullBtn"><a href="/search">START A SEARCH</a></div>
-  </div>
-  <% end %>
 
 
-    <div class="messagesPagination"><%= will_paginate %></div>
 
 
   <div class="footerMargin"></div>

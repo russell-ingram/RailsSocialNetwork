@@ -11,7 +11,10 @@ class SearchsController < ApplicationController
 
     @search = Search.new(search_params)
     @users = User.search(@search,current_user)
-    @search.peers = @users.length
+    @length = @users.length
+    @search.peers = @length
+    @users = @users.paginate(page: params[:page], per_page: 25)
+
     @search.save
 
     get_friendships

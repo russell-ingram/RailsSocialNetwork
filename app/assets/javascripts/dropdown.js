@@ -1,7 +1,11 @@
 $( document ).ready(function() {
 
-  $( ".wrapper-dropdown" ).click(function() {
-
+  $(document).on('click', function() {
+    $('.wrapper-dropdown').removeClass('active');
+    $('.wrapper-dropdown').find('.dropdown').removeClass('active');
+  });
+  $(document).on('click', ".wrapper-dropdown" , function(event) {
+    event.stopPropagation();
     if ($(this).hasClass('active')) {
       $('.wrapper-dropdown').removeClass('active');
     } else {
@@ -112,6 +116,8 @@ $( document ).ready(function() {
 
 
       });
+    } else if (filterType === "message") {
+      // console.log('oiaejfoieahgouhea');
     }
 
 
@@ -121,5 +127,21 @@ $( document ).ready(function() {
 
   }
 
+  // $('.pagination a').on('click', function() {
+
+  // });
+
+  // $(document).on('click', '.pagination a', function() {
+  //   $.get(this.href, null, null, 'script');
+  //   return false;
+  // })
+
+  $(document).on('click', '#messageToggle a',function() {
+    $.get(this.href, null, null, 'script');
+    return false;
+  })
+
 
 });
+
+

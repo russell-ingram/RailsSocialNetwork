@@ -87,7 +87,7 @@ Rails.application.routes.draw do
   # resources :search
   get '/search/results' => 'searchs#search_results'
   get '/search'  => 'searchs#new_search'
-
+  # might need to redo this as a get for pagination purposes
   post '/search/new' => 'searchs#search', as: 'search_searches'
   patch '/search/update/:id' => 'searchs#update_search', as: 'search_search'
   post '/search/add_favorite' => 'searchs#save_favorite_search', as: 'favorite_search'

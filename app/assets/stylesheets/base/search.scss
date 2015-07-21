@@ -49,6 +49,7 @@
   width: auto;
   float: left;
   margin-right: 10px;
+  margin-bottom: 10px;
   font-size: 14px;
 }
 
@@ -149,7 +150,8 @@
 
 .searchWrapperBig {
   overflow: hidden;
-  margin-top:-50px;
+  margin-top:-42px;
+  position: relative;
 }
 
 .searchResultsSideBar {
@@ -160,6 +162,9 @@
   color: #797C7F;
   text-transform: uppercase;
   font-size: 14px;
+  position: absolute;
+  right: 0;
+  height: 100%;
   div {
     padding-left: 15px;
     border-bottom: 1px solid #58595b;

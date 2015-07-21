@@ -8,6 +8,10 @@ class ConversationsController < ApplicationController
     # flash[:success] = "MESSAGE SENT"
     @has_friends = false
     @accepted_friendships = []
+    @type = "MOST RECENT"
+    if params[:type]
+      @type = params[:type]
+    end
 
     @friendships = current_user.friendships.includes(:friend)
     @friendships.each do |f|
@@ -17,18 +21,54 @@ class ConversationsController < ApplicationController
     if @accepted_friendships.length > 0
       @has_friends = true
     end
-    @all_conversations = @mailbox.conversations
-    puts "TYPE:"
-    puts @all_conversations.inspect
+    @all_conversations = []
+    @unsorted_conversations = @mailbox.conversations
+    if @type == "first"
+      @type = "FIRST NAME"
+      @conversation_senders = []
+      @unsorted_conversations.each do |c|
+        if !c.is_trashed?(current_user)
+          @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.first_name}
+        end
+      end
+      @all_conversations = @conversation_senders.sort_by do |c|
+        c['sender']
+      end
+
+    elsif @type == "last"
+      @type = "LAST NAME"
+      @conversation_senders = []
+      @unsorted_conversations.each do |c|
+        if !c.is_trashed?(current_user)
+          @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.last_name}
+        end
+      end
+      @all_conversations = @conversation_senders.sort_by do |c|
+        c['sender']
+      end
+    else
+      @conversation_senders = []
+      @unsorted_conversations.each do |c|
+        if !c.is_trashed?(current_user)
+          @conversation_senders << {'conversation'=>c, 'sender'=>''}
+        end
+      end
+      @all_conversations = @conversation_senders
+    end
+
+
+    # puts "CONVERSATIONS:"
+    # puts @all_conversations.inspect
     # .where(:trashed => false)
     @conversations = []
     # only finding non-deleted conversations
     @all_conversations.each do |c|
-      if !c.is_trashed?(current_user)
-        @conversations << c
-      end
+      @conversations << c['conversation']
     end
+
+
     require 'will_paginate/array'
+
     @conversations = @conversations.paginate(page: params[:page], per_page: 10)
 
 
@@ -56,13 +96,17 @@ class ConversationsController < ApplicationController
   def sort_conversations
     # unfinished - will reapproach when conversations design is complete
     type = params[:type]
-    if type == "LAST NAME"
-      @users = User.order(:last_name)
-    elsif type == "FIRST NAME"
-      @users = User.order(:first_name)
-    else
-      @users = User.order(created_at: :desc)
-    end
+    # if type == "LAST NAME"
+    #   @users = User.order(:last_name)
+    # elsif type == "FIRST NAME"
+    #   @users = User.order(:first_name)
+    # else
+    #   @users = User.order(created_at: :desc)
+    # end
+    p "TYPE of CONVO:"
+    puts type
+    @type = type
+    @conversations = []
 
   end
 

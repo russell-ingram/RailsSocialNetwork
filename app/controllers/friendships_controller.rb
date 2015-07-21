@@ -5,6 +5,11 @@ class FriendshipsController < ApplicationController
 
 
   def index
+    # if params[:type]
+    #   @type = params[:type]
+    # end
+
+
     @blocked_friendships, @pending_friendships, @requested_friendships, @accepted_friendships = [], [], [], []
     @friendships = current_user.friendships.includes(:friend)
     @friendships.each do |f|

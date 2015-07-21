@@ -1,0 +1,84 @@
+<div class="searchWrapper">
+  <% if @users != nil %>
+    <% @users.each_with_index do |user,index| %>
+
+        <% pos = user.current_pos %>
+        <div class="myConnection">
+          <div class="myConnWrapper">
+            <div class="myConnProfilePic"><a href="/profile/<%= user.id %>">
+            <% if user.profile_pic_url? %>
+              <img src="<%= user.profile_pic_url %>">
+            <% else %>
+
+            <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+            <% end %>
+            </a></div>
+
+            <div class="myConnInfo searchInfo">
+              <div class="searchInfoText">
+                <div class="myConnName"><%= pos[:job_title] %></div>
+                <div class="myConnIndustry"><%= pos[:industry] %> in <%= pos[:region] %>, <%= pos[:enterprise_size] %></div>
+              </div>
+            </div>
+
+            <div class="myConnMessage userActionsSidebar searchActionsSidebar">
+              <div class="userListActionsSearch">
+                <div class="userListAction">
+                <a href="/messages/new/<%= user.id %>">message <div class="icon icon-fwd-arrow"></div></a>
+                </div>
+                <div class="userListAction">
+                <% if @friends.include? user %>
+                <a href="/profile/<%= user.id %>">
+                CONNECTED<div class="icon icon-fwd-arrow"></div></a>
+                <% elsif @pending.include? user %>
+                <a href="/profile/<%= user.id %>">
+                PENDING<div class="icon icon-fwd-arrow"></div></a>
+                <% elsif @requested.include? user %>
+                <a href="/profile/<%= user.id %>">
+                RESPOND TO CONNECTION REQUEST<div class="icon icon-fwd-arrow"></div></a>
+                <% else %>
+                <a href="#connect<%= index %>" rel="modal:open">
+                CONNECT<div class="icon icon-fwd-arrow"></div></a>
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div id="connect<%= index %>" class="addIntentionModal confirmConnectModal" style="display:none;">
+          <div class="formBox searchFormBox formBoxModal confirmModalBox">
+            <div class="formHeader">CONFIRM CONNECT</div>
+            <div class="modalBody">
+              <div class="modalIntentions">
+                <div class="myConnProfilePic">
+                  <a href="/profile/<%= user.id %>">
+                    <% if user.profile_pic_url? %>
+                      <img src="<%= user.profile_pic_url %>">
+                    <% else %>
+                      <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+                    <% end %>
+                  </a>
+                </div>
+              </div>
+              <div class="modalIntentionsRight">
+                <div class="deleteUserModalInfo">
+                  Are you sure you would like to connect with <%= user.full_name %>?
+                </div>
+                <div class="modalDoneButton">
+                  <%= link_to "Confirm", create_friendship_path(user), method: :post %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+    <% end %>
+  <% end %>
+</div>
+
+<div class="messagesPagination"><%= will_paginate @users %></div>
