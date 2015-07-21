@@ -101,6 +101,7 @@
     </div>
 
     <div class="spendingIntentions homePageIntentionsList" style="display:none;">
+      <!-- <div class="icon icon-icon-top-nubs-gray nub-intentions home-nub-intentions"></div> -->
       <div class="spendingIntentionsHeader">SPENDING INTENTIONS</div>
       <div class="spendingIntentionsOptions">
 
@@ -159,7 +160,7 @@
 
         <% if @layout %>
 
-          <% if @layout.column_three_content %>
+          <% if @layout.layout_option == 3 %>
 
         <div class="researchResults">
           <div class="researchCol">
@@ -179,7 +180,7 @@
 
 
 
-          <% elsif @layout.column_two_content %>
+          <% elsif @layout.layout_option == 2 %>
 
         <div class="researchResults">
           <div class="researchCol">

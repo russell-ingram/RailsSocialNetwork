@@ -328,7 +328,7 @@
   width: 100%;
   background-color: #FFF;
   font-size: 18px;
-  font-family: "PNLight";
+  font-family: "PNReg";
   color: #797C7F;
   border-radius: 3px;
   border: 1px solid #D8DCDD;
@@ -346,6 +346,11 @@
     font-size: 18px;
     line-height: 65px;
   }
+}
+
+.addIntentionFieldFix {
+  font-family: "PNReg" !important;
+  color: #797C7F;
 }
 
 .advancedSearchOptions {
@@ -726,7 +731,20 @@
 .spendingIntentions {
   width: 100%;
   margin-top: 30px;
+  .nub-intentions {
+    float: right;
+    position: relative;
+    color: #e5e8e9;
+    top: -17px;
+    font-size: 25px;
+    right: 15px;
+  }
 }
+
+.home-nub-intentions {
+
+}
+
 
 .spendingIntentionsHeader {
   background-color: #e5e8e9;

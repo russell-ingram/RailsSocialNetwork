@@ -102,6 +102,16 @@ $( document ).ready(function() {
     // console.log(x,y);
   })
 
+  $(window).resize(function () {
+    var pattern = Trianglify({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        x_colors: ["#166879","#004f61","#001b22"],
+        cell_size: 175
+    });
+    pattern.canvas(document.getElementById("fitoLandingCanvas"));
+  })
+
   $('body').addClass('homePageBody');
 
 });

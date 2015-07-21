@@ -51,8 +51,11 @@ class SearchsController < ApplicationController
     get_friendships
 
     @users = User.search(@search, current_user)
-    p "SEARCHHH:"
-    p @search.results
+    @length = @users.length
+    @newSearch['peers'] = @length
+    @search.update(@newSearch)
+
+    @users = @users.paginate(page: params[:page], per_page: 25)
 
     results = []
     if @search.results != ''
@@ -132,7 +135,7 @@ class SearchsController < ApplicationController
   end
 
   def search_params
-    params.require(:search).permit(:name, :industry, :enterprise, :organization_type, :region, :country, :job_title, :results)
+    params.require(:search).permit(:name, :industry, :enterprise, :organization_type, :region, :country, :job_title, :results, :peers)
   end
 
   def format_results(search,results)

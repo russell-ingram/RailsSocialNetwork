@@ -228,20 +228,17 @@ $( document ).ready(function() {
 
     // for submitting new params?
 
-    // var jsonResults = $('#resultsField').val();
-    // if (jsonResults && jsonResults !== "") {
-    //   var oldObj = JSON.parse(jsonResults);
+    var jsonResults = $('#resultsField').val();
+    if (jsonResults && jsonResults !== "") {
+      var oldObj = JSON.parse(jsonResults);
 
-    //   oldObj.push(newIntObj);
-    //   var newObj = JSON.stringify(oldObj);
-    //   $('#resultsField').val(newObj);
-    // } else {
-    //   var newObjStr = JSON.stringify([newIntObj]);
-    //   $('#resultsField').val(newObjStr);
-    // }
-    // $('.spendingIntentions').show();
-    // var h = $('.searchFormBox').height();
-    // $('.searchFormBox').height(h+30);
+      oldObj.push(newIntObj);
+      var newObj = JSON.stringify(oldObj);
+      $('#resultsField').val(newObj);
+    } else {
+      var newObjStr = JSON.stringify([newIntObj]);
+      $('#resultsField').val(newObjStr);
+    }
     $('.spendingIntentionsOptions').append(newIntention);
     resetModalValues();
 
