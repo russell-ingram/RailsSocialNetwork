@@ -23,10 +23,11 @@ class SearchsController < ApplicationController
     results = []
 
     @searchData = @search.to_json
-
+    @has_intentions = false
     # converting results string back into accessible hash
     if @search.results != ''
       @spendingTags = format_results(@search, results)
+      @has_intentions = true
     end
 
     # end conversion save results as tags

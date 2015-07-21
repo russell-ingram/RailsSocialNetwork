@@ -6,7 +6,7 @@
         <div class="myConnection">
           <div class="myConnWrapper">
             <div class="myConnProfilePic"><a href="/profile/<%= user.id %>">
-            <% if user.profile_pic_url? %>
+            <% if user.profile_pic_url? && !@has_intentions %>
               <img src="<%= user.profile_pic_url %>">
             <% else %>
 
@@ -37,8 +37,10 @@
                 <a href="/profile/<%= user.id %>">
                 RESPOND TO CONNECTION REQUEST<div class="icon icon-fwd-arrow"></div></a>
                 <% else %>
-                <a href="#connect<%= index %>" rel="modal:open">
-                CONNECT<div class="icon icon-fwd-arrow"></div></a>
+                  <% if !@has_intentions %>
+                  <a href="#connect<%= index %>" rel="modal:open">
+                  CONNECT<div class="icon icon-fwd-arrow"></div></a>
+                  <% end %>
                 <% end %>
                 </div>
               </div>
