@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
     works = works.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
     works = works.where(["region LIKE ?", search[:region]]) if search[:region].present?
     works = works.where(["country LIKE ?", search[:country]]) if search[:country].present?
-    works = works.where(["position LIKE ?", search[:job_title]]) if search[:job_title].present?
+    works = works.where(["job_title LIKE ?", search[:job_title]]) if search[:job_title].present?
     if search[:organization_type].present?
       if search[:organization_type] == "Public"
         works = works.where('public'=>true)
