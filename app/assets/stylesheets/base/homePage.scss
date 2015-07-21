@@ -429,6 +429,9 @@ canvas {
   width: 300px;
   margin: 0 auto;
   margin-bottom: 15px;
+  img {
+    height: 22px;
+  }
 }
 
 .fitoLandingFadeBar {
@@ -446,7 +449,7 @@ canvas {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 50px;
-  color: rgba(255,255,255,0.6);
+  color: #FFF;
 
 }
 
@@ -458,7 +461,7 @@ canvas {
   width: 185px;
   height: 50px;
   margin: 0 auto;
-  line-height: 50px;
+  line-height: 46px;
   letter-spacing: 0.2em;
   cursor: pointer;
 }
@@ -474,7 +477,7 @@ canvas {
   padding-top: 30px;
   top: 880px;
   opacity: 0;
-  background-color: #282b30;
+  background-color: #141417;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
@@ -503,14 +506,14 @@ canvas {
 .forgotPasswordButton {
   text-transform: uppercase;
   color: rgba(255,255,255,0.6);
-  font-family: "PNBold";
+  font-family: "PNReg";
   float:right;
   font-size: 12px;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.1em;
   margin-top: -10px;
   cursor: pointer;
   text-decoration: underline;
-  width: 120px;
+  width: 134px;
 }
 
 .loginField {
@@ -531,9 +534,9 @@ canvas {
 
 .fitoLandingSignInSubmit, .fitoLandingRequestSubmit {
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 60px;
   height: 50px;
-  line-height: 50px;
+  line-height: 47px;
   font-family: "PNReg";
   font-size: 14px;
   color: rgba(255,255,255,0.6);
@@ -544,6 +547,9 @@ canvas {
   text-align: center;
   text-transform: uppercase;
 }
+.fitoLandingRequestSubmit {
+  width: 210px;
+}
 
 .fitoLandingSignInSubmit:hover, .fitoLandingRequestSubmit:hover {
   color: #FFF;
@@ -552,12 +558,13 @@ canvas {
 
 .fitoLandingRequestBtn, .fitoLandingSignInToggle {
   color: rgba(255,255,255,0.6);
-  font-size: 12px;
+  font-size: 14px;
   font-family: "LoraItalic";
   cursor: pointer;
-  width: 86px;
+  width: 115px;
   margin: 0 auto;
   margin-top: 20px;
+  text-align: center;
 }
 .fitoLandingRequestBtn:hover, .forgotPasswordButton:hover, .fitoLandingSignInToggle:hover   {
   color: #FFF;
@@ -573,9 +580,9 @@ canvas {
 
 .fitoRequestHeader, .fitoRequestChoiceText, .fitoRequestOrText {
   font-family: 'PNLight';
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  // letter-spacing: 0.05em;
   line-height: 18px;
   margin-bottom: 15px;
 }
