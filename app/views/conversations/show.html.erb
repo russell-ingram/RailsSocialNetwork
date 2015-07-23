@@ -46,7 +46,7 @@
             <% end %>
               <%= sender.full_name %>
             </a>
-            </div><div class="senderInfo"><%= send_pos.job_title %> at <%= send_pos.company %></div>
+            </div><div class="senderInfo"><%= send_pos['job_title'] %> at <%= send_pos['company'] %></div>
           </div>
           <div class="replyTo">
             To: <div class="senderInfo sendersInfoDiv">
@@ -82,7 +82,7 @@
                     <% else %>
                       <a href="/profile/<%= u.id %>" class="userReplyLink">
                       <%= u.full_name %>
-                      </a>, <div class="toDiv"> and</div>
+                      </a> <div class="toDiv"> and</div>
                     <% end %>
 
                   <% end %>

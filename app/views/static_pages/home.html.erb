@@ -5,7 +5,7 @@
 <!-- start search bar -->
   <div class="searchBarHomeWrapper">
     <div class="searchBarHomeLabel">Find other technology leaders</div>
-    <%= form_for ([:search, @search]) do |f| %>
+    <%= form_for @search, as: :search, method: :get do |f| %>
     <div class="searchBarHome">
       <div class="wrapper-dropdown" tabindex="1">
         <span class="ddLabel">Region</span>
@@ -264,15 +264,15 @@
                 <% end %>
               </div>
               <div class="followedSearchDesc">
-
-            <% for attribute in ['job_title','industry', 'enterprise', 'region','country', 'organization_type'] %>
-              <% if !f.attributes[attribute].blank? %>
-                <%= f.attributes[attribute].to_s %>,
-              <% end %>
-            <% end %>
+              <%= f.format_string %>
 
               </div>
-              <div class="viewMoreContent"><%= f.peers %> Peers <div class="icon icon-fwd-arrow"></div><div class="favRemoveText"><a class="followedSearchRemove" href="#ex<%= f.id %>" rel="modal:open">
+              <div class="viewMoreContent">
+              <a href="/search/<%= f.id %>">
+              <%= f.peers %> Peers <div class="icon icon-fwd-arrow">
+
+              </div></a>
+              <div class="favRemoveText"><a class="followedSearchRemove" href="#ex<%= f.id %>" rel="modal:open">
 
               remove</a></div><div style="display:none;"><%= f.id %></div></div>
             </div>

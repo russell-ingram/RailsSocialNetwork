@@ -35,7 +35,7 @@ class SearchsController < ApplicationController
     render 'search_results'
   end
 
-  def update_search
+  def get_search
     @countries = countries_list
     @industries = industries_list
     @sectors = Sector.all
@@ -45,20 +45,19 @@ class SearchsController < ApplicationController
     @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id)
 
     @search = Search.find(params[:id])
-    @newSearch = search_params
 
 
-    @search.update(@newSearch)
+    # @search.update(@newSearch)
     get_friendships
 
     @users = User.search(@search, current_user)
     @length = @users.length
-    @newSearch['peers'] = @length
-    @search.update(@newSearch)
+    @search.update_attribute(:peers, @length)
 
     @users = @users.paginate(page: params[:page], per_page: 25)
 
     results = []
+    # p @search
     if @search.results != ''
       @spendingTags = format_results(@search, results)
     end
@@ -85,11 +84,9 @@ class SearchsController < ApplicationController
 
   def save_favorite_search
     @search = Search.find(params[:searchData])
+    p @search
     @search[:name] = params[:name]
-    p "NAME:"
-    p params[:name]
     @search[:user_id] = current_user.id
-    @search[:results] = {"test"=> ["one"=>"1","two"=>"2"]}
     @search.save
     render json: @search
   end
@@ -140,10 +137,12 @@ class SearchsController < ApplicationController
   end
 
   def format_results(search,results)
-    l = @search.results.length
+    # p search
+    l = search.results.length
     @search.results[l-1] = ''
     @search.results[0] = ''
-    t = @search.results.split('{')
+    t = search.results.split('{')
+    p t
     t.each do |r|
       if r != ''
         rl = r.length
@@ -174,7 +173,8 @@ class SearchsController < ApplicationController
         end
       end
     end
-
+    p "RESULTS"
+    p results
     return results
 
 

@@ -4,7 +4,7 @@
   <div class="pageHeader profileTopHeader">Search Results</div>
   <div class="editProfileWrapper">
 
-    <%= form_for ([:search, @search]) do |f| %>
+    <%= form_for @search, as: :search, method: :get do |f| %>
 
     <div class="formBox searchFormBox">
       <div class="formHeader">SPECIFY A SEARCH</div>

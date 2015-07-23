@@ -71,7 +71,6 @@ class User < ActiveRecord::Base
       intentions = Intention.all
       # p "Length:"
       # p intentions.length
-      p res[0]
       if res[0]["vendor"] != "Any"
         # if res[0]["vendor"] = "Any"
         # end
@@ -97,21 +96,21 @@ class User < ActiveRecord::Base
       else
         int_str = res[0]["intention"]
       end
-      p "INT STRING:"
-      puts int_str
+      # p "INT STRING:"
+      # puts int_str
       intentions = intentions.where(["intention = ?", int_str.upcase]) if res[0]["intention"] != "Any"
 
 
 
-      p "Intentions found:"
-      p intentions.inspect
+      # p "Intentions found:"
+      # p intentions.inspect
       user_uids = []
 
       intentions.each do | i |
         user_uids << i.user_id.to_s + ".0"
       end
-      puts "USER IDS FROM INTENTIONS:"
-      puts user_uids
+      # puts "USER IDS FROM INTENTIONS:"
+      # puts user_uids
 
     end
 
@@ -142,10 +141,6 @@ class User < ActiveRecord::Base
       wids << w.uid.to_s
     end
 
-    # puts "WIDS:"
-    # p wids
-    p "current_user:"
-    p current_user
     users = User.where.not(id: current_user.id)
 
 
@@ -186,6 +181,8 @@ class User < ActiveRecord::Base
     # }
     # p "CLONE:"
     # puts @user_pos_clone
+    p self.full_name
+    p @user_pos
     return @user_pos
   end
 
