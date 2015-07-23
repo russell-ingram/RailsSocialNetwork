@@ -139,7 +139,7 @@
                 Industry
               <% end %>
               </span>
-              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
               <ul class="dropdown fieldDropdown">
                 <% @industries.each do |industry| %>
                 <li class="ddOption fieldOption"><%= industry %></li>
@@ -160,7 +160,7 @@
                 Enterprise Size
               <% end %>
               </span>
-              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
               <ul class="dropdown fieldDropdown">
                 <li class="ddOption fieldOption">Large</li>
                 <li class="ddOption fieldOption">Midsize</li>
@@ -178,7 +178,7 @@
                   Region
                 <% end %>
               </span>
-              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
               <ul class="dropdown fieldDropdown">
                 <li class="ddOption fieldOption">North America</li>
                 <li class="ddOption fieldOption">EMEA</li>
@@ -197,7 +197,7 @@
                   Country
                 <% end %>
               </span>
-              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
               <ul class="dropdown fieldDropdown">
                 <% @countries.each do |country| %>
                 <li class="ddOption fieldOption"><%= country %></li>
@@ -248,10 +248,10 @@
           <div id="pubButton1" class="pubButton">
           <% if ff.object.public? %>
             <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true">
-            <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Privately Held</div></label>
+            <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Privately Traded</div></label>
           <% else %>
             <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true" checked>
-            <label for="radio01"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Privately Held</div></label>
+            <label for="radio01"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Privately Traded</div></label>
           <% end %>
 
           </div>
@@ -259,10 +259,10 @@
           <div id="pubButton2" class="pubButton">
           <% if ff.object.public? %>
             <input type="radio" class="pubInputCheck" id="radio2" name="public" value="true" checked>
-            <label for="radio02"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Publicly Held</div></label>
+            <label for="radio02"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Publicly Traded</div></label>
           <% else %>
             <input type="radio" class="pubInputCheck" id="radio2" name="public" value="false">
-            <label for="radio02"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Publicly Held</div></label>
+            <label for="radio02"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Publicly Traded</div></label>
           <% end %>
           </div>
           <%= ff.text_area :public, placeholder: 'public', style: "display:none;" %>
