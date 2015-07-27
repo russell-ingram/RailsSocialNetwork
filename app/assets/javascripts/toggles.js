@@ -251,7 +251,23 @@ $( document ).ready(function() {
         $(this).addClass('active');
       })
     }
+  });
+
+
+  $('.menuIconOptions').off().on('click', function() {
+    $('.logoutDrop').toggle();
+    var icon = $('.menuIconOptions');
+    if (icon.hasClass('active')) {
+      icon.removeClass('active');
+    } else {
+      icon.addClass('active');
+    }
+  });
+
+  $('.settingsDropItem').off().on('click', function() {
+    $('.settingsDropWrapper').toggle();
   })
+
 
 
 });

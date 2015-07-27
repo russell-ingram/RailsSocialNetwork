@@ -466,7 +466,7 @@
   color: #3eb2cc;
   text-transform: uppercase;
   position: relative;
-  bottom: -15px;
+  bottom: -10px;
   div {
     display: inline-block;
     top: 3px;
@@ -496,6 +496,7 @@
 .favSearchMainWrapper {
   padding-left: 30px;
   padding-top: 30px;
+  // cursor: pointer;
 }
 
 .favSearchMain {
@@ -513,6 +514,7 @@
   float:left;
   margin: 15px 0 15px 20px;
   width: 70%;
+  cursor: pointer;
 }
 
 .fsmTitle {
@@ -941,6 +943,21 @@
   .modalIntentionsRight {
     padding-left: 30px;
     padding-right: 30px;
+  }
+}
+
+.viewMoreSideBar {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-right: 15px;
+  width: 100%;
+  text-align: right;
+  border-bottom: none !important;
+  div {
+    border-bottom: none !important;
+  }
+  a {
+
   }
 }
 

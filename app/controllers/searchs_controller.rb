@@ -7,7 +7,7 @@ class SearchsController < ApplicationController
     @sectors = Sector.order(:name)
     @vendors = Vendor.order(:name)
 
-    @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id)
+    @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id).take(5)
 
     @search = Search.new(search_params)
     @users = User.search(@search,current_user)
@@ -42,7 +42,7 @@ class SearchsController < ApplicationController
     @vendors = Vendor.all
     @searchTags = []
     @spendingTags = []
-    @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id)
+    @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id).take(5)
 
     @search = Search.find(params[:id])
 

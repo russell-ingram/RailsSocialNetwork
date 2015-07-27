@@ -464,6 +464,16 @@ canvas {
   line-height: 46px;
   letter-spacing: 0.2em;
   cursor: pointer;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  opacity: 1;
+}
+
+.fitoLandingSignInButton.active, .fitoLandingRequestBtn.active {
+  opacity: 0;
 }
 
 .fitoLandingSignInButton:hover {
@@ -498,7 +508,7 @@ canvas {
 
 .fitoLandingSignInWrapper.active {
   display: block;
-  top: 280px;
+  top: 50%;
   opacity: 1;
   height: 750px;
 }
@@ -565,6 +575,12 @@ canvas {
   margin: 0 auto;
   margin-top: 20px;
   text-align: center;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  opacity: 1;
 }
 .fitoLandingRequestBtn:hover, .forgotPasswordButton:hover, .fitoLandingSignInToggle:hover   {
   color: #FFF;

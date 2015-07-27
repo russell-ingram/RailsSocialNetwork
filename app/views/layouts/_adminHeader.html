@@ -18,7 +18,21 @@
       <div class="hoverDiv adminHover"><a href="/admin/content">MANAGE CMS</a></div>
       <% end %>
       <!-- <a href="">SURVEY RESULTS</a> -->
-      <div class="hoverDiv adminHover"><a href="/profile"><%= image_tag("icon-settings.svg", class: "menuIcon adminMenuIcon") %></a></div>
+      <div class="hoverDiv adminHover menuIconOptions"><div class="icon icon-icon-settings menuIcon adminIcon"></div></div>
+    </div>
+    <div class="logoutDrop">
+      <div class="icon icon-icon-top-nubs-gray dropNub dropAdminNub"></div>
+      <div class="menuDropItem"><a href="/logout">SIGN OUT</a></div>
+      <div class="menuDropItem"><a href="/profile">MY PROFILE</a></div>
+      <div class="menuDropItem settingsDropItem">ACCOUNT SETTINGS</div>
+      <div class="settingsDropWrapper">
+        <div class="settingsDropDiv">
+          <div class="settingsDropDivText">
+            Receive an email when a user's profile is updated or edited
+          </div>
+          <div class="icon icon-selection-true"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

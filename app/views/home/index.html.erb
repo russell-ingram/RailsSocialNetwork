@@ -13,7 +13,7 @@
     <div class="fitoLandingText">the next-gen platform for cio level networking and peer benchmarking research</div>
 
     <div class="fitoLandingSignInButton" id="fitoLandingSignInButton">SIGN-IN</div>
-    <div class="fitoLandingRequestBtn">
+    <div class="fitoLandingRequestBtn mainRequestBtn">
       - request access -
     </div>
   </div>
@@ -93,7 +93,7 @@
 $( document ).ready(function() {
   var pattern = Trianglify({
       width: window.innerWidth,
-      height: window.innerHeight,
+      height: window.innerHeight + 300,
       x_colors: ["#166879","#004f61","#001b22"],
       cell_size: 175
   });
@@ -108,14 +108,54 @@ $( document ).ready(function() {
   $(window).resize(function () {
     var pattern = Trianglify({
         width: window.innerWidth,
-        height: window.innerHeight,
+        height: window.innerHeight + 300,
         x_colors: ["#166879","#004f61","#001b22"],
         cell_size: 175
     });
     pattern.canvas(document.getElementById("fitoLandingCanvas"));
   })
 
+  // prevents scrolling on load
   $('body').addClass('homePageBody');
+  $("#fitoLandingSignInButton").off().on('click', function(e) {
+    e.stopPropagation();
+    $('.fitoLandingSignInWrapper').addClass('active');
+    $("#fitoLandingSignInButton").addClass('active');
+    $('.mainRequestBtn').addClass('active');
+
+    // allows the page to be scrollable again
+    $('body').removeClass('homePageBody');
+  })
+
+  $(".fitoLandingSignInSubmit").off().on('click', function() {
+    $("#landingSubmitLogin").click();
+  })
+
+  $(".fitoLandingRequestBtn").off().on('click', function () {
+    $('#signInForm').hide();
+    $('.fitoLandingRequestWrapper').show();
+  });
+
+  $(".fitoLandingSignInToggle").off().on('click', function() {
+    $('.fitoLandingRequestWrapper').hide();
+    $('#signInForm').show();
+  });
+
+  $(document).on('click', function() {
+    $('.fitoLandingSignInWrapper').removeClass('active');
+    $("#fitoLandingSignInButton").removeClass('active');
+    $('.mainRequestBtn').removeClass('active');
+
+    $('html,body').animate({scrollTop:0},2000);
+
+    // prevents scrolling again
+    $('body').addClass('homePageBody');
+  });
+
+
+  $('.fitoLandingSignInWrapper').on('click', function(e) {
+    e.stopPropagation();
+  });
 
 });
 </script>

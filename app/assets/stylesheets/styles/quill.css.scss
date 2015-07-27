@@ -9,21 +9,33 @@
 .ql-toolbar {
   display: none;
   float:right;
-  margin-top: 11px;
-  margin-bottom: -40px;
+  margin-top: 10px;
+  margin-bottom: -41px;
   margin-right: 10px;
   position: relative;
   z-index: 2;
 }
 
 .editorButton {
-  width:30px;
-  height:30px;
-  line-height:30px;
+  width: 30px;
+  height: 30px;
+  line-height: 34px;
   text-align: center;
   color: #767676;
   background-color: #e5e8e9;
   display: inline-block;
   margin-left: 5px;
   cursor: pointer;
+  font-size: 12px;
+}
+
+.characterLimit {
+  display: none;
+  position: relative;
+  top: -20px;
+  right: 10px;
+  float: right;
+  height: 0;
+  font-size: 12px;
+  font-family: "PNLight";
 }

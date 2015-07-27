@@ -156,7 +156,7 @@
     <% @favSearchs.each do |f| %>
 
       <div class="favSearchMain">
-        <div class="fsmLeft">
+        <div class="fsmLeft" data="/search/<%= f.id %>">
           <div class="fsmTitle">
             <% if f.name && f.name != "" %>
             <%= f.name %>
@@ -165,11 +165,7 @@
             <% end %>
           </div>
           <div class="fsmInfo">
-            <% for attribute in ['job_title','industry', 'enterprise', 'region','country', 'organization_type'] %>
-              <% if !f.attributes[attribute].blank? %>
-                <%= f.attributes[attribute].to_s %>,
-              <% end %>
-            <% end %>
+            <%= f.format_string %>
           </div>
         </div>
         <div class="fsmRight">
@@ -186,7 +182,6 @@
         </div>
 
       </div>
-
 
     <div id="ex<%= f.id %>" class="addIntentionModal deleteIntentionModal deleteOnlyInt" style="display:none;">
       <div class="formBox searchFormBox formBoxModal confirmBoxModal">

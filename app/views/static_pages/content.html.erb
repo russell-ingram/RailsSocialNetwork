@@ -50,15 +50,17 @@
         <div class="cmsEditHeader">Article</div>
         <div class="field-area cmsTextArea">
           <div id="toolbar">
-            <div class="editorButton ql-bold">B</div>
-            <div class="editorButton ql-italic">I</div>
-            <div class="editorButton ql-underline">U</div>
+            <div class="editorButton ql-bold"><div class="icon icon-icon-text-bold"></div></div>
+            <div class="editorButton ql-italic"><div class="icon icon-icon-text-italic"></div></div>
+            <div class="editorButton ql-underline"><div class="icon icon-icon-text-underline"></div></div>
           </div>
           <div class="newMsgFormControl newMessageArea" id="editor">
             <%= @news.body_copy.html_safe %>
           </div>
           <%= f.text_area :body_copy, autocomplete: 'off',id: "textAreaEditor", style: 'display: none;' %>
+        <div class="characterLimit" id="newsCharacterLimit">Character count: </div>
         </div>
+
         <div class="cmsBoxRow">
           <div class="cmsBoxCol">
             <div class="cmsEditHeader">Set Link Copy</div>
@@ -75,6 +77,7 @@
 
 
         </div>
+
 
 
 
@@ -163,13 +166,14 @@
           <div class="cmsBoxCol col-layout-3 col-opt-1 callCol">
             <div class="field-area cmsTextArea">
               <div id="toolbarCol1">
-                <div class="editorButton ql-bold">B</div>
-                <div class="editorButton ql-italic">I</div>
-                <div class="editorButton ql-underline">U</div>
+                <div class="editorButton ql-bold"><div class="icon icon-icon-text-bold"></div></div>
+                <div class="editorButton ql-italic"><div class="icon icon-icon-text-italic"></div></div>
+                <div class="editorButton ql-underline"><div class="icon icon-icon-text-underline"></div></div>
               </div>
               <div class="newMsgFormControl newMessageArea" id="editorCol1">
                 <%= @layout.column_one_content.html_safe %>
               </div>
+              <div class="characterLimit colContentCount" id="columnOneContentCount">Character count: </div>
 
               <%= f.text_area :column_one_content, autocomplete: 'off', placeholder: 'Column 1', class: 'bodyCopy contentField columnField', id: 'taCol1', style:'display:none;' %>
             </div>
@@ -177,26 +181,28 @@
           <div class="cmsBoxCol col-layout-3 col-opt-2 callCol">
             <div class="field-area cmsTextArea">
               <div id="toolbarCol2">
-                <div class="editorButton ql-bold">B</div>
-                <div class="editorButton ql-italic">I</div>
-                <div class="editorButton ql-underline">U</div>
+                <div class="editorButton ql-bold"><div class="icon icon-icon-text-bold"></div></div>
+                <div class="editorButton ql-italic"><div class="icon icon-icon-text-italic"></div></div>
+                <div class="editorButton ql-underline"><div class="icon icon-icon-text-underline"></div></div>
               </div>
               <div class="newMsgFormControl newMessageArea" id="editorCol2">
                 <%= @layout.column_two_content.html_safe %>
               </div>
+              <div class="characterLimit colContentCount" id="columnTwoContentCount">Character count: </div>
               <%= f.text_area :column_two_content, autocomplete: 'off', placeholder: 'Column 2', class: 'bodyCopy contentField columnField', id: 'taCol2', style: 'display:none;' %>
             </div>
           </div>
           <div class="cmsBoxCol col-layout-3 col-opt-3 callCol">
             <div class="field-area cmsTextArea">
               <div id="toolbarCol3">
-                <div class="editorButton ql-bold">B</div>
-                <div class="editorButton ql-italic">I</div>
-                <div class="editorButton ql-underline">U</div>
+                <div class="editorButton ql-bold"><div class="icon icon-icon-text-bold"></div></div>
+                <div class="editorButton ql-italic"><div class="icon icon-icon-text-italic"></div></div>
+                <div class="editorButton ql-underline"><div class="icon icon-icon-text-underline"></div></div>
               </div>
               <div class="newMsgFormControl newMessageArea" id="editorCol3">
                 <%= @layout.column_three_content.html_safe %>
               </div>
+              <div class="characterLimit colContentCount" id="columnThreeContentCount">Character count: </div>
               <%= f.text_area :column_three_content, autocomplete: 'off', placeholder: 'Column 3', class: 'bodyCopy contentField columnField', id: 'taCol3', style: 'display:none;' %>
             </div>
           </div>

@@ -27,10 +27,24 @@
       <div class="notificationMenuIcon"><a href="/messages"><%= current_user.unread_msgs %></a></div>
       <% end %>
       <% if current_page?('/profile') %>
-      <div class="hoverDiv active"><a href="/profile"><div class="icon icon-icon-profile menuIcon"></div></a></div>
+      <div class="hoverDiv active menuIconOptions"><div class="icon icon-icon-profile menuIcon"></div></div>
       <% else %>
-      <div class="hoverDiv"><a href="/profile"><div class="icon icon-icon-profile menuIcon"></div></a></div>
+      <div class="hoverDiv menuIconOptions"><div class="icon icon-icon-profile menuIcon"></div></div>
       <% end %>
+    </div>
+    <div class="logoutDrop">
+      <div class="icon icon-icon-top-nubs-gray dropNub"></div>
+      <div class="menuDropItem"><a href="/logout">SIGN OUT</a></div>
+      <div class="menuDropItem"><a href="/profile">MY PROFILE</a></div>
+      <div class="menuDropItem settingsDropItem">ACCOUNT SETTINGS</div>
+      <div class="settingsDropWrapper">
+        <div class="settingsDropDiv">
+          <div class="settingsDropDivText">
+            Receive an email when a user's profile is updated or edited
+          </div>
+          <div class="icon icon-selection-true"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

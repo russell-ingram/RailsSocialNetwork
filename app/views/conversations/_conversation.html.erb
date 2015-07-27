@@ -56,9 +56,9 @@
         <% recipients.first(4).each do |r| %>
           <div class="miniImg">
           <% if r == current_user %>
-            <a href="/profile">
+            <a href="/profile" title="<%= r.full_name %>">
           <% else %>
-            <a href="/profile/<%= r.id %>">
+            <a href="/profile/<%= r.id %>" title="<%= r.full_name %>">
           <% end %>
           <% if r.profile_pic_url? %>
             <%= image_tag r.profile_pic_url %>
