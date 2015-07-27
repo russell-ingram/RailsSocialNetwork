@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # get 'errors/file_not_found'
+
+  # get 'errors/unprocessable'
+
+  # get 'errors/internal_server_error'
+
   get '/home' => 'static_pages#home'
 
   get '/profile' => 'static_pages#profile'
@@ -98,5 +104,7 @@ Rails.application.routes.draw do
       post :create, as: 'request'
     end
   end
+
+  match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
 
 end
