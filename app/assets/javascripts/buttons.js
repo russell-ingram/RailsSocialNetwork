@@ -76,7 +76,7 @@ $( document ).ready(function() {
     if(event.keyCode == 13) {
       $('#searchUsersButton').click();
     }
-  })
+  });
 
   $('.searchTagClose').off().on('click',function() {
     $(this).parent().next().val('');
@@ -318,10 +318,43 @@ $( document ).ready(function() {
   $(".fsmLeft").off().on('click', function() {
     var link = $(this).attr('data');
     console.log(link);
-  })
+  });
+
+  $(document).on('click', '#searchBtnIcon', function() {
+    if ($('.searchIconInput').hasClass('active')) {
+      var input = $('#searchBarInput').val();
+      var url = '/messages?name='+input;
+      $.get(url, null, null, 'script');
+    } else {
+      $('.searchIconInput').addClass('active');
+    }
+
+  });
+
+  $(document).on('keyup', '#searchBarInput', function() {
+    if(event.keyCode == 13) {
+      $('#searchBtnIcon').click();
+    }
+  });
 
 
+  $(document).on('click', '#toggleRightSearch', function() {
+    if ($('.searchConnsInput').hasClass('active')) {
+      var input = $('#searchConnsInput').val();
+      var url = '/connections?name='+input;
+      console.log(url);
+      $.get(url, null, null, 'script');
+    } else {
+      $('.searchConnsInput').addClass('active');
+    }
 
+  });
+
+  $(document).on('keyup', '#searchConnsInput', function() {
+    if(event.keyCode == 13) {
+      $('#toggleRightSearch').click();
+    }
+  });
 
 
 

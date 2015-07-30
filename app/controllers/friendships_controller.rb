@@ -16,8 +16,27 @@ class FriendshipsController < ApplicationController
       @blocked_friendships << f if f.state == 'blocked'
       @pending_friendships << f if f.state == 'pending'
       @requested_friendships << f if f.state == 'requested'
-      @accepted_friendships << f if f.state == 'accepted'
+      if !params[:name]
+        @accepted_friendships << f if f.state == 'accepted'
+      else
+        f_n = params[:name]
+        p f.friend.full_name
+        if f.friend.full_name.downcase.include?(f_n)
+          @accepted_friendships << f
+        end
+      end
     end
+    @friends = []
+    @accepted_friendships.each do |a|
+      @friends << a
+    end
+    require 'will_paginate/array'
+
+    p "FRIENDS:"
+    p @friends
+
+
+    @friends = @friends.paginate(page: params[:page], per_page: 10)
   end
 
   # def new

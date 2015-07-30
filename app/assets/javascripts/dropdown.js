@@ -30,9 +30,7 @@ $( document ).ready(function() {
       var option = $(this).text();
 
       var filterType = $(this).parent().parent().attr('name');
-      console.log(filterType);
 
-      console.log(option);
       selectedLabel.text(option);
       sortFilter(option, filterType);
 
@@ -117,7 +115,7 @@ $( document ).ready(function() {
 
       });
     } else if (filterType === "message") {
-      // console.log('oiaejfoieahgouhea');
+
     }
 
 
@@ -127,19 +125,12 @@ $( document ).ready(function() {
 
   }
 
-  // $('.pagination a').on('click', function() {
-
-  // });
-
-  // $(document).on('click', '.pagination a', function() {
-  //   $.get(this.href, null, null, 'script');
-  //   return false;
-  // })
 
   $(document).on('click', '#messageToggle a',function() {
     $.get(this.href, null, null, 'script');
+
     return false;
-  })
+  });
 
 
 });

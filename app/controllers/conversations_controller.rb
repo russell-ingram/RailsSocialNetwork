@@ -9,10 +9,13 @@ class ConversationsController < ApplicationController
     @has_friends = false
     @accepted_friendships = []
     @type = "MOST RECENT"
+    @name = ""
     if params[:type]
       @type = params[:type]
     end
-
+    if params[:name]
+      @name = params[:name]
+    end
     @friendships = current_user.friendships.includes(:friend)
     @friendships.each do |f|
       @accepted_friendships << f if f.state == 'accepted'
@@ -23,39 +26,51 @@ class ConversationsController < ApplicationController
     end
     @all_conversations = []
     @unsorted_conversations = @mailbox.conversations
-    if @type == "first"
-      @type = "FIRST NAME"
-      @conversation_senders = []
-      @unsorted_conversations.each do |c|
-        if !c.is_trashed?(current_user)
-          @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.first_name}
-        end
-      end
-      @all_conversations = @conversation_senders.sort_by do |c|
-        c['sender']
-      end
+    @conversation_senders = []
+    if @name == ""
+      if @type == "first"
+        @type = "FIRST NAME"
 
-    elsif @type == "last"
-      @type = "LAST NAME"
-      @conversation_senders = []
-      @unsorted_conversations.each do |c|
-        if !c.is_trashed?(current_user)
-          @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.last_name}
+        @unsorted_conversations.each do |c|
+          if !c.is_trashed?(current_user)
+            @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.first_name}
+          end
         end
-      end
-      @all_conversations = @conversation_senders.sort_by do |c|
-        c['sender']
+        @all_conversations = @conversation_senders.sort_by do |c|
+          c['sender']
+        end
+
+      elsif @type == "last"
+        @type = "LAST NAME"
+        @unsorted_conversations.each do |c|
+          if !c.is_trashed?(current_user)
+            @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.last_name}
+          end
+        end
+        @all_conversations = @conversation_senders.sort_by do |c|
+          c['sender']
+        end
+      else
+        @type = "MOST RECENT"
+        @unsorted_conversations.each do |c|
+          if !c.is_trashed?(current_user)
+            @conversation_senders << {'conversation'=>c, 'sender'=>''}
+          end
+        end
+        @all_conversations = @conversation_senders
       end
     else
-      @conversation_senders = []
+      @type = "MOST RECENT"
       @unsorted_conversations.each do |c|
         if !c.is_trashed?(current_user)
-          @conversation_senders << {'conversation'=>c, 'sender'=>''}
+          if c.last_sender.full_name.downcase.include?(@name)
+            @conversation_senders
+            @conversation_senders << {'conversation'=>c, 'sender'=>''}
+          end
         end
+        @all_conversations = @conversation_senders
       end
-      @all_conversations = @conversation_senders
     end
-
 
     # puts "CONVERSATIONS:"
     # puts @all_conversations.inspect
@@ -68,7 +83,8 @@ class ConversationsController < ApplicationController
 
 
     require 'will_paginate/array'
-
+    p "CONVERSATIONS:"
+    p @conversations
     @conversations = @conversations.paginate(page: params[:page], per_page: 10)
 
 
@@ -103,8 +119,8 @@ class ConversationsController < ApplicationController
     # else
     #   @users = User.order(created_at: :desc)
     # end
-    p "TYPE of CONVO:"
-    puts type
+    # p "TYPE of CONVO:"
+    # puts type
     @type = type
     @conversations = []
 
