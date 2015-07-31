@@ -1,30 +1,161 @@
-<h2>Log in</h2>
 
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
+<canvas id="fitoLandingCanvas">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+</canvas>
+<div class="fitoLandingFloat">
+  <div class="fitoLandingWrapper">
+    <div class="fitoLandingLogo"><%= image_tag("fito-no-tagline.svg", class: "menuLogo")  %></div>
+    <div class="fitoLandingFadeBar">
+      <%= image_tag("divider-fade.svg")  %>
     </div>
-  <% end -%>
+    <div class="fitoLandingText">the next-gen platform for cio level networking and peer benchmarking research</div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="fitoLandingSignInButton" id="fitoLandingSignInButton">SIGN-IN</div>
+    <div class="fitoLandingRequestBtn mainRequestBtn">
+      - request access -
+    </div>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<div class="fitoLandingSignInWrapper">
+  <%= form_for :user, url: session_path(:user), :html => {id: 'signInForm'} do |f| %>
+    <div class="field loginField">
+      <%= f.text_field :email, placeholder: 'email' %>
+    </div>
+
+    <div class="field loginField">
+      <%= f.password_field :password, placeholder: 'password' %>
+    </div>
+
+    <div class="forgotPasswordButton">
+      forgot password
+    </div>
+
+    <div class="fitoLandingSignInSubmit">
+      LOGIN
+
+    </div>
+    <div class="fitoLandingRequestBtn">
+    - request access -
+    </div>
+    <%= f.submit "Log in", id: "landingSubmitLogin", style: "display:none;" %>
+
+  <% end %>
+  <div class="fitoLandingRequestWrapper">
+    <%= form_for(@newRequest, as: :request, html: {method: :post})  do |f| %>
+    <div class="fitoRequestHeader">
+      fito is an invitation based service. </br>
+      to request access, please provide your details below </br>
+      for our team to review.
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :first_name, placeholder: 'first name' %>
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :last_name, placeholder: 'last name' %>
+    </div>
+    <div class="fitoRequestChoiceText">
+      one of the following are required
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile name' %>
+    </div>
+    <div class="fitoRequestOrText">or</div>
+    <div class="field loginField">
+      <%= f.text_field :job_title, placeholder: 'job title' %>
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :company, placeholder: 'company' %>
+    </div>
+    <div class="field loginField">
+      <%= f.text_field :email, placeholder: 'email address' %>
+    </div>
+    <div class="fitoLandingRequestSubmit">
+      Send Request
+    </div>
+    <div class="fitoLandingSignInToggle">
+    - sign-in -
+    </div>
+
+      <%= f.submit 'Submit Request', style: 'display:none;' %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
+
+<script>
+$( document ).ready(function() {
+  var pattern = Trianglify({
+      width: window.innerWidth,
+      height: window.innerHeight + 300,
+      x_colors: ["#166879","#004f61","#001b22"],
+      cell_size: 175
+  });
+  pattern.canvas(document.getElementById("fitoLandingCanvas"));
+
+  document.body.addEventListener('mousemove', function(e) {
+    // var x = e.clientX;
+    // var y = e.clientY;
+    // console.log(x,y);
+  })
+
+  $(window).resize(function () {
+    var pattern = Trianglify({
+        width: window.innerWidth,
+        height: window.innerHeight + 300,
+        x_colors: ["#166879","#004f61","#001b22"],
+        cell_size: 175
+    });
+    pattern.canvas(document.getElementById("fitoLandingCanvas"));
+  })
+
+  // prevents scrolling on load
+  $('body').addClass('homePageBody');
+  $("#fitoLandingSignInButton").off().on('click', function(e) {
+    e.stopPropagation();
+    $('.fitoLandingSignInWrapper').addClass('active');
+    $("#fitoLandingSignInButton").addClass('active');
+    $('.mainRequestBtn').addClass('active');
+
+    // allows the page to be scrollable again
+    $('body').removeClass('homePageBody');
+  })
+
+  $(".fitoLandingSignInSubmit").off().on('click', function() {
+    $("#landingSubmitLogin").click();
+  })
+
+  $(".fitoLandingRequestBtn").off().on('click', function () {
+    $('#signInForm').hide();
+    $('.fitoLandingRequestWrapper').show();
+  });
+
+  $(".fitoLandingSignInToggle").off().on('click', function() {
+    $('.fitoLandingRequestWrapper').hide();
+    $('#signInForm').show();
+  });
+
+  $(document).on('click', function() {
+    $('.fitoLandingSignInWrapper').removeClass('active');
+    $("#fitoLandingSignInButton").removeClass('active');
+    $('.mainRequestBtn').removeClass('active');
+
+    $('html,body').animate({scrollTop:0},2000);
+
+    // prevents scrolling again
+    $('body').addClass('homePageBody');
+  });
+
+
+  $('.fitoLandingSignInWrapper').on('click', function(e) {
+    e.stopPropagation();
+  });
+
+});
+</script>

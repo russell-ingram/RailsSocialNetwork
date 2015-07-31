@@ -77,7 +77,7 @@ $( document ).ready(function() {
       } else {
         $("#toolbarCol1").show();
         var text = quill2.getText();
-        var remaining = 400 - text.length;
+        var remaining = 200 - text.length;
         colCount2.text('Character count: ' + remaining);
         colCount2.show();
       }
@@ -100,7 +100,7 @@ $( document ).ready(function() {
       ta3.val(quill3.getHTML());
 
       var text = quill3.getText();
-      var remaining = 400 - text.length;
+      var remaining = 200 - text.length;
       colCount3.text('Character count: ' + remaining);
       if (remaining < 0) {
         colCount3.css('color', 'red');
@@ -116,7 +116,7 @@ $( document ).ready(function() {
       } else {
         $("#toolbarCol2").show();
         var text = quill3.getText();
-        var remaining = 400 - text.length;
+        var remaining = 200 - text.length;
         colCount3.text('Character count: ' + remaining);
         colCount3.show();
       }
@@ -140,7 +140,7 @@ $( document ).ready(function() {
       }
       ta4.val(quill4.getHTML());
       var text = quill4.getText();
-      var remaining = 400 - text.length;
+      var remaining = 200 - text.length;
 
       colCount4.text('Character count: ' + remaining);
       if (remaining < 0) {

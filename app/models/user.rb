@@ -128,7 +128,7 @@ class User < ActiveRecord::Base
     works = works.where(["country LIKE ?", search[:country]]) if search[:country].present?
     works = works.where(["job_title LIKE ?", search[:job_title]]) if search[:job_title].present?
     if search[:organization_type].present?
-      if search[:organization_type] == "Public"
+      if search[:organization_type] == "Publicly Traded"
         works = works.where('public'=>true)
       elsif search[:organization_type] == "Private"
         works = works.where('public'=>false)
@@ -157,7 +157,6 @@ class User < ActiveRecord::Base
   def current_pos
     @user_pos
     works.each do |work|
-      # p work.inspect
       if work.current?
         @user_pos = work
       end
@@ -172,17 +171,7 @@ class User < ActiveRecord::Base
         "industry" => "Unlisted"
       }
     end
-    # @user_pos_clone = @user_pos.clone.tap {
-    #   |h| h.each {|k,v|
-    #     if h[k].blank?
-    #       h[k] = "Unlisted"
-    #     end
-    #   }
-    # }
-    # p "CLONE:"
-    # puts @user_pos_clone
-    p self.full_name
-    p @user_pos
+
     return @user_pos
   end
 
@@ -207,9 +196,6 @@ class User < ActiveRecord::Base
   end
 
   def notify_changes
-    puts "CHANGES HAPPENING"
-    # puts self.changed
-    # puts self.previous_changes
     @changes = self.previous_changes
     @work_changes = []
     self.works.each do |w|
@@ -219,7 +205,6 @@ class User < ActiveRecord::Base
         @work_changes << w.previous_changes
       end
     end
-    puts @work_changes
 
     # EtrMailer.notify_changes_email(self,@changes).deliver_now
 

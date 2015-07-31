@@ -46,7 +46,7 @@
         </div>
 
         <div class="searchTagsWrapper">
-        <%= form_for @search, as: :search, method: :get do |f| %>
+        <%= form_for :search, method: :get do |f| %>
           <% if !@search.industry.blank? %>
             <div class="searchTag">
               <div class="searchTagText" value="industry">
@@ -206,7 +206,7 @@
               <ul class="dropdown fieldDropdown searchDropdown">
                 <li class="ddOption fieldOption resultsOption">No preference</li>
                 <li class="ddOption fieldOption resultsOption">Publicly Traded</li>
-                <li class="ddOption fieldOption resultsOption">Privately Traded</li>
+                <li class="ddOption fieldOption resultsOption">Private</li>
               </ul>
             </div>
             <%= f.text_field :organization_type, placeholder: 'Organization Type',style: 'display:none;' %>

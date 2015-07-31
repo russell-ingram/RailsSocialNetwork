@@ -30,6 +30,7 @@
   }
   .addSpendingIntentionFieldButton {
     border-radius: 0;
+    color: #282b30;
   }
 }
 .homePageIntentionsList {
@@ -199,6 +200,9 @@
   margin-top:10px;
   display: inline-block;
   letter-spacing: 0.025em;
+  a {
+    width: auto;
+  }
   div {
     display: inline-block;
     font-size: 15px;

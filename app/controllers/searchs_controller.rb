@@ -23,12 +23,16 @@ class SearchsController < ApplicationController
     results = []
 
     @searchData = @search.to_json
+    p "SEARCH DATA"
+    p @searchData
     @has_intentions = false
     # converting results string back into accessible hash
     if @search.results != ''
       @spendingTags = format_results(@search, results)
       @has_intentions = true
     end
+
+    @new_search = Search.new
 
     # end conversion save results as tags
 
@@ -67,9 +71,9 @@ class SearchsController < ApplicationController
   end
 
   def search_results
-    @search = Search.new
-    get_users
-    @countries = countries_list
+    # @search = Search.new
+    # get_users
+    # @countries = countries_list
 
   end
 
