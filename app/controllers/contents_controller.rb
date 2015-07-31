@@ -18,12 +18,13 @@ class ContentsController < ApplicationController
     uploader.store!(my_file)
 
     @news = Content.new(news_params)
-    link_url = news_params[:link_url]
+    link = news_params[:link_url]
 
-    @news[:link_url] = link_url
+
+    @news[:link_url] = link
     @news.active = true
     p "NEWS:"
-    p link_url
+    p link
     p @news
 
     if my_file

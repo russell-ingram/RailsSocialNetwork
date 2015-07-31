@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716223658) do
+ActiveRecord::Schema.define(version: 20150731070407) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150716223658) do
     t.string   "headline"
     t.text     "body_copy"
     t.string   "link_copy"
-    t.string   "link_url"
+    t.string   "external_link"
     t.boolean  "active",               default: false
     t.integer  "layout_option"
     t.string   "layout_html_url"
