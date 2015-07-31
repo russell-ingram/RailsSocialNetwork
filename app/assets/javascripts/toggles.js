@@ -279,4 +279,19 @@ $( document ).ready(function() {
     }
   })
 
+  $('.profileConnected').hover(
+    function() {
+      $(this).addClass('profileDeleted');
+      $(this).removeClass('profileConnected');
+      var button = '<a href="#deleteUser" rel="modal:open">UNFRIEND</a>';
+      $(this).html(button);
+    },
+    function() {
+      $(this).removeClass('profileDeleted');
+      $(this).addClass('profileConnected');
+      $(this).html('CONNECTED');
+    }
+  );
+
+
 });

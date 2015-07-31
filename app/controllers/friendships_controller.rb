@@ -1,7 +1,6 @@
 class FriendshipsController < ApplicationController
 
   before_action :authenticate_user!
-  rescue_from ActiveRecord::RecordNotFound, with: :invalid_friendship
 
 
   def index
@@ -96,6 +95,23 @@ class FriendshipsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    f_id = params[:id].to_i
+    puts f_id.class
+    # current_user.friendships.each do |f|
+    #   if f.friend_id == f_id
+    #     @friendship = f
+    #   end
+
+    # end
+    @friendship = current_user.friendships.where(:friend_id => f_id)
+    if @friendship[0].delete_mutual_friendship!
+    else
+    end
+    redirect_to '/connections'
+  end
+
 
   def filter
     type = params[:type]

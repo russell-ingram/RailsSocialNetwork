@@ -118,6 +118,14 @@
 .profileConnected {
   background-color: #34373d;
 }
+.profileDeleted {
+  background-color: #CF0000;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: #CF0000 !important;
+}
 
 .summaryFormBox {
   min-height: 0px;

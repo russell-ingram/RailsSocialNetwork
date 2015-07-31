@@ -77,6 +77,7 @@ Rails.application.routes.draw do
     member do
       put :accept
       delete :block
+      post '/friendships/destroy/#id' => 'friendships#destroy', as: 'destroy'
       post :create, as: 'create'
     end
   end
