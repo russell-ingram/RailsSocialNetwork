@@ -18,10 +18,10 @@ class ContentsController < ApplicationController
     uploader.store!(my_file)
 
     @news = Content.new(news_params)
-    link = news_params[:link_url]
+    link = news_params[:external_link]
 
 
-    @news[:link_url] = link
+    @news[:external_link] = link
     @news.active = true
     p "NEWS:"
     p link
@@ -66,15 +66,15 @@ class ContentsController < ApplicationController
   private
 
   def news_params
-    params.require(:content).permit(:headline, :body_copy, :link_copy, :link_url, :active, :image_url)
+    params.require(:content).permit(:headline, :body_copy, :link_copy, :external_link, :active, :image_url)
   end
 
   def layout_params
-    params.require(:content).permit(:headline, :layout_option, :column_one_callout, :column_two_callout, :column_three_callout, :column_one_content, :column_two_content, :column_three_content, :link_copy, :link_url, :active)
+    params.require(:content).permit(:headline, :layout_option, :column_one_callout, :column_two_callout, :column_three_callout, :column_one_content, :column_two_content, :column_three_content, :link_copy, :external_link, :active)
   end
 
 
 end
 
-# "content"=>{"layout_option"=>"3", "headline"=>"Stuff", "column_one_callout"=>"", "column_one_content"=>"", "column_two_callout"=>"", "column_two_content"=>"", "column_three_callout"=>"Will", "column_three_content"=>"It work?", "link_copy"=>"", "link_url"=>""}, "controller"=>"contents", "action"=>"layout_edit"}
+# "content"=>{"layout_option"=>"3", "headline"=>"Stuff", "column_one_callout"=>"", "column_one_content"=>"", "column_two_callout"=>"", "column_two_content"=>"", "column_three_callout"=>"Will", "column_three_content"=>"It work?", "link_copy"=>"", "external_link"=>""}, "controller"=>"contents", "action"=>"layout_edit"}
 
