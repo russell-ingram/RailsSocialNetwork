@@ -131,6 +131,8 @@
     <div class="profileTabWrapper">
       <div class="profileConnections">
       <div class="friendsTabWrapper">
+      <% if @friends.include? @user %>
+
         <% if @accepted_friendships.length > 0 %>
           <% @accepted_friendships.each do |friendship| %>
           <% friend = friendship.friend %>
@@ -167,6 +169,13 @@
   </div>
 
         <% end %>
+      <% else %>
+      <div class="noMsgsWrap errorWrap">
+        <div class="noMessages errorMessage">
+          You are not connected with this user and may not view their connections.
+        </div>
+      </div>
+      <% end %>
       </div>
       </div>
     </div>

@@ -134,9 +134,14 @@ $( document ).ready(function() {
           }
         }
       });
+      console.log(props_string);
+      if (props_string !== "null, ") {
+        var props_string = props_string.slice(0,-2);
+      } else {
+        props_string = "No filters selected.";
 
-      var props_string = props_string.slice(0,-2);
-
+      }
+      console.log(props_string);
       var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'</div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
 
       $('.savedSearchTab').prepend(searchElem);
@@ -317,7 +322,7 @@ $( document ).ready(function() {
 
   $(".fsmLeft").off().on('click', function() {
     var link = $(this).attr('data');
-    console.log(link);
+    $(location).attr('href', link);
   });
 
   $(document).on('click', '#searchBtnIcon', function() {
