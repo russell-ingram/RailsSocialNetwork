@@ -268,6 +268,15 @@ $( document ).ready(function() {
     $('.settingsDropWrapper').toggle();
   })
 
-
+  $('.dropDivIcon').off().on('click', function() {
+    var i = $(this)
+    if (i.hasClass('icon-selection-true')) {
+      i.removeClass('icon-selection-true');
+      i.addClass('icon-selection-false');
+    } else {
+      i.addClass('icon-selection-true');
+      i.removeClass('icon-selection-false');
+    }
+  })
 
 });
