@@ -2,7 +2,7 @@
 
 <div class="myConnection">
   <div class="myConnWrapper">
-    <div class="myConnProfilePic"><a href="/profile/<%= friend.id %>">
+    <div class="myConnProfilePic"><a href="/profile/<%= friend.friend.id %>">
     <% if friend.friend.profile_pic_url? %>
       <%= image_tag friend.friend.profile_pic_url %>
     <% else %>
@@ -11,7 +11,7 @@
     </a></div>
 
     <div class="myConnInfo">
-      <div class="myConnName"><%= link_to friend.friend.full_name, user_profile_path(friend) %></div>
+      <div class="myConnName"><%= link_to friend.friend.full_name, user_profile_path(friend.friend) %></div>
       <% friend_pos = friend.friend.current_pos %>
       <div class="myConnCompany"><%= friend_pos["company"] %></div>
       <div class="myConnIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>

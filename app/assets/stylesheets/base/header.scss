@@ -112,11 +112,12 @@
 
 .logoutDrop {
   display: none;
+  float:right;
   width: 225px;
   height: auto;
   background-color: #FFF;
-  position: absolute;
-  right: 9%;
+  position: relative;
+  left: 570px;
   top: 75px;
   z-index: 1;
   padding-top: 10px;
