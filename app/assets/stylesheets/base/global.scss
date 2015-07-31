@@ -55,7 +55,15 @@ body {
 }
 
 a {
-  all: inherit;
+  width: inherit;
+  height: inherit;
+  color: inherit;
+  font-family: inherit;
+  text-decoration: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  // all: inherit;
   border: none;
   margin: 0;
   padding:0;

@@ -402,7 +402,11 @@
 }
 
 .newMsgBtnSend span * {
-  all: inherit;
+  text-transform: inherit;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: inherit;
 }
 
 .hiddenReply {

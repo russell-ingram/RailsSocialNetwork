@@ -403,7 +403,11 @@
   line-height: 60px;
   text-align: center;
   input {
-    all: inherit;
+    text-transform: inherit;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    background-color: inherit;
     cursor: pointer;
   }
 }
