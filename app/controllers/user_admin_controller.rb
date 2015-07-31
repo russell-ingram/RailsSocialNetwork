@@ -190,188 +190,186 @@ class UserAdminController < ApplicationController
 
   def uploadFile
     require 'roo'
-
     xlsxFile = params[:file]
-
     xlsx = Roo::Excelx.new(xlsxFile.path,:minimal_load => true)
-    # header = xlsx.first_row
-    # p header
-    survey_id = xlsx.sheets[0].to_i
-    s = Survey.new
-    s.survey_id = survey_id
+
+    # survey_id = xlsx.sheets[0].to_i
+    # s = Survey.new
+    # s.survey_id = survey_id
 
     # Intention.delete_all()
     # Vendor.delete_all()
     # Sector.delete_all()
 
-    # add date time
     # s.save
 
-    xlsx.each_row_streaming do |row|
+    xlsx.each_with_pagename do |name, sheet|
+      puts name
+      xlsx.each_row_streaming do |row|
+        y = row[0].coordinate.row
 
-      y = row[0].coordinate.row
+        # ignoring the first rows that are headers and/or empty
+        if y > 2
+          uid = row[4].value
+          u = User.find_by("uid = ?", uid)
+          # begin user exists check
+          if u
+            # # do stuff to edit existing user
+            # u.works.each do |wd|
+            #   Work.destroy(wd)
+            # end
+            # # User.destroy(u)
+            # u = User.new
+            # u.works = []
+            # w = Work.new
+            # u.uid = row[0].value
+            # u.email = row[1].value
+            # u.first_name = row[2].value
+            # u.last_name = row[3].value
+            # u.password = "password"
+            # # this needs to be based on organizations in db later
+            # w.company = row[5].value
+            # # this should work with normal titles, but is using standard title for now
+            # w.job_title = row[8].value
+            # w.industry = row[9].value
+            # w.enterprise_size = row[10].value
+            # w.region = row[11].value
+            # w.footprint = row[12].value
+            # w.country = row[13].value
+            # w.uid = u.uid
+            # w.current = true
+            # if row[15].value == "Public"
+            #   w.public = true
+            # else
+            #   w.public = false
+            # end
+            # u.works << w
+            # u.save
 
-      if y != 1
-        u = User.find_by("uid = ?", row[0].value)
+            # # iterate through columns w/ survey for results upload
+            # # xlsx.last_column
+            # 22.upto(xlsx.last_column) do |index|
+            #   if xlsx.column(index)[y]
+            #     arr = xlsx.column(index)[0].split('_')
+            #     vendor_name = arr[0]
+            #     sector_name = arr[1]
 
-        if u
-          # # do stuff to edit existing user
-          # u.works.each do |wd|
-          #   Work.destroy(wd)
-          # end
-          # # User.destroy(u)
-          # u = User.new
-          # u.works = []
-          # w = Work.new
-          # u.uid = row[0].value
-          # u.email = row[1].value
-          # u.first_name = row[2].value
-          # u.last_name = row[3].value
-          # u.password = "password"
-          # # this needs to be based on organizations in db later
-          # w.company = row[5].value
-          # # this should work with normal titles, but is using standard title for now
-          # w.job_title = row[8].value
-          # w.industry = row[9].value
-          # w.enterprise_size = row[10].value
-          # w.region = row[11].value
-          # w.footprint = row[12].value
-          # w.country = row[13].value
-          # w.uid = u.uid
-          # w.current = true
-          # if row[15].value == "Public"
-          #   w.public = true
-          # else
-          #   w.public = false
-          # end
-          # u.works << w
-          # u.save
-
-          # # iterate through columns w/ survey for results upload
-          # # xlsx.last_column
-          # 22.upto(xlsx.last_column) do |index|
-          #   if xlsx.column(index)[y]
-          #     arr = xlsx.column(index)[0].split('_')
-          #     vendor_name = arr[0]
-          #     sector_name = arr[1]
-
-          #     v = Vendor.find_by("name = ?", vendor_name)
-          #     if v
-          #     else
-          #       v = Vendor.new
-          #       v.name = vendor_name
-          #       v.save
-          #     end
-          #     sect = Sector.find_by("name = ?", sector_name)
-          #     if sect
-          #     else
-          #       sect = Sector.new
-          #       sect.name = sector_name
-          #       sect.save
-          #     end
-
-
-          #     i = Intention.new
-          #     i.survey_id = survey_id
-          #     i.vendor_id = v.id
-          #     i.sector_id = sect.id
-          #     i.user_id = u.uid
-          #     i.intention = xlsx.column(index)[y]
+            #     v = Vendor.find_by("name = ?", vendor_name)
+            #     if v
+            #     else
+            #       v = Vendor.new
+            #       v.name = vendor_name
+            #       v.save
+            #     end
+            #     sect = Sector.find_by("name = ?", sector_name)
+            #     if sect
+            #     else
+            #       sect = Sector.new
+            #       sect.name = sector_name
+            #       sect.save
+            #     end
 
 
-          #     puts "INTENTION:"
-          #     puts i.inspect
-          #     i.save
-          #   end
+            #     i = Intention.new
+            #     i.survey_id = survey_id
+            #     i.vendor_id = v.id
+            #     i.sector_id = sect.id
+            #     i.user_id = u.uid
+            #     i.intention = xlsx.column(index)[y]
+
+
+            #     puts "INTENTION:"
+            #     puts i.inspect
+            #     i.save
+            #   end
 
 
 
 
-          # end
-        else
-          u = User.new
-          u.works = []
-          w = Work.new
-          u.uid = row[0].value
-          u.email = row[1].value
-          u.first_name = row[2].value
-          u.last_name = row[3].value
-          u.password = "password"
-          # this needs to be based on organizations in db later
-          w.company = row[5].value
-          # this should work with normal titles, but is using standard title for now
-          w.job_title = row[8].value
-          w.industry = row[9].value
-          w.enterprise_size = row[10].value.capitalize
-          w.region = row[11].value
-          w.footprint = row[12].value
-          w.country = row[13].value
-          w.uid = u.uid
-          w.current = true
-          if row[15].value == "Public"
-            w.public = true
+            # end
           else
-            w.public = false
-          end
-          u.works << w
-          u.save
+            # u = User.new
+            # u.works = []
+            # w = Work.new
+            # u.uid = row[0].value
+            # u.email = row[1].value
+            # u.first_name = row[2].value
+            # u.last_name = row[3].value
+            # u.password = "password"
+            # # this needs to be based on organizations in db later
+            # w.company = row[5].value
+            # # this should work with normal titles, but is using standard title for now
+            # w.job_title = row[8].value
+            # w.industry = row[9].value
+            # w.enterprise_size = row[10].value.capitalize
+            # w.region = row[11].value
+            # w.footprint = row[12].value
+            # w.country = row[13].value
+            # w.uid = u.uid
+            # w.current = true
+            # if row[15].value == "Public"
+            #   w.public = true
+            # else
+            #   w.public = false
+            # end
+            # u.works << w
+            # u.save
 
-          # iterate through columns w/ survey for results upload
-          # xlsx.last_column
-          22.upto(xlsx.last_column) do |index|
-            if xlsx.column(index)[y]
-              arr = xlsx.column(index)[0].split('_')
-              vendor_name = arr[0]
-              sector_name = arr[1]
+            # # iterate through columns w/ survey for results upload
+            # # xlsx.last_column
+            # 22.upto(xlsx.last_column) do |index|
+            #   if xlsx.column(index)[y]
+            #     arr = xlsx.column(index)[0].split('_')
+            #     vendor_name = arr[0]
+            #     sector_name = arr[1]
 
-              v = Vendor.find_by("name = ?", vendor_name)
-              if v
-              else
-                v = Vendor.new
-                v.name = vendor_name
-                v.save
-              end
-              sect = Sector.find_by("name = ?", sector_name)
-              if sect
-              else
-                sect = Sector.new
-                sect.name = sector_name
-                sect.save
-              end
-
-
-              i = Intention.new
-              i.survey_id = survey_id
-              i.vendor_id = v.id
-              i.sector_id = sect.id
-              i.user_id = u.uid
-              i.intention = xlsx.column(index)[y]
+            #     v = Vendor.find_by("name = ?", vendor_name)
+            #     if v
+            #     else
+            #       v = Vendor.new
+            #       v.name = vendor_name
+            #       v.save
+            #     end
+            #     sect = Sector.find_by("name = ?", sector_name)
+            #     if sect
+            #     else
+            #       sect = Sector.new
+            #       sect.name = sector_name
+            #       sect.save
+            #     end
 
 
-              puts "INTENTION:"
-              puts i.inspect
-              i.save
+            #     i = Intention.new
+            #     i.survey_id = survey_id
+            #     i.vendor_id = v.id
+            #     i.sector_id = sect.id
+            #     i.user_id = u.uid
+            #     i.intention = xlsx.column(index)[y]
+
+
+            #     puts "INTENTION:"
+            #     puts i.inspect
+            #     i.save
+            #   end
+
+
+
+
             end
-
-
-
-
-          end
+          # end user exists check
         end
-
-
-
-
-
-
+        # end y!= 1 check
       end
-
+      # end rows iteration
     end
-
-
+    # end sheets iteration
 
     redirect_to '/admin/upload'
+
   end
+
+
+
 
   def get_friendships
     @friendships = current_user.friendships
