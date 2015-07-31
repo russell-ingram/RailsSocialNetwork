@@ -79,6 +79,16 @@
 
 
 
+
+
+    <% end %>
+    <% if @users.length == 0 %>
+      <div class="noMsgsWrap errorWrap">
+        <div class="noMessages">
+          No results found.</br> Try removing some search criteria or
+        </div>
+        <div class="startSearchBtn startSearchFullBtn"><a href="/search">NEW SEARCH</a></div>
+      </div>
     <% end %>
   <% end %>
 </div>
