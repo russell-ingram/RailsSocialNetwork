@@ -157,7 +157,7 @@ $( document ).ready(function() {
       } else {
         $("#toolbarCol3").show();
         var text = quill4.getText();
-        var remaining = 400 - text.length;
+        var remaining = 200 - text.length;
         colCount4.text('Character count: ' + remaining);
         colCount4.show();
       }

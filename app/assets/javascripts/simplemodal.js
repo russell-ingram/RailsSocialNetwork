@@ -230,7 +230,7 @@
     var input1 = $("#intention_sector");
     var input2 = $("#intention_vendor");
 
-    input1.prev().find('.ddLabel').text("Search infrastructure");
+    input1.prev().find('.ddLabel').text("Search sector");
     input2.prev().find('.ddLabel').text("Search vendors");
     $(".intentionSelectModal").each(function(i) {
       var icon = $(this).find('.icon')

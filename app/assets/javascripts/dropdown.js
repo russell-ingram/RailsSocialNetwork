@@ -41,7 +41,7 @@ $( document ).ready(function() {
       selectedLabel.text(option);
       var input = selectedLabel.parent().next();
       input.val(option);
-      if (selectedLabel.hasClass('searchDDLabel')) {
+      if (selectedLabel.hasClass('searchDDLabel') || selectedLabel.hasClass('ddNoPref')) {
         if (option === 'No preference') {
           selectedLabel.removeClass('active');
           input.val('');

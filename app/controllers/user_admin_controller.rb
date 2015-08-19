@@ -204,163 +204,222 @@ class UserAdminController < ApplicationController
     # s.save
 
     xlsx.each_with_pagename do |name, sheet|
-      puts name
-      xlsx.each_row_streaming do |row|
-        y = row[0].coordinate.row
 
-        # ignoring the first rows that are headers and/or empty
-        if y > 2
-          uid = row[4].value
-          u = User.find_by("uid = ?", uid)
-          # begin user exists check
-          if u
-            # # do stuff to edit existing user
-            # u.works.each do |wd|
-            #   Work.destroy(wd)
-            # end
-            # # User.destroy(u)
-            # u = User.new
-            # u.works = []
-            # w = Work.new
-            # u.uid = row[0].value
-            # u.email = row[1].value
-            # u.first_name = row[2].value
-            # u.last_name = row[3].value
-            # u.password = "password"
-            # # this needs to be based on organizations in db later
-            # w.company = row[5].value
-            # # this should work with normal titles, but is using standard title for now
-            # w.job_title = row[8].value
-            # w.industry = row[9].value
-            # w.enterprise_size = row[10].value
-            # w.region = row[11].value
-            # w.footprint = row[12].value
-            # w.country = row[13].value
-            # w.uid = u.uid
-            # w.current = true
-            # if row[15].value == "Public"
-            #   w.public = true
-            # else
-            #   w.public = false
-            # end
-            # u.works << w
-            # u.save
+      if name.length < 3
+        puts name
+        # xlsx.default_sheet = sheet
+        sheet.each_row_streaming do |row|
+          y = row[0].coordinate.row
 
-            # # iterate through columns w/ survey for results upload
-            # # xlsx.last_column
-            # 22.upto(xlsx.last_column) do |index|
-            #   if xlsx.column(index)[y]
-            #     arr = xlsx.column(index)[0].split('_')
-            #     vendor_name = arr[0]
-            #     sector_name = arr[1]
+          # ignoring the first rows that are headers and/or empty
+          if y > 2
+            uid = row[4].value
+            u = User.find_by("uid = ?", uid)
+            # begin user exists check
+            if u
+              # do nothing to user
+              n = 28
+              if !row[10].value.nil?
+              else
+                n = 30
+              end
+              # # iterate through columns w/ survey for results upload
+              # xlsx.last_column
+              n.upto(sheet.last_column) do |index|
 
-            #     v = Vendor.find_by("name = ?", vendor_name)
-            #     if v
-            #     else
-            #       v = Vendor.new
-            #       v.name = vendor_name
-            #       v.save
-            #     end
-            #     sect = Sector.find_by("name = ?", sector_name)
-            #     if sect
-            #     else
-            #       sect = Sector.new
-            #       sect.name = sector_name
-            #       sect.save
-            #     end
+                if sheet.column(index)[y] && !sheet.column(index)[0].nil?
+
+                  arr = sheet.column(index)[0].split('_')
+                  vendor_name = arr[0]
+                  vid = arr[1]
+                  sector_name = arr[2]
+                  sid = arr[3]
+
+                  v = Vendor.find_by("vid = ?", vid)
+                  if v
+                  else
+                    v = Vendor.new
+                    v.name = vendor_name
+                    v.vid = vid
+                    v.save
+                  end
+                  sect = Sector.find_by("sid = ?", sid)
+                  if sect
+                  else
+                    sect = Sector.new
+                    sect.name = sector_name
+                    sect.sid = sid
+                    sect.save
+                  end
 
 
-            #     i = Intention.new
-            #     i.survey_id = survey_id
-            #     i.vendor_id = v.id
-            #     i.sector_id = sect.id
-            #     i.user_id = u.uid
-            #     i.intention = xlsx.column(index)[y]
+                  i = Intention.new
+                  i.survey_id = name.to_i
+                  i.vendor_id = v.id
+                  i.sector_id = sect.id
+                  i.user_id = u.uid
+                  i.intention = sheet.column(index)[y]
 
 
-            #     puts "INTENTION:"
-            #     puts i.inspect
-            #     i.save
-            #   end
+                  puts "INTENTION:"
+                  puts i.inspect
+                  i.save
+                end
+              end
+            else
+              u = User.new
+              u.works = []
+              w = Work.new
+              u.uid = uid
+              u.email = row[0].value
+              u.first_name = row[1].value
+              u.last_name = row[2].value
+              u.password = "password"
+              # # this needs to be based on organizations in db later
+              w.company = row[7].value
+              # # this should work with normal titles, but is using standard title for now
+              w.job_title = row[9].value
+              p row[10].value
+              p row[11].value
+              p row[12].value
+              p row[13].value
+              p row[14].value
+              p row[16].value
+              p row[17].value
+              p row[18].value
+              p row[19].value
+              n = 28
+              if !row[10].value.nil?
+                w.industry = row[10].value
+                w.enterprise_size = row[11].value.capitalize
+                w.region = row[12].value
+                w.footprint = row[13].value
+                w.country = row[14].value
+                w.uid = u.uid
+                w.current = true
+                if row[16].value == "Public"
+                  w.public = true
+                else
+                  w.public = false
+                end
+                u.works << w
+
+                if row[18].value == "YES"
+                  u.big65 = true
+                else
+                  u.big65 = false
+                end
+                if row[20].value == "YES"
+                  u.sp500 = true
+                else
+                  u.sp500 = false
+                end
+                if row[21].value == "YES"
+                  u.fortune100 = true
+                else
+                  u.fortune100 = false
+                end
+                if row[22].value == "YES"
+                  u.global1000 = true
+                else
+                  u.global1000 = false
+                end
+                u.timezone = row[23].value
+              else
+                n = 30
+                w.industry = row[12].value
+                w.enterprise_size = row[12].value.capitalize
+                w.region = row[13].value
+                w.footprint = row[14].value
+                w.country = row[15].value
+                w.uid = u.uid
+                w.current = true
+                if row[17].value == "Public"
+                  w.public = true
+                else
+                  w.public = false
+                end
+                u.works << w
+
+                if row[19].value == "YES"
+                  u.big65 = true
+                else
+                  u.big65 = false
+                end
+                if row[21].value == "YES"
+                  u.sp500 = true
+                else
+                  u.sp500 = false
+                end
+                if row[22].value == "YES"
+                  u.fortune100 = true
+                else
+                  u.fortune100 = false
+                end
+                if row[23].value == "YES"
+                  u.global1000 = true
+                else
+                  u.global1000 = false
+                end
+                u.timezone = row[24].value
+              end
+              u.save
+
+              # # iterate through columns w/ survey for results upload
+              # xlsx.last_column
+              n.upto(sheet.last_column) do |index|
+                # p sheet.column(index)
+                if sheet.column(index)[y] && !sheet.column(index)[0].nil?
+                  # p sheet.column(index)
+                  arr = sheet.column(index)[0].split('_')
+                  vendor_name = arr[0]
+                  vid = arr[1]
+                  sector_name = arr[2]
+                  sid = arr[3]
+
+                  v = Vendor.find_by("vid = ?", vid)
+                  if v
+                  else
+                    v = Vendor.new
+                    v.name = vendor_name
+                    v.vid = vid
+                    v.save
+                  end
+                  sect = Sector.find_by("sid = ?", sid)
+                  if sect
+                  else
+                    sect = Sector.new
+                    sect.name = sector_name
+                    sect.sid = sid
+                    sect.save
+                  end
 
 
+                  i = Intention.new
+                  i.survey_id = name.to_i
+                  i.vendor_id = v.id
+                  i.sector_id = sect.id
+                  i.user_id = u.uid
+                  i.intention = sheet.column(index)[y]
 
 
-            # end
-          else
-            # u = User.new
-            # u.works = []
-            # w = Work.new
-            # u.uid = row[0].value
-            # u.email = row[1].value
-            # u.first_name = row[2].value
-            # u.last_name = row[3].value
-            # u.password = "password"
-            # # this needs to be based on organizations in db later
-            # w.company = row[5].value
-            # # this should work with normal titles, but is using standard title for now
-            # w.job_title = row[8].value
-            # w.industry = row[9].value
-            # w.enterprise_size = row[10].value.capitalize
-            # w.region = row[11].value
-            # w.footprint = row[12].value
-            # w.country = row[13].value
-            # w.uid = u.uid
-            # w.current = true
-            # if row[15].value == "Public"
-            #   w.public = true
-            # else
-            #   w.public = false
-            # end
-            # u.works << w
-            # u.save
-
-            # # iterate through columns w/ survey for results upload
-            # # xlsx.last_column
-            # 22.upto(xlsx.last_column) do |index|
-            #   if xlsx.column(index)[y]
-            #     arr = xlsx.column(index)[0].split('_')
-            #     vendor_name = arr[0]
-            #     sector_name = arr[1]
-
-            #     v = Vendor.find_by("name = ?", vendor_name)
-            #     if v
-            #     else
-            #       v = Vendor.new
-            #       v.name = vendor_name
-            #       v.save
-            #     end
-            #     sect = Sector.find_by("name = ?", sector_name)
-            #     if sect
-            #     else
-            #       sect = Sector.new
-            #       sect.name = sector_name
-            #       sect.save
-            #     end
-
-
-            #     i = Intention.new
-            #     i.survey_id = survey_id
-            #     i.vendor_id = v.id
-            #     i.sector_id = sect.id
-            #     i.user_id = u.uid
-            #     i.intention = xlsx.column(index)[y]
-
-
-            #     puts "INTENTION:"
-            #     puts i.inspect
-            #     i.save
-            #   end
+                  puts "INTENTION:"
+                  puts i.inspect
+                  i.save
+                end
+              end
 
 
 
 
             end
-          # end user exists check
+            # end user exists check
+          end
+          # end y!= 1 check
         end
-        # end y!= 1 check
+        # end rows iteration
       end
-      # end rows iteration
+      # end check of name
     end
     # end sheets iteration
 

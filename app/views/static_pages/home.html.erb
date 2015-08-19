@@ -8,22 +8,24 @@
     <%= form_for @search, as: :search, method: :get do |f| %>
     <div class="searchBarHome">
       <div class="wrapper-dropdown" tabindex="1">
-        <span class="ddLabel">Region</span>
+        <span class="ddLabel ddNoPref">Region</span>
         <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
         <ul class="dropdown">
-            <% @regions.each do |region| %>
-            <li class="ddOption fieldOption"><%= region %></li>
-            <% end %>
+          <li class="ddOption fieldOption">No preference</li>
+          <% @regions.each do |region| %>
+          <li class="ddOption fieldOption"><%= region %></li>
+          <% end %>
         </ul>
       </div>
       <%= f.text_field :region, placeholder: 'Region', style: 'display: none;' %>
       <div class="wrapper-dropdown" tabindex="1">
-        <span class="ddLabel">Industry</span>
+        <span class="ddLabel ddNoPref">Industry</span>
         <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
         <ul class="dropdown">
-            <% @industries.each do |industry| %>
-            <li class="ddOption fieldOption"><%= industry %></li>
-            <% end %>
+          <li class="ddOption fieldOption">No preference</li>
+          <% @industries.each do |industry| %>
+          <li class="ddOption fieldOption"><%= industry %></li>
+          <% end %>
         </ul>
       </div>
       <div class="homeAddIntentions">
@@ -43,11 +45,12 @@
     <div class="formBoxRow homePageAdvancedRow">
       <div class="field field-col-4">
         <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
-          <span class="ddLabel">
+          <span class="ddLabel ddNoPref">
             Enterprise Size
           </span>
           <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
           <ul class="dropdown fieldDropdown">
+            <li class="ddOption fieldOption">No preference</li>
             <li class="ddOption fieldOption">LARGE</li>
             <li class="ddOption fieldOption">SMALL</li>
             <li class="ddOption fieldOption">MIDSIZE</li>
@@ -57,11 +60,12 @@
       </div>
       <div class="field field-col-4">
         <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
-          <span class="ddLabel">
+          <span class="ddLabel ddNoPref">
               Job Title
           </span>
           <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
           <ul class="dropdown fieldDropdown">
+            <li class="ddOption fieldOption">No preference</li>
             <li class="ddOption fieldOption">Chief Information Officer</li>
             <li class="ddOption fieldOption">Chief Executive Officer</li>
 
@@ -72,11 +76,12 @@
 
       <div class="field field-col-4">
         <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
-          <span class="ddLabel">
+          <span class="ddLabel ddNoPref">
               Organization Type
           </span>
           <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
           <ul class="dropdown fieldDropdown">
+            <li class="ddOption fieldOption">No preference</li>
             <li class="ddOption fieldOption">Publicly Traded</li>
             <li class="ddOption fieldOption">Private</li>
           </ul>
@@ -91,6 +96,7 @@
           </span>
           <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
           <ul class="dropdown fieldDropdown">
+            <li class="ddOption fieldOption">No preference</li>
             <% @countries.each do |country| %>
             <li class="ddOption fieldOption"><%= country %></li>
             <% end %>
@@ -304,7 +310,7 @@
           <% end %>
           <div class="viewMoreContent searchesViewMore">
 
-          <a href="/search">
+          <a href="/search#followedSearchesLink">
           view all<div class="icon icon-fwd-arrow"></div></a></div>
         </div>
         <% else %>
@@ -415,14 +421,15 @@
           </div>
           <div class="field">
             <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
-              <span class="ddLabel">
-                Search infrastructure
+              <span class="ddLabel ddNoPref">
+                Search sector
               </span>
               <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
               <ul class="dropdown fieldDropdown">
-                    <% @sectors.each do |sector| %>
-                    <li class="ddOption fieldOption"><%= sector.name %></li>
-                    <% end %>
+                <li class="ddOption fieldOption">No preference</li>
+                <% @sectors.each do |sector| %>
+                <li class="ddOption fieldOption"><%= sector.name %></li>
+                <% end %>
               </ul>
             </div>
             <input placeholder="Sector" style="display: none;" type="text" name="intention[sector]" id="intention_sector">
@@ -432,14 +439,15 @@
           </div>
           <div class="field">
             <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
-              <span class="ddLabel">
+              <span class="ddLabel ddNoPref">
                 Search vendors
               </span>
               <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
               <ul class="dropdown fieldDropdown">
-                    <% @vendors.each do |vendor| %>
-                    <li class="ddOption fieldOption"><%= vendor.name %></li>
-                    <% end %>
+                <li class="ddOption fieldOption">No preference</li>
+                <% @vendors.each do |vendor| %>
+                <li class="ddOption fieldOption"><%= vendor.name %></li>
+                <% end %>
               </ul>
             </div>
             <input placeholder="Vendor" style="display: none;" type="text" name="intention[vendor]" id="intention_vendor">

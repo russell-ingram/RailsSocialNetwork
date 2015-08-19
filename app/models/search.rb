@@ -15,30 +15,31 @@ class Search < ActiveRecord::Base
   def format_string
     str = ''
     if !job_title.blank?
-      str += job_title + ','
+      str += job_title + ', '
     end
     if !industry.blank?
-      str += industry + ','
+      str += industry + ', '
     end
     if !enterprise.blank?
-      str += enterprise + ','
+      str += enterprise + ', '
     end
     if !region.blank?
-      str = region + ','
+      str += region + ', '
     end
     if !country.blank?
-      str += country + ','
+      str += country + ', '
     end
     if !organization_type.blank?
-      str += organization_type + ','
+      str += organization_type + ', '
     end
 
     if str == '' && results == ''
-      str = 'No filters selected.'
+      str = '<i>No filters selected.</i>'
     elsif str == ''
-      str = 'Intention filters used.'
+      str = '<i>Intention filters used.</i>'
     else
-      str[str.length - 1] = ''
+      str[str.length - 2] = ''
+      str += '</br><i> Intention filters used.</i>'
     end
     return str
   end

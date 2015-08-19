@@ -129,19 +129,19 @@ $( document ).ready(function() {
 
         if (v !== '') {
 
-          if (k === 'job_title' || k === 'industry' || k === 'enterprise' || k === 'region' || k === 'country' ) {
+          if (k === 'job_title' || k === 'industry' || k === 'enterprise' || k === 'region' || k === 'country' || k === 'organization_type' ) {
             props_string += v + ', ';
           }
         }
       });
       console.log(props_string);
       if (props_string !== "null, ") {
-        var props_string = props_string.slice(0,-2);
-      } else {
-        props_string = "No filters selected.";
-
+        props_string = props_string.slice(0,-2);
       }
-      console.log(props_string);
+      if (props_string.length === 0) {
+        props_string = "No filters selected.";
+      }
+      console.log(props_string.length);
       var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'</div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
 
       $('.savedSearchTab').prepend(searchElem);
@@ -152,51 +152,59 @@ $( document ).ready(function() {
   var searchCounter = 0;
 
   $('#modalDoneButton').off().on('click', function() {
-
-    searchCounter++;
-    var h = $('.searchFormBox').height();
-
-    $('.searchFormBox').height(h+60);
-
+    var hasValues = true;
     var vendor = $('#intention_vendor').val();
     var sector = $('#intention_sector').val();
     var intention = $("#intention_intention").val();
-    intention = intention.charAt(0).toUpperCase() + intention.slice(1).toLowerCase();
-    if (intention === "") {
-      intention = "Any";
-    }
-    if (sector === "") {
-      sector = "Any";
-    }
-    if (vendor === "") {
-      vendor = "Any";
+
+    if (intention === "" && sector === "" && vendor === "") {
+      hasValues = false;
     }
 
-    var newIntObj = {
-      "intention": intention,
-      "vendor": vendor,
-      "sector": sector
-    };
+    if (hasValues) {
+      searchCounter++;
+      var h = $('.searchFormBox').height();
+
+      $('.searchFormBox').height(h+60);
+
+
+      intention = intention.charAt(0).toUpperCase() + intention.slice(1).toLowerCase();
+      if (intention === "") {
+        intention = "Any";
+      }
+      if (sector === "") {
+        sector = "Any";
+      }
+      if (vendor === "") {
+        vendor = "Any";
+      }
+
+      var newIntObj = {
+        "intention": intention,
+        "vendor": vendor,
+        "sector": sector
+      };
 
 
 
-    var newIntention = '<div class="addedSpendingIntention"><div class="elemNum">'+searchCounter+'</div><div class="addedSpendingIntentionLeft"><div class="addedSpendingIntentionHeader">'+searchCounter+'.</div><div class="addedSpendingIntentionText">'+intention+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+sector+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+vendor+'</div></div><div class="addedSpendingIntentionDelete"><div class="icon icon-icon-close"></div></div></div>'
-    var jsonResults = $('#resultsField').val();
-    if (jsonResults && jsonResults !== "") {
-      var oldObj = JSON.parse(jsonResults);
+      var newIntention = '<div class="addedSpendingIntention"><div class="elemNum">'+searchCounter+'</div><div class="addedSpendingIntentionLeft"><div class="addedSpendingIntentionHeader">'+searchCounter+'.</div><div class="addedSpendingIntentionText">'+intention+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+sector+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+vendor+'</div></div><div class="addedSpendingIntentionDelete"><div class="icon icon-icon-close"></div></div></div>'
+      var jsonResults = $('#resultsField').val();
+      if (jsonResults && jsonResults !== "") {
+        var oldObj = JSON.parse(jsonResults);
 
-      oldObj.push(newIntObj);
-      var newObj = JSON.stringify(oldObj);
-      $('#resultsField').val(newObj);
-    } else {
-      var newObjStr = JSON.stringify([newIntObj]);
-      $('#resultsField').val(newObjStr);
+        oldObj.push(newIntObj);
+        var newObj = JSON.stringify(oldObj);
+        $('#resultsField').val(newObj);
+      } else {
+        var newObjStr = JSON.stringify([newIntObj]);
+        $('#resultsField').val(newObjStr);
+      }
+      $('.spendingIntentions').show();
+      var h = $('.searchFormBox').height();
+      $('.searchFormBox').height(h+30);
+      $('.spendingIntentionsOptions').append(newIntention);
+      resetModalValues();
     }
-    $('.spendingIntentions').show();
-    var h = $('.searchFormBox').height();
-    $('.searchFormBox').height(h+30);
-    $('.spendingIntentionsOptions').append(newIntention);
-    resetModalValues();
 
 
 
@@ -277,7 +285,7 @@ $( document ).ready(function() {
     var input1 = $("#intention_sector");
     var input2 = $("#intention_vendor");
 
-    input1.prev().find('.ddLabel').text("Search infrastructure");
+    input1.prev().find('.ddLabel').text("Search sector");
     input2.prev().find('.ddLabel').text("Search vendors");
 
     input1.val("");
