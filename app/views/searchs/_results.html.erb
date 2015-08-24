@@ -11,8 +11,9 @@
               <img src="<%= user.profile_pic_url %>">
               </a>
             <% else %>
-
+            <a href="/profile/<%= user.id %>">
             <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+            </a>
             <% end %>
             </div>
 
@@ -26,24 +27,33 @@
             <div class="myConnMessage userActionsSidebar searchActionsSidebar">
               <div class="userListActionsSearch">
                 <div class="userListAction">
-                <a href="/messages/new/<%= user.id %>">message <div class="icon icon-fwd-arrow"></div></a>
+                  <% if !@has_intentions %>
+                    <a href="/messages/new/<%= user.id %>">message <div class="icon icon-fwd-arrow"></div></a>
+                  <% else %>
+                    <% if @friends.include? user %>
+                      <a href="/messages/new/<%= user.id %>">message <div class="icon icon-fwd-arrow"></div></a>
+                    <% end %>
+                  <% end %>
                 </div>
                 <div class="userListAction">
-                <% if @friends.include? user %>
-                <a href="/profile/<%= user.id %>">
-                CONNECTED<div class="icon icon-fwd-arrow"></div></a>
-                <% elsif @pending.include? user %>
-                <a href="/profile/<%= user.id %>">
-                PENDING<div class="icon icon-fwd-arrow"></div></a>
-                <% elsif @requested.include? user %>
-                <a href="/profile/<%= user.id %>">
-                RESPOND TO CONNECTION REQUEST<div class="icon icon-fwd-arrow"></div></a>
-                <% else %>
-                  <% if !@has_intentions %>
-                  <a href="#connect<%= index %>" rel="modal:open">
-                  CONNECT<div class="icon icon-fwd-arrow"></div></a>
+                  <% if @friends.include? user %>
+                  <a href="/profile/<%= user.id %>">
+                  CONNECTED<div class="icon icon-fwd-arrow"></div></a>
+                  <% elsif @pending.include? user %>
+                  <a href="/profile/<%= user.id %>">
+                  PENDING<div class="icon icon-fwd-arrow"></div></a>
+                  <% elsif @requested.include? user %>
+                  <a href="/profile/<%= user.id %>">
+                  RESPOND TO CONNECTION REQUEST<div class="icon icon-fwd-arrow"></div></a>
+                  <% else %>
+                    <% if !@has_intentions %>
+                    <a href="#connect<%= index %>" rel="modal:open">
+                    CONNECT<div class="icon icon-fwd-arrow"></div></a>
+                    <% else %>
+                    <a href="#connectAnon<%= index %>" rel="modal:open">
+                    CONNECT<div class="icon icon-fwd-arrow"></div></a>
+                    <% end %>
                   <% end %>
-                <% end %>
                 </div>
               </div>
             </div>
@@ -51,7 +61,7 @@
         </div>
 
 
-
+      <% if !@has_intentions %>
         <div id="connect<%= index %>" class="addIntentionModal confirmConnectModal" style="display:none;">
           <div class="formBox searchFormBox formBoxModal confirmModalBox">
             <div class="formHeader">CONFIRM CONNECT</div>
@@ -79,6 +89,28 @@
           </div>
         </div>
 
+      <% else %>
+        <div id="connectAnon<%= index %>" class="addIntentionModal confirmConnectModal" style="display:none;">
+          <div class="formBox searchFormBox formBoxModal confirmModalBox">
+            <div class="formHeader">CONFIRM CONNECT</div>
+            <div class="modalBody">
+              <div class="modalIntentions">
+                <div class="myConnProfilePic">
+                  <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+                </div>
+              </div>
+              <div class="modalIntentionsRight">
+                <div class="deleteUserModalInfo">
+                  Are you sure you would like to connect with this user?
+                </div>
+                <div class="modalDoneButton">
+                  <%= link_to "Confirm", create_friendship_path(user), method: :post %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
 
 
 

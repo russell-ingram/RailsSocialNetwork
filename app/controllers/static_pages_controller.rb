@@ -137,11 +137,11 @@ class StaticPagesController < ApplicationController
   end
 
   def industries_list
-    ["Education", "Services/Consulting", "IT/TelCo", "Financials/Insurance", "Healthcare/Pharma", "Retail/Consumer", "Industrials/Materials/Manufacturing", "Government", "Restricted", "Other", "Nonprofit", "Energy/Utilities"]
+    ["Education", "Services/Consulting", "IT/TelCo", "Financials/Insurance", "Healthcare/Pharma", "Retail/Consumer", "Industrials/Materials/Manufacturing", "Government", "Other", "Nonprofit", "Energy/Utilities"]
   end
 
   def regions_list
-    ["EMEA", "North America", "APAC", "Latin America", "Restricted"]
+    ["EMEA", "North America", "APAC", "Latin America"]
   end
 
 

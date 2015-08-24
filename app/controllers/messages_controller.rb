@@ -26,9 +26,9 @@ class MessagesController < ApplicationController
     #   recipients << rec
     # end
     # puts recipients
-    flash.clear
+
     conversation = current_user.send_message(x, params[:message][:body], params[:message][:subject])
-    flash[:success] = "Your message has been successfully sent!"
+    flash[:sent] = "Your message has been successfully sent!"
 
     # redirect_to conversation_path(1)
     p "CONTROLLER"
@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
 
     if conversation
       puts "CONVERSATION PATH!!!!"
-      flash[:success] = "Message sent!"
+      flash[:sent] = "Message sent!"
       if !params[:msgAll].blank? and params[:msgAll] == "msgAll"
         redirect_to '/admin/messages/new/all'
       else

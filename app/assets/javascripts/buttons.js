@@ -85,7 +85,22 @@ $( document ).ready(function() {
   });
 
   $('.spendingTagClose').off().on('click',function() {
-    $('#resultsFieldTagsField').val('');
+    var index = $(this).attr('name');
+    var oldStr = $('#resultsFieldTagsField').val();
+    console.log(oldStr);
+    var oldArr = JSON.parse(oldStr);
+    console.log(oldArr);
+    console.log(oldArr.length);
+    if (oldArr.length > 1) {
+      var newArr = oldArr.splice(index - 1, 1);
+      var newStr = JSON.stringify(newArr);
+      $('#resultsFieldTagsField').val(newStr);
+    } else {
+      $('#resultsFieldTagsField').val('');
+    }
+
+
+
     $(this).parent().remove();
     $('#searchEdit').click();
   });

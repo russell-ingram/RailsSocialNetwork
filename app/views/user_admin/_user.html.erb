@@ -1,0 +1,56 @@
+<div class="myConnection">
+  <div class="myConnWrapper">
+    <div class="myConnProfilePic"><a href="/profile/<%= user.id %>">
+    <% if user.profile_pic_url? %>
+      <img src="<%= user.profile_pic_url %>">
+    <% else %>
+
+    <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+    <% end %>
+    </a></div>
+
+    <div class="myConnInfo">
+      <div class="myConnName"><%= link_to user.full_name, user_profile_path(user) %></div>
+      <% position = user.current_pos %>
+      <div class="myConnCompany"><%= position["company"] %></div>
+      <div class="myConnIndustry"><%= position["job_title"] %>, <%= position["industry"] %>, <%= position["enterprise_size"] %></div>
+    </div>
+
+    <div class="myConnMessage userActionsSidebar">
+      <div class="userListAction"><%= link_to "review", admin_edit_user_path(user) %></div>
+      <div class="userListAction deleteAction">
+        <a href="#ex<%= user_counter %>" rel="modal:open">
+            DELETE
+        </a>
+      </div>
+      <div class="userListAction"><%= link_to "send message", message_user_path(user) %></div>
+    </div>
+  </div>
+</div>
+
+<div id="ex<%= user_counter %>" class="addIntentionModal" style="display:none;">
+  <div class="formBox searchFormBox formBoxModal confirmModalBox">
+    <div class="formHeader">CONFIRM DELETE</div>
+    <div class="modalBody">
+      <div class="modalIntentions">
+        <div class="myConnProfilePic">
+          <a href="/profile/<%= user.id %>">
+            <% if user.profile_pic_url? %>
+              <img src="<%= user.profile_pic_url %>">
+            <% else %>
+              <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+            <% end %>
+          </a>
+        </div>
+      </div>
+      <div class="modalIntentionsRight">
+        <div class="deleteUserModalInfo">
+          Are you sure you would like to delete <%= user.full_name %>?
+        </div>
+        <div class="modalDoneButton">
+          <%= link_to "Confirm", admin_delete_user_path(user) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

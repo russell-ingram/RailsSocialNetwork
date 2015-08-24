@@ -6,6 +6,8 @@ class UserAdminController < ApplicationController
   def index
     # defaults to most recent
     @users = User.order(created_at: :desc)
+    require 'will_paginate/array'
+    @users = @users.paginate(page: params[:page], per_page: 10)
 
   end
   # for filtering

@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
 
 
   def index
-    # flash[:success] = "MESSAGE SENT"
+
     @has_friends = false
     @accepted_friendships = []
     @type = "MOST RECENT"

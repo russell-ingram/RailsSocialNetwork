@@ -68,49 +68,62 @@ class User < ActiveRecord::Base
     if search.results && search.results != ""
       res = JSON.parse(search.results)
       # p res[0]
-      intentions = Intention.all
+
       # p "Length:"
       # p intentions.length
-      if res[0]["vendor"] != "Any"
-        # if res[0]["vendor"] = "Any"
-        # end
-        v = Vendor.find_by("name = ?", res[0]["vendor"])
 
-        intentions = intentions.where(["vendor_id = ?", v.id]) if v != "Any"
+      id_check = []
+      id_final = []
 
+      res.each_with_index do |int, index|
+        intentions = Intention.all
+        id_check = []
+        if int["vendor"] != "Any"
+          # if int["vendor"] = "Any"
+          # end
+          v = Vendor.find_by("name = ?", int["vendor"])
+          intentions = intentions.where(["vendor_id = ?", v.id]) if v != "Any"
+
+
+        end
+        if int["sector"] != "Any"
+          sect = Sector.find_by("name = ?", int["sector"])
+          # p sect.inspect
+          intentions = intentions.where(["sector_id = ?", sect.id]) if sect != "Any"
+        # p "intentions:"
+        # p intentions.length
+        end
+
+        int_str = ""
+        if res[0]["intention"] == "Adopt"
+          int_str = "ADOPTION"
+        elsif res[0]["intention"] == "Replace"
+          int_str = "REPLACING"
+        else
+          int_str = res[0]["intention"]
+        end
+        # p "INT STRING:"
+        # puts int_str
+        intentions = intentions.where(["intention = ?", int_str.upcase]) if res[0]["intention"] != "Any"
+        intentions.each do |i|
+          id_check << i.user_id
+        end
+
+        if index == 0
+          id_final = id_check
+        else
+          id_final = id_final & id_check
+        end
+        p id_final
 
       end
-      if res[0]["sector"] != "Any"
-        sect = Sector.find_by("name = ?", res[0]["sector"])
-        # p sect.inspect
-        intentions = intentions.where(["sector_id = ?", sect.id]) if sect != "Any"
-      # p "intentions:"
-      # p intentions.length
-      end
 
-      int_str = ""
-      if res[0]["intention"] == "Adopt"
-        int_str = "ADOPTION"
-      elsif res[0]["intention"] == "Replace"
-        int_str = "REPLACING"
-      else
-        int_str = res[0]["intention"]
-      end
-      # p "INT STRING:"
-      # puts int_str
-      intentions = intentions.where(["intention = ?", int_str.upcase]) if res[0]["intention"] != "Any"
-
-
-
-      # p "Intentions found:"
-      # p intentions.inspect
       user_uids = []
 
-      intentions.each do | i |
-        user_uids << i.user_id.to_s + ".0"
+      id_final.each do | i |
+        # user_uids << i.user_id.to_s + ".0"
+        user_uids << i.to_s + ".0"
       end
-      # puts "USER IDS FROM INTENTIONS:"
-      # puts user_uids
 
     end
 
