@@ -134,12 +134,40 @@ class User < ActiveRecord::Base
     # then find all users with the id's?
     works = Work.all
 
+    works_arr = []
+    if search[:clevel].present? && search[:clevel] == true
+      arr = ["%Chief%", "%CIO%", "%CISO%", "%CSO%", "%CTO%", "%CMO%", "%CDO%", "%CEO%", "%COO%", "%CFO%"]
+      works_clevel = works.where('job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ?', "%Chief%", "%CIO%", "%CISO%", "%CSO%", "%CTO%", "%CMO%", "%CDO%", "%CEO%", "%COO%", "%CFO%")
+      works_arr << works_clevel
+    end
+    if search[:executive].present? && search[:executive] == true
+      works_executive = works.where('job_title LIKE ? OR job_title LIKE ?', '%EVP%', '%Executive%')
+      works_arr << works_executive
+    end
+    if search[:president].present? && search[:president] == true
+      works_pres = works.where('job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ?', '%EVP%', '%SVP%', '%President%', '%AVP%', '%VP%')
+      works_arr << works_pres
+    end
+    if search[:director].present? && search[:president] == true
+      works_dir = works.where('job_title LIKE ? OR job_title LIKE ?', '%EVP%', '%Executive%')
+      works_arr << works_dir
+    end
+    if works_arr.length > 1
+      p works_arr[1].class
+      works = works_arr[0]
+      1.upto(works_arr.length - 1) do |i|
+        works = works.merge(works_arr[i])
+      end
+    elsif works_arr.length == 1
+      works = works_arr[0]
+    end
+
     works = works.where('current'=>true)
     works = works.where(["industry LIKE ?", search[:industry]]) if search[:industry].present?
     works = works.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
     works = works.where(["region LIKE ?", search[:region]]) if search[:region].present?
     works = works.where(["country LIKE ?", search[:country]]) if search[:country].present?
-    works = works.where(["job_title LIKE ?", search[:job_title]]) if search[:job_title].present?
+    # works = works.where(["job_title LIKE ?", search[:job_title]]) if search[:job_title].present?
     if search[:organization_type].present?
       if search[:organization_type] == "Publicly Traded"
         works = works.where('public'=>true)
@@ -147,6 +175,7 @@ class User < ActiveRecord::Base
         works = works.where('public'=>false)
       end
     end
+
 
     works = works.where(:uid=>user_uids) if search.results.present?
 
@@ -157,7 +186,7 @@ class User < ActiveRecord::Base
     users = User.where.not(id: current_user.id)
 
 
-    if (!search[:industry].present? && !search[:enterprise].present? && !search[:region].present? && !search[:country].present? && !search[:job_title].present? && !search[:organization_type].present? && !search.results.present?)
+    if (!search[:industry].present? && !search[:enterprise].present? && !search[:region].present? && !search[:country].present? && !search[:job_title].present? && !search[:organization_type].present? && !search.results.present? && !search[:clevel].present? && !search[:executive].present? && !search[:president].present? && !search[:director].present? && !search[:principal].present? && !search[:head].present? && !search[:senior].present? && !search[:lead].present? && !search[:manager].present? && !search[:architect].present? && !search[:infrastructure].present? && !search[:engineer].present? && !search[:consultant].present? && !search[:security].present? && !search[:administrator].present? && !search[:analyst].present? && !search[:risk].present?)
     else
       users = users.where(:uid=>wids)
       p users.length

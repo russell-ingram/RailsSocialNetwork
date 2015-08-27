@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817175519) do
+ActiveRecord::Schema.define(version: 20150827150506) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -147,6 +147,23 @@ ActiveRecord::Schema.define(version: 20150817175519) do
     t.datetime "updated_at",        null: false
     t.text     "results"
     t.integer  "peers"
+    t.boolean  "clevel"
+    t.boolean  "executive"
+    t.boolean  "president"
+    t.boolean  "director"
+    t.boolean  "principal"
+    t.boolean  "head"
+    t.boolean  "senior"
+    t.boolean  "lead"
+    t.boolean  "manager"
+    t.boolean  "architect"
+    t.boolean  "infrastructure"
+    t.boolean  "engineer"
+    t.boolean  "consultant"
+    t.boolean  "security"
+    t.boolean  "analyst"
+    t.boolean  "administrator"
+    t.boolean  "risk"
   end
 
   create_table "sectors", force: :cascade do |t|

@@ -137,7 +137,7 @@ class SearchsController < ApplicationController
   end
 
   def search_params
-    params.require(:search).permit(:name, :industry, :enterprise, :organization_type, :region, :country, :job_title, :results, :peers)
+    params.require(:search).permit(:name, :industry, :enterprise, :organization_type, :region, :country, :job_title, :results, :peers, :clevel, :executive, :president, :director, :principal, :head, :senior, :lead, :manager, :architect, :infrastructure, :engineer, :consultant, :security, :analyst, :administrator, :risk)
   end
 
   def format_results(search,results)

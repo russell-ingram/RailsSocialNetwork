@@ -133,6 +133,11 @@ $( document ).ready(function() {
   });
 
 
+  $(document).on('click', ".searchMultiselectDropdown" , function(event) {
+      event.stopPropagation();
+  });
+
+
 });
 
 

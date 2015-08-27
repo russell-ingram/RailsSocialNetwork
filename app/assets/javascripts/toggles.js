@@ -12,7 +12,7 @@ $( document ).ready(function() {
       $(this).find('.pubBoxIcon').removeClass('icon-selection-true');
       $(this).find('.pubBoxIcon').addClass('icon-selection-false');
     });
-    $(this).find('.pubBoxIcon').removeClass('icon-selection-false')
+    $(this).find('.pubBoxIcon').removeClass('icon-selection-false');
     $(this).find('.pubBoxIcon').addClass('icon-selection-true');
     if ($(this).is('#callButton3')) {
 
@@ -193,6 +193,32 @@ $( document ).ready(function() {
       $(this).next().val('true');
     }
 
+  });
+
+  $(document).on('click', '.multiSelectButton',function() {
+    var btn = $(this).find(".radioSendAll");
+    var icon = $(this).find(".checkBoxIcon");
+    if (btn.is(':checked')) {
+      btn.prop("checked", false);
+      icon.removeClass('icon-selection-true');
+      icon.addClass('icon-selection-false');
+      // icon.css("color","#cbd0d2");
+      $(this).next().val('false');
+    } else {
+      btn.prop("checked", true);
+      // $('.checkBoxIcon').each(function() {
+      //   if ($(this).hasClass('icon-selection-true')) {
+      //     $(this).removeClass('icon-selection-true');
+      //     $(this).addClass('icon-selection-false');
+      //     // $(this).css("color","#cbd0d2");
+      //     $(this).next().val('false');
+      //   }
+      // })
+      icon.removeClass('icon-selection-false');
+      icon.addClass('icon-selection-true');
+      // icon.css("color","#3eb2cc");
+      $(this).next().val('true');
+    }
   });
 
 
