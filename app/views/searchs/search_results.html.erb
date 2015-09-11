@@ -92,15 +92,159 @@
             </div>
           <% end %>
           <%= f.text_field :country, placeholder: 'country',style: 'display:none;' %>
-          <% if !@search.job_title.blank? %>
+          <% if !@search.clevel.blank? %>
             <div class="searchTag">
-              <div class="searchTagText" value="job_title">
-              <%= @search.job_title %>
+              <div class="searchTagText" value="clevel">
+              C-Level
               </div>
               <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
             </div>
           <% end %>
-          <%= f.text_field :job_title, placeholder: 'job_title',style: 'display:none;' %>
+          <%= f.text_field :clevel, placeholder: 'clevel',style: 'display:none;' %>
+          <% if !@search.executive.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="executive">
+              Executive
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :executive, placeholder: 'executive',style: 'display:none;' %>
+          <% if !@search.president.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="president">
+              President
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :president, placeholder: 'president',style: 'display:none;' %>
+          <% if !@search.director.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="director">
+              Director
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :director, placeholder: 'director',style: 'display:none;' %>
+          <% if !@search.principal.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="principal">
+              Principal
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :principal, placeholder: 'principal',style: 'display:none;' %>
+          <% if !@search.head.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="head">
+              Head
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :head, placeholder: 'head',style: 'display:none;' %>
+          <% if !@search.senior.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="senior">
+              Senior
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :senior, placeholder: 'senior',style: 'display:none;' %>
+          <% if !@search.lead.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="lead">
+              Lead
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :lead, placeholder: 'lead',style: 'display:none;' %>
+          <% if !@search.manager.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="manager">
+              Manager
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :manager, placeholder: 'manager',style: 'display:none;' %>
+          <% if !@search.architect.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="architect">
+              Architect
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :architect, placeholder: 'architect',style: 'display:none;' %>
+          <% if !@search.infrastructure.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="infrastructure">
+              Infrastructure
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :infrastructure, placeholder: 'infrastructure',style: 'display:none;' %>
+          <% if !@search.engineer.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="engineer">
+              Engineer
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :engineer, placeholder: 'engineer',style: 'display:none;' %>
+          <% if !@search.consultant.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="consultant">
+              Consultant
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :consultant, placeholder: 'consultant',style: 'display:none;' %>
+          <% if !@search.security.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="security">
+              Security
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :security, placeholder: 'security',style: 'display:none;' %>
+          <% if !@search.analyst.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="analyst">
+              Analyst
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :analyst, placeholder: 'analyst',style: 'display:none;' %>
+          <% if !@search.administrator.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="administrator">
+              Administrator
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :administrator, placeholder: 'administrator',style: 'display:none;' %>
+          <% if !@search.risk.blank? %>
+            <div class="searchTag">
+              <div class="searchTagText" value="risk">
+              Risk
+              </div>
+              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+            </div>
+          <% end %>
+          <%= f.text_field :risk, placeholder: 'risk',style: 'display:none;' %>
 
           <%= f.text_field :results, placeholder: 'Results', style: 'display: none;', id: 'resultsFieldTagsField' %>
           <%= f.submit 'Submit', id: 'searchEdit', style: "display: none;" %>
@@ -261,27 +405,266 @@
           </div>
           <div class="icon icon-drop-dwn-arrow"></div>
         </div>
-        <div class="searchSideBarDropdown last">
+
+        <div class="searchSideBarDropdown">
           <div class="searchSidebarDropdownLeft">
-            <div class="searchSideBarDropdownHeader">Job Title</div>
+            <div class="searchSideBarDropdownHeader">JOB TITLE</div>
             <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
-              <% if !@search.job_title.blank? %>
-              <span class="ddLabel searchDDLabel active">
-                  <%= @search.job_title %>
-              <% else %>
               <span class="ddLabel searchDDLabel">
-                  No preference
-              <% end %>
+                Title
               </span>
-              <ul class="dropdown fieldDropdown searchDropdown">
-                <li class="ddOption fieldOption resultsOption">Chief Information Officer</li>
-                <li class="ddOption fieldOption resultsOption">Chief Executive Officer</li>
+              <ul class="dropdown fieldDropdown searchDropdown searchMultiselectDropdownResult">
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.clevel? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div></span>C-Level</label>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                    </span>C-Level</label>
+                  <% end %>
+
+                  </div>
+                  <%= f.check_box :clevel, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.executive? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Executive</label>
+                  </div>
+                  <%= f.check_box :executive, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.president? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>President</label>
+                  </div>
+                  <%= f.check_box :president, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.director? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Director</label>
+                  </div>
+                  <%= f.check_box :director, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.principal? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Principal</label>
+                  </div>
+                  <%= f.check_box :principal, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.head? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Head</label>
+                  </div>
+                  <%= f.check_box :head, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.senior? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Senior</label>
+                  </div>
+                  <%= f.check_box :senior, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.lead? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Lead</label>
+                  </div>
+                  <%= f.check_box :lead, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.manager? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Manager</label>
+                  </div>
+                  <%= f.check_box :manager, style: "display:none;" %>
+                </div>
+
               </ul>
             </div>
-            <%= f.text_field :job_title, placeholder: 'Job Title', style:'display: none;' %>
           </div>
           <div class="icon icon-drop-dwn-arrow"></div>
         </div>
+
+        <div class="searchSideBarDropdown last">
+          <div class="searchSidebarDropdownLeft">
+            <div class="searchSideBarDropdownHeader">JOB TITLE</div>
+            <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
+              <span class="ddLabel searchDDLabel">
+                Function
+              </span>
+              <ul class="dropdown fieldDropdown searchDropdown searchMultiselectDropdownResult">
+
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.architect? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div></span>Architect</label>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Architect</label>
+                  <% end %>
+
+                  </div>
+                  <%= f.check_box :architect, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.infrastructure? %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Infrastructure</label>
+                  </div>
+                  <%= f.check_box :infrastructure, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.engineer? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Engineer</label>
+                  </div>
+                  <%= f.check_box :engineer, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.consultant? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Consultant</label>
+                  </div>
+                  <%= f.check_box :consultant, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.security? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Security</label>
+                  </div>
+                  <%= f.check_box :security, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.analyst? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                  <% end %>
+                    </span>Analyst</label>
+                  </div>
+                  <%= f.check_box :analyst, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.administrator? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div>
+                    </span>Administrator</label>
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div>
+                    </span>Administrator</label>
+                  <% end %>
+
+                  </div>
+                  <%= f.check_box :administrator, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox pubOrPrivList">
+                  <div id="currentPosButton" class="multiSelectButton">
+                  <% if @search.risk? %>
+                    <input type="radio" class="radioSendAll" name="public" value="true">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-true"></div></span>Risk</label>
+
+                  <% else %>
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Risk</label>
+
+                  <% end %>
+
+                  </div>
+                  <%= f.check_box :risk, style: "display:none;" %>
+                </div>
+
+              </ul>
+            </div>
+          </div>
+          <div class="icon icon-drop-dwn-arrow"></div>
+        </div>
+
+
+
         <div class="searchSideBarFiller"></div>
         <div class="spendingIntentionsOptions sideBarIntentions">
         <% @spendingTags.each do |stag| %>

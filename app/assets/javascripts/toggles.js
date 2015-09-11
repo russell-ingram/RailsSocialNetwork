@@ -195,29 +195,22 @@ $( document ).ready(function() {
 
   });
 
-  $(document).on('click', '.multiSelectButton',function() {
+  $(document).on('click', '.multiSelectButton',function(event) {
     var btn = $(this).find(".radioSendAll");
     var icon = $(this).find(".checkBoxIcon");
     if (btn.is(':checked')) {
       btn.prop("checked", false);
       icon.removeClass('icon-selection-true');
       icon.addClass('icon-selection-false');
-      // icon.css("color","#cbd0d2");
+
       $(this).next().val('false');
+      $(this).next().next().val('false');
     } else {
       btn.prop("checked", true);
-      // $('.checkBoxIcon').each(function() {
-      //   if ($(this).hasClass('icon-selection-true')) {
-      //     $(this).removeClass('icon-selection-true');
-      //     $(this).addClass('icon-selection-false');
-      //     // $(this).css("color","#cbd0d2");
-      //     $(this).next().val('false');
-      //   }
-      // })
       icon.removeClass('icon-selection-false');
       icon.addClass('icon-selection-true');
-      // icon.css("color","#3eb2cc");
       $(this).next().val('true');
+      $(this).next().next().val('true');
     }
   });
 

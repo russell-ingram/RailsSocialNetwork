@@ -64,14 +64,148 @@
               Job Title
           </span>
           <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
-          <ul class="dropdown fieldDropdown">
-            <li class="ddOption fieldOption">No preference</li>
-            <li class="ddOption fieldOption">Chief Information Officer</li>
-            <li class="ddOption fieldOption">Chief Executive Officer</li>
 
+          <ul class="dropdown searchMultiselectDropdown homeMultiSelectDropdown">
+            <div class="icon icon-icon-top-nubs-gray multiSelectNub"></div>
+            <div class="multiSelectHalf">
+              <div class="multiSelectLabel">JOB TITLE</div>
+
+              <div class="multiSelectSelector">
+
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>C-Level</label>
+                  </div>
+                  <%= f.check_box :clevel, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Executive</label>
+                  </div>
+                  <%= f.check_box :executive, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>President</label>
+                  </div>
+                  <%= f.check_box :president, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Director</label>
+                  </div>
+                  <%= f.check_box :director, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Principal</label>
+                  </div>
+                  <%= f.check_box :principal, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Head</label>
+                  </div>
+                  <%= f.check_box :head, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Senior</label>
+                  </div>
+                  <%= f.check_box :senior, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Lead</label>
+                  </div>
+                  <%= f.check_box :lead, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Manager</label>
+                  </div>
+                  <%= f.check_box :manager, style: "display:none;" %>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="multiSelectHalf">
+              <div class="multiSelectLabel">FUNCTION</div>
+              <div class="multiSelectSelector">
+
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Architect</label>
+                  </div>
+                  <%= f.check_box :architect, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Infrastructure</label>
+                  </div>
+                  <%= f.check_box :infrastructure, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Engineer</label>
+                  </div>
+                  <%= f.check_box :engineer, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Consultant</label>
+                  </div>
+                  <%= f.check_box :consultant, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Security</label>
+                  </div>
+                  <%= f.check_box :security, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Analyst</label>
+                  </div>
+                  <%= f.check_box :analyst, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Administrator</label>
+                  </div>
+                  <%= f.check_box :administrator, style: "display:none;" %>
+                </div>
+                <div class="pubOrPrivBox">
+                  <div id="currentPosButton" class="multiSelectButton">
+                    <input type="radio" class="radioSendAll" name="public" value="false">
+                    <label><span><div class="checkBoxIcon currentPosCheck icon icon-selection-false"></div></span>Risk</label>
+                  </div>
+                  <%= f.check_box :risk, style: "display:none;" %>
+                </div>
+
+
+
+              </div>
+            </div>
           </ul>
         </div>
-        <%= f.text_field :job_title, placeholder: 'Job Title', style:'display: none;' %>
       </div>
 
       <div class="field field-col-4">

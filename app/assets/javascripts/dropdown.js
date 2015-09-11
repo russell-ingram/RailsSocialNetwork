@@ -136,6 +136,9 @@ $( document ).ready(function() {
   $(document).on('click', ".searchMultiselectDropdown" , function(event) {
       event.stopPropagation();
   });
+  $(document).on('click', ".searchMultiselectDropdownResult" , function(event) {
+      event.stopPropagation();
+  });
 
 
 });

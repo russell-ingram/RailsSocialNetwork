@@ -135,6 +135,8 @@ class User < ActiveRecord::Base
     works = Work.all
 
     works_arr = []
+
+
     if search[:clevel].present? && search[:clevel] == true
       arr = ["%Chief%", "%CIO%", "%CISO%", "%CSO%", "%CTO%", "%CMO%", "%CDO%", "%CEO%", "%COO%", "%CFO%"]
       works_clevel = works.where('job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ?', "%Chief%", "%CIO%", "%CISO%", "%CSO%", "%CTO%", "%CMO%", "%CDO%", "%CEO%", "%COO%", "%CFO%")
@@ -156,7 +158,7 @@ class User < ActiveRecord::Base
       p works_arr[1].class
       works = works_arr[0]
       1.upto(works_arr.length - 1) do |i|
-        works = works.merge(works_arr[i])
+        works = works.union(works_arr[i])
       end
     elsif works_arr.length == 1
       works = works_arr[0]

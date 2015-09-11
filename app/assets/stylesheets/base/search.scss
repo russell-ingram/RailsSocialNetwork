@@ -1006,9 +1006,32 @@
   }
 }
 
+.homeMultiSelectDropdown.active {
+  margin-left: -270px;
+}
+
 .searchMultiselectDropdown > :last-child {
   border-left: 1px solid #cbd0d2;
   margin-top: -14px;
+}
+
+.pubOrPrivList {
+  float: none !important;
+  margin-left: 15px;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  .multiSelectButton {
+    height:40px;
+    margin-top: -5px;
+  }
+  .checkBoxIcon {
+    line-height: initial;
+    height: auto;
+  }
+}
+.searchMultiselectDropdownResult.active {
+  margin-top: 5px;
 }
 
 
