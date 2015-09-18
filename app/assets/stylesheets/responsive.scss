@@ -1,0 +1,16 @@
+@media screen and (max-width: 1050px) {
+
+    .headerWrapper, .footWrapper, .pageWrap {
+    	width: 100%;
+    }
+
+    .searchBarHomeWrapper {
+    	margin-right: 25px;
+    }
+
+    .searchBarHomeWrapper .wrapper-dropdown, .homeAddIntentions {
+    	margin-bottom:20px;
+    	width:100%;
+    }
+
+}
