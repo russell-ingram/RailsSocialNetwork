@@ -476,7 +476,7 @@
   <div class="homeConnectionsHeader">suggested connections</div>
   <div class="homeConnections">
     <div class="homeConnectionBox">
-      <div class="homeConnectionPic"><%= image_tag "user-photo01.jpg" %></div>
+      <div class="homeConnectionPic" style="background-image:url(<%= image_path "user-photo01.jpg" %>)"><%= image_tag "user-photo01.jpg" %></div>
       <div class="homeConnectionProfile">
         <div class="hcpTitle">CIO</div>
         <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
@@ -485,7 +485,7 @@
       </div>
     </div>
     <div class="homeConnectionBox">
-      <div class="homeConnectionPic"><%= image_tag "user-photo02.jpg" %></div>
+      <div class="homeConnectionPic" style="background-image:url(<%= image_path "user-photo02.jpg" %>)"><%= image_tag "user-photo02.jpg" %></div>
       <div class="homeConnectionProfile">
         <div class="hcpTitle">CIO</div>
         <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
@@ -494,13 +494,14 @@
       </div>
     </div>
     <div class="homeConnectionBox">
-      <div class="homeConnectionPic"><%= image_tag "user-photo03.jpg" %></div>
+      <div class="homeConnectionPic forNonResponsive" style="background-image:url(<%= image_path "user-photo03.jpg" %>)"><%= image_tag "user-photo03.jpg" %></div>
       <div class="homeConnectionProfile">
         <div class="hcpTitle">CIO</div>
         <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
         <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
         <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
       </div>
+      <div class="homeConnectionPic forResponsive" style="background-image:url(<%= image_path "user-photo03.jpg" %>)"><%= image_tag "user-photo03.jpg" %></div>
     </div>
     <div class="homeConnectionBox">
       <div class="homeConnectionProfile">
@@ -509,25 +510,27 @@
         <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
         <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
       </div>
-      <div class="homeConnectionPic"><%= image_tag "user-photo04.jpg" %></div>
+      <div class="homeConnectionPic" style="background-image:url(<%= image_path "user-photo04.jpg" %>)"><%= image_tag "user-photo04.jpg" %></div>
     </div>
     <div class="homeConnectionBox">
+      <div class="homeConnectionPic forResponsive" style="background-image:url(<%= image_path "user-photo05.jpg" %>)"><%= image_tag "user-photo05.jpg" %></div>
       <div class="homeConnectionProfile">
         <div class="hcpTitle">CIO</div>
         <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
         <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
         <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
       </div>
-      <div class="homeConnectionPic"><%= image_tag "user-photo05.jpg" %></div>
+      <div class="homeConnectionPic forNonResponsive" style="background-image:url(<%= image_path "user-photo05.jpg" %>)"><%= image_tag "user-photo05.jpg" %></div>
     </div>
     <div class="homeConnectionBox">
+      <div class="homeConnectionPic forResponsive" style="background-image:url(<%= image_path "user-photo06.jpg" %>)"><%= image_tag "user-photo06.jpg" %></div>
       <div class="homeConnectionProfile">
         <div class="hcpTitle">CIO</div>
         <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
         <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
         <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
       </div>
-      <div class="homeConnectionPic"><%= image_tag "user-photo06.jpg" %></div>
+      <div class="homeConnectionPic forNonResponsive" style="background-image:url(<%= image_path "user-photo06.jpg" %>)"><%= image_tag "user-photo06.jpg" %></div>
     </div>
 
   </div>

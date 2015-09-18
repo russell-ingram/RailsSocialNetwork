@@ -1,5 +1,4 @@
-.searchButton.forResponsive,
-.homeContentInvite.forResponsive {
+.forResponsive {
 	display: none;
 }
 
@@ -113,11 +112,40 @@
 		.homeInviteText {
 			margin-top:20px;
 			margin-bottom:30px;
+		    margin-left: 10%;
+		    margin-right: 10%;
 		}
 
 		.inviteButton {
 			margin-bottom:35px;
 		}
+	}
+
+	.homeConnectionBox {
+
+		&, .homeConnectionPic, .homeConnectionProfile {
+			width:50%;
+		}
+
+	    .homeConnectionPic.forResponsive {
+			display: block;
+		}
+
+		.homeConnectionPic.forNonResponsive {
+			display: none;
+		}
+
+		.homeConnectionPic {
+
+		    background-size: 100% auto;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		}
+
+	    .homeConnectionPic img {
+			display:none;
+		}
+
 	}
 
 	.footerMargin {
