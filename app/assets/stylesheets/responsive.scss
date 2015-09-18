@@ -11,7 +11,6 @@
 
     .headerWrapper {
 	    padding-left: 20px;
-	    padding-right: 20px;
     }
 
     .headerWrapper .navBar .hoverDiv {
@@ -20,7 +19,9 @@
     }
 
     .headerWrapper .navBar {
-    	margin-right: 6px;
+	    position: absolute;
+	    right: 0;
+    	margin-right: 20px;
     }
 
     .searchBarHomeWrapper {
