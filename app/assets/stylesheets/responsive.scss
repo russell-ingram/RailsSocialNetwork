@@ -40,6 +40,11 @@
 	    	margin-right: 20px;
 	    }
 
+		.logoutDrop {
+		  right:12px;
+  		  margin-left: 0;
+		}
+
 	}
 
 	.searchBarHomeWrapper {
@@ -225,6 +230,10 @@
 	    .navBar .hoverDiv {
 
 	 	   margin-left: 15px;
+	    }
+
+	    .hoverDiv.forNonResponsive {
+	    	display: none;
 	    }
 
 	}
