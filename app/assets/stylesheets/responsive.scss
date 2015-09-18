@@ -9,67 +9,76 @@
     	width: 100%;
     }
 
-    .headerWrapper {
-	    padding-left: 20px;
-    }
+	.headerWrapper {
 
-    .headerWrapper .navBar .hoverDiv {
+	    & {
+		    padding-left: 20px;
+	    }
 
- 	   margin-left: 30px;
-    }
+	    .navBar .hoverDiv {
 
-    .headerWrapper .navBar {
-	    position: absolute;
-	    right: 0;
-    	margin-right: 20px;
-    }
+	 	   margin-left: 30px;
+	    }
 
-    .searchBarHomeWrapper {
-    	margin-right: 25px;
-    }
+	    .navBar {
+		    position: absolute;
+		    right: 0;
+	    	margin-right: 20px;
+	    }
 
-    .searchBarHomeWrapper .wrapper-dropdown, .homeAddIntentions {
-    	width: 100%;
-    }
+	}
 
-    .searchBarHomeWrapper .wrapper-dropdown {
-    	margin-bottom: 20px;
+	.searchBarHomeWrapper {
 
-    }
+		& {
 
-    .searchBarHomeWrapper .homeAddIntentions {
-    	margin-bottom:10px;
-    }
+	    	margin-right: 25px;
+		}
 
-    .searchBarHomeWrapper .formBoxRow {
-    	margin-top:40px;
-    }
+	    .wrapper-dropdown, .homeAddIntentions {
+	    	width: 100%;
+	    }
 
-    .searchBarHomeWrapper .searchButton.forResponsive {
-    	display: block;
-    	width: 100%;
-    }
+	    .wrapper-dropdown {
+	    	margin-bottom: 20px;
 
-    .searchBarHomeWrapper .searchButton.forNonResponsive {
-    	display: none;
-    }
+	    }
 
-    .searchBarHomeWrapper .searchButton.forResponsive .fa {
-    	display: none;
-    }
+	    .homeAddIntentions {
+	    	margin-bottom:10px;
+	    }
 
-    .searchBarHomeWrapper .field-col-4 {
-    	width:49%;
+	    .formBoxRow {
+	    	margin-top:40px;
+	    }
 
-    }
+	    .searchButton.forResponsive {
+	    	display: block;
+	    	width: 100%;
+	    }
 
-    .searchBarHomeWrapper .homePageAdvancedRow {
-    	padding-right:0;
-    }
+	    .searchButton.forNonResponsive {
+	    	display: none;
+	    }
 
-    .searchBarHomeWrapper .field-col-4 .wrapper-dropdown {
-    	margin-right:0;
-    	
-    }
+	    .searchButton.forResponsive .fa {
+	    	display: none;
+	    }
+
+	    .homePageAdvancedRow {
+	    	padding-right:0;
+	    }
+
+	    .field-col-4 {
+	    	width:49%;
+
+	    }
+
+	    .field-col-4 .wrapper-dropdown {
+	    	margin-right:0;
+	    	
+	    }
+
+	}
 
 }
