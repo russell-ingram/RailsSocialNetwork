@@ -1,9 +1,23 @@
-.forResponsive {
+.forResponsive,
+.break-1-show,
+.break-2-show {
 	display: none;
+}
+
+.break-0-show {
+	display: block;
 }
 
 
 @media screen and (max-width: 1050px) {
+
+	.break-1-show {
+		display: block;
+	}
+
+	.break-1-hide {
+		display: none;
+	}
 
     .headerWrapper, .footWrapper, .pageWrap {
     	width: 100%;
@@ -53,13 +67,12 @@
 	    	margin-top:40px;
 	    }
 
-	    .searchButton.forResponsive {
+	    .searchButton.break-1-show {
 	    	display: block;
 	    	width: 100%;
 	    }
 
-	    .searchButton.forNonResponsive,
-	    .searchButton.forResponsive .fa {
+	    .searchButton.break-1-show .fa {
 	    	display: none;
 	    }
 
@@ -95,7 +108,7 @@
 
 	}
 
-	.homeContentInvite.forResponsive {
+	.homeContentInvite.break-1-show {
 		
 		& {
 			display:block;
@@ -125,14 +138,6 @@
 
 		&, .homeConnectionPic, .homeConnectionProfile {
 			width:50%;
-		}
-
-	    .homeConnectionPic.forResponsive {
-			display: block;
-		}
-
-		.homeConnectionPic.forNonResponsive {
-			display: none;
 		}
 
 		.homeConnectionPic {
@@ -190,7 +195,6 @@
 			position:absolute;
 			bottom:0;
 			padding:20px;
-
 		}
 
 		.copyrightFoot .year {
@@ -203,4 +207,62 @@
 			padding-bottom:25px;
 		}
 	}
+}
+
+@media screen and (max-width: 700px) {
+
+	.break-2-hide,
+	.break-1-show.break-2-hide {
+		display: none;
+	}
+
+	.break-2-show {
+		display: block;
+	}
+
+	.headerWrapper {
+
+	    .navBar .hoverDiv {
+
+	 	   margin-left: 15px;
+	    }
+
+	}
+
+	.searchBarHomeWrapper {
+
+		& {
+
+			margin-left: 20px;
+	    	margin-right: 20px;
+		}
+
+	    .field-col-4 {
+	    	width:100%;
+
+	    }
+
+	}
+
+	.homeContentWrapper .homeContentBox1, .homeContentWrapper .homeContentBox2 {
+		width:100%;
+	}	
+
+	.homeConnectionBox {
+
+		& {
+			width:100%;
+			border-bottom:3px solid white;
+		}
+
+		.homeConnectionPic.forResponsive {
+			display: none;
+		}
+
+		.homeConnectionPic.forResponsive-2 {
+			display: block;
+		}
+
+	}
+
 }
