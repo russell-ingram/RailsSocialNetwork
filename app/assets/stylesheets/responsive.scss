@@ -32,7 +32,8 @@
 
 		& {
 
-	    	margin-right: 25px;
+			margin-left: 10%;
+	    	margin-right: 10%;
 		}
 
 	    .wrapper-dropdown, .homeAddIntentions {
@@ -57,10 +58,7 @@
 	    	width: 100%;
 	    }
 
-	    .searchButton.forNonResponsive {
-	    	display: none;
-	    }
-
+	    .searchButton.forNonResponsive,
 	    .searchButton.forResponsive .fa {
 	    	display: none;
 	    }
