@@ -1,3 +1,8 @@
+.searchButton.forResponsive {
+	display: none;
+}
+
+
 @media screen and (max-width: 1050px) {
 
     .headerWrapper, .footWrapper, .pageWrap {
@@ -15,7 +20,7 @@
     }
 
     .headerWrapper .navBar {
-    	margin-right:6px;
+    	margin-right: 6px;
     }
 
     .searchBarHomeWrapper {
@@ -23,8 +28,47 @@
     }
 
     .searchBarHomeWrapper .wrapper-dropdown, .homeAddIntentions {
-    	margin-bottom:20px;
-    	width:100%;
+    	width: 100%;
+    }
+
+    .searchBarHomeWrapper .wrapper-dropdown {
+    	margin-bottom: 20px;
+
+    }
+
+    .searchBarHomeWrapper .homeAddIntentions {
+    	margin-bottom:10px;
+    }
+
+    .searchBarHomeWrapper .formBoxRow {
+    	margin-top:40px;
+    }
+
+    .searchBarHomeWrapper .searchButton.forResponsive {
+    	display: block;
+    	width: 100%;
+    }
+
+    .searchBarHomeWrapper .searchButton.forNonResponsive {
+    	display: none;
+    }
+
+    .searchBarHomeWrapper .searchButton.forResponsive .fa {
+    	display: none;
+    }
+
+    .searchBarHomeWrapper .field-col-4 {
+    	width:49%;
+
+    }
+
+    .searchBarHomeWrapper .homePageAdvancedRow {
+    	padding-right:0;
+    }
+
+    .searchBarHomeWrapper .field-col-4 .wrapper-dropdown {
+    	margin-right:0;
+    	
     }
 
 }
