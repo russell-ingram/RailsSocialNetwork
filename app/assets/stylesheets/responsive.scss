@@ -229,9 +229,20 @@
 
 	    .navBar .hoverDiv {
 
-	 	   margin-left: 15px;
+	 	   margin-left: 38px;
 	    }
 
+	}
+
+	.header {
+		& {
+			height: 70px;
+			line-height: 70px;
+		}
+
+		.icon {
+			line-height:  70px;
+		}
 	}
 
 	.searchBarHomeWrapper {

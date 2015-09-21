@@ -10,9 +10,11 @@
       
       <% cssClass = (current_page?('/search') || controller.controller_name == "searchs") ? 'active' : 'notActive' %>
       <div class="hoverDiv <%= cssClass %> break-2-hide"><a href="/search">SEARCH</a></div>
+      <div class="hoverDiv <%= cssClass %> break-2-show"><a href="/search"><div class="icon icon-icon-search menuIcon"></div></a></div>
       
       <% cssClass = (controller.controller_name == 'friendships') ? 'active' : 'notActive' %>
       <div class="hoverDiv <%= cssClass %> break-2-hide"><a href="/connections">CONNECTIONS</a></div>
+      <div class="hoverDiv <%= cssClass %> break-2-show"><a href="/connections"><div class="icon icon-icon-multiple-people menuIcon"></div></a></div>
       
       <% if current_user.friendship_requests > 0 %>
         <div class="notificationMenuIcon break-2-hide"><a href="/messages"><%= current_user.friendship_requests %></a></div>
@@ -26,13 +28,16 @@
       <% end %>
       
       <% cssClass = (current_page?('/profile')) ? 'active' : 'notActive' %>
-      <div class="hoverDiv <%= cssClass %> menuIconOptions"><div class="icon icon-icon-profile menuIcon"></div></div>
+      <div class="hoverDiv <%= cssClass %> menuIconOptions break-2-hide"><div class="icon icon-icon-profile menuIcon"></div></div>
+
+      <div class="hoverDiv <%= cssClass %> menuIconOptions break-2-show"><div class="icon icon-icon-burger-bar menuIcon"></div></div>
 
     </div>
 
     <div class="logoutDrop">
       <div class="icon icon-icon-top-nubs-gray dropNub"></div>
       <div class="menuDropItem"><a href="/profile">MY PROFILE</a></div>
+      <div class="menuDropItem break-2-show"><a href="/messages">MESSAGES</a></div>
       <div class="menuDropItem"><a href="/logout">SIGN OUT</a></div>
       <div class="menuDropItem settingsDropItem">ACCOUNT SETTINGS</div>
       <div class="settingsDropWrapper">
