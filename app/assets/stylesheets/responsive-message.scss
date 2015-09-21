@@ -1,0 +1,111 @@
+
+@media screen and (max-width: 1050px) {
+
+
+}
+
+
+@media screen and (max-width: 700px) {
+	.newMessagesFormWrapper {
+		padding:0;
+	}
+
+
+	.replyFormBody {
+		position: relative;
+		padding-left:0;
+		padding-right:0;    
+	}
+
+	.replyPicColumn {
+		position: absolute;
+		top:0;
+	}
+
+	.replyToFrom {
+		position: absolute;
+		top: 20px;
+		left: 200px;
+	}
+
+	.replySubject {
+		margin-left:25px;
+	}
+
+	.replyTimeStamp {
+		float:none;
+		margin-top:15px;
+    	margin-bottom: 5px;
+    	margin-left: 25px;
+	    border-top: 1px solid #ccc;
+	    padding-top: 10px;
+	}
+
+	.replyContentColumn {
+		margin-left:0;
+		margin-top:135px;
+    	margin-top: 160px;
+	}
+
+	.replyPic {
+		margin-top:20px;
+    	margin-left: 25px;
+	}
+
+	.replyPicColumn {
+		height:auto;
+	}
+
+	.replyBody {
+
+	    padding: 25px;
+	    padding-bottom: 0px;
+		padding-top: 10px;
+	}
+
+	.replyBody,
+	.replySubject {
+		color:black;
+	}
+
+	.deleteMessage {
+		display: block;
+    	padding-left: 25px;
+	}
+
+	.numMessages {
+		margin-left:0;
+	}
+
+	.showAllMessages {
+    padding: 25px;
+    padding-top: 0px;
+	}
+
+	.newMessagesFormWrapper {
+		margin-bottom: 0;
+	}
+
+
+	.replyButtons {
+
+    	background-color: #3eb2cc;
+    	margin-bottom: 20px;
+	}
+
+	.replyButtons .button {
+		color:white;
+		background-color:#3eb2cc;
+	    display: inline-block;
+	    text-align: center;
+	    padding: 25px;
+	    width: 49%;
+	    cursor: pointer;
+	}
+
+	.replyButtons .reply.button {
+		border-right:2px solid #6CC;
+    	margin-bottom: 0;
+	}
+
+}
