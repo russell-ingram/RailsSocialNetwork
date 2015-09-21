@@ -1,0 +1,165 @@
+
+@media screen and (max-width: 1050px) {
+
+
+
+	.searchBarHomeWrapper {
+
+		& {
+
+			margin-left: 10%;
+	    	margin-right: 10%;
+		}
+
+	    .wrapper-dropdown, .homeAddIntentions {
+	    	width: 100%;
+	    }
+
+	    .wrapper-dropdown {
+	    	margin-bottom: 20px;
+
+	    }
+
+	    .homeAddIntentions {
+	    	margin-bottom:10px;
+	    }
+
+	    .formBoxRow {
+	    	margin-top:40px;
+	    }
+
+	    .searchButton.break-1-show {
+	    	display: block;
+	    	width: 100%;
+	    }
+
+	    .searchButton.break-1-show .fa {
+	    	display: none;
+	    }
+
+	    .homePageAdvancedRow {
+	    	padding-right:0;
+	    }
+
+	    .field-col-4 {
+	    	width:49%;
+
+	    }
+
+	    .field-col-4 .wrapper-dropdown {
+	    	margin-right:0;
+	    	
+	    }
+
+	}
+
+	.homeContentWrapper {
+
+		.homeContentInvite.forNonResponsive {
+			display: none;
+		}
+
+		.homeContentFollowed {
+			width:100%;
+		}
+
+		.homeContentBox1, .homeContentBox2 {
+			width:50%;
+		}
+
+	}
+
+	.homeContentInvite.break-1-show {
+		
+		& {
+			display:block;
+			width:100%;
+			float:none;
+		}
+
+		.homeInviteTitle {
+			margin:30px 0 0 0;
+			font-size:18px;
+			width:100%;
+		}
+
+		.homeInviteText {
+			margin-top:20px;
+			margin-bottom:30px;
+		    margin-left: 10%;
+		    margin-right: 10%;
+		}
+
+		.inviteButton {
+			margin-bottom:35px;
+		}
+	}
+
+	.homeConnectionBox {
+
+		&, .homeConnectionPic, .homeConnectionProfile {
+			width:50%;
+		}
+
+		.homeConnectionPic {
+
+		    background-size: 100% auto;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		}
+
+	    .homeConnectionPic img {
+			display:none;
+		}
+
+	}
+
+	.homeConnectionsHeader {
+		height:auto;
+		line-height: inherit;
+		font-size:18px;
+		padding-bottom: 15px;
+	}
+
+}
+
+@media screen and (max-width: 700px) {
+
+
+	.searchBarHomeWrapper {
+
+		& {
+
+			margin-left: 20px;
+	    	margin-right: 20px;
+		}
+
+	    .field-col-4 {
+	    	width:100%;
+
+	    }
+
+	}
+
+	.homeContentWrapper .homeContentBox1, .homeContentWrapper .homeContentBox2 {
+		width:100%;
+	}	
+
+	.homeConnectionBox {
+
+		& {
+			width:100%;
+			border-bottom:3px solid white;
+		}
+
+		.homeConnectionPic.forResponsive {
+			display: none;
+		}
+
+		.homeConnectionPic.forResponsive-2 {
+			display: block;
+		}
+
+	}
+
+}
