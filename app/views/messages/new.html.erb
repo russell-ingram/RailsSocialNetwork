@@ -1,6 +1,6 @@
 
 <%= render "layouts/header" %>
-<div class="pageWrap" data-js-init="initNewMessagePage">
+<div class="pageWrap" data-js-init="newMessagePage">
 
 
 
@@ -46,18 +46,6 @@
        </div>
 
     <% end %>
-
-<script>
-
-function initNewMessagePage(jquery){
-
-  jquery('.newMessagesFormWrapper .formHeader .submit-field').click(function(){
-    jquery('.newMessagesFormWrapper form .submit-field').click();
-  });
-
-}
-
-</script>
 
 
 

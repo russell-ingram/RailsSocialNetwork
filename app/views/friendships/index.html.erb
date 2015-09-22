@@ -1,5 +1,5 @@
 <%= render "layouts/header" %>
-  <div class="pageWrap">
+  <div class="pageWrap" data-js-init="connectionsPage">
     <div class="pageHeader">Connections</div>
     <% if @requested_friendships.length > 0 %>
 
@@ -21,16 +21,28 @@
 
         </a></div>
         <div class="connectionRequestInfo">
-          <div class="connectionReqDate"><%= friendship.created_at.strftime("%B %e, %Y") %></div>
+        <div class="line-info">
+
+          <div class="connectionReqDate break-2-hide"><%= friendship.created_at.strftime("%B %e, %Y") %></div>
           <div class="connectionReqName"><%= link_to friend.full_name, user_profile_path(friend) %></div>
           <% friend_pos = friend.current_pos %>
           <div class="connectionReqCompany"><%= friend_pos["company"] %></div>
           <div class="connectionReqIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>
           <div class="connectionReqSimilarity">this user is in the same industry</div>
-          <div class="connectionReqMsg">Hi James, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tempor libero. Quisque vulputate porttitor ligula, eget sollicitudin...</div>
-          <div class="viewMoreContent fullReqMessage">full message<i class="fa fa-chevron-right"></i></div>
+
         </div>
-        <div class="connectionRequestAction">
+
+          <div class="connectionReqDate break-2-show"><%= friendship.created_at.strftime("%B %e, %Y") %></div>
+          <div class="connectionReqMsg">Hi James, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tempor libero. Quisque vulputate porttitor ligula, eget sollicitudin...</div>
+          <div class="viewMoreContent fullReqMessage break-2-hide">full message<i class="fa fa-chevron-right"></i></div>
+          <div class="buttonsBox break-2-show">
+            
+            <div class="ignore button">Ignore</div>
+            <div class="accept button">Accept</div>
+            <div class="full button">Full Message</div>
+          </div>
+        </div>
+        <div class="connectionRequestAction break-2-hide">
         <%= form_for friendship, url: accept_friendship_path(friendship), method: :put do |form| %>
           <!-- <button type="submit" class="connectionButtonAccept">Accept</button> -->
           <span class="connectionButtonAccept">

@@ -4,31 +4,171 @@
 
 
 	.connectionRequestsWrapper {
-		position:relative;
+
+		& {
+
+			position:relative;
+		}
+
+		.connectionRequestAction,
+		.connectionRequestPic {
+			position: absolute;
+		}
+
+		.connectionRequestAction {
+		    position: absolute;
+		    right: 30px;
+		}
+
+		.connectionRequestInfo {
+		    padding-left:0;
+		    width:auto;
+	    	padding-bottom: 15px;
+	    	padding-top:20px;
+		}
+
+		.connectionReqDate {
+			float:none;
+		}
+
+		.connectionReqDate,
+		.connectionReqName,
+		.connectionReqCompany,
+		.connectionReqIndustry,
+		.connectionReqSimilarity,
+		.connectionReqMsg,
+		.fullReqMessage {
+			padding-left:225px;
+	    	padding-right: 90px;
+		}
+
+		.connectionRequest {
+
+		    overflow: auto;
+		    min-height: 200px;
+		    height:auto;
+		}
 	}
 
-	.connectionRequestAction,
-	.connectionRequestPic {
-		position: absolute;
+}
+
+@media screen and (max-width: 700px) {
+
+	.connectionRequestsWrapper{
+
+		& {
+
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.connectionReqDate,
+		.connectionReqName,
+		.connectionReqCompany,
+		.connectionReqIndustry,
+		.connectionReqSimilarity,
+		.connectionReqMsg,
+		.fullReqMessage {
+	    	padding-right: 25px;
+		}
+
+		.connectionReqName,
+		.connectionReqCompany {
+			font-size:18px;
+		}
+
+
+		.fullReqMessage,
+		.connectionReqDate,
+		.connectionReqIndustry,
+		.connectionReqSimilarity{
+			font-size: 14px;
+		}
+
+		.connectionReqMsg {
+
+	    	padding-left: 20px;
+	    	margin-bottom:30px;
+		}
+
+		.connectionRequestPic {
+
+		    padding-left: 20px;
+		    padding-top: 20px;
+		}
+
+		.line-info {
+
+		    position: absolute;
+		}
+
+		.line-info > div {
+			padding-left:165px;
+		}
+
+		.connectionRequest {
+
+		    margin:0;
+		}
+
+		.connectionRequestInfo {
+			padding-right:0;
+			padding-bottom: 0;
+		}
+
+
+		.connectionReqDate.break-2-show {
+	    	margin-top: 145px;
+	    	padding-left: 20px;
+	    	margin-bottom:10px;
+			position:relative;
+		}
+
+		.buttonsBox .button {
+			padding-top:20px;
+			padding-bottom:20px;
+		}
+
+		.buttonsBox .ignore.button,
+		.buttonsBox .full.button {
+			width:33%;
+		}
+
+		.buttonsBox .accept.button {
+			width:34%;
+			background-color: #3eb2cc;
+			color:white;
+		}
+
+		.buttonsBox .ignore.button {
+			background-color:#ccc;
+			color:#737373;
+		}
+
+		.buttonsBox .full.button {
+			background-color: #eee;
+			color:#3eb2cc;
+		}
+
+		.buttonsBox .button {
+			float:left;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.connectionRequestPic {
+			width:150px;
+		}
+
+		.formBox {
+
+		    margin-bottom: 15px;
+		}
+
+		.connectionRequestsWrapper .formHeader {
+			margin-bottom:0;
+		}
 	}
 
-	.connectionRequestAction {
-	    position: absolute;
-	    right: 30px;
-	}
-
-	.connectionRequest {
-
-	    overflow: auto;
-	    min-height: 200px;
-	    height:auto;
-	}
-
-	.connectionRequestInfo {
-	    padding-left: 225px;
-	    padding-right: 125px;
-	    width:auto;
-    	padding-bottom: 15px;
-	}
 
 }

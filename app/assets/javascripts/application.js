@@ -26,6 +26,34 @@ $(function(){
 function initPageSpecificRoutine(){
 	var initRoutine = $('.pageWrap').data('js-init');
 	if(initRoutine!==undefined){
-		window[initRoutine]($);
+		window.pageSpecificInits[initRoutine]($);
 	}
+}
+
+var pageSpecificInits = {};
+
+pageSpecificInits.newMessagePage = function(jquery){
+
+  jquery('.newMessagesFormWrapper .formHeader .submit-field').click(function(){
+    jquery('.newMessagesFormWrapper form .submit-field').click();
+  });
+
+};
+
+pageSpecificInits.connectionsPage = function(jquery){
+
+	jquery('.connectionRequest .buttonsBox .button').click(function(){
+
+		if($(this).hasClass('accept')){
+			$('.connectionButtonAccept input').click();
+		}
+		else if($(this).hasClass('ignore')){
+			$('.connectionButtonReject input').click();
+		}
+		else if($(this).hasClass('full')){
+
+		}
+
+	});
+
 }
