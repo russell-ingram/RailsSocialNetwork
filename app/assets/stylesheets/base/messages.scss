@@ -106,13 +106,13 @@
 .noMessages {
   text-align: center;
 
-  font-size: 36px;
-  line-height: 40px;
+  font-size: 26px;
+  line-height: 34px;
   color: #797C80;
   max-width: 770px;
   margin: 0 auto;
   margin-top: 91px;
-
+  padding-bottom: 5px;
 }
 
 .startSearchFullBtn {
@@ -120,7 +120,7 @@
 }
 
 .noMsgsWrap {
-  border-bottom: 1px solid #797C80;
+
   margin: 0 25px;
   margin-bottom: 100px;
 }
