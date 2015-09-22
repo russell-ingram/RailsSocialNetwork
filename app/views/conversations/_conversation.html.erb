@@ -10,6 +10,7 @@
 <% sender = message.sender %>
 <% send_pos = sender.current_pos %>
 <% recipients = conversation.recipients %>
+  <%= link_to raw(""), conversation_path(conversation), class: 'mobileCoveredLink' %>
   <div class="messageProfilePicBox">
   <% if sender.profile_pic_url? %>
     <a href="/profile">

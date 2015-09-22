@@ -11,7 +11,8 @@
   <div class="messagesHeader">
     <div class="pageHeader">Messages</div>
     <% if @has_friends %>
-    <div class="composeButton searchButton"><%= link_to 'COMPOSE', new_message_path %></div>
+      <div class="composeButton searchButton break-2-hide"><%= link_to 'COMPOSE', new_message_path %></div>
+      <div class="break-2-show"><a href="/messages/new"><div class="icon icon-icon-write-message-button"></div></a></div>
     <% end %>
   </div>
 

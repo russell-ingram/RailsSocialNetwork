@@ -1,0 +1,130 @@
+.forResponsive,
+.break-1-show,
+.break-2-show {
+	display: none;
+}
+
+.break-0-show {
+	display: block;
+}
+
+
+@media screen and (max-width: 1050px) {
+
+	.break-1-show {
+		display: block;
+	}
+
+	.break-1-hide {
+		display: none;
+	}
+
+    .headerWrapper, .footWrapper, .pageWrap {
+    	width: 100%;
+    }
+
+	.headerWrapper {
+
+	    & {
+		    padding-left: 20px;
+	    }
+
+	    .navBar .hoverDiv {
+
+	 	   margin-left: 30px;
+	    }
+
+	    .navBar {
+		    position: absolute;
+		    right: 0;
+	    	margin-right: 20px;
+	    }
+
+		.logoutDrop {
+		  right:12px;
+  		  margin-left: 0;
+		}
+
+	}
+
+	.footerMargin {
+		height:0;
+	}
+
+	.footer {
+
+		& {
+
+			height:auto;
+		}
+
+		.footWrapper {
+			padding-top:20px;
+	    	padding-bottom: 100px;
+	    	position: relative;
+		}
+
+		.footNav {
+			margin-top:0;
+		}
+
+		.footNav a {
+
+		    text-align: left;
+		    border-bottom: 1px solid #444;
+		    margin-bottom: 20px;
+		    padding-bottom: 20px;
+		    padding-left: 20px;
+		}
+
+		.logoFoot, .copyrightFoot {
+
+			position:absolute;
+			bottom:0;
+			padding:20px;
+		}
+
+		.copyrightFoot .year {
+			display: block
+		}
+
+		.copyrightFoot {
+			text-align: right;
+			right:0;
+			padding-bottom:25px;
+		}
+	}
+}
+
+@media screen and (max-width: 700px) {
+
+	.break-2-hide,
+	.break-1-show.break-2-hide {
+		display: none;
+	}
+
+	.break-2-show {
+		display: block;
+	}
+
+	.headerWrapper {
+
+	    .navBar .hoverDiv {
+
+	 	   margin-left: 38px;
+	    }
+
+	}
+
+	.header {
+		& {
+			height: 70px;
+			line-height: 70px;
+		}
+
+		.icon {
+			line-height:  70px;
+		}
+	}
+
+}

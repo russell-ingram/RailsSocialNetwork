@@ -1,6 +1,6 @@
 
 <%= render "layouts/header" %>
-<div class="pageWrap">
+<div class="pageWrap" data-js-init="initNewMessagePage">
 
 
 
@@ -13,36 +13,51 @@
 
       <div class="newMsgForm formBox">
 
-      <div class="newMsgFormHeader formHeader">NEW MESSAGE</div>
+      <div class="newMsgFormHeader formHeader">
+        <span class="title break-2-hide">NEW MESSAGE</span>
+        <a href="<%= URI(request.referer || '').path %>" class="cancel button">CANCEL</a>
+        <input type="Submit" value="SEND" class="submit-field button">
+      </div>
 
 
 
     <%= form_tag messages_path, method: :post do %>
       <div class="newMsgFormGroup">
 
-      <%= text_field_tag 'recipients', nil, data: {autocomplete_source: recipients_path }, class: 'newMsgFormControl' %>
+      <%= text_field_tag 'recipients', nil, data: {autocomplete_source: recipients_path }, class: 'newMsgFormControl line-field' %>
       <%= text_field_tag 'recipients_id', nil, class: 'newMsgFormControlHidden' %>
 
       </div>
 
       <div class="newMsgFormGroup">
-        <%= text_field_tag 'message[subject]', nil, placeholder: 'Subject', autocomplete: 'off',class: 'newMsgFormControl newMsgSubject', required: true %>
+        <%= text_field_tag 'message[subject]', nil, placeholder: 'Subject:', autocomplete: 'off',class: 'newMsgFormControl newMsgSubject line-field', required: true %>
       </div>
 
       <div class="newMsgFormGroup">
-        <%= text_area_tag 'message[body]', nil, cols: 3, class: 'newMsgFormControl newMessageArea', required: true %>
+        <%= text_area_tag 'message[body]', nil, cols: 3, class: 'newMsgFormControl newMessageArea lines-field', required: true %>
       </div>
 
-      <div class="newMsgBtnSend">
+      <div class="newMsgBtnSend break-2-hide">
         <span>
           <span>
-              <input type="Submit" value="Send">
+              <input type="Submit" value="Send" class="submit-field">
           </span>
         </span>
        </div>
 
     <% end %>
 
+<script>
+
+function initNewMessagePage(jquery){
+
+  jquery('.newMessagesFormWrapper .formHeader .submit-field').click(function(){
+    jquery('.newMessagesFormWrapper form .submit-field').click();
+  });
+
+}
+
+</script>
 
 
 

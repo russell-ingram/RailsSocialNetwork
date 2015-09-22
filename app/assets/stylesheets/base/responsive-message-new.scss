@@ -1,0 +1,76 @@
+.formHeader .button {
+	display: none;
+}
+
+@media screen and (max-width: 700px) {
+
+	.messagesHeader .pageHeader {
+		padding-left:20px;
+	}
+
+	.newMessagesFormWrapper {
+
+		form {
+
+		    margin: 0 20px;
+		    padding-top: 10px;
+		}
+
+		.formBox {
+			margin-bottom: 0;
+		}
+
+		.formHeader {
+			padding-left: 20px;
+			position: relative;
+		}
+
+		.line-field, ul.tagit {
+
+			font-size:16px;
+		    background: #e5e8e9;
+		    padding: 0;
+		    border: none;
+		    margin: 0;	
+		    border-bottom: 1px solid #ccc;
+		}
+
+		ul.tagit input {
+			background: #e5e8e9;
+		}
+
+		ul.tagit .tagit-new {
+			margin:0;
+		}
+
+		.lines-field {
+			font-size:18px;
+			background-color: #e5e8e9;
+			padding:0;
+			border:none;
+			margin:0;
+			padding-top:15px;
+		}
+
+		.formHeader .button {
+			background-color:inherit;
+			padding-left:0;
+			cursor: pointer;
+			display: inline-block;
+			width: auto;
+		}
+
+		.formHeader .button.cancel {
+			color:#ccc;
+		}
+
+		.formHeader .button.submit-field {
+			color:#3eb2cc;
+			position: absolute;
+			right:0;
+			padding:13px 20px;
+		}
+
+	}
+
+}

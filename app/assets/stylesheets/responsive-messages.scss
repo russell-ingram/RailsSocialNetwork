@@ -1,0 +1,114 @@
+
+@media screen and (max-width: 1050px) {
+
+
+	.messagesWrapper {
+
+		.messageContentBox {
+
+		    margin-left: 150px;
+		}
+
+		.messageProfilePicBox {
+			position: absolute;
+		}
+
+		.messageContentBox {
+
+		    width: auto;
+		}
+
+		.messageContent {
+			width: auto;
+    		padding-right: 80px;
+		}
+		
+		.message {
+			position: relative;
+	    }
+
+		.messageTimeStamp {
+			float:initial;
+		    position: absolute;
+		    top: 20px;
+		    right: 20px;
+		}
+
+		.bottomRightMessageContent {
+		     float: none; 
+		     margin-top: 0; 
+		    position: absolute;
+		    bottom: 20px;
+		    right: 20px;
+		}
+	}
+
+}
+
+
+@media screen and (max-width: 700px) {
+
+	.messagesHeader {
+
+		& {
+
+			position: relative;
+		}
+
+		.icon {
+			color: #3eb2cc;
+			position: absolute;
+			right: 0;
+			top: 0;
+			font-size: 28px;
+			margin-top: 10px;
+			margin-right: 20px;
+		}
+	}
+
+	.messagesWrapper {
+
+		& {
+			padding-left: 0; 
+			padding-right: 0; 
+
+		}
+
+
+	    .messageProfilePicBox,
+	    .messageBottomInfo {
+		    display: none;
+		}
+		
+		.messageContentBox {
+		     margin-left: 0; 
+		}
+
+		.messageContentBox {
+		    width: initial;
+		 }
+
+		.messageContent {
+		    width: 100%; 
+		    padding-right:0;
+	    }
+
+	    .mobileCoveredLink {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+	    }
+
+	    .message {
+
+		    overflow: hidden;
+		    border-color:#ccc;
+	    }
+	    
+	    .formBox {
+	    	margin-bottom:0px;
+	    }
+
+	}
+
+}

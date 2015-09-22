@@ -16,3 +16,16 @@
 //= require jquery-ui/datepicker
 //= require local_time
 //= require_tree .
+
+$(function(){
+
+	initPageSpecificRoutine();
+
+});
+
+function initPageSpecificRoutine(){
+	var initRoutine = $('.pageWrap').data('js-init');
+	if(initRoutine!==undefined){
+		window[initRoutine]($);
+	}
+}
