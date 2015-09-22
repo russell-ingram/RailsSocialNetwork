@@ -1,0 +1,34 @@
+
+
+@media screen and (max-width: 1050px) {
+
+
+	.connectionRequestsWrapper {
+		position:relative;
+	}
+
+	.connectionRequestAction,
+	.connectionRequestPic {
+		position: absolute;
+	}
+
+	.connectionRequestAction {
+	    position: absolute;
+	    right: 30px;
+	}
+
+	.connectionRequest {
+
+	    overflow: auto;
+	    min-height: 200px;
+	    height:auto;
+	}
+
+	.connectionRequestInfo {
+	    padding-left: 225px;
+	    padding-right: 125px;
+	    width:auto;
+    	padding-bottom: 15px;
+	}
+
+}
