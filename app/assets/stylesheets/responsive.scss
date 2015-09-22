@@ -1,6 +1,8 @@
 .forResponsive,
 .break-1-show,
-.break-2-show {
+.break-2-show,
+.break-1-show-inline,
+.break-2-show-inline {
 	display: none;
 }
 
@@ -13,6 +15,10 @@
 
 	.break-1-show {
 		display: block;
+	}
+
+	.break-1-show-inline {
+		display: inline-block;
 	}
 
 	.break-1-hide {
@@ -99,8 +105,14 @@
 @media screen and (max-width: 700px) {
 
 	.break-2-hide,
+	.break-1-show-inline.break-2-hide,
+	.break-2-hide,
 	.break-1-show.break-2-hide {
 		display: none;
+	}
+
+	.break-2-show-inline {
+		display: inline-block;
 	}
 
 	.break-2-show {

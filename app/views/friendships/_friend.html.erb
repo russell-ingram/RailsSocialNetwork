@@ -15,7 +15,10 @@
       <% friend_pos = friend.friend.current_pos %>
       <div class="myConnCompany"><%= friend_pos["company"] %></div>
       <div class="myConnIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>
+      <a href="/messages/new/<%= friend.friend.id %>" class="break-2-show-inline messageLink">MESSAGE<span class="icon icon-fwd-arrow"></span></a>
     </div>
-    <div class="myConnMessage"><a href="/messages/new/<%= friend.friend.id %>">MESSAGE<div class="icon icon-fwd-arrow"></div></a></div>
+    <div class="myConnMessage break-2-hide"><a href="/messages/new/<%= friend.friend.id %>">MESSAGE<div class="icon icon-fwd-arrow"></div></a></div>
+
+    
   </div>
 </div>

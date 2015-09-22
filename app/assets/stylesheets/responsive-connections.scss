@@ -109,6 +109,11 @@
 		.connectionRequest {
 
 		    margin:0;
+    		border-bottom: 15px solid white;
+		}
+
+		.connectionRequest:last-child {
+			border-bottom: none;
 		}
 
 		.connectionRequestInfo {
@@ -160,14 +165,77 @@
 			width:150px;
 		}
 
-		.formBox {
+		&.formBox {
 
-		    margin-bottom: 15px;
+		    margin-bottom: 0;
 		}
 
-		.connectionRequestsWrapper .formHeader {
+
+
+		.formHeader {
 			margin-bottom:0;
 		}
+	}
+
+	.connectionsWrapper {
+
+		& {
+
+			background-color:white;
+			margin:0;
+		}
+
+		.myConnection {
+			background-color: white;
+			padding-bottom: 10px;
+			border-bottom:1px solid #eee;
+			margin-bottom:5px;
+		}
+
+		.myConnection:first-child {
+			margin-top:50px;
+		}
+
+		.myConnection:last-child {
+			border-bottom: none;
+		}
+
+		.myConnInfo {
+		    padding-top: 0px;
+		    padding-left: 15px;
+		}
+
+		.messageLink {
+			height:auto;
+			font-size:14px;
+			margin-top:15px;
+			color:#3eb2cc;
+		}
+
+		.messageLink .icon {
+			font-size:10px;
+			display: inline-block;
+			margin-left: 5px;
+		}
+
+		.msgsBarName {
+			color:#737373;
+			padding-top:25px;
+			padding-left:20px;
+			padding-bottom: 25px;
+		}
+
+		.myConnName,
+		.myConnCompany {
+			font-size:18px;
+		}
+
+
+		.myConnIndustry,
+		.messageLink {
+			font-size: 14px;
+		}
+		
 	}
 
 

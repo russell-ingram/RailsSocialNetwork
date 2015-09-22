@@ -1,11 +1,12 @@
 <%= render "layouts/header" %>
   <div class="pageWrap" data-js-init="connectionsPage">
-    <div class="pageHeader">Connections</div>
+    <div class="pageHeader break-2-hide">Connections</div>
     <% if @requested_friendships.length > 0 %>
 
+      <div class="break-2-show pageHeader">REQUESTED CONNECTIONS</div>
 
       <div class="connectionRequestsWrapper formBox">
-      <div class="formHeader">REQUESTED CONNECTIONS</div>
+      <div class="formHeader"><span class="text break-2-hide">REQUESTED CONNECTIONS</span></div>
       <% @requested_friendships.each do |friendship| %>
         <% if friendship.requested? %>
         <% friend = friendship.friend %>
