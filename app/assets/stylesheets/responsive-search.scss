@@ -1,0 +1,70 @@
+
+@media screen and (max-width: 1050px) {
+
+	.pageSearchPeers {
+
+		.searchFormBox {
+
+			& {
+
+				height:auto;
+			}
+
+			.basicSearchOptions {
+
+			    & {
+			    	padding-bottom: 15px;
+			    }
+
+			    .field {
+					display: inline-block;
+			    	margin-bottom: 15px;
+			    	width: 49%;
+				}
+
+				.addSpendingIntentionFieldButton {
+					position: relative;
+				}
+
+				.addSpendingIntentionFieldButton .icon {
+				    position: absolute;
+				    top: 0;
+				    right: 0;
+				}
+
+			}
+
+			.advancedSearchOptions {
+
+				& {
+
+		    		padding-bottom: 1px;
+				}
+
+				.field-col-4 {
+				    width: 49%;
+				    margin-bottom: 10px;
+				}
+
+				.formSearchButton {
+					float:none;
+				    width: 49%;
+				    margin-left: 51%;
+				}
+
+			}
+
+		}
+
+		.favSearchMain {
+			float:none;
+			display: block;
+		    border-radius: 10px;
+		    margin-right: 20px;
+		    margin-bottom: 20px;
+	    	width: 95%;
+		}
+
+	}
+
+}
