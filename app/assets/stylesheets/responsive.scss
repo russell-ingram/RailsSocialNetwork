@@ -108,7 +108,7 @@
 	.break-1-show-inline.break-2-hide,
 	.break-2-hide,
 	.break-1-show.break-2-hide {
-		display: none;
+		display: none !important; 
 	}
 
 	.break-2-show-inline {
