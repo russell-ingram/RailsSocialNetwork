@@ -1,0 +1,146 @@
+
+@media screen and (max-width: 1050px) {
+
+	.searchResultsWrapper {
+
+		& {
+
+			width:100%;
+		}
+
+		.searchTypesWrapper {
+
+    		margin-right: 280px;
+		}
+
+		.pagination,
+		.searchWrapper {
+
+			margin-right:255px;
+		}
+
+		.myConnProfilePic {
+			position: absolute;
+		}
+
+		.myConnWrapper {
+			overflow: hidden;
+		}
+
+ 		.searchInfoText {
+		    padding-top: 10px;
+		    display: block;
+ 			overflow: hidden;
+ 		}
+
+ 		.searchInfo {
+ 			height:auto;
+		    margin-left: 130px;
+		    width: 100%;
+		    padding-right: 110px;
+ 		}
+
+ 		.userActionsSidebar.break-1-show {
+
+ 			& {
+
+	 			text-align: left;
+	 			margin-top:15px;
+	 			line-height: initial;
+	 			width: 100%;
+ 			}
+
+ 			.userListActionsSearch {
+ 				display: block;
+ 				top:0;
+ 			}
+
+ 			.icon {
+ 				top:1px;
+ 				margin-right:20px;
+ 			}
+
+ 		}
+
+ 		.myConnection {
+
+		    clear: both;
+ 		}
+
+	}
+
+}
+
+@media screen and (max-width: 700px) {
+
+ 	.searchResultsWrapper {
+
+ 		.myConnection:first-child {
+ 			margin-top:0;
+ 		}
+
+		.searchTypesWrapper {
+		    margin-left: 20px;
+		    margin-right: 20px;
+		    margin-bottom: 0;
+		}
+	
+		.searchWrapper {
+
+			& {
+
+				background-color: white;
+				margin-right:0;
+			}
+
+			.myConnection {
+
+				& {
+
+				}
+
+				&:first-child {
+
+				}
+
+				&:last-child {
+
+				}
+
+				.myConnInfo {
+
+				}
+
+				.messageLink {
+					
+					& {
+
+					}
+
+					.icon {
+
+					}
+
+				}
+
+				.myConnName,
+				.myConnCompany {
+
+				}
+
+				.myConnIndustry,
+				.messageLink {
+
+				}
+
+			}
+
+		}
+
+ 	}
+
+	.searchResultsSideBar {
+		display: none;
+	}
+
+}
