@@ -53,10 +53,6 @@
 
 	}
 
-	.footerMargin {
-		height:0;
-	}
-
 	.footer {
 
 		& {
@@ -103,6 +99,10 @@
 }
 
 @media screen and (max-width: 700px) {
+
+	.footerMargin {
+		height:0;
+	}
 
 	.break-2-hide,
 	.break-1-show-inline.break-2-hide,
