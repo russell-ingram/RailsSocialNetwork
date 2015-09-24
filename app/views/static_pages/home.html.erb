@@ -475,70 +475,37 @@
 
   <div class="homeConnectionsHeader">suggested connections</div>
   <div class="homeConnections">
+
+  <% @recs.each do |rec| %>
+
     <div class="homeConnectionBox">
-      <div class="homeConnectionPic" style="background-image:url(<%= image_path "user-photo01.jpg" %>)"><%= image_tag "user-photo01.jpg" %></div>
+      <% if rec.profile_pic_url? %>
+
+      <div class="homeConnectionPic" style="background-image:url(<%= rec.profile_pic_url %>)">
+        <img src="<%= rec.profile_pic_url %>">
+      <% else %>
+        <div class="homeConnectionPic" style="background-image:url(<%= image_path('avatar-icons/avatar_0'+rand(1..9).to_s+'.svg') %>)">
+      <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+      <% end %>
+
+      </div>
+      <% position = rec.current_pos %>
       <div class="homeConnectionProfile">
-        <div class="hcpTitle">CIO</div>
-        <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
+
+        <div class="hcpTitle"><%= position["job_title"] %></div>
+        <div class="hcpDesc"><%= position["industry"] %> in <%= position["region"]%><br><%= position["enterprise_size"] %> Enterprise</div>
         <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
         <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
       </div>
     </div>
-    <div class="homeConnectionBox">
-      <div class="homeConnectionPic" style="background-image:url(<%= image_path "user-photo02.jpg" %>)"><%= image_tag "user-photo02.jpg" %></div>
-      <div class="homeConnectionProfile">
-        <div class="hcpTitle">CIO</div>
-        <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
-        <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
-        <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
-      </div>
-    </div>
-    <div class="homeConnectionBox">
-      <div class="homeConnectionPic break-0-show break-1-hide break-2-show" style="background-image:url(<%= image_path "user-photo03.jpg" %>)"><%= image_tag "user-photo03.jpg" %></div>
-      <div class="homeConnectionProfile">
-        <div class="hcpTitle">CIO</div>
-        <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
-        <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
-        <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
-      </div>
-      <div class="homeConnectionPic break-1-show break-2-hide" style="background-image:url(<%= image_path "user-photo03.jpg" %>)"><%= image_tag "user-photo03.jpg" %></div>
-    </div>
-    <div class="homeConnectionBox">
-      <div class="homeConnectionPic break-2-show" style="background-image:url(<%= image_path "user-photo04.jpg" %>)"><%= image_tag "user-photo04.jpg" %></div>
-      <div class="homeConnectionProfile">
-        <div class="hcpTitle">CIO</div>
-        <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
-        <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
-        <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
-      </div>
-      <div class="homeConnectionPic break-2-hide" style="background-image:url(<%= image_path "user-photo04.jpg" %>)"><%= image_tag "user-photo04.jpg" %></div>
-    </div>
-    <div class="homeConnectionBox">
-      <div class="homeConnectionPic break-1-show" style="background-image:url(<%= image_path "user-photo05.jpg" %>)"><%= image_tag "user-photo05.jpg" %></div>
-      <div class="homeConnectionProfile">
-        <div class="hcpTitle">CIO</div>
-        <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
-        <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
-        <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
-      </div>
-      <div class="homeConnectionPic break-1-hide" style="background-image:url(<%= image_path "user-photo05.jpg" %>)"><%= image_tag "user-photo05.jpg" %></div>
-    </div>
-    <div class="homeConnectionBox">
-      <div class="homeConnectionPic break-1-show" style="background-image:url(<%= image_path "user-photo06.jpg" %>)"><%= image_tag "user-photo06.jpg" %></div>
-      <div class="homeConnectionProfile">
-        <div class="hcpTitle">CIO</div>
-        <div class="hcpDesc">Lorem Industry in N. America<br>Small Enterprise</div>
-        <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
-        <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
-      </div>
-      <div class="homeConnectionPic break-1-hide" style="background-image:url(<%= image_path "user-photo06.jpg" %>)"><%= image_tag "user-photo06.jpg" %></div>
-    </div>
+
+  <% end %>
 
   </div>
 
 <!-- end connections -->
 
-  
+
   <div class="homeContentInvite homeContent break-1-show">
     <div class="homeInviteTitle">invite your peers</div>
     <div class="homeInviteText">Please be aware the only people that are to be invited are other enterprise IT end users. Please do not invite VARs or vendor sales reps.</div>

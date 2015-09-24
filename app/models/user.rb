@@ -61,6 +61,72 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.recs(current_user)
+    recs = []
+    wids = []
+
+    friendships = current_user.friendships
+    friends = []
+    friendships.each { |friendship|
+      friends << friendship.friend
+    }
+
+    works = Work.where("company = ?", current_user.current_pos["company"])
+
+    if works.length > 1
+      works.each do |w|
+        if w.uid.to_s != current_user.uid && w.uid.to_s != ""
+          wids << w.uid.to_s
+        end
+      end
+    end
+
+    close_users = User.where(:uid=>wids)
+    close_users.each do |c|
+      if recs.length < 3
+        if !friends.include? c
+          recs << c
+        end
+      end
+    end
+
+    works = Work.where("enterprise_size = ?", current_user.current_pos["enterprise_size"])
+
+    works = works.where("industry = ? ", current_user.current_pos["industry"])
+
+    all_wids = []
+
+    works.each do |w|
+      if w.uid.to_s != current_user.uid && w.uid.to_s != ""
+        all_wids << w.uid.to_s
+      end
+    end
+
+    users = User.where.not(id: current_user.id)
+    users = users.where("big65 = ? OR fortune100 = ? OR sp500 = ? OR global1000 = ?", true, true, true, true)
+
+    users = users.where(:uid=>all_wids)
+
+    users.each do |i|
+      if recs.length < 6
+        random = users.sample
+        if !friends.include? random
+          recs << random
+        end
+      else
+        break
+      end
+    end
+
+    return recs
+
+
+  end
+
+
+
+
+
   def self.search(search,current_user)
     # puts "SEARCH:"
     # puts search.inspect

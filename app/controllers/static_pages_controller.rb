@@ -28,6 +28,9 @@ class StaticPagesController < ApplicationController
       @layout.column_three_content = ""
       @layout.save
     end
+
+    @recs = User.recs(current_user)
+
   end
 
   def profile
