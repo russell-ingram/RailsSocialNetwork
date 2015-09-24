@@ -84,6 +84,10 @@
 		    margin-right: 20px;
 		    margin-bottom: 0;
 		}
+
+		.myConnWrapper {
+			border-bottom:none;
+		}
 	
 		.searchWrapper {
 
@@ -91,6 +95,7 @@
 
 				background-color: white;
 				margin-right:0;
+				padding-bottom: 0;
 			}
 
 			.myConnection {
@@ -133,6 +138,18 @@
 
 				}
 
+			}
+
+		}
+
+		.messagesPagination {
+			
+			& {
+				background-color: white;
+			}
+
+			.pagination {
+				margin-right:0;
 			}
 
 		}
