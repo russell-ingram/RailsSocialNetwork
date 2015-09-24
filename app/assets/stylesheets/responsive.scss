@@ -1,6 +1,8 @@
 .forResponsive,
 .break-1-show,
-.break-2-show {
+.break-2-show,
+.break-1-show-inline,
+.break-2-show-inline {
 	display: none;
 }
 
@@ -15,11 +17,15 @@
 		display: block;
 	}
 
+	.break-1-show-inline {
+		display: inline-block;
+	}
+
 	.break-1-hide {
 		display: none;
 	}
 
-    .headerWrapper, .footWrapper, .pageWrap {
+    .headerWrapper, .footWrapper, .pageWrap.responsive {
     	width: 100%;
     }
 
@@ -45,10 +51,6 @@
   		  margin-left: 0;
 		}
 
-	}
-
-	.footerMargin {
-		height:0;
 	}
 
 	.footer {
@@ -91,16 +93,26 @@
 		.copyrightFoot {
 			text-align: right;
 			right:0;
-			padding-bottom:25px;
+			padding-bottom:18px;
 		}
 	}
 }
 
 @media screen and (max-width: 700px) {
 
+	.footerMargin {
+		height:0;
+	}
+
+	.break-2-hide,
+	.break-1-show-inline.break-2-hide,
 	.break-2-hide,
 	.break-1-show.break-2-hide {
-		display: none;
+		display: none !important; 
+	}
+
+	.break-2-show-inline {
+		display: inline-block;
 	}
 
 	.break-2-show {
@@ -125,6 +137,10 @@
 		.icon {
 			line-height:  70px;
 		}
+	}
+
+	.menuLogo {
+		margin-top: 20px;
 	}
 
 }

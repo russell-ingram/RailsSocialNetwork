@@ -1,0 +1,109 @@
+
+@media screen and (max-width: 1050px) {
+
+	.pageProfile {
+
+		.profilePic {
+			position:absolute;
+		}
+
+		.profileInfo {
+
+			float: none;
+		    margin-left: 225px;
+		}
+
+		.profileButton {
+			margin-right: 3%;
+			width: 45%;
+		}
+
+	}
+
+}
+
+@media screen and (max-width: 700px) {
+
+	.pageProfile {
+
+		.profileHeader {
+			margin-left: 0;
+			margin-right: 0;
+			padding:20px;
+		}
+
+		.break-2-show {
+			
+			& {
+				padding-top:20px;
+			}
+
+			.profileButton {
+				width: 100%;
+				margin-top:0;
+				margin-bottom: 15px;
+			}
+
+			.profileButton:last-child {
+				margin-bottom: 10px;
+			}
+		}
+
+		.profilePic img {
+			width:100px;
+		}
+
+		.profileInfo {
+		    margin-left: 125px;
+		}
+
+		.profileName {
+			font-size: 22px;
+		}
+
+		.profileEmployer,
+		.profilePosition {
+			font-size: 18px;
+		}	
+
+		.profileButton {
+
+		}
+
+		.profileTabBox:last-child {
+			margin-bottom: 0;
+		}
+
+		.profileTabWrapper {
+			padding:0;
+		}
+
+		.profileTab {
+			background-color: transparent;
+			padding: 0 20px;
+			margin-top:0;
+		}
+
+		.profileTabLabel {
+
+    		font-size: 16px;
+		}
+
+		.formHeader {
+			padding-left: 20px;
+			font-size: 18px;
+		}
+
+		.profileTabSummaryText {
+			margin: 20px;
+		}
+
+		.workBoxWrapper {
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 0;
+		}
+
+	}
+
+}

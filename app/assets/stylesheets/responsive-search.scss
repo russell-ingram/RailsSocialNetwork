@@ -1,0 +1,191 @@
+
+@media screen and (max-width: 1050px) {
+
+	.pageSearchPeers {
+
+		.searchFormBox {
+
+			& {
+
+				height:auto;
+			}
+
+			.basicSearchOptions {
+
+			    & {
+			    	padding-bottom: 15px;
+			    }
+
+			    .field {
+					display: inline-block;
+			    	margin-bottom: 15px;
+			    	width: 49%;
+				}
+
+				.addSpendingIntentionFieldButton {
+					position: relative;
+				}
+
+				.addSpendingIntentionFieldButton .icon {
+				    position: absolute;
+				    top: 0;
+				    right: 0;
+				}
+
+			}
+
+			.advancedSearchOptions {
+
+				& {
+
+		    		padding-bottom: 1px;
+				}
+
+				.field-col-4 {
+				    width: 49%;
+				    margin-bottom: 10px;
+				}
+
+				.formSearchButton {
+					float:none;
+				    width: 49%;
+				    margin-left: 51%;
+				}
+
+			}
+
+		}
+
+		.favSearchMainWrapper {
+			padding-left: 25px;
+			padding-right: 25px;
+		}
+
+		.favSearchMain {
+			float:none;
+			display: block;
+			margin-left: 0;
+			margin-right: 0;
+			width: 100%;
+		}
+
+	}
+
+}
+
+@media screen and (max-width: 700px) {
+	
+	.pageSearchPeers {
+
+		.editProfileWrapper {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.searchFormBox {
+
+			& {
+
+			}
+
+			.ddLabel {
+				color:black;
+			    text-transform: uppercase;
+			}
+
+			.basicSearchOptions {
+
+			    & {
+					padding: 25px 20px 5px;
+				    background-color: white;
+    				border-bottom: none;
+    				border-top: 1px solid #eee;
+			    }
+
+			    .field {
+			    	width:100%;
+				}
+
+				.field .addSpendingIntentionFieldButton,
+				.field .wrapper-dropdown {
+					font-size:14px;
+					height:45px;
+					line-height: 45px;
+				}
+
+				.addSpendingIntentionFieldButton {
+
+				}
+
+				.addSpendingIntentionFieldButton .icon {
+					height:45px;
+					width:45px;
+					line-height: 50px;
+				}
+
+			}
+
+			.advancedSearchOptions {
+
+				& {
+					padding-left: 20px;
+					padding-right:20px;
+				}
+
+				.advancedSearchHeader {
+				    margin-top: 25px;
+				    margin-bottom: 20px;
+				}
+
+				.field-col-4 {
+					width: 100%;
+					margin-bottom: 15px;
+				}
+
+				.formSearchButton {
+
+    				/*margin: 0 auto 35px;*/
+    				margin-left:0;
+    				width:100%;
+    				margin-bottom: 35px;
+    				height:60px;
+    				line-height: 60px;
+
+				}
+
+			}
+
+		}
+
+		.followedSearchFormBox {
+
+			& {
+
+				margin-bottom: 0;
+			}
+
+			.formHeader {
+				background-color: inherit;
+			}
+
+			.favSearchMainWrapper {
+				padding-top: 5px;
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+
+			.favSearchMain {
+				margin-left: 0;
+				margin-right: 0;
+				width: 100%;
+			}
+		}
+
+		.new_search .searchFormBox {
+			margin-bottom: 0;
+			background-color: #EFF1F1;
+		}
+
+	}
+
+}

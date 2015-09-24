@@ -1,5 +1,5 @@
 <%= render "layouts/header" %>
-<div class="pageWrap">
+<div class="pageWrap responsive pageSearchResults" data-js-init="searchResultsPage">
   <div class="searchWrapperBig">
     <div class="searchResultsWrapper">
 
@@ -7,13 +7,17 @@
 
 
       <div class="searchTypesWrapper">
-
+      
         <div class="searchResultsHeader">
+          <span class="number break-2-show"><%= @length %> Results For</span>
           <div class="searchResultsNum">
-            <%= @length %> Results
+            <span class="number break-2-hide"><%= @length %> Results</span>
+            <span class="criteria break-2-show"><%= criteria_str(@search) %></span>
+
           </div>
           <div class="searchResultsFollowButtonDiv">
-            <div class="searchResultsFollowButton" data="<%= @search.id %>">
+            <!-- refactor-this: clone needs partial -->
+            <div class="searchResultsFollowButton break-2-hide" data="<%= @search.id %>">
               <a href="#addSearchModal" rel="modal:open" id="addSearchLink">
               <% if @search.name? %>
                 ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div>
@@ -265,6 +269,21 @@
           </div>
           <% end %>
         </div>
+
+        <div class="searchLinksBox break-2-show">
+          <!-- refactor-this: clone needs partial -->
+          <div class="searchResultsFollowButton" data="<%= @search.id %>">
+            <a href="#addSearchModal" rel="modal:open" id="addSearchLink">
+            <% if @search.name? %>
+              ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div>
+            <% else %>
+              follow this search +
+            <% end %>
+            </a>
+          </div>
+          <a href="#adjustSearchModal" class="adjustSearchLink">ADJUST SEARCH</a>
+        </div>
+
       </div>
       <!-- end searchTypesWrapper -->
       <div id="resultsWrapper">
@@ -274,12 +293,13 @@
     </div>
 <!-- end search results wrapper (left column) -->
 
-    <div class="searchResultsSideBar">
+    <div class="searchResultsSideBar break-2-hide">
       <div class="searchSideBarHeader">Your Searches</div>
       <div class="searchSideBarTabBox">
         <div class="searchSideBarTab active">Current</div>
         <div class="searchSideBarTab">Followed</div>
       </div>
+      <span class="icon icon-icon-close break-2-show sideBarClose"></span>
 
       <div class="currentSearchTab">
       <%= form_for :search, url: '/search/new', method: :get do |f| %>
