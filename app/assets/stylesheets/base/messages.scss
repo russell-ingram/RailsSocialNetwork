@@ -288,10 +288,14 @@
 
 
 .messagesPagination {
-  margin-top: 20px;
-  margin-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   height: 10px;
 
+}
+
+.pageSearchResults .messagesPagination {
+  background-color: #f2f3f4;
 }
 
 .pagination {
