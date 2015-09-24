@@ -1,163 +1,197 @@
 
 @media screen and (max-width: 1050px) {
+	
+	.pageHome {
 
+		.searchBarHomeWrapper {
 
+			& {
 
-	.searchBarHomeWrapper {
+				margin-left: 10%;
+		    	margin-right: 10%;
+			}
 
-		& {
+		    .wrapper-dropdown, .homeAddIntentions {
+		    	width: 100%;
+		    }
 
-			margin-left: 10%;
-	    	margin-right: 10%;
+		    .wrapper-dropdown {
+		    	margin-bottom: 20px;
+
+		    }
+
+		    .homeAddIntentions {
+		    	margin-bottom:10px;
+		    }
+
+		    .formBoxRow {
+		    	margin-top:40px;
+		    }
+
+		    .searchButton.break-1-show {
+		    	display: block;
+		    	width: 100%;
+		    }
+
+		    .searchButton.break-1-show .fa {
+		    	display: none;
+		    }
+
+		    .homePageAdvancedRow {
+		    	padding-right:0;
+		    }
+
+		    .field-col-4 {
+		    	width:49%;
+
+		    }
+
+		    .field-col-4 .wrapper-dropdown {
+		    	margin-right:0;
+		    	
+		    }
+
 		}
 
-	    .wrapper-dropdown, .homeAddIntentions {
-	    	width: 100%;
-	    }
+		.homeContentWrapper {
 
-	    .wrapper-dropdown {
-	    	margin-bottom: 20px;
+			.homeContentInvite.forNonResponsive {
+				display: none;
+			}
 
-	    }
+			.homeContentFollowed {
+				width:100%;
+			}
 
-	    .homeAddIntentions {
-	    	margin-bottom:10px;
-	    }
+			.homeContentBox1, .homeContentBox2 {
+				width:50%;
+			}
 
-	    .formBoxRow {
-	    	margin-top:40px;
-	    }
-
-	    .searchButton.break-1-show {
-	    	display: block;
-	    	width: 100%;
-	    }
-
-	    .searchButton.break-1-show .fa {
-	    	display: none;
-	    }
-
-	    .homePageAdvancedRow {
-	    	padding-right:0;
-	    }
-
-	    .field-col-4 {
-	    	width:49%;
-
-	    }
-
-	    .field-col-4 .wrapper-dropdown {
-	    	margin-right:0;
-	    	
-	    }
-
-	}
-
-	.homeContentWrapper {
-
-		.homeContentInvite.forNonResponsive {
-			display: none;
 		}
 
-		.homeContentFollowed {
-			width:100%;
+		.homeContentInvite.break-1-show {
+			
+			& {
+				display:block;
+				width:100%;
+				float:none;
+			}
+
+			.homeInviteTitle {
+				margin:30px 0 0 0;
+				font-size:18px;
+				width:100%;
+			}
+
+			.homeInviteText {
+				margin-top:20px;
+				margin-bottom:30px;
+			    margin-left: 10%;
+			    margin-right: 10%;
+			}
+
+			.inviteButton {
+				margin-bottom:35px;
+			}
 		}
 
-		.homeContentBox1, .homeContentBox2 {
-			width:50%;
+		.homeConnectionBox {
+
+			&, .homeConnectionPic, .homeConnectionProfile {
+				width:50%;
+			}
+
+			.homeConnectionPic {
+
+			    background-size: 100% auto;
+			    background-position: center;
+			    background-repeat: no-repeat;
+			}
+
+		    .homeConnectionPic img {
+				display:none;
+			}
+
 		}
 
-	}
-
-	.homeContentInvite.break-1-show {
-		
-		& {
-			display:block;
-			width:100%;
-			float:none;
-		}
-
-		.homeInviteTitle {
-			margin:30px 0 0 0;
+		.homeConnectionsHeader {
+			height:auto;
+			line-height: inherit;
 			font-size:18px;
-			width:100%;
+			padding-bottom: 15px;
 		}
 
-		.homeInviteText {
-			margin-top:20px;
-			margin-bottom:30px;
-		    margin-left: 10%;
-		    margin-right: 10%;
-		}
-
-		.inviteButton {
-			margin-bottom:35px;
-		}
-	}
-
-	.homeConnectionBox {
-
-		&, .homeConnectionPic, .homeConnectionProfile {
-			width:50%;
-		}
-
-		.homeConnectionPic {
-
-		    background-size: 100% auto;
-		    background-position: center;
-		    background-repeat: no-repeat;
-		}
-
-	    .homeConnectionPic img {
-			display:none;
-		}
-
-	}
-
-	.homeConnectionsHeader {
-		height:auto;
-		line-height: inherit;
-		font-size:18px;
-		padding-bottom: 15px;
 	}
 
 }
 
 @media screen and (max-width: 700px) {
 
+	.pageHome {
 
-	.searchBarHomeWrapper {
+		#addIntentionModal {
 
-		& {
+		    top: 20% !important;
+		    left: 0 !important;
+		    margin-top: 0 !important;
+		    margin-left: 0 !important;
+    		width: 100%;
 
-			margin-left: 20px;
-	    	margin-right: 20px;
+    		.modalBody {
+
+			    padding: 30px 20px;
+    		}
+
+    		.modalIntentions {
+    			width: 32%;
+    		}
+
+    		.modalIntentionsRight {
+    			float: left;
+    		}
+
+    		.close-modal,
+    		.modalDoneButton {
+
+			    width: 100px;
+    		}
+
 		}
 
-	    .field-col-4 {
-	    	width:100%;
+		.searchBarHomeWrapper {
 
-	    }
+			& {
 
-	}
+				margin-left: 20px;
+		    	margin-right: 20px;
+			}
 
-	.homeContentWrapper .homeContentBox1, .homeContentWrapper .homeContentBox2 {
-		width:100%;
-	}	
+		    .field-col-4 {
+		    	width:100%;
 
-	.homeConnectionBox {
+		    }
 
-		& {
+		}
+
+		.homeContentWrapper .homeContentBox1, .homeContentWrapper .homeContentBox2 {
 			width:100%;
-			border-bottom:3px solid white;
-		}
+		}	
 
-		.homeConnectionPic.forResponsive {
-			display: none;
-		}
+		.homeConnectionBox {
 
-		.homeConnectionPic.forResponsive-2 {
-			display: block;
+			& {
+				width:100%;
+				border-bottom:3px solid white;
+			}
+
+			.homeConnectionPic.forResponsive {
+				display: none;
+			}
+
+			.homeConnectionPic.forResponsive-2 {
+				display: block;
+			}
+
 		}
 
 	}
