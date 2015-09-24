@@ -72,6 +72,10 @@ module SearchsHelper
          criteria << 'Risk'
       end   
 
+      if(criteria.length == 0)
+         criteria << 'All'
+      end
+
       return criteria.join(', ') 
    end
    

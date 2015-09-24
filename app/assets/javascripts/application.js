@@ -56,4 +56,17 @@ pageSpecificInits.connectionsPage = function(jquery){
 
 	});
 
-}
+};
+
+pageSpecificInits.searchResultsPage = function(jquery){
+
+	var sideBar = jquery('.searchResultsSideBar');
+
+	var showSideBar = function(){ sideBar.removeClass('break-2-hide'); };
+	var hideSideBar = function(){ sideBar.addClass('break-2-hide'); };
+
+	jquery('.adjustSearchLink').click(showSideBar);
+	jquery(window).resize(hideSideBar);
+	jquery('.sideBarClose').click(hideSideBar);
+
+};

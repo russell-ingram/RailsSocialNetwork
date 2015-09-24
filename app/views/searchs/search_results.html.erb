@@ -1,5 +1,5 @@
 <%= render "layouts/header" %>
-<div class="pageWrap responsive pageSearchResults">
+<div class="pageWrap responsive pageSearchResults" data-js-init="searchResultsPage">
   <div class="searchWrapperBig">
     <div class="searchResultsWrapper">
 
@@ -281,7 +281,7 @@
             <% end %>
             </a>
           </div>
-          <a href="#adjustSearchModal" rel="modal:open" class="adjustSearchLink">ADJUST SEARCH</a>
+          <a href="#adjustSearchModal" class="adjustSearchLink">ADJUST SEARCH</a>
         </div>
 
       </div>
@@ -293,12 +293,13 @@
     </div>
 <!-- end search results wrapper (left column) -->
 
-    <div class="searchResultsSideBar">
+    <div class="searchResultsSideBar break-2-hide">
       <div class="searchSideBarHeader">Your Searches</div>
       <div class="searchSideBarTabBox">
         <div class="searchSideBarTab active">Current</div>
         <div class="searchSideBarTab">Followed</div>
       </div>
+      <span class="icon icon-icon-close break-2-show sideBarClose"></span>
 
       <div class="currentSearchTab">
       <%= form_for :search, url: '/search/new', method: :get do |f| %>

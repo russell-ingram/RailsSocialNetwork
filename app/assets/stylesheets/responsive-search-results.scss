@@ -203,7 +203,20 @@
  	}
 
 	.searchResultsSideBar {
-		display: none;
+
+		& {
+			width:100%;
+		}
+
+		.sideBarClose {
+
+		    position: absolute;
+		    color: white;
+		    top: 0;
+		    right: 0;
+		    padding: 12px;
+		    cursor: pointer;
+		}
 	}
 
 }
