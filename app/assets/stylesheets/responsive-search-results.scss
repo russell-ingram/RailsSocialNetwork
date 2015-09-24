@@ -67,6 +67,13 @@
 		    clear: both;
  		}
 
+		.spendingTagsWrapper {
+
+			.spendingTag {
+				width:100%;
+			}
+		}
+
 	}
 
 }
@@ -79,14 +86,39 @@
  			margin-top:0;
  		}
 
+ 		.searchResultsHeader .number {
+
+		    color: #666;
+		    font-size: 14px;
+		    text-transform: uppercase;
+		    padding-bottom: 5px;
+ 		}
+
 		.searchTypesWrapper {
-		    margin-left: 20px;
-		    margin-right: 20px;
+		    margin-left: 0;
+		    margin-right: 0;
 		    margin-bottom: 0;
+    		padding: 20px;
 		}
 
 		.myConnWrapper {
 			border-bottom:none;
+		}
+
+		.searchTagsWrapper {
+			display: none;
+		}
+
+		.spendingTagsWrapper {
+
+			& {
+
+			}
+
+			.spendingTag {
+			    background-color: #ccc;
+			    color: #666;
+			}
 		}
 	
 		.searchWrapper {
@@ -94,6 +126,7 @@
 			& {
 
 				background-color: white;
+				margin-top:0;
 				margin-right:0;
 				padding-bottom: 0;
 			}
@@ -133,8 +166,7 @@
 
 				}
 
-				.myConnIndustry,
-				.messageLink {
+				.myConnIndustry {
 
 				}
 
@@ -152,6 +184,20 @@
 				margin-right:0;
 			}
 
+		}
+
+		.searchLinksBox {
+			a {
+				color:#3eb2cc;
+				font-size:16px;
+				text-transform: uppercase;
+				margin-top:15px;
+			}
+
+			.adjustSearchLink {
+				border-top:1px solid #ddd;
+				padding-top: 15px;
+			}
 		}
 
  	}

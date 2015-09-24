@@ -53,6 +53,10 @@
   font-size: 14px;
 }
 
+.searchTag:last-child, .spendingTag:last-child {
+  margin-bottom: 0;
+}
+
 .searchTag {
   background-color: #3eb2cc;
   height: 45px;
