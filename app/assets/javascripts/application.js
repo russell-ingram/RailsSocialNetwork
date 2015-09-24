@@ -62,11 +62,22 @@ pageSpecificInits.searchResultsPage = function(jquery){
 
 	var sideBar = jquery('.searchResultsSideBar');
 
-	var showSideBar = function(){ sideBar.removeClass('break-2-hide'); };
-	var hideSideBar = function(){ sideBar.addClass('break-2-hide'); };
+	jquery('.adjustSearchLink').click(function(){
+		sideBar.css({ right: '-100%' });
+		sideBar.removeClass('break-2-hide');
+		sideBar.animate({ right: '0%' });
+	});
 
-	jquery('.adjustSearchLink').click(showSideBar);
-	jquery(window).resize(hideSideBar);
-	jquery('.sideBarClose').click(hideSideBar);
+	jquery(window).resize(function(){
+		sideBar.addClass('break-2-hide');
+		sideBar.css({ right: '0%' });
+	});
+
+	jquery('.sideBarClose').click(function(){
+		sideBar.animate({ right: '-100%' }, function(){
+			sideBar.addClass('break-2-hide');
+			sideBar.css({ right: '0%' });
+		});
+	});
 
 };

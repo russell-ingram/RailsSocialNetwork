@@ -206,6 +206,11 @@
 
 		& {
 			width:100%;
+    		/*right: -100%;*/
+		}
+
+		&.off-stage {
+    		/*right: -100%;*/
 		}
 
 		.sideBarClose {
@@ -217,6 +222,7 @@
 		    padding: 12px;
 		    cursor: pointer;
 		}
+
 	}
 
 }
