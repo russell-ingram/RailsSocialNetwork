@@ -1,0 +1,92 @@
+<div class="homeContentLabel">
+  Research Results
+</div>
+<div class="homeContentHeadline">
+  <% if layout.headline %>
+    <%= layout.headline %>
+  <% else %>
+    The Results are in! Spring 2015 ETR Survey Report
+  <% end %>
+</div>
+
+<% if layout.layout_option != nil && layout.layout_option > 0 %>
+
+  <!-- desktop -->
+  <div class="researchResults break-2-hide layout-option-<%= layout.layout_option %>">
+
+    <% if layout.layout_option >= 1 %>
+      <div class="researchCol">
+        <div class="researchNum"><%= layout.column_one_callout %></div>
+        <div class="researchText"><%= layout.column_one_content.html_safe%></div>
+      </div>
+    <% end %>
+
+    <% if layout.layout_option >= 2 %>
+      <div class="researchCol">
+        <div class="researchNum"><%= layout.column_two_callout %></div>
+        <div class="researchText"><%= layout.column_two_content.html_safe %></div>
+      </div>
+    <% end %>
+
+    <% if layout.layout_option == 3 %>
+      <div class="researchCol">
+        <div class="researchNum"><%= layout.column_three_callout %></div>
+        <div class="researchText"><%= layout.column_three_content.html_safe %></div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <!-- mobile -->
+  <table class="break-2-show">
+    
+    <% if layout.layout_option >= 1 %>
+    <tr><td><div class="researchNum"><%= layout.column_one_callout %></div></td><td>
+      <div class="researchText"><%= layout.column_one_content.html_safe%></div></td></tr>
+    <% end %>
+
+    <% if layout.layout_option >= 2 %>
+    <tr><td><div class="researchNum"><%= layout.column_two_callout %></div></td><td>
+      <div class="researchText"><%= layout.column_two_content.html_safe %></div></td></tr>
+    <% end %>
+
+    <% if layout.layout_option == 3 %>
+    <tr><td><div class="researchNum"><%= layout.column_three_callout %></div></td><td><div class="researchText"><%= layout.column_three_content.html_safe %></div></td></tr>
+    <% end %>
+    
+  </table>
+
+<% else %>
+
+  <!-- placeholding data -->
+  <div class="researchResults break-2-hide">
+    <div class="researchCol">
+      <div class="researchNum">89%</div>
+      <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div>
+    </div>
+    <div class="researchCol">
+      <div class="researchNum">22%</div>
+      <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div>
+    </div>
+    <div class="researchCol">
+      <div class="researchNum">200k</div>
+      <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div>
+    </div>
+  </div>
+
+  <table class="break-2-show">
+    
+    <tr><td><div class="researchNum">89%</div></td><td>
+      <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div></td></tr>
+
+    <tr><td><div class="researchNum">22%</div></td><td>
+      <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div></td></tr>
+
+    <tr><td><div class="researchNum">200k</div></td><td><div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div></td></tr>
+    
+  </table>
+
+<% end %>
+
+
+<div class="viewMoreContent"><a href="http://<%= @layout.external_link %>" target='_blank'>VIEW FULL RESULTS<%= layout.link_copy %><i class="fa fa-chevron-right"></i></a></div>

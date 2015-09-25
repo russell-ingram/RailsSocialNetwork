@@ -264,7 +264,7 @@
   <div class="homeContentWrapper">
     <div class= "homeContentBox1">
       <% if @news %>
-      <div class="homeContentPic homeContent"><%= image_tag @news.image_url %></div>
+      <div class="homeContentPic homeContent" style="background-image:url(<%= @news.image_url %>);"><%= image_tag @news.image_url %></div>
       <% end %>
       <div class="homeContentNews homeContent">
         <div class="homeContentLabel">news</div>
@@ -283,110 +283,14 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium et enim in faucibus. Morbi mauris enim, imperdiet ac nisi in, facilisis pretium quam. Duis ac massa ut mauris bibendum fringilla auctor at mi. Sed semper tincidunt risus, id rutrum tortor dictum a. Maecenas sit amet pretium mi.
           <% end %>
         </div>
-        <div class="viewMoreContent"><a href="http://<%= @news.external_link %>" target='_blank'><%= @news.link_copy %><div class="icon icon-fwd-arrow"></div></a></div>
+        <div class="viewMoreContent"><a href="http://<%= @news.external_link %>" target='_blank'>Full Story<%= @news.link_copy %><div class="icon icon-fwd-arrow"></div></a></div>
       </div>
     </div>
     <div class="homeContentBox2">
       <div class="homeContentResearch homeContent">
-        <div class="homeContentLabel">
-          Research Results
-        </div>
-        <div class="homeContentHeadline">
-          <% if @layout %>
-            <%= @layout.headline %>
-          <% else %>
-            The Results are in! Spring 2015 ETR Survey Report
-          <% end %>
-        </div>
 
+          <%= render :partial => "research_results", :locals => { :layout => @layout } %>
 
-        <% if @layout %>
-
-          <% if @layout.layout_option == 3 %>
-
-        <div class="researchResults">
-          <div class="researchCol">
-            <div class="researchNum"><%= @layout.column_one_callout %></div>
-            <div class="researchText"><%= @layout.column_one_content.html_safe%></div>
-          </div>
-          <div class="researchCol">
-            <div class="researchNum"><%= @layout.column_two_callout %></div>
-            <div class="researchText"><%= @layout.column_two_content.html_safe %></div>
-          </div>
-          <div class="researchCol">
-            <div class="researchNum"><%= @layout.column_three_callout %></div>
-            <div class="researchText"><%= @layout.column_three_content.html_safe %></div>
-          </div>
-        </div>
-
-
-
-
-          <% elsif @layout.layout_option == 2 %>
-
-        <div class="researchResults">
-          <div class="researchCol">
-            <div class="researchNum"><%= @layout.column_one_callout %></div>
-            <div class="researchText"><%= @layout.column_one_content.html_safe %></div>
-          </div>
-          <div class="researchCol">
-            <div class="researchNum"><%= @layout.column_two_callout %></div>
-            <div class="researchText"><%= @layout.column_two_content.html_safe %></div>
-          </div>
-        </div>
-
-
-
-
-
-          <% else %>
-
-        <div class="researchResults">
-          <div class="researchCol">
-            <div class="researchNum"><%= @layout.column_one_callout %></div>
-            <div class="researchText"><%= @layout.column_one_content.html_safe %></div>
-          </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-          <% end %>
-
-
-        <% else %>
-
-        <div class="researchResults">
-          <div class="researchCol">
-            <div class="researchNum">89%</div>
-            <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div>
-          </div>
-          <div class="researchCol">
-            <div class="researchNum">22%</div>
-            <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div>
-          </div>
-          <div class="researchCol">
-            <div class="researchNum">200k</div>
-            <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div>
-          </div>
-        </div>
-
-        <% end %>
-
-
-
-
-
-
-
-
-        <div class="viewMoreContent"><a href="http://<%= @layout.external_link %>" target='_blank'><%= @layout.link_copy %><i class="fa fa-chevron-right"></i></a></div>
       </div>
 
       <div class="homeContentFollowed homeContent">

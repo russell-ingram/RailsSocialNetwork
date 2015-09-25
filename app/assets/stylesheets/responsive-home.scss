@@ -121,6 +121,15 @@
 			padding-bottom: 15px;
 		}
 
+		.homeContentPic {
+		    background-position-y: center;
+		    background-size: 100% auto;
+		}
+
+		.homeContentPic img {
+			display: none;
+		}
+
 	}
 
 }
@@ -158,13 +167,10 @@
 
 		}
 
+		.homeContentFollowed,
 		.homeContentResearch,
 		.homeContentNews {
 			padding: 25px 20px;
-		}
-
-		.homeContentFollowed {
-			padding: 70px 40px;
 		}
 
 		.homeContentFollowed .noFollowedSearchesText {
@@ -203,6 +209,25 @@
 
 		.homeContentResearch .homeContentHeadline {
 			line-height: 23px;
+		}
+
+		.homeContentResearch .researchCol {
+			/*width:auto;*/
+			/*float:none;*/
+		}
+
+		.homeContentResearch .researchNum {
+			padding-right:10px;
+			font-size:46px;
+		}
+
+		.homeContentResearch .researchText {
+			padding-top:8px;
+			padding-bottom: 5px;
+		}
+
+		.homeContentResearch table.break-2-show td {
+			vertical-align: top;
 		}
 
 		.homeContentLabel {
