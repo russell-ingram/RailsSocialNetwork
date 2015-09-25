@@ -4,11 +4,14 @@
   <div class="pageHeader profileTopHeader">Search Peers</div>
   <div class="editProfileWrapper">
 
-    <%= form_for @search, as: :search, method: :get do |f| %>
+<%= form_for @search, as: :search, method: :get do |f| %>
 
-    <div class="formBox searchFormBox">
-      <div class="formHeader break-2-hide">SPECIFY A SEARCH</div>
-      <div class="searchBoxWrapper">
+  <div class="formBox searchFormBox">
+    <div class="formHeader break-2-hide">SPECIFY A SEARCH</div>
+
+    <div class="searchBoxWrapper">
+
+
         <div class="basicSearchOptions">
           <div class="formBoxRow">
             <div class="field field-col-3">
@@ -65,11 +68,15 @@
 
 
         </div>
+
+
         <div class="advancedSearchOptions">
 
-            <div class="advancedSearchHeader">Advanced Options</div>
 
-            <div class="formBoxRow">
+          <div class="advancedSearchHeader">Advanced Options</div>
+
+          <div class="formBoxRow">
+
               <div class="field field-col-4">
                 <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
                   <span class="ddLabel ddNoPref">
@@ -85,13 +92,13 @@
                 </div>
                 <%= f.text_field :enterprise, placeholder: 'Enterprise Size', style: 'display: none;' %>
               </div>
+
               <div class="field field-col-4">
                 <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
                   <span class="ddLabel ddNoPref">
                       Job Title
                   </span>
                   <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
-
                   <ul class="dropdown searchMultiselectDropdown">
                     <div class="icon icon-icon-top-nubs-gray multiSelectNub"></div>
                     <div class="multiSelectHalf">
@@ -166,10 +173,11 @@
                       </div>
 
                     </div>
+
                     <div class="multiSelectHalf">
                       <div class="multiSelectLabel">FUNCTION</div>
-                      <div class="multiSelectSelector">
 
+                      <div class="multiSelectSelector">
                         <div class="pubOrPrivBox">
                           <div id="currentPosButton" class="multiSelectButton">
                             <input type="radio" class="radioSendAll" name="public" value="false">
@@ -229,12 +237,14 @@
 
 
 
+
                       </div>
                     </div>
+
                   </ul>
                 </div>
-              </div>
 
+              </div>
               <div class="field field-col-4">
                 <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
                   <span class="ddLabel ddNoPref">
@@ -265,7 +275,10 @@
                 </div>
                 <%= f.text_field :country, placeholder: 'Country',style: 'display:none;' %>
               </div>
-            </div>
+
+
+
+          </div>
 
             <div class="formSearchButton">
               <div class="buttonTextDiv">
@@ -275,16 +288,14 @@
 
             </div>
             <%= f.submit 'SEARCH', id: 'submitSearch', style: 'display:none;' %>
-
-
-
-
-
         </div>
-      </div>
+
+
     </div>
 
-    <% end %>
+  </div>
+<% end %>
+
 <!-- end search form -->
 
 <!-- begin favorites -->
