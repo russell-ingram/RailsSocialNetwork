@@ -91,31 +91,60 @@
 
 
 .homeContentWrapper {
-  height: 925px;
+  height: auto;
   margin-top: 50px;
+  overflow: hidden;
+}
+
+.homeContentWrapper > .left {
+  background-color: #f2f3f4;
+  width: 38%;
+  float: left;
+}
+
+.homeContentWrapper > .right {
+
+    width: 62%;
+    float: left;
+    background-color: #cbd0d2;
 }
 
 .homeContent {
   float:left;
   width: 100%;
-  padding: 60px;
+  padding: 40px;
   font-family: "PNBold";
   font-size: 36px;
   color: #282b30;
 }
 
 .homeContentBox1 {
-  width: 38%;
-  height: inherit;
+  height: auto;
   float: left;
 }
 
 .homeContentBox2 {
-  width: 62%;
-  height: inherit;
+  height: auto;
   float: left;
 }
 
+.homeContentBox2 .bottom {
+  overflow: auto;
+    width: 100%;
+}
+
+.homeContentBox2 .bottom > div {
+  width:50%;
+  float:left;
+}
+
+.homeContentBox2 .bottom .left {
+  background-color: #cbd0d2;
+}
+
+.homeContentBox2 .bottom .right {
+  background-color: #f2f3f4;
+}
 
 .homeContentPic {
   height: 259px;
@@ -126,7 +155,7 @@
 }
 
 .homeContentResearch {
-  height: 51%;
+  height: auto;
   background-color: #e5e8e9;
 }
 
@@ -137,8 +166,8 @@
 }
 
 .homeContentFollowed {
-  width: 50%;
-  height: 47%;
+  /*width: 50%;*/
+  height: auto;
   background-color: #cbd0d2;
   padding: 40px;
   display: table;
@@ -150,8 +179,8 @@
 }
 
 .homeContentInvite {
-  width: 50%;
-  height: 47%;
+  /*width: 50%;*/
+  height: auto;
   background-color: #f2f3f4;
   text-align: center;
   padding: 40px;

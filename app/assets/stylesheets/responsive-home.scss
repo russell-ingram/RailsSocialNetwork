@@ -1,7 +1,19 @@
 
+.pageHome {
+	.breakstate {
+		display:none;
+		width:0;
+	}
+}
+
 @media screen and (max-width: 1050px) {
 	
 	.pageHome {
+
+		.breakstate {
+			display:none;
+			width:1050px;
+		}
 
 		.searchBarHomeWrapper {
 
@@ -59,11 +71,11 @@
 				display: none;
 			}
 
-			.homeContentFollowed {
+			.homeContentBox2 .bottom .left {
 				width:100%;
 			}
 
-			.homeContentBox1, .homeContentBox2 {
+			& > .left, & > .right {
 				width:50%;
 			}
 
@@ -118,7 +130,37 @@
 			height:auto;
 			line-height: inherit;
 			font-size:18px;
+			padding-top: 15px;
 			padding-bottom: 15px;
+		}
+
+		.homeContentPic {
+		    background-position-y: center;
+		    background-size: 100% auto;
+		}
+
+		.homeContentPic img {
+			display: none;
+		}
+
+		.homeContentResearch {
+			.homeContentHeadline {
+				line-height: 23px;
+			}
+
+			.researchNum {
+				padding-right:10px;
+				font-size:46px;
+			}
+
+			.researchText {
+				padding-top:8px;
+				padding-bottom: 5px;
+			}
+
+			table.break-1-show td {
+				vertical-align: top;
+			}
 		}
 
 	}
@@ -128,6 +170,10 @@
 @media screen and (max-width: 700px) {
 
 	.pageHome {
+
+		.breakstate {
+			width: 700px;
+		}
 
 		#addIntentionModal {
 
@@ -158,6 +204,69 @@
 
 		}
 
+		.homeContentFollowed,
+		.homeContentResearch,
+		.homeContentNews {
+			padding: 25px 20px;
+		}
+
+		.homeContentFollowed .noFollowedSearchesText {
+			margin-top:0;
+		}
+
+		.homeContentHeadline {
+
+		    border-left: 5px solid black;
+		    padding-left: 10px;
+		    margin-bottom: 10px;
+		    font-size:24px;
+		    position: relative;
+		}
+
+		.homeContentNews .newsContent {
+			margin-left:15px;
+			margin-right:0;
+		}
+
+		.homeContentNews .viewMoreContent {
+			margin-left: 15px;
+		}
+
+		.homeContentNews .newsHeadline {
+			margin-top:0;
+			line-height: 23px;
+			padding-top:20px;
+		}
+
+		.homeContentNews .newsDate {
+			line-height: initial;
+			position: absolute;
+			top:0;
+		}
+
+		.homeContentLabel {
+			
+		    font-size: 14px;
+		    margin-bottom: 15px;
+		}
+
+		.homeContentWrapper {
+			height:auto;
+		}
+
+		.homeContentInvite {
+			height: auto;
+		}
+
+		.homeContentWrapper .homeContentBox1,
+		.homeContentWrapper .homeContentBox2 {
+			height: auto;
+		}
+
+		.homeConnectionsHeader {
+			padding-top:15px;
+		}
+
 		.searchBarHomeWrapper {
 
 			& {
@@ -173,7 +282,8 @@
 
 		}
 
-		.homeContentWrapper .homeContentBox1, .homeContentWrapper .homeContentBox2 {
+		.homeContentWrapper > .left, 
+		.homeContentWrapper > .right {
 			width:100%;
 		}	
 
