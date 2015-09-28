@@ -189,8 +189,27 @@
 			padding-left:20px;
 			padding-bottom: 25px;
 		}
+
+		.myConnWrapper {
+
+			& {
+			    position: relative;
+			}
+
+		    .myConnProfilePic {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+		    }
+
+		    .myConnInfo {
+		    	
+			    padding-left: 145px;
+			    width: 100%;
+			    padding-right: 0;
+		    }
+		}
 		
 	}
-
 
 }
