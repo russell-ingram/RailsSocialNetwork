@@ -439,7 +439,15 @@
   font-family: "PNReg";
   color: rgba(255,255,255,0.85);
   margin-bottom: 15px;
-  max-width: 80%;
+}
+
+.hcpDesc p {
+  margin:0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .hcpMsg, .hcpConnect {
