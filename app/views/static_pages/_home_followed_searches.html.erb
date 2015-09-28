@@ -1,0 +1,71 @@
+
+      <div class="homeContentFollowed homeContent">
+
+
+        <% if favSearchs.length > 0 %>
+
+          <div class="followedSearchesWrapperHome">
+          <div class="homeContentLabel">followed searches</div>
+          <% favSearchs.each_with_index do |f,i| %>
+            <div class="followedSearch">
+              <div class="followedSearchTitle">
+                <% if f.name %>
+                <%= f.name %>
+                <% else %>
+                Unnamed Search
+                <% end %>
+              </div>
+              <div class="followedSearchDesc">
+              <%= f.format_string %>
+
+              </div>
+              <div class="viewMoreContent">
+              <a href="/search/<%= f.id %>">
+              <%= f.peers %> Peers <div class="icon icon-fwd-arrow">
+
+              </div></a>
+              <div class="favRemoveText"><a class="followedSearchRemove" href="#ex<%= f.id %>" rel="modal:open">
+
+              remove</a></div><div style="display:none;"><%= f.id %></div></div>
+            </div>
+
+            <div id="ex<%= f.id %>" class="addIntentionModal deleteIntentionModal deleteOnlyInt" style="display:none;">
+              <div class="formBox searchFormBox formBoxModal confirmBoxModal">
+                <div class="modalBody">
+                  <div class="modalIntentionsRight modalDeleteIntentions">
+                    <div class="deleteUserModalInfo deleteIntentionInfo">
+                      Are you sure you would like to delete this search?
+                    </div>
+                    <div class="modalDoneButton confirmDeleteButton">
+                      <%= link_to "Confirm", search_delete_path(f) %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+          <% end %>
+          <div class="viewMoreContent searchesViewMore">
+
+          <a href="/search#followedSearchesLink">
+          view all<div class="icon icon-fwd-arrow"></div></a></div>
+        </div>
+        <% else %>
+          <div class="noFollowedSearchesText">
+          You have no followed searches as of yet. Search for other technology leaders and save your search criteria.
+          </div>
+          <div class="startSearchBtn"><a href="/search">START A SEARCH</a></div>
+        <% end %>
+
+
+
+      </div>

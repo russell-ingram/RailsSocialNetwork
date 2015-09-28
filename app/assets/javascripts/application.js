@@ -81,3 +81,71 @@ pageSpecificInits.searchResultsPage = function(jquery){
 	});
 
 };
+
+pageSpecificInits.homePage = function(jquery){
+
+	var alignHeights = function(box_1, box_2, wrap_1, wrap_2){
+
+		if(box_1.outerHeight() > box_2.outerHeight()){
+			wrap_1.outerHeight(box_1.outerHeight());
+			wrap_2.outerHeight(box_1.outerHeight());
+		}
+		else{
+			wrap_1.outerHeight(box_2.outerHeight());
+			wrap_2.outerHeight(box_2.outerHeight());
+		}
+	};
+
+	jquery(window).resize(function(){
+		var breakstate = $('.breakstate').width();
+		if(breakstate === 1050 || breakstate === 0){
+
+			alignHeights(
+				jquery(".homeContentInvite.homeContent.break-1-hide"), 
+				jquery('.homeContentFollowed.homeContent'),
+				jquery('.homeContentBox2 .bottom .left'), 
+				jquery('.homeContentBox2 .bottom .right')
+			);
+
+
+			var box_1 = jquery(".homeContentBox1");
+			var box_2 = jquery('.homeContentBox2');
+			var wrap_1 = jquery('.homeContentWrapper > .left');
+			var wrap_2 = jquery('.homeContentWrapper > .right');
+			if(box_1.outerHeight() > box_2.outerHeight()){
+				// console.log('left wins');
+				var diff = box_1.outerHeight() - box_2.outerHeight();
+				var h = jquery('.homeContentBox2 .homeContentResearch').outerHeight();
+				console.log('diff: ' + diff);
+				console.log('total: ' + h + diff);
+				jquery('.homeContentBox2 .homeContentResearch').outerHeight(h + diff);
+			}
+			else{
+				wrap_1.outerHeight(box_2.outerHeight());
+				wrap_2.outerHeight(box_2.outerHeight());
+			}
+
+		}
+		else{
+			jquery('.homeContentBox2 .bottom .left').outerHeight(jquery(".homeContentInvite.homeContent.break-1-hide").outerHeight());
+			jquery('.homeContentWrapper > .left').outerHeight(jquery(".homeContentBox1").outerHeight());
+			jquery('.homeContentWrapper > .right').outerHeight(jquery(".homeContentBox2").outerHeight());
+		
+		}
+	});
+
+	alignHeights(
+		jquery(".homeContentInvite.homeContent.break-1-hide"), 
+		jquery('.homeContentFollowed.homeContent'),
+		jquery('.homeContentBox2 .bottom .left'), 
+		jquery('.homeContentBox2 .bottom .right')
+	);
+
+	alignHeights(
+		jquery(".homeContentBox1"), 
+		jquery('.homeContentBox2'), 
+		jquery('.homeContentWrapper > .left'), 
+		jquery('.homeContentWrapper > .right')
+	);
+	
+};

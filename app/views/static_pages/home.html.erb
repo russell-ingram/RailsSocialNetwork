@@ -1,7 +1,7 @@
 <%= render "layouts/header" %>
 
-<div class="pageWrap responsive pageHome">
-
+<div class="pageWrap responsive pageHome" data-js-init="homePage">
+<div class="breakstate"></div>
 <!-- start search bar -->
   <div class="searchBarHomeWrapper">
     <div class="searchBarHomeLabel">Find other technology leaders</div>
@@ -262,112 +262,27 @@
 <!-- start main content -->
 
   <div class="homeContentWrapper">
-    <div class= "homeContentBox1">
-      <% if @news %>
-      <div class="homeContentPic homeContent" style="background-image:url(<%= @news.image_url %>);"><%= image_tag @news.image_url %></div>
-      <% end %>
-      <div class="homeContentNews homeContent">
-        <div class="homeContentLabel">news</div>
-        <div class="homeContentHeadline newsHeadline">
-          <div class="newsDate"><%= @news.created_at.strftime("%B %e, %Y") %></div>
-          <% if @news %>
-            <%= @news.headline %>
-          <% else %>
-            Announced: ETR 2016 Technology Conference in New York City
-          <% end %>
-        </div>
-        <div class="newsContent">
-          <% if @news %>
-          <%= @news.body_copy.html_safe %>
-          <% else %>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium et enim in faucibus. Morbi mauris enim, imperdiet ac nisi in, facilisis pretium quam. Duis ac massa ut mauris bibendum fringilla auctor at mi. Sed semper tincidunt risus, id rutrum tortor dictum a. Maecenas sit amet pretium mi.
-          <% end %>
-        </div>
-        <div class="viewMoreContent"><a href="http://<%= @news.external_link %>" target='_blank'>Full Story<%= @news.link_copy %><div class="icon icon-fwd-arrow"></div></a></div>
+
+    <div class="left">
+      <div class= "homeContentBox1">
+        
+        <%= render partial: 'home_col_left', locals: { news: @news } %>
+      
       </div>
     </div>
-    <div class="homeContentBox2">
-      <div class="homeContentResearch homeContent">
 
-          <%= render :partial => "research_results", :locals => { :layout => @layout } %>
+    <div class="right">
+      <div class="homeContentBox2">
 
-      </div>
+          <%= render :partial => "research_results", locals: { layout: @layout } %>
 
-      <div class="homeContentFollowed homeContent">
-
-
-        <% if @favSearchs.length > 0 %>
-
-          <div class="followedSearchesWrapperHome">
-          <div class="homeContentLabel">followed searches</div>
-          <% @favSearchs.each_with_index do |f,i| %>
-            <div class="followedSearch">
-              <div class="followedSearchTitle">
-                <% if f.name %>
-                <%= f.name %>
-                <% else %>
-                Unnamed Search
-                <% end %>
-              </div>
-              <div class="followedSearchDesc">
-              <%= f.format_string %>
-
-              </div>
-              <div class="viewMoreContent">
-              <a href="/search/<%= f.id %>">
-              <%= f.peers %> Peers <div class="icon icon-fwd-arrow">
-
-              </div></a>
-              <div class="favRemoveText"><a class="followedSearchRemove" href="#ex<%= f.id %>" rel="modal:open">
-
-              remove</a></div><div style="display:none;"><%= f.id %></div></div>
-            </div>
-
-            <div id="ex<%= f.id %>" class="addIntentionModal deleteIntentionModal deleteOnlyInt" style="display:none;">
-              <div class="formBox searchFormBox formBoxModal confirmBoxModal">
-                <div class="modalBody">
-                  <div class="modalIntentionsRight modalDeleteIntentions">
-                    <div class="deleteUserModalInfo deleteIntentionInfo">
-                      Are you sure you would like to delete this search?
-                    </div>
-                    <div class="modalDoneButton confirmDeleteButton">
-                      <%= link_to "Confirm", search_delete_path(f) %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-          <% end %>
-          <div class="viewMoreContent searchesViewMore">
-
-          <a href="/search#followedSearchesLink">
-          view all<div class="icon icon-fwd-arrow"></div></a></div>
-        </div>
-        <% else %>
-          <div class="noFollowedSearchesText">
-          You have no followed searches as of yet. Search for other technology leaders and save your search criteria.
+          <div class="bottom">
+            <div class="left">
+            <%= render partial: 'home_followed_searches', locals: { favSearchs: @favSearchs } %></div>
+            <div class="right break-1-hide">
+            <%= render partial: 'home_send_invite_static', locals: { css_class: 'break-1-hide' } %></div>
           </div>
-          <div class="startSearchBtn"><a href="/search">START A SEARCH</a></div>
-        <% end %>
 
-
-
-      </div>
-<!-- end followed searches -->
-      <div class="homeContentInvite homeContent break-1-hide">
-        <div class="homeInviteTitle">invite your peers</div>
-        <div class="homeInviteText">Please be aware the only people that are to be invited are other enterprise IT end users. Please do not invite VARs or vendor sales reps.</div>
-        <div class="inviteButton">send invite</div>
       </div>
     </div>
 
@@ -443,11 +358,7 @@
 <!-- end connections -->
 
   
-  <div class="homeContentInvite homeContent break-1-show">
-    <div class="homeInviteTitle">invite your peers</div>
-    <div class="homeInviteText">Please be aware the only people that are to be invited are other enterprise IT end users. Please do not invite VARs or vendor sales reps.</div>
-    <div class="inviteButton">send invite</div>
-  </div>
+<%= render partial: 'home_send_invite_static', locals: { css_class: 'break-1-show' } %>
 
 
 <!-- modal start -->

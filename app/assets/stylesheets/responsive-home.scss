@@ -1,7 +1,19 @@
 
+.pageHome {
+	.breakstate {
+		display:none;
+		width:0;
+	}
+}
+
 @media screen and (max-width: 1050px) {
 	
 	.pageHome {
+
+		.breakstate {
+			display:none;
+			width:1050px;
+		}
 
 		.searchBarHomeWrapper {
 
@@ -59,11 +71,11 @@
 				display: none;
 			}
 
-			.homeContentFollowed {
+			.homeContentBox2 .bottom .left {
 				width:100%;
 			}
 
-			.homeContentBox1, .homeContentBox2 {
+			& > .left, & > .right {
 				width:50%;
 			}
 
@@ -118,6 +130,7 @@
 			height:auto;
 			line-height: inherit;
 			font-size:18px;
+			padding-top: 15px;
 			padding-bottom: 15px;
 		}
 
@@ -130,6 +143,26 @@
 			display: none;
 		}
 
+		.homeContentResearch {
+			.homeContentHeadline {
+				line-height: 23px;
+			}
+
+			.researchNum {
+				padding-right:10px;
+				font-size:46px;
+			}
+
+			.researchText {
+				padding-top:8px;
+				padding-bottom: 5px;
+			}
+
+			table.break-1-show td {
+				vertical-align: top;
+			}
+		}
+
 	}
 
 }
@@ -137,6 +170,10 @@
 @media screen and (max-width: 700px) {
 
 	.pageHome {
+
+		.breakstate {
+			width: 700px;
+		}
 
 		#addIntentionModal {
 
@@ -207,29 +244,6 @@
 			top:0;
 		}
 
-		.homeContentResearch .homeContentHeadline {
-			line-height: 23px;
-		}
-
-		.homeContentResearch .researchCol {
-			/*width:auto;*/
-			/*float:none;*/
-		}
-
-		.homeContentResearch .researchNum {
-			padding-right:10px;
-			font-size:46px;
-		}
-
-		.homeContentResearch .researchText {
-			padding-top:8px;
-			padding-bottom: 5px;
-		}
-
-		.homeContentResearch table.break-2-show td {
-			vertical-align: top;
-		}
-
 		.homeContentLabel {
 			
 		    font-size: 14px;
@@ -237,7 +251,6 @@
 		}
 
 		.homeContentWrapper {
-			overflow: auto;
 			height:auto;
 		}
 
@@ -269,8 +282,8 @@
 
 		}
 
-		.homeContentWrapper .homeContentBox1, 
-		.homeContentWrapper .homeContentBox2 {
+		.homeContentWrapper > .left, 
+		.homeContentWrapper > .right {
 			width:100%;
 		}	
 
