@@ -2,6 +2,18 @@
 	display: none;
 }
 
+@media screen and (max-width: 1050px) {
+
+	.newMessagesFormWrapper {
+
+		.newMsgFormGroup .tagit {
+			overflow:hidden;
+		}
+
+	}
+
+}
+
 @media screen and (max-width: 700px) {
 
 	.messagesHeader .pageHeader {
@@ -68,7 +80,9 @@
 			color:#3eb2cc;
 			position: absolute;
 			right:0;
+			top:0;
 			padding:13px 20px;
+			height:100%;
 		}
 
 	}
