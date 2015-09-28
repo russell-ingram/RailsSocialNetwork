@@ -28,6 +28,7 @@
           <% end %>
         </ul>
       </div>
+      <%= f.text_field :industry, placeholder: 'Industry', style: 'display: none;' %>
       <div class="homeAddIntentions">
         <a href="#addIntentionModal" rel="modal:open">
           <div class="addSpendingIntentionFieldButton">
@@ -51,9 +52,9 @@
           <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
           <ul class="dropdown fieldDropdown">
             <li class="ddOption fieldOption">No preference</li>
-            <li class="ddOption fieldOption">LARGE</li>
             <li class="ddOption fieldOption">SMALL</li>
             <li class="ddOption fieldOption">MIDSIZE</li>
+            <li class="ddOption fieldOption">LARGE</li>
           </ul>
         </div>
         <%= f.text_field :enterprise, placeholder: 'Enterprise Size', style: 'display: none;' %>
@@ -265,9 +266,9 @@
 
     <div class="left">
       <div class= "homeContentBox1">
-        
+
         <%= render partial: 'home_col_left', locals: { news: @news } %>
-      
+
       </div>
     </div>
 
@@ -324,7 +325,7 @@
 
 <!-- end connections -->
 
-  
+
 <%= render partial: 'home_send_invite_static', locals: { css_class: 'break-1-show' } %>
 
 
