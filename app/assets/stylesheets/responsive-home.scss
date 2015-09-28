@@ -15,6 +15,11 @@
 			width:1050px;
 		}
 
+		.homeContentWrapper .homeContentBox1,
+		.homeContentWrapper .homeContentBox2 {
+			width:100%;
+		}
+
 		.searchBarHomeWrapper {
 
 			& {
@@ -132,15 +137,6 @@
 			font-size:18px;
 			padding-top: 15px;
 			padding-bottom: 15px;
-		}
-
-		.homeContentPic {
-		    background-position-y: center;
-		    background-size: 100% auto;
-		}
-
-		.homeContentPic img {
-			display: none;
 		}
 
 		.homeContentResearch {

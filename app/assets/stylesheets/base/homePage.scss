@@ -148,10 +148,25 @@
 
 .homeContentPic {
   height: 259px;
+  background-size: 0px;
   padding: 0;
   img {
     width: 100%;
   }
+}
+
+.homeContentPic.tallPic {
+    background-position-y: center;
+    background-size: 100% auto;
+}
+
+.homeContentPic.widePic {
+    background-position-x: center;
+    background-size: auto 100%;
+}
+
+.homeContentPic img {
+  display: none;
 }
 
 .homeContentResearch {
