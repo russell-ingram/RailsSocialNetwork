@@ -90,10 +90,10 @@ class User < ActiveRecord::Base
       end
     end
 
-    works = Work.where("enterprise_size = ?", current_user.current_pos["enterprise_size"])
+    works = Work.where("enterprise_size = ? OR industry = ?", current_user.current_pos["enterprise_size"], current_user.current_pos["industry"])
 
-    works = works.where("industry = ? ", current_user.current_pos["industry"])
-
+    p "WORKS:"
+    p works.count
     all_wids = []
 
     works.each do |w|
@@ -102,10 +102,20 @@ class User < ActiveRecord::Base
       end
     end
 
+
+    p "wids"
+    p all_wids.length
+
+
     users = User.where.not(id: current_user.id)
     users = users.where("big65 = ? OR fortune100 = ? OR sp500 = ? OR global1000 = ?", true, true, true, true)
 
     users = users.where(:uid=>all_wids)
+
+    p "COUNT!"
+    p users.count
+
+
 
     users.each do |i|
       if recs.length < 6
@@ -115,6 +125,18 @@ class User < ActiveRecord::Base
         end
       else
         break
+      end
+    end
+
+    if recs.length < 6
+      users = User.where.not(id: current_user.id)
+      users.where(:uid=>all_wids)
+      n = 6 - recs.length
+      n.times do |i|
+        random = users.sample
+        if !friends.include? random
+          recs << random
+        end
       end
     end
 
