@@ -150,11 +150,10 @@
 
 .myConnWrapper {
   height: 140px;
-  border-bottom: 1px solid #cbd0d2;
   padding-bottom: 10px;
 }
 
-.myConnection:last-child myConnWrapper {
+.myConnection:last-child .myConnWrapper {
   border-bottom: none;
 }
 
