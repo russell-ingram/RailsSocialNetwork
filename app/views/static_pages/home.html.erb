@@ -314,7 +314,7 @@
 
         <div class="hcpTitle"><%= position["job_title"] %></div>
         <div class="hcpDesc">
-          <p><%= position["industry"] %></p> 
+          <p><%= position["industry"] %></p>
           <p>in <%= position["region"]%></p>
           <p><%= position["enterprise_size"] %> Enterprise</p>
         </div>
@@ -363,7 +363,7 @@
               <ul class="dropdown fieldDropdown">
                 <li class="ddOption fieldOption">No preference</li>
                 <% @sectors.each do |sector| %>
-                <li class="ddOption fieldOption"><%= sector.name %></li>
+                <li class="ddOption fieldOption" data-sector-id="<%= sector.id %>"><%= sector.name %></li>
                 <% end %>
               </ul>
             </div>
@@ -381,7 +381,7 @@
               <ul class="dropdown fieldDropdown">
                 <li class="ddOption fieldOption">No preference</li>
                 <% @vendors.each do |vendor| %>
-                <li class="ddOption fieldOption"><%= vendor.name %></li>
+                <li class="ddOption fieldOption" data-vendor-id="<%= vendor.id %>"><%= vendor.name %></li>
                 <% end %>
               </ul>
             </div>

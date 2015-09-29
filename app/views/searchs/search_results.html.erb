@@ -782,7 +782,7 @@
               <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
               <ul class="dropdown fieldDropdown">
                     <% @sectors.each do |sector| %>
-                    <li class="ddOption fieldOption"><%= sector.name %></li>
+                    <li class="ddOption fieldOption" data-sector-id="<%= sector.id %>"><%= sector.name %></li>
                     <% end %>
               </ul>
             </div>
@@ -799,7 +799,7 @@
               <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
               <ul class="dropdown fieldDropdown">
                     <% @vendors.each do |vendor| %>
-                    <li class="ddOption fieldOption"><%= vendor.name %></li>
+                    <li class="ddOption fieldOption" data-vendor-id="<%= vendor.id %>"><%= vendor.name %></li>
                     <% end %>
               </ul>
             </div>
