@@ -60,13 +60,11 @@
   font-size: 12px;
 }
 
-.connectionReqIndustry {
-
-}
-
 .connectionReqSimilarity {
   color: #3eb2cc;
   text-transform: uppercase;
+}
+.connectionRequestInfo .connectionReqSimilarity:last-of-type {
   margin-bottom: 10px;
 }
 
@@ -101,6 +99,8 @@
   font-family: inherit;
   background-color: inherit;
   cursor: pointer;
+  height: inherit;
+  width: inherit;
 }
 .connectionButtonAccept {
   background-color: #3eb2cc;

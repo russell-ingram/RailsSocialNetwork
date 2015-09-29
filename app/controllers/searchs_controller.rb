@@ -1,5 +1,6 @@
 class SearchsController < ApplicationController
   def search
+    p "THIS IS A NEW SEARCH UPDATED"
     @countries = countries_list
     @industries = industries_list
     @searchTags = []
@@ -29,6 +30,8 @@ class SearchsController < ApplicationController
     # converting results string back into accessible hash
     if @search.results != ''
       @spendingTags = format_results(@search, results)
+      # p "TAGS:"
+      # p @spendingTags
       @has_intentions = true
     end
 
@@ -107,6 +110,8 @@ class SearchsController < ApplicationController
     @friends = []
     @requested = []
     @pending = []
+    @blocked = []
+    @blocking = []
     @friendships.each { |friendship|
       if friendship.accepted?
         @friends << friendship.friend
@@ -114,6 +119,10 @@ class SearchsController < ApplicationController
         @pending << friendship.friend
       elsif friendship.requested?
         @requested << friendship.friend
+      elsif friendship.blocked?
+        @blocked << friendship.friend
+      elsif friendship.blocking?
+        @blocking << friendship.friend
       end
     }
   end
@@ -143,11 +152,18 @@ class SearchsController < ApplicationController
   def format_results(search,results)
     # p search
     l = search.results.length
+    if @search.results[0] != '['
+      @search.results.insert(0, '[')
+      # @search.results.insert(-1, ']')
+    end
+    p @search.results
     @search.results[l-1] = ''
     @search.results[0] = ''
     t = search.results.split('{')
+    p "TSPLIT"
     p t
     t.each do |r|
+      p r
       if r != ''
         rl = r.length
         if r[rl-1] == ','

@@ -7,7 +7,7 @@
 
 
       <div class="searchTypesWrapper">
-      
+
         <div class="searchResultsHeader">
           <span class="number break-2-show"><%= @length %> Results For</span>
           <div class="searchResultsNum">
@@ -736,6 +736,16 @@
       <div class="viewMoreContent viewMoreSideBar">
         <a href="/search#followedSearchesLink">view all<div class="icon icon-fwd-arrow"></div></a>
       </div>
+
+      <% else %>
+        <div class="favSearch">
+          <div class="favSearchHeader">
+          No Favorites
+          </div>
+          <div class="favSearchParams">
+            You have no followed searches yet. Search for other technology leaders and save your search criteria.
+          </div>
+        </div>
       <% end %>
       </div>
 

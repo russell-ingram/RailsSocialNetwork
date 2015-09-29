@@ -2,7 +2,7 @@
 
 <div class="pageWrap responsive">
 <% flash.each do |name, msg| -%>
-  <% if !msg.blank? %>
+  <% if !msg.blank? && name == 'sent' %>
   <div class="flashMessages">
       <%= content_tag :div, msg, class: name unless msg.blank? %>
   </div>

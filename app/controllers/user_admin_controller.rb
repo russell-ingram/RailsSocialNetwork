@@ -437,6 +437,8 @@ class UserAdminController < ApplicationController
     @friends = []
     @requested = []
     @pending = []
+    @blocked = []
+    @blocking = []
     @friendships.each { |friendship|
       if friendship.accepted?
         @friends << friendship.friend
@@ -444,6 +446,10 @@ class UserAdminController < ApplicationController
         @pending << friendship.friend
       elsif friendship.requested?
         @requested << friendship.friend
+      elsif friendship.blocked?
+        @blocked << friendship.friend
+      elsif friendship.blocking?
+          @blocking <<friendship.friend
       end
     }
   end

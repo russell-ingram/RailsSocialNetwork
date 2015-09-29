@@ -133,19 +133,35 @@ $( document ).ready(function() {
 
     var data = $(this).attr('data');
     var name = $("#saved_search_name").val();
-
+    if (name.length > 30) {
+      var n = 30 - name.length;
+      name = name.slice(0, n);
+    }
     $.post('/search/add_favorite',{"searchData": data, "name":name},function(data) {
 
       $('.searchResultsFollowButton').html("ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div> ");
       $('.searchResultsFollowButton').addClass('inactive');
       // console.log(data);
       var props_string = '';
+      var intentions = false;
       $.each(data,function(k,v) {
 
         if (v !== '') {
 
-          if (k === 'job_title' || k === 'industry' || k === 'enterprise' || k === 'region' || k === 'country' || k === 'organization_type' ) {
+          if (k === 'industry' || k === 'enterprise' || k === 'region' || k === 'country' || k === 'organization_type' ) {
             props_string += v + ', ';
+          }
+          if (k === 'results') {
+            intentions = true;
+          }
+        }
+        if (v === true) {
+          if (k === 'clevel') {
+            props_string += 'C-Level, ';
+          }
+          if (k === 'executive' || k === 'president' || k === 'director' || k === 'principal' || k === 'head' || k === 'senior' || k === 'lead' || k === 'manager' || k === 'architect' || k === 'infrastructure' || k === 'engineer' || k === 'consultant' || k === 'security' || k === 'analyst' || k === 'administrator' || k ==='risk' ) {
+            var cap = k.charAt(0).toUpperCase() + k.substring(1);
+            props_string += cap + ', ';
           }
         }
       });
@@ -153,11 +169,18 @@ $( document ).ready(function() {
       if (props_string !== "null, ") {
         props_string = props_string.slice(0,-2);
       }
-      if (props_string.length === 0) {
-        props_string = "No filters selected.";
+      if (props_string.length === 0 && !intentions) {
+        props_string = "<i>No filters selected.</i>";
       }
       console.log(props_string.length);
-      var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'</div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
+      if (intentions && props_string !== "") {
+        var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'<br><i> Intention filters used. </i></div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
+      } else if (intentions) {
+        var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams"><i> Intention filters used. </i></div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
+      } else {
+        var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'</div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
+
+      }
 
       $('.savedSearchTab').prepend(searchElem);
     })

@@ -34,6 +34,7 @@ class FriendshipsController < ApplicationController
     p "FRIENDS:"
     p @friends
 
+    @user_pos = current_user.current_pos
 
     @friends = @friends.paginate(page: params[:page], per_page: 10)
   end

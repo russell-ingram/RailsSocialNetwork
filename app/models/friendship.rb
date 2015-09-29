@@ -16,6 +16,7 @@ class Friendship < ActiveRecord::Base
     state :requested
     state :accepted
     state :blocked
+    state :blocking
 
     event :accept, :after => :accept_mutual_friendship! do
       transitions :from => :requested, :to => :accepted
@@ -61,10 +62,14 @@ class Friendship < ActiveRecord::Base
   end
 
   def block_mutual_friendship!
-    mutual_friendship.update_attribute(:state, 'blocked') if mutual_friendship
+    mutual_friendship.update_attribute(:state, 'blocking') if mutual_friendship
     rev_mutual_friendship.update_attribute(:state, 'blocked') if rev_mutual_friendship
   end
 
+  # def unblock_mutual_friendship!
+  #   mutual_friendship.update_attribute(:state, 'none') if mutual_friendship
+  #   rev_mutual_friendship.update_attribute(:state, 'none') if rev_mutual_friendship
+  # end
 
 
 

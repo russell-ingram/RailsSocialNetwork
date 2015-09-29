@@ -14,9 +14,6 @@ class Search < ActiveRecord::Base
 
   def format_string
     str = ''
-    if !job_title.blank?
-      str += job_title + ', '
-    end
     if !industry.blank?
       str += industry + ', '
     end
@@ -32,6 +29,58 @@ class Search < ActiveRecord::Base
     if !organization_type.blank?
       str += organization_type + ', '
     end
+    if !clevel.blank?
+      str += 'C-Level' + ', '
+    end
+    if !executive.blank?
+      str += 'Executive' + ', '
+    end
+    if !president.blank?
+      str += 'President' + ', '
+    end
+    if !director.blank?
+      str += 'Director' + ', '
+    end
+    if !principal.blank?
+      str += 'Principal' + ', '
+    end
+    if !head.blank?
+      str += 'Head' + ', '
+    end
+    if !senior.blank?
+      str += 'Senior' + ', '
+    end
+    if !lead.blank?
+      str += 'Lead' + ', '
+    end
+    if !manager.blank?
+      str += 'Manager' + ', '
+    end
+    if !architect.blank?
+      str += 'Architect' + ', '
+    end
+    if !infrastructure.blank?
+      str += 'Infrastructure' + ', '
+    end
+    if !engineer.blank?
+      str += 'Engineer' + ', '
+    end
+    if !consultant.blank?
+      str += 'Consultant' + ', '
+    end
+    if !security.blank?
+      str += 'Security' + ', '
+    end
+    if !analyst.blank?
+      str += 'Analyst' + ', '
+    end
+    if !administrator.blank?
+      str += 'Administrator' + ', '
+    end
+    if !risk.blank?
+      str += 'Risk' + ', '
+    end
+
 
     if str == '' && results == ''
       str = '<i>No filters selected.</i>'
@@ -39,7 +88,9 @@ class Search < ActiveRecord::Base
       str = '<i>Intention filters used.</i>'
     else
       str[str.length - 2] = ''
-      str += '</br><i> Intention filters used.</i>'
+      if results != ''
+        str += '</br><i> Intention filters used.</i>'
+      end
     end
     return str
   end

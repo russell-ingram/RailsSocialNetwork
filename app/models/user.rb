@@ -92,8 +92,6 @@ class User < ActiveRecord::Base
 
     works = Work.where("enterprise_size = ? OR industry = ?", current_user.current_pos["enterprise_size"], current_user.current_pos["industry"])
 
-    p "WORKS:"
-    p works.count
     all_wids = []
 
     works.each do |w|
@@ -131,8 +129,6 @@ class User < ActiveRecord::Base
       end
     end
 
-    p recs
-
     return recs
 
 
@@ -148,15 +144,22 @@ class User < ActiveRecord::Base
     # p search.results.class
     if search.results && search.results != ""
       res = JSON.parse(search.results)
-      # p res[0]
 
-      # p "Length:"
-      # p intentions.length
+      if res.is_a? Hash
+        a = res
+        res = []
+        res << a
+      end
 
       id_check = []
       id_final = []
 
+
       res.each_with_index do |int, index|
+        p "RES"
+        p int
+        p int["vendor"]
+
         intentions = Intention.all
         id_check = []
         if int["vendor"] != "Any"

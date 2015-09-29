@@ -29,7 +29,12 @@
           <% friend_pos = friend.current_pos %>
           <div class="connectionReqCompany"><%= friend_pos["company"] %></div>
           <div class="connectionReqIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>
+          <% if friend_pos["industry"] == @user_pos["industry"] %>
           <div class="connectionReqSimilarity">this user is in the same industry</div>
+          <% end %>
+          <% if friend_pos["region"] == @user_pos["region"] %>
+          <div class="connectionReqSimilarity">this user is in the same region</div>
+          <% end %>
 
         </div>
 
@@ -37,7 +42,7 @@
           <div class="connectionReqMsg">Hi James, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tempor libero. Quisque vulputate porttitor ligula, eget sollicitudin...</div>
           <div class="viewMoreContent fullReqMessage break-2-hide">full message<i class="fa fa-chevron-right"></i></div>
           <div class="buttonsBox break-2-show">
-            
+
             <div class="ignore button">Ignore</div>
             <div class="accept button">Accept</div>
             <div class="full button">Full Message</div>

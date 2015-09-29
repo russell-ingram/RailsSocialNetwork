@@ -6,32 +6,32 @@
       <%= image_tag("fito-logo-2lines.svg", class: "menuLogo break-2-show")  %>
 
     </a></div>
-    
+
     <div class="navBar">
-    
+
       <% if current_user.admin %>
         <div class="hoverDiv break-2-hide"><a href="/admin">ADMIN</a></div>
       <% end %>
-      
+
       <% cssClass = (current_page?('/search') || controller.controller_name == "searchs") ? 'active' : 'notActive' %>
       <div class="hoverDiv <%= cssClass %> break-2-hide"><a href="/search">SEARCH</a></div>
       <div class="hoverDiv <%= cssClass %> break-2-show"><a href="/search"><div class="icon icon-icon-search menuIcon"></div></a></div>
-      
+
       <% cssClass = (controller.controller_name == 'friendships') ? 'active' : 'notActive' %>
       <div class="hoverDiv <%= cssClass %> break-2-hide"><a href="/connections">CONNECTIONS</a></div>
       <div class="hoverDiv <%= cssClass %> break-2-show"><a href="/connections"><div class="icon icon-icon-multiple-people menuIcon"></div></a></div>
-      
+
       <% if current_user.friendship_requests > 0 %>
-        <div class="notificationMenuIcon break-2-hide"><a href="/messages"><%= current_user.friendship_requests %></a></div>
+        <div class="notificationMenuIcon break-2-hide"><a href="/connections"><%= current_user.friendship_requests %></a></div>
       <% end %>
-      
+
       <% cssClass = (controller.controller_name == 'conversations') ? 'active' : 'notActive' %>
       <div class="hoverDiv mailMenuIcon <%= cssClass %> break-2-hide"><a href="/messages"><div class="icon icon-icon-mail menuIcon"></div></a></div>
-      
+
       <% if current_user.unread_msgs > 0 %>
         <div class="notificationMenuIcon break-2-hide"><a href="/messages"><%= current_user.unread_msgs %></a></div>
       <% end %>
-      
+
       <% cssClass = (current_page?('/profile')) ? 'active' : 'notActive' %>
       <div class="hoverDiv <%= cssClass %> menuIconOptions break-2-hide"><div class="icon icon-icon-profile menuIcon"></div></div>
 
