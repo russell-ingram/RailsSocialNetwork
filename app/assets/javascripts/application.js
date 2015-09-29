@@ -96,7 +96,7 @@ pageSpecificInits.homePage = function(jquery){
 		}
 	};
 
-	jquery(window).resize(function(){
+	var onResize = function(){
 
 		adjustContentPicSize();
 
@@ -137,21 +137,11 @@ pageSpecificInits.homePage = function(jquery){
 			jquery('.homeContentWrapper > .right').outerHeight(jquery(".homeContentBox2").outerHeight());
 		
 		}
-	});
+	}
 
-	alignHeights(
-		jquery(".homeContentInvite.homeContent.break-1-hide"), 
-		jquery('.homeContentFollowed.homeContent'),
-		jquery('.homeContentBox2 .bottom .left'), 
-		jquery('.homeContentBox2 .bottom .right')
-	);
+	jquery(window).resize(onResize);
 
-	alignHeights(
-		jquery(".homeContentBox1"), 
-		jquery('.homeContentBox2'), 
-		jquery('.homeContentWrapper > .left'), 
-		jquery('.homeContentWrapper > .right')
-	);
+	onResize();
 
 	var adjustContentPicSize = function(){
 
