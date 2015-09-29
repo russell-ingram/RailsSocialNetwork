@@ -15,6 +15,11 @@
 			width:1050px;
 		}
 
+		.homeContentWrapper .homeContentBox1,
+		.homeContentWrapper .homeContentBox2 {
+			width:100%;
+		}
+
 		.searchBarHomeWrapper {
 
 			& {
@@ -76,7 +81,7 @@
 			}
 
 			& > .left, & > .right {
-				width:50%;
+				/*width:50%;*/
 			}
 
 		}
@@ -109,8 +114,19 @@
 
 		.homeConnectionBox {
 
+			& {
+
+			    height: 190px;
+			}
+
 			&, .homeConnectionPic, .homeConnectionProfile {
-				width:50%;
+				/*width:50%;*/
+			}
+
+			.homeConnectionProfile {
+				width:100%;
+				margin-left:187px;
+    			height: 187px;
 			}
 
 			.homeConnectionPic {
@@ -118,6 +134,9 @@
 			    background-size: 100% auto;
 			    background-position: center;
 			    background-repeat: no-repeat;
+			    position:absolute;
+			    width:187px;
+			    height:187px;
 			}
 
 		    .homeConnectionPic img {
@@ -134,19 +153,7 @@
 			padding-bottom: 15px;
 		}
 
-		.homeContentPic {
-		    background-position-y: center;
-		    background-size: 100% auto;
-		}
-
-		.homeContentPic img {
-			display: none;
-		}
-
 		.homeContentResearch {
-			.homeContentHeadline {
-				line-height: 23px;
-			}
 
 			.researchNum {
 				padding-right:10px;
@@ -216,11 +223,16 @@
 
 		.homeContentHeadline {
 
-		    border-left: 5px solid black;
-		    padding-left: 10px;
 		    margin-bottom: 10px;
 		    font-size:24px;
 		    position: relative;
+		    line-height: 25px;
+		}
+
+		.homeContentResearch .homeContentHeadline {
+
+		    border-left: 5px solid black;
+		    padding-left: 10px;
 		}
 
 		.homeContentNews .newsContent {
@@ -229,12 +241,12 @@
 		}
 
 		.homeContentNews .viewMoreContent {
-			margin-left: 15px;
+
 		}
 
 		.homeContentNews .newsHeadline {
 			margin-top:0;
-			line-height: 23px;
+			line-height: 25px;
 			padding-top:20px;
 		}
 
@@ -300,6 +312,10 @@
 
 			.homeConnectionPic.forResponsive-2 {
 				display: block;
+			}
+
+			.hcpMsg {
+				margin-bottom: 15px;
 			}
 
 		}

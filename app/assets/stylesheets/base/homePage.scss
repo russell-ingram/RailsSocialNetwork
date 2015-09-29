@@ -148,10 +148,25 @@
 
 .homeContentPic {
   height: 259px;
+  background-size: 0px;
   padding: 0;
   img {
     width: 100%;
   }
+}
+
+.homeContentPic.tallPic {
+    background-position-y: center;
+    background-size: 100% auto;
+}
+
+.homeContentPic.widePic {
+    background-position-x: center;
+    background-size: auto 100%;
+}
+
+.homeContentPic img {
+  display: none;
 }
 
 .homeContentResearch {
@@ -306,7 +321,6 @@
   color: #282b30;
   text-transform: uppercase;
   text-align: center;
-  margin-top: 70px;
 }
 
 .startSearchBtn {
@@ -338,7 +352,6 @@
   margin-bottom: 20px;
   width: 108px;
   margin: 0 auto;
-  margin-top: 50px;
   letter-spacing: 0.025em;
 }
 
@@ -424,7 +437,15 @@
   font-family: "PNReg";
   color: rgba(255,255,255,0.85);
   margin-bottom: 15px;
-  max-width: 80%;
+}
+
+.hcpDesc p {
+  margin:0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .hcpMsg, .hcpConnect {

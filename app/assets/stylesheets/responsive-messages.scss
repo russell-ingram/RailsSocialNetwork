@@ -81,12 +81,22 @@
 		}
 		
 		.messageContentBox {
-		     margin-left: 0; 
+
+			& {
+
+			    margin-left: 0; 
+			    width: initial;
+
+			}
+
+			.messageUserInfo .messageEmployer {
+
+				display:block;
+					  
+			}
 		}
 
-		.messageContentBox {
-		    width: initial;
-		 }
+
 
 		.messageContent {
 		    width: 100%; 
@@ -102,7 +112,11 @@
 	    .message {
 
 		    overflow: hidden;
-		    border-color:#ccc;
+		    border-bottom:1px solid #dcdee0;
+	    }
+
+	    .message:last-child {
+	    	border-bottom:none;
 	    }
 	    
 	    .formBox {

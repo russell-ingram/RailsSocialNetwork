@@ -74,7 +74,7 @@
 
 		.connectionReqName,
 		.connectionReqCompany {
-			font-size:18px;
+			font-size:20px;
 		}
 
 
@@ -89,6 +89,7 @@
 
 	    	padding-left: 20px;
 	    	margin-bottom:30px;
+    		padding-right: 10px
 		}
 
 		.connectionRequestPic {
@@ -130,13 +131,17 @@
 		}
 
 		.buttonsBox .button {
-			padding-top:20px;
+			padding-top:25px;
 			padding-bottom:20px;
+		    text-transform: uppercase;
+			height:70px;
+
 		}
 
 		.buttonsBox .ignore.button,
 		.buttonsBox .full.button {
 			width:33%;
+
 		}
 
 		.buttonsBox .accept.button {
@@ -181,6 +186,26 @@
 
 			background-color:white;
 			margin:0;
+		}
+
+		.messagesBar {
+			position:relative;
+			padding-right:0;
+		
+			& .toggleRightSearch {
+				position:absolute;
+				left:25px;
+				top:2px;
+			}
+
+			& .searchConnsInput {
+				position:absolute;
+				left:50px;
+			}
+
+			& .wrapper-dropdown {
+				padding-right:0;
+			}
 		}
 
 		.msgsBarName {
