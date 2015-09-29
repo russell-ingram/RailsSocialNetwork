@@ -208,12 +208,11 @@
 
 .messageName {
   color: #3eb2cc;
-  float:left;
   margin-right: 10px;
 }
 
 .messageEmployer, .messageContent {
-  color: #737373;
+  color: #445058;
   font-family: "PNReg";
 }
 
@@ -247,11 +246,11 @@
   font-size: 16px;
   height: auto;
   width: 700px;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-
+  letter-spacing: 0.5px;
 
 }
 
