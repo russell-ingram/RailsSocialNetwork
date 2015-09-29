@@ -96,6 +96,21 @@ pageSpecificInits.homePage = function(jquery){
 		}
 	};
 
+	var adjustContentPicSize = function(){
+
+		var box = jquery('.homeContentPic');
+		var pic = box.find('img');
+		var ratio = function(o){ return o.width()/o.height() };
+		if(ratio(box) > ratio(pic)){
+			box.addClass('tallPic');
+			box.removeClass('widePic');
+		}
+		else{
+			box.addClass('widePic');
+			box.removeClass('tallPic');
+		}
+	};
+
 	var onResize = function(){
 
 		adjustContentPicSize();
@@ -142,22 +157,6 @@ pageSpecificInits.homePage = function(jquery){
 	jquery(window).resize(onResize);
 
 	onResize();
-
-	var adjustContentPicSize = function(){
-
-		var box = jquery('.homeContentPic');
-		console.log('box');
-		var pic = box.find('img');
-		var ratio = function(o){ return o.width()/o.height() };
-		if(ratio(box) > ratio(pic)){
-			box.addClass('tallPic');
-			box.removeClass('widePic');
-		}
-		else{
-			box.addClass('widePic');
-			box.removeClass('tallPic');
-		}
-	};
 
 	adjustContentPicSize();
 	
