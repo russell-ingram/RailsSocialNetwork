@@ -407,6 +407,10 @@ $( document ).ready(function() {
     }
   });
 
+  $('.inviteButton').off().on('click', function() {
+    window.location.href = "mailto:user@example.com?subject=Check%20out%20FITO&body=Link%20goes%20here";
+  });
+
 
 
 });

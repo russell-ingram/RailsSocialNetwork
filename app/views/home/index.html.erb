@@ -155,6 +155,10 @@ $( document ).ready(function() {
   $('body').addClass('homePageBody');
   $("#fitoLandingSignInButton").off().on('click', function(e) {
     e.stopPropagation();
+    $('.fitoLandingRequestWrapper').hide();
+    $('#signInForm').show();
+    $('.fitoLandingRequestResetPasswordWrapper').hide();
+
     $('.fitoLandingSignInWrapper').addClass('active');
     $("#fitoLandingSignInButton").addClass('active');
     $('.mainRequestBtn').addClass('active');
@@ -167,10 +171,22 @@ $( document ).ready(function() {
     $("#landingSubmitLogin").click();
   })
 
-  $(".fitoLandingRequestBtn").off().on('click', function () {
+  $(".fitoLandingRequestBtn").off().on('click', function (e) {
     $('#signInForm').hide();
     $('.fitoLandingRequestWrapper').show();
     $('.fitoLandingRequestResetPasswordWrapper').hide();
+    if ($('.fitoLandingSignInWrapper').hasClass('active')) {
+
+    } else {
+      e.stopPropagation();
+      $('.fitoLandingSignInWrapper').addClass('active');
+      $("#fitoLandingSignInButton").addClass('active');
+      $('.mainRequestBtn').addClass('active');
+
+      // allows the page to be scrollable again
+      $('body').removeClass('homePageBody');
+    }
+
   });
 
   $(".fitoLandingSignInToggle").off().on('click', function() {
