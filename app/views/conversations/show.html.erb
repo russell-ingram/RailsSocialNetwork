@@ -46,7 +46,12 @@
             <% end %>
               <%= sender.full_name %>
             </a>
-            </div><div class="senderInfo"><%= send_pos['job_title'] %> at <%= send_pos['company'] %></div>
+          </div>
+          
+            <% if(send_pos["job_title"]!='Unlisted' && send_pos["company"]!='Unlisted') %>
+              <div class="senderInfo"><%= send_pos['job_title'] %> at <%= send_pos['company'] %></div>
+            <% end %>
+
           </div>
           <div class="replyTo">
             To: <div class="senderInfo sendersInfoDiv">
