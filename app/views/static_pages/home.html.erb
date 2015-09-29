@@ -360,7 +360,7 @@
                 Search sector
               </span>
               <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
-              <ul class="dropdown fieldDropdown">
+              <ul class="dropdown fieldDropdown forSector">
                 <li class="ddOption fieldOption">No preference</li>
                 <% @sectors.each do |sector| %>
                 <li class="ddOption fieldOption" data-sector-id="<%= sector.id %>"><%= sector.name %></li>
@@ -378,7 +378,7 @@
                 Search vendors
               </span>
               <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
-              <ul class="dropdown fieldDropdown">
+              <ul class="dropdown fieldDropdown forVendor">
                 <li class="ddOption fieldOption">No preference</li>
                 <% @vendors.each do |vendor| %>
                 <li class="ddOption fieldOption" data-vendor-id="<%= vendor.id %>"><%= vendor.name %></li>

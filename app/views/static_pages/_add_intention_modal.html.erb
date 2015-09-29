@@ -1,0 +1,63 @@
+
+  <div id="ex1" class="addIntentionModal" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal">
+      <div class="formHeader">ADD SPENDING INTENTIONS</div>
+      <div class="modalBody">
+        <div class="modalIntentions">
+          <div class="modalSectionHeader intentionsHeader">
+            INTENTION
+          </div>
+          <div class="intentionSelectModal active"><div class="icon icon-selection-true"></div><div class="intentionModalText">ANY</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">ADOPT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">INCREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">FLAT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">DECREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">REPLACE</div></div>
+        </div>
+        <input placeholder="Intention" style="display: none;" type="text" name="intention[intention]" id="intention_intention">
+        <div class="modalIntentionsRight">
+          <div class="modalSectionHeader intentionsHeader">
+            SECTOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <div class="ddLabel ddNoPref">
+                Search sector
+              </div>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown forSector">
+                <li class="ddOption fieldOption">No preference</li>
+                <% @sectors.each do |sector| %>
+                <li class="ddOption fieldOption" data-sector-id="<%= sector.id %>"><%= sector.name %></li>
+                <% end %>
+              </ul>
+            </div>
+            <input placeholder="Sector" style="display: none;" type="text" name="intention[sector]" id="intention_sector">
+          </div>
+          <div class="modalSectionHeader intentionsHeader">
+            VENDOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <div class="ddLabel ddNoPref">
+                Search vendors
+              </div>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown forVendor">
+                  <li class="ddOption fieldOption">No preference</li>
+                  <% @vendors.each do |vendor| %>
+                  <li class="ddOption fieldOption" data-vendor-id="<%= vendor.id %>"><%= vendor.name %></li>
+                  <% end %>
+              </ul>
+            </div>
+            <input placeholder="Vendor" style="display: none;" type="text" name="intention[vendor]" id="intention_vendor">
+          </div>
+
+          <div class="modalDoneButton" id="modalDoneButton">
+            <a href="" rel="modal:close">DONE</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
