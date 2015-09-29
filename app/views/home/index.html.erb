@@ -102,6 +102,22 @@
       <%= f.submit 'Submit Request', style: 'display:none;' %>
     <% end %>
   </div>
+  <div class="fitoLandingRequestResetPasswordWrapper">
+    <div class="form">
+      <div class="fitoRequestHeader">
+        To reset your password, enter the email address you use to sign into fito.
+      </div>
+      <div class="field loginField">
+        <input placeholder="email" type="text" name="user[email]" id="user_reset_email">
+      </div>
+      <div class="fitoLandingRequestSubmit" id="fitoLandingPasswordReset">
+        Send Request
+      </div>
+      <div class="fitoLandingSignInToggle">
+      - sign-in -
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -154,11 +170,32 @@ $( document ).ready(function() {
   $(".fitoLandingRequestBtn").off().on('click', function () {
     $('#signInForm').hide();
     $('.fitoLandingRequestWrapper').show();
+    $('.fitoLandingRequestResetPasswordWrapper').hide();
   });
 
   $(".fitoLandingSignInToggle").off().on('click', function() {
     $('.fitoLandingRequestWrapper').hide();
     $('#signInForm').show();
+    $('.fitoLandingRequestResetPasswordWrapper').hide();
+  });
+
+  $(".forgotPasswordButton").off().on('click', function() {
+    $('.fitoLandingRequestWrapper').hide();
+    $('#signInForm').hide();
+    $('.fitoLandingRequestResetPasswordWrapper').show();
+  });
+
+  $("#fitoLandingPasswordReset").off().on('click', function() {
+    var email = $('#user_reset_email').val();
+    if (email === '') {
+      $('.fitoRequestHeader').text('Please enter an email address.');
+      $('#user_reset_email').css({'border':'1px solid #800000'});
+    } else {
+      $('.fitoRequestHeader').text('an email has been sent to the address provided. please follow the instructions to reset your password.');
+      $('#user_reset_email').css({'border':'1px solid #3a3a3d'});
+      $(this).text('Resend Request');
+    }
+
   });
 
   $(document).on('click', function() {

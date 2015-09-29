@@ -560,7 +560,7 @@ canvas {
   transition: all 0.5s ease-out;
   height: 0;
   overflow: visible;
-  form {
+  form, .form {
     width: 435px;
     height: 500px;
     margin: 0 auto;
@@ -654,10 +654,11 @@ canvas {
 .homePageBody {
   overflow: hidden;
 }
-.fitoLandingRequestWrapper {
-  color: rgba(255,255,255,0.6);
+.fitoLandingRequestWrapper, .fitoLandingRequestResetPasswordWrapper {
   display: none;
+  color: rgba(255,255,255,0.6);
 }
+
 
 .fitoRequestHeader, .fitoRequestChoiceText, .fitoRequestOrText {
   font-family: 'PNLight';
