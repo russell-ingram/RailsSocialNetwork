@@ -108,7 +108,7 @@
 	.break-1-show-inline.break-2-hide,
 	.break-2-hide,
 	.break-1-show.break-2-hide {
-		display: none !important; 
+		display: none !important;
 	}
 
 	.break-2-show-inline {
@@ -132,11 +132,18 @@
 		& {
 			height: 70px;
 			line-height: 70px;
+			position: fixed;
+			width: 100%;
+			z-index: 9999;
 		}
 
 		.icon {
 			line-height:  70px;
 		}
+	}
+
+	.pageWrap {
+		padding-top: 112px;
 	}
 
 	.menuLogo {

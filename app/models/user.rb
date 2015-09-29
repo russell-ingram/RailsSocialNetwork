@@ -102,19 +102,10 @@ class User < ActiveRecord::Base
       end
     end
 
-
-    p "wids"
-    p all_wids.length
-
-
     users = User.where.not(id: current_user.id)
     users = users.where("big65 = ? OR fortune100 = ? OR sp500 = ? OR global1000 = ?", true, true, true, true)
 
     users = users.where(:uid=>all_wids)
-
-    p "COUNT!"
-    p users.count
-
 
 
     users.each do |i|
@@ -139,6 +130,8 @@ class User < ActiveRecord::Base
         end
       end
     end
+
+    p recs
 
     return recs
 

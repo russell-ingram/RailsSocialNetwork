@@ -5,18 +5,18 @@
 
 		& {
 
-			width:100%;
+			width:70%;
 		}
 
 		.searchTypesWrapper {
 
-    		margin-right: 280px;
+    		// margin-right: 280px;
 		}
 
 		.pagination,
 		.searchWrapper {
 
-			margin-right:255px;
+			// margin-right:255px;
 		}
 
 		.myConnProfilePic {
@@ -76,11 +76,19 @@
 
 	}
 
+	.searchResultsSideBar {
+		width: 30%;
+	}
+
 }
 
 @media screen and (max-width: 700px) {
 
  	.searchResultsWrapper {
+
+ 		& {
+ 			width: 100%;
+ 		}
 
  		.myConnection:first-child {
  			margin-top:0;
@@ -120,7 +128,7 @@
 			    color: #666;
 			}
 		}
-	
+
 		.searchWrapper {
 
 			& {
@@ -150,7 +158,7 @@
 				}
 
 				.messageLink {
-					
+
 					& {
 
 					}
@@ -175,7 +183,7 @@
 		}
 
 		.messagesPagination {
-			
+
 			& {
 				background-color: white;
 			}
@@ -206,6 +214,10 @@
 
 		& {
 			width:100%;
+			min-height: 100%;
+			position: fixed;
+			overflow: scroll;
+			z-index: 995;
     		/*right: -100%;*/
 		}
 

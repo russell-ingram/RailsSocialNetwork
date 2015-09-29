@@ -11,9 +11,7 @@
               <img src="<%= user.profile_pic_url %>">
               </a>
             <% else %>
-            <a href="/profile/<%= user.id %>">
             <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
-            </a>
             <% end %>
             </div>
 
@@ -41,8 +39,13 @@
                     <a href="/profile/<%= user.id %>">
                     CONNECTED<span class="icon icon-fwd-arrow"></span></a>
                     <% elsif @pending.include? user %>
-                    <a href="/profile/<%= user.id %>">
-                    PENDING<span class="icon icon-fwd-arrow"></span></a>
+                      <% if !@has_intentions %>
+                        <a href="/profile/<%= user.id %>">
+                        PENDING<span class="icon icon-fwd-arrow"></span></a>
+                      <% else %>
+                        <div>
+                        PENDING<span class="icon icon-fwd-arrow"></span></div>
+                      <% end %>
                     <% elsif @requested.include? user %>
                     <a href="/profile/<%= user.id %>">
                     RESPOND TO CONNECTION REQUEST<span class="icon icon-fwd-arrow"></span></a>
@@ -80,9 +83,14 @@
                   <% if @friends.include? user %>
                   <a href="/profile/<%= user.id %>">
                   CONNECTED<div class="icon icon-fwd-arrow"></div></a>
-                  <% elsif @pending.include? user %>
-                  <a href="/profile/<%= user.id %>">
-                  PENDING<div class="icon icon-fwd-arrow"></div></a>
+                    <% elsif @pending.include? user %>
+                      <% if !@has_intentions %>
+                        <a href="/profile/<%= user.id %>">
+                        PENDING<span class="icon icon-fwd-arrow"></span></a>
+                      <% else %>
+                        <div>
+                        PENDING<span class="icon icon-fwd-arrow"></span></div>
+                      <% end %>
                   <% elsif @requested.include? user %>
                   <a href="/profile/<%= user.id %>">
                   RESPOND TO CONNECTION REQUEST<div class="icon icon-fwd-arrow"></div></a>
