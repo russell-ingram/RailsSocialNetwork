@@ -38,7 +38,7 @@
                     <% if @friends.include? user %>
                     <a href="/profile/<%= user.id %>">
                     CONNECTED<span class="icon icon-fwd-arrow"></span></a>
-                    <% elsif @pending.include? user || @blocked.include? user %>
+                    <% elsif(@pending.include?(user) || @blocked.include?(user)) %>
                       <% if !@has_intentions %>
                         <a href="/profile/<%= user.id %>">
                         PENDING<span class="icon icon-fwd-arrow"></span></a>

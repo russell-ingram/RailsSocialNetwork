@@ -80,6 +80,13 @@ pageSpecificInits.searchResultsPage = function(jquery){
 		});
 	});
 
+	this._intentionsPopUp(jquery);
+
+};
+
+pageSpecificInits.searchPeersPage = function(jquery){
+	console.log('here');
+	this._intentionsPopUp(jquery);
 };
 
 pageSpecificInits.homePage = function(jquery){
@@ -170,7 +177,7 @@ pageSpecificInits._intentionsPopUp = function(jquery){
 
 	jquery('.fieldDropdown').click(function(e){
 		var sectorId = $(e.target).data('sector-id');
-		
+
 		if(sectorId===undefined){
 			jquery('[data-vendor-id]').show();
 		}
