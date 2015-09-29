@@ -302,12 +302,14 @@
       <% if rec.profile_pic_url? %>
 
       <div class="homeConnectionPic" style="background-image:url(<%= rec.profile_pic_url %>)">
+        <a href="/profile/<%= rec.id %>">
         <img src="<%= rec.profile_pic_url %>">
       <% else %>
         <div class="homeConnectionPic" style="background-image:url(<%= image_path('avatar-icons/avatar_0'+rand(1..9).to_s+'.svg') %>)">
+        <a href="/profile/<%= rec.id %>">
       <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
       <% end %>
-
+        </a>
       </div>
       <% position = rec.current_pos %>
       <div class="homeConnectionProfile">
@@ -318,8 +320,8 @@
           <p>in <%= position["region"]%></p>
           <p><%= position["enterprise_size"] %> Enterprise</p>
         </div>
-        <div class="hcpMsg">message <i class="fa fa-chevron-right"></i></div>
-        <div class="hcpConnect">connect <i class="fa fa-chevron-right"></i></div>
+        <div class="hcpMsg"><a href="/messages/new/<%= rec.id %>">message <div class="icon icon-fwd-arrow"></div></a></div>
+        <div class="hcpConnect"><a href="/profile/<%= rec.id %>">connect <div class="icon icon-fwd-arrow"></div></a></div>
       </div>
     </div>
 

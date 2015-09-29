@@ -4,6 +4,13 @@
 
 
 </canvas>
+<% flash.each do |name, msg| -%>
+  <% if !msg.blank? && name != 'sent' %>
+    <% @flash = true %>
+  <% end %>
+<% end -%>
+
+
 <div class="fitoLandingFloat">
   <div class="fitoLandingWrapper">
     <div class="fitoLandingLogo"><%= image_tag("fito-no-tagline.svg", class: "menuLogo")  %></div>
@@ -19,7 +26,20 @@
   </div>
 </div>
 
+<% if @flash %>
+<div class="fitoLandingSignInWrapper active">
+<% else %>
 <div class="fitoLandingSignInWrapper">
+<% end %>
+
+<% flash.each do |name, msg| -%>
+  <% if !msg.blank? && name != 'sent' %>
+  <div class="flashHomePage">
+      <%= content_tag :div, msg, class: name unless msg.blank? %>
+  </div>
+  <% end %>
+<% end -%>
+
   <%= form_for :user, url: session_path(:user), :html => {id: 'signInForm'} do |f| %>
     <div class="field loginField">
       <%= f.text_field :email, placeholder: 'email' %>
