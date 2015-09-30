@@ -114,19 +114,8 @@
 
 		.homeConnectionBox {
 
-			& {
-
-			    height: 190px;
-			}
-
 			&, .homeConnectionPic, .homeConnectionProfile {
-				/*width:50%;*/
-			}
-
-			.homeConnectionProfile {
-				width:100%;
-				margin-left:187px;
-    			height: 187px;
+				width:50%;
 			}
 
 			.homeConnectionPic {
@@ -134,9 +123,6 @@
 			    background-size: 100% auto;
 			    background-position: center;
 			    background-repeat: no-repeat;
-			    position:absolute;
-			    width:187px;
-			    height:187px;
 			}
 
 		    .homeConnectionPic img {
@@ -317,6 +303,23 @@
 			.hcpMsg {
 				margin-bottom: 15px;
 			}
+
+			.homeConnectionPic {
+				position:absolute;
+				height:187px;
+			    width:187px;
+			}
+
+			& {
+
+			    height: 190px;
+			}
+
+			.homeConnectionProfile {
+				width:100%;
+				margin-left:187px;
+    			height: 187px;
+ 			}
 
 		}
 
