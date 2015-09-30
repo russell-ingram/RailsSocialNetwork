@@ -784,7 +784,7 @@
 
                     <li class="ddOption fieldOption">No preference</li>
                     <% @sectors.each do |sector| %>
-                    <li class="ddOption fieldOption" data-sector-id="<%= sector.id %>" data-initial="<%= sector.name[0].downcase %>"><%= sector.name %></li>
+                    <li class="ddOption fieldOption" data-sector-id="<%= sector.sid %>" data-initial="<%= sector.name[0].downcase %>"><%= sector.name %></li>
                     <% end %>
               </ul>
             </div>
@@ -802,7 +802,7 @@
               <ul class="dropdown fieldDropdown forVendor">
                     <li class="ddOption fieldOption">No preference</li>
                     <% @vendors.each do |vendor| %>
-                    <li class="ddOption fieldOption" data-vendor-id="<%= vendor.id %>" data-initial="<%= vendor.name[0].downcase %>"><%= vendor.name %></li>
+                    <li class="ddOption fieldOption" data-vendor-id="<%= vendor.vid %>" data-initial="<%= vendor.name[0].downcase %>"><%= vendor.name %></li>
                     <% end %>
               </ul>
             </div>
