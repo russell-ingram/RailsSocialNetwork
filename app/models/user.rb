@@ -235,15 +235,68 @@ class User < ActiveRecord::Base
       works_arr << works_pres
     end
     if search[:director].present? && search[:president] == true
-      works_dir = works.where('job_title LIKE ? OR job_title LIKE ?', '%EVP%', '%Executive%')
+      works_dir = works.where('job_title LIKE ?', '%Director%')
       works_arr << works_dir
     end
+    if search[:principal].present? && search[:principal] == true
+      works_principal = works.where('job_title LIKE ?', '%Principal%')
+      works_arr << works_principal
+    end
+    if search[:head].present? && search[:head] == true
+      works_Head = works.where('job_title LIKE ?', '%Head%')
+      works_arr << works_Head
+    end
+    if search[:senior].present? && search[:senior] == true
+      senior = works.where('job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ?', '%Senior%', '%SVP%', '%Snr%')
+      works_arr << senior
+    end
+    if search[:lead].present? && search[:lead] == true
+      lead = works.where('job_title LIKE ?', '%Lead%')
+      works_arr << lead
+    end
+    if search[:manager].present? && search[:manager] == true
+      manager = works.where('job_title LIKE ? OR job_title LIKE ?', '%Manager%', '%Mngr%')
+      works_arr << manager
+    end
+    if search[:architect].present? && search[:architect] == true
+      architect = works.where('job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ?', '%Architect%', '%Cloud%', '%Networking%', '%Storage%')
+      works_arr << architect
+    end
+    if search[:infrastructure].present? && search[:infrastructure] == true
+      infrastructure = works.where('job_title LIKE ?', '%Infrastructure%')
+      works_arr << infrastructure
+    end
+    if search[:engineer].present? && search[:engineer] == true
+      engineer = works.where('job_title LIKE ?', '%Engineer%')
+      works_arr << engineer
+    end
+    if search[:consultant].present? && search[:consultant] == true
+      consultant = works.where('job_title LIKE ? OR job_title LIKE ?', '%Consultant%', '%Advisor%')
+      works_arr << consultant
+    end
+    if search[:security].present? && search[:security] == true
+      security = works.where('job_title LIKE ?', '%Security%')
+      works_arr << security
+    end
+    if search[:analyst].present? && search[:analyst] == true
+      analyst = works.where('job_title LIKE ?', '%Analyst%')
+      works_arr << analyst
+    end
+    if search[:administrator].present? && search[:administrator] == true
+      administrator = works.where('job_title LIKE ? OR job_title LIKE ?', '%Administrator%', '%Admin%')
+      works_arr << administrator
+    end
+    if search[:risk].present? && search[:risk] == true
+      risk = works.where('job_title LIKE ? OR job_title LIKE ?', '%Risk%', '%Compliance%')
+      works_arr << risk
+    end
+
     if works_arr.length > 1
       p works_arr[1].class
       works = works_arr[0]
       1.upto(works_arr.length - 1) do |i|
         works = works.union(works_arr[i])
-      end
+    end
     elsif works_arr.length == 1
       works = works_arr[0]
     end

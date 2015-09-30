@@ -374,6 +374,7 @@
   margin: 0 auto;
   width: 160px;
   letter-spacing: 0.10em;
+  cursor: pointer;
 
 }
 
@@ -453,6 +454,12 @@
   text-transform: uppercase;
   margin-bottom: 5px;
   cursor: pointer;
+  .icon {
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    float:right;
+  }
 }
 
 
@@ -554,7 +561,7 @@ canvas {
   transition: all 0.5s ease-out;
   height: 0;
   overflow: visible;
-  form {
+  form, .form {
     width: 435px;
     height: 500px;
     margin: 0 auto;
@@ -648,10 +655,11 @@ canvas {
 .homePageBody {
   overflow: hidden;
 }
-.fitoLandingRequestWrapper {
-  color: rgba(255,255,255,0.6);
+.fitoLandingRequestWrapper, .fitoLandingRequestResetPasswordWrapper {
   display: none;
+  color: rgba(255,255,255,0.6);
 }
+
 
 .fitoRequestHeader, .fitoRequestChoiceText, .fitoRequestOrText {
   font-family: 'PNLight';
@@ -669,4 +677,14 @@ canvas {
   margin: 5px auto 20px auto;
   width: 30px;
 }
+
+.flashHomePage {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-family: "PNLight";
+}
+
+
 

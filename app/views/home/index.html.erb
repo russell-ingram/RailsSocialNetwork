@@ -4,6 +4,13 @@
 
 
 </canvas>
+<% flash.each do |name, msg| -%>
+  <% if !msg.blank? && name != 'sent' %>
+    <% @flash = true %>
+  <% end %>
+<% end -%>
+
+
 <div class="fitoLandingFloat">
   <div class="fitoLandingWrapper">
     <div class="fitoLandingLogo"><%= image_tag("fito-no-tagline.svg", class: "menuLogo")  %></div>
@@ -19,7 +26,20 @@
   </div>
 </div>
 
+<% if @flash %>
+<div class="fitoLandingSignInWrapper active">
+<% else %>
 <div class="fitoLandingSignInWrapper">
+<% end %>
+
+<% flash.each do |name, msg| -%>
+  <% if !msg.blank? && name != 'sent' %>
+  <div class="flashHomePage">
+      <%= content_tag :div, msg, class: name unless msg.blank? %>
+  </div>
+  <% end %>
+<% end -%>
+
   <%= form_for :user, url: session_path(:user), :html => {id: 'signInForm'} do |f| %>
     <div class="field loginField">
       <%= f.text_field :email, placeholder: 'email' %>
@@ -82,6 +102,22 @@
       <%= f.submit 'Submit Request', style: 'display:none;' %>
     <% end %>
   </div>
+  <div class="fitoLandingRequestResetPasswordWrapper">
+    <div class="form">
+      <div class="fitoRequestHeader">
+        To reset your password, enter the email address you use to sign into fito.
+      </div>
+      <div class="field loginField">
+        <input placeholder="email" type="text" name="user[email]" id="user_reset_email">
+      </div>
+      <div class="fitoLandingRequestSubmit" id="fitoLandingPasswordReset">
+        Send Request
+      </div>
+      <div class="fitoLandingSignInToggle">
+      - sign-in -
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -119,6 +155,10 @@ $( document ).ready(function() {
   $('body').addClass('homePageBody');
   $("#fitoLandingSignInButton").off().on('click', function(e) {
     e.stopPropagation();
+    $('.fitoLandingRequestWrapper').hide();
+    $('#signInForm').show();
+    $('.fitoLandingRequestResetPasswordWrapper').hide();
+
     $('.fitoLandingSignInWrapper').addClass('active');
     $("#fitoLandingSignInButton").addClass('active');
     $('.mainRequestBtn').addClass('active');
@@ -131,14 +171,47 @@ $( document ).ready(function() {
     $("#landingSubmitLogin").click();
   })
 
-  $(".fitoLandingRequestBtn").off().on('click', function () {
+  $(".fitoLandingRequestBtn").off().on('click', function (e) {
     $('#signInForm').hide();
     $('.fitoLandingRequestWrapper').show();
+    $('.fitoLandingRequestResetPasswordWrapper').hide();
+    if ($('.fitoLandingSignInWrapper').hasClass('active')) {
+
+    } else {
+      e.stopPropagation();
+      $('.fitoLandingSignInWrapper').addClass('active');
+      $("#fitoLandingSignInButton").addClass('active');
+      $('.mainRequestBtn').addClass('active');
+
+      // allows the page to be scrollable again
+      $('body').removeClass('homePageBody');
+    }
+
   });
 
   $(".fitoLandingSignInToggle").off().on('click', function() {
     $('.fitoLandingRequestWrapper').hide();
     $('#signInForm').show();
+    $('.fitoLandingRequestResetPasswordWrapper').hide();
+  });
+
+  $(".forgotPasswordButton").off().on('click', function() {
+    $('.fitoLandingRequestWrapper').hide();
+    $('#signInForm').hide();
+    $('.fitoLandingRequestResetPasswordWrapper').show();
+  });
+
+  $("#fitoLandingPasswordReset").off().on('click', function() {
+    var email = $('#user_reset_email').val();
+    if (email === '') {
+      $('.fitoRequestHeader').text('Please enter an email address.');
+      $('#user_reset_email').css({'border':'1px solid #800000'});
+    } else {
+      $('.fitoRequestHeader').text('an email has been sent to the address provided. please follow the instructions to reset your password.');
+      $('#user_reset_email').css({'border':'1px solid #3a3a3d'});
+      $(this).text('Resend Request');
+    }
+
   });
 
   $(document).on('click', function() {

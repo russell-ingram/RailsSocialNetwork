@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :authenticate_user!
 
   def home
+    @flash = false
 
     @search = Search.new
     @countries = countries_list

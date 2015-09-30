@@ -60,7 +60,7 @@
         </div>
         <div class="userUploadIcons editUploadIcons">
           <p>
-          <i class="fa fa-pencil-square-o"></i>
+          <i class="icon icon-icon-upload-image"></i>
           Edit Photo
           </p>
           </div>
@@ -68,7 +68,7 @@
         <div class="photoUploadBox">
           <div class="userUploadIcons">
             <p>
-            <i class="fa fa-camera"></i>
+            <i class="icon icon-icon-upload-image"></i>
             <br>
             Add Photo
             </p>
@@ -162,7 +162,7 @@
                 Industry
               <% end %>
               </span>
-              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <span class="carrot"><i class="icon icon-drop-dwn-arrow"></i></span>
               <ul class="dropdown fieldDropdown">
                 <% @industries.each do |industry| %>
                 <li class="ddOption fieldOption"><%= industry %></li>
@@ -183,7 +183,7 @@
                 Enterprise Size
               <% end %>
               </span>
-              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <span class="carrot"><i class="icon icon-drop-dwn-arrow"></i></span>
               <ul class="dropdown fieldDropdown">
                 <li class="ddOption fieldOption">Large</li>
                 <li class="ddOption fieldOption">Midsize</li>
@@ -201,7 +201,7 @@
                   Region
                 <% end %>
               </span>
-              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <span class="carrot"><i class="icon icon-drop-dwn-arrow"></i></span>
               <ul class="dropdown fieldDropdown">
                 <li class="ddOption fieldOption">North America</li>
                 <li class="ddOption fieldOption">EMEA</li>
@@ -220,7 +220,7 @@
                   Country
                 <% end %>
               </span>
-              <span class="carrot"><i class="fa fa-chevron-down"></i></span>
+              <span class="carrot"><i class="icon icon-drop-dwn-arrow"></i></span>
               <ul class="dropdown fieldDropdown">
                 <% @countries.each do |country| %>
                 <li class="ddOption fieldOption"><%= country %></li>
@@ -271,10 +271,10 @@
           <div id="pubButton1" class="pubButton">
           <% if ff.object.public? %>
             <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true">
-            <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Privately Held</div></label>
+            <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Private</div></label>
           <% else %>
             <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true" checked>
-            <label for="radio01"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Privately Held</div></label>
+            <label for="radio01"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Private</div></label>
           <% end %>
 
           </div>
@@ -282,10 +282,10 @@
           <div id="pubButton2" class="pubButton">
           <% if ff.object.public? %>
             <input type="radio" class="pubInputCheck" id="radio2" name="public" value="true" checked>
-            <label for="radio02"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Publicly Held</div></label>
+            <label for="radio02"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Publicly Traded</div></label>
           <% else %>
             <input type="radio" class="pubInputCheck" id="radio2" name="public" value="false">
-            <label for="radio02"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Publicly Held</div></label>
+            <label for="radio02"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Publicly Traded</div></label>
           <% end %>
           </div>
           <%= ff.text_area :public, placeholder: 'public', style: "display:none;" %>
@@ -328,7 +328,7 @@
 
 
     <div class="addPastPosition">
-      <i class="fa fa-plus"></i>ADD ANOTHER POSITION
+      <i class="icon icon-icon-add"></i>ADD ANOTHER POSITION
     </div>
 
     <div class="userEditButtons">
