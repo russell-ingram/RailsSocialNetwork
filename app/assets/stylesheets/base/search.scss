@@ -312,10 +312,6 @@
   padding-left: 0 !important;
 }
 
-.searchBoxWrapper {
-
-}
-
 .basicSearchOptions {
   background-color: #EFF1F1;
   padding: 0 30px;
@@ -555,7 +551,7 @@
   float:left;
   text-align:right;
   margin-top: 16px;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .fsmPeersNum {
   font-size: 40px;
@@ -1052,4 +1048,7 @@
   margin-top: 5px;
 }
 
+.searchBoxWrapper .wrapperFieldDropdown .carrot {
+  top: 5px;
+}
 
