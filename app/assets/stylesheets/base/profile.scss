@@ -137,7 +137,7 @@
   padding-right: 30px;
 }
 
-.workBoxWrapper:last-child .workBox {
+.workBoxWrapper .workBox:last-child {
   border-bottom: none;
 }
 
@@ -150,7 +150,7 @@
 
 .workJobTitle {
   font-size: 22px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   color: #282b30;
 }
 
