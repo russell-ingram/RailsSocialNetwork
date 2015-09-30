@@ -63,6 +63,12 @@ class UserAdminController < ApplicationController
       @usersRaw = User.order(:first_name).where("first_name like ? OR last_name like?", "%#{f_n}%", "%#{f_n}%")
     end
     # returning all the user data
+    @usersRaw.each do |u|
+      work = u.current_pos
+      u.employer = work.company
+      u.industry = work.industry
+    end
+    p @usersRaw
     render json: @usersRaw
   end
 

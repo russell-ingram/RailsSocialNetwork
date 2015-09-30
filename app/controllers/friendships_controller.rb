@@ -10,7 +10,7 @@ class FriendshipsController < ApplicationController
 
 
     @blocked_friendships, @pending_friendships, @requested_friendships, @accepted_friendships = [], [], [], []
-    @friendships = current_user.friendships.order(created_at: :desc).includes(:friend)
+    @friendships = current_user.friendships.order(created_at: :asc).includes(:friend)
     @friendships.each do |f|
       @blocked_friendships << f if f.state == 'blocked'
       @pending_friendships << f if f.state == 'pending'
@@ -127,7 +127,7 @@ class FriendshipsController < ApplicationController
     elsif type == 'LAST NAME'
       @friends = User.order(:last_name).where(:id => @friend_ids)
     else
-      @friends = User.order(created_at: :desc).where(:id => @friend_ids)
+      @friends = User.order(created_at: :asc).where(:id => @friend_ids)
     end
     @friend_arr = []
     @friends.each do |f|
