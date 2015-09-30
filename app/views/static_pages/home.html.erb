@@ -225,7 +225,7 @@
       </div>
 
       <div class="field field-col-4">
-        <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+        <div class="wrapper-dropdown wrapperFieldDropdown forCountry" tabindex="1">
           <span class="ddLabel">
               Country
           </span>
@@ -233,7 +233,7 @@
           <ul class="dropdown fieldDropdown">
             <li class="ddOption fieldOption">No preference</li>
             <% @countries.each do |country| %>
-            <li class="ddOption fieldOption"><%= country %></li>
+            <li class="ddOption fieldOption" data-initial="<%= country[0].downcase if country != 'United States' %>"><%= country %></li>
             <% end %>
           </ul>
         </div>
@@ -355,7 +355,7 @@
             SECTOR
           </div>
           <div class="field">
-            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+            <div class="wrapper-dropdown wrapperFieldDropdown forSector" tabindex="1">
               <span class="ddLabel ddNoPref">
                 Search sector
               </span>
@@ -363,7 +363,7 @@
               <ul class="dropdown fieldDropdown forSector">
                 <li class="ddOption fieldOption">No preference</li>
                 <% @sectors.each do |sector| %>
-                <li class="ddOption fieldOption" data-sector-id="<%= sector.id %>"><%= sector.name %></li>
+                <li class="ddOption fieldOption" data-sector-id="<%= sector.id %>" data-initial="<%= sector.name[0].downcase %>"><%= sector.name %></li>
                 <% end %>
               </ul>
             </div>
@@ -373,7 +373,7 @@
             VENDOR
           </div>
           <div class="field">
-            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+            <div class="wrapper-dropdown wrapperFieldDropdown forVendor" tabindex="1">
               <span class="ddLabel ddNoPref">
                 Search vendors
               </span>
@@ -381,7 +381,7 @@
               <ul class="dropdown fieldDropdown forVendor">
                 <li class="ddOption fieldOption">No preference</li>
                 <% @vendors.each do |vendor| %>
-                <li class="ddOption fieldOption" data-vendor-id="<%= vendor.id %>"><%= vendor.name %></li>
+                <li class="ddOption fieldOption" data-vendor-id="<%= vendor.id %>" data-initial="<%= vendor.name[0].downcase %>"><%= vendor.name %></li>
                 <% end %>
               </ul>
             </div>

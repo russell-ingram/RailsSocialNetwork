@@ -20,7 +20,7 @@
             SECTOR
           </div>
           <div class="field">
-            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+            <div class="wrapper-dropdown wrapperFieldDropdown forSector" tabindex="1">
               <div class="ddLabel ddNoPref">
                 Search sector
               </div>
@@ -28,7 +28,7 @@
               <ul class="dropdown fieldDropdown forSector">
                 <li class="ddOption fieldOption">No preference</li>
                 <% @sectors.each do |sector| %>
-                <li class="ddOption fieldOption" data-sector-id="<%= sector.id %>"><%= sector.name %></li>
+                <li class="ddOption fieldOption" data-sector-id="<%= sector.id %>" data-initial="<%= sector.name[0].downcase %>"><%= sector.name %></li>
                 <% end %>
               </ul>
             </div>
@@ -38,7 +38,7 @@
             VENDOR
           </div>
           <div class="field">
-            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+            <div class="wrapper-dropdown wrapperFieldDropdown forVendor" tabindex="1">
               <div class="ddLabel ddNoPref">
                 Search vendors
               </div>
@@ -46,7 +46,7 @@
               <ul class="dropdown fieldDropdown forVendor">
                   <li class="ddOption fieldOption">No preference</li>
                   <% @vendors.each do |vendor| %>
-                  <li class="ddOption fieldOption" data-vendor-id="<%= vendor.id %>"><%= vendor.name %></li>
+                  <li class="ddOption fieldOption" data-vendor-id="<%= vendor.id %>" data-initial="<%= vendor.name[0].downcase %>"><%= vendor.name %></li>
                   <% end %>
               </ul>
             </div>

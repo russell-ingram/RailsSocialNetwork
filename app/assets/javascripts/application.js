@@ -81,12 +81,16 @@ pageSpecificInits.searchResultsPage = function(jquery){
 	});
 
 	this._intentionsPopUp(jquery);
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
 
 };
 
 pageSpecificInits.searchPeersPage = function(jquery){
 	console.log('here');
 	this._intentionsPopUp(jquery);
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
 };
 
 pageSpecificInits.homePage = function(jquery){
@@ -152,6 +156,7 @@ pageSpecificInits.homePage = function(jquery){
 
 		}
 		else{
+
 			var h = jquery(".homeContentBox2 .bottom .left .homeContentFollowed").outerHeight();
 			console.log(h);
 			jquery('.homeContentBox2 .bottom .left').outerHeight(h);
@@ -168,6 +173,9 @@ pageSpecificInits.homePage = function(jquery){
 	adjustContentPicSize();
 
 	this._intentionsPopUp(jquery);
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
 	
 };
 
@@ -202,10 +210,50 @@ pageSpecificInits._intentionsPopUp = function(jquery){
 			setTimeout(function(){
 
 				jquery('.modalSectionHeader.intentionsHeader').click();
-				
+
 			}, 100);
 
 		}
 	});
 
 }
+
+pageSpecificInits._initFirstLetterSearch = function(jquery, elementWithTabIndex){
+
+	/*
+	
+	param explain:
+
+		elementWithTabIndex is the selector of a container ... 
+
+			1) that has the tabindex='1' attribute
+			2) and it should contain something like:
+
+				<ul>
+
+					<li data-initial="a">..
+					<li data-initial="a">..
+					<li data-initial="b">..
+					...
+
+	*/
+
+	var sel = elementWithTabIndex;
+
+	jquery(sel).keypress(function(e){
+
+		var key = e.keyCode;
+		var character = String.fromCharCode(key);
+		var group = jquery(this).find('ul li[data-initial='+character+']');
+
+		if(group.length > 0){
+
+			var addToPos = group.first().position().top;
+			var currPos = jquery(sel).find('ul').scrollTop();
+			jquery(sel).find('ul').scrollTop(currPos + addToPos);
+
+		}
+
+	});
+
+};
