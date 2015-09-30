@@ -2,7 +2,7 @@
 <div class="pageWrap responsive pageProfile">
   <div class="pageHeader">Profile
   </div>
-  <!-- <div class="adminLink"><a href="/admin">Admin Dashboard<i class="fa fa-chevron-right"></i></a></div> -->
+  <!-- <div class="adminLink"><a href="/admin">Admin Dashboard<i class="icon icon-fwd-arrow"></i></a></div> -->
 
   <div class="profileHeader">
     <div class="profilePic">
@@ -18,9 +18,9 @@
       <div class="profilePosition"><%= position["job_title"] %></div>
       <div class="profileEmployer"><%= position["company"] %></div>
       <div class="profileIndustry">
-        <i class="fa fa-building-o"></i><%= position["industry"] %>
+        <i class="icon icon-icon-industry"></i><%= position["industry"] %>
       </div>
-      <div class="profileLocation"><i class="fa fa-map-marker"></i><%= position["country"] %></div>
+      <div class="profileLocation"><i class="icon icon-icon-location"></i><%= position["country"] %></div>
       <div class="profileButton"><%= link_to "UPDATE", edit_profile_path %></div>
 
     </div>
@@ -103,7 +103,7 @@
             <div class="myConnCompany"><%= friend_pos["company"] %></div>
             <div class="myConnIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>
           </div>
-          <div class="myConnMessage"><a href="/messages/new/<%= friend.id %>">MESSAGE<i class="fa fa-chevron-right"></i></a></div>
+          <div class="myConnMessage"><a href="/messages/new/<%= friend.id %>">MESSAGE<i class="icon icon-fwd-arrow"></i></a></div>
         </div>
       </div>
 
