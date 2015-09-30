@@ -42,7 +42,7 @@
 
     <!-- mobile -->
     <table class="break-1-show">
-      
+
       <% if layout.layout_option >= 1 %>
       <tr><td><div class="researchNum"><%= layout.column_one_callout %></div></td><td>
         <div class="researchText"><%= layout.column_one_content.html_safe%></div></td></tr>
@@ -56,7 +56,7 @@
       <% if layout.layout_option == 3 %>
       <tr><td><div class="researchNum"><%= layout.column_three_callout %></div></td><td><div class="researchText"><%= layout.column_three_content.html_safe %></div></td></tr>
       <% end %>
-      
+
     </table>
 
   <% else %>
@@ -78,7 +78,7 @@
     </div>
 
     <table class="break-1-show">
-      
+
       <tr><td><div class="researchNum">89%</div></td><td>
         <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div></td></tr>
 
@@ -86,12 +86,12 @@
         <div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div></td></tr>
 
       <tr><td><div class="researchNum">200k</div></td><td><div class="researchText">Lorem ipsum dolor sit amet, consecutetur adipiscing elit. Praesent vitae tempus ante, sed auctor ex.</div></td></tr>
-      
+
     </table>
 
   <% end %>
 
 
-  <div class="viewMoreContent"><a href="http://<%= @layout.external_link %>" target='_blank'>VIEW FULL RESULTS<%= layout.link_copy %><i class="fa fa-chevron-right"></i></a></div>
+  <div class="viewMoreContent"><a href="http://<%= @layout.external_link %>" target='_blank'><%= layout.link_copy %><i class="fa fa-chevron-right"></i></a></div>
 
 </div>
