@@ -122,11 +122,34 @@ pageSpecificInits.homePage = function(jquery){
 		}
 	};
 
+	var adjustConnectionBoxHeight = function(){
+
+		var breakstate = jquery('.breakstate').width();
+
+		if(breakstate === 1050){
+			var w = $('.homeConnectionProfile').outerWidth();
+			jquery('.homeConnectionProfile').outerHeight(w);
+			jquery('.homeConnectionPic').outerHeight(w);
+		}
+		else if(breakstate === 0){
+
+			jquery('.homeConnectionProfile').outerHeight(170);
+			jquery('.homeConnectionPic').outerHeight(170);
+		}
+		else {
+
+			jquery('.homeConnectionProfile').outerHeight(187);
+			jquery('.homeConnectionPic').outerHeight(187);
+
+		}
+	};
+
 	var onResize = function(){
 
 		adjustContentPicSize();
+		adjustConnectionBoxHeight();
 
-		var breakstate = $('.breakstate').width();
+		var breakstate = jquery('.breakstate').width();
 		if(breakstate === 1050 || breakstate === 0){
 
 			alignHeights(
@@ -171,6 +194,7 @@ pageSpecificInits.homePage = function(jquery){
 	onResize();
 
 	adjustContentPicSize();
+	adjustConnectionBoxHeight();
 
 	this._intentionsPopUp(jquery);
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
