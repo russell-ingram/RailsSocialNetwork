@@ -483,8 +483,12 @@
     top: 2px;
     float:right;
   }
+  width:85px;
 }
 
+.hcpMsg .icon, .hcpConnect .icon {
+  margin-top:-1px;
+}
 
 // index page styles
 canvas {
