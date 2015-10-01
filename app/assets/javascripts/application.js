@@ -24,7 +24,7 @@ $(function(){
 });
 
 function initPageSpecificRoutine(){
-	var initRoutine = $('.pageWrap').data('js-init');
+	var initRoutine = $('[data-js-init]').data('js-init');
 	if(initRoutine!==undefined){
 		window.pageSpecificInits[initRoutine]($);
 	}
@@ -239,6 +239,7 @@ pageSpecificInits._intentionsPopUp = function(jquery){
 			}, 100);
 
 		}
+
 	});
 
 }
@@ -276,6 +277,23 @@ pageSpecificInits._initFirstLetterSearch = function(jquery, elementWithTabIndex)
 			var addToPos = group.first().position().top;
 			var currPos = jquery(sel).find('ul').scrollTop();
 			jquery(sel).find('ul').scrollTop(currPos + addToPos);
+
+		}
+
+	});
+
+};
+
+pageSpecificInits.loginPage = function(jquery){
+
+	jquery('.loginField input').keypress(function(e){
+console.log('hi');
+		var key = e.keyCode;
+		
+		if(key===13){
+
+		    $('.fitoLandingSignInSubmit').click();
+		    return false; 
 
 		}
 
