@@ -413,6 +413,29 @@
   float: left;
 }
 
+.homeConnectionPic  {
+
+  & {
+    position:relative;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 45%;
+    color: #282b30;
+  }
+
+  .arrow.left {
+    right:-3px;
+  }
+
+  .arrow.right {
+    left: -3px;    
+    -ms-transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+  }
+}
 
 .homeConnectionProfile {
   background-color: #282b30;

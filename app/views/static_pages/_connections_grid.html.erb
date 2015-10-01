@@ -12,6 +12,7 @@
         <a href="/profile/<%= rec.id %>">
           <img src="<%= connection_img_url(rec) %>">
         </a>
+        <div class="icon icon-icon-left-nubsdark-gray arrow left"></div>
       </div>
 
       <% position = rec.current_pos %>
@@ -28,7 +29,8 @@
       </div>
 
 
-      <div class="homeConnectionPic <%= ['hide','hide','break-1-show break-2-show','break-2-hide','break-1-hide','break-1-hide'][i] %>" style="background-image:url(<%= connection_img_url(rec) %>)">
+      <div class="homeConnectionPic <%= ['hide','hide','break-1-show break-2-hide','break-2-hide','break-1-hide','break-1-hide'][i] %>" style="background-image:url(<%= connection_img_url(rec) %>)">
+        <div class="icon icon-icon-left-nubsdark-gray arrow right"></div>
         <a href="/profile/<%= rec.id %>">
           <img src="<%= connection_img_url(rec) %>">
         </a>
