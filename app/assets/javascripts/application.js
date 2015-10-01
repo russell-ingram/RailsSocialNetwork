@@ -164,13 +164,14 @@ pageSpecificInits.homePage = function(jquery){
 			var box_2 = jquery('.homeContentBox2');
 			var wrap_1 = jquery('.homeContentWrapper > .left');
 			var wrap_2 = jquery('.homeContentWrapper > .right');
+
 			if(box_1.outerHeight() > box_2.outerHeight()){
 				// console.log('left wins');
 				var diff = box_1.outerHeight() - box_2.outerHeight();
-				var h = jquery('.homeContentBox2 .homeContentResearch').outerHeight();
+				var h = box_1.find('.homeContentResearch').outerHeight();
 				console.log('diff: ' + diff);
 				console.log('total: ' + h + diff);
-				jquery('.homeContentBox2 .homeContentResearch').outerHeight(h + diff);
+				box_2.find('.homeContentResearch').outerHeight(h + diff);
 			}
 			else{
 				wrap_1.outerHeight(box_2.outerHeight());
