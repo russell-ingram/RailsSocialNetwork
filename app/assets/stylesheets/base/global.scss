@@ -2,6 +2,33 @@
   box-sizing: border-box;
 }
 
+.blue-link {
+
+  & {
+
+    transition: color 1s ease;
+  }
+
+  &:hover, &:hover * {
+    color:#4EC5D9 !important;
+  }
+
+}
+
+.blue-bg-link {
+
+  & {
+
+    transition: background-color 1s ease;
+  }
+
+  &:hover {
+    background-color:#4EC5D9 !important;
+    cursor: pointer;
+  }
+
+}
+
 .hide {
   display:none;
 }

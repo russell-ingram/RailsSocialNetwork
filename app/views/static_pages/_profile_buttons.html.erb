@@ -41,7 +41,7 @@
   <% elsif @blocking.include? @user %>
     <div class="profileButton profilePending">PENDING</div>
   <% else %>
-    <div class="profileButton profileConnect">
+    <div class="profileButton profileConnect blue-bg-link">
       <a href="#connectUser" rel="modal:open">
       CONNECT</a>
     </div>
@@ -79,5 +79,5 @@
 
 
 
-<div class="profileButton profileMessage"><a href="/messages/new/<%= @user.id %>">SEND MESSAGE</a>
+<div class="profileButton profileMessage blue-bg-link"><a href="/messages/new/<%= @user.id %>">SEND MESSAGE</a>
 </div>

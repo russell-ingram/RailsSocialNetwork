@@ -19,14 +19,15 @@
 
 $(function(){
 
-	initPageSpecificRoutine();
+	pageSpecificInits.global($);
+	initPageSpecificRoutine($);
 
 });
 
-function initPageSpecificRoutine(){
-	var initRoutine = $('[data-js-init]').data('js-init');
+function initPageSpecificRoutine(jquery){
+	var initRoutine = jquery('[data-js-init]').data('js-init');
 	if(initRoutine!==undefined){
-		window.pageSpecificInits[initRoutine]($);
+		window.pageSpecificInits[initRoutine](jquery);
 	}
 }
 
@@ -300,3 +301,10 @@ console.log('hi');
 	});
 
 };
+
+pageSpecificInits.global = function(jquery){
+	var blue_links = $('a').map(function(i, element){ if($(element).css('color')==='rgb(62, 178, 204)') return $(element) });
+	$(blue_links).each(function(){
+		$(this).addClass('blue-link');
+	});
+}
