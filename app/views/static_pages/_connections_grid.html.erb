@@ -1,0 +1,43 @@
+
+<!-- connections -->
+
+  <div class="homeConnectionsHeader">suggested connections</div>
+  <div class="homeConnections">
+
+  <% @recs.each_with_index do |rec, i| %>
+
+    <div class="homeConnectionBox <%= 'box-' + i.to_s %>">
+
+      <div class="homeConnectionPic <%= ['','','break-0-show break-1-hide break-2-show','break-2-show','break-1-show'][i] %>" style="background-image:url(<%= connection_img_url(rec) %>)">
+        <a href="/profile/<%= rec.id %>">
+          <img src="<%= connection_img_url(rec) %>">
+        </a>
+      </div>
+
+
+      <% position = rec.current_pos %>
+      <div class="homeConnectionProfile">
+
+        <div class="hcpTitle"><%= position["job_title"] %></div>
+        <div class="hcpDesc">
+          <p><%= position["industry"] %></p>
+          <p>in <%= position["region"]%></p>
+          <p><%= position["enterprise_size"] %> Enterprise</p>
+        </div>
+        <div class="hcpMsg"><a href="/messages/new/<%= rec.id %>">message <div class="icon icon-fwd-arrow"></div></a></div>
+        <div class="hcpConnect"><a href="/profile/<%= rec.id %>">connect <div class="icon icon-fwd-arrow"></div></a></div>
+      </div>
+
+
+        <div class="homeConnectionPic <%= ['hide','hide','break-1-show break-2-show','break-2-hide','break-1-hide','break-1-hide'][i] %>" style="background-image:url(<%= connection_img_url(rec) %>)">
+          <a href="/profile/<%= rec.id %>">
+            <img src="<%= connection_img_url(rec) %>">
+          </a>
+        </div>
+
+    </div>
+
+  <% end %>
+
+
+<!-- end connections -->
