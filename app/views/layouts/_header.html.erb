@@ -19,7 +19,7 @@
 
       <% cssClass = (controller.controller_name == 'friendships') ? 'active' : 'notActive' %>
       <div class="hoverDiv <%= cssClass %> break-2-hide connection-link <%= 'notified' if current_user.friendship_requests > 0 %>"><a href="/connections">CONNECTIONS</a></div>
-      <div class="hoverDiv <%= cssClass %> break-2-hide connection-link <%= 'notified' if current_user.friendship_requests > 0 %>"><a href="/connections">CONNECTIONS</a></div>
+
       <div class="hoverDiv <%= cssClass %> break-2-show connection-link"><a href="/connections"><div class="icon icon-icon-multiple-people menuIcon"></div></a></div>
 
       <% if current_user.friendship_requests > 0 %>
