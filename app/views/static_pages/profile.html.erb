@@ -85,27 +85,8 @@
       <div class="friendsTabWrapper">
         <% if @accepted_friendships.length > 0 %>
           <% @accepted_friendships.each do |friendship| %>
-          <% friend = friendship.friend %>
 
-      <div class="myConnection profileConnection">
-        <div class="myConnWrapper">
-          <div class="myConnProfilePic"><a href="/profile/<%= friend.id %>">
-          <% if friend.profile_pic_url? %>
-            <%= image_tag friend.profile_pic_url %>
-          <% else %>
-            <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
-          <% end %>
-          </a></div>
-
-          <div class="myConnInfo">
-            <div class="myConnName"><%= link_to friend.full_name, user_profile_path(friend) %></div>
-            <% friend_pos = friend.current_pos %>
-            <div class="myConnCompany"><%= friend_pos["company"] %></div>
-            <div class="myConnIndustry"><%= friend_pos["job_title"] %>, <%= friend_pos["industry"] %>, <%= friend_pos["enterprise_size"] %></div>
-          </div>
-          <div class="myConnMessage"><a href="/messages/new/<%= friend.id %>">MESSAGE<i class="icon icon-fwd-arrow"></i></a></div>
-        </div>
-      </div>
+              <%= render partial: 'friendships/friend', locals: { person: friendship.friend } %>
 
           <% end %>
         <% else %>

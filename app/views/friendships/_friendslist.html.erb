@@ -33,7 +33,11 @@
 
   <div class="connsRefillableWrapper">
 
-  <%= render partial: 'friendships/friend', collection: @friends %>
+  <% @friends.each do |friendship| %>
+
+    <%= render partial: 'friendships/friend', locals: { person: friendship.friend } %>
+
+  <% end %>
 
   </div>
 

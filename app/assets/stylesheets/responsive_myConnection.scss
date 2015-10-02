@@ -5,9 +5,11 @@
 
 		& {
 			background-color: white;
-			padding-bottom: 10px;
 			border-bottom:1px solid #eee;
-			margin-bottom:5px;
+		}
+
+		.myConnWrapper {
+			border-bottom:0;
 		}
 
 		&:first-child {
@@ -16,6 +18,7 @@
 
 		&:last-child {
 			border-bottom: none;
+    		padding-bottom: 10px;
 		}
 
 		.myConnInfo {
