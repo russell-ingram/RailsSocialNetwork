@@ -22,6 +22,10 @@
       </div>
       <div class="profileLocation"><i class="icon icon-icon-location"></i><%= @user.country %></div>
 
+      <% if @friends.include? @user %>
+        <div class="icon icon-icon-multiple-people connectedIcon"></div>
+      <% end %>
+
       <div class="break-2-hide profileButtons">
         <%= render partial: 'profile_buttons' %>
       </div>
