@@ -48,6 +48,10 @@
 		    min-height: 200px;
 		    height:auto;
 		}
+
+		.myConnWrapper {
+			border-bottom:0;
+		}
 	}
 
 }
@@ -195,7 +199,7 @@
 			& .toggleRightSearch {
 				position:absolute;
 				left:25px;
-				top:2px;
+				top:4px;
 			}
 
 			& .searchConnsInput {
