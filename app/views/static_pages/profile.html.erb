@@ -4,6 +4,8 @@
   </div>
   <!-- <div class="adminLink"><a href="/admin">Admin Dashboard<i class="icon icon-fwd-arrow"></i></a></div> -->
 
+
+
   <div class="profileHeader">
     <div class="profilePic">
       <% if current_user.profile_pic_url? %>
@@ -21,9 +23,17 @@
         <i class="icon icon-icon-industry"></i><%= position["industry"] %>
       </div>
       <div class="profileLocation"><i class="icon icon-icon-location"></i><%= position["country"] %></div>
-      <div class="profileButton blue-bg-link"><%= link_to "UPDATE", edit_profile_path %></div>
 
+      <div class="break-2-hide profileButtons">
+        <div class="profileButton blue-bg-link"><%= link_to "UPDATE", edit_profile_path %></div>
+      </div>
     </div>
+
+    <div class="break-2-show">
+      <div class="profileButton blue-bg-link"><%= link_to "UPDATE", edit_profile_path %></div>
+    </div>
+
+
 
   </div>
 
