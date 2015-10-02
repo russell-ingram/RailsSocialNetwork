@@ -3,13 +3,31 @@
 
 	.myConnection {
 
+
+		.myConnWrapper {
+
+			& {
+			    position: relative;
+			    border-bottom:0;
+			}
+
+		    .myConnProfilePic {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+		    }
+
+		    .myConnInfo {
+		    	
+			    padding-left: 145px;
+			    width: 100%;
+			    padding-right: 0;
+		    }
+		}
+
 		& {
 			background-color: white;
 			border-bottom:1px solid #eee;
-		}
-
-		.myConnWrapper {
-			border-bottom:0;
 		}
 
 		&:first-child {
@@ -51,6 +69,15 @@
 		.myConnIndustry,
 		.messageLink {
 			font-size: 14px;
+		}
+
+		.myConnProfilePic {
+			position:absolute;
+
+		}
+
+		.myConnInfo {
+			width:100%;
 		}
 
 	}

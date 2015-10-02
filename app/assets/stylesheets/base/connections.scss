@@ -147,6 +147,27 @@
   background-color: #f2f3f4;
   padding: 10px 20px 0 20px;
 
+  .myConnName > a,
+  .myConnCompany {
+
+      -webkit-line-clamp: 1;
+
+  }
+  
+  .myConnIndustry {
+      -webkit-line-clamp: 2;
+  }
+
+  .myConnName > a,
+  .myConnCompany,
+  .myConnIndustry {
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+
 }
 
 .myConnWrapper {
@@ -184,6 +205,7 @@
   padding: 30px 0 0 20px;
   font-size: 18px;
   float:left;
+  width:350px;
 }
 
 .myConnName {
