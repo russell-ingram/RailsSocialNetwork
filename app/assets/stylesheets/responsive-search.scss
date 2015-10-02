@@ -81,6 +81,11 @@
 	
 	.pageSearchPeers {
 
+		.addSpendingIntentionFieldButton,
+		.wrapperFieldDropdown {
+			border-radius: 0;
+		}
+
 		.editProfileWrapper {
 			padding-left: 0;
 			padding-right: 0;
