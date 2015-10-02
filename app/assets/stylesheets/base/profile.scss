@@ -20,8 +20,7 @@
   padding-left: 25px;
   padding-top: 25px;
   overflow: hidden;
-
-  padding-bottom: 40px;
+  padding-bottom: 25px;
 }
 
 .profileTopHeader {
@@ -32,6 +31,7 @@
   float: left;
   height: 200px;
   overflow:hidden;
+  position:absolute;
 }
 .profilePic img {
 
@@ -40,30 +40,44 @@
 
 .profileInfo {
   float:left;
-  margin-left: 25px;
+  margin-left: 0;
+  width: 100%;
+  padding-left: 225px;
+  position: relative;
+  height:200px;
+}
+
+.profileInfo .profileButtons {
+  /*float:right;*/
+  position: absolute;
+  right:0;
+  bottom: 0;
+
 }
 
 .profileName {
   font-size: 34px;
   color: #3eb2cc;
+  margin-top: -6px;
 }
 
 .profilePosition {
   font-size: 22px;
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 .profileEmployer {
   font-size: 22px;
   color: #797c7f;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .profileIndustry, .profileLocation {
   font-size: 14px;
-  color: #737373;
-  margin-bottom: 5px;
+  color: #445058;
+  margin-bottom: 3px;
   text-transform: uppercase;
+  letter-spacing:0.025em;
 }
 
 .profileIndustry i, .profileLocation i {
@@ -84,7 +98,7 @@
 .profileTabLabel {
   display: inline-block;
   color: #737373;
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 60px;
   cursor: pointer;
 }
@@ -100,15 +114,19 @@
 
 .profileButton {
   display: inline-block;
-  margin-right: 20px;
-  width: 250px;
-  height: 60px;
+  margin-right: 15px;
+  width: 180px;
+  height: 45px;
   color: #FFF;
   background-color: #3eb2cc;
-  line-height: 60px;
+  line-height: 45px;
   text-align: center;
   font-family: "PNReg";
   margin-top: 30px;
+}
+
+.profileButton:last-child {
+  margin-right:25px;
 }
 
 .profilePending {
@@ -150,7 +168,7 @@
 
 .workJobTitle {
   font-size: 22px;
-  margin-bottom: 2px;
+  margin-bottom: 0px;
   color: #282b30;
 }
 
