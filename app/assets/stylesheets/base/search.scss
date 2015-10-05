@@ -221,9 +221,16 @@
   padding-bottom: 15px;
 
   .icon {
+    line-height: 90px;
+    height: 75px;
     text-align:right;
     font-size:30px;
     margin-right: 10px;
+  }
+
+  .icon.icon-drop-dwn-arrow {
+    line-height:initial;
+    height:auto;
     position: absolute;
     right: 0;
     top: 30%;
