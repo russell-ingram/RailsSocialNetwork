@@ -3,6 +3,10 @@ $( document ).ready(function() {
 
   $(".replyButton").click(function() {
     $('.replyForm').addClass('active');
+    var new_position = $('#replyForm').offset();
+    window.scrollTo(new_position.left,new_position.top);
+    return false;
+
   });
 
   $(".callButton").click(function() {

@@ -90,6 +90,8 @@ Rails.application.routes.draw do
 
   patch '/admin/content/layout/#id' => 'contents#layout_edit', as: 'edit_layout_content'
 
+  patch '/admin/content/home/#id' => 'contents#home_edit', as: 'home_edit_content'
+
 
   # resources :search
   get '/search/results' => 'searchs#search_results'
