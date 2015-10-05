@@ -9,15 +9,15 @@
       <div class="searchTypesWrapper">
 
         <div class="searchResultsHeader">
-          <span class="number break-2-show"><%= @length %> Results For</span>
+          <span class="number break-1-show"><%= @length %> Results For</span>
           <div class="searchResultsNum">
-            <span class="number break-2-hide"><%= @length %> Results</span>
-            <span class="criteria break-2-show"><%= criteria_str(@search) %></span>
+            <span class="number break-1-hide"><%= @length %> Results</span>
+            <span class="criteria break-1-show"><%= criteria_str(@search) %></span>
 
           </div>
           <div class="searchResultsFollowButtonDiv">
             <!-- refactor-this: clone needs partial -->
-            <div class="searchResultsFollowButton break-2-hide" data="<%= @search.id %>">
+            <div class="searchResultsFollowButton break-1-hide" data="<%= @search.id %>">
               <a href="#addSearchModal" rel="modal:open" id="addSearchLink">
               <% if @search.name? %>
                 ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div>
@@ -270,7 +270,7 @@
           <% end %>
         </div>
 
-        <div class="searchLinksBox break-2-show">
+        <div class="searchLinksBox break-1-show">
           <!-- refactor-this: clone needs partial -->
           <div class="searchResultsFollowButton" data="<%= @search.id %>">
             <a href="#addSearchModal" rel="modal:open" id="addSearchLink">
