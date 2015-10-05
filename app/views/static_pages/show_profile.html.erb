@@ -31,6 +31,62 @@
         <%= render partial: 'profile_buttons' %>
       </div>
 
+
+          <div id="deleteUser" class="addIntentionModal confirmConnectModal" style="display:none;">
+            <div class="formBox searchFormBox formBoxModal confirmModalBox">
+              <div class="formHeader">CONFIRM CONNECT</div>
+              <div class="modalBody">
+                <div class="modalIntentions">
+                  <div class="myConnProfilePic">
+                    <a href="/profile/<%= @user.id %>">
+                      <% if @user.profile_pic_url? %>
+                        <img src="<%= @user.profile_pic_url %>">
+                      <% else %>
+                        <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+                      <% end %>
+                    </a>
+                  </div>
+                </div>
+                <div class="modalIntentionsRight">
+                  <div class="deleteUserModalInfo">
+                    Are you sure you would like to unfriend <%= @user.full_name %>?
+                  </div>
+                <div class="modalDoneButton">
+                  <%= link_to "Confirm", destroy_friendship_path(@user), method: :post %>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <div id="connectUser" class="addIntentionModal confirmConnectModal" style="display:none;">
+          <div class="formBox searchFormBox formBoxModal confirmModalBox">
+            <div class="formHeader">CONFIRM CONNECT</div>
+            <div class="modalBody">
+              <div class="modalIntentions">
+                <div class="myConnProfilePic">
+                  <a href="/profile/<%= @user.id %>">
+                    <% if @user.profile_pic_url? %>
+                      <img src="<%= @user.profile_pic_url %>">
+                    <% else %>
+                      <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+                    <% end %>
+                  </a>
+                </div>
+              </div>
+              <div class="modalIntentionsRight">
+                <div class="deleteUserModalInfo">
+                  Are you sure you would like to connect with <%= @user.full_name %>?
+                </div>
+                <div class="modalDoneButton">
+                  <%= link_to "Confirm", create_friendship_path(@user), method: :post %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
 
     <div class="break-2-show">
