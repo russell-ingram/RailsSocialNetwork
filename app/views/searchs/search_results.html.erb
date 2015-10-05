@@ -39,7 +39,7 @@
 
 
               <div class="modalIntentionsRight modalDeleteIntentions">
-                <div class="modalDoneButton modalDoneAddFav" id="searchAddFavButton" data="<%= @search.id %>">
+                <div class="modalDoneButton modalDoneAddFav blue-bg-link" id="searchAddFavButton" data="<%= @search.id %>">
                   <a href="#close-modal" rel="modal:close">
                   SAVE
                   </a>
@@ -707,7 +707,7 @@
 
         <%= f.text_field :results, placeholder: 'Results', style: 'display: none;', id: 'resultsField' %>
 
-        <div class="updateSearchButton">Update</div>
+        <div class="updateSearchButton blue-bg-link">Update</div>
         <%= f.submit 'Submit', id: 'submitSearch', style: 'display:none;' %>
         <% end %>
       </div>
