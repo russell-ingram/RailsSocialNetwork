@@ -1,19 +1,8 @@
 
-.pageHome {
-	.breakstate {
-		display:none;
-		width:0;
-	}
-}
 
 @media screen and (max-width: 1050px) {
 	
 	.pageHome {
-
-		.breakstate {
-			display:none;
-			width:1050px;
-		}
 
 		.homeContentWrapper .homeContentBox1,
 		.homeContentWrapper .homeContentBox2 {
@@ -163,10 +152,7 @@
 @media screen and (max-width: 700px) {
 
 	.pageHome {
-
-		.breakstate {
-			width: 700px;
-		}
+	
 
 		#addIntentionModal {
 

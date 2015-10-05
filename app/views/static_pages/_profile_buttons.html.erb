@@ -1,5 +1,5 @@
 <% if @friends.include? @user %>
-          <div class="profileButton profileConnected">CONNECTED</div>
+          <div class="profileButton profileDeleted"><a href="#deleteUser" rel="modal:open">UNFRIEND</a></div>
 
               <div id="deleteUser" class="addIntentionModal confirmConnectModal" style="display:none;">
                 <div class="formBox searchFormBox formBoxModal confirmModalBox">

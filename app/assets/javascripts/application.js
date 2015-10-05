@@ -288,7 +288,7 @@ pageSpecificInits._initFirstLetterSearch = function(jquery, elementWithTabIndex)
 pageSpecificInits.loginPage = function(jquery){
 
 	jquery('.loginField input').keypress(function(e){
-console.log('hi');
+		
 		var key = e.keyCode;
 		
 		if(key===13){
@@ -301,6 +301,27 @@ console.log('hi');
 	});
 
 };
+
+pageSpecificInits.profilePage = function(jquery){
+
+	jquery('.connectedIcon').click(function(){
+		
+		jquery('.profileButton.profileDeleted a').click()
+
+	}).hover(function(){
+
+		if($('.breakstate').width()!==700){
+			jquery('.unfriendText').show();
+		}
+
+	},function(){
+
+		if($('.breakstate').width()!==700){
+			jquery('.unfriendText').hide();
+		}
+
+	});
+}
 
 pageSpecificInits.global = function(jquery){
 	var blue_links = $('a').map(function(i, element){ if($(element).css('color')==='rgb(62, 178, 204)') return $(element) });

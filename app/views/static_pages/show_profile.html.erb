@@ -1,5 +1,5 @@
 <%= render "layouts/header" %>
-<div class="pageWrap responsive pageProfile">
+<div class="pageWrap responsive pageProfile" data-js-init="profilePage">
   <div class="pageHeader profileTopHeader">Profile
   </div>
   <!-- <div class="adminLink"><a href="/admin">Edit as Admin<i class="icon icon-fwd-arrow"></i></a></div> -->
@@ -23,7 +23,8 @@
       <div class="profileLocation"><i class="icon icon-icon-location"></i><%= @user.country %></div>
 
       <% if @friends.include? @user %>
-        <div class="icon icon-icon-multiple-people connectedIcon"></div>
+        <span class="unfriendText">UNFRIEND</span>
+        <div class="icon icon-icon-multiple-people connectedIcon blue-link"></div>
       <% end %>
 
       <div class="break-2-hide profileButtons">
@@ -38,7 +39,7 @@
 
   </div>
 
-  
+
 
   <div class="profileTab">
     <div class="profileTabLabel infoTab active">INFORMATION</div>

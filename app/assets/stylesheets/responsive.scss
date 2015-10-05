@@ -10,8 +10,17 @@
 	display: block;
 }
 
+.breakstate {
+	display:none;
+	width:0;
+}
 
 @media screen and (max-width: 1050px) {
+
+	.breakstate {
+		display:none;
+		width:1050px;
+	}
 
 	.break-1-show {
 		display: block;
@@ -99,6 +108,11 @@
 }
 
 @media screen and (max-width: 700px) {
+
+	.breakstate {
+		display:none;
+		width:700px;
+	}
 
 	.footerMargin {
 		height:0;

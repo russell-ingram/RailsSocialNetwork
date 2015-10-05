@@ -17,10 +17,8 @@
   margin: 0 25px;
   margin-top: 30px;
   background-color: #f2f3f4;
-  padding-left: 25px;
-  padding-top: 25px;
+  padding:20px;
   overflow: hidden;
-  padding-bottom: 25px;
 }
 
 .profileTopHeader {
@@ -45,14 +43,26 @@
   padding-left: 225px;
   position: relative;
   height:200px;
+  padding-right: 60px;
 }
 
 .profileInfo .connectedIcon {
   position: absolute;
-  right: 25px;
+  right: 0;
   top: 0;
   font-size: 28px;
   color: #3eb2cc;
+  cursor: pointer;
+}
+
+.profileInfo .unfriendText {
+  position: absolute;
+  top:5px;
+  right:35px;
+  font-size:16px;
+  color:#797c7f;
+  display:none;
+
 }
 
 .profileInfo .profileButtons {
@@ -134,7 +144,11 @@
 }
 
 .profileButton:last-child {
-  margin-right:25px;
+  margin-right:0;
+}
+
+.profileDeleted {
+  display: none;
 }
 
 .profilePending {
