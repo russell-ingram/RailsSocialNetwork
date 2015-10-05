@@ -140,6 +140,15 @@ class StaticPagesController < ApplicationController
       @layout.column_three_content = ""
       @layout.save
     end
+
+    @homeContent = Content.find_by("type_of_content = ? AND active =?", "home", true)
+    if @homeContent == nil
+      @homeContent = Content.new
+      @homeContent.active = true
+      @homeContent.type_of_content = "home"
+      @homeContent.body_copy = ""
+      @homeContent.save
+    end
   end
 
   def countries_list

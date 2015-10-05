@@ -47,7 +47,7 @@
               <%= sender.full_name %>
             </a>
           </div>
-          
+
             <% if(send_pos["job_title"]!='Unlisted' && send_pos["company"]!='Unlisted') %>
               <div class="senderInfo"><%= send_pos['job_title'] %> at <%= send_pos['company'] %></div>
             <% end %>
@@ -165,7 +165,7 @@
 
 <!-- replyformwrapper end -->
 
-    <div class="newMessagesFormWrapper replyForm">
+    <div class="newMessagesFormWrapper replyForm" id="replyForm">
 
       <div class="newMsgForm formBox">
 

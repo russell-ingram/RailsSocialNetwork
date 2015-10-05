@@ -238,20 +238,20 @@
 
     <% end %>
 
-
+  <%= form_for ([:home_edit, @homeContent]) do |f| %>
 
     <div class="userEditBox formBox">
       <div class="profileTabBoxLabel formHeader">
         LANDING PAGE: WELCOME MESSAGE
       </div>
       <div class="cmsBox">
-        <div class="cmsEditHeader">HEADLINE</div>
+<!--         <div class="cmsEditHeader">HEADLINE</div>
         <div class="field">
           <input>
-        </div>
+        </div> -->
         <div class="cmsEditHeader">message</div>
         <div class="field-area cmsTextArea">
-          <textarea></textarea>
+          <%= f.text_area :body_copy, autocomplete: 'off' %>
         </div>
 
       </div>
@@ -270,6 +270,8 @@
 
 
     </div>
+
+  <% end %>
 
 
 

@@ -62,6 +62,26 @@ class ContentsController < ApplicationController
 
   end
 
+  def home_edit
+    @oldlayout = Content.find_by("type_of_content = ? AND active = ?", "home", true)
+    if @oldlayout
+      @oldlayout.active = false
+      if @oldlayout.save
+      else
+      end
+    end
+
+    @layout = Content.new(home_params)
+    @layout.active = true
+    @layout.type_of_content = "home"
+
+    if @layout.save
+      redirect_to home_path
+    else
+      redirect_to '/admin/content'
+    end
+  end
+
 
   private
 
@@ -71,6 +91,10 @@ class ContentsController < ApplicationController
 
   def layout_params
     params.require(:content).permit(:headline, :layout_option, :column_one_callout, :column_two_callout, :column_three_callout, :column_one_content, :column_two_content, :column_three_content, :link_copy, :external_link, :active)
+  end
+
+  def home_params
+    params.require(:content).permit(:body_copy)
   end
 
 

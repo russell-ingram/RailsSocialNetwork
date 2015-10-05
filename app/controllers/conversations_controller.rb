@@ -106,6 +106,10 @@ class ConversationsController < ApplicationController
 
   def reply
     current_user.reply_to_conversation(@conversation, params[:body])
+    @recipients = @conversation.recipients
+    @recipients.each do |r|
+      @conversation.untrash(r)
+    end
     redirect_to conversation_path(@conversation)
   end
 
