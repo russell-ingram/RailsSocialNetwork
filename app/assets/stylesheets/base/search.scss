@@ -589,7 +589,23 @@
 
 .addIntentionModal {
   width: 600px;
+
+  .modalDoneButton {
+    width:48%;
+  }
+
+  .close-modal {
+    width:29%;
+  }
+
+  .wrapperFieldDropdown .carrot {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
 }
+
+
 .formBoxModal {
   background-color: #EFF1f1;
   min-height: 350px;
