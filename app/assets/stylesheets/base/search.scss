@@ -3,19 +3,18 @@
   // min-height: 300px;
   background-color: #f2f3f4;
   margin-bottom: 30px;
-  padding: 30px 25px 30px 25px;
+  padding: 25px;
 }
 
 .searchTagsWrapper, .spendingTagsWrapper {
   overflow: auto;
-  margin-bottom: 15px;
 }
 
 .searchResultsHeader {
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 14px;
   margin-bottom: 25px;
-  overflow: auto;
+  overflow: hidden;
   font-family: "PNBold";
   div {
     display: inline-block;
@@ -114,6 +113,7 @@
   height: 140px;
   padding: 0;
   padding-left: 20px;
+  padding-bottom: 10px;
 
 }
 
@@ -215,16 +215,18 @@
 }
 
 .searchSideBarDropdown {
-  height: 75px;
-  display: table;
   width:100%;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 15px;
 
   .icon {
-    line-height: 90px;
     text-align:right;
     font-size:30px;
-    height: 75px;
     margin-right: 10px;
+    position: absolute;
+    right: 0;
+    top: 30%;
   }
   div {
     border-bottom: none;
@@ -237,8 +239,6 @@
 
 .searchSidebarDropdownLeft {
   width: 85%;
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .searchSideBarDropdownHeader {
@@ -517,19 +517,25 @@
   border-radius: 10px;
   margin-right: 20px;
   margin-bottom: 20px;
+  position:relative;
+}
+
+.favSearchMain:hover {
+  background-color: #c8cccd;
+  cursor:pointer;
 }
 
 .fsmLeft {
   float:left;
   margin: 15px 0 15px 20px;
-  width: 65%;
   cursor: pointer;
 }
 
 .fsmTitle {
   font-size: 20px;
   color: #34373D;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  padding-right: 150px;
 }
 
 .fsmInfo {
@@ -540,9 +546,12 @@
 }
 
 .fsmRight {
-  float:right;
-  height: 100%;
-  max-width: 30%;
+    /* float: right; */
+    /* height: 100%; */
+    width: 133px;
+    /* max-width: 30%; */
+    position: absolute;
+    right: 0;
 }
 .fsmPeers {
   display: inline-block;
@@ -550,7 +559,7 @@
   text-transform: uppercase;
   float:left;
   text-align:right;
-  margin-top: 16px;
+  margin-top: 20px;
   margin-right: 15px;
 }
 .fsmPeersNum {
@@ -579,7 +588,23 @@
 
 .addIntentionModal {
   width: 600px;
+
+  .modalDoneButton {
+    width:48%;
+  }
+
+  .close-modal {
+    width:29%;
+  }
+
+  .wrapperFieldDropdown .carrot {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
 }
+
+
 .formBoxModal {
   background-color: #EFF1f1;
   min-height: 350px;
@@ -626,7 +651,7 @@
   .field {
     margin-bottom: 10px;
     .wrapper-dropdown {
-      font-size: 12px;
+
       .ddLabel {
         display: inline-block;
         overflow: hidden;
@@ -933,7 +958,7 @@
 }
 
 .deleteOnlyInt {
-  width: 38%;
+  width: 500px;
   .modalBody {
     padding: 0;
   }

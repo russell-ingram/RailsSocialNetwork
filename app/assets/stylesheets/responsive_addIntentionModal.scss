@@ -1,0 +1,28 @@
+
+@media screen and (max-width: 700px) {
+
+
+	.addIntentionModal {
+
+	    top: 20% !important;
+	    left: 0 !important;
+	    margin-top: 0 !important;
+	    margin-left: 0 !important;
+		width: 100%;
+
+		.modalBody {
+
+		    padding: 30px 20px;
+		}
+
+		.modalIntentions {
+			width: 32%;
+		}
+
+		.modalIntentionsRight {
+			float: left;
+		}
+
+	}
+
+}

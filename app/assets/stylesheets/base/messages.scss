@@ -39,6 +39,16 @@
   color: #FFFFFF;
 }
 
+.pageConnections .messagesBar {
+  height: 45px;
+  line-height: 45px;
+}
+
+.pageConnections .sortLabel {
+  padding-top:2px;
+
+}
+
 .inboxToggle, .searchMessagesButton, .sortLabel, .sortToggle {
   display: inline-block;
 
@@ -63,7 +73,7 @@
 
 .msgsBarName {
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   color: #3eb2cc;
 }
 .toggleRightSearch {
@@ -72,7 +82,7 @@
   margin-right: 10px;
   font-size: 20px;
   position: relative;
-  top: 2px;
+  top: 5px;
   cursor: pointer;
 }
 
@@ -111,7 +121,6 @@
   color: #797C80;
   max-width: 770px;
   margin: 0 auto;
-  margin-top: 91px;
   padding-bottom: 5px;
 }
 

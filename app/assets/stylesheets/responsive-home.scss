@@ -1,19 +1,8 @@
 
-.pageHome {
-	.breakstate {
-		display:none;
-		width:0;
-	}
-}
 
 @media screen and (max-width: 1050px) {
 	
 	.pageHome {
-
-		.breakstate {
-			display:none;
-			width:1050px;
-		}
 
 		.homeContentWrapper .homeContentBox1,
 		.homeContentWrapper .homeContentBox2 {
@@ -162,40 +151,9 @@
 
 @media screen and (max-width: 700px) {
 
+
 	.pageHome {
-
-		.breakstate {
-			width: 700px;
-		}
-
-		#addIntentionModal {
-
-		    top: 20% !important;
-		    left: 0 !important;
-		    margin-top: 0 !important;
-		    margin-left: 0 !important;
-    		width: 100%;
-
-    		.modalBody {
-
-			    padding: 30px 20px;
-    		}
-
-    		.modalIntentions {
-    			width: 32%;
-    		}
-
-    		.modalIntentionsRight {
-    			float: left;
-    		}
-
-    		.close-modal,
-    		.modalDoneButton {
-
-			    width: 100px;
-    		}
-
-		}
+	
 
 		.homeContentFollowed,
 		.homeContentResearch,

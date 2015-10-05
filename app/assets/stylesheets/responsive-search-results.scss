@@ -3,6 +3,25 @@
 
 	.searchResultsWrapper {
 
+		.searchLinksBox {
+			a {
+				color:#3eb2cc;
+				font-size:16px;
+				text-transform: uppercase;
+				margin-top:15px;
+			}
+
+			.adjustSearchLink {
+				border-top:1px solid #ddd;
+				padding-top: 15px;
+			}
+		}
+
+		.icon-icon-check {
+
+		    display: inline;
+		}
+
 		& {
 
 			width:70%;
@@ -90,13 +109,16 @@
  			width: 100%;
  		}
 
+		.myConnection .myConnWrapper .myConnInfo {
+			padding-left:20px;
+		}
+
  		.myConnection:first-child {
  			margin-top:0;
  		}
 
  		.searchResultsHeader .number {
 
-		    color: #666;
 		    font-size: 14px;
 		    text-transform: uppercase;
 		    padding-bottom: 5px;
@@ -192,20 +214,6 @@
 				margin-right:0;
 			}
 
-		}
-
-		.searchLinksBox {
-			a {
-				color:#3eb2cc;
-				font-size:16px;
-				text-transform: uppercase;
-				margin-top:15px;
-			}
-
-			.adjustSearchLink {
-				border-top:1px solid #ddd;
-				padding-top: 15px;
-			}
 		}
 
  	}

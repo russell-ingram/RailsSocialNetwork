@@ -48,6 +48,10 @@
 		    min-height: 200px;
 		    height:auto;
 		}
+
+		.myConnWrapper {
+			border-bottom:0;
+		}
 	}
 
 }
@@ -195,7 +199,7 @@
 			& .toggleRightSearch {
 				position:absolute;
 				left:25px;
-				top:2px;
+				top:4px;
 			}
 
 			& .searchConnsInput {
@@ -213,26 +217,6 @@
 			padding-top:25px;
 			padding-left:20px;
 			padding-bottom: 25px;
-		}
-
-		.myConnWrapper {
-
-			& {
-			    position: relative;
-			}
-
-		    .myConnProfilePic {
-			    position: absolute;
-			    top: 0;
-			    left: 0;
-		    }
-
-		    .myConnInfo {
-		    	
-			    padding-left: 145px;
-			    width: 100%;
-			    padding-right: 0;
-		    }
 		}
 		
 	}

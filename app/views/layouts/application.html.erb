@@ -10,7 +10,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="breakstate"></div>
 <%= yield %>
 <% if controller.controller_name == "user_admin" || current_page?('/admin/content') || current_page?('/admin/messages/new/all')  %>
 <!-- only loads on user admin pages or cms update page -->
