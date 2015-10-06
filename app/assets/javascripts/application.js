@@ -50,6 +50,19 @@ pageSpecificInits.newMessagePage = function(jquery){
 
 };
 
+pageSpecificInits.createMessagePage = function(jquery){
+
+  jquery('[placeholder]').focus(function(){
+  	$(this).data('placeholder', $(this).attr('placeholder'));
+  	$(this).attr('placeholder', '');
+  });
+
+  jquery('[placeholder]').blur(function(){
+  	$(this).attr('placeholder', $(this).data('placeholder'));
+  });  
+
+};
+
 pageSpecificInits.connectionsPage = function(jquery){
 
 	jquery('.connectionRequest .buttonsBox .button').click(function(){
