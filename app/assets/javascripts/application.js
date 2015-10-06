@@ -119,14 +119,15 @@ pageSpecificInits.searchResultsPage = function(jquery){
 	this._intentionsPopUp(jquery);
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
 
 };
 
 pageSpecificInits.searchPeersPage = function(jquery){
-	console.log('here');
 	this._intentionsPopUp(jquery);
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
 };
 
 pageSpecificInits.homePage = function(jquery){
