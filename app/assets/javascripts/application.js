@@ -330,7 +330,16 @@ pageSpecificInits.profilePage = function(jquery){
 		}
 
 	});
-}
+};
+
+pageSpecificInits.myProfilePage = function(jquery){
+
+	jquery('.updateIcon').click(function(){
+
+		$('.updateButton a').click();
+	});
+
+};
 
 pageSpecificInits.global = function(jquery){
 	var blue_links = $('a').map(function(i, element){ if($(element).css('color')==='rgb(62, 178, 204)') return $(element) });

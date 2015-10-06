@@ -5,6 +5,25 @@
   font-size: 24px;
 }
 
+.pageProfile {
+  
+  .updateIcon {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 26px;
+    color: #bbbdbf;
+    width:auto;
+    height:auto;
+  }
+
+  .updateIcon:hover {
+    color:#3eb2cc;
+    cursor:pointer;
+  }
+}
+
 .adminLink a {
   margin-right: 25px;
 }
