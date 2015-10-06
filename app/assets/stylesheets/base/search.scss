@@ -605,7 +605,7 @@
   .wrapperFieldDropdown .carrot {
     position: absolute;
     top: 5px;
-    right: 10px;
+    right: 33px;
   }
   .modalDoneButton {
     width:48%;
@@ -1105,10 +1105,15 @@
   line-height: initial;
   height: auto;
   position: absolute;
-  right:66px;
+  right:22%;
   -ms-transform: rotate(180deg); 
   -webkit-transform: rotate(180deg); 
   transform: rotate(180deg);
   color: #282b30;
   top: 22px;
+  display:none;
+}
+
+.searchSideBarWrapperDropdown.active .icon.icon-carot {
+  display:block;
 }
