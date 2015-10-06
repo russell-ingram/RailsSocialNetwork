@@ -533,23 +533,23 @@
 }
 
 .fsmLeft {
-  float:left;
-  margin: 15px 0 15px 20px;
+  float: left;
+  padding: 15px 0 15px 20px;
   cursor: pointer;
+  width: 100%;
+  padding-right: 133px;
 }
 
 .fsmTitle {
   font-size: 20px;
   color: #34373D;
   margin-bottom: 2px;
-  padding-right: 150px;
 }
 
 .fsmInfo {
   font-size: 14px;
   color: #797C7F;
   font-family: "PNReg";
-  width: 335px;
 }
 
 .fsmRight {
@@ -568,6 +568,7 @@
   text-align:right;
   margin-top: 20px;
   margin-right: 15px;
+  width: 80px;
 }
 .fsmPeersNum {
   font-size: 40px;
@@ -580,7 +581,7 @@
 .fsmDelete {
   display: inline-block;
   border-left: 1px solid #BBBDC0;
-  height: 100%;
+  height: 100px;
   width: 35px;
   float:right;
   line-height: 100px;
@@ -588,6 +589,7 @@
   font-size: 13px;
   color: #767676;
   cursor: pointer;
+  position: absolute;
   a {
     margin-left: 0;
   }
