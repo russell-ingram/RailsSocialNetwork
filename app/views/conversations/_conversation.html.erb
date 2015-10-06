@@ -58,7 +58,7 @@
       <div class="bottomRightMessageContent">
         <div class="bottomRightMessagePics">
         <% recipients.first(4).each do |r| %>
-          <div class="miniImg">
+          <div class="miniImg" title="<%= r.full_name %>">
           <% if r == current_user %>
             <a href="/profile" title="<%= r.full_name %>">
           <% else %>

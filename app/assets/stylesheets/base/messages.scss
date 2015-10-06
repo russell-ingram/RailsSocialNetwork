@@ -1,3 +1,38 @@
+.my-custom-theme {
+  border-radius: 5px; 
+  border: 2px solid #000;
+  background: #4c4c4c;
+  color: #fff;
+}
+
+.pageMessages .miniImg {
+
+  a {
+
+    background-color: rgb(62, 178, 204);
+  }
+
+  img.on {
+    
+    opacity: 0.7;
+    filter:Alpha(Opacity=70);
+
+  }
+}
+
+.pageCreateMessage {
+  
+  .messageReplySingle {
+    letter-spacing: 0.025em;
+  }
+}
+
+.pageNewMessage {
+  ul.tagit li.tagit-new {
+    line-height: 40px;
+  }
+}
+
 .messagesWrapper {
   padding-left: 25px;
   padding-right: 25px;
@@ -17,6 +52,7 @@
 }
 
 .composeButton {
+  letter-spacing:0.025em;
   float: right;
   font-size: 14px;
   height: 50px;
@@ -132,6 +168,9 @@
 
   margin: 0 25px;
   margin-bottom: 100px;
+  
+    border-top: 1px solid #ccc;
+    padding-top: 50px;
 }
 
 
@@ -386,7 +425,7 @@
 
 .newMsgSubject, .newMessageArea {
   background-color: #FFFFFF;
-  border: 2px solid #cbd0d2;
+  border: 1px solid #cbd0d2;
 }
 
 .newMessageArea {
@@ -400,7 +439,7 @@
 
 .newMsgBtnSend {
   float:right;
-  margin-top: 15px;
+  letter-spacing: 0.025em;
 }
 
 .newMsgBtnSend span {
@@ -422,8 +461,8 @@
   font-size: inherit;
   font-family: inherit;
   background-color: inherit;
-  height: 45px;
-  width:150px;
+  height: 40px;
+  width:160px;
   cursor: pointer;
 }
 
