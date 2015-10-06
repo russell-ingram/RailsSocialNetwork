@@ -1,5 +1,5 @@
 <%= render "layouts/header" %>
-<div class="pageWrap responsive pageProfile">
+<div class="pageWrap responsive pageProfile" data-js-init="myProfilePage">
   <div class="pageHeader">Profile
   </div>
   <!-- <div class="adminLink"><a href="/admin">Admin Dashboard<i class="icon icon-fwd-arrow"></i></a></div> -->
@@ -23,14 +23,9 @@
         <i class="icon icon-icon-industry"></i><%= position["industry"] %>
       </div>
       <div class="profileLocation"><i class="icon icon-icon-location"></i><%= position["country"] %></div>
+      
+      <a href="<%= edit_profile_path %>" class="icon icon-icon-write-message-button updateIcon"></a>
 
-      <div class="break-2-hide profileButtons">
-        <div class="profileButton blue-bg-link"><%= link_to "UPDATE", edit_profile_path %></div>
-      </div>
-    </div>
-
-    <div class="break-2-show">
-      <div class="profileButton blue-bg-link"><%= link_to "UPDATE", edit_profile_path %></div>
     </div>
 
 

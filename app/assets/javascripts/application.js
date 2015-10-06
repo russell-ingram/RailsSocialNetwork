@@ -33,11 +33,46 @@ function initPageSpecificRoutine(jquery){
 
 var pageSpecificInits = {};
 
+pageSpecificInits.messagesPage = function(jquery){
+	jquery('.miniImg').tooltipster({ theme: 'tooltipster-miniimg' });
+	$('.miniImg').hover(function(){
+
+		$(this).find('img').addClass('on');
+	},function(){
+		$(this).find('img').removeClass('on');
+	})
+	$('.miniImg').click(function(){
+		$(this).find('a').click();
+	})
+}
+
 pageSpecificInits.newMessagePage = function(jquery){
 
   jquery('.newMessagesFormWrapper .formHeader .submit-field').click(function(){
     jquery('.newMessagesFormWrapper form .submit-field').click();
   });
+
+  jquery('[placeholder]').focus(function(){
+  	$(this).data('placeholder', $(this).attr('placeholder'));
+  	$(this).attr('placeholder', '');
+  });
+
+  jquery('[placeholder]').blur(function(){
+  	$(this).attr('placeholder', $(this).data('placeholder'));
+  });  
+
+};
+
+pageSpecificInits.createMessagePage = function(jquery){
+
+  jquery('[placeholder]').focus(function(){
+  	$(this).data('placeholder', $(this).attr('placeholder'));
+  	$(this).attr('placeholder', '');
+  });
+
+  jquery('[placeholder]').blur(function(){
+  	$(this).attr('placeholder', $(this).data('placeholder'));
+  });  
 
 };
 
@@ -321,7 +356,16 @@ pageSpecificInits.profilePage = function(jquery){
 		}
 
 	});
-}
+};
+
+pageSpecificInits.myProfilePage = function(jquery){
+
+	jquery('.updateIcon').click(function(){
+
+		$('.updateButton a').click();
+	});
+
+};
 
 pageSpecificInits.global = function(jquery){
 	var blue_links = $('a').map(function(i, element){ if($(element).css('color')==='rgb(62, 178, 204)') return $(element) });

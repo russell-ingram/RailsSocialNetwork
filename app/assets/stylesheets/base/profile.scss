@@ -5,6 +5,25 @@
   font-size: 24px;
 }
 
+.pageProfile {
+  
+  .updateIcon {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 26px;
+    color: #bbbdbf;
+    width:auto;
+    height:auto;
+  }
+
+  .updateIcon:hover {
+    color:#3eb2cc;
+    cursor:pointer;
+  }
+}
+
 .adminLink a {
   margin-right: 25px;
 }
@@ -174,7 +193,7 @@
 .workBoxWrapper {
   padding-left: 30px;
   padding-top: 15px;
-  padding-right: 30px;
+  padding-right: 200px;
 }
 
 .workBoxWrapper .workBox:last-child {
@@ -216,6 +235,10 @@
 
 .profileConnectionsTab.active, .profileInformationTab.active {
   display: block;
+}
+
+.profileTabSummaryText {
+  padding-right:200px;
 }
 
 
