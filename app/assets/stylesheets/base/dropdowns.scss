@@ -50,8 +50,19 @@
   padding-left: 0;
 }
 
-.pageHome .dropdown.active {
-  margin-top:-1px;
+.pageHome {
+
+  .dropdown.active {
+  
+    margin-top:-1px;
+
+  }
+  
+  .searchMultiselectDropdown.dropdown.active {
+
+    margin-top: 15px;
+
+  }
 }
 
 .wrapper-dropdown-1.active {
