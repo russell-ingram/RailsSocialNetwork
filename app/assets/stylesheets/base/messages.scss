@@ -1,3 +1,25 @@
+.my-custom-theme {
+  border-radius: 5px; 
+  border: 2px solid #000;
+  background: #4c4c4c;
+  color: #fff;
+}
+
+.pageMessages .miniImg {
+
+  a {
+
+    background-color: rgb(62, 178, 204);
+  }
+
+  img.on {
+    
+    opacity: 0.7;
+    filter:Alpha(Opacity=70);
+
+  }
+}
+
 .pageCreateMessage {
   
   .messageReplySingle {

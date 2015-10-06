@@ -1,6 +1,6 @@
 <%= render "layouts/header" %>
 
-<div class="pageWrap responsive">
+<div class="pageWrap responsive pageMessages" data-js-init="messagesPage">
 <% flash.each do |name, msg| -%>
   <% if !msg.blank? && name == 'sent' %>
   <div class="flashMessages">

@@ -33,6 +33,19 @@ function initPageSpecificRoutine(jquery){
 
 var pageSpecificInits = {};
 
+pageSpecificInits.messagesPage = function(jquery){
+	jquery('.miniImg').tooltipster({ theme: 'tooltipster-miniimg' });
+	$('.miniImg').hover(function(){
+
+		$(this).find('img').addClass('on');
+	},function(){
+		$(this).find('img').removeClass('on');
+	})
+	$('.miniImg').click(function(){
+		$(this).find('a').click();
+	})
+}
+
 pageSpecificInits.newMessagePage = function(jquery){
 
   jquery('.newMessagesFormWrapper .formHeader .submit-field').click(function(){
