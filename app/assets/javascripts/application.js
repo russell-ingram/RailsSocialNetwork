@@ -288,13 +288,13 @@ pageSpecificInits._initFirstLetterSearch = function(jquery, elementWithTabIndex)
 pageSpecificInits.loginPage = function(jquery){
 
 	jquery('.loginField input').keypress(function(e){
-		
+
 		var key = e.keyCode;
-		
+
 		if(key===13){
 
 		    $('.fitoLandingSignInSubmit').click();
-		    return false; 
+		    return false;
 
 		}
 
@@ -305,7 +305,7 @@ pageSpecificInits.loginPage = function(jquery){
 pageSpecificInits.profilePage = function(jquery){
 
 	jquery('.connectedIcon').click(function(){
-		
+
 		jquery('.profileButton.profileDeleted a').click()
 
 	}).hover(function(){
