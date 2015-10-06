@@ -193,7 +193,7 @@
 .workBoxWrapper {
   padding-left: 30px;
   padding-top: 15px;
-  padding-right: 30px;
+  padding-right: 200px;
 }
 
 .workBoxWrapper .workBox:last-child {
@@ -235,6 +235,10 @@
 
 .profileConnectionsTab.active, .profileInformationTab.active {
   display: block;
+}
+
+.profileTabSummaryText {
+  padding-right:200px;
 }
 
 
