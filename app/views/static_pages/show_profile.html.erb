@@ -16,11 +16,12 @@
     <div class="profileInfo">
 
     <%= render partial: 'static_pages/profile_info', :locals => { 
-                                              name: @user.full_name, 
-                                              title: position['job_title'],
-                                              company: position['company'],
-                                              industry: position['industry'],
-                                              country: @user.country } %>
+      
+      name: 'me',
+      title: 'good',
+      company: 'this',
+      industry: 'not bad',
+      country: 'home' } %>
       
       <% if @friends.include? @user %>
         <span class="unfriendText">UN-CONNECT</span>
