@@ -15,6 +15,19 @@
 
   <div class="searchWrapper adminWrapper">
 
+    <% if @requests.length > 0 %>
+    <div class="requestedAccessWrapper">
+      <div class="userEditBox formBox">
+        <div class="profileTabBoxLabel formHeader">
+          REQUESTED ACCESS
+        </div>
+      </div>
+      <div class="myConnsList">
+      <%= render partial: 'user_admin/request', collection: @requests %>
+      </div>
+
+    </div>
+    <% end %>
 
 
 

@@ -6,6 +6,7 @@ class UserAdminController < ApplicationController
   def index
     # defaults to most recent
     @users = User.order(created_at: :desc)
+    @requests = Request.where("accepted = ?", false)
     require 'will_paginate/array'
     @users = @users.paginate(page: params[:page], per_page: 10)
 

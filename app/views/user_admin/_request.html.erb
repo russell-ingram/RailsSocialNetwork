@@ -1,0 +1,40 @@
+<div class="myConnection">
+  <div class="myConnWrapper requestConn">
+
+    <div class="myConnInfo">
+      <div class="myConnName"><%= request.first_name + ' ' + request.last_name %></div>
+      <div class="myConnCompany"><%= request.company %></div>
+      <div class="myConnContact myConnEmail"><div class="icon icon-icon-mail"></div><%= request.email %></div>
+      <div class="myConnContact"><div class="icon icon-icon-in"></div><%= request.linked_in %></div>
+    </div>
+
+    <div class="myConnMessage userActionsSidebar">
+      <div class="userListAction">REVIEW</div>
+      <div class="userListAction deleteAction">
+        <a href="#ex<%= request_counter %>" rel="modal:open">
+            DELETE
+        </a>
+      </div>
+      <div class="userListAction">SEND INVITATION</div>
+    </div>
+  </div>
+<div id="ex<%= request_counter %>" class="addIntentionModal" style="display:none;">
+  <div class="formBox searchFormBox formBoxModal confirmModalBox">
+    <div class="formHeader">CONFIRM DELETE</div>
+    <div class="modalBody">
+      <div class="modalIntentions">
+      </div>
+      <div class="modalIntentionsRight">
+        <div class="deleteUserModalInfo">
+          Are you sure you would like to deny <%= request.first_name + ' ' + request.last_name %>?
+        </div>
+        <div class="modalDoneButton">
+          CONFIRM
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+

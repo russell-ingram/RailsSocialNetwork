@@ -10,6 +10,10 @@
               <a href="/profile/<%= user.id %>">
               <img src="<%= user.profile_pic_url %>">
               </a>
+            <% elsif !@has_intentions %>
+              <a href="/profile/<%= user.id %>">
+              <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+              </a>
             <% else %>
             <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
             <% end %>
@@ -48,7 +52,7 @@
                       <% end %>
                     <% elsif @requested.include? user %>
                     <a href="/profile/<%= user.id %>">
-                    RESPOND TO CONNECTION REQUEST<span class="icon icon-fwd-arrow"></span></a>
+                    ACCEPT REQUEST<span class="icon icon-fwd-arrow"></span></a>
                     <% elsif @blocking.include? user %>
                       <% if !@has_intentions %>
                         <a href="/profile/<%= user.id %>">
@@ -101,7 +105,7 @@
                       <% end %>
                   <% elsif @requested.include? user %>
                   <a href="/profile/<%= user.id %>">
-                  RESPOND TO CONNECTION REQUEST<div class="icon icon-fwd-arrow"></div></a>
+                  ACCEPT REQUEST<div class="icon icon-fwd-arrow"></div></a>
                   <% else %>
                     <% if !@has_intentions %>
                     <a href="#connect<%= index %>" rel="modal:open">

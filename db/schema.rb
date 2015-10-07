@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827150506) do
+ActiveRecord::Schema.define(version: 20151007191716) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -129,8 +129,10 @@ ActiveRecord::Schema.define(version: 20150827150506) do
     t.string   "job_title"
     t.string   "company"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "accepted"
+    t.boolean  "invite_sent"
   end
 
   create_table "searches", force: :cascade do |t|

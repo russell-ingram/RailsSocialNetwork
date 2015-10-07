@@ -4,7 +4,7 @@
   <% elsif @pending.include? @user %>
     <div class="profileButton profilePending">PENDING</div>
   <% elsif @requested.include? @user %>
-    <div class="profileButton profilePending">ACCEPT REQUEST</div>
+    <div class="profileButton profilePending"><%= link_to "ACCEPT REQUEST", accept_friendship_path(@friendship), method: :put %></div>
   <% elsif @blocked.include? @user %>
     <div class="profileButton deleteButton">
       <%= link_to "UNBLOCK", destroy_friendship_path(@user), method: :post %>
