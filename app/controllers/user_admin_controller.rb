@@ -115,38 +115,98 @@ class UserAdminController < ApplicationController
     if @editUser != current_user
       admin_user
     end
-    @newUser = user_params
+    if params[:commit] == "Onboard"
 
-    my_file = params[:user][:profile_pic_url]
-    # uploader = ProfilepicUploader.new
-    # uploader.store!(my_file)
+      @newUser = @editUser
+      @newUser.password = params[:password]
 
-    # profile_pic = File.basename(params[:user][:profile_pic_url])
-    # puts "identifier"
-    # puts profile_pic
-    if @editUser != current_user
-      if params[:user][:admin] == "Admin" || params[:user][:admin] == true || params[:user][:admin] == "true"
-        @newUser[:admin] = true
-      else
-        @newUser[:admin] = false
-      end
-    end
-
-    respond_to do |format|
       if @editUser.update(@newUser)
         @editUser.save
-        # if uploader.url
-          # @editUser.update_columns(profile_pic_url: uploader.filename)
-        # end
-        if @editUser == current_user
-          format.html { redirect_to '/profile' }
-        else
-          format.html { redirect_to '/admin' }
-        end
+        sign_in(@editUser, :bypass => true)
+        render json: @editUser
       else
         format.html { render :edit }
         format.json { render json: @editUser.errors, status: :unprocessable_entity }
       end
+
+    else
+      @newUser = user_params
+
+      my_file = params[:user][:profile_pic_url]
+      # uploader = ProfilepicUploader.new
+      # uploader.store!(my_file)
+
+      # profile_pic = File.basename(params[:user][:profile_pic_url])
+      # puts "identifier"
+      # puts profile_pic
+      if @editUser != current_user
+        if params[:user][:admin] == "Admin" || params[:user][:admin] == true || params[:user][:admin] == "true"
+          @newUser[:admin] = true
+        else
+          @newUser[:admin] = false
+        end
+      end
+
+      respond_to do |format|
+        if @editUser.update(@newUser)
+          @editUser.save
+          # if uploader.url
+            # @editUser.update_columns(profile_pic_url: uploader.filename)
+          # end
+          if @editUser == current_user
+            format.html { redirect_to '/profile' }
+          else
+            format.html { redirect_to '/admin' }
+          end
+        else
+          format.html { render :edit }
+          format.json { render json: @editUser.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
+  def setup_user
+    @editUser = User.find(params[:id])
+    if @editUser != current_user
+      admin_user
+    end
+    if @editUser.works.length < 3
+      if @editUser.works[0].blank?
+        @editUser.works << Work.new
+      end
+      if @editUser.works[1].blank?
+        @editUser.works << Work.new
+      end
+      if @editUser.works[2].blank?
+        @editUser.works << Work.new
+      end
+    end
+
+    @work = Work.find_by user_id: params[:id], current: true
+    if @work.blank?
+      @work = @editUser.works[0]
+      @work.current = true
+    end
+
+    @editUser.password = params[:password] if params[:password].present?
+    @editUser.first_name = params[:first_name] if params[:first_name].present?
+    @editUser.last_name = params[:last_name] if params[:last_name].present?
+    @work.company = params[:company] if params[:company].present?
+    @work.industry = params[:industry] if params[:industry].present?
+    @work.enterprise_size = params[:enterprise_size] if params[:enterprise_size].present?
+    @work.region = params[:region] if params[:region].present?
+    @work.country = params[:country] if params[:country].present?
+    @work.public = params[:public] if params[:public].present?
+
+
+    if @editUser.save
+      @work.save
+      sign_in(@editUser, :bypass => true)
+      render json: @editUser
+    else
+      format.html { render :edit }
+      format.json { render json: @editUser.errors, status: :unprocessable_entity }
     end
   end
 
@@ -462,7 +522,7 @@ class UserAdminController < ApplicationController
 
   def user_params
     # puts params
-    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url, :position, :footprint, :linked_in_url, :enterprise_size, :region, :country, :emp_summary, :summary, :admin, :works_attributes => [:company, :industry, :enterprise_size, :region, :country, :summary, :id, :job_title, :footprint, :current, :start_date, :end_date, :public])
+    params.require(:user).permit(:first_name, :last_name, :email, :industry, :password, :employer, :location, :profile_pic_url, :position, :footprint, :linked_in_url, :enterprise_size, :region, :country, :emp_summary, :summary, :admin, :works_attributes => [:company, :industry, :enterprise_size, :region, :country, :summary, :id, :job_title, :footprint, :current, :start_date, :end_date, :public])
   end
 
   def new_user_params

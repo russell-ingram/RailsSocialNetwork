@@ -1,0 +1,198 @@
+<%= render "layouts/onboardheader" %>
+
+<div class="pageWrap">
+  <div class="onboardWrap">
+    <div class="onboardingBar">
+      <div class="circleProgressBar">
+          <div></div>
+          <div class="active"></div>
+          <div></div>
+          <div></div>
+      </div>
+      <div class="onboardProgressBar">
+        <div class="icon icon-icon-onboarding-profile active"></div>
+        <div class="icon icon-icon-onboarding-password active"></div>
+        <div class="icon icon-icon-onboarding-account-details"></div>
+        <div class="icon icon-icon-in"></div>
+      </div>
+    </div>
+    <div class="onboardForm">
+      <div class="onboardFormHeader">
+        <div class="onboardFormHeaderMain">Welcome to FITO</div>
+        <div class="onboardFormHeaderSecondary">enter your credentials to get started</div>
+      </div>
+      <div class="onboardFormMain">
+        <%= form_for ([:user_admin, current_user]) do |f| %>
+            <div class="field">
+              <%= f.password_field :password, placeholder: 'Enter new password', id: 'password_field' %>
+            </div>
+
+            <div class="field">
+              <%= f.password_field :confirm_password, placeholder: 'Re-enter password', id: 'confirm_password_field' %>
+            </div>
+            <div class="onboardWarning"></div>
+            <div class="onboardSubmit onboardChangePassword">
+              Submit
+
+            </div>
+
+            <%= f.submit "Onboard", id: "onboardSubmitChangePassword", style: "display:none;", data: current_user.id %>
+
+          <% end %>
+      </div>
+      <div class="onboardFormMainDetails">
+        <%= form_for ([:user_admin, current_user]) do |f| %>
+        <% work = current_user.current_pos %>
+          <div class="userEditBox formBox">
+            <div class="profileTabBoxLabel formHeader">
+              USER DETAILS
+            </div>
+            <div class="fieldLabel">First Name</div>
+            <div class="field editField">
+              <%= f.text_field :first_name, placeholder: 'First name', id: 'first_name_field' %>
+            </div>
+            <div class="fieldLabel">Last Name</div>
+            <div class="field editField">
+              <%= f.text_field :last_name, placeholder: 'Last name' , id: 'last_name_field'%>
+            </div>
+          </div>
+
+          <div class="userEditBox formBox">
+            <div class="profileTabBoxLabel formHeader">
+              EMPLOYER DETAILS
+            </div>
+            <div class="fieldLabel">Employer</div>
+            <div class="field editField">
+              <input placeholder="First name" type="text" value="<%= work.company %>" name="" id="onboard_company">
+            </div>
+            <div class="fieldLabel">Industry</div>
+            <div class="field editField">
+              <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+                <span class="ddLabel">
+                <% if !work.industry.blank? %>
+                  <%= work.industry %>
+                <% else %>
+                  Industry
+                <% end %>
+                </span>
+                <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+                <ul class="dropdown fieldDropdown">
+                  <% @industries.each do |industry| %>
+                  <li class="ddOption fieldOption"><%= industry %></li>
+                  <% end %>
+                </ul>
+              </div>
+              <%= f.text_field :industry, placeholder: 'Industry', style: 'display: none;', id: 'onboard_industry', value: work.industry %>
+            </div>
+
+          <div class="fieldLabel">Enterprise Size</div>
+          <div class="field editField">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+              <% if !work.enterprise_size.blank? %>
+                <%= work.enterprise_size %>
+              <% else %>
+                Enterprise Size
+              <% end %>
+              </span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">Large</li>
+                <li class="ddOption fieldOption">Midsize</li>
+                <li class="ddOption fieldOption">Small</li>
+              </ul>
+            </div>
+            <%= f.text_field :enterprise_size, placeholder: 'Enterprise Size', style: 'display: none;', id: 'onboard_enterprise', value: work.enterprise_size %>
+          </div>
+
+          <div class="fieldLabel">Region</div>
+          <div class="field editField">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                <% if !work.region.blank? %>
+                  <%= work.region %>
+                <% else %>
+                  Region
+                <% end %>
+              </span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown">
+                <li class="ddOption fieldOption">North America</li>
+                <li class="ddOption fieldOption">EMEA</li>
+                <li class="ddOption fieldOption">APAC</li>
+                <li class="ddOption fieldOption">Latin America</li>
+              </ul>
+            </div>
+            <%= f.text_field :region, placeholder: 'Region', style:'display: none;', id: 'onboard_region', value: work.region %>
+          </div>
+
+
+          <div class="fieldLabel">Country</div>
+          <div class="field editField">
+            <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+              <span class="ddLabel">
+                <% if !work.country.blank? %>
+                  <%= work.country %>
+                <% else %>
+                  Country
+                <% end %>
+              </span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown">
+                <% @countries.each do |country| %>
+                <li class="ddOption fieldOption"><%= country %></li>
+                <% end %>
+              </ul>
+            </div>
+            <%= f.text_field :country, placeholder: 'Country',style: 'display:none;', id: 'onboard_country', value: work.country %>
+          </div>
+
+          <div class="fieldLabel">Company type</div>
+
+          <div class="editField">
+            <div id="pubButton1" class="pubButton">
+            <% if work.public? %>
+              <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true">
+              <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Private</div></label>
+            <% else %>
+              <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true" checked>
+              <label for="radio01"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Private</div></label>
+            <% end %>
+
+            </div>
+
+            <div id="pubButton2" class="pubButton">
+            <% if work.public? %>
+              <input type="radio" class="pubInputCheck" id="radio2" name="public" value="true" checked>
+              <label for="radio02"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Publicly Traded</div></label>
+            <% else %>
+              <input type="radio" class="pubInputCheck" id="radio2" name="public" value="false">
+              <label for="radio02"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Publicly Traded</div></label>
+            <% end %>
+            </div>
+            <input placeholder="public" type="text" value="<%= work.public %>" name="" id="onboard_public" style="display: none;">
+          </div>
+
+          </div>
+            <div class="onboardSubmit onboardUserDetailsSubmit">
+              NEXT
+
+            </div>
+
+            <%= f.submit "Onboard", id: "onboardSubmitChangePassword", style: "display:none;", data: current_user.id %>
+
+          <% end %>
+      </div>
+      <div class="onboardFormLinkedIn">
+            <div class="onboardSubmit onboardUserDetailsSubmit">
+              CONNECT
+            </div>
+
+            <div class="skipLinkedInButton"><a href="/home">SKIP THIS STEP <div class="icon icon-fwd-arrow"></div></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="footerMargin"></div>
+</div>
+
+<%= render "layouts/footer" %>

@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get '/home' => 'static_pages#home'
 
+  get '/register' => 'static_pages#onboard'
+
+  get '/setup' => 'static_pages#setup'
+
   get '/profile' => 'static_pages#profile'
 
   get '/settings' => 'static_pages#setting'
@@ -55,6 +59,7 @@ Rails.application.routes.draw do
   get '/admin/delete/:id' => 'user_admin#destroy', as: 'admin_delete_user'
 
   get '/user/edit' => 'user_admin#edit_self', as: 'edit_profile'
+  post '/onboarding/edit_user/:id' => 'user_admin#setup_user', as: 'setup_user'
 
 
 

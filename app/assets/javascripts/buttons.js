@@ -415,6 +415,83 @@ $( document ).ready(function() {
     window.location.href = "mailto:user@example.com?subject=Check%20out%20FITO&body=Link%20goes%20here";
   });
 
+  $(".onboardSubmitLogin").off().on('click', function() {
+    $("#onboardSubmitLogin").click();
+  })
+
+  $(".onboardChangePassword").off().on('click', function () {
+    var id = $('#onboardSubmitChangePassword').attr('data');
+    var pw = $('#password_field').val();
+    var confirm = $('#confirm_password_field').val();
+
+    if (pw === confirm) {
+      $.post('/onboarding/edit_user/'+id, {"password": pw}, function(data) {
+        $('.onboardFormMain').hide();
+        $('.onboardFormMainDetails').show();
+        $('.onboardFormHeaderSecondary').hide();
+        $('.onboardFormHeaderMain').text("Confirm your account details");
+        $('.icon-icon-onboarding-account-details').addClass('active');
+        var before = $('.circleProgressBar').find('.active');
+        var after = before.next();
+        before.removeClass('active');
+        after.addClass('active');
+        $('.onboardWrap').addClass('active');
+      })
+    } else {
+      $('.onboardWarning').text("Passwords do not match.");
+
+    }
+  })
+
+  $('.onboardUserDetailsSubmit').off().on('click', function () {
+    var id = $('#onboardSubmitChangePassword').attr('data');
+    var user = {
+      'first_name': $('#first_name_field').val(),
+      'last_name': $('#last_name_field').val(),
+      'company': $('#onboard_company').val(),
+      'industry' : $('#onboard_industry').val(),
+      'enterprise_size' : $('#onboard_enterprise').val(),
+      'region' : $('#onboard_region').val(),
+      'country' : $('#onboard_country').val(),
+      'public' : $('#onboard_public').val()
+    }
+
+    $.post('/onboarding/edit_user/'+id, user, function(data) {
+        $('.icon-icon-in').addClass('active');
+        var before = $('.circleProgressBar').find('.active');
+        var after = before.next();
+        before.removeClass('active');
+        after.addClass('active');
+        $('.onboardFormLinkedIn').show();
+        $('.onboardFormMainDetails').hide();
+        $('.onboardFormHeaderMain').text('Connect with Linked In');
+        $('.onboardFormHeaderSecondary').text('Connect with your LinkedIn Account To Import your professional details');
+        $('.onboardFormHeaderSecondary').show();
+        $('.onboardWrap').removeClass('active');
+    });
+  })
+
+// disable standard form submits with enter key in onboarding
+  $('#confirm_password_field').on('keypress', function(e){
+    if(event.keyCode == 13) {
+      event.stopPropagation();
+      $('.onboardChangePassword').click();
+      return false;
+    }
+  });
+  $('#password_field').on('keypress', function(e){
+    if(event.keyCode == 13) {
+      event.stopPropagation();
+      $('.onboardChangePassword').click();
+      return false;
+    }
+  });
+  $('.onboardFormMainDetails').on('keypress', function(e) {
+    if(event.keyCode == 13) {
+      event.stopPropagation();
+      return false;
+    }
+  });
 
 
 });

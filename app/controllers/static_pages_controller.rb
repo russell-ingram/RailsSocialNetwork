@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:onboard]
 
   def home
     @flash = false
@@ -33,6 +33,16 @@ class StaticPagesController < ApplicationController
     @recs = User.recs(current_user)
 
   end
+
+  def onboard
+
+  end
+
+  def setup
+    @industries = industries_list
+    @countries = countries_list
+  end
+
 
   def profile
     @accepted_friendships = []

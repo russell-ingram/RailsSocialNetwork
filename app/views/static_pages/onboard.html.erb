@@ -1,0 +1,45 @@
+<%= render "layouts/onboardheader" %>
+
+<div class="pageWrap">
+  <div class="onboardWrap">
+    <div class="circleProgressBar">
+        <div class="active"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="onboardProgressBar">
+      <div class="icon icon-icon-onboarding-profile active"></div>
+      <div class="icon icon-icon-onboarding-password"></div>
+      <div class="icon icon-icon-onboarding-account-details"></div>
+      <div class="icon icon-icon-in"></div>
+    </div>
+    <div class="onboardForm">
+      <div class="onboardFormHeader">
+        <div class="onboardFormHeaderMain">Welcome to FITO</div>
+        <div class="onboardFormHeaderSecondary">enter your credentials to get started</div>
+      </div>
+      <div class="onboardFormMain">
+        <%= form_for :user, url: session_path(:user), :html => {id: 'signInForm'} do |f| %>
+            <div class="field">
+              <%= f.text_field :email, placeholder: 'Email address' %>
+            </div>
+
+            <div class="field">
+              <%= f.password_field :password, placeholder: 'Temporary password' %>
+            </div>
+
+            <div class="onboardSubmit onboardSubmitLogin">
+              Submit
+
+            </div>
+            <%= f.submit "Onboard", id: "onboardSubmitLogin", style: "display:none;" %>
+
+          <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="footerMargin"></div>
+</div>
+
+<%= render "layouts/footer" %>
