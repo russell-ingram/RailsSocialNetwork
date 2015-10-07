@@ -5,20 +5,20 @@ $( document ).ready(function() {
     $('.wrapper-dropdown').find('.dropdown').removeClass('active');
   });
 
-  var onDropDownClicked = function(event, _this) {
+  var onDropDownClicked = function(event) {
     event.stopPropagation();
-    if ($(_this).hasClass('active')) {
+    if ($(this).hasClass('active')) {
       $('.wrapper-dropdown').removeClass('active');
     } else {
       $('.wrapper-dropdown').removeClass('active');
-      $(_this).addClass('active');
+      $(this).addClass('active');
     }
 
 
 
 
-    var selectedDrop = $(_this).find('.dropdown');
-    var selectedLabel = $(_this).find('.ddLabel');
+    var selectedDrop = $(this).find('.dropdown');
+    var selectedLabel = $(this).find('.ddLabel');
     if (selectedDrop.hasClass('active')) {
       $('.dropdown').removeClass('active');
     }
@@ -28,9 +28,9 @@ $( document ).ready(function() {
     }
 
     $(".filterOption").off().on('click',function() {
-      var option = $(_this).text();
+      var option = $(this).text();
 
-      var filterType = $(_this).parent().parent().attr('name');
+      var filterType = $(this).parent().parent().attr('name');
 
       selectedLabel.text(option);
       sortFilter(option, filterType);
@@ -38,7 +38,7 @@ $( document ).ready(function() {
     });
 
     $(".fieldOption").off().on('click', function () {
-      var option = $(_this).text();
+      var option = $(this).text();
       selectedLabel.text(option);
       var input = selectedLabel.parent().next();
       input.val(option);
@@ -55,7 +55,7 @@ $( document ).ready(function() {
     });
 
     if (selectedDrop.hasClass('searchDropdown')) {
-      var top = $(_this).parent().parent()
+      var top = $(this).parent().parent()
       if (top.hasClass('active')){
         top.removeClass('active');
       } else {
@@ -69,7 +69,13 @@ $( document ).ready(function() {
 
 
 
-  }
+  };
+
+  $(document).on('click', ".wrapper-dropdown" , onDropDownClicked);
+  $(document).on('click', ".searchSideBarDropdown" , function(event){
+    onDropDownClicked.call($(this).find('.wrapper-dropdown'), event);
+  });
+
 
   function sortFilter(type, filterType) {
     if (filterType === 'admin') {
@@ -120,15 +126,6 @@ $( document ).ready(function() {
 
 
   }
-
-  $(document).on('click', ".searchSideBarDropdown" , function(event){
-    onDropDownClicked(event, $(this).find('.wrapper-dropdown'));
-  });
-
-  $(document).on('click', ".wrapper-dropdown" , function(event){
-    onDropDownClicked(event, this);
-  });
-
 
   function msgFilter(type) {
 
