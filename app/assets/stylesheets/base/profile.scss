@@ -70,8 +70,12 @@
   right: 0;
   top: 0;
   font-size: 28px;
-  color: #3eb2cc;
+  color: #797c7f;
   cursor: pointer;
+
+  &:hover {
+    color: #3eb2cc;
+  }
 }
 
 .profileInfo .unfriendText {

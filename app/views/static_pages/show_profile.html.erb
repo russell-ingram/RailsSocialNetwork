@@ -14,17 +14,17 @@
     </div>
     <% position = @user.current_pos %>
     <div class="profileInfo">
-      <div class="profileName"><%= @user.full_name %></div>
-      <div class="profilePosition"><%= position["job_title"] %></div>
-      <div class="profileEmployer"><%= position["company"] %></div>
-      <div class="profileIndustry">
-        <i class="icon icon-icon-industry"></i><%= position["industry"] %>
-      </div>
-      <div class="profileLocation"><i class="icon icon-icon-location"></i><%= @user.country %></div>
 
+    <%= render partial: 'static_pages/profile_info', :locals => { 
+                                              name: @user.full_name, 
+                                              title: position['job_title'],
+                                              company: position['company'],
+                                              industry: position['industry'],
+                                              country: @user.country } %>
+      
       <% if @friends.include? @user %>
-        <span class="unfriendText">UNFRIEND</span>
-        <div class="icon icon-icon-multiple-people connectedIcon blue-link"></div>
+        <span class="unfriendText">UN-CONNECT</span>
+        <div class="icon icon-icon-multiple-people connectedIcon"></div>
       <% end %>
 
       <div class="break-2-hide profileButtons">
