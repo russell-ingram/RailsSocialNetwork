@@ -261,7 +261,7 @@
               </div>
 
               <div class="field field-col-4">
-                <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
+                <div class="wrapper-dropdown wrapperFieldDropdown forCountry" tabindex="1">
                   <span class="ddLabel ddNoPref">
                       Country
                   </span>
@@ -269,7 +269,7 @@
                   <ul class="dropdown fieldDropdown">
                     <li class="ddOption fieldOption">No preference</li>
                     <% @countries.each do |country| %>
-                    <li class="ddOption fieldOption"><%= country %></li>
+                    <li class="ddOption fieldOption" data-initial="<%= country[0].downcase if country != 'United States' %>"><%= country %></li>
                     <% end %>
                   </ul>
                 </div>

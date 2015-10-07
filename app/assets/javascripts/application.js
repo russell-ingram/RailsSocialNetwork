@@ -119,14 +119,15 @@ pageSpecificInits.searchResultsPage = function(jquery){
 	this._intentionsPopUp(jquery);
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
 
 };
 
 pageSpecificInits.searchPeersPage = function(jquery){
-	console.log('here');
 	this._intentionsPopUp(jquery);
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
+	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
 };
 
 pageSpecificInits.homePage = function(jquery){
@@ -372,4 +373,11 @@ pageSpecificInits.global = function(jquery){
 	$(blue_links).each(function(){
 		$(this).addClass('blue-link');
 	});
+	$('.mailMenuIcon').hover(function(){
+		$(this).find('img').eq(0).hide();
+		$(this).find('img').eq(1).show();
+	},function(){
+		$(this).find('img').eq(0).show();
+		$(this).find('img').eq(1).hide();
+	})
 }
