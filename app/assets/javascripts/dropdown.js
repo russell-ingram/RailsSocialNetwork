@@ -4,20 +4,21 @@ $( document ).ready(function() {
     $('.wrapper-dropdown').removeClass('active');
     $('.wrapper-dropdown').find('.dropdown').removeClass('active');
   });
-  $(document).on('click', ".wrapper-dropdown" , function(event) {
+
+  var onDropDownClicked = function(event, _this) {
     event.stopPropagation();
-    if ($(this).hasClass('active')) {
+    if ($(_this).hasClass('active')) {
       $('.wrapper-dropdown').removeClass('active');
     } else {
       $('.wrapper-dropdown').removeClass('active');
-      $(this).addClass('active');
+      $(_this).addClass('active');
     }
 
 
 
 
-    var selectedDrop = $(this).find('.dropdown');
-    var selectedLabel = $(this).find('.ddLabel');
+    var selectedDrop = $(_this).find('.dropdown');
+    var selectedLabel = $(_this).find('.ddLabel');
     if (selectedDrop.hasClass('active')) {
       $('.dropdown').removeClass('active');
     }
@@ -27,9 +28,9 @@ $( document ).ready(function() {
     }
 
     $(".filterOption").off().on('click',function() {
-      var option = $(this).text();
+      var option = $(_this).text();
 
-      var filterType = $(this).parent().parent().attr('name');
+      var filterType = $(_this).parent().parent().attr('name');
 
       selectedLabel.text(option);
       sortFilter(option, filterType);
@@ -37,7 +38,7 @@ $( document ).ready(function() {
     });
 
     $(".fieldOption").off().on('click', function () {
-      var option = $(this).text();
+      var option = $(_this).text();
       selectedLabel.text(option);
       var input = selectedLabel.parent().next();
       input.val(option);
@@ -54,7 +55,7 @@ $( document ).ready(function() {
     });
 
     if (selectedDrop.hasClass('searchDropdown')) {
-      var top = $(this).parent().parent()
+      var top = $(_this).parent().parent()
       if (top.hasClass('active')){
         top.removeClass('active');
       } else {
@@ -68,8 +69,7 @@ $( document ).ready(function() {
 
 
 
-  });
-
+  }
 
   function sortFilter(type, filterType) {
     if (filterType === 'admin') {
@@ -120,6 +120,15 @@ $( document ).ready(function() {
 
 
   }
+
+  $(document).on('click', ".searchSideBarDropdown" , function(event){
+    onDropDownClicked(event, $(this).find('.wrapper-dropdown'));
+  });
+
+  $(document).on('click', ".wrapper-dropdown" , function(event){
+    onDropDownClicked(event, this);
+  });
+
 
   function msgFilter(type) {
 
