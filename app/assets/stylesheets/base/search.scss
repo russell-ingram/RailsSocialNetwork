@@ -272,6 +272,7 @@
   padding: 15px 0;
   display: table;
   width: 100%;
+  position:relative;
   div {
     border-bottom: none;
     padding-left: 0;
@@ -280,8 +281,10 @@
 
   }
   .searchTagClose {
-    top: -20px;
-    left: -15px;
+    top: 3px;
+    left: initial;
+    right: 10px;
+    position:absolute;
   }
 }
 
