@@ -79,11 +79,14 @@
     <div class="field loginField">
       <%= f.text_field :last_name, placeholder: 'last name' %>
     </div>
+    <div class="field loginField">
+      <%= f.text_field :email, placeholder: 'email address' %>
+    </div>
     <div class="fitoRequestChoiceText">
       one of the following are required
     </div>
     <div class="field loginField">
-      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile name' %>
+      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile link (e.g. https://www.linkedin.com/pub/user-name/8b/663/40' %>
     </div>
     <div class="fitoRequestOrText">or</div>
     <div class="field loginField">
@@ -91,9 +94,6 @@
     </div>
     <div class="field loginField">
       <%= f.text_field :company, placeholder: 'company' %>
-    </div>
-    <div class="field loginField">
-      <%= f.text_field :email, placeholder: 'email address' %>
     </div>
     <div class="fitoLandingRequestSubmit" id="fitoLandingInvitationRequestSubmit">
       Send Request
@@ -239,7 +239,12 @@ $( document ).ready(function() {
 
   $('#fitoLandingInvitationRequestSubmit').off().on('click', function() {
     $('#fitoLandingRequestSubmitBtn').click();
-  })
+  });
+
+  var sPageURL = decodeURIComponent(window.location.search.substring(1));
+  if (sPageURL === 'requestAccess') {
+    $('.fitoLandingRequestBtn').click();
+  }
 
 });
 </script>

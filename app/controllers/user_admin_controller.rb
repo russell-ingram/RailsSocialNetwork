@@ -75,7 +75,11 @@ class UserAdminController < ApplicationController
 
 
   def edit
-    @editUser = User.find(params[:id])
+    if User.exists?(['id = ?', params[:id]])
+      @editUser = User.find(params[:id])
+    else
+      @editUser = User.find_by("uid = ?", params[:id])
+    end
     @editUser.works ||= Work.new
     if @editUser.works.length < 3
       if @editUser.works[0].blank?
@@ -221,7 +225,8 @@ class UserAdminController < ApplicationController
 
   def new
     @editUser = User.new
-    p @editUser
+
+
     @editUser.works ||= Work.new
     if @editUser.works.length < 3
       if @editUser.works[0].blank?
@@ -234,13 +239,41 @@ class UserAdminController < ApplicationController
         @editUser.works << Work.new
       end
     end
+    if params[:id].present?
+      @req = Request.find(params[:id])
+      @editUser.first_name = @req.first_name
+      @editUser.last_name = @req.last_name
+      @editUser.email = @req.email
+      @editUser.works[0].job_title = @req.job_title
+      @editUser.works[0].company = @req.company
+      @editUser.works[0].current = true
+      @editUser.linked_in_url = @req.linked_in
+    end
     @countries = countries_list
     @industries = industries_list
   end
 
   def create
     @editUser = User.new(new_user_params)
-    @editUser.password = "password"
+
+    require 'securerandom'
+    random_string = SecureRandom.hex
+    @editUser.password = random_string
+
+    uid = rand(36**8).to_s(36)
+    @editUser.uid = uid
+    @editUser.works.each do |w|
+      w.uid = uid
+      w.save
+    end
+
+    if Request.exists?(:email => @editUser.email)
+      @req = Request.find_by('email = ?', @editUser.email)
+      @req.uid = uid
+      @req.save
+    end
+
+
     respond_to do |format|
       if @editUser.save
         format.html { redirect_to '/admin' }
@@ -527,7 +560,11 @@ class UserAdminController < ApplicationController
   end
 
   def new_user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url, :linked_in_url, :summary, :admin, :works_attributes => [:company,:industry, :enterprise_size, :region, :country, :summary, :id, :job_title, :footprint, :current, :start_date, :end_date, :public])
+    params.require(:user).permit(:first_name, :last_name, :email, :industry, :employer, :location, :profile_pic_url, :linked_in_url, :summary, :admin,:uid, :works_attributes => [:company,:industry, :enterprise_size, :uid, :region, :country, :summary, :id, :job_title, :footprint, :current, :start_date, :end_date, :public])
+  end
+
+  def req_params
+    params.require(:request).permit(:id)
   end
 
   def countries_list

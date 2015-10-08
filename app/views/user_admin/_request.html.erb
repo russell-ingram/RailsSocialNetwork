@@ -3,19 +3,37 @@
 
     <div class="myConnInfo">
       <div class="myConnName"><%= request.first_name + ' ' + request.last_name %></div>
+      <% if !request.company.blank? %>
       <div class="myConnCompany"><%= request.company %></div>
+      <% end %>
+      <% if !request.email.blank? %>
       <div class="myConnContact myConnEmail"><div class="icon icon-icon-mail"></div><%= request.email %></div>
-      <div class="myConnContact"><div class="icon icon-icon-in"></div><%= request.linked_in %></div>
+      <% end %>
+      <% if !request.linked_in.blank? %>
+      <div class="myConnContact"><a href="<%= request.linked_in %>" target="_blank"><div class="icon icon-icon-in"></div><%= request.parse_linkedin %></a></div>
+      <% end %>
     </div>
 
     <div class="myConnMessage userActionsSidebar">
-      <div class="userListAction">REVIEW</div>
+      <div class="userListAction">
+        <% if request.uid.blank? %>
+        <a href="/admin/new_user?id=<%= request.id %>" class="blue-link">REVIEW</a>
+        <% else %>
+        <a href="/admin/edit_user/<%= request.uid %>" class="blue-link">REVIEW</a>
+        <% end %>
+      </div>
       <div class="userListAction deleteAction">
         <a href="#ex<%= request_counter %>" rel="modal:open">
             DELETE
         </a>
       </div>
-      <div class="userListAction">SEND INVITATION</div>
+      <% if request.invite_sent %>
+      <div class="userListAction"><a href="#inviteModal<%= request_counter %>" rel="modal:open">RESEND INVITATION</a></div>
+      <% elsif !request.uid.blank? %>
+      <div class="userListAction"><a href="#inviteModal<%= request_counter %>" rel="modal:open">SEND INVITATION</a></div>
+      <% else %>
+
+      <% end %>
     </div>
   </div>
 <div id="ex<%= request_counter %>" class="addIntentionModal" style="display:none;">
@@ -35,6 +53,24 @@
     </div>
   </div>
 </div>
+
+  <div id="inviteModal<%= request_counter %>" class="addIntentionModal deleteIntentionModal deleteOnlyInt" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal confirmBoxModal">
+      <div class="modalBody">
+        <div class="modalIntentionsRight modalDeleteIntentions">
+          <div class="deleteUserModalInfo deleteIntentionInfo">
+            Are you sure you would like to send an invite to <%= request.first_name %>?
+          </div>
+          <div class="modalDoneButton confirmDeleteButton">
+            <a href="/requests/<%= request.uid %>/send_invite">SEND</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
 
 

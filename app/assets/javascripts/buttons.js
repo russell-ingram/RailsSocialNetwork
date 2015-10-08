@@ -411,8 +411,9 @@ $( document ).ready(function() {
     }
   });
 
-  $('.inviteButton').off().on('click', function() {
-    window.location.href = "mailto:user@example.com?subject=Check%20out%20FITO&body=Link%20goes%20here";
+  $('#inviteButton').off().on('click', function() {
+    var name = $(this).attr('data');
+    window.location.href = "mailto:user@example.com?subject=Invitation to FITO network presented by ETR&body="+name+" is inviting you to join the FITO network for technology adoption leaders. Click here to request access: http://localhost:3000/?requestAccess";
   });
 
   $(".onboardSubmitLogin").off().on('click', function() {

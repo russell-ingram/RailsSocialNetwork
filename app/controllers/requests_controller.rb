@@ -15,6 +15,7 @@ class RequestsController < ApplicationController
     @r.invite_sent = false
     if @r.save
       @res = 'Request successfully sent'
+      EtrMailer.request_received_email(@r).deliver_now
       render "home/index"
     else
       @res = 'Request failed. Please try again at a later time'
@@ -22,6 +23,16 @@ class RequestsController < ApplicationController
     end
   end
 
+  def send_invite
+    @new_user
+    if User.exists?(['id = ?', params[:id]])
+      @new_user = User.find(params[:id])
+    else
+      @new_user = User.find_by("uid = ?", params[:id])
+    end
+    EtrMailer.send_invite_email(@new_user).deliver_now
+    redirect_to :back
+  end
 
 
   def request_params
