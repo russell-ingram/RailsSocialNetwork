@@ -4,7 +4,8 @@ $( document ).ready(function() {
     $('.wrapper-dropdown').removeClass('active');
     $('.wrapper-dropdown').find('.dropdown').removeClass('active');
   });
-  $(document).on('click', ".wrapper-dropdown" , function(event) {
+
+  var onDropDownClicked = function(event) {
     event.stopPropagation();
     if ($(this).hasClass('active')) {
       $('.wrapper-dropdown').removeClass('active');
@@ -68,6 +69,11 @@ $( document ).ready(function() {
 
 
 
+  };
+
+  $(document).on('click', ".wrapper-dropdown" , onDropDownClicked);
+  $(document).on('click', ".searchSideBarDropdown" , function(event){
+    onDropDownClicked.call($(this).find('.wrapper-dropdown'), event);
   });
 
 

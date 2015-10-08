@@ -1,3 +1,11 @@
+.pageSearchResults.pageWrap {
+  padding-top:0;
+
+  .searchWrapperBig {
+    margin-top:0;
+  }
+}
+
 .searchTypesWrapper {
   margin: 0 25px 0 25px;
   // min-height: 300px;
@@ -178,7 +186,7 @@
 .searchResultsWrapper {
   width: 765px;
   float:left;
-  padding-top:50px;
+  padding-top:40px;
   min-height: 790px;
 
 }
@@ -272,6 +280,7 @@
   padding: 15px 0;
   display: table;
   width: 100%;
+  position:relative;
   div {
     border-bottom: none;
     padding-left: 0;
@@ -280,8 +289,10 @@
 
   }
   .searchTagClose {
-    top: -20px;
-    left: -15px;
+    top: 3px;
+    left: initial;
+    right: 10px;
+    position:absolute;
   }
 }
 

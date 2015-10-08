@@ -133,6 +133,7 @@
 
 .searchSideBarDropdown {
   transition: color 0.5s ease;
+  cursor: pointer;
 }
 
 .searchSideBarDropdown.active {
@@ -177,4 +178,7 @@
   }
 }
 
+.forCountry .dropdown {
+  max-height: 300px;
+}
 
