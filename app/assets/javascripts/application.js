@@ -381,6 +381,10 @@ pageSpecificInits.global = function(jquery){
 			$(this).find('img').eq(0).show();
 			$(this).find('img').eq(1).hide();
 		})
-
+		$('.mailMenuIcon').on('click touchend', function(e) {
+		    var el = $(this).find('a');
+		    var link = el.attr('href');
+		    window.location = link;
+		});
 	}
 }
