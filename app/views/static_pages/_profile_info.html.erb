@@ -1,12 +1,12 @@
 
-      <div class="profileName"><%= name %></div>
-      <div class="profilePosition <%= 'hide' if title == 'Unlisted' %>"><%= title %></div>
-      <div class="profileEmployer <%= 'hide' if company == 'Unlisted' %>"><%= company %></div>
+      <div class="profileName one-line"><%= name %></div>
+      <div class="profilePosition one-line <%= 'hide' if title == 'Unlisted' %>"><%= title %></div>
+      <div class="profileEmployer one-line <%= 'hide' if company == 'Unlisted' %>"><%= company %></div>
 
-      <div class="profileIndustry <%= 'hide' if industry == 'Unlisted' %>">
+      <div class="profileIndustry one-line <%= 'hide' if industry == 'Unlisted' %>">
         <i class="icon icon-icon-industry"></i><%= industry %>
       </div>
       
-      <div class="profileLocation <%= 'hide' if country == nil || country == 'Unlisted' %>">
+      <div class="profileLocation one-line <%= 'hide' if country == nil || country == 'Unlisted' %>">
         <i class="icon icon-icon-location"></i><%= country %>
       </div>

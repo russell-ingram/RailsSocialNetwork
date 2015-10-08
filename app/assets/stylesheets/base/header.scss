@@ -17,6 +17,14 @@
     display:none; 
   }
 
+  &.active img:last-child {
+    display:inline;
+  }
+
+  &.active img:first-child {
+    display:none;
+  }
+
   .emailsNumber {
     z-index:0;
   }

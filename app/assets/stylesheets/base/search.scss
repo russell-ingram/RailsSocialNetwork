@@ -6,6 +6,17 @@
   }
 }
 
+.pageSearchPeers {
+  .spendingIntentions {
+
+    margin-bottom: 10px;
+  }
+  .searchFormBox {
+    height: auto !important;
+    padding-bottom: 75px;
+  }
+}
+
 .searchTypesWrapper {
   margin: 0 25px 0 25px;
   // min-height: 300px;
@@ -621,11 +632,27 @@
     right: 10px;
   }
   .modalDoneButton {
-    width:48%;
+    width:47%;
+    display: inline-block;
+    margin-right:4%;
   }
 
   .close-modal {
     width:29%;
+    display:none;
+  }
+
+  .proxyCancelButton {
+
+    display: inline-block;
+    width: 47%;
+    background-color: #282b30;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    cursor:pointer;
   }
 }
 
@@ -783,7 +810,7 @@
 
 .modalDoneButton {
   background-color: #3eb2cc;
-  margin-top: 29px;
+  margin-top: 20px;
 
 }
 
@@ -831,6 +858,10 @@
 }
 .addedSpendingIntention:last-of-type {
   border-bottom: 1px solid #CCCED0;
+}
+
+.addedSpendingIntention:last-child {
+  border-bottom: none;
 }
 .addedSpendingIntentionLeft {
   float:left;
