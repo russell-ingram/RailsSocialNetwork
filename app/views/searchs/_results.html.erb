@@ -91,7 +91,7 @@
                     <% end %>
                   <% end %>
                 </div>
-                <div class="userListAction">
+                <div class="userListAction connectAction">
                   <% if @friends.include? user %>
                   <a href="/profile/<%= user.id %>">
                   CONNECTED<div class="icon icon-fwd-arrow"></div></a>
@@ -127,7 +127,7 @@
 
       <% if !@has_intentions %>
         <div id="connect<%= index %>" class="addIntentionModal confirmConnectModal" style="display:none;">
-          <div class="formBox searchFormBox formBoxModal confirmModalBox">
+          <div class="formBox searchFormBox formBoxModal confirmModalBox connectConfirm">
             <div class="formHeader">CONFIRM CONNECT</div>
             <div class="modalBody">
               <div class="modalIntentions">
@@ -145,8 +145,13 @@
                 <div class="deleteUserModalInfo">
                   Are you sure you would like to connect with <%= user.full_name %>?
                 </div>
-                <div class="modalDoneButton">
-                  <%= link_to "Confirm", create_friendship_path(user), method: :post %>
+                <div class="field-area">
+                  <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
+                </div>
+                <div class="modalDoneButton confirmConnectButton" data="<%= user.id %>" data-index="<%= index %>">
+                  <a href="#close-modal" rel="modal:close">
+                  CONFIRM
+                  </a>
                 </div>
               </div>
             </div>
@@ -155,7 +160,7 @@
 
       <% else %>
         <div id="connectAnon<%= index %>" class="addIntentionModal confirmConnectModal" style="display:none;">
-          <div class="formBox searchFormBox formBoxModal confirmModalBox">
+          <div class="formBox searchFormBox formBoxModal confirmModalBox connectConfirm">
             <div class="formHeader">CONFIRM CONNECT</div>
             <div class="modalBody">
               <div class="modalIntentions">
@@ -167,8 +172,13 @@
                 <div class="deleteUserModalInfo">
                   Are you sure you would like to connect with this user?
                 </div>
-                <div class="modalDoneButton">
-                  <%= link_to "Confirm", create_friendship_path(user), method: :post %>
+                <div class="field-area">
+                  <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
+                </div>
+                <div class="modalDoneButton confirmConnectButton" data="<%= user.id %>" data-index="<%= index %>">
+                  <a href="#close-modal" rel="modal:close">
+                  CONFIRM
+                  </a>
                 </div>
               </div>
             </div>

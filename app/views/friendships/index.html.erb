@@ -39,13 +39,13 @@
         </div>
 
           <div class="connectionReqDate break-2-show"><%= friendship.created_at.strftime("%B %e, %Y") %></div>
-          <div class="connectionReqMsg">Hi James, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tempor libero. Quisque vulputate porttitor ligula, eget sollicitudin...</div>
-          <div class="viewMoreContent fullReqMessage break-2-hide">full message<i class="fa fa-chevron-right"></i></div>
+          <div class="connectionReqMsg"><%= friendship.message %></div>
+          <!-- <div class="viewMoreContent fullReqMessage break-2-hide">full message<i class="fa fa-chevron-right"></i></div> -->
           <div class="buttonsBox break-2-show">
 
             <div class="ignore button">Ignore</div>
             <div class="accept button blue-bg-link">Accept</div>
-            <div class="full button blue-link">Full Message</div>
+            <!-- <div class="full button blue-link">Full Message</div> -->
           </div>
         </div>
         <div class="connectionRequestAction break-2-hide">
