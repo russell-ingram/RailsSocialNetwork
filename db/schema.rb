@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008153548) do
+ActiveRecord::Schema.define(version: 20151008200452) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20151008153548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "state"
+    t.text     "message"
   end
 
   add_index "friendships", ["state"], name: "index_friendships_on_state"

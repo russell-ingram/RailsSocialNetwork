@@ -25,7 +25,7 @@
           <p><%= position["enterprise_size"] %> Enterprise</p>
         </div>
         <div class="hcpMsg"><a href="/messages/new/<%= rec.id %>">message <div class="icon icon-fwd-arrow"></div></a></div>
-        <div class="hcpConnect"><a href="/profile/<%= rec.id %>">connect <div class="icon icon-fwd-arrow"></div></a></div>
+        <div class="hcpConnect connectElem<%= i %>"><a href="#connect<%= i %>" rel="modal:open">connect <div class="icon icon-fwd-arrow"></div></a></div>
       </div>
 
 
@@ -35,6 +35,39 @@
           <img src="<%= connection_img(rec) %>">
         </a>
       </div>
+
+        <div id="connect<%= i %>" class="addIntentionModal confirmConnectModal" style="display:none;">
+          <div class="formBox searchFormBox formBoxModal confirmModalBox connectConfirm">
+            <div class="formHeader">CONFIRM CONNECT</div>
+            <div class="modalBody">
+              <div class="modalIntentions">
+                <div class="myConnProfilePic">
+                  <a href="/profile/<%= rec.id %>">
+                    <% if rec.profile_pic_url? %>
+                      <img src="<%= rec.profile_pic_url %>">
+                    <% else %>
+                      <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+                    <% end %>
+                  </a>
+                </div>
+              </div>
+              <div class="modalIntentionsRight">
+                <div class="deleteUserModalInfo">
+                  Are you sure you would like to connect with <%= rec.full_name %>?
+                </div>
+                <div class="field-area">
+                  <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
+                </div>
+                <div class="modalDoneButton confirmConnectButtonHome" data="<%= rec.id %>" data-index="<%= i %>">
+                  <a href="#close-modal" rel="modal:close">
+                  CONFIRM
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
     </div>
 

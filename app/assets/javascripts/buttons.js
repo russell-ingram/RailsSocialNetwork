@@ -59,7 +59,7 @@ $( document ).ready(function() {
     var x = $('#searchUsersInput').val();
 
     $.get('/admin/users/search?term='+x, function(data) {
-      $(".myConnsList").empty();
+      $(".fullUserList").empty();
       for (i in data) {
         var user = data[i];
         var pic = '';
@@ -71,8 +71,9 @@ $( document ).ready(function() {
           pic = '<img src="/assets/avatar-icons/avatar_0'+num+'.svg"';
         };
         var connBox = '<div class="myConnection"><div class="myConnWrapper"><div class="myConnProfilePic"><a href="/profile/'+user.id+'">'+pic+'</a></div><div class="myConnInfo"><div class="myConnName"><a href="/profile/'+user.id+'">'+user.first_name+' '+user.last_name+'</a></div><div class="myConnCompany">'+user.employer+'</div><div class="myConnIndustry">'+user.industry+'</div></div><div class="myConnMessage userActionsSidebar"><div class="userListAction"><a href="/admin/edit_user/'+user.id+'">review</a></div><div class="userListAction deleteAction"><a data-confirm="Are you sure you would like to delete this user?" href="/admin/delete/'+user.id+'">delete</a></div><div class="userListAction"><a href="/messages/new/'+user.id+'">send message</a></div></div></div></div>'
-        $('.myConnsList').append(connBox);
+        $('.fullUserList').append(connBox);
       }
+      $('.messagesPagination').hide();
     })
   });
 
@@ -493,6 +494,46 @@ $( document ).ready(function() {
       return false;
     }
   });
+
+  $('.confirmConnectButton').off().on('click', function() {
+    var data = $(this).attr('data');
+    var msg = $(this).parent().find('.connectMessage').val();
+    var index = $(this).attr('data-index');
+    var url = '/friendships/'+data;
+    var elem = '#connect'+index;
+    var elemAnon = '#connectAnon'+index;
+
+    $.post(url, {'message': msg}, function(data) {
+      $(elem).prev().find('.connectAction').html('<div>PENDING<span class="icon icon-fwd-arrow"></span></div>');
+      $(elemAnon).prev().find('.connectAction').html('<div>PENDING<span class="icon icon-fwd-arrow"></span></div>');
+    });
+  });
+
+  $('.confirmConnectButtonProfile').off().on('click', function() {
+    var data = $(this).attr('data');
+    var msg = $(this).parent().find('.connectMessage').val();
+    var url = '/friendships/'+data;
+    var elem = $('.profileConnect')
+
+    $.post(url, {'message': msg}, function(data) {
+      $(elem).replaceWith('<div class="profileButton profilePending">PENDING</div>');
+
+    });
+  });
+
+  $('.confirmConnectButtonHome').off().on('click', function() {
+    var data = $(this).attr('data');
+    var msg = $(this).parent().find('.connectMessage').val();
+    var index = $(this).attr('data-index');
+    var url = '/friendships/'+data;
+    var elem = '.connectElem'+index;
+    var html = '<a href="/profile/'+ data +'">pending <div class="icon icon-fwd-arrow"></div></a>';
+
+    $.post(url, {'message': msg}, function(data) {
+      $(elem).html(html);
+    });
+  });
+
 
 
 });

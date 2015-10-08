@@ -1,5 +1,5 @@
 <% if @friends.include? @user %>
-          <div class="profileButton profileDeleted"><a href="#deleteUser" rel="modal:open">UNFRIEND</a></div>
+    <div class="profileButton profileDeleted"><a href="#deleteUser" rel="modal:open">UNFRIEND</a></div>
 
   <% elsif @pending.include? @user %>
     <div class="profileButton profilePending">PENDING</div>
