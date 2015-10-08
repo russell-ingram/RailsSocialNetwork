@@ -6,6 +6,7 @@
 
 .searchBarHomeWrapper {
   margin-left: 25px;
+  margin-right: 25px;
   text-transform: uppercase;
   font-family: "PNBold";
   font-size: 14px;
@@ -40,7 +41,8 @@
   }
 }
 .homePageIntentionsList {
-  padding-right: 24px;
+  /*padding-right: 24px;*/
+    border: 1px solid #CCCED0;
 }
 
 .searchBarHomeAdvancedOptions {
