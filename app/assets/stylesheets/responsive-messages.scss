@@ -1,4 +1,29 @@
 
+@media screen and (max-width: 450px) {
+
+	.pageMessages {
+		.sortLabel {
+			display: none;
+		}
+
+		.sortToggle .wrapper-dropdown {
+			padding: 0;
+			text-align:left;
+			width:auto;
+		}
+
+		.searchIconInput.active {
+			width:110px;
+		}
+
+		.messagesBar {
+			min-width:340px;
+		}
+	}
+
+}
+
+
 @media screen and (max-width: 1050px) {
 
 
