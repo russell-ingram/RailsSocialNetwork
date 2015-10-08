@@ -121,6 +121,8 @@ pageSpecificInits.searchResultsPage = function(jquery){
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
 
+	this._proxyCancelButton(jquery);
+
 };
 
 pageSpecificInits.searchPeersPage = function(jquery){
@@ -128,6 +130,7 @@ pageSpecificInits.searchPeersPage = function(jquery){
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
+	this._proxyCancelButton(jquery);
 };
 
 pageSpecificInits.homePage = function(jquery){
@@ -238,6 +241,8 @@ pageSpecificInits.homePage = function(jquery){
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
+	
+	this._proxyCancelButton(jquery);
 
 };
 
@@ -368,6 +373,14 @@ pageSpecificInits.myProfilePage = function(jquery){
 
 };
 
+pageSpecificInits._proxyCancelButton = function(jquery){
+	
+	jquery('.proxyCancelButton').click(function(){
+		jquery('.close-modal a').click();
+	});
+
+};
+
 pageSpecificInits.global = function(jquery){
 	var blue_links = $('a').map(function(i, element){ if($(element).css('color')==='rgb(62, 178, 204)') return $(element) });
 	$(blue_links).each(function(){
@@ -387,4 +400,5 @@ pageSpecificInits.global = function(jquery){
 		    window.location = link;
 		});
 	}
-}
+};
+
