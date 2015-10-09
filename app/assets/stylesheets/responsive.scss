@@ -172,6 +172,18 @@
 	.two-button-popup {
 	  
 	  .close-modal, .modalDoneButton {
+	    width: 150px;
+	  }
+	}
+
+}
+
+
+@media screen and (max-width: 400px) {
+
+	.two-button-popup {
+	  
+	  .close-modal, .modalDoneButton {
 	    width: 100px;
 	  }
 	}
