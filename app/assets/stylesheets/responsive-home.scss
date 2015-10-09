@@ -293,3 +293,42 @@
 	}
 
 }
+
+
+
+
+@media screen and (max-width: 400px) {
+
+
+	.pageHome {
+		.homeConnectionBox {
+			.homeConnectionPic {
+				position:absolute;
+				height:157px !important;
+			    width:157px !important;
+			}
+
+			& {
+
+			    height: 160px !important;
+			}
+
+			.homeConnectionProfile {
+				height:157px !important;
+				margin-left:157px !important;
+				padding:10px;
+			}
+
+			.hcpMsg {
+				margin-bottom:10px;
+			}
+
+			.hcpDesc {
+				margin-bottom: 10px;
+			}
+
+		}
+
+	}
+
+}

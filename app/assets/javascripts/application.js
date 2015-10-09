@@ -176,7 +176,7 @@ pageSpecificInits.homePage = function(jquery){
 			jquery('.homeConnectionProfile').outerHeight(170);
 			jquery('.homeConnectionPic').outerHeight(170);
 		}
-		else {
+		else if(breakstate === 700) {
 
 			jquery('.homeConnectionProfile').outerHeight(187);
 			jquery('.homeConnectionPic').outerHeight(187);
@@ -241,7 +241,7 @@ pageSpecificInits.homePage = function(jquery){
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forCountry');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forSector');
 	this._initFirstLetterSearch(jquery, '.wrapperFieldDropdown.forVendor');
-	
+
 	this._proxyCancelButton(jquery);
 
 };
@@ -374,7 +374,7 @@ pageSpecificInits.myProfilePage = function(jquery){
 };
 
 pageSpecificInits._proxyCancelButton = function(jquery){
-	
+
 	jquery('.proxyCancelButton').click(function(){
 		jquery('.close-modal a').click();
 	});
