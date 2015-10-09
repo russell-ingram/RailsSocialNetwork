@@ -467,5 +467,49 @@
   margin-bottom: 100px;
 }
 
+.requestedAccessWrapper {
+  padding: 0px 20px;
+  padding-bottom: 40px;
+  background-color: white;
+  .userEditBox {
+    margin-bottom: 0;
+    min-height: 0;
+    height: auto;
+  }
+  .myConnInfo {
+    padding: 10px 0 0 0;
+  }
+  .myConnContact {
+    height: 22px;
+    line-height: 22px;
+    font-size: 14px;
+    font-family: "PNLight";
+    color: #737373;
+  }
+  .myConnEmail {
+    margin-top: -3px;
+    margin-bottom: 5px;
+  }
+  .icon {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    top: 1px;
+  }
+  .icon-icon-mail {
+    font-size: 22px;
+    height: 22px;
+    margin-left: -5px;
+    margin-right: 7px;
+    position: relative;
+    top: 6px;
+  }
+  .requestConn {
+
+  }
+  .requestConn:last-of-type {
+    border-bottom: none;
+  }
+}
 
 

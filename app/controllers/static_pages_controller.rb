@@ -74,15 +74,24 @@ class StaticPagesController < ApplicationController
   def show_profile
     @user = User.find(params[:id])
     puts @user.inspect
-
     get_friendships
     @accepted_friendships = []
     @friendships = @user.friendships.includes(:friend)
+    @friendship = Friendship.find_by("user_id = ? AND friend_id = ?", current_user.id, @user.id)
+    p @friendship
     @friendships.each do |f|
       @accepted_friendships << f if f.state == 'accepted'
+      # x =  f.user_id.to_s
+      # y = params[:id].to_s
+
+      # if f.friend_id.to_s == params[:id].to_s
+      #   @friendship = f
+      #   p "FRIENDSMATCH"
+      # end
+
     end
 
-    if @user == current_user
+    if @user.to_s == current_user.to_s
       redirect_to '/profile'
     end
   end

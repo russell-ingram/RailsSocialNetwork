@@ -110,6 +110,7 @@ Rails.application.routes.draw do
   resources :requests do
     member do
       post :create, as: 'request'
+      get :send_invite, as: 'send_invite'
     end
   end
 

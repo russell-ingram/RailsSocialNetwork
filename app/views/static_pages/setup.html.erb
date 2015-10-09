@@ -63,14 +63,14 @@
             </div>
             <div class="fieldLabel">Employer</div>
             <div class="field editField">
-              <input placeholder="First name" type="text" value="<%= work.company %>" name="" id="onboard_company">
+              <input placeholder="First name" type="text" value="<%= work['company'] %>" name="" id="onboard_company">
             </div>
             <div class="fieldLabel">Industry</div>
             <div class="field editField">
               <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
                 <span class="ddLabel">
-                <% if !work.industry.blank? %>
-                  <%= work.industry %>
+                <% if !work['industry'].blank? %>
+                  <%= work['industry'] %>
                 <% else %>
                   Industry
                 <% end %>
@@ -82,15 +82,15 @@
                   <% end %>
                 </ul>
               </div>
-              <%= f.text_field :industry, placeholder: 'Industry', style: 'display: none;', id: 'onboard_industry', value: work.industry %>
+              <%= f.text_field :industry, placeholder: 'Industry', style: 'display: none;', id: 'onboard_industry', value: work['industry'] %>
             </div>
 
           <div class="fieldLabel">Enterprise Size</div>
           <div class="field editField">
             <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
               <span class="ddLabel">
-              <% if !work.enterprise_size.blank? %>
-                <%= work.enterprise_size %>
+              <% if !work['enterprise_size'].blank? %>
+                <%= work['enterprise_size'] %>
               <% else %>
                 Enterprise Size
               <% end %>
@@ -102,15 +102,15 @@
                 <li class="ddOption fieldOption">Small</li>
               </ul>
             </div>
-            <%= f.text_field :enterprise_size, placeholder: 'Enterprise Size', style: 'display: none;', id: 'onboard_enterprise', value: work.enterprise_size %>
+            <%= f.text_field :enterprise_size, placeholder: 'Enterprise Size', style: 'display: none;', id: 'onboard_enterprise', value: work['enterprise_size'] %>
           </div>
 
           <div class="fieldLabel">Region</div>
           <div class="field editField">
             <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
               <span class="ddLabel">
-                <% if !work.region.blank? %>
-                  <%= work.region %>
+                <% if !work['region'].blank? %>
+                  <%= work['region'] %>
                 <% else %>
                   Region
                 <% end %>
@@ -123,7 +123,7 @@
                 <li class="ddOption fieldOption">Latin America</li>
               </ul>
             </div>
-            <%= f.text_field :region, placeholder: 'Region', style:'display: none;', id: 'onboard_region', value: work.region %>
+            <%= f.text_field :region, placeholder: 'Region', style:'display: none;', id: 'onboard_region', value: work['region'] %>
           </div>
 
 
@@ -131,8 +131,8 @@
           <div class="field editField">
             <div class="wrapper-dropdown wrapperFieldDropdown" tabindex="1">
               <span class="ddLabel">
-                <% if !work.country.blank? %>
-                  <%= work.country %>
+                <% if !work['country'].blank? %>
+                  <%= work['country'] %>
                 <% else %>
                   Country
                 <% end %>
@@ -144,14 +144,14 @@
                 <% end %>
               </ul>
             </div>
-            <%= f.text_field :country, placeholder: 'Country',style: 'display:none;', id: 'onboard_country', value: work.country %>
+            <%= f.text_field :country, placeholder: 'Country',style: 'display:none;', id: 'onboard_country', value: work['country'] %>
           </div>
 
           <div class="fieldLabel">Company type</div>
 
           <div class="editField">
             <div id="pubButton1" class="pubButton">
-            <% if work.public? %>
+            <% if work['public'] %>
               <input type="radio" class="pubInputCheck" id="radio1" name="public" value="true">
               <label for="radio01"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Private</div></label>
             <% else %>
@@ -162,7 +162,7 @@
             </div>
 
             <div id="pubButton2" class="pubButton">
-            <% if work.public? %>
+            <% if work['public'] %>
               <input type="radio" class="pubInputCheck" id="radio2" name="public" value="true" checked>
               <label for="radio02"><div class="pubBoxIcon icon icon-selection-true active"></div><div class="pubText">Publicly Traded</div></label>
             <% else %>
@@ -170,7 +170,7 @@
               <label for="radio02"><div class="pubBoxIcon icon icon-selection-false"></div><div class="pubText">Publicly Traded</div></label>
             <% end %>
             </div>
-            <input placeholder="public" type="text" value="<%= work.public %>" name="" id="onboard_public" style="display: none;">
+            <input placeholder="public" type="text" value="<%= work['public'] %>" name="" id="onboard_public" style="display: none;">
           </div>
 
           </div>

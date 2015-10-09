@@ -11,8 +11,10 @@
   <% end %>
 <% end -%>
 
-
 <div class="fitoLandingFloat">
+  <% if @res %>
+  <div class="fitoLandingReqResponse"><%= @res %></div>
+  <% end %>
   <div class="fitoLandingWrapper">
     <div class="fitoLandingLogo"><%= image_tag("fito-no-tagline.svg", class: "menuLogo")  %></div>
     <div class="fitoLandingFadeBar">
@@ -77,11 +79,14 @@
     <div class="field loginField">
       <%= f.text_field :last_name, placeholder: 'last name' %>
     </div>
+    <div class="field loginField">
+      <%= f.text_field :email, placeholder: 'email address' %>
+    </div>
     <div class="fitoRequestChoiceText">
       one of the following are required
     </div>
     <div class="field loginField">
-      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile name' %>
+      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile link (e.g. https://www.linkedin.com/pub/user-name/8b/663/40' %>
     </div>
     <div class="fitoRequestOrText">or</div>
     <div class="field loginField">
@@ -90,17 +95,14 @@
     <div class="field loginField">
       <%= f.text_field :company, placeholder: 'company' %>
     </div>
-    <div class="field loginField">
-      <%= f.text_field :email, placeholder: 'email address' %>
-    </div>
-    <div class="fitoLandingRequestSubmit">
+    <div class="fitoLandingRequestSubmit" id="fitoLandingInvitationRequestSubmit">
       Send Request
     </div>
     <div class="fitoLandingSignInToggle">
     - sign-in -
     </div>
 
-      <%= f.submit 'Submit Request', style: 'display:none;' %>
+      <%= f.submit 'Submit Request', style: 'display:none;', id: 'fitoLandingRequestSubmitBtn' %>
     <% end %>
   </div>
   <div class="fitoLandingRequestResetPasswordWrapper">
@@ -128,6 +130,8 @@
 
 <script>
 $( document ).ready(function() {
+  // forces the page start at the top even on reloads so the canvas doesn't break
+  $(document).scrollTop(0);
   var pattern = Trianglify({
       width: window.innerWidth,
       height: window.innerHeight + 300,
@@ -227,9 +231,20 @@ $( document ).ready(function() {
   });
 
 
+
+
   $('.fitoLandingSignInWrapper').on('click', function(e) {
     e.stopPropagation();
   });
+
+  $('#fitoLandingInvitationRequestSubmit').off().on('click', function() {
+    $('#fitoLandingRequestSubmitBtn').click();
+  });
+
+  var sPageURL = decodeURIComponent(window.location.search.substring(1));
+  if (sPageURL === 'requestAccess') {
+    $('.fitoLandingRequestBtn').click();
+  }
 
 });
 </script>

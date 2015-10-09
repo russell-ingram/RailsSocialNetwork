@@ -35,10 +35,10 @@ class Friendship < ActiveRecord::Base
     end
   end
 
-  def self.request(user1, user2)
+  def self.request(user1, user2, message)
     transaction do
-      friendship1 = create(user: user1, friend: user2, state: 'pending')
-      friendship2 = create(user: user2, friend: user1, state: 'requested')
+      friendship1 = create(user: user1, friend: user2, state: 'pending', message: message)
+      friendship2 = create(user: user2, friend: user1, state: 'requested', message: message)
     end
   end
 

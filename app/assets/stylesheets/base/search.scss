@@ -381,7 +381,7 @@
 }
 
 .pageHome {
-   
+
   .addSpendingIntentionFieldButton {
     .icon {
       width: 55px;
@@ -619,8 +619,8 @@
 }
 
 .addIntentionModal {
-  
-  
+
+
   width: 600px;
 }
 
@@ -692,6 +692,28 @@
   }
   .modalDoneButton {
     margin-top: -41px;
+  }
+  .field-area {
+
+  }
+}
+.connectConfirm {
+  min-height: 285px;
+  .modalIntentions {
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+  textarea {
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 62px;
+  }
+  .deleteUserModalInfo {
+    height: 80px;
+  }
+  .modalDoneButton {
+    margin-top: 18px !important;
+    cursor: pointer;
   }
 }
 
@@ -1133,7 +1155,7 @@
 
 .pageSearchResults .myConnName,
 .pageSearchResults .myConnIndustry {
-  width:450px;
+  width:435px;
   overflow:hidden;
   white-space: nowrap;
 }
@@ -1152,8 +1174,8 @@
   height: auto;
   position: absolute;
   right:22%;
-  -ms-transform: rotate(180deg); 
-  -webkit-transform: rotate(180deg); 
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
   color: #282b30;
   top: 22px;

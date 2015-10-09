@@ -31,9 +31,6 @@ class FriendshipsController < ApplicationController
     end
     require 'will_paginate/array'
 
-    p "FRIENDS:"
-    p @friends
-
     @user_pos = current_user.current_pos
 
     @friends = @friends.paginate(page: params[:page], per_page: 10)
@@ -79,7 +76,12 @@ class FriendshipsController < ApplicationController
   def create
 
     @friend = User.find(params[:id])
-    @friendship = Friendship.request(current_user,@friend)
+    if params[:message].blank?
+      @message = "This request did not include a message."
+    else
+      @message = params[:message]
+    end
+    @friendship = Friendship.request(current_user,@friend, @message)
     respond_to do |format|
       if @friendship.new_record?
         format.html do
@@ -127,7 +129,11 @@ class FriendshipsController < ApplicationController
     elsif type == 'LAST NAME'
       @friends = User.order(:last_name).where(:id => @friend_ids)
     else
-      @friends = User.order(created_at: :asc).where(:id => @friend_ids)
+      @friendships = current_user.friendships.order(created_at: :asc).includes(:friend)
+      @friends = []
+      @friendships.each do |f|
+        @friends << f.friend if f.state == 'accepted'
+      end
     end
     @friend_arr = []
     @friends.each do |f|

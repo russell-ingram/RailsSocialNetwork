@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827150506) do
+ActiveRecord::Schema.define(version: 20151008200452) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150827150506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "state"
+    t.text     "message"
   end
 
   add_index "friendships", ["state"], name: "index_friendships_on_state"
@@ -129,8 +130,11 @@ ActiveRecord::Schema.define(version: 20150827150506) do
     t.string   "job_title"
     t.string   "company"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "accepted"
+    t.boolean  "invite_sent"
+    t.string   "uid"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -182,12 +186,12 @@ ActiveRecord::Schema.define(version: 20150827150506) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "",       null: false
+    t.string   "encrypted_password",     default: "",       null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,        null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -217,6 +221,7 @@ ActiveRecord::Schema.define(version: 20150827150506) do
     t.boolean  "sp500"
     t.boolean  "global1000"
     t.string   "timezone"
+    t.string   "invite_status",          default: "unsent"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

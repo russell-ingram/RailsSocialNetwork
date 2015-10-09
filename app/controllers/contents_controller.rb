@@ -33,7 +33,7 @@ class ContentsController < ApplicationController
       @news.image_url = @oldnews.image_url
     end
     if @news.save
-      redirect_to home_path
+      redirect_to :back
     else
       redirect_to '/admin/content'
     end
@@ -55,7 +55,7 @@ class ContentsController < ApplicationController
     @layout.type_of_content = "layout"
 
     if @layout.save
-      redirect_to home_path
+      redirect_to :back
     else
       redirect_to '/admin/content'
     end
@@ -76,7 +76,7 @@ class ContentsController < ApplicationController
     @layout.type_of_content = "home"
 
     if @layout.save
-      redirect_to home_path
+      redirect_to :back
     else
       redirect_to '/admin/content'
     end
