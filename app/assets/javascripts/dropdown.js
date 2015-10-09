@@ -29,17 +29,28 @@ $( document ).ready(function() {
 
     $(".filterOption").off().on('click',function() {
       var option = $(this).text();
-
+      var shorter = '';
       var filterType = $(this).parent().parent().attr('name');
 
-      selectedLabel.text(option);
       sortFilter(option, filterType);
 
     });
 
     $(".fieldOption").off().on('click', function () {
       var option = $(this).text();
-      selectedLabel.text(option);
+      l = 18;
+      if ($(this).hasClass('resultsOption')) {
+        l = 30;
+      } else if ($(this).hasClass('bigOption')) {
+        l = 22;
+      }
+
+      if (option.length > l) {
+        shorter = option.slice(0,l);
+        selectedLabel.text(shorter + '...');
+      } else {
+        selectedLabel.text(option);
+      }
       var input = selectedLabel.parent().next();
       input.val(option);
       if (selectedLabel.hasClass('searchDDLabel') || selectedLabel.hasClass('ddNoPref')) {

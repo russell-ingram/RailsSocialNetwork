@@ -573,6 +573,11 @@
   font-size: 14px;
   color: #797C7F;
   font-family: "PNReg";
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
 }
 
 .fsmRight {
