@@ -222,3 +222,30 @@
 	}
 
 }
+
+@media screen and (max-width: 450px) {
+
+	.connectionsWrapper {
+
+		.messagesBar {
+			
+			.searchConnsInput input {
+				width: 110px;
+			}
+
+			.sortLabel {
+				display:none;
+			}
+
+			.toggleRightSearch {
+				left: 15px;
+			}
+
+			.searchConnsInput {
+				left: 40px;
+			}
+		}
+
+	}
+
+}
