@@ -18,11 +18,11 @@
       <% position = rec.current_pos %>
 
       <div class="homeConnectionProfile">
-        <div class="hcpTitle"><%= position["job_title"] %></div>
+        <div class="hcpTitle one-line"><%= position["job_title"] %></div>
         <div class="hcpDesc">
-          <p><%= position["industry"] %></p>
-          <p>in <%= position["region"]%></p>
-          <p><%= position["enterprise_size"] %> Enterprise</p>
+          <p class="one-line"><%= position["industry"] %></p>
+          <p class="one-line">in <%= position["region"]%></p>
+          <p class="one-line"><%= position["enterprise_size"] %> Enterprise</p>
         </div>
         <div class="hcpMsg"><a href="/messages/new/<%= rec.id %>">message <div class="icon icon-fwd-arrow"></div></a></div>
         <div class="hcpConnect"><a href="/profile/<%= rec.id %>">connect <div class="icon icon-fwd-arrow"></div></a></div>
