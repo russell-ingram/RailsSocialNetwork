@@ -84,30 +84,49 @@ $( document ).ready(function() {
   });
 
   $('.searchTagClose').off().on('click',function() {
+    $(this).parent().next().attr('value', '');
     $(this).parent().next().val('');
+    console.log($(this).parent().next());
     $(this).parent().remove();
     $('#searchEdit').click();
   });
 
   $('.spendingTagClose').off().on('click',function() {
+
     var index = $(this).attr('name');
-    var oldStr = $('#resultsFieldTagsField').val();
-    console.log(oldStr);
-    var oldArr = JSON.parse(oldStr);
-    console.log(oldArr);
-    console.log(oldArr.length);
-    if (oldArr.length > 1) {
-      var newArr = oldArr.splice(index - 1, 1);
-      var newStr = JSON.stringify(newArr);
-      $('#resultsFieldTagsField').val(newStr);
+
+    if ($(this).hasClass('sidebarTag')) {
+      var oldStr = $('#resultsField').val();
+      var oldArr = JSON.parse(oldStr);
+      console.log(oldArr);
+      if (oldArr.length > 1) {
+        var newArr = oldArr.splice(index, 1);
+        var newStr = JSON.stringify(oldArr);
+        $('#resultsField').val(newStr);
+      } else {
+        $('#resultsField').val('');
+      }
+      // not updating automatically on close
+      // $('#submitSearch').click();
     } else {
-      $('#resultsFieldTagsField').val('');
+
+      var oldStr = $('#resultsFieldTagsField').val();
+      var oldArr = JSON.parse(oldStr);
+      if (oldArr.length > 1) {
+        var newArr = oldArr.splice(index, 1);
+        var newStr = JSON.stringify(oldArr);
+        $('#resultsFieldTagsField').val(newStr);
+      } else {
+        $('#resultsFieldTagsField').val('');
+      }
+      $('#searchEdit').click();
+
     }
 
 
-
     $(this).parent().remove();
-    $('#searchEdit').click();
+
+
   });
 
   $('.formSearchButton').off().on('click', function() {

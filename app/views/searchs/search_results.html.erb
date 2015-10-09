@@ -694,7 +694,7 @@
 
         <div class="searchSideBarFiller"></div>
         <div class="spendingIntentionsOptions sideBarIntentions">
-        <% @spendingTags.each do |stag| %>
+        <% @spendingTags.each_with_index do |stag, i| %>
           <div class="searchSideBarSpending">
             <div class="searchSidebarDropdownLeft">
               <div class="searchSideBarSpendingHeader">Spending Intention</div>
@@ -702,7 +702,7 @@
                 <%= stag["intention"].gsub /"/, '' %>  •  <%= stag["sector"].gsub /"/, '' %>  •  <%= stag["vendor"].gsub /"/, '' %>
               </div>
             </div>
-            <div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div>
+            <div class="searchTagClose spendingTagClose sidebarTag" name="<%= i %>"><div class="icon icon-icon-close"></div></div>
           </div>
         <% end %>
         </div>
@@ -823,7 +823,7 @@
           <div class="proxyCancelButton" id="proxyCancelButton">
             <span rel="modal:close">CANCEL</span>
           </div>
-          
+
         </div>
       </div>
     </div>

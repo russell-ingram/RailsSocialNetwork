@@ -1,6 +1,5 @@
 class SearchsController < ApplicationController
   def search
-    p "THIS IS A NEW SEARCH UPDATED"
     @countries = countries_list
     @industries = industries_list
     @searchTags = []
@@ -16,28 +15,19 @@ class SearchsController < ApplicationController
     @search.peers = @length
     @users = @users.paginate(page: params[:page], per_page: 25)
 
+    # MUST save before format_results or won't work
     @search.save
 
     get_friendships
 
-    @newSearch = @search
     results = []
 
-    @searchData = @search.to_json
-    p "SEARCH DATA"
-    p @searchData
     @has_intentions = false
     # converting results string back into accessible hash
     if @search.results != ''
       @spendingTags = format_results(@search, results)
-      # p "TAGS:"
-      # p @spendingTags
       @has_intentions = true
     end
-
-    @new_search = Search.new
-
-    # end conversion save results as tags
 
     render 'search_results'
   end
@@ -45,28 +35,34 @@ class SearchsController < ApplicationController
   def get_search
     @countries = countries_list
     @industries = industries_list
-    @sectors = Sector.all
-    @vendors = Vendor.all
     @searchTags = []
     @spendingTags = []
+    @sectors = Sector.order(:name)
+    @vendors = Vendor.order(:name)
+
     @favSearchs = Search.order(created_at: :desc).where('user_id = ?',current_user.id).take(5)
 
-    @search = Search.find(params[:id])
-
-
-    # @search.update(@newSearch)
-    get_friendships
+    if params[:search].present?
+      @search = Search.new(search_params)
+    else
+      @search = Search.find(params[:id])
+    end
 
     @users = User.search(@search, current_user)
     @length = @users.length
-    @search.update_attribute(:peers, @length)
-
+    @search.peers = @length
     @users = @users.paginate(page: params[:page], per_page: 25)
 
+    # MUST save before format_results or won't work
+    @search.save
+
+    get_friendships
+
     results = []
-    # p @search
+    @has_intentions = false
     if @search.results != ''
       @spendingTags = format_results(@search, results)
+      @has_intentions = true
     end
 
     render 'search_results'
@@ -150,18 +146,20 @@ class SearchsController < ApplicationController
   end
 
   def format_results(search,results)
-    # p search
-    l = search.results.length
+
+
     if @search.results[0] != '['
       @search.results.insert(0, '[')
-      # @search.results.insert(-1, ']')
+      @search.results.insert(-1, ']')
     end
-    p @search.results
+    l = search.results.length
+
     @search.results[l-1] = ''
     @search.results[0] = ''
+    p "RESULTS FORMAT!!!"
+    p search.results
+    p search
     t = search.results.split('{')
-    p "TSPLIT"
-    p t
     t.each do |r|
       p r
       if r != ''
@@ -193,8 +191,6 @@ class SearchsController < ApplicationController
         end
       end
     end
-    p "RESULTS"
-    p results
     return results
 
 
