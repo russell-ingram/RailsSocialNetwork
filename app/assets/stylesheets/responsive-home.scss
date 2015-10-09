@@ -1,5 +1,4 @@
 
-
 @media screen and (max-width: 1050px) {
 	
 	.pageHome {
@@ -116,6 +115,11 @@
 
 		    .homeConnectionPic img {
 				display:none;
+			}
+
+			.hcpTitle {
+
+			  white-space: nowrap;
 			}
 
 		}
@@ -278,6 +282,11 @@
 				margin-left:187px;
     			height: 187px;
  			}
+
+			.hcpTitle {
+
+			  white-space: initial;
+			}
 
 		}
 
