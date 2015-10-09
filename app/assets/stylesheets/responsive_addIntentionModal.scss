@@ -26,3 +26,57 @@
 	}
 
 }
+
+@media screen and (max-width: 450px) {
+
+	.addIntentionModal.real {
+
+		.modalIntentionsRight,
+		.modalIntentions {
+			/*width: 100%;*/
+		}
+
+		.modalIntentionsRight {
+			/*padding-top: 10px;*/
+			width: 63%;
+			margin-left: 5%;
+			.modalSectionHeader {
+				margin-bottom: 5px;
+			}
+		}
+
+		.formBoxModal {
+			/*height: 1000px !important;*/
+		}
+
+		.modalBody {
+			padding-top:15px;
+		}
+
+		.modalSectionHeader {
+			font-size:16px;
+		}
+
+		.modalDoneButton,
+		.proxyCancelButton {
+			width: 100%;
+		}
+
+		.modalDoneButton {
+			margin-top:0px;
+			margin-bottom:10px;
+		}
+
+		.intentionSelectModal .icon {
+			font-size:16px;
+		}
+
+		.intentionModalText {
+			font-size:14px;
+		    margin-left: 5px;
+		    top: -3px;
+		}
+
+	}
+
+}
