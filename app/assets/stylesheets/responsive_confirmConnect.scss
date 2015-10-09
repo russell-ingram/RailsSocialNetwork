@@ -1,0 +1,49 @@
+
+@media screen and (max-width: 700px) {
+
+	.pageSearchResults,
+	.pageHome {
+
+		.confirmConnectModal {
+
+			width: 100%;
+			left:0 !important;
+			margin-left: 0 !important;
+
+			.myConnProfilePic {
+				display:none;
+			}
+
+			.modalIntentionsRight {
+				width:100%;
+			}
+
+			.close-modal {
+			    margin-top: -85px !important;
+			}
+
+			.deleteUserModalInfo {
+				padding-top:0;
+			}
+		}
+
+	}
+
+}
+@media screen and (max-width: 400px) {
+
+	.pageSearchResults,
+	.pageHome {
+
+		.confirmConnectModal {
+
+
+			.modalDoneButton,
+			.close-modal {
+				width: 100px;
+			}
+		}
+
+	}
+
+}
