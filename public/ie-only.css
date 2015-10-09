@@ -1,7 +1,7 @@
 .mailMenuIcon {
 	
-	top: 9px;
-	right: 0px;
+	top: 9px !important;
+	right: 0px !important;
 
 
 }
@@ -9,11 +9,7 @@
 
 .mailMenuIcon img {
 
-	width: 40px;
-}
-
-body {
-	background-color:red;
+	width: 40px !important;
 }
 
 .pageConnections .inboxToggle .ddToggle {
