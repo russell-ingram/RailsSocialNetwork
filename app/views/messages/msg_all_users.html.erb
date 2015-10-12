@@ -1,6 +1,6 @@
 
 <%= render "layouts/adminHeader" %>
-<div class="pageWrap">
+<div class="pageWrap pageAdminCreateMessage">
 <% if flash[:sent] -%>
   <div class="flashMessages">
       <%= content_tag :div, flash[:sent], class: alert %>
