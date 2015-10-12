@@ -413,6 +413,7 @@
 .homeConnectionBox {
   float: left;
   width: 340px;
+  overflow: hidden;
 }
 
 .homeConnectionProfile, .homeConnectionPic {
@@ -451,7 +452,7 @@
 }
 
 .homeConnectionPic img {
-  height: 170px;
+  width: 100%;
 }
 
 .hcpTitle {

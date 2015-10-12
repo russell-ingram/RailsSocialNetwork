@@ -8,7 +8,7 @@
 
     <div class="homeConnectionBox <%= 'box-' + i.to_s %>">
 
-      <div class="homeConnectionPic <%= ['','','break-0-show break-1-hide break-2-show','break-2-show','break-1-show','break-1-show'][i] %>" style="background-image:url(<%= connection_img(rec) %>)">
+      <div class="homeConnectionPic <%= ['','','break-0-show break-1-hide break-2-show','break-2-show','break-1-show','break-1-show'][i] %>" style="background-image:url(<%= connection_img(rec) %>); background-size: 100%">
         <a href="/profile/<%= rec.id %>">
           <img src="<%= connection_img(rec) %>">
         </a>
@@ -29,7 +29,7 @@
       </div>
 
 
-      <div class="homeConnectionPic <%= ['hide','hide','break-1-show break-2-hide','break-2-hide','break-1-hide','break-1-hide'][i] %>" style="background-image:url(<%= connection_img(rec) %>)">
+      <div class="homeConnectionPic <%= ['hide','hide','break-1-show break-2-hide','break-2-hide','break-1-hide','break-1-hide'][i] %>" style="background-image:url(<%= connection_img(rec) %>); background-size: 100%">
         <div class="icon icon-icon-left-nubsdark-gray arrow right"></div>
         <a href="/profile/<%= rec.id %>">
           <img src="<%= connection_img(rec) %>">

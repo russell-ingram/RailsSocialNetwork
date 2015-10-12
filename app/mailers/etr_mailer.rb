@@ -10,9 +10,11 @@ class EtrMailer < ApplicationMailer
   def send_invite_email(user)
     @user = user
     @user.invite_status = "pending"
-    @req = Request.find_by("uid = ?", @user.uid)
-    @req.invite_sent = true
-    @req.save
+    if Request.exists?(:uid => @user.uid)
+      @req = Request.find_by("uid = ?", @user.uid)
+      @req.invite_sent = true
+      @req.save
+    end
     require 'securerandom'
     random_string = SecureRandom.hex
     @user.password = random_string
