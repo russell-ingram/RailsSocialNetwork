@@ -522,4 +522,59 @@
   }
 }
 
+.pageAdminUsers {
+  
+  .pageHeader {
+
+    margin-top:10px;
+  }
+
+  .userListAction {
+    font-size:14px;
+  }
+
+  .close-modal {
+
+    margin-top: -105px;
+  }
+
+  .userAdminSearch {
+    margin-right: 20px;
+  }
+
+  .userListAction.deleteAction {
+    margin-top: -25px;
+  }
+
+  .userListAction.sendAction {
+    margin-top: 25px;
+  }
+
+  .myConnsRightFloat {
+    font-size: 14px;
+  }
+
+  .myConnsRightFloat .sortLabel {
+    float: none;
+  }
+
+  .myConnsRightFloat .ddFilter {
+    padding-left: 15px;
+    width: auto;
+    padding-right: 0;
+  }
+
+  .myConnInfo, .myConnCompany {
+    font-size: 20px;
+  }
+
+  .myConnCompany {
+    color: #797c80;
+  }
+
+  .myConnsHeaderBar {
+    padding-right: 20px;
+  }
+}
+
 
