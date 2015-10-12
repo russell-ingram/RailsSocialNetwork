@@ -577,4 +577,41 @@
   }
 }
 
+.pageCreateUser {
+  
+  .editField.forFirstName {
+
+    margin-right: 20px;
+  }
+
+  .editField.forFirstName input,
+  .editField.forLastName input {
+    width:341px;
+  }
+
+  .editContentRight {
+    margin-left: 5px;
+  }
+
+  .editField {
+    margin-bottom: 20px;
+  }
+
+  .fullField.last {
+    margin-bottom: 0;
+  }
+
+  .formBox {
+
+    min-height: 290px;
+  }
+
+  .userEditButtons {
+    font-size: 14px;
+  }
+
+  .addPastPosition i {
+    font-size:12px;
+  }
+}
 

@@ -1,5 +1,5 @@
 <%= render "layouts/adminHeader" %>
-<div class="pageWrap">
+<div class="pageWrap pageCreateUser">
 <div class="pageHeaderBar">
   <div class="pageHeader floatHeader">Create User</div>
 
@@ -84,16 +84,16 @@
 
       <div class="editContentRight">
 
-        <div class="field editField">
+        <div class="field editField forFirstName">
           <%= f.text_field :first_name, placeholder: 'First name' %>
         </div>
-        <div class="field editField">
+        <div class="field editField forLastName">
           <%= f.text_field :last_name, placeholder: 'Last name' %>
         </div>
         <div class="field editField fullField">
           <%= f.text_field :email, placeholder: 'Email address' %>
         </div>
-        <div class="field editField fullField">
+        <div class="field editField fullField last">
           <%= f.text_field :linked_in_url, placeholder: 'Connected LinkedIn account' %>
         </div>
 
