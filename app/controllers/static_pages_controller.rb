@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!, except: [:onboard]
+  before_action :authenticate_user!, except: [:onboard, :update_password, :reset_password]
 
   def home
     @flash = false
@@ -31,6 +31,13 @@ class StaticPagesController < ApplicationController
     end
 
     @recs = User.recs(current_user)
+    # if @recs.length < 6
+    #   p "RESETTTING"
+    #   @recs = []
+    #   6.times do
+    #     @recs << current_user
+    #   end
+    # end
 
   end
 
@@ -41,6 +48,30 @@ class StaticPagesController < ApplicationController
   def setup
     @industries = industries_list
     @countries = countries_list
+  end
+
+  def reset_password
+    @email = params[:email]
+    if User.exists?(:email => @email)
+      @user = User.find_by email: @email
+      require 'securerandom'
+      @password = SecureRandom.hex
+
+      @user.password = @password
+      @user.save
+
+      EtrMailer.reset_password_email(@user, @password).deliver_now
+    else
+
+    end
+
+
+
+    render json: @email
+  end
+
+  def update_password
+
   end
 
 

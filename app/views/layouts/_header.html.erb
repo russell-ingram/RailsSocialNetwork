@@ -27,12 +27,12 @@
       <% end %>
 
       <% cssClass = (controller.controller_name == 'conversations') ? 'active' : 'notActive' %>
-      <div class="hoverDiv mailMenuIcon <%= cssClass %> break-2-hide <%= 'notified' if true || current_user.unread_msgs > 0 %>">
+      <div class="hoverDiv mailMenuIcon <%= cssClass %> break-2-hide <%= 'notified' if current_user.unread_msgs > 0 %>">
         <a href="/messages"><%= image_tag 'icon-mail.svg' %><%= image_tag 'icon-mail_hover.svg' %></a>
       </div>
 
-      <% if true || current_user.unread_msgs > 0 %>
-        <div class="notificationMenuIcon break-2-hide emailsNumber"><a href="/messages"><%= 3 %></a></div>
+      <% if current_user.unread_msgs > 0 %>
+        <div class="notificationMenuIcon break-2-hide emailsNumber"><a href="/messages"><%= current_user.unread_msgs %></a></div>
       <% end %>
 
       <% cssClass = (current_page?('/profile')) ? 'active' : 'notActive' %>

@@ -263,7 +263,9 @@ textarea, input, select {
   padding-left: 15px;
   height: 40px;
   line-height: 40px;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 .ddOption:hover {
   background-color: #3eb2cc;

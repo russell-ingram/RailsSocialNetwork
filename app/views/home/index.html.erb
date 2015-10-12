@@ -212,25 +212,31 @@ $( document ).ready(function() {
       $('.fitoRequestHeader').text('Please enter an email address.');
       $('#user_reset_email').css({'border':'1px solid #800000'});
     } else {
+
+      $.post('/reset_password',{"email": email},function(data) {
+
+      });
       $('.fitoRequestHeader').text('an email has been sent to the address provided. please follow the instructions to reset your password.');
+      $('.fitoRequestHeader').css({'color': '#197519'})
+      // $('#user_reset_email').val('');
       $('#user_reset_email').css({'border':'1px solid #3a3a3d'});
       $(this).text('Resend Request');
+
+
     }
 
   });
 
   $(document).on('click', function() {
+    $('html,body').animate({scrollTop:0},500);
+
     $('.fitoLandingSignInWrapper').removeClass('active');
     $("#fitoLandingSignInButton").removeClass('active');
     $('.mainRequestBtn').removeClass('active');
 
-    $('html,body').animate({scrollTop:0},2000);
-
     // prevents scrolling again
     $('body').addClass('homePageBody');
   });
-
-
 
 
   $('.fitoLandingSignInWrapper').on('click', function(e) {

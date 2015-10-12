@@ -72,9 +72,6 @@ class ConversationsController < ApplicationController
       end
     end
 
-    # puts "CONVERSATIONS:"
-    # puts @all_conversations.inspect
-    # .where(:trashed => false)
     @conversations = []
     # only finding non-deleted conversations
     @all_conversations.each do |c|
@@ -83,8 +80,6 @@ class ConversationsController < ApplicationController
 
 
     require 'will_paginate/array'
-    p "CONVERSATIONS:"
-    p @conversations
     @conversations = @conversations.paginate(page: params[:page], per_page: 10)
 
 

@@ -91,7 +91,7 @@ $( document ).ready(function() {
     $('#searchEdit').click();
   });
 
-  $('.spendingTagClose').off().on('click',function() {
+  $(document).on('click', '.spendingTagClose', function() {
 
     var index = $(this).attr('name');
 
@@ -298,8 +298,10 @@ $( document ).ready(function() {
       "vendor": vendor,
       "sector": sector
     };
+    var index = $('.sideBarIntentions').children().last().find('.sidebarTag').attr('name');
+    var indexPlus = parseInt(index) + 1;
     // need to add an elem counter?
-    var newIntention = '<div class="searchSideBarSpending"><div class="searchSidebarDropdownLeft"><div class="searchSideBarSpendingHeader">Spending Intention</div><div class="searchSideBarSpendingInfo">'+intention+'  •  '+sector+'  •  '+vendor+'</div></div><div class="searchTagClose spendingTagClose"><div class="icon icon-icon-close"></div></div></div>';
+    var newIntention = '<div class="searchSideBarSpending"><div class="searchSidebarDropdownLeft"><div class="searchSideBarSpendingHeader">Spending Intention</div><div class="searchSideBarSpendingInfo">'+intention+'  •  '+sector+'  •  '+vendor+'</div></div><div class="searchTagClose spendingTagClose sidebarTag" name="'+ indexPlus +'"" ><div class="icon icon-icon-close"></div></div></div>';
 
     // for submitting new params?
 
@@ -551,6 +553,21 @@ $( document ).ready(function() {
     $.post(url, {'message': msg}, function(data) {
       $(elem).html(html);
     });
+  });
+
+  $(".resetChangePassword").off().on('click', function () {
+    var id = $('#resetSubmitChangePassword').attr('data');
+    var pw = $('#password_field').val();
+    var confirm = $('#confirm_password_field').val();
+
+    if (pw === confirm) {
+      $.post('/onboarding/edit_user/'+id, {"password": pw}, function(data) {
+       window.location.href = "/home"
+      })
+    } else {
+      $('.onboardWarning').text("Passwords do not match.");
+
+    }
   });
 
 
