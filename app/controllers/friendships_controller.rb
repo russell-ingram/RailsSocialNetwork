@@ -49,6 +49,7 @@ class FriendshipsController < ApplicationController
   def accept
     @friendship = current_user.friendships.find(params[:id])
     if @friendship.accept_mutual_friendship!
+      EtrMailer.friend_request_accepted_email(current_user, @friendship.friend).deliver_now
       # flash[:success] = "You are now friends with #{@friendship.friend.full_name}"
     else
       # flash[:error] = 'Something went horribly wrong!'
@@ -82,6 +83,7 @@ class FriendshipsController < ApplicationController
       @message = params[:message]
     end
     @friendship = Friendship.request(current_user,@friend, @message)
+    EtrMailer.add_friend_email(current_user, @friend, params[:message]).deliver_now
     respond_to do |format|
       if @friendship.new_record?
         format.html do

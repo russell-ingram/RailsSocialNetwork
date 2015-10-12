@@ -102,6 +102,10 @@ class ConversationsController < ApplicationController
   def reply
     current_user.reply_to_conversation(@conversation, params[:body])
     @recipients = @conversation.recipients
+    @recipients.each do |u|
+      EtrMailer.message_replied_email(current_user, u, params[:body]).deliver_now
+    end
+
     @recipients.each do |r|
       @conversation.untrash(r)
     end

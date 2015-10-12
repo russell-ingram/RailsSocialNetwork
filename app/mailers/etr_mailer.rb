@@ -35,4 +35,35 @@ class EtrMailer < ApplicationMailer
     @password = password
     mail(to: user.email, subject: "Reset your FITO password")
   end
+
+  def add_friend_email(sender, receiver, message)
+    @receiver = receiver
+    @sender = sender
+    @message = message
+    subject = "You have received a new FITO connection request: "+ "sender.full_name"+ " wants to connect with you"
+    mail(to: receiver.email, subject: subject)
+  end
+
+  def friend_request_accepted_email(sender, receiver)
+    @sender = sender
+    @receiver = receiver
+    subject = sender.full_name + " has accepted your FITO connection request"
+    mail(to: receiver.email, subject: subject)
+  end
+
+  def message_received_email(sender, receiver, message)
+    @sender = sender
+    @receiver = receiver
+    @message = message
+    subject = "FITO - " + sender.full_name + " has sent you a message"
+    mail(to: @receiver.email, subject: subject)
+  end
+   def message_replied_email(sender, receiver, message)
+    @sender = sender
+    @receiver = receiver
+    @message = message
+    subject = "FITO - " + sender.full_name + " has replied to your message"
+    mail(to: @receiver.email, subject: subject)
+  end
+
 end

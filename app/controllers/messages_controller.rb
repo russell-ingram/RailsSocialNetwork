@@ -18,8 +18,7 @@ class MessagesController < ApplicationController
     users = params['recipients_id'].split(',')
     recipients = []
 
-    x = User.where(id: users).all
-    puts x
+    rec = User.where(id: users).all
     # users.each do |user_id|
     #   rec = User.where(id: user_id.to_i)
     #   # puts rec.inspect
@@ -27,16 +26,17 @@ class MessagesController < ApplicationController
     # end
     # puts recipients
 
-    conversation = current_user.send_message(x, params[:message][:body], params[:message][:subject])
+    conversation = current_user.send_message(rec, params[:message][:body], params[:message][:subject])
     flash[:sent] = "Your message has been successfully sent!"
 
     # redirect_to conversation_path(1)
-    p "CONTROLLER"
-    p params[:controller]
 
     if conversation
-      puts "CONVERSATION PATH!!!!"
       flash[:sent] = "Message sent!"
+      rec.each do |u|
+        EtrMailer.message_received_email(current_user, u, params[:message][:body]).deliver_now
+      end
+
       if !params[:msgAll].blank? and params[:msgAll] == "msgAll"
         redirect_to '/admin/messages/new/all'
       else
