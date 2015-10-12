@@ -4,9 +4,7 @@ class EtrMailer < ApplicationMailer
   def notify_changes_email(user,changes)
     @user = user
     @changes = changes
-    # puts "SENDING AN EMAIL TO:"
-    # p @user.email
-    mail(to: 'brontosauruss@gmail.com', subject: "User changes")
+    mail(to: @user.email, subject: "User changes")
   end
 
   def send_invite_email(user)
@@ -21,11 +19,18 @@ class EtrMailer < ApplicationMailer
     @password = random_string
     @user.save
 
-    mail(to: "brontosauruss@gmail.com", subject: "Invite to FITO")
+    mail(to: @user.email, subject: "Invite to FITO")
   end
 
   def request_received_email(req)
     @req = req
     mail(to: @req.email, subject: "Your request to join FITO has been received")
+    # should also send an e-mail to admin notifying about request
+  end
+
+  def reset_password_email(user,password)
+    @name = user.full_name
+    @password = password
+    mail(to: user.email, subject: "Reset your FITO password")
   end
 end

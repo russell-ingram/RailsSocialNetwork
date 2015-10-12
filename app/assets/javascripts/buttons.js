@@ -555,6 +555,21 @@ $( document ).ready(function() {
     });
   });
 
+  $(".resetChangePassword").off().on('click', function () {
+    var id = $('#resetSubmitChangePassword').attr('data');
+    var pw = $('#password_field').val();
+    var confirm = $('#confirm_password_field').val();
+
+    if (pw === confirm) {
+      $.post('/onboarding/edit_user/'+id, {"password": pw}, function(data) {
+       window.location.href = "/home"
+      })
+    } else {
+      $('.onboardWarning').text("Passwords do not match.");
+
+    }
+  });
+
 
 
 });

@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if params[:commit] == 'Onboard'
       '/setup'
+    elsif params[:commit] == 'Reset'
+      '/change_password'
     else
       '/home'
     end

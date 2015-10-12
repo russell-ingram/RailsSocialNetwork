@@ -9,7 +9,12 @@ Rails.application.routes.draw do
 
   get '/register' => 'static_pages#onboard'
 
+  post '/reset_password' => 'static_pages#reset_password', as: 'reset_password'
+  get '/reset_password' => 'static_pages#update_password'
+
   get '/setup' => 'static_pages#setup'
+
+  get '/change_password' => 'static_pages#change_password'
 
   get '/profile' => 'static_pages#profile'
 
