@@ -31,6 +31,13 @@ class StaticPagesController < ApplicationController
     end
 
     @recs = User.recs(current_user)
+    # if @recs.length < 6
+    #   p "RESETTTING"
+    #   @recs = []
+    #   6.times do
+    #     @recs << current_user
+    #   end
+    # end
 
   end
 

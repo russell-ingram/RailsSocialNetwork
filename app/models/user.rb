@@ -124,7 +124,11 @@ class User < ActiveRecord::Base
       n.times do |i|
         random = users.sample
         if !friends.include? random
-          recs << random
+          if random != nil
+            recs << random
+          else
+            recs << current_user
+          end
         end
       end
     end
