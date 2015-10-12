@@ -1,3 +1,26 @@
+.pageAdminCreateMessage {
+  
+  .newMsgFormGroup.recipientsGroup {
+    ul {
+      border-width: 1px;
+      border-radius: 0;
+    }
+
+    .tagit-new {
+      margin-top:-3px !important;
+    }
+  }
+
+  .pubOrPrivBox {
+    text-align:right;
+    padding-right:5px;
+  }
+
+  .newMsgBtnSend {
+    margin-top:30px;
+  }
+}
+
 .my-custom-theme {
   border-radius: 5px; 
   border: 2px solid #000;

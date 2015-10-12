@@ -119,6 +119,9 @@
   top: 0;
   left: 0;
   cursor: default;
+  max-height: 800px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .ui-button {
   display: inline-block;
@@ -464,6 +467,9 @@ button.ui-button::-moz-focus-inner {
   margin: 0;
   padding: 0;
   width: 100%;
+  margin-bottom:3px !important;
+  font-family: "PNReg";
+  font-size:0.8em;
 }
 .ui-menu .ui-menu-divider {
   margin: 5px -2px 5px -2px;
@@ -840,6 +846,11 @@ body .ui-tooltip {
   font-weight: bold;
   color: #ffffff;
 }
+
+.ui-widget-content .ui-state-focus {
+  border:none !important;
+}
+
 .ui-state-hover a,
 .ui-state-hover a:hover,
 .ui-state-hover a:link,
