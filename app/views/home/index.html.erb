@@ -204,6 +204,7 @@ $( document ).ready(function() {
     $('.fitoLandingRequestWrapper').hide();
     $('#signInForm').hide();
     $('.fitoLandingRequestResetPasswordWrapper').show();
+    $('.flashHomePage').hide();
   });
 
   $("#fitoLandingPasswordReset").off().on('click', function() {
@@ -233,6 +234,7 @@ $( document ).ready(function() {
     $('.fitoLandingSignInWrapper').removeClass('active');
     $("#fitoLandingSignInButton").removeClass('active');
     $('.mainRequestBtn').removeClass('active');
+    $('.flashHomePage').hide();
 
     // prevents scrolling again
     $('body').addClass('homePageBody');
