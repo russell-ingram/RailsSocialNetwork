@@ -400,5 +400,33 @@ pageSpecificInits.global = function(jquery){
 		    window.location = link;
 		});
 	}
+
+
+	if(this._isIE()){
+		jquery('body').addClass('ie');
+	}
 };
+
+pageSpecificInits._isIE = function() {
+
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+    	return true;
+    }
+
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+    	return true;
+    }
+
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+    	return true;
+    }
+
+    return false;
+
+}
 
