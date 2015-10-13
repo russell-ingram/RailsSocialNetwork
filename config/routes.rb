@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/register' => 'static_pages#onboard'
 
+  get '/about' => 'static_pages#about'
+
   post '/reset_password' => 'static_pages#reset_password', as: 'reset_password'
   get '/reset_password' => 'static_pages#update_password'
 
@@ -66,6 +68,7 @@ Rails.application.routes.draw do
   get '/user/edit' => 'user_admin#edit_self', as: 'edit_profile'
   post '/onboarding/edit_user/:id' => 'user_admin#setup_user', as: 'setup_user'
 
+  post '/user/update_settings' => 'user_admin#update_settings', as: 'update_settings'
 
 
 

@@ -293,14 +293,30 @@ $( document ).ready(function() {
 
   $('.dropDivIcon').off().on('click', function() {
     var i = $(this)
+    var type = '';
+    if (i.hasClass('connectionNotification')) {
+      type = 'connection';
+    } else if (i.hasClass('messageNotification')) {
+      type = 'message';
+    }
+
+
     if (i.hasClass('icon-selection-true')) {
+      $.post('/user/update_settings', {'type': type, 'setting': false}, function() {
+      });
+
       i.removeClass('icon-selection-true');
       i.addClass('icon-selection-false');
     } else {
+      $.post('/user/update_settings', {'type': type, 'setting': true}, function() {
+      });
+
       i.addClass('icon-selection-true');
       i.removeClass('icon-selection-false');
     }
-  })
+  });
+
+
 
   $('.profileConnected').hover(
     function() {

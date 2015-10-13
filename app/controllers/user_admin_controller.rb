@@ -171,6 +171,22 @@ class UserAdminController < ApplicationController
     end
   end
 
+  def update_settings
+    @type = params[:type]
+    @setting = params[:setting]
+    @user = current_user
+
+    if @type == 'message'
+      @user.message_notifications = @setting
+    elsif @type == 'connection'
+      @user.connection_notifications = @setting
+    end
+
+    @user.save
+    render json: @type
+  end
+
+
   def setup_user
     @editUser = User.find(params[:id])
     if @editUser != current_user
@@ -272,6 +288,8 @@ class UserAdminController < ApplicationController
       @req.uid = uid
       @req.save
     end
+    @countries = countries_list
+    @industries = industries_list
 
 
     respond_to do |format|

@@ -53,13 +53,21 @@
           <div class="settingsDropDivText">
             Receive an email when you receive a connection request
           </div>
-          <div class="icon icon-selection-true dropDivIcon"></div>
+          <% if current_user.connection_notifications %>
+          <div class="icon icon-selection-true dropDivIcon connectionNotification"></div>
+          <% else %>
+          <div class="icon icon-selection-false dropDivIcon connectionNotification"></div>
+          <% end %>
         </div>
         <div class="settingsDropDiv">
           <div class="settingsDropDivText">
             Receive an email when you receive a new message
           </div>
-          <div class="icon icon-selection-true dropDivIcon"></div>
+          <% if current_user.message_notifications %>
+          <div class="icon icon-selection-true dropDivIcon messageNotification"></div>
+          <% else %>
+          <div class="icon icon-selection-false dropDivIcon messageNotification"></div>
+          <% end %>
         </div>
       </div>
     </div>
