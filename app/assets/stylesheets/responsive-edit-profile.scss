@@ -1,0 +1,87 @@
+
+@media screen and (max-width: 1050px) {
+
+	.pageEditProfile {
+
+		.userSummaryField {
+			margin: 0 !important;
+		}
+
+		.boxForSummary {
+			padding: 30px;
+		}
+
+		.pubOrPrivBox {
+
+		    position: absolute;
+		    right: 60px;
+		}
+
+		.pastPositionBox {
+
+			.field-col-2 {
+    			width: 49%;
+			}
+
+			.field-col-3 {
+				width: 32%;
+			}
+		}
+
+		.experienceSummaryBox {
+    		padding-right: 220px;
+			width: 100%;
+		}
+
+		#editor {
+
+			width: 100%;
+		}
+
+		.editPhotoUpload {
+
+			padding-bottom: 0;
+    		position: absolute;
+		}
+
+		.editContentRight {
+
+    		width: 100%;
+    		max-width: 100%;
+    		padding-left: 240px;
+		    padding-right: 30px;
+		    margin-left: 0;
+
+			.halfField {
+
+				width: 48%;
+
+				input {
+
+					width: 100%;
+				}
+			}
+
+			.halfField.left {
+				margin-right:4%;
+			}
+
+			.halfField.right {
+				margin-right:0;
+			}
+
+			.fullField {
+				width: 100%;
+				margin-right: 0;
+
+				input {
+					width: 100%;
+
+				}
+			}
+
+		}
+
+	}
+
+}

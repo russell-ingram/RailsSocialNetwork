@@ -1,5 +1,5 @@
 <%= render "layouts/header" %>
-<div class="pageWrap">
+<div class="pageWrap responsive pageEditProfile">
 <div class="pageHeaderBar">
   <div class="pageHeader floatHeader">Edit Profile</div>
 
@@ -61,10 +61,10 @@
 
       <div class="editContentRight">
 
-        <div class="field editField">
+        <div class="field editField halfField left">
           <%= f.text_field :first_name, placeholder: 'First name' %>
         </div>
-        <div class="field editField">
+        <div class="field editField halfField right">
           <%= f.text_field :last_name, placeholder: 'Last name' %>
         </div>
         <div class="field editField fullField">
@@ -91,10 +91,13 @@
         <div class="editorButton ql-italic">I</div>
         <div class="editorButton ql-underline">U</div>
       </div>
-        <div class="newMsgFormControl newMessageArea userSummaryField" id="editor">
-          <% if @editUser.summary? %>
-          <%= @editUser.summary.html_safe %>
-          <% end %>
+        <div class="boxForSummary">
+          
+          <div class="newMsgFormControl newMessageArea userSummaryField" id="editor">
+            <% if @editUser.summary? %>
+            <%= @editUser.summary.html_safe %>
+            <% end %>
+          </div>
         </div>
         <%= f.text_area :summary, placeholder: 'Summary',id:'textAreaEditor', style: 'display: none;' %>
 
