@@ -4,13 +4,11 @@ $( document ).ready(function() {
     if ($(this).hasClass('active')) {
       pastPositionsVisible ++;
     }
-    console.log(pastPositionsVisible);
   })
   $('.addPastPosition').off().on('click',function(){
     if (pastPositionsVisible < 2) {
       $("#pastExp1").show();
       pastPositionsVisible++;
-      console.log(pastPositionsVisible);
     } else if (pastPositionsVisible === 2) {
       $("#pastExp2").show();
       $('.addPastPosition').hide();
@@ -86,7 +84,6 @@ $( document ).ready(function() {
   $('.searchTagClose').off().on('click',function() {
     $(this).parent().next().attr('value', '');
     $(this).parent().next().val('');
-    console.log($(this).parent().next());
     $(this).parent().remove();
     $('#searchEdit').click();
   });
@@ -98,7 +95,6 @@ $( document ).ready(function() {
     if ($(this).hasClass('sidebarTag')) {
       var oldStr = $('#resultsField').val();
       var oldArr = JSON.parse(oldStr);
-      console.log(oldArr);
       if (oldArr.length > 1) {
         var newArr = oldArr.splice(index, 1);
         var newStr = JSON.stringify(oldArr);
@@ -165,7 +161,6 @@ $( document ).ready(function() {
 
       $('.searchResultsFollowButton').html("ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div> ");
       $('.searchResultsFollowButton').addClass('inactive');
-      // console.log(data);
       var props_string = '';
       var intentions = false;
       $.each(data,function(k,v) {
@@ -189,14 +184,12 @@ $( document ).ready(function() {
           }
         }
       });
-      console.log(props_string);
       if (props_string !== "null, ") {
         props_string = props_string.slice(0,-2);
       }
       if (props_string.length === 0 && !intentions) {
         props_string = "<i>No filters selected.</i>";
       }
-      console.log(props_string.length);
       if (intentions && props_string !== "") {
         var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'<br><i> Intention filters used. </i></div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
       } else if (intentions) {
@@ -419,7 +412,6 @@ $( document ).ready(function() {
     if ($('.searchConnsInput').hasClass('active')) {
       var input = $('#searchConnsInput').val();
       var url = '/connections?name='+input;
-      console.log(url);
       $.get(url, null, null, 'script');
     } else {
       $('.searchConnsInput').addClass('active');
