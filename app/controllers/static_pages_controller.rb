@@ -42,7 +42,9 @@ class StaticPagesController < ApplicationController
   end
 
   def onboard
-
+    if current_user
+      redirect_to '/home'
+    end
   end
 
   def setup
