@@ -405,6 +405,12 @@ pageSpecificInits.global = function(jquery){
 	if(this._isIE()){
 		jquery('body').addClass('ie');
 	}
+	else {
+		BrowserDetect.init();
+		if(BrowserDetect.browser==='Firefox'){
+			jquery('body').addClass('firefox');
+		}
+	}
 };
 
 pageSpecificInits._isIE = function() {

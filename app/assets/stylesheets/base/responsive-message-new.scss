@@ -16,6 +16,10 @@
 
 @media screen and (max-width: 700px) {
 
+	.deleteIntentionModal .close-modal {
+		margin-top: -80px !important;
+	}
+
 	.messagesHeader .pageHeader {
 		padding-left:20px;
 	}
