@@ -1,0 +1,36 @@
+
+@media screen and (max-width: 700px) {
+
+	.pageSearchPeers, .pageSearchResults,
+	.pageHome, .pageMessageDetail {
+
+
+		.deleteIntentionModal .close-modal {
+			width: 120px;
+			margin-right:30px !important;
+		}
+
+		.deleteIntentionModal .modalDoneButton {
+			width: 120px;
+			margin-left:10px !important;
+
+		}
+
+		.deleteIntentionModal {
+			width: 100% !important;
+			margin-left: 0 !important;
+			left: 0 !important;
+		}
+	
+	}
+
+	.pageSearchResults {
+
+		.deleteIntentionModal .modalDoneButton {
+			margin-left: 0 !important;
+
+		}
+
+	}
+
+}
