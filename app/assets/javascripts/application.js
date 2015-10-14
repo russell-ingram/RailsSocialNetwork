@@ -134,19 +134,7 @@ pageSpecificInits.searchPeersPage = function(jquery){
 };
 
 pageSpecificInits.homePage = function(jquery){
-
-	var alignHeights = function(box_1, box_2, wrap_1, wrap_2){
-
-		if(box_1.outerHeight() > box_2.outerHeight()){
-			wrap_1.outerHeight(box_1.outerHeight());
-			wrap_2.outerHeight(box_1.outerHeight());
-		}
-		else{
-			wrap_1.outerHeight(box_2.outerHeight());
-			wrap_2.outerHeight(box_2.outerHeight());
-		}
-	};
-
+	
 	var adjustContentPicSize = function(){
 
 		var box = jquery('.homeContentPic');
@@ -184,6 +172,48 @@ pageSpecificInits.homePage = function(jquery){
 		}
 	};
 
+	var align_inner_boxes = function(){
+		var box_1 = jquery(".homeContentInvite.homeContent.break-1-hide")
+		var box_2 = jquery('.homeContentFollowed.homeContent');
+		var wrap_1 = jquery('.homeContentBox2 .bottom .left');
+		var wrap_2 = jquery('.homeContentBox2 .bottom .right');
+
+		if(box_1.outerHeight() > box_2.outerHeight()){
+			wrap_1.outerHeight(box_1.outerHeight());
+			wrap_2.outerHeight(box_1.outerHeight());
+		}
+		else{
+			wrap_1.outerHeight(box_2.outerHeight());
+			wrap_2.outerHeight(box_2.outerHeight());
+		}
+	};
+
+	var align_outer_boxes = function(){
+
+		var box_1 = jquery(".homeContentBox1");
+		var box_2 = jquery('.homeContentBox2');
+		var wrap_1 = jquery('.homeContentWrapper > .left');
+		var wrap_2 = jquery('.homeContentWrapper > .right');
+
+		if(box_1.outerHeight() > box_2.outerHeight()){
+			var diff = box_1.outerHeight() - box_2.outerHeight();
+			var h = box_2.find('.homeContentResearch').outerHeight();
+			box_2.find('.homeContentResearch').outerHeight(h + diff);
+		}
+		else{
+			wrap_1.outerHeight(box_2.outerHeight());
+			wrap_2.outerHeight(box_2.outerHeight());
+		}
+	};
+
+	var align_boxes_on_mobile = function(){
+
+		var h = jquery(".homeContentBox2 .bottom .left .homeContentFollowed").outerHeight();
+		jquery('.homeContentBox2 .bottom .left').outerHeight(h);
+		jquery('.homeContentWrapper > .left').outerHeight(jquery(".homeContentBox1").outerHeight());
+		jquery('.homeContentWrapper > .right').outerHeight(jquery(".homeContentBox2").outerHeight());
+	};
+
 	var onResize = function(){
 
 		adjustContentPicSize();
@@ -192,40 +222,13 @@ pageSpecificInits.homePage = function(jquery){
 		var breakstate = jquery('.breakstate').width();
 		if(breakstate === 1050 || breakstate === 0){
 
-			alignHeights(
-				jquery(".homeContentInvite.homeContent.break-1-hide"),
-				jquery('.homeContentFollowed.homeContent'),
-				jquery('.homeContentBox2 .bottom .left'),
-				jquery('.homeContentBox2 .bottom .right')
-			);
-
-
-			var box_1 = jquery(".homeContentBox1");
-			var box_2 = jquery('.homeContentBox2');
-			var wrap_1 = jquery('.homeContentWrapper > .left');
-			var wrap_2 = jquery('.homeContentWrapper > .right');
-
-			if(box_1.outerHeight() > box_2.outerHeight()){
-				// console.log('left wins');
-				var diff = box_1.outerHeight() - box_2.outerHeight();
-				var h = box_2.find('.homeContentResearch').outerHeight();
-				console.log('diff: ' + diff);
-				console.log('total: ' + h + diff);
-				box_2.find('.homeContentResearch').outerHeight(h + diff);
-			}
-			else{
-				wrap_1.outerHeight(box_2.outerHeight());
-				wrap_2.outerHeight(box_2.outerHeight());
-			}
+			align_inner_boxes();
+			align_outer_boxes();			
 
 		}
 		else{
 
-			var h = jquery(".homeContentBox2 .bottom .left .homeContentFollowed").outerHeight();
-			console.log(h);
-			jquery('.homeContentBox2 .bottom .left').outerHeight(h);
-			jquery('.homeContentWrapper > .left').outerHeight(jquery(".homeContentBox1").outerHeight());
-			jquery('.homeContentWrapper > .right').outerHeight(jquery(".homeContentBox2").outerHeight());
+			align_boxes_on_mobile();
 
 		}
 	}
@@ -400,39 +403,5 @@ pageSpecificInits.global = function(jquery){
 		    window.location = link;
 		});
 	}
-
-
-	if(this._isIE()){
-		jquery('body').addClass('ie');
-	}
-	else {
-		BrowserDetect.init();
-		if(BrowserDetect.browser==='Firefox'){
-			jquery('body').addClass('firefox');
-		}
-	}
 };
-
-pageSpecificInits._isIE = function() {
-
-    var ua = window.navigator.userAgent;
-
-    var msie = ua.indexOf('MSIE ');
-    if (msie > 0) {
-    	return true;
-    }
-
-    var trident = ua.indexOf('Trident/');
-    if (trident > 0) {
-    	return true;
-    }
-
-    var edge = ua.indexOf('Edge/');
-    if (edge > 0) {
-    	return true;
-    }
-
-    return false;
-
-}
 
