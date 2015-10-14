@@ -29,19 +29,31 @@
           <div class="settingsDropDivText">
             Receive an email when a user's profile is updated or edited
           </div>
-          <div class="icon icon-selection-true dropDivIcon"></div>
+          <% if current_user.admin_profile_notifications %>
+          <div class="icon icon-selection-true dropDivIcon adminProfileNotification"></div>
+          <% else %>
+          <div class="icon icon-selection-false dropDivIcon adminProfileNotification"></div>
+          <% end %>
         </div>
         <div class="settingsDropDiv">
           <div class="settingsDropDivText">
             Receive an email when a new request to join FITO is made
           </div>
-          <div class="icon icon-selection-true dropDivIcon"></div>
+          <% if current_user.admin_request_notifications %>
+          <div class="icon icon-selection-true dropDivIcon adminRequestNotification"></div>
+          <% else %>
+          <div class="icon icon-selection-false dropDivIcon adminRequestNotification"></div>
+          <% end %>
         </div>
         <div class="settingsDropDiv">
           <div class="settingsDropDivText">
             Receive an email when a user's account is activated
           </div>
-          <div class="icon icon-selection-true dropDivIcon"></div>
+          <% if current_user.admin_activation_notifications %>
+          <div class="icon icon-selection-true dropDivIcon adminActivationNotification"></div>
+          <% else %>
+          <div class="icon icon-selection-false dropDivIcon adminActivationNotification"></div>
+          <% end %>
         </div>
       </div>
     </div>

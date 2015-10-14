@@ -298,6 +298,12 @@ $( document ).ready(function() {
       type = 'connection';
     } else if (i.hasClass('messageNotification')) {
       type = 'message';
+    } else if (i.hasClass('adminProfileNotification')) {
+      type ='adminProfile';
+    } else if (i.hasClass('adminRequestNotification')) {
+      type ='adminRequest';
+    } else if (i.hasClass('adminActivationNotification')) {
+      type ='adminActivation';
     }
 
 

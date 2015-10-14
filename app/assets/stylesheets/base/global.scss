@@ -310,21 +310,15 @@ textarea, input, select {
   font-size: 28px !important;
 }
 
-
-@media only screen
-and (min-device-width : 1280px)
-and (max-device-width : 1386px) {
-
-
-}
-
-@media only screen
-and (min-device-width : 1386px) {
-
-  .pageWrap {
-    // width: 1386px;
-  }
-
+.aboutText {
+    font-size: 18px;
+    line-height: 24px;
+    color: #797C80;
+    max-width: 770px;
+    margin: 0 auto;
+    padding-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 100px;
 }
 
 

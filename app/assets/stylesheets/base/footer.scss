@@ -22,6 +22,7 @@
 
 .footNav {
   margin-top: -15px;
+  float:right;
 }
 
 .footNav a {
@@ -30,6 +31,11 @@
   display: block;
   margin-bottom: 5px;
   text-align: right;
+  transition: color 0.2s;
+  -webkit-transition: color 0.2s;
+}
+.footNav a:hover {
+  color: #FFF;
 }
 
 .footWrapper .name {
