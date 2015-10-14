@@ -1,5 +1,7 @@
 class EtrMailer < ApplicationMailer
-  default from: "brontosauruss@gmail.com"
+  # default from: "brontosauruss@gmail.com"
+  default from: "notifications@etrfito.com"
+  before_action :get_logo
 
   def notify_changes_email(user,changes)
     @user = user
@@ -40,30 +42,43 @@ class EtrMailer < ApplicationMailer
     @receiver = receiver
     @sender = sender
     @message = message
-    subject = "You have received a new FITO connection request: "+ "sender.full_name"+ " wants to connect with you"
-    mail(to: receiver.email, subject: subject)
+    subject = "You have received a new FITO connection request: "+sender.full_name+ " wants to connect with you"
+    if @receiver.connection_notifications
+      mail(to: receiver.email, subject: subject)
+    end
   end
 
   def friend_request_accepted_email(sender, receiver)
     @sender = sender
     @receiver = receiver
-    subject = sender.full_name + " has accepted your FITO connection request"
-    mail(to: receiver.email, subject: subject)
+    subject = @sender.full_name + " has accepted your FITO connection request"
+    if @receiver.connection_notifications
+      mail(to: receiver.email, subject: subject)
+    end
   end
 
   def message_received_email(sender, receiver, message)
     @sender = sender
     @receiver = receiver
     @message = message
-    subject = "FITO - " + sender.full_name + " has sent you a message"
-    mail(to: @receiver.email, subject: subject)
+    subject = "FITO - " + @sender.full_name + " has sent you a message"
+    if @receiver.message_notifications
+      mail(to: @receiver.email, subject: subject)
+    end
   end
-   def message_replied_email(sender, receiver, message)
+
+  def message_replied_email(sender, receiver, message)
     @sender = sender
     @receiver = receiver
     @message = message
     subject = "FITO - " + sender.full_name + " has replied to your message"
-    mail(to: @receiver.email, subject: subject)
+    if @receiver.message_notifications
+      mail(to: @receiver.email, subject: subject)
+    end
+  end
+
+  def get_logo
+    attachments.inline['email-footer-logo.png'] = File.read(Rails.root.join('app/assets/images/email-footer-logo.png'))
   end
 
 end

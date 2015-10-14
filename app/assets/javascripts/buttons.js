@@ -427,7 +427,7 @@ $( document ).ready(function() {
 
   $('#inviteButton').off().on('click', function() {
     var name = $(this).attr('data');
-    window.location.href = "mailto:user@example.com?subject=Invitation to FITO network presented by ETR&body="+name+" is inviting you to join the FITO network for technology adoption leaders. Click here to request access: http://localhost:3000/?requestAccess";
+    window.location.href = "mailto:?subject=Invitation to FITO network presented by ETR&body="+name+" is inviting you to join the FITO network for technology adoption leaders. Click here to request access: http://etrfito.com/?requestAccess";
   });
 
   $(".onboardSubmitLogin").off().on('click', function() {
@@ -438,8 +438,26 @@ $( document ).ready(function() {
     var id = $('#onboardSubmitChangePassword').attr('data');
     var pw = $('#password_field').val();
     var confirm = $('#confirm_password_field').val();
+    var fail_msg = '';
+    var passed = false;
 
-    if (pw === confirm) {
+    if (pw === '' || confirm === '') {
+      fail_msg = 'Please enter a password.'
+    } else if (pw !== confirm) {
+      fail_msg = 'Passwords do not match.'
+    } else if (pw.length < 8) {
+      fail_msg = 'Password must be at least eight (8) characters long.'
+    } else if (pw.search(/[A-Z]/) == -1) {
+      fail_msg = 'Password must contain at least one capital letter.'
+    } else if (pw.search(/[\@\!\#\$\%\^\&\*\_\-]/) == -1) {
+      fail_msg = 'Password must contain at least one special character.'
+    } else if (pw.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\_]/) != -1) {
+      fail_msg = 'Password can only contain letters, numbers, and the specified special characters.'
+    } else {
+      passed = true;
+    }
+
+    if (passed) {
       $.post('/onboarding/edit_user/'+id, {"password": pw}, function(data) {
         $('.onboardFormMain').hide();
         $('.onboardFormMainDetails').show();
@@ -453,7 +471,7 @@ $( document ).ready(function() {
         $('.onboardWrap').addClass('active');
       })
     } else {
-      $('.onboardWarning').text("Passwords do not match.");
+      $('.onboardWarning').text(fail_msg);
 
     }
   })

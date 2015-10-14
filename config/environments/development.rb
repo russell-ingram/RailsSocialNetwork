@@ -44,11 +44,18 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    # :address              => "smtp.gmail.com",
+    # :port                 => 587,
+    # :user_name            => 'brontosauruss@gmail.com',
+    # :password             => 'acer4321',
+    # :authentication       => "plain",
+    # :enable_starttls_auto => true
+    :address              => "smtp.office365.com",
     :port                 => 587,
-    :user_name            => 'brontosauruss@gmail.com',
-    :password             => 'acer4321',
-    :authentication       => "plain",
+    :user_name            => 'notifications@etrfito.com',
+    :domain               => 'etrfito.com',
+    :password             => 'f!toteam27',
+    :authentication       => :login,
     :enable_starttls_auto => true
   }
 end

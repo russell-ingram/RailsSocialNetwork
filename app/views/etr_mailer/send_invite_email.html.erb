@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Hi <%= @user.full_name %>,</h1>
-    <p>
-      You have received an invite to join FITO.
-      </br>
-      Please visit http://etrfito.com/register and use the following credentials to get started:
-      </br>
+<%= render "etr_mailer/email_header" %>
+    <div class="emailGreeting" style="font-size: 24px; color: #000000; margin-bottom: 40px; padding-left: 20px;">Invitation request received</div>
+    <div class="emailBody" style="font-size: 14px; line-height: 22px; color: #797C7F; padding-left: 20px;">
+      Hi <%= @user.full_name %>,
+      <br>
+      <br>
+      You have received an invite to join FITO. Please visit http://etrfito.com/register and use the following credentials to get started:
+      <br>
+      <br>
+      Email:
+      <br>
       <%= @user.email %>
-      </br>
+      <br>
+      Temporary Password:
+      <br>
       <%= @password %>
-    </p>
-  </body>
-</html>
+      <br>
+      <br>
+      Sincerely,
+      <br>
+      The FITO team
+
+    </div>
+
+<%= render "etr_mailer/email_footer" %>
