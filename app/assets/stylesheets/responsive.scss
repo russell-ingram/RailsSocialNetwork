@@ -114,19 +114,20 @@
 @media screen and (max-width: 700px) {
 
 	.searchMultiselectDropdown.dropdown.active {
-		right: 0;
-    	width: 392px;
+		right: -20px;
+    	width: 322px;
 
 		.multiSelectHalf {
-			width: 180px;
+			width: 140px;
+			padding: 5px;
 		
 			.pubOrPrivBox {
-				width: 120px;
+				width: 110px;
 			}
 		}	
 
 		.multiSelectHalf:last-child {
-			width: 210px;
+			width: 180px;
 		
 			.pubOrPrivBox {
 				width: 150px;
