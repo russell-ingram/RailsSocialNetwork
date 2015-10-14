@@ -208,7 +208,7 @@ pageSpecificInits.homePage = function(jquery){
 			if(box_1.outerHeight() > box_2.outerHeight()){
 				// console.log('left wins');
 				var diff = box_1.outerHeight() - box_2.outerHeight();
-				var h = box_1.find('.homeContentResearch').outerHeight();
+				var h = box_2.find('.homeContentResearch').outerHeight();
 				console.log('diff: ' + diff);
 				console.log('total: ' + h + diff);
 				box_2.find('.homeContentResearch').outerHeight(h + diff);
