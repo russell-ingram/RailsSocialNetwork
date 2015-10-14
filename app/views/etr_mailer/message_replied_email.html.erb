@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Hello <%= @receiver.first_name %>,</h1>
-    <p>
-      You have a new reply from <%= @sender.full_name %>. Please log into FITO (http://etrfito.com/), the next-gen platform for real-time enterprise peer benchmarking and CIO level networking, powered by ETR.
+<%= render "etr_mailer/email_header" %>
+    <div class="emailGreeting" style="font-size: 24px; color: #000000; margin-bottom: 40px; padding-left: 20px;">Invitation request received</div>
+    <div class="emailBody" style="font-size: 14px; line-height: 22px; color: #797C7F; padding-left: 20px;">
+      Hi <%= @receiver.full_name %>,
+      <br>
+      <br>
+      You have a new reply from <%= @sender.full_name %>. Please log into <a href="http://etrfito.com">FITO</a>, the next-gen platform for real-time enterprise peer benchmarking and CIO level networking, powered by ETR.
+      <br>
+      <br>
       <br>
       The message is:
       <br>
       "<%= @message %>"
+      <br>
+      <br>
+      Sincerely,
+      <br>
+      The FITO team
 
+    </div>
 
-    </p>
-  </body>
-</html>
+<%= render "etr_mailer/email_footer" %>

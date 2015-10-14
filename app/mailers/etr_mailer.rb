@@ -1,5 +1,6 @@
 class EtrMailer < ApplicationMailer
-  default from: "brontosauruss@gmail.com"
+  # default from: "brontosauruss@gmail.com"
+  default from: "notifications@etrfito.com"
   before_action :get_logo
 
   def notify_changes_email(user,changes)

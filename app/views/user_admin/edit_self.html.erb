@@ -92,7 +92,7 @@
         <div class="editorButton ql-underline">U</div>
       </div>
         <div class="boxForSummary">
-          
+
           <div class="newMsgFormControl newMessageArea userSummaryField" id="editor">
             <% if @editUser.summary? %>
             <%= @editUser.summary.html_safe %>
@@ -314,38 +314,7 @@
     <div class="userEditButtons">
       <div class="userAdminButton blue-bg-link"><%= f.submit 'Save' %></div>
       <div class="userAdminButton greyButton"><a href="/profile">Cancel</a></div>
-
-
     </div>
-
-<div id="msgModal" class="addIntentionModal" style="display:none;">
-  <div class="formBox searchFormBox formBoxModal">
-    <div class="formHeader">SEND INVITATION</div>
-    <div class="modalBody">
-      <div class="modalIntentions">
-      </div>
-      <div class="modalIntentionsRight">
-        <div class="deleteUserModalInfo">
-          (NOT FUNCTIONAL YET)
-          </br>
-          Send invitation to <%= @editUser.full_name %>?
-        </div>
-        <div class="modalDoneButton">
-          SEND
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
 
 
 <% end %>
