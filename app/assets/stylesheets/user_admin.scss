@@ -452,6 +452,70 @@
   }
 }
 
+.pageAdminManagePageContent {
+
+  .ql-editor {
+    height: 150px;
+
+  }
+
+  .ql-toolbar {
+    top: 115px;
+  }
+
+  .ql-editor, 
+  input[type=text], 
+  textarea {
+    color: #445058;
+  }
+
+  .newMessageArea {
+    min-height: 150px;
+  }
+
+  #edit_content_6 {
+
+    .cmsSaveButton {
+      margin-top: 38px;
+    }
+
+  }
+
+  #edit_content_8 {
+
+    .cmsSaveButton {
+      margin-top: 10px;
+    }
+
+    .col-layout-3 {
+      width: 31.5%;
+    }
+
+    .bottomRow .cmsBoxCol {
+        width: 48.7%;
+    }
+
+  }
+
+  #edit_content_7 {
+
+    .cmsSaveButton {
+      margin-top: 3px;
+    }
+
+    .userEditBox {
+      min-height: 260px;
+    }
+
+  }
+
+  .cmsImageUpload {
+
+    min-height: 390px;
+  }
+
+}
+
 .ql-summaryBar {
   top: 180px;
   right: 35px;
