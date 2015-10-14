@@ -113,6 +113,27 @@
 
 @media screen and (max-width: 700px) {
 
+	.searchMultiselectDropdown.dropdown.active {
+		right: 0;
+    	width: 392px;
+
+		.multiSelectHalf {
+			width: 180px;
+		
+			.pubOrPrivBox {
+				width: 120px;
+			}
+		}	
+
+		.multiSelectHalf:last-child {
+			width: 210px;
+		
+			.pubOrPrivBox {
+				width: 150px;
+			}
+		}			
+	}
+
 	.breakstate {
 		display:none;
 		width:700px;
