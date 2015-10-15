@@ -501,6 +501,7 @@ $( document ).ready(function() {
         $('.onboardFormHeaderSecondary').text('Connect with your LinkedIn Account To Import your professional details');
         $('.onboardFormHeaderSecondary').show();
         $('.onboardWrap').removeClass('active');
+        $(document).scrollTop(0);
     });
   })
 

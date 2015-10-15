@@ -63,7 +63,7 @@
             </div>
             <div class="fieldLabel">Employer</div>
             <div class="field editField">
-              <input placeholder="First name" type="text" value="<%= work['company'] %>" name="" id="onboard_company">
+              <input placeholder="Company name" type="text" value="<%= work['company'] %>" name="" id="onboard_company">
             </div>
             <div class="fieldLabel">Industry</div>
             <div class="field editField">
@@ -176,7 +176,6 @@
           </div>
             <div class="onboardSubmit onboardUserDetailsSubmit">
               NEXT
-
             </div>
 
             <%= f.submit "Onboard", id: "onboardSubmitChangePassword", style: "display:none;", data: current_user.id %>
@@ -185,7 +184,7 @@
       </div>
       <div class="onboardFormLinkedIn">
             <div class="onboardSubmit onboardUserDetailsSubmit">
-              CONNECT
+              <%= link_to 'CONNECT', user_omniauth_authorize_path(:linkedin) %>
             </div>
 
             <div class="skipLinkedInButton"><a href="/home">SKIP THIS STEP <div class="icon icon-fwd-arrow"></div></a></div>

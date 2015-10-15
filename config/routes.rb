@@ -70,6 +70,8 @@ Rails.application.routes.draw do
 
   post '/user/update_settings' => 'user_admin#update_settings', as: 'update_settings'
 
+  get'/setup_linkedin' => 'user_admin#setup_linkedin'
+
 
 
   resources :conversations, only: [:index, :show, :destroy] do
