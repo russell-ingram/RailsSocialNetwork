@@ -180,6 +180,12 @@ class UserAdminController < ApplicationController
       @user.message_notifications = @setting
     elsif @type == 'connection'
       @user.connection_notifications = @setting
+    elsif @type == 'adminProfile'
+      @user.admin_profile_notifications = @setting
+    elsif @type == 'adminRequest'
+      @user.admin_request_notifications = @setting
+    elsif @type == 'adminActivation'
+      @user.admin_activation_notifications = @setting
     end
 
     @user.save
