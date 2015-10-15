@@ -1,5 +1,5 @@
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 450px) {
 
 	.pageSearchPeers, .pageSearchResults,
 	.pageHome, .pageMessageDetail {
@@ -20,6 +20,12 @@
 			width: 100% !important;
 			margin-left: 0 !important;
 			left: 0 !important;
+		}
+
+		.deleteUserModalInfo {
+
+		    font-size: 20px;
+		    
 		}
 	
 	}
