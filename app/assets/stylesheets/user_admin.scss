@@ -609,9 +609,28 @@
 
 .pageAdminUsers {
 
+  padding-top: 35px;
+
+  .adminWrapper {
+    margin-top: 65px;
+  }
+
+  .searchUsers {
+
+    .searchButton2 {
+
+      line-height: 55px;
+      height: 50px;
+    }
+
+    #searchUsersInput {
+      height: 50px;
+    }
+  }
+
   .pageHeader {
 
-    margin-top:10px;
+    margin-top:5px;
   }
 
   .userListAction {
@@ -619,7 +638,7 @@
   }
 
   .close-modal {
-
+  
     margin-top: -105px;
   }
 
