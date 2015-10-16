@@ -24,6 +24,16 @@ $( document ).ready(function() {
 
   })
 
+  $('.cmsImageUpload').hover(function() {
+    $(this).find('.overlay').show();
+    $(this).find('.edit').show();
+
+  },function() {
+    $(this).find('.overlay').hide();
+    $(this).find('.edit').hide();
+
+  })
+
   $('#editPhotoUpload').click(function() {
     $('.customFileInput').trigger('click');
     $('.customFileInput').change(function(){
