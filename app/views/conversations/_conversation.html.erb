@@ -1,3 +1,6 @@
+<% message = conversation.last_message %>
+<% sender = message.sender %>
+<% if sender.first_name? %>
 <% if !conversation.is_trashed?(current_user) %>
 
 
@@ -6,8 +9,6 @@
 <% else %>
 <div class="message">
 <% end %>
-<% message = conversation.last_message %>
-<% sender = message.sender %>
 <% send_pos = sender.current_pos %>
 <% recipients = conversation.recipients %>
   <%= link_to raw(""), conversation_path(conversation), class: 'mobileCoveredLink' %>
@@ -92,4 +93,5 @@
 
 
 </div>
+<% end %>
 <% end %>
