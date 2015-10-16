@@ -10,7 +10,7 @@
               <a href="/profile/<%= user.id %>">
               <img src="<%= user.profile_pic_url %>">
               </a>
-            <% if user.linkedin_pic_url? && !@has_intentions %>
+            <% elsif user.linkedin_pic_url? && !@has_intentions %>
               <a href="/profile/<%= user.id %>">
               <img src="<%= user.linkedin_pic_url %>">
               </a>
