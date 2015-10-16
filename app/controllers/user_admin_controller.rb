@@ -179,17 +179,13 @@ class UserAdminController < ApplicationController
     # p request.env["omniauth.auth"]
     # p session["devise.linkedin_data"]['raw_info']
 
-    @user = current_user
-    @user.linkedin_pic_url = session["devise.linkedin_extra_data"]['pictureUrls']['values'][0]
-    p "USER INFO AFTER UPDATE"
-    @user.linked_in_url = session["devise.linkedin_data"]['urls']['public_profile']
-    @user.summary = session["devise.linkedin_extra_data"]['summary']
-    # @user.summary = session["devise.linkedin_data"]['']
-    # p @user
-    p 'oiaejfoaijfea'
-    p session["devise.linkedin_data"]['urls']['public_profile']
+    # @user = current_user
+    # @user.linkedin_pic_url = session["devise.linkedin_extra_data"]['pictureUrls']['values'][0]
+    # p "USER INFO AFTER UPDATE"
+    # @user.linked_in_url = session["devise.linkedin_data"]['urls']['public_profile']
+    # @user.summary = session["devise.linkedin_extra_data"]['summary']
 
-    @user.save
+    # @user.save
   end
 
 

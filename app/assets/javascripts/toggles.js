@@ -165,6 +165,7 @@ $( document ).ready(function() {
       $('.recipientsGroup').hide();
       $('.messageReplySingle').show();
       $('#recipients_id').val('');
+      $('.tagit-new').find('input').attr('placeholder', 'TO:');
       $('.checkBoxIcon').removeClass('icon-selection-false');
       $('.checkBoxIcon').addClass('icon-selection-true');
       $('.checkBoxIcon').css("color","#3eb2cc");
