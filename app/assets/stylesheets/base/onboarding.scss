@@ -3,6 +3,14 @@
   margin: 0 auto;
   margin-bottom: 100px;
   min-height: 400px;
+
+  .profileInfo .updateIcon {
+      background-color: #f2f3f4;
+  }
+
+  .profileName {
+    padding-top:5px;
+  }
 }
 .onboardWrap.active {
   width: 60%;
