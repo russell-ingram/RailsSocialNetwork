@@ -15,6 +15,7 @@
   min-height: 550px;
   float:left;
   position:relative;
+  cursor: pointer;
 
   .overlay {
 
@@ -28,9 +29,10 @@
     display:none;
   }
 
-  .cmsImageUploadButton.edit {
+  .cmsImageUploadButtonEdit {
     position:absolute;
-    top:25px;
+    top: 95px;
+    left: 130px;
     background-color: initial;
     display:none;
 

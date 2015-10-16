@@ -19,17 +19,6 @@
         <div class="cmsImageUploadButton" style="background-image: url(<%= @news.image_url %>)">
 
         </div>
-
-        <div class="overlay"></div>
-        <div class="cmsImageUploadButton edit">
-          <div class="userUploadIcons">
-            <p>
-              <i class="icon icon-icon-upload-image"></i>
-              <br>
-              Edit Photo
-            </p>
-          </div>
-        </div>
       
 
       <% else %>
@@ -47,6 +36,20 @@
      
 
       <% end %>
+
+        <div class="overlay"></div>
+
+        <div class="cmsImageUploadButtonEdit">
+          <div class="userUploadIcons">
+            <p>
+              <i class="icon icon-icon-upload-image"></i>
+              <br>
+              Edit Photo
+            </p>
+          </div>
+        </div>
+
+
       </div>
 
       <%= f.file_field :image_url, class: 'customFileInput' %>

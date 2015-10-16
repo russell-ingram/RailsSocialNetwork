@@ -25,12 +25,12 @@ $( document ).ready(function() {
   })
 
   $('.cmsImageUpload').hover(function() {
-    $(this).find('.overlay').show();
-    $(this).find('.edit').show();
+
+    toggleEditImageIcon(this, 'show');
 
   },function() {
-    $(this).find('.overlay').hide();
-    $(this).find('.edit').hide();
+
+    toggleEditImageIcon(this, 'hide');
 
   })
 
@@ -41,6 +41,19 @@ $( document ).ready(function() {
     });
 
   })
+
+  function toggleEditImageIcon(button, state){
+
+    var btn = $(button);
+
+    var isAddImageIconShowing = btn.find('.add .userUploadIcons').css('display')!=='table';
+
+    if(isAddImageIconShowing){
+      btn.find('.overlay')[state]();
+      btn.find('.cmsImageUploadButtonEdit')[state]();
+      btn.find('.cmsImageUploadButtonEdit .userUploadIcons')[state]();
+    }
+  }
 
   function readURL(input,type) {
     if (input.files && input.files[0]) {
