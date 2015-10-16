@@ -8,7 +8,9 @@
 
   <div class="profileHeader">
     <div class="profilePic">
-      <% if current_user.profile_pic_url? %>
+      <% if current_user.linkedin_pic_url? %>
+        <%= image_tag current_user.linkedin_pic_url %>
+      <% elsif current_user.profile_pic_url? %>
         <%= image_tag current_user.profile_pic_url %>
       <% else %>
         <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
@@ -17,13 +19,13 @@
     <% position = current_user.current_pos %>
     <div class="profileInfo">
 
-    <%= render partial: 'static_pages/profile_info', :locals => { 
-                                              name: current_user.full_name, 
+    <%= render partial: 'static_pages/profile_info', :locals => {
+                                              name: current_user.full_name,
                                               title: position['job_title'],
                                               company: position['company'],
                                               industry: position['industry'],
                                               country: position['country'] } %>
-      
+
       <a href="<%= edit_profile_path %>" class="icon icon-icon-write-message-button updateIcon"></a>
 
     </div>

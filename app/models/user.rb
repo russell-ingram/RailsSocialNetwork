@@ -28,13 +28,37 @@ class User < ActiveRecord::Base
   has_many :searchs
   has_many :intentions
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-    end
+  def self.from_omniauth(auth,user)
+
+    # where()
+
+
+    # auth.info.public_profile
+    # @user.summary = auth.raw_info.summary
+    # @user.linked_in_url = auth.info.public_profile
+    # @user.profile_pic_url = auth.info.image
+    # p @user
+    # @user.save
+
+    # positions = auth.positions
+
+    # positions.each do |p|
+    #   w = Work.new
+    #   w.company = p.name
+    #   w.industry = p.industry
+    #   if p.size == "51-200 employees"
+
+    #   elsif condition
+
+
+    #   end
+    # end
+
+    # where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    #   user.provider = auth.provider
+    #   user.uid = auth.uid
+    #   user.email = auth.info.email
+    # end
   end
 
   def mailboxer_email(object)

@@ -10,6 +10,10 @@
               <a href="/profile/<%= user.id %>">
               <img src="<%= user.profile_pic_url %>">
               </a>
+            <% elsif user.linkedin_pic_url? && !@has_intentions %>
+              <a href="/profile/<%= user.id %>">
+              <img src="<%= user.linkedin_pic_url %>">
+              </a>
             <% elsif !@has_intentions %>
               <a href="/profile/<%= user.id %>">
               <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
@@ -135,6 +139,8 @@
                   <a href="/profile/<%= user.id %>">
                     <% if user.profile_pic_url? %>
                       <img src="<%= user.profile_pic_url %>">
+                    <% elsif user.linkedin_pic_url? %>
+                        <img src="<%= user.linkedin_pic_url %>">
                     <% else %>
                       <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
                     <% end %>

@@ -159,7 +159,11 @@ class UserAdminController < ApplicationController
             # @editUser.update_columns(profile_pic_url: uploader.filename)
           # end
           if @editUser == current_user
-            format.html { redirect_to '/profile' }
+            if current_user.sign_in_count < 2
+              format.html { redirect_to '/home' }
+            else
+              format.html { redirect_to '/profile' }
+            end
           else
             format.html { redirect_to '/admin' }
           end
@@ -170,6 +174,20 @@ class UserAdminController < ApplicationController
       end
     end
   end
+
+  def setup_linkedin
+    # p request.env["omniauth.auth"]
+    # p session["devise.linkedin_data"]['raw_info']
+
+    # @user = current_user
+    # @user.linkedin_pic_url = session["devise.linkedin_extra_data"]['pictureUrls']['values'][0]
+    # p "USER INFO AFTER UPDATE"
+    # @user.linked_in_url = session["devise.linkedin_data"]['urls']['public_profile']
+    # @user.summary = session["devise.linkedin_extra_data"]['summary']
+
+    # @user.save
+  end
+
 
   def update_settings
     @type = params[:type]

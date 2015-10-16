@@ -1,0 +1,81 @@
+<%= render "layouts/onboardheader" %>
+
+<div class="pageWrap pageOnBoard">
+  <div class="onboardWrap linkedInWrap">
+    <div class="onboardingBar">
+      <div class="circleProgressBar">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div class="active"></div>
+      </div>
+      <div class="onboardProgressBar">
+        <div class="icon icon-icon-onboarding-profile active"></div>
+        <div class="icon icon-icon-onboarding-password active"></div>
+        <div class="icon icon-icon-onboarding-account-details active"></div>
+        <div class="icon icon-icon-in active"></div>
+      </div>
+    </div>
+
+  <div class="onboardForm">
+    <div class="onboardFormHeader">
+      <div class="onboardFormHeaderMain">Verify Your LinkedIn Information</div>
+    </div>
+
+    <div class="profileHeader">
+      <div class="profilePic">
+        <% if current_user.linkedin_pic_url? %>
+          <%= image_tag current_user.linkedin_pic_url %>
+        <% elsif current_user.profile_pic_url? %>
+          <%= image_tag current_user.profile_pic_url %>
+        <% else %>
+          <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
+        <% end %>
+      </div>
+
+
+
+      <div class="profileInfo">
+      <% position = current_user.current_pos %>
+      <%= render partial: 'static_pages/profile_info', :locals => {
+                                                name: current_user.full_name,
+                                                title: position['job_title'],
+                                                company: position['company'],
+                                                industry: position['industry'],
+                                                country: position['country'] } %>
+
+
+      <a href="<%= edit_profile_path %>" class="icon icon-icon-write-message-button updateIcon"></a>
+      </div>
+    </div>
+
+
+    <div class="profileTabBox formBox summaryFormBox">
+      <div class="profileTabBoxLabel formHeader">
+        SUMMARY
+      </div>
+      <div class="profileTabSummaryText">
+        <% if current_user.summary? %>
+          <%= current_user.summary.html_safe %>
+        <% end %>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="onboardSubmit linkedFinalize">
+    CONFIRM
+  </div>
+
+
+
+
+  </div>
+
+
+
+  <div class="footerMargin"></div>
+</div>
+
+<%= render "layouts/footer" %>

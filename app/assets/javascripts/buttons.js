@@ -455,7 +455,12 @@ $( document ).ready(function() {
 
   $(".onboardSubmitLogin").off().on('click', function() {
     $("#onboardSubmitLogin").click();
-  })
+  });
+
+  $(".linkedFinalize").off().on('click', function() {
+    window.location.href = "/home";
+  });
+
 
   $(".onboardChangePassword").off().on('click', function () {
     var id = $('#onboardSubmitChangePassword').attr('data');
@@ -524,6 +529,7 @@ $( document ).ready(function() {
         $('.onboardFormHeaderSecondary').text('Connect with your LinkedIn Account To Import your professional details');
         $('.onboardFormHeaderSecondary').show();
         $('.onboardWrap').removeClass('active');
+        $(document).scrollTop(0);
     });
   })
 

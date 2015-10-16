@@ -86,6 +86,7 @@
 
 .onboardFormHeaderMain {
   font-size: 32px;
+  margin-bottom: 10px;
 }
 .onboardFormHeaderSecondary {
   font-size: 14px;
@@ -192,4 +193,16 @@
   margin-bottom: -10px;
   font-size: 12px;
   font-family: "PNLight";
+}
+
+.linkedInWrap {
+  width: 90%;
+  .profileHeader {
+    margin: 0;
+    margin-bottom: 30px;
+  }
+}
+
+.linkedFinalize {
+  width: 30%;
 }

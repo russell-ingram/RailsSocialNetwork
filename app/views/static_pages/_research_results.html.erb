@@ -91,7 +91,12 @@
 
   <% end %>
 
+<% if layout.layout_option != nil && layout.layout_option > 0 %>
 
   <div class="viewMoreContent"><a href="http://<%= @layout.external_link %>" target='_blank'><%= layout.link_copy %><i class="icon icon-fwd-arrow"></i></a></div>
+
+  <% else %>
+    <div class="viewMoreContent"><a href="http://www.google.com" target='_blank'>View More<i class="icon icon-fwd-arrow"></i></a></div>
+  <% end %>
 
 </div>

@@ -1,8 +1,13 @@
 <%= render "layouts/header" %>
 
 <div class="pageWrap responsive pageHome" data-js-init="homePage">
+
+  <% if current_user.sign_in_count < 2 %>
+    <div class="welcomeHeader">Welcome to FITO!<br>Your account has been successfully created</div>
+  <% end %>
 <!-- start search bar -->
   <div class="searchBarHomeWrapper">
+
     <div class="searchBarHomeLabel">Find other technology leaders</div>
     <%= form_for @search, as: :search, method: :get do |f| %>
     <div class="searchBarHome">
@@ -51,9 +56,9 @@
           <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
           <ul class="dropdown fieldDropdown">
             <li class="ddOption fieldOption">No preference</li>
-            <li class="ddOption fieldOption">SMALL</li>
-            <li class="ddOption fieldOption">MIDSIZE</li>
-            <li class="ddOption fieldOption">LARGE</li>
+            <li class="ddOption fieldOption">Small</li>
+            <li class="ddOption fieldOption">Midsize</li>
+            <li class="ddOption fieldOption">Large</li>
           </ul>
         </div>
         <%= f.text_field :enterprise, placeholder: 'Enterprise Size', style: 'display: none;' %>

@@ -55,6 +55,8 @@ class StaticPagesController < ApplicationController
     @countries = countries_list
   end
 
+
+
   def reset_password
     @email = params[:email]
     if User.exists?(:email => @email)
