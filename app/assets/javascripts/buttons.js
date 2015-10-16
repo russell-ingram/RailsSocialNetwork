@@ -242,7 +242,7 @@ $( document ).ready(function() {
 
 
 
-      var newIntention = '<div class="addedSpendingIntention"><div class="elemNum">'+searchCounter+'</div><div class="addedSpendingIntentionLeft"><div class="addedSpendingIntentionHeader">'+searchCounter+'.</div><div class="addedSpendingIntentionText">'+intention+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+sector+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+vendor+'</div></div><div class="addedSpendingIntentionDelete"><div class="icon icon-icon-close"></div></div></div>'
+      var newIntention = '<div class="addedSpendingIntention"><div class="elemNum" id="elemNum'+searchCounter+'">'+searchCounter+'</div><div class="addedSpendingIntentionLeft"><div class="addedSpendingIntentionHeader">'+searchCounter+'.</div><div class="addedSpendingIntentionText">'+intention+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+sector+'</div><div class="addedSpendingIntentionText">•</div><div class="addedSpendingIntentionText">'+vendor+'</div></div><div class="addedSpendingIntentionDelete"><div class="icon icon-icon-close"></div></div></div>'
       var jsonResults = $('#resultsField').val();
       if (jsonResults && jsonResults !== "") {
         var oldObj = JSON.parse(jsonResults);
@@ -334,6 +334,19 @@ $( document ).ready(function() {
     if (searchCounter < 1) {
       $('.spendingIntentions').hide();
     }
+    for (i = num + 1; i <= searchCounter + 1; i++) {
+      if (i !== num) {
+        var numId = $('#elemNum'+i);
+        var header = numId.next().find('.addedSpendingIntentionHeader');
+        var headerText = (i-1) + '.';
+        header.text(headerText);
+        numId.text(i - 1);
+        var y = 'elemNum' + (i-1);
+        numId.attr("id",y);
+
+      }
+    }
+
 
   })
 
@@ -586,6 +599,20 @@ $( document ).ready(function() {
     }
   });
 
+  $('.newMsgBtnSend').off().on('click', function() {
+    if ($('#admin_recipients').val() === '') {
+      $('ul.tagit').css('border-color','red');
+      $(document).scrollTop(0);
+      event.stopPropagation();
+      return false;
+    }
+    if ($('#recipients').val() === '') {
+      $('ul.tagit').css('border-color','red');
+      $(document).scrollTop(0);
+      event.stopPropagation();
+      return false;
+    }
+  })
 
 
 });

@@ -67,7 +67,15 @@ $( document ).ready(function() {
       // $('.columnOption3').hide();
     }
 
-  })
+  });
+
+  if ($('#calloutNumber').hasClass('col3')) {
+    $('#callButton3').click();
+  } else if ($('#calloutNumber').hasClass('col2')) {
+    $('#callButton2').click();
+  } else if ($('#calloutNumber').hasClass('col1')) {
+    $('#callButton1').click();
+  }
 
 
   $('.pubButton').click(function() {
