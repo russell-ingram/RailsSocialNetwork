@@ -45,6 +45,8 @@
                   <a href="/profile/<%= rec.id %>">
                     <% if rec.profile_pic_url? %>
                       <img src="<%= rec.profile_pic_url %>">
+                    <% elsif rec.linkedin_pic_url? %>
+                      <img src="<%= rec.linkedin_pic_url %>">
                     <% else %>
                       <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
                     <% end %>

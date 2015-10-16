@@ -15,6 +15,9 @@
   <% if sender.profile_pic_url? %>
     <a href="/profile">
     <%= image_tag sender.profile_pic_url %>
+  <% elsif sender.linkedin_pic_url? %>
+    <a href="/profile">
+    <%= image_tag sender.linkedin_pic_url %>
   <% else %>
     <a href="/profile/<%= sender.id %>">
     <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
@@ -34,11 +37,11 @@
       <div class="messageName">
         <a href="/profile/<%=sender.id%>"><%= sender.full_name %></a>
       </div>
-      
+
       <% if(send_pos["job_title"]!='Unlisted' && send_pos["company"]!='Unlisted') %>
         <div class="messageEmployer"><%= send_pos["job_title"] %> at <%= send_pos["company"] %></div>
       <% end %>
-      
+
       <div class="messageTimeStamp"><%= local_time(message.created_at,format: '%l:%M%P', class: 'date-time-time') %><%= local_time(message.created_at, format: ' %B %d, %Y',class: 'date-time-date') %></div>
     </div>
 
@@ -66,6 +69,8 @@
           <% end %>
           <% if r.profile_pic_url? %>
             <%= image_tag r.profile_pic_url %>
+          <% elsif r.linkedin_pic_url? %>
+              <%= image_tag r.linkedin_pic_url %>
           <% else %>
             <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
           <% end %>

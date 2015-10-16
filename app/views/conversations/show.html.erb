@@ -28,6 +28,8 @@
         <% end %>
           <% if sender.profile_pic_url? %>
             <%= image_tag sender.profile_pic_url %>
+          <% elsif send.linkedin_pic_url? %>
+              <%= image_tag sender.linkedin_pic_url %>
           <% else %>
           <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
           <% end %>

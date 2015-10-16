@@ -432,7 +432,12 @@ $( document ).ready(function() {
 
   $(".onboardSubmitLogin").off().on('click', function() {
     $("#onboardSubmitLogin").click();
-  })
+  });
+
+  $(".linkedFinalize").off().on('click', function() {
+    window.location.href = "/home";
+  });
+
 
   $(".onboardChangePassword").off().on('click', function () {
     var id = $('#onboardSubmitChangePassword').attr('data');

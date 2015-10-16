@@ -8,6 +8,8 @@
     <div class="profilePic">
       <% if @user.profile_pic_url? %>
         <%= image_tag @user.profile_pic_url %>
+      <% elsif @user.linkedin_pic_url? %>
+        <%= image_tag @user.linkedin_pic_url %>
       <% else %>
         <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
       <% end %>
@@ -41,6 +43,8 @@
                     <a href="/profile/<%= @user.id %>">
                       <% if @user.profile_pic_url? %>
                         <img src="<%= @user.profile_pic_url %>">
+                      <% elsif @user.linkedin_pic_url? %>
+                        <img src="<%= @user.linkedin_pic_url %>">
                       <% else %>
                         <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
                       <% end %>
@@ -69,6 +73,8 @@
                   <a href="/profile/<%= @user.id %>">
                     <% if @user.profile_pic_url? %>
                       <img src="<%= @user.profile_pic_url %>">
+                    <% elsif @user.linkedin_pic_url? %>
+                      <img src="<%= @user.linkedin_pic_url %>">
                     <% else %>
                       <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
                     <% end %>
@@ -170,6 +176,8 @@
           <div class="myConnProfilePic"><a href="/profile/<%= friend.id %>">
           <% if friend.profile_pic_url? %>
             <%= image_tag friend.profile_pic_url %>
+          <% elsif friend.linkedin_pic_url? %>
+            <%= image_tag friend.linkedin_pic_url %>
           <% else %>
             <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
           <% end %>

@@ -159,7 +159,11 @@ class UserAdminController < ApplicationController
             # @editUser.update_columns(profile_pic_url: uploader.filename)
           # end
           if @editUser == current_user
-            format.html { redirect_to '/profile' }
+            if current_user.sign_in_count < 2
+              format.html { redirect_to '/home' }
+            else
+              format.html { redirect_to '/profile' }
+            end
           else
             format.html { redirect_to '/admin' }
           end

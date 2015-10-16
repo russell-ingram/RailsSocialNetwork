@@ -3,11 +3,13 @@
 <div class="myConnection">
   <div class="myConnWrapper">
     <div class="myConnProfilePic"><a href="/profile/<%= person.id %>">
-    <% if person.profile_pic_url? %>
-      <%= image_tag person.profile_pic_url %>
-    <% else %>
-      <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
-    <% end %>
+        <% if person.linkedin_pic_url? %>
+          <%= image_tag person.linkedin_pic_url %>
+        <% elsif person.profile_pic_url? %>
+          <%= image_tag person.profile_pic_url %>
+        <% else %>
+          <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg") %>
+        <% end %>
     </a></div>
 
     <div class="myConnInfo">
@@ -19,6 +21,6 @@
     </div>
     <div class="myConnMessage break-2-hide"><a href="/messages/new/<%= person.id %>" class="blue-link">MESSAGE<div class="icon icon-fwd-arrow"></div></a></div>
 
-    
+
   </div>
 </div>

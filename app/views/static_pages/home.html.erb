@@ -1,8 +1,13 @@
 <%= render "layouts/header" %>
 
 <div class="pageWrap responsive pageHome" data-js-init="homePage">
+
+  <% if current_user.sign_in_count < 2 %>
+    <div class="welcomeHeader">Welcome to FITO!<br>Your account has been successfully created</div>
+  <% end %>
 <!-- start search bar -->
   <div class="searchBarHomeWrapper">
+
     <div class="searchBarHomeLabel">Find other technology leaders</div>
     <%= form_for @search, as: :search, method: :get do |f| %>
     <div class="searchBarHome">

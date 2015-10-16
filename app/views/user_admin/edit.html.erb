@@ -25,6 +25,8 @@
           <a href="/profile/<%= @editUser.id %>">
             <% if @editUser.profile_pic_url? %>
               <img src="<%= @editUser.profile_pic_url %>">
+            <% elsif @editUser.linkedin_pic_url? %>
+              <img src="<%= @editUser.linkedin_pic_url %>">
             <% else %>
               <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
             <% end %>
@@ -101,6 +103,15 @@
       <div class="editPhotoUpload" id="editPhotoUpload">
         <% if !@editUser.profile_pic_url.blank? %>
         <div class="photoUploadBox" style="background-image: url(<%= @editUser.profile_pic_url %>);">
+        </div>
+        <div class="userUploadIcons editUploadIcons">
+          <p>
+          <div class="icon icon-icon-upload-image"></div>
+          Edit Photo
+          </p>
+          </div>
+        <% elsif !@editUser.linkedin_pic_url.blank? %>
+        <div class="photoUploadBox" style="background-image: url(<%= @editUser.linkedin_pic_url %>);">
         </div>
         <div class="userUploadIcons editUploadIcons">
           <p>
