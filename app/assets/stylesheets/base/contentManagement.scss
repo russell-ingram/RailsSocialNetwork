@@ -14,6 +14,29 @@
   padding: 25px;
   min-height: 550px;
   float:left;
+  position:relative;
+  cursor: pointer;
+
+  .overlay {
+
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    position: absolute;
+    top: 25px;
+    opacity: 0.75;
+    filter: alpha(opacity=50);
+    display:none;
+  }
+
+  .cmsImageUploadButtonEdit {
+    position:absolute;
+    top: 95px;
+    left: 130px;
+    background-color: initial;
+    display:none;
+
+  }
 
 }
 

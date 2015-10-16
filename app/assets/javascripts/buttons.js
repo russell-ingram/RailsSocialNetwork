@@ -24,6 +24,16 @@ $( document ).ready(function() {
 
   })
 
+  $('.cmsImageUpload').hover(function() {
+
+    toggleEditImageIcon(this, 'show');
+
+  },function() {
+
+    toggleEditImageIcon(this, 'hide');
+
+  })
+
   $('#editPhotoUpload').click(function() {
     $('.customFileInput').trigger('click');
     $('.customFileInput').change(function(){
@@ -31,6 +41,19 @@ $( document ).ready(function() {
     });
 
   })
+
+  function toggleEditImageIcon(button, state){
+
+    var btn = $(button);
+
+    var isAddImageIconShowing = btn.find('.add .userUploadIcons').css('display')!=='table';
+
+    if(isAddImageIconShowing){
+      btn.find('.overlay')[state]();
+      btn.find('.cmsImageUploadButtonEdit')[state]();
+      btn.find('.cmsImageUploadButtonEdit .userUploadIcons')[state]();
+    }
+  }
 
   function readURL(input,type) {
     if (input.files && input.files[0]) {
