@@ -104,7 +104,7 @@ $( document ).ready(function() {
     }
   });
 
-  $('.searchTagClose').off().on('click',function() {
+  $('.bubbleTagClose').off().on('click',function() {
     $(this).parent().next().attr('value', '');
     $(this).parent().next().val('');
     $(this).parent().remove();
@@ -351,8 +351,9 @@ $( document ).ready(function() {
     $(this).parent().remove();
     var results = $('#resultsField').val();
     var json = JSON.parse(results);
-    json[num-1] = "";
+    json.splice((num-1), 1);
     $('#resultsField').val(JSON.stringify(json));
+    console.log($('#resultsField').val());
     searchCounter--;
     if (searchCounter < 1) {
       $('.spendingIntentions').hide();
