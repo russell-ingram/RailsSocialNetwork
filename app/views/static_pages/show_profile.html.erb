@@ -34,7 +34,7 @@
       </div>
 
 
-          <div id="deleteUser" class="addIntentionModal confirmConnectModal two-button-popup" style="display:none;">
+          <div id="deleteUser" class="addIntentionModal confirmConnectModal two-button-popup toUnconnect" style="display:none;">
             <div class="formBox searchFormBox formBoxModal confirmModalBox">
               <div class="formHeader">CONFIRM UNCONNECT</div>
               <div class="modalBody">
@@ -64,7 +64,7 @@
           </div>
 
 
-        <div id="connectUser" class="addIntentionModal confirmConnectModal two-button-popup" style="display:none;">
+        <div id="connectUser" class="addIntentionModal confirmConnectModal two-button-popup toConnect" style="display:none;">
           <div class="formBox searchFormBox formBoxModal confirmModalBox connectConfirm">
             <div class="formHeader">CONFIRM CONNECT</div>
             <div class="modalBody">
@@ -88,10 +88,19 @@
                 <div class="field-area">
                   <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
                 </div>
-                <div class="modalDoneButton confirmConnectButtonProfile" data="<%= @user.id %>">
-                  <a href="#close-modal" rel="modal:close">
-                  CONFIRM
-                  </a>
+                <div class="buttonsBox">
+                  
+                  <div class="modalDoneButton confirmConnectButtonProfile" data="<%= @user.id %>">
+                    <a href="#close-modal" rel="modal:close">
+                    CONFIRM
+                    </a>
+                  </div>
+                  <div class="close-modal-proxy">
+                    <a href="#close-modal" rel="modal:close">
+                    CANCEL
+                    </a>
+                  </div>
+
                 </div>
               </div>
             </div>
