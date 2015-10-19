@@ -49,211 +49,216 @@
           </div>
         </div>
 
-        <div class="searchTagsWrapper">
-        <%= form_for :search, method: :get do |f| %>
-          <% if !@search.industry.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="industry">
-              <%= @search.industry %>
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :industry, placeholder: 'Industry',style: 'display:none;' %>
-          <% if !@search.enterprise.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="enterprise">
-              <%= @search.enterprise %>
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :enterprise, placeholder: 'Enterprise',style: 'display:none;' %>
-          <% if !@search.organization_type.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="organization_type">
-              <%= @search.organization_type %>
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :organization_type, placeholder: 'organization_type',style: 'display:none;' %>
-          <% if !@search.region.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="region">
-              <%= @search.region %>
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :region, placeholder: 'region',style: 'display:none;' %>
-          <% if !@search.country.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="country">
-              <%= @search.country %>
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :country, placeholder: 'country',style: 'display:none;' %>
-          <% if !@search.clevel.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="clevel">
-              C-Level
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :clevel, placeholder: 'clevel',style: 'display:none;' %>
-          <% if !@search.executive.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="executive">
-              Executive
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :executive, placeholder: 'executive',style: 'display:none;' %>
-          <% if !@search.president.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="president">
-              President
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :president, placeholder: 'president',style: 'display:none;' %>
-          <% if !@search.director.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="director">
-              Director
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :director, placeholder: 'director',style: 'display:none;' %>
-          <% if !@search.principal.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="principal">
-              Principal
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :principal, placeholder: 'principal',style: 'display:none;' %>
-          <% if !@search.head.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="head">
-              Head
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :head, placeholder: 'head',style: 'display:none;' %>
-          <% if !@search.senior.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="senior">
-              Senior
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :senior, placeholder: 'senior',style: 'display:none;' %>
-          <% if !@search.lead.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="lead">
-              Lead
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :lead, placeholder: 'lead',style: 'display:none;' %>
-          <% if !@search.manager.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="manager">
-              Manager
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :manager, placeholder: 'manager',style: 'display:none;' %>
-          <% if !@search.architect.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="architect">
-              Architect
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :architect, placeholder: 'architect',style: 'display:none;' %>
-          <% if !@search.infrastructure.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="infrastructure">
-              Infrastructure
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :infrastructure, placeholder: 'infrastructure',style: 'display:none;' %>
-          <% if !@search.engineer.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="engineer">
-              Engineer
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :engineer, placeholder: 'engineer',style: 'display:none;' %>
-          <% if !@search.consultant.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="consultant">
-              Consultant
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :consultant, placeholder: 'consultant',style: 'display:none;' %>
-          <% if !@search.security.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="security">
-              Security
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :security, placeholder: 'security',style: 'display:none;' %>
-          <% if !@search.analyst.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="analyst">
-              Analyst
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :analyst, placeholder: 'analyst',style: 'display:none;' %>
-          <% if !@search.administrator.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="administrator">
-              Administrator
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :administrator, placeholder: 'administrator',style: 'display:none;' %>
-          <% if !@search.risk.blank? %>
-            <div class="searchTag">
-              <div class="searchTagText" value="risk">
-              Risk
-              </div>
-              <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
-            </div>
-          <% end %>
-          <%= f.text_field :risk, placeholder: 'risk',style: 'display:none;' %>
+        <% if(!@search.industry.blank? || !@search.enterprise.blank? || !@search.organization_type.blank? || !@search.region.blank? || !@search.country.blank? || !@search.clevel.blank? || !@search.executive.blank? || !@search.president.blank? || !@search.director.blank? || !@search.principal.blank? || !@search.head.blank? || !@search.senior.blank? || !@search.lead.blank? || !@search.manager.blank? || !@search.architect.blank? || !@search.infrastructure.blank? || !@search.engineer.blank? || !@search.consultant.blank? || !@search.security.blank? || !@search.analyst.blank? || !@search.administrator.blank? || !@search.risk.blank?) %>
 
-          <%= f.text_field :results, placeholder: 'Results', style: 'display: none;', id: 'resultsFieldTagsField' %>
-          <%= f.submit 'Submit', id: 'searchEdit', style: "display: none;" %>
+          <div class="searchTagsWrapper">
+          <%= form_for :search, method: :get do |f| %>
+            <% if !@search.industry.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="industry">
+                <%= @search.industry %>
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :industry, placeholder: 'Industry',style: 'display:none;' %>
+            <% if !@search.enterprise.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="enterprise">
+                <%= @search.enterprise %>
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :enterprise, placeholder: 'Enterprise',style: 'display:none;' %>
+            <% if !@search.organization_type.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="organization_type">
+                <%= @search.organization_type %>
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :organization_type, placeholder: 'organization_type',style: 'display:none;' %>
+            <% if !@search.region.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="region">
+                <%= @search.region %>
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :region, placeholder: 'region',style: 'display:none;' %>
+            <% if !@search.country.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="country">
+                <%= @search.country %>
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :country, placeholder: 'country',style: 'display:none;' %>
+            <% if !@search.clevel.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="clevel">
+                C-Level
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :clevel, placeholder: 'clevel',style: 'display:none;' %>
+            <% if !@search.executive.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="executive">
+                Executive
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :executive, placeholder: 'executive',style: 'display:none;' %>
+            <% if !@search.president.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="president">
+                President
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :president, placeholder: 'president',style: 'display:none;' %>
+            <% if !@search.director.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="director">
+                Director
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :director, placeholder: 'director',style: 'display:none;' %>
+            <% if !@search.principal.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="principal">
+                Principal
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :principal, placeholder: 'principal',style: 'display:none;' %>
+            <% if !@search.head.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="head">
+                Head
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :head, placeholder: 'head',style: 'display:none;' %>
+            <% if !@search.senior.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="senior">
+                Senior
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :senior, placeholder: 'senior',style: 'display:none;' %>
+            <% if !@search.lead.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="lead">
+                Lead
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :lead, placeholder: 'lead',style: 'display:none;' %>
+            <% if !@search.manager.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="manager">
+                Manager
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :manager, placeholder: 'manager',style: 'display:none;' %>
+            <% if !@search.architect.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="architect">
+                Architect
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :architect, placeholder: 'architect',style: 'display:none;' %>
+            <% if !@search.infrastructure.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="infrastructure">
+                Infrastructure
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :infrastructure, placeholder: 'infrastructure',style: 'display:none;' %>
+            <% if !@search.engineer.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="engineer">
+                Engineer
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :engineer, placeholder: 'engineer',style: 'display:none;' %>
+            <% if !@search.consultant.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="consultant">
+                Consultant
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :consultant, placeholder: 'consultant',style: 'display:none;' %>
+            <% if !@search.security.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="security">
+                Security
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :security, placeholder: 'security',style: 'display:none;' %>
+            <% if !@search.analyst.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="analyst">
+                Analyst
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :analyst, placeholder: 'analyst',style: 'display:none;' %>
+            <% if !@search.administrator.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="administrator">
+                Administrator
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :administrator, placeholder: 'administrator',style: 'display:none;' %>
+            <% if !@search.risk.blank? %>
+              <div class="searchTag">
+                <div class="searchTagText" value="risk">
+                Risk
+                </div>
+                <div class="searchTagClose"><div class="icon icon-icon-close"></div></div>
+              </div>
+            <% end %>
+            <%= f.text_field :risk, placeholder: 'risk',style: 'display:none;' %>
+
+            <%= f.text_field :results, placeholder: 'Results', style: 'display: none;', id: 'resultsFieldTagsField' %>
+            <%= f.submit 'Submit', id: 'searchEdit', style: "display: none;" %>
+          <% end %>
+          </div>
+
+
         <% end %>
-        </div>
 
         <div class="spendingTagsWrapper">
           <% @spendingTags.each_with_index do |stag,index| %>
