@@ -271,7 +271,8 @@
 			width:100%;
 			min-height: 100%;
 			position: fixed;
-			overflow: scroll;
+		    overflow-x: hidden;
+		    overflow-y: scroll;
 			z-index: 995;
     		/*right: -100%;*/
 		}
