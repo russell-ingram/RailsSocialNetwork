@@ -34,7 +34,11 @@ class MessagesController < ApplicationController
     if conversation
       flash[:sent] = "Message sent!"
       rec.each do |u|
-        EtrMailer.message_received_email(current_user, u, params[:message][:body]).deliver_now
+        Thread.new do
+          EtrMailer.message_received_email(current_user, u, params[:message][:body]).deliver_now
+          ActiveRecord::Base.connection.close
+        end
+
       end
 
       if !params[:msgAll].blank? and params[:msgAll] == "msgAll"

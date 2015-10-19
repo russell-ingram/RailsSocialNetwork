@@ -34,7 +34,17 @@
       </div>
 
       <div class="newMsgFormGroup">
-        <%= text_area_tag 'message[body]', nil, cols: 3, class: 'newMsgFormControl newMessageArea lines-field', required: true %>
+        <div id="toolbar">
+            <div class="editorButton ql-bold">B</div>
+            <div class="editorButton ql-italic">I</div>
+            <div class="editorButton ql-underline">U</div>
+        </div>
+        <div class="newMsgFormControl newMessageArea" id="editor">
+          <!-- <div class="editorPlaceholder">Message:</div> -->
+        </div>
+
+
+        <%= text_area_tag 'message[body]', nil, cols: 3, class: 'newMsgFormControl newMessageArea', placeholder: 'Message:',id: "textAreaEditor", style: 'display:none;' %>
       </div>
 
       <div class="newMsgBtnSend break-2-hide">

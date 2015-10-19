@@ -1,11 +1,12 @@
 class EtrMailer < ApplicationMailer
   # default from: "brontosauruss@gmail.com"
   default from: "notifications@etrfito.com"
+  default "Message-ID"=>"#{Digest::SHA2.hexdigest(Time.now.to_i.to_s)}@etrfito.com"
   before_action :get_logo
 
   def notify_changes_email(user,changes)
     @user = user
-    @changes = changes
+    @changes = notify_changes_email
     mail(to: @user.email, subject: "User changes")
   end
 
@@ -60,10 +61,10 @@ class EtrMailer < ApplicationMailer
   def message_received_email(sender, receiver, message)
     @sender = sender
     @receiver = receiver
-    @message = message
+    @message = message.html_safe
     subject = "FITO - " + @sender.full_name + " has sent you a message"
     if @receiver.message_notifications
-      mail(to: @receiver.email, subject: subject)
+          mail(to: @receiver.email, subject: subject)
     end
   end
 

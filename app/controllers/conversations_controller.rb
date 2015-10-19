@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :get_mailbox
   before_action :get_conversation, except: [:index]
 
@@ -102,8 +102,14 @@ class ConversationsController < ApplicationController
   def reply
     current_user.reply_to_conversation(@conversation, params[:body])
     @recipients = @conversation.recipients
-    @recipients.each do |u|
-      EtrMailer.message_replied_email(current_user, u, params[:body]).deliver_now
+    Thread.new do
+      @recipients.each do |u|
+
+        if u.email != current_user.email
+          EtrMailer.message_replied_email(current_user, u, params[:body]).deliver_now
+        end
+      end
+      ActiveRecord::Base.connection.close
     end
 
     @recipients.each do |r|

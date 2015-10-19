@@ -286,6 +286,13 @@
 
 .searchSidebarDropdownLeft {
   width: 85%;
+  .searchDDLabel.active {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 31px;
+  }
 }
 
 .searchSideBarDropdownHeader {

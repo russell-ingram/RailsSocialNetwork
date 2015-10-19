@@ -66,8 +66,10 @@ class StaticPagesController < ApplicationController
 
       @user.password = @password
       @user.save
-
-      EtrMailer.reset_password_email(@user, @password).deliver_now
+      Thread.new do
+        EtrMailer.reset_password_email(@user, @password).deliver_now
+        ActiveRecord::Base.connection.close
+      end
     else
 
     end
@@ -129,7 +131,7 @@ class StaticPagesController < ApplicationController
 
     end
 
-    if @user.to_s == current_user.to_s
+    if @user == current_user
       redirect_to '/profile'
     end
   end

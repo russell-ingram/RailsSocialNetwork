@@ -46,6 +46,9 @@
       <div class="icon icon-icon-top-nubs-gray dropNub"></div>
       <div class="menuDropItem"><a href="/profile">MY PROFILE</a></div>
       <div class="menuDropItem break-2-show"><a href="/messages">MESSAGES</a></div>
+      <% if current_user.admin %>
+      <div class="menuDropItem break-2-show"><a href="/admin">ADMIN</a></div>
+      <% end %>
       <div class="menuDropItem"><a href="/logout">SIGN OUT</a></div>
       <div class="menuDropItem settingsDropItem">ACCOUNT SETTINGS</div>
       <div class="settingsDropWrapper">

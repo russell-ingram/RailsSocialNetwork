@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-
+  before_action :authenticate_user!
   # news update
   def update
     # puts params[:content][:image_url]
