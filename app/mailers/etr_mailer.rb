@@ -1,6 +1,7 @@
 class EtrMailer < ApplicationMailer
   # default from: "brontosauruss@gmail.com"
   default from: "notifications@etrfito.com"
+  default "Message-ID"=>"#{Digest::SHA2.hexdigest(Time.now.to_i.to_s)}@etrfito.com"
   before_action :get_logo
 
   def notify_changes_email(user,changes)

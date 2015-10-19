@@ -1,4 +1,6 @@
 class SearchsController < ApplicationController
+  before_action :authenticate_user!
+
   def search
     @countries = countries_list
     @industries = industries_list
