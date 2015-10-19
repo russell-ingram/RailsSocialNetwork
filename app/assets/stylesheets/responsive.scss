@@ -215,3 +215,18 @@
 	}
 
 }
+
+@media screen and (max-width: 350px) {
+
+	.headerWrapper {
+
+	    .navBar .hoverDiv {
+
+	 	   margin-left: 15px;
+
+			&.profile-button {
+			  margin-left: 5px;
+			}
+	    }
+	}
+}
