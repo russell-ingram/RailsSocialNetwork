@@ -310,13 +310,13 @@
             <div class="icon icon-carot"></div>
 
               <% if !@search.industry.blank? %>
-              <span class="ddLabel searchDDLabel active">
+              <div class="ddLabel searchDDLabel active">
                   <%= @search.industry %>
               <% else %>
-              <span class="ddLabel searchDDLabel">
+              <div class="ddLabel searchDDLabel">
                   No preference
               <% end %>
-              </span>
+              </div>
               <ul class="dropdown fieldDropdown searchDropdown">
                 <li class="ddOption fieldOption resultsOption">No preference</li>
                 <% @industries.each do |industry| %>
@@ -338,13 +338,13 @@
             <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
             <div class="icon icon-carot"></div>
               <% if !@search.enterprise.blank? %>
-              <span class="ddLabel searchDDLabel active">
+              <div class="ddLabel searchDDLabel active">
                   <%= @search.enterprise %>
               <% else %>
-              <span class="ddLabel searchDDLabel">
+              <div class="ddLabel searchDDLabel">
                   No preference
               <% end %>
-              </span>
+              </div>
               <ul class="dropdown fieldDropdown searchDropdown">
                 <li class="ddOption fieldOption resultsOption">No preference</li>
                 <li class="ddOption fieldOption resultsOption">Large</li>
@@ -363,13 +363,13 @@
             <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
             <div class="icon icon-carot"></div>
               <% if !@search.organization_type.blank? %>
-              <span class="ddLabel searchDDLabel active">
+              <div class="ddLabel searchDDLabel active">
                   <%= @search.organization_type %>
               <% else %>
-              <span class="ddLabel searchDDLabel">
+              <div class="ddLabel searchDDLabel">
                   No preference
               <% end %>
-              </span>
+              </div>
               <ul class="dropdown fieldDropdown searchDropdown">
                 <li class="ddOption fieldOption resultsOption">No preference</li>
                 <li class="ddOption fieldOption resultsOption">Publicly Traded</li>
@@ -387,13 +387,13 @@
             <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown" tabindex="1">
             <div class="icon icon-carot"></div>
               <% if !@search.region.blank? %>
-              <span class="ddLabel searchDDLabel active">
+              <div class="ddLabel searchDDLabel active">
                   <%= @search.region %>
               <% else %>
-              <span class="ddLabel searchDDLabel">
+              <div class="ddLabel searchDDLabel">
                   No preference
               <% end %>
-              </span>
+              </div>
               <ul class="dropdown fieldDropdown searchDropdown">
                 <li class="ddOption fieldOption resultsOption">No preference</li>
                 <li class="ddOption fieldOption resultsOption">North America</li>
@@ -412,13 +412,13 @@
             <div class="wrapper-dropdown wrapperFieldDropdown searchSideBarDropdownText searchSideBarWrapperDropdown forCountry" tabindex="1">
             <div class="icon icon-carot"></div>
               <% if !@search.country.blank? %>
-              <span class="ddLabel searchDDLabel active">
+              <div class="ddLabel searchDDLabel active">
                   <%= @search.country %>
               <% else %>
-              <span class="ddLabel searchDDLabel">
+              <div class="ddLabel searchDDLabel">
                   No preference
               <% end %>
-              </span>
+              </div>
               <ul class="dropdown fieldDropdown searchDropdown">
                 <li class="ddOption fieldOption resultsOption">No preference</li>
                 <% @countries.each do |country| %>

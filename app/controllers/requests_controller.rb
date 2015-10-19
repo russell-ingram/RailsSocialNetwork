@@ -15,7 +15,10 @@ class RequestsController < ApplicationController
     @r.invite_sent = false
     if @r.save
       @res = 'Request successfully sent'
-      EtrMailer.request_received_email(@r).deliver_now
+      Thread.new do
+        EtrMailer.request_received_email(@r).deliver_now
+        ActiveRecord::Base.connection.close
+      end
       render "home/index"
     else
       @res = 'Request failed. Please try again at a later time'
@@ -30,8 +33,19 @@ class RequestsController < ApplicationController
     else
       @new_user = User.find_by("uid = ?", params[:id])
     end
-    EtrMailer.send_invite_email(@new_user).deliver_now
+    Thread.new do
+      EtrMailer.send_invite_email(@new_user).deliver_now
+      ActiveRecord::Base.connection.close
+    end
     redirect_to :back
+  end
+
+  def delete
+    @req = Request.find(params[:id])
+
+    if @req.destroy
+      redirect_to '/admin'
+    end
   end
 
 

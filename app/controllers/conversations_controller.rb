@@ -102,8 +102,11 @@ class ConversationsController < ApplicationController
   def reply
     current_user.reply_to_conversation(@conversation, params[:body])
     @recipients = @conversation.recipients
-    @recipients.each do |u|
-      EtrMailer.message_replied_email(current_user, u, params[:body]).deliver_now
+    Thread.new do
+      @recipients.each do |u|
+        EtrMailer.message_replied_email(current_user, u, params[:body]).deliver_now
+      end
+      ActiveRecord::Base.connection.close
     end
 
     @recipients.each do |r|

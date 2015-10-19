@@ -74,13 +74,13 @@
       for our team to review.
     </div>
     <div class="field loginField">
-      <%= f.text_field :first_name, placeholder: 'first name' %>
+      <%= f.text_field :first_name, placeholder: 'first name', required: true, id: 'requestFirstName' %>
     </div>
     <div class="field loginField">
-      <%= f.text_field :last_name, placeholder: 'last name' %>
+      <%= f.text_field :last_name, placeholder: 'last name', required: true, id: 'requestLastName' %>
     </div>
     <div class="field loginField">
-      <%= f.text_field :email, placeholder: 'email address' %>
+      <%= f.text_field :email, placeholder: 'email address', required: true, id: 'requestEmail' %>
     </div>
     <div class="fitoRequestChoiceText">
       one of the following are required
@@ -130,8 +130,7 @@
 
 <script>
 $( document ).ready(function() {
-  // forces the page start at the top even on reloads so the canvas doesn't break
-  $(document).scrollTop(0);
+
   var pattern = Trianglify({
       width: window.innerWidth,
       height: window.innerHeight + 300,
@@ -140,11 +139,9 @@ $( document ).ready(function() {
   });
   pattern.canvas(document.getElementById("fitoLandingCanvas"));
 
-  document.body.addEventListener('mousemove', function(e) {
-    // var x = e.clientX;
-    // var y = e.clientY;
-    // console.log(x,y);
-  })
+  // forces the page start at the top even on reloads so the canvas doesn't break
+
+
 
   $(window).resize(function () {
     var pattern = Trianglify({
@@ -246,7 +243,19 @@ $( document ).ready(function() {
   });
 
   $('#fitoLandingInvitationRequestSubmit').off().on('click', function() {
-    $('#fitoLandingRequestSubmitBtn').click();
+    $('#requestFirstName').css('border-color', '#3a3a3d');
+    $('#requestLastName').css('border-color', '#3a3a3d');
+    $('#requestEmail').css('border-color', '#3a3a3d');
+    if ($('#requestFirstName').val() === '') {
+      $('#requestFirstName').css('border-color', 'red');
+    } else if ($('#requestLastName').val() === '') {
+      $('#requestLastName').css('border-color', 'red');
+    } else if ($('#requestEmail').val() === '') {
+      $('#requestEmail').css('border-color', 'red');
+    } else {
+      $('#fitoLandingRequestSubmitBtn').click();
+    }
+
   });
 
   var sPageURL = decodeURIComponent(window.location.search.substring(1));
@@ -255,6 +264,10 @@ $( document ).ready(function() {
   }
 
 });
+setTimeout(function() {
+  $(document).scrollTop(0);
+}, 300);
+
 </script>
 
 

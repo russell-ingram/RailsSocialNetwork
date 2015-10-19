@@ -247,6 +247,9 @@ class UserAdminController < ApplicationController
 
     if @editUser.save
       @work.save
+      @req = Request.find_by uid: @editUser.uid
+      @req.accepted = true
+      @req.save
       sign_in(@editUser, :bypass => true)
       render json: @editUser
     else

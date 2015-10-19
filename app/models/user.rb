@@ -414,9 +414,10 @@ class User < ActiveRecord::Base
         @work_changes << w.previous_changes
       end
     end
-
-    # EtrMailer.notify_changes_email(self,@changes).deliver_now
-
+    # Thread.new do
+    #   EtrMailer.notify_changes_email(self,@changes).deliver_now
+    #   ActiveRecord::Base.connection.close
+    # end
   end
 
 

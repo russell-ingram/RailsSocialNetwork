@@ -23,7 +23,7 @@
         <% end %>
       </div>
       <div class="userListAction deleteAction">
-        <a href="#ex<%= request_counter %>" rel="modal:open">
+        <a href="#req<%= request_counter %>" rel="modal:open">
             DELETE
         </a>
       </div>
@@ -36,7 +36,7 @@
       <% end %>
     </div>
   </div>
-<div id="ex<%= request_counter %>" class="addIntentionModal" style="display:none;">
+<div id="req<%= request_counter %>" class="addIntentionModal" style="display:none;">
   <div class="formBox searchFormBox formBoxModal confirmModalBox">
     <div class="formHeader">CONFIRM DELETE</div>
     <div class="modalBody">
@@ -47,7 +47,7 @@
           Are you sure you would like to deny <%= request.first_name + ' ' + request.last_name %>?
         </div>
         <div class="modalDoneButton">
-          CONFIRM
+          <%= link_to "Confirm", delete_request_path(request) %>
         </div>
       </div>
     </div>
