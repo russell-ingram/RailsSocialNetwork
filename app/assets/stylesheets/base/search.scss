@@ -19,6 +19,18 @@
     height: auto !important;
     padding-bottom: 75px;
   }
+
+  .addSpendingIntentionFieldButton {
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+
+    .icon {
+      width: 50px;
+      line-height: 50px;
+      height: 45px;
+    }
+  }
 }
 
 .searchTypesWrapper {
@@ -924,10 +936,10 @@
   height: 60px;
 }
 
-.wrapper60px {
-  height: 60px;
-  line-height: 60px;
-  font-size: 18px;
+.wrapper45px {
+  height: 45px;
+  line-height: 45px;
+  font-size: 14px;
 }
 .elemNum {
   display: none !important;
