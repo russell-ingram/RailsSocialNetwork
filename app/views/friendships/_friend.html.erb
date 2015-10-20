@@ -1,5 +1,5 @@
 
-
+<% if person.present? %>
 <div class="myConnection">
   <div class="myConnWrapper">
     <div class="myConnProfilePic"><a href="/profile/<%= person.id %>">
@@ -24,3 +24,5 @@
 
   </div>
 </div>
+
+<% end %>
