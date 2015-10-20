@@ -339,6 +339,8 @@ class UserAdminController < ApplicationController
 
   def uploadFile
     require 'roo'
+    require 'securerandom'
+
     xlsxFile = params[:file]
     xlsx = Roo::Excelx.new(xlsxFile.path,:minimal_load => true)
 
@@ -355,7 +357,6 @@ class UserAdminController < ApplicationController
     xlsx.each_with_pagename do |name, sheet|
 
       if name.length < 3
-        puts name
         # xlsx.default_sheet = sheet
         sheet.each_row_streaming do |row|
           y = row[0].coordinate.row
@@ -376,7 +377,7 @@ class UserAdminController < ApplicationController
               # xlsx.last_column
               n.upto(sheet.last_column) do |index|
 
-                if sheet.column(index)[y] && !sheet.column(index)[0].nil?
+                if sheet.column(index)[y] && !sheet.column(index)[0].nil? && sheet.column(index)[0] != 0.0
 
                   arr = sheet.column(index)[0].split('_')
                   vendor_name = arr[0]
@@ -409,9 +410,6 @@ class UserAdminController < ApplicationController
                   i.user_id = u.uid
                   i.intention = sheet.column(index)[y]
 
-
-                  puts "INTENTION:"
-                  puts i.inspect
                   i.save
                 end
               end
@@ -423,20 +421,12 @@ class UserAdminController < ApplicationController
               u.email = row[0].value
               u.first_name = row[1].value
               u.last_name = row[2].value
-              u.password = "password"
+              random_string = SecureRandom.hex
+              u.password = random_string
               # # this needs to be based on organizations in db later
               w.company = row[7].value
               # # this should work with normal titles, but is using standard title for now
               w.job_title = row[9].value
-              p row[10].value
-              p row[11].value
-              p row[12].value
-              p row[13].value
-              p row[14].value
-              p row[16].value
-              p row[17].value
-              p row[18].value
-              p row[19].value
               n = 28
               if !row[10].value.nil?
                 w.industry = row[10].value
@@ -518,8 +508,9 @@ class UserAdminController < ApplicationController
               # xlsx.last_column
               n.upto(sheet.last_column) do |index|
                 # p sheet.column(index)
-                if sheet.column(index)[y] && !sheet.column(index)[0].nil?
-                  # p sheet.column(index)
+                if sheet.column(index)[y] && !sheet.column(index)[0].nil? && sheet.column(index)[0] != 0.0
+                  p "SHEETTTT"
+                  p sheet.column(index)[0]
                   arr = sheet.column(index)[0].split('_')
                   vendor_name = arr[0]
                   vid = arr[1]
@@ -551,9 +542,6 @@ class UserAdminController < ApplicationController
                   i.user_id = u.uid
                   i.intention = sheet.column(index)[y]
 
-
-                  puts "INTENTION:"
-                  puts i.inspect
                   i.save
                 end
               end
