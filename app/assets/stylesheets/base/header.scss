@@ -10,10 +10,11 @@
 .header .mailMenuIcon {
   img {
     width:22px;
+    height: 17px;
   }
 
   img:last-child {
-    display:none; 
+    display:none;
   }
 
   &.active img:last-child {
