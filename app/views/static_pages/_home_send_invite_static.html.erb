@@ -1,5 +1,26 @@
 <div class="homeContentInvite homeContent <%= css_class %>">
     <div class="homeInviteTitle">invite your peers</div>
     <div class="homeInviteText">Please be aware the only people that are to be invited are other enterprise IT end users. Please do not invite VARs or vendor sales reps.</div>
-    <div class="inviteButton" id="inviteButton" data="<%= current_user.full_name %>">send invite</div>
+    <div class="inviteButton" data="<%= current_user.full_name %>"><a href="#inviteModal" rel="modal:open">Send Invite</a></div>
+  </div>
+
+
+    <div id="inviteModal" class="addIntentionModal deleteIntentionModal deleteOnlyInt sendInviteModal sendInviteHomeModal" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal confirmBoxModal">
+      <div class="modalBody">
+        <div class="modalIntentionsRight modalDeleteIntentions">
+          <div class="deleteUserModalInfo deleteIntentionInfo">
+            Who would you like to invite?
+          </div>
+          <div class="field-area">
+            <textarea placeholder="Enter the email of a person you would like to invite." id='sendInviteConnectMsg'></textarea>
+          </div>
+          <div class="modalDoneButton confirmDeleteButton homeSendInviteButton" data-id="<%= current_user.id %>">
+            <a href="#close-modal" rel="modal:close">
+            SEND
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>

@@ -120,8 +120,9 @@ Rails.application.routes.draw do
   resources :requests do
     member do
       post :create, as: 'request'
-      get :send_invite, as: 'send_invite'
+      post :send_invite, as: 'send_invite'
       get :delete, as: 'delete'
+      post :user_send_invite, as: 'user_send_invite'
     end
   end
 

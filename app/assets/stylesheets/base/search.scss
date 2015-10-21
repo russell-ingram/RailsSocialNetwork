@@ -852,7 +852,7 @@
 .deleteIntentionModal {
   .close-modal {
     margin-right: 90px;
-    margin-top: -109px;
+    margin-top: -109px !important;
   }
 }
 
@@ -1094,6 +1094,35 @@
     padding-right: 30px;
   }
 }
+
+.sendInviteModal {
+  .confirmBoxModal {
+    min-height: 266px;
+  }
+  .field-area {
+    width: 78%;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  .field-area textarea {
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 62px;
+  }
+}
+.sendInviteHomeModal {
+  .confirmBoxModal {
+    min-height: 219px;
+  }
+  .deleteUserModalInfo {
+    height: 70px;
+  }
+  .field-area textarea {
+    height: 35px;
+    line-height: 25px;
+  }
+}
+
 
 .viewMoreSideBar {
   margin-top: 15px;

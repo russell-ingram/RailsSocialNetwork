@@ -608,6 +608,16 @@ $( document ).ready(function() {
     });
   });
 
+  $('.confirmSendInviteButton').off().on('click', function() {
+    var id = $(this).attr('data');
+    var msg = $(this).parent().find('.connectMessage').val();
+    var url = '/requests/'+id+'/send_invite';
+
+    $.post(url, {'message': msg}, function(data) {
+      window.location.reload();
+    });
+  });
+
   $(".resetChangePassword").off().on('click', function () {
     var id = $('#resetSubmitChangePassword').attr('data');
     var pw = $('#password_field').val();
@@ -638,5 +648,23 @@ $( document ).ready(function() {
     }
   })
 
+  $('.homeSendInviteButton').off().on('click', function() {
+    var id = $(this).attr('data-id');
+    var email = $(this).parent().find('#sendInviteConnectMsg').val();
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!email.match(re)) {
+      $('#sendInviteConnectMsg').css('border-color','red');
+      return false;
+    } else {
+      var url = '/requests/'+id+'/user_send_invite';
+
+      $.post(url, {'email': email}, function(data) {
+        console.log(data);
+      });
+    }
+
+
+  })
 
 });

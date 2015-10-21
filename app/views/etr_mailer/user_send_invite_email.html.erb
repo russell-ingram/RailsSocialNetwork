@@ -1,0 +1,13 @@
+<%= render "etr_mailer/email_header" %>
+    <div class="emailGreeting" style="font-size: 24px; color: #000000; margin-bottom: 40px; padding-left: 20px;">Invitation request received</div>
+    <div class="emailBody" style="font-size: 14px; line-height: 22px; color: #797C7F; padding-left: 20px;">
+      <%= @user.full_name %> is inviting you to join the FITO network for technology adoption leaders. Click <a href="http://etrfito.com/?requestAccess">here</a> to request access.
+      <br>
+      <br>
+      Sincerely,
+      <br>
+      The FITO team
+
+    </div>
+
+<%= render "etr_mailer/email_footer" %>

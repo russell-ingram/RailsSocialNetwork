@@ -10,8 +10,9 @@ class EtrMailer < ApplicationMailer
     # mail(to: @user.email, subject: "User changes")
   end
 
-  def send_invite_email(user)
+  def send_invite_email(user, message)
     @user = user
+    @message = message
     @user.invite_status = "pending"
     if Request.exists?(:uid => @user.uid)
       @req = Request.find_by("uid = ?", @user.uid)
@@ -24,7 +25,14 @@ class EtrMailer < ApplicationMailer
     @password = random_string
     @user.save
 
-    # mail(to: @user.email, subject: "Invite to FITO")
+    mail(to: @user.email, subject: "Your request to join FITO has been accepted!")
+  end
+
+  def user_send_invite_email(user, email)
+    @user = user
+    @email = email
+    subject = @user.full_name + " has invited you to join FITO presented by ETR!"
+    mail(to: @email, subject: subject)
   end
 
   def request_received_email(req)
