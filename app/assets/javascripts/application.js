@@ -96,23 +96,37 @@ pageSpecificInits.connectionsPage = function(jquery){
 
 pageSpecificInits.searchResultsPage = function(jquery){
 
+	var blackoutBackground = function(){
+		
+		jquery('.searchResultsWrapper').addClass('blackout');
+		jquery('.footer').addClass('blackout');
+	};
+
+	var unblackoutBackground = function(){
+
+		jquery('body').scrollTop(0)
+		jquery('.searchResultsWrapper').removeClass('blackout');
+		jquery('.footer').removeClass('blackout');
+
+	};
+
 	var sideBar = jquery('.searchResultsSideBar');
 
 	jquery('.adjustSearchLink').click(function(){
 		sideBar.css({ right: '-100%' });
 		sideBar.removeClass('break-2-hide');
-		sideBar.animate({ right: '0%' });
-	});
+		sideBar.animate({ right: '0%' }, function(){
 
-	jquery(window).resize(function(){
-		sideBar.addClass('break-2-hide');
-		sideBar.css({ right: '0%' });
+			blackoutBackground();
+		});
 	});
 
 	jquery('.sideBarClose').click(function(){
 		sideBar.animate({ right: '-100%' }, function(){
 			sideBar.addClass('break-2-hide');
 			sideBar.css({ right: '0%' });
+
+			unblackoutBackground();
 		});
 	});
 

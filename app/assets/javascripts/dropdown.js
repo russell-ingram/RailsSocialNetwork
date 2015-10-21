@@ -9,9 +9,11 @@ $( document ).ready(function() {
     event.stopPropagation();
     if ($(this).hasClass('active')) {
       $('.wrapper-dropdown').removeClass('active');
+      $('.wrapper-dropdown').trigger('deactivated');
     } else {
       $('.wrapper-dropdown').removeClass('active');
       $(this).addClass('active');
+      $('.wrapper-dropdown').trigger('activated');
     }
 
 
