@@ -1,0 +1,534 @@
+<% case name %>
+<% when :search_results_page_s_confirm_connect %>
+
+	<div id="connect<%= index %>" class="addIntentionModal the_<%= name %>_modal confirmConnectModal" style="display:none;">
+	  <div class="formBox searchFormBox formBoxModal confirmModalBox connectConfirm">
+	    <div class="formHeader">CONFIRM CONNECT</div>
+	    <div class="modalBody">
+	      <div class="modalIntentions">
+	        <div class="myConnProfilePic">
+	          <a href="/profile/<%= user.id %>">
+	            <% if user.profile_pic_url? %>
+	              <img src="<%= user.profile_pic_url %>">
+	            <% elsif user.linkedin_pic_url? %>
+	                <img src="<%= user.linkedin_pic_url %>">
+	            <% else %>
+	              <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+	            <% end %>
+	          </a>
+	        </div>
+	      </div>
+	      <div class="modalIntentionsRight">
+	        <div class="deleteUserModalInfo">
+	          Are you sure you would like to connect with <%= user.full_name %>?
+	        </div>
+	        <div class="field-area">
+	          <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
+	        </div>
+	        <div class="modalDoneButton confirmConnectButton" data="<%= user.id %>" data-index="<%= index %>">
+	          <a href="#close-modal" rel="modal:close">
+	          CONFIRM
+	          </a>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<% when :search_results_page_s_confirm_connect_w_intentions %>
+
+    <div id="connectAnon<%= index %>" class="addIntentionModal the_<%= name %>_modal confirmConnectModal" style="display:none;">
+      <div class="formBox searchFormBox formBoxModal confirmModalBox connectConfirm">
+        <div class="formHeader">CONFIRM CONNECT</div>
+        <div class="modalBody">
+          <div class="modalIntentions">
+            <div class="myConnProfilePic">
+              <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+            </div>
+          </div>
+          <div class="modalIntentionsRight">
+            <div class="deleteUserModalInfo">
+              Are you sure you would like to connect with this user?
+            </div>
+            <div class="field-area">
+              <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
+            </div>
+            <div class="modalDoneButton confirmConnectButton" data="<%= user.id %>" data-index="<%= index %>">
+              <a href="#close-modal" rel="modal:close">
+              CONFIRM
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% when :search_results_page_s_name_this_search %>
+
+    <div id="addSearchModal" class="addIntentionModal the_<%= name %>_modal deleteIntentionModal addFavModalBox" style="display:none;">
+      <div class="formBox searchFormBox formBoxModal confirmBoxModal">
+      <div class="formHeader">NAME THIS SEARCH</div>
+        <div class="modalBody">
+          <div class="field editField fullField saveSearchNameField">
+            <input placeholder="" type="text" name="" id="saved_search_name">
+          </div>
+          <div class="modalIntentionsRight modalDeleteIntentions">
+            <div class="modalDoneButton modalDoneAddFav blue-bg-link" id="searchAddFavButton" data="<%= search.id %>">
+              <a href="#close-modal" rel="modal:close">
+              SAVE
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% when :search_results_page_s_add_intentions %>
+
+  <div id="ex1" class="addIntentionModal the_<%= name %>_modal real" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal">
+      <div class="formHeader">SPECIFY A SEARCH</div>
+      <div class="modalBody">
+        <div class="modalIntentions">
+          <div class="modalSectionHeader intentionsHeader">
+            INTENTION
+          </div>
+          <div class="intentionSelectModal active"><div class="icon icon-selection-true"></div><div class="intentionModalText">ANY</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">ADOPT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">INCREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">FLAT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">DECREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">REPLACE</div></div>
+        </div>
+        <input placeholder="Intention" style="display: none;" type="text" name="intention[intention]" id="intention_intention">
+        <div class="modalIntentionsRight">
+          <div class="modalSectionHeader intentionsHeader">
+            SECTOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown forSector" tabindex="1">
+              <span class="ddLabel">
+                Search sector
+              </span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown forSector">
+
+                    <li class="ddOption fieldOption">No preference</li>
+                    <% sectors.each do |sector| %>
+                    <li class="ddOption fieldOption" data-sector-id="<%= sector.sid %>" data-initial="<%= sector.name[0].downcase %>"><%= sector.name %></li>
+                    <% end %>
+              </ul>
+            </div>
+            <input placeholder="Sector" style="display: none;" type="text" name="intention[sector]" id="intention_sector">
+          </div>
+          <div class="modalSectionHeader intentionsHeader">
+            VENDOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown forVendor" tabindex="1">
+              <span class="ddLabel">
+                Search vendors
+              </span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown forVendor">
+                    <li class="ddOption fieldOption">No preference</li>
+                    <% vendors.each do |vendor| %>
+                    <li class="ddOption fieldOption" data-vendor-id="<%= vendor.vid %>" data-initial="<%= vendor.name[0].downcase %>"><%= vendor.name %></li>
+                    <% end %>
+              </ul>
+            </div>
+            <input placeholder="Vendor" style="display: none;" type="text" name="intention[vendor]" id="intention_vendor">
+          </div>
+          <div class="modalDoneButton" id="modalSideBarDoneButton">
+            <a href="" rel="modal:close">DONE</a>
+          </div>
+          <div class="proxyCancelButton" id="proxyCancelButton">
+            <span rel="modal:close">CANCEL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% when :home_page_s_confirm_connect %>
+
+    <div id="connect<%= i %>" class="addIntentionModal the_<%= name %>_modal confirmConnectModal" style="display:none;">
+      <div class="formBox searchFormBox formBoxModal confirmModalBox connectConfirm">
+        <div class="formHeader">CONFIRM CONNECT</div>
+        <div class="modalBody">
+          <div class="modalIntentions">
+            <div class="myConnProfilePic">
+              <a href="/profile/<%= rec.id %>">
+                <% if rec.profile_pic_url? %>
+                  <img src="<%= rec.profile_pic_url %>">
+                <% elsif rec.linkedin_pic_url? %>
+                  <img src="<%= rec.linkedin_pic_url %>">
+                <% else %>
+                  <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+                <% end %>
+              </a>
+            </div>
+          </div>
+          <div class="modalIntentionsRight">
+            <div class="deleteUserModalInfo">
+              Are you sure you would like to connect with <%= rec.full_name %>?
+            </div>
+            <div class="field-area">
+              <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
+            </div>
+            <div class="modalDoneButton confirmConnectButtonHome" data="<%= rec.id %>" data-index="<%= i %>">
+              <a href="#close-modal" rel="modal:close">
+              CONFIRM
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% when :home_page_s_delete_this_search %>
+
+	<div id="ex<%= f.id %>" class="addIntentionModal the_<%= name %>_modal deleteIntentionModal deleteOnlyInt" style="display:none;">
+	  <div class="formBox searchFormBox formBoxModal confirmBoxModal">
+	    <div class="modalBody">
+	      <div class="modalIntentionsRight modalDeleteIntentions">
+	        <div class="deleteUserModalInfo deleteIntentionInfo">
+	          Are you sure you would like to delete this search?
+	        </div>
+	        <div class="modalDoneButton confirmDeleteButton">
+	          <%= link_to "Confirm", search_delete_path(f) %>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<% when :home_page_s_add_intentions %>
+
+  <div id="addIntentionModal" class="addIntentionModal the_<%= name %>_modal real" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal">
+      <div class="formHeader">ADD SPENDING INTENTION</div>
+      <div class="modalBody">
+        <div class="modalIntentions">
+          <div class="modalSectionHeader intentionsHeader">
+            INTENTION
+          </div>
+          <div class="intentionSelectModal active"><div class="icon icon-selection-true"></div><div class="intentionModalText">ANY</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">ADOPT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">INCREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">FLAT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">DECREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">REPLACE</div></div>
+        </div>
+        <input placeholder="Intention" style="display: none;" type="text" name="intention[intention]" id="intention_intention">
+        <div class="modalIntentionsRight">
+          <div class="modalSectionHeader intentionsHeader">
+            SECTOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown forSector" tabindex="1">
+              <span class="ddLabel ddNoPref">
+                Search sector
+              </span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown forSector">
+                <li class="ddOption fieldOption">No preference</li>
+                <% sectors.each do |sector| %>
+                <li class="ddOption fieldOption" data-sector-id="<%= sector.sid %>" data-initial="<%= sector.name[0].downcase %>"><%= sector.name %></li>
+                <% end %>
+              </ul>
+            </div>
+            <input placeholder="Sector" style="display: none;" type="text" name="intention[sector]" id="intention_sector">
+          </div>
+          <div class="modalSectionHeader intentionsHeader">
+            VENDOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown forVendor" tabindex="1">
+              <span class="ddLabel ddNoPref">
+                Search vendors
+              </span>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown forVendor">
+                <li class="ddOption fieldOption">No preference</li>
+                <% vendors.each do |vendor| %>
+                <li class="ddOption fieldOption" data-vendor-id="<%= vendor.vid %>" data-initial="<%= vendor.name[0].downcase %>"><%= vendor.name %></li>
+                <% end %>
+              </ul>
+            </div>
+            <input placeholder="Vendor" style="display: none;" type="text" name="intention[vendor]" id="intention_vendor">
+          </div>
+          <div class="modalDoneButton blue-bg-link" id="modalDoneButton">
+            <a href="" rel="modal:close">DONE</a>
+          </div>
+          <div class="proxyCancelButton" id="proxyCancelButton">
+            <span rel="modal:close">CANCEL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% when :profile_page_s_confirm_unconnect %>
+
+  <div id="deleteUser" class="addIntentionModal the_<%= name %>_modal confirmConnectModal two-button-popup toUnconnect" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal confirmModalBox">
+      <div class="formHeader">CONFIRM UNCONNECT</div>
+      <div class="modalBody">
+        <div class="modalIntentions">
+          <div class="myConnProfilePic">
+            <a href="/profile/<%= user.id %>">
+              <% if user.profile_pic_url? %>
+                <img src="<%= user.profile_pic_url %>">
+              <% elsif user.linkedin_pic_url? %>
+                <img src="<%= user.linkedin_pic_url %>">
+              <% else %>
+                <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+              <% end %>
+            </a>
+          </div>
+        </div>
+        <div class="modalIntentionsRight">
+          <div class="deleteUserModalInfo">
+            Are you sure you would like to unconnect <%= user.full_name %>?
+          </div>
+        <div class="buttonsBox">
+          <div class="modalDoneButton">
+            <%= link_to "Confirm", destroy_friendship_path(user), method: :post %>
+          </div>
+          <div class="close-modal-proxy">
+            <a href="#close-modal" rel="modal:close">
+            CANCEL
+            </a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% when :profile_page_s_confirm_connect %>
+
+	<div id="connectUser" class="addIntentionModal the_<%= name %>_modal confirmConnectModal two-button-popup toConnect" style="display:none;">
+	  <div class="formBox searchFormBox formBoxModal confirmModalBox connectConfirm">
+	    <div class="formHeader">CONFIRM CONNECT</div>
+	    <div class="modalBody">
+	      <div class="modalIntentions">
+	        <div class="myConnProfilePic">
+	          <a href="/profile/<%= user.id %>">
+	            <% if user.profile_pic_url? %>
+	              <img src="<%= user.profile_pic_url %>">
+	            <% elsif user.linkedin_pic_url? %>
+	              <img src="<%= user.linkedin_pic_url %>">
+	            <% else %>
+	              <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+	            <% end %>
+	          </a>
+	        </div>
+	      </div>
+	      <div class="modalIntentionsRight">
+	        <div class="deleteUserModalInfo">
+	          Are you sure you would like to connect with <%= user.full_name %>?
+	        </div>
+	        <div class="field-area">
+	          <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
+	        </div>
+	        <div class="buttonsBox">
+	          
+	          <div class="modalDoneButton confirmConnectButtonProfile" data="<%= user.id %>">
+	            <a href="#close-modal" rel="modal:close">
+	            CONFIRM
+	            </a>
+	          </div>
+	          <div class="close-modal-proxy">
+	            <a href="#close-modal" rel="modal:close">
+	            CANCEL
+	            </a>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<% when :search_page_s_confirm_delete_search %>
+
+    <div id="ex<%= f.id %>" class="addIntentionModal the_<%= name %>_modal deleteIntentionModal deleteOnlyInt" style="display:none;">
+      <div class="formBox searchFormBox formBoxModal confirmBoxModal">
+        <div class="modalBody">
+          <div class="modalIntentionsRight modalDeleteIntentions">
+            <div class="deleteUserModalInfo deleteIntentionInfo">
+              Are you sure you would like to delete this search?
+            </div>
+            <div class="modalDoneButton confirmDeleteButton">
+              <%= link_to "Confirm", search_delete_path(f) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% when :search_page_s_add_intentions %>
+
+  <div id="ex1" class="addIntentionModal the_<%= name %>_modal real" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal">
+      <div class="formHeader">ADD SPENDING INTENTIONS</div>
+      <div class="modalBody">
+        <div class="modalIntentions">
+          <div class="modalSectionHeader intentionsHeader">
+            INTENTION
+          </div>
+          <div class="intentionSelectModal active"><div class="icon icon-selection-true"></div><div class="intentionModalText">ANY</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">ADOPT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">INCREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">FLAT</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">DECREASE</div></div>
+          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">REPLACE</div></div>
+        </div>
+        <input placeholder="Intention" style="display: none;" type="text" name="intention[intention]" id="intention_intention">
+        <div class="modalIntentionsRight">
+          <div class="modalSectionHeader intentionsHeader">
+            SECTOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown forSector" tabindex="1">
+              <div class="ddLabel ddNoPref">
+                Search sector
+              </div>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown forSector">
+                <li class="ddOption fieldOption">No preference</li>
+                <% sectors.each do |sector| %>
+                <li class="ddOption fieldOption" data-sector-id="<%= sector.sid %>" data-initial="<%= sector.name[0].downcase %>"><%= sector.name %></li>
+                <% end %>
+              </ul>
+            </div>
+            <input placeholder="Sector" style="display: none;" type="text" name="intention[sector]" id="intention_sector">
+          </div>
+          <div class="modalSectionHeader intentionsHeader">
+            VENDOR
+          </div>
+          <div class="field">
+            <div class="wrapper-dropdown wrapperFieldDropdown forVendor" tabindex="1">
+              <div class="ddLabel ddNoPref">
+                Search vendors
+              </div>
+              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
+              <ul class="dropdown fieldDropdown forVendor">
+                  <li class="ddOption fieldOption">No preference</li>
+                  <% vendors.each do |vendor| %>
+                  <li class="ddOption fieldOption" data-vendor-id="<%= vendor.vid %>" data-initial="<%= vendor.name[0].downcase %>"><%= vendor.name %></li>
+                  <% end %>
+              </ul>
+            </div>
+            <input placeholder="Vendor" style="display: none;" type="text" name="intention[vendor]" id="intention_vendor">
+          </div>
+          <div class="modalDoneButton blue-bg-link" id="modalDoneButton">
+            <a href="" rel="modal:close">DONE</a>
+          </div>
+          <div class="proxyCancelButton" id="proxyCancelButton">
+            <span rel="modal:close">CANCEL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% when :message_page_s_delete_message %>
+
+	<div id="deleteMsgModal" class="addIntentionModal the_<%= name %>_modal deleteIntentionModal" style="display:none;">
+	  <div class="formBox searchFormBox formBoxModal confirmBoxModal">
+	    <div class="modalBody">
+	      <div class="modalIntentionsRight modalDeleteIntentions">
+	        <div class="deleteUserModalInfo deleteIntentionInfo">
+	          Are you sure you would like to delete this conversation?
+	        </div>
+	        <div class="modalDoneButton confirmDeleteButton">
+	          <%= link_to "DELETE", delete_conversation_path(conversation), method: :post %>
+	        </div>
+	      </div>
+	    </div>
+	 </div>
+  </div>
+
+<% when :admin_profile_page_s_confirm_invite %>
+
+  <div id="msgModal" class="addIntentionModal the_<%= name %>_modal deleteIntentionModal deleteOnlyInt" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal confirmBoxModal">
+      <div class="modalBody">
+        <div class="modalIntentionsRight modalDeleteIntentions">
+          <div class="deleteUserModalInfo deleteIntentionInfo">
+            Are you sure you would like to send an invite to <%= editUser.first_name %>?
+          </div>
+          <div class="modalDoneButton confirmDeleteButton">
+            <%= link_to "SEND", send_invite_request_path(editUser) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% when :admin_profile_page_s_confirm_delete %>
+
+  <div id="ex1" class="addIntentionModal the_<%= name %>_modal" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal confirmModalBox">
+      <div class="formHeader">CONFIRM DELETE</div>
+      <div class="modalBody">
+        <div class="modalIntentions">
+          <div class="myConnProfilePic">
+            <a href="/profile/<%= @editUser.id %>">
+              <% if editUser.profile_pic_url? %>
+                <img src="<%= @editUser.profile_pic_url %>">
+              <% elsif editUser.linkedin_pic_url? %>
+                <img src="<%= @editUser.linkedin_pic_url %>">
+              <% else %>
+                <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+              <% end %>
+            </a>
+          </div>
+        </div>
+        <div class="modalIntentionsRight">
+          <div class="deleteUserModalInfo">
+            Are you sure you would like to delete <%= editUser.full_name %>?
+          </div>
+          <div class="modalDoneButton">
+            <%= link_to "Confirm", admin_delete_user_path(editUser) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% when :admin_users_page_s_confirm_delete %>
+
+  <div id="ex<%= user_counter %>" class="addIntentionModal the_<%= name %>_modal" style="display:none;">
+    <div class="formBox searchFormBox formBoxModal confirmModalBox">
+      <div class="formHeader">CONFIRM DELETE</div>
+      <div class="modalBody">
+        <div class="modalIntentions">
+          <div class="myConnProfilePic">
+            <a href="/profile/<%= user.id %>">
+              <% if user.profile_pic_url? %>
+                <img src="<%= user.profile_pic_url %>">
+              <% elsif user.linkedin_pic_url? %>
+                <img src="<%= user.linkedin_pic_url %>">
+              <% else %>
+                <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+              <% end %>
+            </a>
+          </div>
+        </div>
+        <div class="modalIntentionsRight">
+          <div class="deleteUserModalInfo">
+            Are you sure you would like to delete <%= user.full_name %>?
+          </div>
+          <div class="modalDoneButton">
+            <%= link_to "Confirm", admin_delete_user_path(user) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% else %>
+<% end %>

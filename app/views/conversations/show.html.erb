@@ -132,21 +132,7 @@
           </div>
         </div>
 
-        <div id="deleteMsgModal" class="addIntentionModal deleteIntentionModal" style="display:none;">
-          <div class="formBox searchFormBox formBoxModal confirmBoxModal">
-            <div class="modalBody">
-              <div class="modalIntentionsRight modalDeleteIntentions">
-                <div class="deleteUserModalInfo deleteIntentionInfo">
-                  Are you sure you would like to delete this conversation?
-                </div>
-                <div class="modalDoneButton confirmDeleteButton">
-                  <%= link_to "DELETE", delete_conversation_path(@conversation), method: :post %>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-
+        <%= render partial: 'static_pages/modal', locals: { name: :message_page_s_delete_message, conversation: @conversation }  %>
 
       <% end %>
 

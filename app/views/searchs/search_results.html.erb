@@ -29,25 +29,7 @@
           </div>
         </div>
 
-        <div id="addSearchModal" class="addIntentionModal deleteIntentionModal addFavModalBox" style="display:none;">
-          <div class="formBox searchFormBox formBoxModal confirmBoxModal">
-          <div class="formHeader">NAME THIS SEARCH</div>
-            <div class="modalBody">
-              <div class="field editField fullField saveSearchNameField">
-                <input placeholder="" type="text" name="" id="saved_search_name">
-              </div>
-
-
-              <div class="modalIntentionsRight modalDeleteIntentions">
-                <div class="modalDoneButton modalDoneAddFav blue-bg-link" id="searchAddFavButton" data="<%= @search.id %>">
-                  <a href="#close-modal" rel="modal:close">
-                  SAVE
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render partial: 'static_pages/modal', locals: { name: :search_results_page_s_name_this_search, search: @search }  %>
 
         <% if(!@search.industry.blank? || !@search.enterprise.blank? || !@search.organization_type.blank? || !@search.region.blank? || !@search.country.blank? || !@search.clevel.blank? || !@search.executive.blank? || !@search.president.blank? || !@search.director.blank? || !@search.principal.blank? || !@search.head.blank? || !@search.senior.blank? || !@search.lead.blank? || !@search.manager.blank? || !@search.architect.blank? || !@search.infrastructure.blank? || !@search.engineer.blank? || !@search.consultant.blank? || !@search.security.blank? || !@search.analyst.blank? || !@search.administrator.blank? || !@search.risk.blank? || !@search.results.blank?) %>
 
@@ -764,77 +746,8 @@
     <!-- end sidebar -->
   </div>
 
+  <%= render partial: 'static_pages/modal', locals: { name: :search_results_page_s_add_intentions, sectors: @sectors, vendors: @vendors }  %>
 
-  <div id="ex1" class="addIntentionModal real" style="display:none;">
-    <div class="formBox searchFormBox formBoxModal">
-      <div class="formHeader">SPECIFY A SEARCH</div>
-      <div class="modalBody">
-        <div class="modalIntentions">
-          <div class="modalSectionHeader intentionsHeader">
-            INTENTION
-          </div>
-          <div class="intentionSelectModal active"><div class="icon icon-selection-true"></div><div class="intentionModalText">ANY</div></div>
-          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">ADOPT</div></div>
-          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">INCREASE</div></div>
-          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">FLAT</div></div>
-          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">DECREASE</div></div>
-          <div class="intentionSelectModal"><div class="icon icon-selection-false"></div><div class="intentionModalText">REPLACE</div></div>
-        </div>
-        <input placeholder="Intention" style="display: none;" type="text" name="intention[intention]" id="intention_intention">
-        <div class="modalIntentionsRight">
-          <div class="modalSectionHeader intentionsHeader">
-            SECTOR
-          </div>
-          <div class="field">
-            <div class="wrapper-dropdown wrapperFieldDropdown forSector" tabindex="1">
-              <span class="ddLabel">
-                Search sector
-              </span>
-              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
-              <ul class="dropdown fieldDropdown forSector">
-
-                    <li class="ddOption fieldOption">No preference</li>
-                    <% @sectors.each do |sector| %>
-                    <li class="ddOption fieldOption" data-sector-id="<%= sector.sid %>" data-initial="<%= sector.name[0].downcase %>"><%= sector.name %></li>
-                    <% end %>
-              </ul>
-            </div>
-            <input placeholder="Sector" style="display: none;" type="text" name="intention[sector]" id="intention_sector">
-          </div>
-          <div class="modalSectionHeader intentionsHeader">
-            VENDOR
-          </div>
-          <div class="field">
-            <div class="wrapper-dropdown wrapperFieldDropdown forVendor" tabindex="1">
-              <span class="ddLabel">
-                Search vendors
-              </span>
-              <span class="carrot"><div class="icon icon-drop-dwn-arrow"></div></span>
-              <ul class="dropdown fieldDropdown forVendor">
-                    <li class="ddOption fieldOption">No preference</li>
-                    <% @vendors.each do |vendor| %>
-                    <li class="ddOption fieldOption" data-vendor-id="<%= vendor.vid %>" data-initial="<%= vendor.name[0].downcase %>"><%= vendor.name %></li>
-                    <% end %>
-              </ul>
-            </div>
-            <input placeholder="Vendor" style="display: none;" type="text" name="intention[vendor]" id="intention_vendor">
-          </div>
-
-          <div class="modalDoneButton" id="modalSideBarDoneButton">
-            <a href="" rel="modal:close">DONE</a>
-          </div>
-
-          <div class="proxyCancelButton" id="proxyCancelButton">
-            <span rel="modal:close">CANCEL</span>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-
-
-  </div>
 <!-- end search wrapper big -->
 
 
