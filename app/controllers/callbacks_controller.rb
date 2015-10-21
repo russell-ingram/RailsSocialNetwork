@@ -3,13 +3,9 @@ class CallbacksController < Devise::OmniauthCallbacksController
         # params.permit(:linked_in_url)
         auth = request.env["omniauth.auth"]
 
-        # @user_linked = User.from_omniauth(request.env["omniauth.auth"],current_user)
-        # info = auth.info
-        # session["devise.linkedin_extra_data"] = auth.extra.raw_info
-
         @user = current_user
-        p "PICTURE:"
-        p auth.extra.raw_info['pictureUrls']['values']
+        # p "PICTURE:"
+        # p auth.extra.raw_info['pictureUrls']['values']
         @user.linkedin_pic_url = auth.extra.raw_info['pictureUrls']['values'][0]
         @user.linked_in_url = auth.info.urls.public_profile
         @user.summary = auth.extra.raw_info.summary

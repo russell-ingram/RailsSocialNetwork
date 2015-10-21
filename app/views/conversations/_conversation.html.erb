@@ -1,6 +1,6 @@
 <% message = conversation.last_message %>
 <% sender = message.sender %>
-<% if sender.first_name? %>
+<% if sender.present? %>
 <% if !conversation.is_trashed?(current_user) %>
 
 

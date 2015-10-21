@@ -191,18 +191,18 @@ class User < ActiveRecord::Base
 
           intentions = Intention.all
           id_check = []
-          if int["vendor"] != "Any"
+          if int["vendor"] != "Any" && int["vendor"] != "No preference"
             # if int["vendor"] = "Any"
             # end
             v = Vendor.find_by("name = ?", int["vendor"])
-            intentions = intentions.where(["vendor_id = ?", v.id]) if v != "Any"
+            intentions = intentions.where(["vendor_id = ?", v.id]) if v != "Any" && v != "No preference"
 
 
           end
-          if int["sector"] != "Any"
+          if int["sector"] != "Any" && int["sector"] != "No preference"
             sect = Sector.find_by("name = ?", int["sector"])
             # p sect.inspect
-            intentions = intentions.where(["sector_id = ?", sect.id]) if sect != "Any"
+            intentions = intentions.where(["sector_id = ?", sect.id]) if sect != "Any" && sect != "No preference"
           # p "intentions:"
           # p intentions.length
           end
@@ -217,7 +217,7 @@ class User < ActiveRecord::Base
           end
           # p "INT STRING:"
           # puts int_str
-          intentions = intentions.where(["intention = ?", int_str.upcase]) if int["intention"] != "Any"
+          intentions = intentions.where(["intention = ?", int_str.upcase]) if int["intention"] != "Any" && int["intention"] != "No preference"
           intentions.each do |i|
             id_check << i.user_id
           end

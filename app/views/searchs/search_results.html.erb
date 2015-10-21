@@ -49,7 +49,7 @@
           </div>
         </div>
 
-        <% if(!@search.industry.blank? || !@search.enterprise.blank? || !@search.organization_type.blank? || !@search.region.blank? || !@search.country.blank? || !@search.clevel.blank? || !@search.executive.blank? || !@search.president.blank? || !@search.director.blank? || !@search.principal.blank? || !@search.head.blank? || !@search.senior.blank? || !@search.lead.blank? || !@search.manager.blank? || !@search.architect.blank? || !@search.infrastructure.blank? || !@search.engineer.blank? || !@search.consultant.blank? || !@search.security.blank? || !@search.analyst.blank? || !@search.administrator.blank? || !@search.risk.blank?) %>
+        <% if(!@search.industry.blank? || !@search.enterprise.blank? || !@search.organization_type.blank? || !@search.region.blank? || !@search.country.blank? || !@search.clevel.blank? || !@search.executive.blank? || !@search.president.blank? || !@search.director.blank? || !@search.principal.blank? || !@search.head.blank? || !@search.senior.blank? || !@search.lead.blank? || !@search.manager.blank? || !@search.architect.blank? || !@search.infrastructure.blank? || !@search.engineer.blank? || !@search.consultant.blank? || !@search.security.blank? || !@search.analyst.blank? || !@search.administrator.blank? || !@search.risk.blank? || !@search.results.blank?) %>
 
           <div class="searchTagsWrapper">
           <%= form_for :search, method: :get do |f| %>
@@ -259,7 +259,6 @@
 
 
       <% end %>
-
         <div class="spendingTagsWrapper">
           <% @spendingTags.each_with_index do |stag,index| %>
           <div class="spendingTag">
