@@ -7,7 +7,7 @@ class EtrMailer < ApplicationMailer
   def notify_changes_email(user,changes)
     @user = user
     @changes = notify_changes_email
-    mail(to: @user.email, subject: "User changes")
+    # mail(to: @user.email, subject: "User changes")
   end
 
   def send_invite_email(user)
@@ -24,19 +24,19 @@ class EtrMailer < ApplicationMailer
     @password = random_string
     @user.save
 
-    mail(to: @user.email, subject: "Invite to FITO")
+    # mail(to: @user.email, subject: "Invite to FITO")
   end
 
   def request_received_email(req)
     @req = req
-    mail(to: @req.email, subject: "Your request to join FITO has been received")
+    # mail(to: @req.email, subject: "Your request to join FITO has been received")
     # should also send an e-mail to admin notifying about request
   end
 
   def reset_password_email(user,password)
     @name = user.full_name
     @password = password
-    mail(to: user.email, subject: "Reset your FITO password")
+    # mail(to: user.email, subject: "Reset your FITO password")
   end
 
   def add_friend_email(sender, receiver, message)
@@ -45,7 +45,7 @@ class EtrMailer < ApplicationMailer
     @message = message
     subject = "You have received a new FITO connection request: "+sender.full_name+ " wants to connect with you"
     if @receiver.connection_notifications
-      mail(to: receiver.email, subject: subject)
+      # mail(to: receiver.email, subject: subject)
     end
   end
 
@@ -54,7 +54,7 @@ class EtrMailer < ApplicationMailer
     @receiver = receiver
     subject = @sender.full_name + " has accepted your FITO connection request"
     if @receiver.connection_notifications
-      mail(to: receiver.email, subject: subject)
+      # mail(to: receiver.email, subject: subject)
     end
   end
 
@@ -64,7 +64,7 @@ class EtrMailer < ApplicationMailer
     @message = message.html_safe
     subject = "FITO - " + @sender.full_name + " has sent you a message"
     if @receiver.message_notifications
-          mail(to: @receiver.email, subject: subject)
+          # mail(to: @receiver.email, subject: subject)
     end
   end
 
@@ -74,7 +74,7 @@ class EtrMailer < ApplicationMailer
     @message = message
     subject = "FITO - " + sender.full_name + " has replied to your message"
     if @receiver.message_notifications
-      mail(to: @receiver.email, subject: subject)
+      # mail(to: @receiver.email, subject: subject)
     end
   end
 

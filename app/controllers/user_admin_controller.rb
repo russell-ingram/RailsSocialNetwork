@@ -353,6 +353,7 @@ class UserAdminController < ApplicationController
     # Sector.delete_all()
 
     # s.save
+    Thread.new do
 
     xlsx.each_with_pagename do |name, sheet|
 
@@ -557,6 +558,8 @@ class UserAdminController < ApplicationController
         # end rows iteration
       end
       # end check of name
+    end
+    ActiveRecord::Base.connection.close
     end
     # end sheets iteration
 
