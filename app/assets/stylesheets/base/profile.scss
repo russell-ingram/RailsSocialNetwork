@@ -26,6 +26,7 @@
 
 .pageProfile {
   
+  .confirmConnectModal.toUnconnect,
   .confirmConnectModal.toConnect  {
 
     .close-modal {
@@ -49,14 +50,24 @@
 
     .modalDoneButton {
       width: 50%;
-      display:inline-block;
       float:left;
       border-right: 14px solid #EFF1f1;
     }
 
     .buttonsBox {
-      display:relative;
+      position:relative;
       overflow: auto;
+    }
+  }
+
+  .confirmConnectModal.toUnconnect  {
+
+    .deleteUserModalInfo {
+      height: auto;
+    }
+
+    .modalDoneButton {
+      margin-top: 18px;
     }
   }
 }

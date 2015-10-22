@@ -55,9 +55,23 @@
                   <div class="deleteUserModalInfo">
                     Are you sure you would like to unconnect <%= @user.full_name %>?
                   </div>
-                <div class="modalDoneButton">
-                  <%= link_to "Confirm", destroy_friendship_path(@user), method: :post %>
+                
+
+
+                <div class="buttonsBox">
+                  
+                  <div class="modalDoneButton">
+                    <%= link_to "Confirm", destroy_friendship_path(@user), method: :post %>
+                  </div>
+                  <div class="close-modal-proxy">
+                    <a href="#close-modal" rel="modal:close">
+                    CANCEL
+                    </a>
+                  </div>
+
                 </div>
+                
+
                 </div>
               </div>
             </div>
