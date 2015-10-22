@@ -172,60 +172,82 @@ $( document ).ready(function() {
     }
   });
 
-  $('#searchAddFavButton').off().on('click', function() {
+  var underSavedLimit = true
+  $('#saved_search_name').on('input', function(delta, source) {
+    var text = $('#saved_search_name').val();
+    var remaining = 30 - text.length;
 
-    var data = $(this).attr('data');
-    var name = $("#saved_search_name").val();
-    if (name.length > 30) {
-      var n = 30 - name.length;
-      name = name.slice(0, n);
+    $('.namedSearchCounter').text('Characters remaining: ' + remaining);
+    if (remaining <0) {
+      $('.namedSearchCounter').css('color', 'red');
+      underSavedLimit = false;
+      $('#searchAddFavButton').find('a').attr('rel','');
+    } else {
+      $('.namedSearchCounter').css('color', '#797C7F');
+      underSavedLimit = true;
+      $('#searchAddFavButton').find('a').attr('rel','modal:close');
     }
-    $.post('/search/add_favorite',{"searchData": data, "name":name},function(data) {
-
-      $('.searchResultsFollowButton').html("ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div> ");
-      $('.searchResultsFollowButton').addClass('inactive');
-      var props_string = '';
-      var intentions = false;
-      $.each(data,function(k,v) {
-
-        if (v !== '') {
-
-          if (k === 'industry' || k === 'enterprise' || k === 'region' || k === 'country' || k === 'organization_type' ) {
-            props_string += v + ', ';
-          }
-          if (k === 'results') {
-            intentions = true;
-          }
-        }
-        if (v === true) {
-          if (k === 'clevel') {
-            props_string += 'C-Level, ';
-          }
-          if (k === 'executive' || k === 'president' || k === 'director' || k === 'principal' || k === 'head' || k === 'senior' || k === 'lead' || k === 'manager' || k === 'architect' || k === 'infrastructure' || k === 'engineer' || k === 'consultant' || k === 'security' || k === 'analyst' || k === 'administrator' || k ==='risk' ) {
-            var cap = k.charAt(0).toUpperCase() + k.substring(1);
-            props_string += cap + ', ';
-          }
-        }
-      });
-      if (props_string !== "null, ") {
-        props_string = props_string.slice(0,-2);
-      }
-      if (props_string.length === 0 && !intentions) {
-        props_string = "<i>No filters selected.</i>";
-      }
-      if (intentions && props_string !== "") {
-        var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'<br><i> Intention filters used. </i></div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
-      } else if (intentions) {
-        var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams"><i> Intention filters used. </i></div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
-      } else {
-        var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'</div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
-
-      }
-
-      $('.savedSearchTab').prepend(searchElem);
-    })
 
   });
+
+  $('#searchAddFavButton').off().on('click', function() {
+    if (underSavedLimit) {
+      var data = $(this).attr('data');
+      var name = $("#saved_search_name").val();
+      if (name.length > 30) {
+        var n = 30 - name.length;
+        name = name.slice(0, n);
+      }
+      $.post('/search/add_favorite',{"searchData": data, "name":name},function(data) {
+
+        $('.searchResultsFollowButton').html("ADDED TO FOLLOWED SEARCHES <div class='icon icon-icon-check'></div> ");
+        $('.searchResultsFollowButton').addClass('inactive');
+        var props_string = '';
+        var intentions = false;
+        $.each(data,function(k,v) {
+
+          if (v !== '') {
+
+            if (k === 'industry' || k === 'enterprise' || k === 'region' || k === 'country' || k === 'organization_type' ) {
+              props_string += v + ', ';
+            }
+            if (k === 'results') {
+              intentions = true;
+            }
+          }
+          if (v === true) {
+            if (k === 'clevel') {
+              props_string += 'C-Level, ';
+            }
+            if (k === 'executive' || k === 'president' || k === 'director' || k === 'principal' || k === 'head' || k === 'senior' || k === 'lead' || k === 'manager' || k === 'architect' || k === 'infrastructure' || k === 'engineer' || k === 'consultant' || k === 'security' || k === 'analyst' || k === 'administrator' || k ==='risk' ) {
+              var cap = k.charAt(0).toUpperCase() + k.substring(1);
+              props_string += cap + ', ';
+            }
+          }
+        });
+        if (props_string !== "null, ") {
+          props_string = props_string.slice(0,-2);
+        }
+        if (props_string.length === 0 && !intentions) {
+          props_string = "<i>No filters selected.</i>";
+        }
+        if (intentions && props_string !== "") {
+          var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'<br><i> Intention filters used. </i></div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
+        } else if (intentions) {
+          var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams"><i> Intention filters used. </i></div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
+        } else {
+          var searchElem = '<div class="favSearch"><div class="favSearchHeader">'+data.name+'</div><div class="favSearchParams">'+props_string+'</div><div class="numOfPeers">'+data.peers+' Peers <div class="icon icon-fwd-arrow"></div></div></div>';
+
+        }
+
+        $('.savedSearchTab').prepend(searchElem);
+      })
+    }
+
+  });
+
+
+
 
   var searchCounter = 0;
 

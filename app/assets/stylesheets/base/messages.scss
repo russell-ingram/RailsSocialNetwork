@@ -128,7 +128,7 @@
 
 .toggleFloatRight {
   float:right;
-  margin-right: 10px;
+  // margin-right: 10px;
   height: 45px;
   .ddFilterSelect {
     margin-left: -20px;
@@ -197,10 +197,15 @@
   margin: 0 25px;
   margin-bottom: 100px;
 
-    border-top: 1px solid #ccc;
-    padding-top: 50px;
+  border-top: 1px solid #ccc;
+  padding-top: 50px;
 }
 
+.searchWrapper {
+  .noMsgsWrap {
+    border-top: none;
+  }
+}
 
 .searchMsgsBarFloatRight {
   float:right;
@@ -437,6 +442,7 @@
   margin-top:25px;
   .pubOrPrivBox {
     margin-left: 20px;
+    padding-right: 0px;
     #sendAllButton {
        span {
         display: inline-block;
