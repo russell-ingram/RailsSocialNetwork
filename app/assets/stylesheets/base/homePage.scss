@@ -683,6 +683,17 @@ canvas {
   transition: all 0.5s ease-out;
   opacity: 1;
 }
+
+.closeRequestBtn {
+  display: none;
+  margin-top: -40px;
+}
+
+.fitoTextClose {
+  display: none;
+  width: 450px;
+}
+
 .fitoLandingRequestBtn:hover, .forgotPasswordButton:hover, .fitoLandingSignInToggle:hover   {
   color: #FFF;
 }
