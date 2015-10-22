@@ -340,4 +340,46 @@ textarea, input, select {
     margin-bottom: 100px;
 }
 
+.the_profile_page_s_confirm_connect_modal,
+.the_profile_page_s_confirm_unconnect_modal,
+.the_home_page_s_confirm_connect_modal {
+  
+  .close-modal {
+    display: none;
+  }
+
+  .close-modal-proxy {
+    color: white;
+    background-color: #282b30;
+    position: relative;
+    height: 45px;
+    width: 50%;
+    font-size: 14px;
+    padding-top: 13px;
+    text-align:center;
+    display:inline-block;
+    float:left;
+    margin-top: 18px;
+    border-left: 13px solid #EFF1f1;
+  }
+
+  .modalDoneButton {
+    width: 50%;
+    float:left;
+    border-right: 13px solid #EFF1f1;
+  }
+
+  .buttonsBox {
+    position:relative;
+    overflow: auto;
+  }
+
+}
+
+.the_profile_page_s_confirm_unconnect_modal {
+  
+  .deleteUserModalInfo {
+    height: 65px;
+  }
+}
 
