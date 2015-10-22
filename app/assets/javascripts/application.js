@@ -122,11 +122,10 @@ pageSpecificInits.searchResultsPage = function(jquery){
 	});
 
 	jquery('.sideBarClose').click(function(){
+		unblackoutBackground();
 		sideBar.animate({ right: '-100%' }, function(){
 			sideBar.addClass('break-2-hide');
 			sideBar.css({ right: '0%' });
-
-			unblackoutBackground();
 		});
 	});
 
