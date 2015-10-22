@@ -28,16 +28,33 @@ class RequestsController < ApplicationController
 
   def send_invite
     @new_user
+    @message = params[:message]
     if User.exists?(['id = ?', params[:id]])
       @new_user = User.find(params[:id])
     else
       @new_user = User.find_by("uid = ?", params[:id])
     end
+    @new_user.invite_message = @message
+    @new_user.save
     Thread.new do
-      EtrMailer.send_invite_email(@new_user).deliver_now
+      EtrMailer.send_invite_email(@new_user, @message).deliver_now
       ActiveRecord::Base.connection.close
     end
     redirect_to :back
+    # render json: "User invitation sent"
+  end
+
+  def user_send_invite
+    @user = User.find(params[:id])
+    @email = params[:email]
+
+    Thread.new do
+      EtrMailer.user_send_invite_email(@user, @email).deliver_now
+      ActiveRecord::Base.connection.close
+    end
+
+    redirect_to :back
+
   end
 
   def delete

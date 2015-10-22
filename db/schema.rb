@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015211331) do
+ActiveRecord::Schema.define(version: 20151021172038) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type_of_content",      default: "news"
@@ -228,6 +228,7 @@ ActiveRecord::Schema.define(version: 20151015211331) do
     t.boolean  "admin_request_notifications",    default: true
     t.boolean  "admin_activation_notifications", default: true
     t.string   "linkedin_pic_url"
+    t.text     "invite_message"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

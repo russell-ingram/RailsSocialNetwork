@@ -33,7 +33,7 @@ $( document ).ready(function() {
       var option = $(this).text();
       var shorter = '';
       var filterType = $(this).parent().parent().attr('name');
-
+      selectedLabel.text(option);
       sortFilter(option, filterType);
 
     });

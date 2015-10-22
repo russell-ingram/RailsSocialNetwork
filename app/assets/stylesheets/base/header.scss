@@ -73,6 +73,9 @@
   letter-spacing: 0.20em;
   float:left;
 }
+.hoverDiv, .menuDropItem {
+  transition: color 0.3s;
+}
 
 .hoverDiv:hover, .menuDropItem:hover, .hoverDiv.active {
   color: #3eb2cc;
@@ -159,7 +162,7 @@
   vertical-align: middle;
 }
 .adminMenuLogo {
-  height: 20px;
+  height: 17px;
 }
 
 .logoutDrop {

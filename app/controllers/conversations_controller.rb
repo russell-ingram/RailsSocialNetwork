@@ -50,6 +50,17 @@ class ConversationsController < ApplicationController
         @all_conversations = @conversation_senders.sort_by do |c|
           c['sender']
         end
+      elsif @type == "unread"
+        @unread = []
+        @read = []
+        @unsorted_conversations.each do |c|
+          if c.is_unread?(current_user)
+            @unread << {'conversation'=>c, 'sender'=>''}
+          else
+            @read << {'conversation'=>c, 'sender'=>''}
+          end
+        end
+        @all_conversations = @unread + @read
       else
         @type = "MOST RECENT"
         @unsorted_conversations.each do |c|

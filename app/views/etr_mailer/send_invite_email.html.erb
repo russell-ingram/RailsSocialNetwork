@@ -4,7 +4,15 @@
       Hi <%= @user.full_name %>,
       <br>
       <br>
+      <% if @message.blank? %>
       You have received an invite to join FITO. Please visit http://etrfito.com/register and use the following credentials to get started:
+      <% else %>
+      You have received an invite to join FITO. This included a message from the FITO team:
+      <br><br>
+      <%= @message %>
+      <br><br>
+      Please visit http://etrfito.com/register and use the following credentials to get started:
+      <% end %>
       <br>
       <br>
       Email:

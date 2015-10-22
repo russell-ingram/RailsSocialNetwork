@@ -63,15 +63,16 @@
       </div>
     </div>
 
-<% when :search_results_page_s_name_this_search %>
+<% when :search_results_page_s_name_this_search %>      
 
-    <div id="addSearchModal" class="addIntentionModal the_<%= name %>_modal deleteIntentionModal addFavModalBox" style="display:none;">
+    <div id="addSearchModal" class="addIntentionModal deleteIntentionModal addFavModalBox" style="display:none;">
       <div class="formBox searchFormBox formBoxModal confirmBoxModal">
       <div class="formHeader">NAME THIS SEARCH</div>
         <div class="modalBody">
           <div class="field editField fullField saveSearchNameField">
-            <input placeholder="" type="text" name="" id="saved_search_name">
+            <input placeholder="" type="text" id="saved_search_name">
           </div>
+          <div class="namedSearchCounter">Characters remaining: 30</div>
           <div class="modalIntentionsRight modalDeleteIntentions">
             <div class="modalDoneButton modalDoneAddFav blue-bg-link" id="searchAddFavButton" data="<%= search.id %>">
               <a href="#close-modal" rel="modal:close">
@@ -459,15 +460,20 @@
 
 <% when :admin_profile_page_s_confirm_invite %>
 
-  <div id="msgModal" class="addIntentionModal the_<%= name %>_modal deleteIntentionModal deleteOnlyInt" style="display:none;">
+  <div id="msgModal" class="addIntentionModal the_<%= name %>_modal deleteIntentionModal deleteOnlyInt sendInviteModal" style="display:none;">
     <div class="formBox searchFormBox formBoxModal confirmBoxModal">
       <div class="modalBody">
         <div class="modalIntentionsRight modalDeleteIntentions">
           <div class="deleteUserModalInfo deleteIntentionInfo">
             Are you sure you would like to send an invite to <%= editUser.first_name %>?
           </div>
-          <div class="modalDoneButton confirmDeleteButton">
-            <%= link_to "SEND", send_invite_request_path(editUser) %>
+          <div class="field-area">
+            <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
+          </div>
+          <div class="modalDoneButton confirmDeleteButton confirmSendInviteButton" data="<%= editUser.id %>">
+            <a href="#close-modal" rel="modal:close">
+            SEND
+            </a>
           </div>
         </div>
       </div>
