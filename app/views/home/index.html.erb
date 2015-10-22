@@ -20,11 +20,14 @@
     <div class="fitoLandingFadeBar">
       <%= image_tag("divider-fade.svg")  %>
     </div>
-    <div class="fitoLandingText"><%= @homeContent.body_copy %></div>
-
+    <div class="fitoLandingText fitoTextMain"><%= @homeContent.body_copy %></div>
+    <div class="fitoLandingText fitoTextClose">THANK YOU FOR YOUR INTEREST.<br>YOUR REQUEST HAS BEEN SUBMITTED.</div>
     <div class="fitoLandingSignInButton" id="fitoLandingSignInButton">SIGN-IN</div>
     <div class="fitoLandingRequestBtn mainRequestBtn">
       - request access -
+    </div>
+    <div class="fitoLandingRequestBtn closeRequestBtn">
+      - close -
     </div>
   </div>
 </div>
@@ -86,14 +89,14 @@
       one of the following are required
     </div>
     <div class="field loginField">
-      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile link (e.g. https://www.linkedin.com/pub/user-name/8b/663/40' %>
+      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile link (e.g. https://www.linkedin.com/pub/user-name/8b/663/40', id: 'requestLinkedIn' %>
     </div>
     <div class="fitoRequestOrText">or</div>
     <div class="field loginField">
-      <%= f.text_field :job_title, placeholder: 'job title' %>
+      <%= f.text_field :job_title, placeholder: 'job title', id: 'requestJobTitle' %>
     </div>
     <div class="field loginField">
-      <%= f.text_field :company, placeholder: 'company' %>
+      <%= f.text_field :company, placeholder: 'company', id: 'requestCompany' %>
     </div>
     <div class="fitoLandingRequestSubmit" id="fitoLandingInvitationRequestSubmit">
       Send Request
@@ -154,7 +157,13 @@ $( document ).ready(function() {
   })
 
   // prevents scrolling on load
-  $('body').addClass('homePageBody');
+  if ($('.fitoLandingSignInWrapper').hasClass('active')) {
+
+  } else {
+    $('body').addClass('homePageBody');
+  }
+
+
   $("#fitoLandingSignInButton").off().on('click', function(e) {
     e.stopPropagation();
     $('.fitoLandingRequestWrapper').hide();
@@ -174,19 +183,28 @@ $( document ).ready(function() {
   })
 
   $(".fitoLandingRequestBtn").off().on('click', function (e) {
-    $('#signInForm').hide();
-    $('.fitoLandingRequestWrapper').show();
-    $('.fitoLandingRequestResetPasswordWrapper').hide();
-    if ($('.fitoLandingSignInWrapper').hasClass('active')) {
 
+    if ($(this).hasClass('closeRequestBtn')) {
+      $('.fitoTextMain').show();
+      $('.fitoTextClose').hide();
+      $('.fitoLandingSignInButton').show();
+      $('.mainRequestBtn').show();
+      $('.closeRequestBtn').hide();
     } else {
-      e.stopPropagation();
-      $('.fitoLandingSignInWrapper').addClass('active');
-      $("#fitoLandingSignInButton").addClass('active');
-      $('.mainRequestBtn').addClass('active');
+      $('#signInForm').hide();
+      $('.fitoLandingRequestWrapper').show();
+      $('.fitoLandingRequestResetPasswordWrapper').hide();
+      if ($('.fitoLandingSignInWrapper').hasClass('active')) {
 
-      // allows the page to be scrollable again
-      $('body').removeClass('homePageBody');
+      } else {
+        e.stopPropagation();
+        $('.fitoLandingSignInWrapper').addClass('active');
+        $("#fitoLandingSignInButton").addClass('active');
+        $('.mainRequestBtn').addClass('active');
+
+        // allows the page to be scrollable again
+        $('body').removeClass('homePageBody');
+      }
     }
 
   });
@@ -253,7 +271,23 @@ $( document ).ready(function() {
     } else if ($('#requestEmail').val() === '') {
       $('#requestEmail').css('border-color', 'red');
     } else {
-      $('#fitoLandingRequestSubmitBtn').click();
+      request = {
+        'first_name': $('#requestFirstName').val(),
+        'last_name': $('#requestLastName').val(),
+        'email': $('#requestEmail').val(),
+        'linked_in': $('#requestLinkedIn').val(),
+        'job_title': $('#requestJobTitle').val(),
+        'company': $('requestCompany').val()
+      };
+      $.post('/requests', {'request': request}, function(data) {
+        $(document).click();
+        $('.fitoTextMain').hide();
+        $('.fitoTextClose').show();
+        $('.fitoLandingSignInButton').hide();
+        $('.mainRequestBtn').hide();
+        $('.closeRequestBtn').show();
+      });
+
     }
 
   });
@@ -264,6 +298,7 @@ $( document ).ready(function() {
   }
 
 });
+
 setTimeout(function() {
   $(document).scrollTop(0);
 }, 300);
