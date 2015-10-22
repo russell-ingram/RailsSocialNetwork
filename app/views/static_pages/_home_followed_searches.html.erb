@@ -29,29 +29,7 @@
               remove</a></div><div style="display:none;"><%= f.id %></div></div>
             </div>
 
-            <div id="ex<%= f.id %>" class="addIntentionModal deleteIntentionModal deleteOnlyInt" style="display:none;">
-              <div class="formBox searchFormBox formBoxModal confirmBoxModal">
-                <div class="modalBody">
-                  <div class="modalIntentionsRight modalDeleteIntentions">
-                    <div class="deleteUserModalInfo deleteIntentionInfo">
-                      Are you sure you would like to delete this search?
-                    </div>
-                    <div class="modalDoneButton confirmDeleteButton">
-                      <%= link_to "Confirm", search_delete_path(f) %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-
-
-
-
-
-
+            <%= render partial: 'static_pages/modal', locals: { name: :home_page_s_delete_this_search, f: f }  %>
 
           <% end %>
           <div class="viewMoreContent searchesViewMore">

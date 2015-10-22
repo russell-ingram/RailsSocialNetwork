@@ -14,41 +14,7 @@
     </a>
   </div>
 
-
-
-<div id="ex1" class="addIntentionModal" style="display:none;">
-  <div class="formBox searchFormBox formBoxModal confirmModalBox">
-    <div class="formHeader">CONFIRM DELETE</div>
-    <div class="modalBody">
-      <div class="modalIntentions">
-        <div class="myConnProfilePic">
-          <a href="/profile/<%= @editUser.id %>">
-            <% if @editUser.profile_pic_url? %>
-              <img src="<%= @editUser.profile_pic_url %>">
-            <% elsif @editUser.linkedin_pic_url? %>
-              <img src="<%= @editUser.linkedin_pic_url %>">
-            <% else %>
-              <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
-            <% end %>
-          </a>
-        </div>
-      </div>
-      <div class="modalIntentionsRight">
-        <div class="deleteUserModalInfo">
-          Are you sure you would like to delete <%= @editUser.full_name %>?
-        </div>
-        <div class="modalDoneButton">
-          <%= link_to "Confirm", admin_delete_user_path(@editUser) %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
+  <%= render partial: 'static_pages/modal', locals: { name: :admin_profile_page_s_confirm_delete, editUser: @editUser }  %>
 
   <div class="deleteUserButton userPermissions">
     <div class="permissionsLabel">Permissions:</div>
@@ -399,44 +365,9 @@
 
     </div>
 
-  <div id="msgModal" class="addIntentionModal deleteIntentionModal deleteOnlyInt sendInviteModal" style="display:none;">
-    <div class="formBox searchFormBox formBoxModal confirmBoxModal">
-      <div class="modalBody">
-        <div class="modalIntentionsRight modalDeleteIntentions">
-          <div class="deleteUserModalInfo deleteIntentionInfo">
-            Are you sure you would like to send an invite to <%= @editUser.first_name %>?
-          </div>
-          <div class="field-area">
-            <textarea placeholder="You may include a message in your request" class='connectMessage'></textarea>
-          </div>
-          <div class="modalDoneButton confirmDeleteButton confirmSendInviteButton" data="<%= @editUser.id %>">
-            <a href="#close-modal" rel="modal:close">
-            SEND
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
+    <%= render partial: 'static_pages/modal', locals: { name: :admin_profile_page_s_confirm_invite, editUser: @editUser }  %>
 
 <% end %>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -25,46 +25,8 @@
 }
 
 .pageProfile {
-  
-  .confirmConnectModal.toUnconnect,
-  .confirmConnectModal.toConnect  {
-
-    .close-modal {
-      display: none;
-    }
-
-    .close-modal-proxy {
-      color: white;
-      background-color: #282b30;
-      position: relative;
-      height: 45px;
-      width: 50%;
-      font-size: 14px;
-      padding-top: 13px;
-      text-align:center;
-      display:inline-block;
-      float:left;
-      margin-top: 18px;
-      border-left: 14px solid #EFF1f1;
-    }
-
-    .modalDoneButton {
-      width: 50%;
-      float:left;
-      border-right: 14px solid #EFF1f1;
-    }
-
-    .buttonsBox {
-      position:relative;
-      overflow: auto;
-    }
-  }
 
   .confirmConnectModal.toUnconnect  {
-
-    .deleteUserModalInfo {
-      height: auto;
-    }
 
     .modalDoneButton {
       margin-top: 18px;

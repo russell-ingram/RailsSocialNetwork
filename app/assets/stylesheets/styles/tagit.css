@@ -25,8 +25,12 @@ ul.tagit li.tagit-choice-read-only {
 }
 
 ul.tagit li.tagit-choice-editable {
-    padding: .2em 18px .2em .5em;
+    padding: .2em 30px .2em .5em;
     width: auto;
+    font-size: 14px;
+    font-family: "PNBold";
+    color: #34373D;
+    border: none;
 }
 
 ul.tagit li.tagit-new {
@@ -47,7 +51,8 @@ ul.tagit li.tagit-choice .tagit-close {
     right: .1em;
     top: 50%;
     margin-top: -10px;
-    line-height: 17px;
+    line-height: 24px;
+    padding-right:8px;
 }
 
 /* used for some custom themes that don't need image icons */
