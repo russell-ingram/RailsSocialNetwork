@@ -33,7 +33,11 @@ class ConversationsController < ApplicationController
 
         @unsorted_conversations.each do |c|
           if !c.is_trashed?(current_user)
-            @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.first_name}
+            if (!c.last_sender.nil?)
+              @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.first_name}
+            else
+              @conversation_senders << {'conversation'=>c, 'sender'=>"Deleted User"}
+            end
           end
         end
         @all_conversations = @conversation_senders.sort_by do |c|
@@ -44,7 +48,11 @@ class ConversationsController < ApplicationController
         @type = "LAST NAME"
         @unsorted_conversations.each do |c|
           if !c.is_trashed?(current_user)
-            @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.last_name}
+            if (!c.last_sender.nil?)
+              @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.first_name}
+            else
+              @conversation_senders << {'conversation'=>c, 'sender'=>"Deleted User"}
+            end
           end
         end
         @all_conversations = @conversation_senders.sort_by do |c|
@@ -54,10 +62,12 @@ class ConversationsController < ApplicationController
         @unread = []
         @read = []
         @unsorted_conversations.each do |c|
-          if c.is_unread?(current_user)
-            @unread << {'conversation'=>c, 'sender'=>''}
-          else
-            @read << {'conversation'=>c, 'sender'=>''}
+          if (!c.last_sender.nil?)
+            if c.is_unread?(current_user)
+              @unread << {'conversation'=>c, 'sender'=>''}
+            else
+              @read << {'conversation'=>c, 'sender'=>''}
+            end
           end
         end
         @all_conversations = @unread + @read
@@ -74,9 +84,11 @@ class ConversationsController < ApplicationController
       @type = "MOST RECENT"
       @unsorted_conversations.each do |c|
         if !c.is_trashed?(current_user)
-          if c.last_sender.full_name.downcase.include?(@name)
-            @conversation_senders
-            @conversation_senders << {'conversation'=>c, 'sender'=>''}
+          if !c.last_sender.nil?
+            if c.last_sender.full_name.downcase.include?(@name)
+              @conversation_senders
+              @conversation_senders << {'conversation'=>c, 'sender'=>''}
+            end
           end
         end
         @all_conversations = @conversation_senders

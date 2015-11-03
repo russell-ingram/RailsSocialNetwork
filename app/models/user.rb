@@ -389,7 +389,7 @@ class User < ActiveRecord::Base
     @conversations ||= mailbox.conversations
     @unread = 0
     @conversations.each do |c|
-      if c.is_unread?(self)
+      if c.is_unread?(self) && !c.last_sender.nil?
         @unread += 1
       end
     end
