@@ -379,6 +379,7 @@ $( document ).ready(function() {
     searchCounter--;
     if (searchCounter < 1) {
       $('.spendingIntentions').hide();
+      $('#resultsField').val('');
     }
     for (i = num + 1; i <= searchCounter + 1; i++) {
       if (i !== num) {
