@@ -49,7 +49,7 @@ class ConversationsController < ApplicationController
         @unsorted_conversations.each do |c|
           if !c.is_trashed?(current_user)
             if (!c.last_sender.nil?)
-              @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.first_name}
+              @conversation_senders << {'conversation'=>c, 'sender'=>c.last_sender.last_name}
             else
               @conversation_senders << {'conversation'=>c, 'sender'=>"Deleted User"}
             end
