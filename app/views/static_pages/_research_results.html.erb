@@ -18,14 +18,24 @@
     <div class="researchResults break-1-hide layout-option-<%= layout.layout_option %>">
 
       <% if layout.layout_option >= 1 %>
+        <% if layout.layout_option == 1 %>
+        <div class="researchCol researchOneCol">
+        <% elsif layout.layout_option == 2 %>
+        <div class="researchCol researchTwoCol">
+        <% else %>
         <div class="researchCol">
+        <% end %>
           <div class="researchNum"><%= layout.column_one_callout %></div>
           <div class="researchText"><%= layout.column_one_content.html_safe%></div>
         </div>
       <% end %>
 
       <% if layout.layout_option >= 2 %>
+        <% if layout.layout_option == 2 %>
+        <div class="researchCol researchTwoCol">
+        <% else %>
         <div class="researchCol">
+        <% end %>
           <div class="researchNum"><%= layout.column_two_callout %></div>
           <div class="researchText"><%= layout.column_two_content.html_safe %></div>
         </div>

@@ -52,14 +52,14 @@ pageSpecificInits.newMessagePage = function(jquery){
     jquery('.newMessagesFormWrapper form .submit-field').click();
   });
 
-  jquery('[placeholder]').focus(function(){
-  	$(this).data('placeholder', $(this).attr('placeholder'));
-  	$(this).attr('placeholder', '');
-  });
+  // jquery('[placeholder]').focus(function(){
+  // 	$(this).data('placeholder', $(this).attr('placeholder'));
+  // 	$(this).attr('placeholder', '');
+  // });
 
-  jquery('[placeholder]').blur(function(){
-  	$(this).attr('placeholder', $(this).data('placeholder'));
-  });  
+  // jquery('[placeholder]').blur(function(){
+  // 	$(this).attr('placeholder', $(this).data('placeholder'));
+  // });
 
 };
 
@@ -72,7 +72,7 @@ pageSpecificInits.createMessagePage = function(jquery){
 
   jquery('[placeholder]').blur(function(){
   	$(this).attr('placeholder', $(this).data('placeholder'));
-  });  
+  });
 
 };
 
@@ -97,7 +97,7 @@ pageSpecificInits.connectionsPage = function(jquery){
 pageSpecificInits.searchResultsPage = function(jquery){
 
 	var blackoutBackground = function(){
-		
+
 		jquery('.searchResultsWrapper').addClass('blackout');
 		jquery('.footer').addClass('blackout');
 	};
@@ -147,7 +147,7 @@ pageSpecificInits.searchPeersPage = function(jquery){
 };
 
 pageSpecificInits.homePage = function(jquery){
-	
+
 	var adjustContentPicSize = function(){
 
 		var box = jquery('.homeContentPic');
@@ -236,7 +236,7 @@ pageSpecificInits.homePage = function(jquery){
 		if(breakstate === 1050 || breakstate === 0){
 
 			align_inner_boxes();
-			align_outer_boxes();			
+			align_outer_boxes();
 
 		}
 		else{

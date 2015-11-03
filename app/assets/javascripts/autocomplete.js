@@ -1,28 +1,15 @@
 $( document ).ready(function() {
 
-  // $('#recipients').autocomplete({
-  //   source: $('#recipients').data('autocomplete-source'),
-  //   autoFocus: true,
-  //   select: function(e, ui) {
-  //     ($(this).val(ui.item.value))
-  //     $('.newMsgFormControlHidden').val(ui.item.user_id);
-  //     console.log($('.newMsgFormControlHidden').val())
-  //     return false
-  //   }
-  // });
-
-
   $('#recipients').tagit({
     autocomplete: {
       source: $('#recipients').data('autocomplete-source'),
       autoFocus: true,
       minLength: 3,
       select: function(e, ui) {
-        ($(this).val(ui.item.value))
+        $(this).val(ui.item.value)
         $('.newMsgFormControlHidden').val(function(i,v) {
 
           if (v === "") {
-            // console.log(ui.item.user_id);
             return ui.item.user_id;
           }
           else {
@@ -31,15 +18,17 @@ $( document ).ready(function() {
           }
 
         });
-        // console.log($('.newMsgFormControlHidden').val());
         $(".ui-autocomplete-input").removeAttr('placeholder');
         tagitTag();
         return false
       }
     },
-    beforeTagAdded: function (e, ui) {
-      console.log(ui);
-      console.log(e);
+    afterTagRemoved: function() {
+      var l = $('#recipients').tagit("assignedTags");
+      if (l.length === 0) {
+        $(".ui-autocomplete-input").attr('placeholder', 'To:');
+
+      }
     },
     removeConfirmation: true,
     caseSensitve: false,
@@ -48,7 +37,6 @@ $( document ).ready(function() {
   });
 
   function tagitTag () {
-    // console.log("TAGGED IT");
 
     $('#recipients').tagit({
       autocomplete: {
@@ -57,15 +45,21 @@ $( document ).ready(function() {
         minLength: 3,
         select: function(e, ui) {
           ($(this).val(ui.item.value))
-          console.log('hello');
           $(".ui-autocomplete-input").removeAtrr('placeholder');
           return false
+        }
+      },
+      afterTagRemoved: function() {
+        var l = $('#recipients').tagit("assignedTags");
+        if (l.length === 0) {
+          $(".ui-autocomplete-input").attr('placeholder', 'To:');
+
         }
       },
       allowSpaces: false,
       removeConfirmation: true,
       caseSensitve: false,
-      placeholderText: ""
+      placeholderText: "To:"
     });
   }
 
@@ -80,7 +74,6 @@ $( document ).ready(function() {
         $('.newMsgFormControlHidden').val(function(i,v) {
 
           if (v === "") {
-            console.log(ui.item.user_id);
             return ui.item.user_id;
           }
           else {
@@ -94,6 +87,13 @@ $( document ).ready(function() {
         return false
       }
     },
+    afterTagRemoved: function() {
+      var l = $('#admin_recipients').tagit("assignedTags");
+      if (l.length === 0) {
+        $(".ui-autocomplete-input").attr('placeholder', 'To:');
+
+      }
+    },
     removeConfirmation: true,
     caseSensitve: false,
     allowSpaces: true,
@@ -101,7 +101,6 @@ $( document ).ready(function() {
   });
 
   function tagitTagAll () {
-    console.log("TAGGED IT");
 
     $('#admin_recipients').tagit({
       autocomplete: {
@@ -109,14 +108,16 @@ $( document ).ready(function() {
         autoFocus: true,
         minLength: 3,
         select: function(e, ui) {
-          // ($(this).val(ui.item.value))
-          // console.log('hello');
 
           return false
-        },
+        }
       },
-      beforeTagAdded: function (e, ui) {
-        console.log()
+      afterTagRemoved: function() {
+        var l = $('#admin_recipients').tagit("assignedTags");
+        if (l.length === 0) {
+          $(".ui-autocomplete-input").attr('placeholder', 'To:');
+
+        }
       },
       allowSpaces: false,
       removeConfirmation: true,
@@ -136,17 +137,5 @@ $( document ).ready(function() {
       return false;
     }
   })
-
-  // var stuff = [
-  //   'Russ', 'Max', 'Jeremy'
-  // ]
-
-  // $('#recipients').devbridgeAutocomplete({
-  //   serviceUrl: '/recipients',
-  //   minChars: 3,
-  //   autoSelectFirst: true,
-  //   showNoSuggestionNotice: "No results found!"
-
-  // })
 
 })

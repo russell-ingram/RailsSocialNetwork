@@ -26,7 +26,7 @@
 
       <div class="newMsgFormGroup recipientsGroup">
 
-        <%= text_field_tag 'recipients', nil, data: {autocomplete_source: admin_recipients_path }, autocomplete: 'off', placeholder: 'TO:', class: 'newMsgFormControl', id: 'admin_recipients' %>
+        <%= text_field_tag 'recipients', nil, data: {autocomplete_source: admin_recipients_path }, autocomplete: 'off', class: 'newMsgFormControl', id: 'admin_recipients' %>
 
         <%= text_field_tag 'recipients_id', nil, placeholder: 'Recipients', class: 'newMsgFormControlHidden' %>
 
