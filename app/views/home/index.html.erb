@@ -6,7 +6,7 @@
 
 </canvas>
 <% flash.each do |name, msg| -%>
-  <% if !msg.blank? && name != 'sent' %>
+  <% if !msg.blank? && name != 'sent' && name != 'newUser' %>
     <% @flash = true %>
   <% end %>
 <% end -%>
@@ -39,7 +39,7 @@
 <% end %>
 
 <% flash.each do |name, msg| -%>
-  <% if !msg.blank? && name != 'sent' %>
+  <% if !msg.blank? && name != 'sent' && name != 'newUser' %>
   <div class="flashHomePage">
       <%= content_tag :div, msg, class: name unless msg.blank? %>
   </div>
@@ -89,7 +89,7 @@
       one of the following are required
     </div>
     <div class="field loginField">
-      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile link (e.g. https://www.linkedin.com/pub/user-name/8b/663/40', id: 'requestLinkedIn' %>
+      <%= f.text_field :linked_in, placeholder: 'LinkedIn profile link (e.g. https://www.linkedin.com/pub/user-name/', id: 'requestLinkedIn' %>
     </div>
     <div class="fitoRequestOrText">or</div>
     <div class="field loginField">

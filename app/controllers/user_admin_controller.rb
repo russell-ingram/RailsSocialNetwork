@@ -244,8 +244,9 @@ class UserAdminController < ApplicationController
     @work.country = params[:country] if params[:country].present?
     @work.public = params[:public] if params[:public].present?
 
-
+    @editUser.invite_status = "accepted"
     if @editUser.save
+      flash[:newUser] = "New User"
       @work.save
       if Request.exists?(['uid = ?', @editUser.uid])
         @req = Request.find_by uid: @editUser.uid

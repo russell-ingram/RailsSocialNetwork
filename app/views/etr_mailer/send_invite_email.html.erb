@@ -1,6 +1,7 @@
 <%= render "etr_mailer/email_header" %>
-    <div class="emailGreeting" style="font-size: 24px; color: #000000; margin-bottom: 40px; padding-left: 20px;">Invitation request received</div>
-    <div class="emailBody" style="font-size: 14px; line-height: 22px; color: #797C7F; padding-left: 20px;">
+    <div class="emailGreeting" style="font-size: 24px; color: #000000 !important; margin-bottom: 40px; padding-left: 20px;">Invitation request received</div>
+    <div class="emailBody" style="font-size: 14px; line-height: 22px; color: #6D6F72 !important; padding-left: 20px;">
+    <div style="color: #6D6F72">
       Hi <%= @user.full_name %>,
       <br>
       <br>
@@ -27,7 +28,7 @@
       Sincerely,
       <br>
       The FITO team
-
+      </div>
     </div>
 
 <%= render "etr_mailer/email_footer" %>

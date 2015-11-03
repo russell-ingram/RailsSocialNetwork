@@ -65,7 +65,7 @@
                 <% atTheEnd = false %>
               <% end %>
               <% recipients.each_with_index do |u,i| %>
-                <% if i == (recipients.length - 1) %>
+                <% if i == (recipients.length - 1) && !u.nil? %>
 
                   <% if u != current_user %>
                     <a href="/profile/<%= u.id %>" class="userReplyLink">
@@ -74,7 +74,7 @@
                   <% end %>
 
                 <% else %>
-                  <% if u != current_user %>
+                  <% if u != current_user && !u.nil? %>
 
                     <% if i == (recipients.length - 2) %>
                       <% if atTheEnd %>
@@ -183,7 +183,7 @@
                   <% end %>
 
                 <% else %>
-                  <% if u != current_user %>
+                  <% if u != current_user && !u.nil? %>
 
                     <% if i == (@recipients.length - 2) %>
                       <% if atTheEnd %>

@@ -62,21 +62,27 @@
       <div class="bottomRightMessageContent">
         <div class="bottomRightMessagePics">
         <% recipients.first(4).each do |r| %>
-          <div class="miniImg" title="<%= r.full_name %>">
-          <% if r == current_user %>
-            <a href="/profile" title="<%= r.full_name %>">
+          <% if !r.nil? %>
+            <div class="miniImg" title="<%= r.full_name %>">
+            <% if r == current_user %>
+              <a href="/profile" title="<%= r.full_name %>">
+            <% else %>
+              <a href="/profile/<%= r.id %>" title="<%= r.full_name %>">
+            <% end %>
+            <% if r.profile_pic_url? %>
+              <%= image_tag r.profile_pic_url %>
+            <% elsif r.linkedin_pic_url? %>
+                <%= image_tag r.linkedin_pic_url %>
+            <% else %>
+              <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+            <% end %>
+              </a>
+            </div>
           <% else %>
-            <a href="/profile/<%= r.id %>" title="<%= r.full_name %>">
+            <div class="miniImg" title="Deleted User">
+              <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
+            </div>
           <% end %>
-          <% if r.profile_pic_url? %>
-            <%= image_tag r.profile_pic_url %>
-          <% elsif r.linkedin_pic_url? %>
-              <%= image_tag r.linkedin_pic_url %>
-          <% else %>
-            <%= image_tag("avatar-icons/avatar_0"+rand(1..9).to_s+".svg")  %>
-          <% end %>
-            </a>
-          </div>
         <% end %>
         </div>
         <div class="bottomRightMessageInfo">
