@@ -84,9 +84,25 @@ input[type=submit] {
   src: font-url('proximaNova/ProximaNova-Light.otf');
 }
 
+// @font-face {
+//   font-family: "PNBold";
+//   src: font-url('proximaNova/PNBold.eot'); /* IE9 Compat Modes */
+//   src: font-url('proximaNova/PNBold.woff2') format('woff2'), Super Modern Browsers
+//        font-url('proximaNova/PNBold.woff') format('woff'), /* Pretty Modern Browsers */
+//        font-url('proximaNova/PNBold.ttf')  format('truetype'), /* Safari, Android, iOS */
+// }
+
 @font-face {
   font-family: "PNBold";
   src: font-url('proximaNova/ProximaNova-Sbold.otf');
+}
+
+@font-face {
+  font-family: "PNSemiBold";
+  src: font-url('proximaNova/ProximaNovaSemibold.eot'); /* IE9 Compat Modes */
+  src: font-url('proximaNova/ProximaNovaSemibold.woff2') format('woff2'), /* Super Modern Browsers */
+       font-url('proximaNova/ProximaNovaSemibold.woff') format('woff'), /* Pretty Modern Browsers */
+       font-url('proximaNova/ProximaNovaSemibold.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
 @font-face {
@@ -344,7 +360,7 @@ textarea, input, select {
 .the_profile_page_s_confirm_connect_modal,
 .the_profile_page_s_confirm_unconnect_modal,
 .the_home_page_s_confirm_connect_modal {
-  
+
   .close-modal {
     display: none;
   }
@@ -378,7 +394,7 @@ textarea, input, select {
 }
 
 .the_profile_page_s_confirm_unconnect_modal {
-  
+
   .deleteUserModalInfo {
     height: 65px;
   }
