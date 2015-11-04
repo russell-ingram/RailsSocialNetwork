@@ -17,6 +17,7 @@ class UserAdminController < ApplicationController
       @type = "LAST NAME"
       @users = User.order(last_name: :asc)
     else
+      @type = "MOST RECENT"
       @users = User.order(created_at: :desc)
     end
 
