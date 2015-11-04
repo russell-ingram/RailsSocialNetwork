@@ -5,7 +5,21 @@ class UserAdminController < ApplicationController
 
   def index
     # defaults to most recent
-    @users = User.order(created_at: :desc)
+    @type = "MOST RECENT"
+    if params[:type]
+      @type = params[:type]
+    end
+
+    if @type == "first"
+      @type = "FIRST NAME"
+      @users = User.order(first_name: :asc)
+    elsif @type == "last"
+      @type = "LAST NAME"
+      @users = User.order(last_name: :asc)
+    else
+      @users = User.order(created_at: :desc)
+    end
+
     @requests = Request.where("accepted = ?", false)
     require 'will_paginate/array'
     @users = @users.paginate(page: params[:page], per_page: 10)

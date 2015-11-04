@@ -32,19 +32,19 @@
 
 
       <div class="myConnsHeaderBar">
-        <div class="myConnsLabel">CREATED ACCOUNTS</div>
+        <div class="myConnsLabel"><a id="createdAccounts">CREATED ACCOUNTS</a></div>
         <div class="myConnsRightFloat">
           <div class="myConnsSearchButton"></div>
           <div class="sortLabel">SORT BY:</div>
           <div class="sortToggle">
 
             <div class="wrapper-dropdown ddFilter ddToggle floatRightToggle" name="admin" tabindex="1">
-              <div class="ddLabel ddFilterLabel">MOST RECENT</div>
+              <div class="ddLabel ddFilterLabel"><%= @type %></div>
               <div class="icon icon-carot messageCarot"></div>
               <ul class="dropdown ddFilterSelect">
-                <li class="ddOption filterOption">MOST RECENT</li>
-                <li class="ddOption filterOption">FIRST NAME</li>
-                <li class="ddOption filterOption">LAST NAME</li>
+                <li class="ddOption filterOption"><%= link_to "MOST RECENT", admin_path(:anchor => "createdAccounts", type: 'recent') %></li>
+                <li class="ddOption filterOption"><%= link_to "FIRST NAME", admin_path(:anchor => "createdAccounts",type: 'first' ) %></li>
+                <li class="ddOption filterOption"><%= link_to "LAST NAME",  admin_path(:anchor => "createdAccounts", type: "last") %></li>
               </ul>
             </div>
           </div>

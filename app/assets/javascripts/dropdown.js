@@ -34,7 +34,7 @@ $( document ).ready(function() {
       var shorter = '';
       var filterType = $(this).parent().parent().attr('name');
       selectedLabel.text(option);
-      sortFilter(option, filterType);
+      // sortFilter(option, filterType);
 
     });
 
