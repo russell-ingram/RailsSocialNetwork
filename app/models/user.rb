@@ -437,7 +437,9 @@ class User < ActiveRecord::Base
       admins = User.where(admin: true)
 
       Thread.new do
-        EtrMailer.notify_changes_email(admins,@changes,self, "profile").deliver_now
+        admins.each do |a|
+          EtrMailer.notify_changes_email(a,@changes,self, "profile").deliver_now
+        end
         ActiveRecord::Base.connection.close
       end
     end

@@ -294,7 +294,9 @@ class UserAdminController < ApplicationController
       if @accepted
         Thread.new do
           admins = User.where(admin: true)
-          EtrMailer.user_accepted_invite_email(admins,@editUser).deliver_now
+          admins.each do |a|
+            EtrMailer.user_accepted_invite_email(a,@editUser).deliver_now
+          end
           ActiveRecord::Base.connection.close
         end
       end

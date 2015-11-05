@@ -3,17 +3,14 @@ class EtrMailer < ApplicationMailer
   default "Message-ID"=>"#{Digest::SHA2.hexdigest(Time.now.to_i.to_s)}@etrfito.com"
   before_action :get_logo
 
-  def notify_changes_email(admins,changes, user, type)
+  def notify_changes_email(admin,changes, user, type)
     @user = user
     @changes = changes
     @type = type
     subject = "FITO: " + @user.full_name + " has changed his/her profile"
-
-    admins.each do |a|
-      if a.admin_profile_notifications
-        @admin = a
-        mail(to: a.email, subject: subject)
-      end
+    if admin.admin_profile_notifications
+      @admin = admin
+      mail(to: admin.email, subject: subject)
     end
   end
 
@@ -42,17 +39,13 @@ class EtrMailer < ApplicationMailer
     mail(to: @email, subject: subject)
   end
 
-  def user_accepted_invite_email(admins, user)
+  def user_accepted_invite_email(admin, user)
     @user = user
     subject = @user.full_name + " has accepted the invite to join FITO!"
-
-    admins.each do |a|
-      @admin = a
-      if a.admin_activation_notifications
-        mail(to: a.email, subject: subject)
-      end
+    @admin = admin
+    if admin.admin_activation_notifications
+      mail(to: admin.email, subject: subject)
     end
-
   end
 
   def request_received_email(req)
@@ -60,13 +53,12 @@ class EtrMailer < ApplicationMailer
     mail(to: @req.email, subject: "Your request to join FITO has been received")
   end
 
-  def admin_request_received_email(req, admins)
+  def admin_request_received_email(req, admin)
     @req = req
-    admins.each do |a|
-      if a.admin_request_notifications
-        @admin = a
-        mail(to: @admin.email, subject: "Your request to join FITO has been received")
-      end
+    @admin = admin
+    if admin.admin_request_notifications
+      mail(to: @admin.email, subject: "Your request to join FITO has been received")
+    end
     end
   end
 

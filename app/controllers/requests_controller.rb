@@ -18,7 +18,9 @@ class RequestsController < ApplicationController
       Thread.new do
         EtrMailer.request_received_email(@r).deliver_now
         admins = User.where(admin: true)
-        EtrMailer.admin_request_received_email(@r, admins).deliver_now
+        admins.each do |a|
+          EtrMailer.admin_request_received_email(@r, a).deliver_now
+        end
         ActiveRecord::Base.connection.close
       end
 
