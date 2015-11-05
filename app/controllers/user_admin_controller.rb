@@ -88,7 +88,7 @@ class UserAdminController < ApplicationController
       elsif !u.linkedin_pic_url.blank?
         pic = u.linkedin_pic_url
       else
-        num = Random.new(9)
+        num = Random.new.rand(9)
         pic = "/assets/avatar-icons/avatar_0"+num.to_s+".svg"
       end
       user = {
