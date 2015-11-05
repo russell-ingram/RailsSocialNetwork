@@ -372,12 +372,12 @@ class User < ActiveRecord::Base
         @user_pos = work
       end
     end
-    if @user_pos.blank?
+    if @user_pos.blank? || @user_pos.nil?
       @user_pos = {
-        "job_title" => "Unlisted",
-        "company" => "Unlisted",
-        "enterprise_size" => "Unlisted",
-        "region" => "Unlisted",
+        "job_title" => "Unlisted job title",
+        "company" => "Unlisted company",
+        "enterprise_size" => "Unlisted enterprise size",
+        "region" => "Unlisted region",
         "country" => "Unlisted",
         "industry" => "Unlisted"
       }
