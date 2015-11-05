@@ -383,28 +383,28 @@ class User < ActiveRecord::Base
       }
     end
 
-    if @user_pos.job_title == ""
-      @user_pos.job_title = "Unlisted job title"
+    if @user_pos['job_title'] == ""
+      @user_pos['job_title'] = "Unlisted job title"
     end
 
-    if @user_pos.company == ""
-      @user_pos.company = "Unlisted company"
+    if @user_pos['company'] == ""
+      @user_pos['company'] = "Unlisted company"
     end
 
-    if @user_pos.enterprise_size == ""
-      @user_pos.enterprise_size = "Unlisted enterprise size"
+    if @user_pos['enterprise_size'] == ""
+      @user_pos['enterprise_size'] = "Unlisted enterprise size"
     end
 
-    if @user_pos.region == ""
-      @user_pos.region = "Unlisted region"
+    if @user_pos['region'] == ""
+      @user_pos['region'] = "Unlisted region"
     end
 
-    if @user_pos.country == ""
-      @user_pos.country = "Unlisted country"
+    if @user_pos['country'] == ""
+      @user_pos['country'] = "Unlisted country"
     end
 
-    if @user_pos.industry == ""
-      @user_pos.industry = "Unlisted industry"
+    if @user_pos['industry'] == ""
+      @user_pos['industry'] = "Unlisted industry"
     end
 
     return @user_pos
