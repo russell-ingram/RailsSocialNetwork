@@ -9,6 +9,3 @@ class Request < ActiveRecord::Base
     end
   end
 end
-
-
-# https://www.linkedin.com/in/sidnyginsberg

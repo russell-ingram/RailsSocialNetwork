@@ -406,19 +406,16 @@ class User < ActiveRecord::Base
   end
 
   def notify_changes
-    @changes = self.previous_changes
-    @work_changes = []
-    self.works.each do |w|
-      puts w.changed?
-      if w.changed?
+    if self.changed?
+      @changes = self.changes
 
-        @work_changes << w.previous_changes
+      admins = User.where(admin: true)
+
+      Thread.new do
+        EtrMailer.notify_changes_email(admins,@changes,self, "profile").deliver_now
+        ActiveRecord::Base.connection.close
       end
     end
-    # Thread.new do
-    #   EtrMailer.notify_changes_email(self,@changes).deliver_now
-    #   ActiveRecord::Base.connection.close
-    # end
   end
 
 

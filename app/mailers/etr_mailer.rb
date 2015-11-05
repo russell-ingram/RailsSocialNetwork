@@ -1,13 +1,20 @@
 class EtrMailer < ApplicationMailer
-  # default from: "brontosauruss@gmail.com"
   default from: "notifications@etrfito.com"
   default "Message-ID"=>"#{Digest::SHA2.hexdigest(Time.now.to_i.to_s)}@etrfito.com"
   before_action :get_logo
 
-  def notify_changes_email(user,changes)
+  def notify_changes_email(admins,changes, user, type)
     @user = user
-    @changes = notify_changes_email
-    # mail(to: @user.email, subject: "User changes")
+    @changes = changes
+    @type = type
+    subject = "FITO: " + @user.full_name + " has changed his/her profile"
+
+    admins.each do |a|
+      if a.admin_profile_notifications
+        @admin = a
+        mail(to: a.email, subject: subject)
+      end
+    end
   end
 
   def send_invite_email(user, message)

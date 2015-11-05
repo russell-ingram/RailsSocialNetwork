@@ -1,14 +1,26 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Hi Admin,</h1>
-    <p>
+<%= render "etr_mailer/email_header" %>
+    <div class="emailGreeting" style="font-size: 24px; color: #000000; margin-bottom: 40px; padding-left: 20px;">A user has updated their profile settings</div>
+    <div class="emailBody" style="font-size: 14px; line-height: 22px; color: #6D6F72; padding-left: 20px;">
+      Hi <%= @admin.first_name %>,
+      <br>
+      <br>
+      <% if @type == "profile" %>
       <%= @user.full_name %> has changed the following fields in his/her profile:
-      </br>
+      <% else %>
+      <%= @user.full_name %> has changed the following about his/her work history:
+      <% end %>
+      <br>
+      <br>
       <%= @changes %>
-    </p>
-  </body>
-</html>
+      <br>
+      <br>
+      If you would like to unsubscribe from these notifications, please visit the Admin section of www.etrfito.com and deselect the notifications.
+      <br>
+      <br>
+      Sincerely,
+      <br>
+      The FITO team
+
+    </div>
+
+<%= render "etr_mailer/email_footer" %>

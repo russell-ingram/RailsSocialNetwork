@@ -75,7 +75,6 @@ $( document ).ready(function() {
         $('.searchSideBarDropdown').removeClass('active');
         top.addClass('active');
       }
-      // console.log(selectedLabel.text())
 
     }
 

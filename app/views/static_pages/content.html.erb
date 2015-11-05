@@ -6,11 +6,11 @@
 
   <div class="cmsWrapper">
 
-  <% if !@layout.column_three_content.blank? %>
+  <% if @layout.layout_option == 3 %>
   <div id="calloutNumber" class="col3" style="display:none;"></div>
-  <% elsif !@layout.column_two_content.blank? %>
+  <% elsif @layout.layout_option == 2 %>
   <div id="calloutNumber" class="col2" style="display:none;"></div>
-  <% elsif !@layout.column_one_content.blank? %>
+  <% elsif @layout.layout_option == 1 %>
   <div id="calloutNumber" class="col1" style="display:none;"></div>
   <% else %>
   <div id="calloutNumber" class="empty" style="display:none;"></div>
@@ -27,10 +27,10 @@
         <div class="cmsImageUploadButton" style="background-image: url(<%= @news.image_url %>)">
 
         </div>
-      
+
 
       <% else %>
-      
+
 
         <div class="cmsImageUploadButton add">
           <div class="userUploadIcons">
@@ -41,7 +41,7 @@
             </p>
           </div>
         </div>
-     
+
 
       <% end %>
 

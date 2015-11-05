@@ -467,8 +467,8 @@
     top: 115px;
   }
 
-  .ql-editor, 
-  input[type=text], 
+  .ql-editor,
+  input[type=text],
   textarea {
     color: #445058;
   }
@@ -572,7 +572,11 @@
     font-size: 14px;
     font-family: "PNLight";
     color: #737373;
+    a:hover {
+      color: #3eb2cc;
+    }
   }
+
   .myConnEmail {
     margin-top: -3px;
     margin-bottom: 5px;
@@ -640,7 +644,7 @@
   }
 
   .close-modal {
-  
+
     margin-top: -105px;
   }
 

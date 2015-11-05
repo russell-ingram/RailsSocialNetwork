@@ -375,7 +375,6 @@ $( document ).ready(function() {
     var json = JSON.parse(results);
     json.splice((num-1), 1);
     $('#resultsField').val(JSON.stringify(json));
-    console.log($('#resultsField').val());
     searchCounter--;
     if (searchCounter < 1) {
       $('.spendingIntentions').hide();
@@ -683,7 +682,7 @@ $( document ).ready(function() {
       var url = '/requests/'+id+'/user_send_invite';
 
       $.post(url, {'email': email}, function(data) {
-        console.log(data);
+
       });
     }
 
