@@ -17,8 +17,11 @@ class RequestsController < ApplicationController
       @res = 'Request successfully sent'
       Thread.new do
         EtrMailer.request_received_email(@r).deliver_now
+        admins = User.where(admin: true)
+        EtrMailer.admin_request_received_email(@r, admins).deliver_now
         ActiveRecord::Base.connection.close
       end
+
       render "home/index"
     else
       @res = 'Request failed. Please try again at a later time'

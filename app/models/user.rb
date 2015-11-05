@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   include ActiveModel::Dirty
-  after_save :notify_changes
+  after_save :notify_changes, :if => proc { !last_sign_in_at_changed? && !invite_status_changed? && !encrypted_password_changed? && !invite_message_changed? }
+
   acts_as_messageable
 
   has_many :friendships

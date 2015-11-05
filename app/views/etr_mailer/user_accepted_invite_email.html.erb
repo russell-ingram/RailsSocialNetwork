@@ -1,0 +1,19 @@
+<%= render "etr_mailer/email_header" %>
+    <div class="emailGreeting" style="font-size: 24px; color: #000000; margin-bottom: 40px; padding-left: 20px;">A user has accepted the invitation to join FITO</div>
+    <div class="emailBody" style="font-size: 14px; line-height: 22px; color: #6D6F72; padding-left: 20px;">
+      Hi <%= @admin.first_name %>,
+      <br>
+      <br>
+      <%= @user.full_name %> has accepted the invite to join FITO and completed registration! Click <a href="/profile/<%= @user.id %>">here</a> to view his/her profile.
+      <br>
+      <br>
+      If you would like to unsubscribe from these notifications, please visit the Admin section of www.etrfito.com and deselect the notifications.
+      <br>
+      <br>
+      Sincerely,
+      <br>
+      The FITO team
+
+    </div>
+
+<%= render "etr_mailer/email_footer" %>

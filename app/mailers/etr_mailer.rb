@@ -42,10 +42,32 @@ class EtrMailer < ApplicationMailer
     mail(to: @email, subject: subject)
   end
 
+  def user_accepted_invite_email(admins, user)
+    @user = user
+    subject = @user.full_name + " has accepted the invite to join FITO!"
+
+    admins.each do |a|
+      @admin = a
+      if a.admin_activation_notifications
+        mail(to: a.email, subject: subject)
+      end
+    end
+
+  end
+
   def request_received_email(req)
     @req = req
     mail(to: @req.email, subject: "Your request to join FITO has been received")
-    # should also send an e-mail to admin notifying about request
+  end
+
+  def admin_request_received_email(req, admins)
+    @req = req
+    admins.each do |a|
+      if a.admin_request_notifications
+        @admin = a
+        mail(to: @admin.email, subject: "Your request to join FITO has been received")
+      end
+    end
   end
 
   def reset_password_email(user,password)

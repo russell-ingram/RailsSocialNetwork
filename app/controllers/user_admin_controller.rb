@@ -259,7 +259,11 @@ class UserAdminController < ApplicationController
     @work.country = params[:country] if params[:country].present?
     @work.public = params[:public] if params[:public].present?
 
-    @editUser.invite_status = "accepted"
+    @accepted = false
+    if @editUser.invite_status == "pending"
+      @editUser.invite_status = "accepted"
+      @accepted = true
+    end
     if @editUser.save
       flash[:newUser] = "New User"
       @work.save
@@ -268,6 +272,14 @@ class UserAdminController < ApplicationController
         @req.accepted = true
         @req.save
       end
+      if @accepted
+        Thread.new do
+          admins = User.where(admin: true)
+          EtrMailer.user_accepted_invite_email(admins,@editUser).deliver_now
+          ActiveRecord::Base.connection.close
+        end
+      end
+
       sign_in(@editUser, :bypass => true)
       render json: @editUser
     else
