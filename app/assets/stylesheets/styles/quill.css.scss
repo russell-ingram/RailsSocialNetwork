@@ -30,6 +30,10 @@
   font-size: 12px;
 }
 
+.editorButton.active {
+  background-color: #c8c8cb;
+}
+
 .characterLimit {
   display: none;
   position: relative;
