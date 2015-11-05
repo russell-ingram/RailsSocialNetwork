@@ -81,17 +81,15 @@ $( document ).ready(function() {
 
     $.get('/admin/users/search?term='+x, function(data) {
       $(".fullUserList").empty();
+      $('html, body').animate({
+          scrollTop: $("#createdAccounts").offset().top
+      }, 500);
+
       for (i in data) {
         var user = data[i];
-        var pic = '';
+        var pic = user.profile_pic_url;
 
-        if (user.profile_pic_url.url !== null) {
-          pic = '<img src="'+user.profile_pic_url.url+'">';
-        } else {
-          var num = Math.floor(Math.random() * (10 - 1) + 1);
-          pic = '<img src="/assets/avatar-icons/avatar_0'+num+'.svg"';
-        };
-        var connBox = '<div class="myConnection"><div class="myConnWrapper"><div class="myConnProfilePic"><a href="/profile/'+user.id+'">'+pic+'</a></div><div class="myConnInfo"><div class="myConnName"><a href="/profile/'+user.id+'">'+user.first_name+' '+user.last_name+'</a></div><div class="myConnCompany">'+user.employer+'</div><div class="myConnIndustry">'+user.industry+'</div></div><div class="myConnMessage userActionsSidebar"><div class="userListAction"><a href="/admin/edit_user/'+user.id+'">review</a></div><div class="userListAction deleteAction"><a data-confirm="Are you sure you would like to delete this user?" href="/admin/delete/'+user.id+'">delete</a></div><div class="userListAction"><a href="/messages/new/'+user.id+'">send message</a></div></div></div></div>'
+        var connBox = '<div class="myConnection"><div class="myConnWrapper"><div class="myConnProfilePic"><a href="/profile/'+user.id+'"><img src="'+pic+'"></a></div><div class="myConnInfo"><div class="myConnName"><a href="/profile/'+user.id+'">'+user.first_name+' '+user.last_name+'</a></div><div class="myConnCompany">'+user.employer+'</div><div class="myConnIndustry">'+ user.job_title + ', '+  user.industry+', '+user.enterprise_size +'</div></div><div class="myConnMessage userActionsSidebar"><div class="userListAction"><a href="/admin/edit_user/'+user.id+'">review</a></div><div class="userListAction deleteAction"><a data-confirm="Are you sure you would like to delete this user?" href="/admin/delete/'+user.id+'">delete</a></div><div class="userListAction"><a href="/messages/new/'+user.id+'">send message</a></div></div></div></div>'
         $('.fullUserList').append(connBox);
       }
       $('.messagesPagination').hide();

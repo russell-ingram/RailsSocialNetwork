@@ -79,13 +79,32 @@ class UserAdminController < ApplicationController
       @usersRaw = User.order(:first_name).where("first_name like ? OR last_name like?", "%#{f_n}%", "%#{f_n}%")
     end
     # returning all the user data
+    @users = []
+
     @usersRaw.each do |u|
       work = u.current_pos
-      u.employer = work.company
-      u.industry = work.industry
+      if !u.profile_pic_url.blank?
+        pic = u.profile_pic_url
+      elsif !u.linkedin_pic_url.blank?
+        pic = u.linkedin_pic_url
+      else
+        num = Random.new(9)
+        pic = "/assets/avatar-icons/avatar_0"+num.to_s+".svg"
+      end
+      user = {
+        'employer' => work["company"],
+        'industry' => work["industry"],
+        'job_title' => work["job_title"],
+        'enterprise_size' => work["enterprise_size"],
+        'profile_pic_url' => pic,
+        'id' => u.id,
+        'first_name' => u.first_name,
+        'last_name' => u.last_name
+      }
+      @users << user
     end
-    p @usersRaw
-    render json: @usersRaw
+
+    render json: @users
   end
 
 
