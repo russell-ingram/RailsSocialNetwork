@@ -14,7 +14,7 @@
   margin-right: 10px;
   position: relative;
   z-index: 2;
-  top: 266px;
+  top: 276px;
 }
 
 .editorButton {
@@ -30,9 +30,12 @@
   font-size: 12px;
 }
 
-.editorButton.active {
-  background-color: #c8c8cb;
-}
+// .editorButton.active {
+//   background-color: #c8c8cb;
+// }
+// .editorButton:hover {
+//   color: #3eb2cc;
+// }
 
 .characterLimit {
   display: none;
@@ -43,4 +46,10 @@
   height: 0;
   font-size: 12px;
   font-family: "PNLight";
+}
+
+.callCol {
+  .editorButton {
+    margin-left: 2px;
+  }
 }

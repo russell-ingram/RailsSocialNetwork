@@ -1,10 +1,18 @@
 $( document ).ready(function() {
 
-  // Need to refactor these to make more efficient using THIS,etc.
+  // Character count is all commented out because we decided to no longer use this functionality, but I didn't want to remove it in case the client decides to re-add it later on.
 
   var configs = {
     readOnly: false,
-    formats: ['bold', 'italic', 'underline']
+    formats: ['bold', 'italic', 'underline'],
+    styles: {
+      '.editorButton:hover': {
+        'color': '#3eb2cc;'
+      },
+      '.ql-active': {
+        'background-color': '#c8c8cb;'
+      }
+    }
   }
 
   if ($('#editor').length) {
@@ -19,14 +27,14 @@ $( document ).ready(function() {
         return;
       }
       ta.val(quill.getHTML());
-      var text = quill.getText();
-      var remaining = 400 - text.length;
-      colCount1.text('Character count: ' + remaining);
-      if (remaining < 0) {
-        colCount1.css('color', 'red');
-      } else {
-        colCount1.css('color', '#767676');
-      }
+      // var text = quill.getText();
+      // var remaining = 400 - text.length;
+      // colCount1.text('Character count: ' + remaining);
+      // if (remaining < 0) {
+      //   colCount1.css('color', 'red');
+      // } else {
+      //   colCount1.css('color', '#767676');
+      // }
     });
 
     quill.on('selection-change', function(range) {
@@ -36,10 +44,10 @@ $( document ).ready(function() {
 
       } else {
         $("#toolbar").show();
-        var text = quill.getText();
-        var remaining = 400 - text.length;
-        colCount1.text('Character count: ' + remaining);
-        colCount1.show();
+        // var text = quill.getText();
+        // var remaining = 400 - text.length;
+        // colCount1.text('Character count: ' + remaining);
+        // colCount1.show();
       }
 
     });
@@ -60,26 +68,26 @@ $( document ).ready(function() {
       }
       ta2.val(quill2.getHTML());
 
-      var text = quill2.getText();
-      var remaining = 400 - text.length;
-      colCount2.text('Character count: ' + remaining);
-      if (remaining < 0) {
-        colCount2.css('color', 'red');
-      } else {
-        colCount2.css('color', '#767676');
-      }
+      // var text = quill2.getText();
+      // var remaining = 400 - text.length;
+      // colCount2.text('Character count: ' + remaining);
+      // if (remaining < 0) {
+      //   colCount2.css('color', 'red');
+      // } else {
+      //   colCount2.css('color', '#767676');
+      // }
     });
 
     quill2.on('selection-change', function(range) {
       if (!range) {
         $("#toolbarCol1").hide();
-        colCount2.hide();
+        // colCount2.hide();
       } else {
         $("#toolbarCol1").show();
-        var text = quill2.getText();
-        var remaining = 200 - text.length;
-        colCount2.text('Character count: ' + remaining);
-        colCount2.show();
+        // var text = quill2.getText();
+        // var remaining = 200 - text.length;
+        // colCount2.text('Character count: ' + remaining);
+        // colCount2.show();
       }
 
     });
@@ -99,26 +107,26 @@ $( document ).ready(function() {
       }
       ta3.val(quill3.getHTML());
 
-      var text = quill3.getText();
-      var remaining = 200 - text.length;
-      colCount3.text('Character count: ' + remaining);
-      if (remaining < 0) {
-        colCount3.css('color', 'red');
-      } else {
-        colCount3.css('color', '#767676');
-      }
+      // var text = quill3.getText();
+      // var remaining = 200 - text.length;
+      // colCount3.text('Character count: ' + remaining);
+      // if (remaining < 0) {
+      //   colCount3.css('color', 'red');
+      // } else {
+      //   colCount3.css('color', '#767676');
+      // }
     });
 
     quill3.on('selection-change', function(range) {
       if (!range) {
         $("#toolbarCol2").hide();
-        colCount3.hide();
+        // colCount3.hide();
       } else {
         $("#toolbarCol2").show();
-        var text = quill3.getText();
-        var remaining = 200 - text.length;
-        colCount3.text('Character count: ' + remaining);
-        colCount3.show();
+        // var text = quill3.getText();
+        // var remaining = 200 - text.length;
+        // colCount3.text('Character count: ' + remaining);
+        // colCount3.show();
       }
 
     });
@@ -139,41 +147,32 @@ $( document ).ready(function() {
         return;
       }
       ta4.val(quill4.getHTML());
-      var text = quill4.getText();
-      var remaining = 200 - text.length;
+      // var text = quill4.getText();
+      // var remaining = 200 - text.length;
 
-      colCount4.text('Character count: ' + remaining);
-      if (remaining < 0) {
-        colCount4.css('color', 'red');
-      } else {
-        colCount4.css('color', '#767676');
-      }
+      // colCount4.text('Character count: ' + remaining);
+      // if (remaining < 0) {
+      //   colCount4.css('color', 'red');
+      // } else {
+      //   colCount4.css('color', '#767676');
+      // }
     });
 
     quill4.on('selection-change', function(range) {
       if (!range) {
         $("#toolbarCol3").hide();
-        colCount4.hide();
+        // colCount4.hide();
       } else {
         $("#toolbarCol3").show();
-        var text = quill4.getText();
-        var remaining = 200 - text.length;
-        colCount4.text('Character count: ' + remaining);
-        colCount4.show();
+        // var text = quill4.getText();
+        // var remaining = 200 - text.length;
+        // colCount4.text('Character count: ' + remaining);
+        // colCount4.show();
       }
 
     });
 
   }
-
-
-  $('.editorButton').off().on('click', function() {
-    if ($(this).hasClass('active')) {
-      $(this).removeClass('active');
-    } else {
-      $(this).addClass('active');
-    }
-  });
 
 
 
