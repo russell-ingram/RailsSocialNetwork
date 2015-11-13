@@ -596,10 +596,11 @@ $( document ).ready(function() {
     var url = '/friendships/'+data + '/';
     var elem = '#connect'+index;
     var elemAnon = '#connectAnon'+index;
+    $(elem).prev().find('.connectAction').html('<div>PENDING<span class="icon icon-fwd-arrow"></span></div>');
+    $(elemAnon).prev().find('.connectAction').html('<div>PENDING<span class="icon icon-fwd-arrow"></span></div>');
 
     $.post(url, {'message': msg}, function(data) {
-      $(elem).prev().find('.connectAction').html('<div>PENDING<span class="icon icon-fwd-arrow"></span></div>');
-      $(elemAnon).prev().find('.connectAction').html('<div>PENDING<span class="icon icon-fwd-arrow"></span></div>');
+
     });
   });
 
@@ -607,10 +608,11 @@ $( document ).ready(function() {
     var data = $(this).attr('data');
     var msg = $(this).parent().find('.connectMessage').val();
     var url = '/friendships/'+data;
-    var elem = $('.profileConnect')
+    var elem = $('.profileConnect');
+    $(elem).replaceWith('<div class="profileButton profilePending">PENDING</div>');
 
     $.post(url, {'message': msg}, function(data) {
-      $(elem).replaceWith('<div class="profileButton profilePending">PENDING</div>');
+
 
     });
   });
@@ -622,19 +624,20 @@ $( document ).ready(function() {
     var url = '/friendships/'+data;
     var elem = '.connectElem'+index;
     var html = '<a href="/profile/'+ data +'">pending <div class="icon icon-fwd-arrow"></div></a>';
+    $(elem).html(html);
 
     $.post(url, {'message': msg}, function(data) {
-      $(elem).html(html);
+
     });
   });
 
   $('.confirmSendInviteButton').off().on('click', function() {
     var id = $(this).attr('data');
     var msg = $(this).parent().find('.connectMessage').val();
-    var url = '/requests/'+id+'/send_invite';
+    var url = '/requests/'+id+'/send_invite/';
 
     $.post(url, {'message': msg}, function(data) {
-      window.location.reload();
+      // window.location.reload();
     });
   });
 
