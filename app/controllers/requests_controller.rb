@@ -45,8 +45,8 @@ class RequestsController < ApplicationController
       EtrMailer.send_invite_email(@new_user, @message).deliver_now
       ActiveRecord::Base.connection.close
     end
-    redirect_to :back
-    # render json: "User invitation sent"
+    # redirect_to :back
+    render json: "User invitation sent"
   end
 
   def user_send_invite
