@@ -593,7 +593,7 @@ $( document ).ready(function() {
     var data = $(this).attr('data');
     var msg = $(this).parent().find('.connectMessage').val();
     var index = $(this).attr('data-index');
-    var url = '/friendships/'+data;
+    var url = '/friendships/'+data + '/';
     var elem = '#connect'+index;
     var elemAnon = '#connectAnon'+index;
 

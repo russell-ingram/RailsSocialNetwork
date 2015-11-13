@@ -101,8 +101,7 @@
                   CONNECTED<div class="icon icon-fwd-arrow"></div></a>
                     <% elsif @pending.include? user %>
                       <% if !@has_intentions %>
-                        <a href="/profile/<%= user.id %>">
-                        PENDING<span class="icon icon-fwd-arrow"></span></a>
+                        PENDING<span class="icon icon-fwd-arrow"></span>
                       <% else %>
                         <div>
                         PENDING<span class="icon icon-fwd-arrow"></span></div>
@@ -132,11 +131,11 @@
       <% if !@has_intentions %>
 
         <%= render partial: 'static_pages/modal', locals: { name: :search_results_page_s_confirm_connect, user: user, index: index }  %>
-      
+
       <% else %>
-      
+
         <%= render partial: 'static_pages/modal', locals: { name: :search_results_page_s_confirm_connect_w_intentions, user: user, index: index }  %>
-      
+
       <% end %>
 
     <% end %>
