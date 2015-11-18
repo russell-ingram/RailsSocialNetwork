@@ -349,6 +349,7 @@ class User < ActiveRecord::Base
     if titles.length > 0 && functions.length > 0
       p "DOUBLE"
       common_results = titles & functions
+      p common_results
       works_arr << common_results
     elsif titles.length > 0
       p "TITLES"
@@ -371,6 +372,8 @@ class User < ActiveRecord::Base
         works = works.union(works_arr[i])
       end
     elsif works_arr.length == 1
+      p "WORKS 1"
+      p works_arr[0]
       works = works_arr[0]
     end
 
