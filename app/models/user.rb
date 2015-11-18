@@ -339,7 +339,7 @@ class User < ActiveRecord::Base
     if function_results.length > 1
       p "FUNCTION RESULTS"
       functions = function_results[0]
-      1.upto(function_results.length -1) do |i|
+      1.upto(function_results.length - 1) do |i|
         functions = functions.union(function_results[i])
       end
     elsif function_results.length == 1
