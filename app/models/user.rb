@@ -248,6 +248,23 @@ class User < ActiveRecord::Base
     # then find all users with the id's?
     works = Work.all
 
+    works = works.where('current'=>true)
+    works = works.where(["industry LIKE ?", search[:industry]]) if search[:industry].present?
+    works = works.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
+    works = works.where(["region LIKE ?", search[:region]]) if search[:region].present?
+    works = works.where(["country LIKE ?", search[:country]]) if search[:country].present?
+    if search[:organization_type].present?
+      if search[:organization_type] == "Publicly Traded"
+        works = works.where('public'=>true)
+      elsif search[:organization_type] == "Private"
+        works = works.where('public'=>false)
+      end
+    end
+
+    works = works.where(:uid=>user_uids) if search.results.present?
+
+
+
     works_arr = []
 
     # Create a multi dimensional array of results then merge them without duplicates later
@@ -376,22 +393,6 @@ class User < ActiveRecord::Base
       p works_arr[0]
       works = works_arr[0]
     end
-
-    works = works.where('current'=>true)
-    works = works.where(["industry LIKE ?", search[:industry]]) if search[:industry].present?
-    works = works.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
-    works = works.where(["region LIKE ?", search[:region]]) if search[:region].present?
-    works = works.where(["country LIKE ?", search[:country]]) if search[:country].present?
-    if search[:organization_type].present?
-      if search[:organization_type] == "Publicly Traded"
-        works = works.where('public'=>true)
-      elsif search[:organization_type] == "Private"
-        works = works.where('public'=>false)
-      end
-    end
-
-
-    works = works.where(:uid=>user_uids) if search.results.present?
 
     works.each do |w|
       wids << w.uid.to_s
