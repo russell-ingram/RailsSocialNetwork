@@ -250,83 +250,126 @@ class User < ActiveRecord::Base
 
     works_arr = []
 
+    # Create a multi dimensional array of results then merge them without duplicates later
+    job_titles_results = []
+    function_results = []
 
     if search[:clevel].present? && search[:clevel] == true
       arr = ["%Chief%", "%CIO%", "%CISO%", "%CSO%", "%CTO%", "%CMO%", "%CDO%", "%CEO%", "%COO%", "%CFO%"]
       works_clevel = works.where('job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ?', "%Chief%", "%CIO%", "%CISO%", "%CSO%", "%CTO%", "%CMO%", "%CDO%", "%CEO%", "%COO%", "%CFO%")
-      works_arr << works_clevel
+      job_titles_results << works_clevel
     end
     if search[:executive].present? && search[:executive] == true
       works_executive = works.where('job_title LIKE ? OR job_title LIKE ?', '%EVP%', '%Executive%')
-      works_arr << works_executive
+      job_titles_results << works_executive
     end
     if search[:president].present? && search[:president] == true
       works_pres = works.where('job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ?', '%EVP%', '%SVP%', '%President%', '%AVP%', '%VP%')
-      works_arr << works_pres
+      job_titles_results << works_pres
     end
     if search[:director].present? && search[:president] == true
       works_dir = works.where('job_title LIKE ?', '%Director%')
-      works_arr << works_dir
+      job_titles_results << works_dir
     end
     if search[:principal].present? && search[:principal] == true
       works_principal = works.where('job_title LIKE ?', '%Principal%')
-      works_arr << works_principal
+      job_titles_results << works_principal
     end
     if search[:head].present? && search[:head] == true
       works_Head = works.where('job_title LIKE ?', '%Head%')
-      works_arr << works_Head
+      job_titles_results << works_Head
     end
     if search[:senior].present? && search[:senior] == true
       senior = works.where('job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ?', '%Senior%', '%SVP%', '%Snr%')
-      works_arr << senior
+      job_titles_results << senior
     end
     if search[:lead].present? && search[:lead] == true
       lead = works.where('job_title LIKE ?', '%Lead%')
-      works_arr << lead
+      job_titles_results << lead
     end
     if search[:manager].present? && search[:manager] == true
       manager = works.where('job_title LIKE ? OR job_title LIKE ?', '%Manager%', '%Mngr%')
-      works_arr << manager
+      job_titles_results << manager
     end
     if search[:architect].present? && search[:architect] == true
       architect = works.where('job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ? OR job_title LIKE ?', '%Architect%', '%Cloud%', '%Networking%', '%Storage%')
-      works_arr << architect
+      function_results << architect
     end
     if search[:infrastructure].present? && search[:infrastructure] == true
       infrastructure = works.where('job_title LIKE ?', '%Infrastructure%')
-      works_arr << infrastructure
+      function_results << infrastructure
     end
     if search[:engineer].present? && search[:engineer] == true
       engineer = works.where('job_title LIKE ?', '%Engineer%')
-      works_arr << engineer
+      function_results << engineer
     end
     if search[:consultant].present? && search[:consultant] == true
       consultant = works.where('job_title LIKE ? OR job_title LIKE ?', '%Consultant%', '%Advisor%')
-      works_arr << consultant
+      function_results << consultant
     end
     if search[:security].present? && search[:security] == true
       security = works.where('job_title LIKE ?', '%Security%')
-      works_arr << security
+      function_results << security
     end
     if search[:analyst].present? && search[:analyst] == true
       analyst = works.where('job_title LIKE ?', '%Analyst%')
-      works_arr << analyst
+      function_results << analyst
     end
     if search[:administrator].present? && search[:administrator] == true
       administrator = works.where('job_title LIKE ? OR job_title LIKE ?', '%Administrator%', '%Admin%')
-      works_arr << administrator
+      function_results << administrator
     end
     if search[:risk].present? && search[:risk] == true
       risk = works.where('job_title LIKE ? OR job_title LIKE ?', '%Risk%', '%Compliance%')
-      works_arr << risk
+      function_results << risk
+    end
+    titles = []
+    p "JOB TITLES"
+    p job_titles_results
+    if job_titles_results.length > 1
+      p "TITLE RESULTS"
+      titles = job_titles_results[0]
+      1.upto(job_titles_results.length - 1) do |i|
+        titles = titles.union(job_titles_results[i])
+      end
+    elsif job_titles_results.length == 1
+      titles = job_titles_results[0]
+    end
+    functions = []
+    if function_results.length > 1
+      p "FUNCTION RESULTS"
+      functions = function_results[0]
+      1.upto(function_results.length -1) do |i|
+        functions = functions.union(function_results[i])
+      end
+    elsif function_results.length == 1
+      functions = function_results[0]
     end
 
+    if titles.length > 0 && functions.length > 0
+      p "DOUBLE"
+      common_results = titles & functions
+      works_arr << common_results
+    elsif titles.length > 0
+      p "TITLES"
+      works_arr << titles
+    elsif functions.length > 0
+      p "FUNCTIONS"
+      works_arr << functions
+    else
+      if job_titles_results.length > 0 || function_results.length > 0
+        works = Work.none
+      end
+    end
+
+    # Iterate over the multidimensional array and join them without duplicates or just use the first if there is only 1.
+    # Uses active_record_union gem
     if works_arr.length > 1
       p works_arr[1].class
       works = works_arr[0]
       1.upto(works_arr.length - 1) do |i|
         works = works.union(works_arr[i])
-    end
+      end
     elsif works_arr.length == 1
       works = works_arr[0]
     end
@@ -336,7 +379,6 @@ class User < ActiveRecord::Base
     works = works.where(["enterprise_size LIKE ?", search[:enterprise]]) if search[:enterprise].present?
     works = works.where(["region LIKE ?", search[:region]]) if search[:region].present?
     works = works.where(["country LIKE ?", search[:country]]) if search[:country].present?
-    # works = works.where(["job_title LIKE ?", search[:job_title]]) if search[:job_title].present?
     if search[:organization_type].present?
       if search[:organization_type] == "Publicly Traded"
         works = works.where('public'=>true)
@@ -358,7 +400,6 @@ class User < ActiveRecord::Base
     if (!search[:industry].present? && !search[:enterprise].present? && !search[:region].present? && !search[:country].present? && !search[:job_title].present? && !search[:organization_type].present? && !search.results.present? && !search[:clevel].present? && !search[:executive].present? && !search[:president].present? && !search[:director].present? && !search[:principal].present? && !search[:head].present? && !search[:senior].present? && !search[:lead].present? && !search[:manager].present? && !search[:architect].present? && !search[:infrastructure].present? && !search[:engineer].present? && !search[:consultant].present? && !search[:security].present? && !search[:administrator].present? && !search[:analyst].present? && !search[:risk].present?)
     else
       users = users.where(:uid=>wids)
-      p users.length
     end
 
 
@@ -378,32 +419,32 @@ class User < ActiveRecord::Base
         "company" => "Unlisted company",
         "enterprise_size" => "Unlisted enterprise size",
         "region" => "Unlisted region",
-        "country" => "Unlisted",
-        "industry" => "Unlisted"
+        "country" => "Unlisted country",
+        "industry" => "Unlisted industry"
       }
     end
 
-    if @user_pos['job_title'] == ""
+    if @user_pos['job_title'] == "" || @user_pos['job_title'].nil?
       @user_pos['job_title'] = "Unlisted job title"
     end
 
-    if @user_pos['company'] == ""
+    if @user_pos['company'] == "" || @user_pos['company'].nil?
       @user_pos['company'] = "Unlisted company"
     end
 
-    if @user_pos['enterprise_size'] == ""
+    if @user_pos['enterprise_size'] == "" || @user_pos['enterprise_size'].nil?
       @user_pos['enterprise_size'] = "Unlisted enterprise size"
     end
 
-    if @user_pos['region'] == ""
+    if @user_pos['region'] == "" || @user_pos['region'].nil?
       @user_pos['region'] = "Unlisted region"
     end
 
-    if @user_pos['country'] == ""
+    if @user_pos['country'] == "" || @user_pos['country'].nil?
       @user_pos['country'] = "Unlisted country"
     end
 
-    if @user_pos['industry'] == ""
+    if @user_pos['industry'] == "" || @user_pos['industry'].nil?
       @user_pos['industry'] = "Unlisted industry"
     end
 

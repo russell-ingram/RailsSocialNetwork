@@ -12,16 +12,18 @@ class FriendshipsController < ApplicationController
     @blocked_friendships, @pending_friendships, @requested_friendships, @accepted_friendships = [], [], [], []
     @friendships = current_user.friendships.order(created_at: :desc).includes(:friend)
     @friendships.each do |f|
-      @blocked_friendships << f if f.state == 'blocked'
-      @pending_friendships << f if f.state == 'pending'
-      @requested_friendships << f if f.state == 'requested'
-      if !params[:name]
-        @accepted_friendships << f if f.state == 'accepted'
-      else
-        f_n = params[:name]
-        p f.friend.full_name
-        if f.friend.full_name.downcase.include?(f_n)
-          @accepted_friendships << f
+      if f.friend.present?
+        @blocked_friendships << f if f.state == 'blocked'
+        @pending_friendships << f if f.state == 'pending'
+        @requested_friendships << f if f.state == 'requested'
+        if !params[:name]
+          @accepted_friendships << f if f.state == 'accepted'
+        else
+          f_n = params[:name]
+          p f.friend.full_name
+          if f.friend.full_name.downcase.include?(f_n)
+            @accepted_friendships << f if f.state == 'accepted'
+          end
         end
       end
     end

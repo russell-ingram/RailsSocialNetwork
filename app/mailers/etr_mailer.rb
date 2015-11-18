@@ -15,9 +15,11 @@ class EtrMailer < ApplicationMailer
   end
 
   def send_invite_email(user, message)
+    p "IOAEJFOIAJA"
     @user = user
     @message = message
     @user.invite_status = "pending"
+
     if Request.exists?(:uid => @user.uid)
       @req = Request.find_by("uid = ?", @user.uid)
       @req.invite_sent = true
@@ -58,7 +60,6 @@ class EtrMailer < ApplicationMailer
     @admin = admin
     if admin.admin_request_notifications
       mail(to: @admin.email, subject: "Your request to join FITO has been received")
-    end
     end
   end
 

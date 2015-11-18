@@ -41,8 +41,11 @@ class RequestsController < ApplicationController
     end
     @new_user.invite_message = @message
     @new_user.save
+    p "THREAD"
     Thread.new do
-      EtrMailer.send_invite_email(@new_user, @message).deliver_now
+      p "BEFORE"
+      EtrMailer.send_invite_email(@new_user, @message).deliver_now!
+      p "AFTER"
       ActiveRecord::Base.connection.close
     end
     # redirect_to :back
