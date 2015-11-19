@@ -405,26 +405,115 @@ class UserAdminController < ApplicationController
     Thread.new do
 
     xlsx.each_with_pagename do |name, sheet|
-
+      # Ignoring sheets that have long names instead of numbers.
       if name.length < 3
-        # xlsx.default_sheet = sheet
         sheet.each_row_streaming do |row|
           y = row[0].coordinate.row
 
           # ignoring the first rows that are headers and/or empty
           if y > 2
             uid = row[4].value
-            u = User.find_by("uid = ?", uid)
+
             # begin user exists check
-            if u
-              # do nothing to user
+            if User.exists?(['uid = ?', uid])
+              u = User.find_by("uid = ?", uid)
+              # This n value handles an odd Roo error that skips the 10th and 11th column if column 10 is empty which would make them not matchup with their headers correctly.
+
               n = 28
+
+              # Find the user's current work
+              w = u.works.where(current:true)[0]
+              if w.company != row[7].value
+                # Have switched companies, add new work.
+                new_w = Work.new
+                new_w.job_title = row[9].value
+                if !row[10].value.nil?
+
+                  new_w.industry = row[10].value
+                  new_w.enterprise_size = row[11].value.capitalize
+                  new_w.region = row[12].value
+                  new_w.footprint = row[13].value
+                  new_w.country = row[14].value
+                  new_w.uid = u.uid
+                  new_w.current = true
+                  if row[16].value == "Public"
+                    new_w.public = true
+                  else
+                    new_w.public = false
+                  end
+                  u.works << new_w
+
+                else
+
+                  new_w.industry = row[12].value
+                  new_w.enterprise_size = row[12].value.capitalize
+                  new_w.region = row[13].value
+                  new_w.footprint = row[14].value
+                  new_w.country = row[15].value
+                  new_w.uid = u.uid
+                  new_w.current = true
+                  if row[17].value == "Public"
+                    new_w.public = true
+                  else
+                    new_w.public = false
+                  end
+                  u.works << new_w
+                end
+              else
+                # They are at same company.
+
+              end
+
+
               if !row[10].value.nil?
+                if row[18].value == "YES"
+                  u.big65 = true
+                else
+                  u.big65 = false
+                end
+                if row[20].value == "YES"
+                  u.sp500 = true
+                else
+                  u.sp500 = false
+                end
+                if row[21].value == "YES"
+                  u.fortune100 = true
+                else
+                  u.fortune100 = false
+                end
+                if row[22].value == "YES"
+                  u.global1000 = true
+                else
+                  u.global1000 = false
+                end
               else
                 n = 30
+                if row[19].value == "YES"
+                  u.big65 = true
+                else
+                  u.big65 = false
+                end
+                if row[21].value == "YES"
+                  u.sp500 = true
+                else
+                  u.sp500 = false
+                end
+                if row[22].value == "YES"
+                  u.fortune100 = true
+                else
+                  u.fortune100 = false
+                end
+                if row[23].value == "YES"
+                  u.global1000 = true
+                else
+                  u.global1000 = false
+                end
+
               end
-              # # iterate through columns w/ survey for results upload
-              # xlsx.last_column
+              u.save
+
+              # iterate through columns w/ survey for results upload
+              # Add new survey data to existing user.
               n.upto(sheet.last_column) do |index|
 
                 if sheet.column(index)[y] && !sheet.column(index)[0].nil? && sheet.column(index)[0] != 0.0
@@ -463,6 +552,7 @@ class UserAdminController < ApplicationController
                   i.save
                 end
               end
+            # If user doesn't exist
             else
               u = User.new
               u.works = []
@@ -473,7 +563,6 @@ class UserAdminController < ApplicationController
               u.last_name = row[2].value
               random_string = SecureRandom.hex
               u.password = random_string
-              # # this needs to be based on organizations in db later
               w.company = row[7].value
               # # this should work with normal titles, but is using standard title for now
               w.job_title = row[9].value

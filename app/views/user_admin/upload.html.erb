@@ -1,12 +1,16 @@
-<%= render "layouts/header" %>
+<%= render "layouts/adminHeader" %>
 <div class="pageWrap">
-  <div class="pageHeader">Upload XLSX File
+  <div class="pageHeader">Upload XLSX Survey File
   </div>
-
+  <div class="noMsgsWrap">
+<div>This file must follow the format of previous survey XLSX files but without the previous survey data. DO NOT UPLOAD OLD SURVEY DATA. Upload only the new surveys and user data that need to be updated. Please upload at non-peak times to avoid any disruption to users.</div>
 <%= form_tag admin_upload_file_path, multipart: true, class: 'uploadXLSForm' do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "Upload XLSX File" %>
+  <%= submit_tag "Submit XLSX File", class: 'adminUploadButton' %>
 <% end %>
+
+  </div>
+
 
 <div class="footerMargin"></div>
 

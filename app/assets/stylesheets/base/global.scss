@@ -400,3 +400,16 @@ textarea, input, select {
   }
 }
 
+.adminUploadButton {
+  height: 30px;
+  width: 180px;
+  display: block;
+  margin-top: 40px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.adminUploadButton:hover {
+  background-color: #9B9A9A;
+  color: #FFF;
+}
