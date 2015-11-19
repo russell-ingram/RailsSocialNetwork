@@ -167,12 +167,14 @@
 
 .homeContentPic.tallPic {
     background-position-y: center;
-    background-size: 100% auto;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
 }
 
 .homeContentPic.widePic {
     background-position-x: center;
-    background-size: auto 100%;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
 }
 
 .homeContentPic img {
