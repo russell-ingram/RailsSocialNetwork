@@ -153,7 +153,7 @@ pageSpecificInits.homePage = function(jquery){
 		var box = jquery('.homeContentPic');
 		var pic = box.find('img');
 		var ratio = function(o){ return o.width()/o.height() };
-		if(ratio(box) > ratio(pic)){
+		if(ratio(pic) < 1){
 			box.addClass('tallPic');
 			box.removeClass('widePic');
 		}
