@@ -484,7 +484,7 @@ $( document ).ready(function() {
 
   $('#inviteButton').off().on('click', function() {
     var name = $(this).attr('data');
-    window.location.href = "mailto:?subject=Invitation to FITO network presented by ETR&body="+name+" is inviting you to join the FITO network for technology adoption leaders. Click here to request access: http://etrfito.com/?requestAccess";
+
   });
 
   $(".onboardSubmitLogin").off().on('click', function() {
